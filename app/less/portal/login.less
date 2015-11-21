@@ -1,0 +1,65 @@
+.tiger-login-page {
+  .banner-section {
+    height: 400px;
+    width: 100%;
+    position: relative;
+    h4 {
+      margin: 0;
+    }
+    &.banner-01 {
+      .bg-image('../images/portal/login/banner-01.png');
+      .bg-repeat();
+      .bg-position();
+      background-size: cover;
+    }
+    .banner-overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+    .banner-content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+      overflow: hidden;
+      .image-wrapper {
+        padding: 100px 0 0 30px;
+      }
+      .panel-wrapper {
+        padding: 50px 30px 0 0;
+        .login-panel {
+          width: 300px;
+          .panel-body {
+            padding: 20px;
+            .register-link {
+              color: #d93931;
+              &:hover {
+                color: #d93931;
+                text-decoration: underline;
+              }
+            }
+            .forgotpwd-link {
+
+            }
+            .login-form {
+              margin-top: 35px;
+              .input-group {
+                width: 100%;
+                .input-group-addon {
+                  width: 36px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
