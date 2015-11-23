@@ -1035,9 +1035,6 @@
   width: 100%;
   background-color: #fff;
 }
-.app-aside-fixed .aside-wrap {
-  top: 0;
-}
 @-webkit-keyframes ngdialog-flyin {
   0% {
     opacity: 0;

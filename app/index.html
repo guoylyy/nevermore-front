@@ -5,7 +5,7 @@
     <title>nevermore</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+<!--
     <link rel="stylesheet" href="bower_components/normalize-css/normalize.css" type="text/css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" type="text/css"/>
@@ -15,12 +15,12 @@
     <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.min.css" type="text/css"/>
     <link rel="stylesheet" href="bower_components/angular-tooltips/dist/angular-tooltips.min.css" type="text/css"/>
 
-    <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.min.css" type="text/css"/>
-
+    <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.min.css" type="text/css"/> -->
+   <link rel="stylesheet" href="lib/css/app.min.css" type="text/css"/>
 </head>
 <body>
 
-<div class="app app-aside-fixed" ui-view></div>
+<div class="app app-aside-fixed" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
 
 <toaster-container></toaster-container>
 
