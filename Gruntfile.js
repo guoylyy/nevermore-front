@@ -72,6 +72,7 @@ module.exports = function (grunt) {
             serve: {
                 files: {
                     '<%= tiger.app %>/styles/portal.css': '<%= tiger.app %>/less/portal/portal.less',
+                    '<%= tiger.app %>/styles/app.css': '<%= tiger.app %>/less/app/app.less',
                 }
             }
         }

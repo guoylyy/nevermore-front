@@ -14,17 +14,16 @@ angular.module('nevermore')
       function($stateProvider, $urlRouterProvider, JQ_CONFIG) {
         $urlRouterProvider
           .otherwise('/index');
+        //portal
         $stateProvider
           .state('portal', {
             abstract: true,
             url: '/portal',
             templateUrl: 'tpl/portal/portal.html',
-            controller:'AppCtrl',
             resolve: {
               css: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'styles/portal.css',
-                  'scripts/controllers/app.js'
                 ]);
               }]
             }
@@ -41,13 +40,38 @@ angular.module('nevermore')
                 ]);
               }]
             }
+          })
+          //app
+          .state('app', {
+            abstract: true,
+            url: '/app',
+            templateUrl: 'tpl/app/app.html',
+            controller:'AppCtrl',
+            resolve: {
+              css: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app.js',
+                  'styles/app.css'
+                ]);
+              }]
+            }
+          }).state('app.index', {
+            url: '^/app/index',
+            templateUrl: 'tpl/app/index.html',
+            controller: 'AppIndexController',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/app-index.js',
+                ]);
+              }]
+            }
           });
       }
     ]
   )
   .run(
     ['SystemService', 'ResTool',  function (SystemService, ResTool) {
-
     }]
   )
   .run(
