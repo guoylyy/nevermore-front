@@ -265,7 +265,7 @@
   border-color: #3a3f51;
 }
 .b-primary {
-  border-color: #008ad0;
+  border-color: #008AD0;
 }
 .b-success {
   border-color: #27c24c;
@@ -280,7 +280,7 @@
   border-color: #f05050;
 }
 .b-white {
-  border-color: #ffffff;
+  border-color: #fff;
 }
 .b-dashed {
   border-style: dashed !important;
@@ -295,7 +295,7 @@
   border-left-color: #3a3f51;
 }
 .b-l-primary {
-  border-left-color: #008ad0;
+  border-left-color: #008AD0;
 }
 .b-l-success {
   border-left-color: #27c24c;
@@ -310,7 +310,7 @@
   border-left-color: #f05050;
 }
 .b-l-white {
-  border-left-color: #ffffff;
+  border-left-color: #fff;
 }
 .b-l-2x {
   border-left-width: 2px;
@@ -1382,7 +1382,7 @@
   z-index: 1049;
   overflow: auto;
   min-width: 320px;
-  background: #ffffff;
+  background: #fff;
 }
 .aside:focus {
   outline: 0;
@@ -1405,8 +1405,8 @@
   min-height: 35px;
   line-height: 35px;
   padding: 0 15px;
-  background: #008ad0;
-  color: #ffffff;
+  background: #008AD0;
+  color: #fff;
 }
 .aside .aside-dialog .aside-header .close {
   margin-top: 4px;
@@ -1442,7 +1442,7 @@
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #000000;
+  background-color: #000;
 }
 .aside-backdrop.fade {
   opacity: 0;

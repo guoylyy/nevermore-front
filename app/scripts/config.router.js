@@ -55,7 +55,8 @@ angular.module('nevermore')
                 ]);
               }]
             }
-          }).state('app.index', {
+          })
+          .state('app.index', {
             url: '^/app/index',
             templateUrl: 'tpl/app/index.html',
             controller: 'AppIndexController',
@@ -66,25 +67,32 @@ angular.module('nevermore')
                 ]);
               }]
             }
+          })
+          .state('app.index.teacher-reservation', {
+            url: '^/app/index/reservation/teacher',
+            templateUrl: 'tpl/app/teacher-reservation.html',
+            controller: 'TeacherReservationCtrl'
+          })
+          .state('app.course', {
+            url: '^/app/course',
+            templateUrl: 'tpl/app/course.html',
+            controller: 'AppIndexController',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/app-course.js',
+                ]);
+              }]
+            }
+          })
+          .state('app.course.student-class', {
+            url: '^/app/course/student/class',
+            templateUrl: 'tpl/app/student-class.html',
+            controller: 'StudentClassCtrl'
           });
       }
     ]
   )
   .run(
-    ['SystemService', 'ResTool',  function (SystemService, ResTool) {
-    }]
-  )
-  .run(
-    ['$rootScope', 'SystemService', '$state',
-      function ($rootScope, SystemService, $state) {
-        $rootScope.$on('$stateChangeStart', function (event, next, current) {
-          if(/^app/.test(next.name)) {
-            if(!SystemService.isLogin()) {
-              event.preventDefault();
-              $state.go('portal.login');
-            }
-          }
-        });
-      }
-    ]
+
   );
