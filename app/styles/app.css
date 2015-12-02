@@ -1458,3 +1458,12 @@
   border-color: #23b7e5;
   padding-left: 5px;
 }
+.btn_step_undo {
+  background-color: #CCCCCC;
+}
+.btn_step_done {
+  background-color: #7ED321;
+}
+.btn_step_doing {
+  background-color: #F5A623;
+}

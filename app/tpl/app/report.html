@@ -1,0 +1,40 @@
+
+<div class="vbox">
+    <div class="wrapper lter b-b bg-white">
+      <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="createNote()">返回实验</a>
+      <div class="subview3_title">扭转实验-实验报告</div>
+    </div>
+    <div class="wrapper bg-white">
+      <div class="form-group">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2">
+        <a class="btn btn-sm btn-bg btn-rounded btn-default btn-icon btn_step_undo"><i class="fa">1</i></a>
+        <label class="text-muted" style="margin-left:5px;">基本信息</label>
+        </div>
+
+        <div class="col-sm-2">
+        <a class="btn btn-sm btn-bg btn-rounded btn-default btn-icon btn_step_done"><i class="fa">1</i></a>
+        <label class="text-muted" style="margin-left:5px;">测量数据</label>
+        </div>
+
+        <div class="col-sm-2">
+        <a class="btn btn-sm  btn-rounded btn-default btn-icon btn_step_doing"><i class="fa">1</i></a>
+        <label class="text-muted" style="margin-left:5px;">实验图表</label>
+        </div>
+
+        <div class="col-sm-2">
+        <a class="btn btn-sm btn-bg btn-rounded btn-default btn-icon btn_step_undo"><i class="fa">1</i></a>
+        <label class="text-muted" style="margin-left:5px;">计算数据</label>
+        </div>
+
+        <div class="col-sm-2">
+        <a class="btn btn-sm btn-bg btn-rounded btn-default btn-icon btn_step_undo"><i class="fa">1</i></a>
+        <label class="text-muted" style="margin-left:5px;">相关问答</label>
+        </div>
+
+        <div class="col-sm-1"></div>
+        <div class="line line-dashed line-lg pull-in"></div>
+      </div>
+      <div class="line line-dashed line-lg pull-in b-b"></div>
+      <div ui-view></div>
+</div>

@@ -71,12 +71,19 @@ angular.module('nevermore')
           .state('app.index.teacher-reservation', {
             url: '^/app/index/reservation/teacher',
             templateUrl: 'tpl/app/teacher-reservation.html',
-            controller: 'TeacherReservationCtrl'
+            controller: 'TeacherReservationCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/teacher-reservation.js',
+                ]);
+              }]
+            }
           })
           .state('app.course', {
             url: '^/app/course',
             templateUrl: 'tpl/app/course.html',
-            controller: 'AppIndexController',
+            controller: 'AppCourseController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
@@ -88,7 +95,50 @@ angular.module('nevermore')
           .state('app.course.student-class', {
             url: '^/app/course/student/class',
             templateUrl: 'tpl/app/student-class.html',
-            controller: 'StudentClassCtrl'
+            controller: 'StudentClassCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/student-class.js',
+                ]);
+              }]
+            }
+          })
+          .state('app.course.report', {
+            url: '^/app/course/report',
+            templateUrl: 'tpl/app/report.html',
+            controller: 'ReportCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/report.js',
+                ]);
+              }]
+            }
+          })
+          .state('app.course.report.report-basic', {
+            url: '^/app/course/report/basic',
+            templateUrl: 'tpl/app/report-basic.html',
+            controller: 'ReportBasicCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/report-basic.js',
+                ]);
+              }]
+            }
+          })
+          .state('app.course.report.report-data', {
+            url: '^/app/course/report/data',
+            templateUrl: 'tpl/app/report-data.html',
+            controller: 'ReportDataCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/report-data.js',
+                ]);
+              }]
+            }
           });
       }
     ]
