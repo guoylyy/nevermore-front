@@ -140,6 +140,19 @@ angular.module('nevermore')
                 ]);
               }]
             }
+          })
+          .state('app.course.report.report-graphic', {
+            url: '^/app/course/report/graphic',
+            templateUrl: 'tpl/app/report-graphic.html',
+            controller: 'ReportGraphicCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/report-graphic.js',
+                  'scripts/directives/app/graphic-table.js'
+                ]);
+              }]
+            }
           });
       }
     ]
