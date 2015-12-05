@@ -36,7 +36,36 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/portal/index.js',
-                  'scripts/directives/portal/tiger-portal-header.js'
+                  'scripts/directives/portal/portal-header.js',
+                  'scripts/directives/portal/portal-footer.js'
+                ]);
+              }]
+            }
+          })
+          .state('portal.login', {
+            url: '/signin',
+            templateUrl: 'tpl/portal/login.html',
+            controller: 'LoginController',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/portal/login.js',
+                  'scripts/directives/portal/portal-footer.js',
+                  'scripts/directives/portal/portal-header.js'
+                ]);
+              }]
+            }
+          })
+          .state('portal.calendar', {
+            url: '/calendar',
+            templateUrl: 'tpl/portal/calendar.html',
+            controller: 'CalendarController',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/portal/calendar.js',
+                  'scripts/directives/portal/portal-footer.js',
+                  'scripts/directives/portal/portal-header.js'
                 ]);
               }]
             }
@@ -158,5 +187,16 @@ angular.module('nevermore')
     ]
   )
   .run(
-
+    ['$rootScope', 'SystemService', '$state',
+      function ($rootScope, SystemService, $state) {
+        $rootScope.$on('$stateChangeStart', function (event, next, current) {
+          if(/^app/.test(next.name)) {
+            if(!SystemService.isLogin()) {
+              event.preventDefault();
+              $state.go('portal.login');
+            }
+          }
+        });
+      }
+    ]
   );

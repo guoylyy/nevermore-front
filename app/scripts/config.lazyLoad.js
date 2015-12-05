@@ -39,45 +39,6 @@ angular.module('nevermore')
             '../bower_components/ng-img-crop/compile/minified/ng-img-crop.js',
             '../bower_components/ng-img-crop/compile/minified/ng-img-crop.css'
           ]
-        },
-        {
-          name: 'TigerCountDownBtn',
-          files: [
-            '../scripts/directives/app/tiger-countdown-btn.js'
-          ]
-        },
-        {
-          name: 'TigerFileUpload',
-          files: [
-            '../scripts/resources/attach-resource.js',
-            '../scripts/directives/app/tiger-file-upload.js'
-          ]
-        },
-        {
-          name: 'TigerFileDownload',
-          files: [
-            '../scripts/resources/attach-resource.js',
-            '../scripts/directives/app/tiger-file-download.js'
-          ]
-        },
-        {
-          name: 'TigerDatepicker',
-          files: [
-            '../scripts/directives/app/tiger-datepicker.js'
-          ]
-        },
-        {
-          name: 'TigerFromNow',
-          files: [
-            '../bower_components/moment/min/moment.min.js',
-            '../scripts/filters/from-now.js'
-          ]
-        },
-        {
-          name: 'TigerFixedHeaderTable',
-          files: [
-            '../bower_components/angu-fixed-header-table/angu-fixed-header-table.js'
-          ]
         }
       ]
     });

@@ -7,8 +7,8 @@
           <i class="glyphicon glyphicon-align-justify"></i>
         </button>
         <!-- brand -->
-        <a href="#/" class="navbar-brand">
-          <img src="images/logo.png" alt="." class="" style="margin-top:15px;">
+        <a ui-sref="app.index" class="navbar-brand">
+          <img src="images/logos/app/logo-white.png" alt="." class="" style="margin-top:15px;">
         </a>
         <!-- / brand -->
       </div>
@@ -44,9 +44,7 @@
 
         <!-- nabar right -->
         <ul class="nav navbar-nav navbar-right">
-          <li class="hidden-xs">
-            <a ui-fullscreen></a>
-          </li>
+
           <li class="dropdown" dropdown>
             <a href class="dropdown-toggle" dropdown-toggle>
               <i class="icon-bell fa-fw"></i>
@@ -54,7 +52,7 @@
               <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
             </a>
             <!-- dropdown -->
-            <div class="dropdown-menu w-xl animated fadeInUp">
+            <!-- <div class="dropdown-menu w-xl animated fadeInUp">
               <div class="panel bg-white">
                 <div class="panel-heading b-light bg-light">
                   <strong>You have <span>2</span> notifications</strong>
@@ -81,7 +79,7 @@
                   <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- / dropdown -->
           </li>
 
@@ -95,19 +93,18 @@
             </a>
 
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#" translate="header.navbar.new.PROJECT">Projects</a></li>
+              <li><a href="#" translate="header.navbar.new.PROJECT">个人信息</a></li>
               <li>
                 <a href>
                   <span class="badge bg-info pull-right">5</span>
-                  <span translate="header.navbar.new.TASK">Task</span>
+                  <span translate="header.navbar.new.TASK">我的实验</span>
                 </a>
               </li>
-              <li><a href translate="header.navbar.new.USER">User</a></li>
               <li class="divider"></li>
               <li>
                 <a href>
-                  <span class="badge bg-danger pull-right">4</span>
-                  <span translate="header.navbar.new.EMAIL">Email</span>
+                  <!-- <span class="badge bg-danger pull-right">4</span> -->
+                  <span translate="header.navbar.new.EMAIL">退出</span>
                 </a>
               </li>
             </ul>

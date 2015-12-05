@@ -7,7 +7,7 @@
  * # labHeader
  */
 angular.module('nevermore')
-  .directive('tigerPortalHeader', function () {
+  .directive('portalHeader', function () {
     return {
       templateUrl: 'tpl/portal/block/header.html',
       restrict: 'E',
