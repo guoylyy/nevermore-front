@@ -182,6 +182,18 @@ angular.module('nevermore')
                 ]);
               }]
             }
+          })
+          .state('app.course.report.report-question', {
+            url: '^/app/course/report/question',
+            templateUrl: 'tpl/app/report-question.html',
+            controller: 'ReportQuestionCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/report-question.js'
+                ]);
+              }]
+            }
           });
       }
     ]
