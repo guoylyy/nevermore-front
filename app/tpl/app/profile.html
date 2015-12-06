@@ -1,0 +1,22 @@
+
+<div class="hbox hbox-auto-xs hbox-auto-sm">
+  <div class="col w bg-light dk b-r bg-auto">
+    <div class="panel" draggable="true">
+        <div class="panel-heading second_nav_head">
+          个人设置
+        </div>
+        <div class="list-group bg-white" ng-if="true">
+          <a ui-sref="app.profile.person" class="list-group-item">
+            <i class="fa fa-fw"></i> 个人资料
+          </a>
+          <a ui-sref="app.profile.password" class="list-group-item">
+            <i class="fa fa-fw"></i> 修改密码
+          </a>
+        </div>
+
+      </div>
+  </div>
+  <div class="col">
+    <div ui-view ></div>
+  </div>
+</div>

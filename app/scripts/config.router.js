@@ -86,6 +86,7 @@ angular.module('nevermore')
             }
           })
           .state('app.index', {
+            abstract: true,
             url: '^/app/index',
             templateUrl: 'tpl/app/index.html',
             controller: 'AppIndexController',
@@ -122,6 +123,7 @@ angular.module('nevermore')
             }
           })
           .state('app.course', {
+            abstract: true,
             url: '^/app/course',
             templateUrl: 'tpl/app/course.html',
             controller: 'AppCourseController',
@@ -218,21 +220,46 @@ angular.module('nevermore')
                 ]);
               }]
             }
-          });
+          })
+          .state('app.profile', {
+            abstract: true,
+            url: '^/app/profile',
+            templateUrl: 'tpl/app/profile.html',
+            resolve: {
+            }
+          })
+          .state('app.profile.person', {
+            url: '^/app/profile/person',
+            templateUrl: 'tpl/app/profile-person.html',
+            resolve: {
+
+            }
+          })
+          .state('app.profile.password', {
+            url: '^/app/profile/password',
+            templateUrl: 'tpl/app/profile-password.html',
+            resolve: {
+
+            }
+          })
+          .state('app.message', {
+            url: '^/app/message',
+            templateUrl: 'tpl/app/message.html',
+            resolve: {
+
+            }
+          })
+          .state('app.calendar', {
+            url: '^/app/calendar',
+            templateUrl: 'tpl/app/calendar.html',
+            resolve: {
+
+            }
+          })
+          ;
       }
     ]
   )
   .run(
-    // ['$rootScope', 'SystemService', '$state',
-    //   function ($rootScope, SystemService, $state) {
-    //     $rootScope.$on('$stateChangeStart', function (event, next, current) {
-    //       if(/^app/.test(next.name)) {
-    //         if(!SystemService.isLogin()) {
-    //           event.preventDefault();
-    //           $state.go('portal.login');
-    //         }
-    //       }
-    //     });
-    //   }
-    // ]
+
   );

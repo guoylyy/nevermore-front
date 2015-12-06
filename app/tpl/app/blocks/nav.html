@@ -4,7 +4,7 @@
     <span translate="aside.nav.HEADER">功能</span>
   </li>
   <li>
-    <a ui-sref="app.index" class="auto">
+    <a ui-sref="app.index.teacher-reservation" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -14,7 +14,7 @@
     </a>
   </li>
   <li>
-    <a ui-sref="app.course" class="auto">
+    <a ui-sref="app.course.student-class" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -24,18 +24,9 @@
     </a>
   </li>
 
+
   <li>
-    <a ui-sref="app.index" class="auto">
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-      <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
-      <span class="font-bold" translate="aside.nav.DASHBOARD">我的预约(教师)</span>
-    </a>
-  </li>
-  <li>
-    <a ui-sref="app.course" class="auto">
+    <a ui-sref="app.course.teacher-class" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -45,13 +36,23 @@
     </a>
   </li>
 
+  <li>
+    <a ui-sref="app.course.report" class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
+      <span class="font-bold" translate="aside.nav.DASHBOARD">录入试卷</span>
+    </a>
+  </li>
   <li class="line dk"></li>
 
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.HEADER">设置</span>
   </li>
   <li>
-    <a href class="auto">
+    <a href class="auto" ui-sref="app.profile.person">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>

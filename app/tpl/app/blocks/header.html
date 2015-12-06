@@ -18,21 +18,30 @@
       <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only {{app.settings.navbarCollapseColor}}">
         <!-- buttons -->
         <div class="nav navbar-nav hidden-xs">
-          <a href class="btn no-shadow navbar-btn" ng-click="app.settings.asideFolded = !app.settings.asideFolded">
+          <a class="btn no-shadow navbar-btn" ng-click="app.settings.asideFolded = !app.settings.asideFolded">
             <i class="fa {{app.settings.asideFolded ? 'fa-indent' : 'fa-dedent'}} fa-fw"></i>
           </a>
           <!-- <a href class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
             <i class="icon-user fa-fw"></i>
           </a> -->
+
+
         </div>
         <!-- / buttons -->
-
+        <ul class="nav navbar-nav hidden-sm">
+          <li>
+            <a ui-sref="app.calendar" class="dropdown-toggle" dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
+              <span translate="header.navbar.new.NEW" class="ng-scope">实验日历</span>
+            </a>
+          </li>
+        </ul>
 
         <!-- nabar right -->
         <ul class="nav navbar-nav navbar-right">
 
-          <li class="dropdown" dropdown>
-            <a href class="dropdown-toggle" dropdown-toggle>
+          <li>
+            <a ui-sref="app.message">
               <i class="icon-bell fa-fw"></i>
               <span class="visible-xs-inline">Notifications</span>
               <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
@@ -49,13 +58,7 @@
             </a>
 
             <ul class="dropdown-menu" role="menu">
-              <li><a translate="header.navbar.new.PROJECT">个人信息</a></li>
-              <li>
-                <a>
-                  <span class="badge bg-info pull-right">5</span>
-                  <span translate="header.navbar.new.TASK">我的实验</span>
-                </a>
-              </li>
+              <li><a translate="header.navbar.new.PROJECT" ui-sref="app.profile.person">个人信息</a></li>
               <li class="divider"></li>
               <li>
                 <a ui-sref="portal.login">
