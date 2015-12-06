@@ -98,7 +98,7 @@ angular.module('nevermore')
             }
           })
           .state('app.index.teacher-reservation', {
-            url: '^/app/index/reservation/teacher',
+            url: '^/app/index/reservation/teacher/:title',
             templateUrl: 'tpl/app/teacher-reservation.html',
             controller: 'TeacherReservationCtrl',
             resolve: {
@@ -110,7 +110,7 @@ angular.module('nevermore')
             }
           })
           .state('app.index.student-reservation', {
-            url: '^/app/index/reservation/student',
+            url: '^/app/index/reservation/student/:title',
             templateUrl: 'tpl/app/student-reservation.html',
             controller: 'StudentReservationCtrl',
             resolve: {
@@ -146,7 +146,7 @@ angular.module('nevermore')
             }
           })
           .state('app.course.teacher-class', {
-            url: '^/app/course/teacher/class',
+            url: '^/app/course/teacher/class/:name/:number',
             templateUrl: 'tpl/app/teacher-class.html',
             controller: 'TeacherClassCtrl',
             resolve: {
