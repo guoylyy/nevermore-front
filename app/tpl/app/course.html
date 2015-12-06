@@ -1,15 +1,23 @@
 
 <div class="hbox hbox-auto-xs hbox-auto-sm">
   <div class="col w bg-light dk b-r bg-auto">
-    <div class="panel panel-info" draggable="true">
-        <div class="panel-heading">
+    <div class="panel" draggable="true">
+        <div class="panel-heading second_nav_head">
           我的课程
         </div>
-        <div class="list-group bg-white">
+        <div class="list-group bg-white" ng-if="currentUser.role=='STUDENT'">
           <li class="list-group-item" style="padding-left:30px">
               <div class="clear">
                 <div><a href="">材料力学</a></div>
                 <small class="text-muted">姜建华</small>
+              </div>
+            </li>
+        </div>
+        <div class="list-group bg-white" ng-if="true">
+          <li class="list-group-item" style="padding-left:30px">
+              <div class="clear">
+                <div><a href="">材料力学A(嘉定)</a></div>
+                <small class="text-muted">45017004</small>
               </div>
             </li>
         </div>

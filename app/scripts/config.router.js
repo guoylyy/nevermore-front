@@ -109,6 +109,18 @@ angular.module('nevermore')
               }]
             }
           })
+          .state('app.index.student-reservation', {
+            url: '^/app/index/reservation/student',
+            templateUrl: 'tpl/app/student-reservation.html',
+            controller: 'StudentReservationCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/student-reservation.js',
+                ]);
+              }]
+            }
+          })
           .state('app.course', {
             url: '^/app/course',
             templateUrl: 'tpl/app/course.html',
@@ -129,6 +141,18 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/student-class.js',
+                ]);
+              }]
+            }
+          })
+          .state('app.course.teacher-class', {
+            url: '^/app/course/teacher/class',
+            templateUrl: 'tpl/app/teacher-class.html',
+            controller: 'TeacherClassCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/teacher-class.js',
                 ]);
               }]
             }
@@ -199,16 +223,16 @@ angular.module('nevermore')
     ]
   )
   .run(
-    ['$rootScope', 'SystemService', '$state',
-      function ($rootScope, SystemService, $state) {
-        $rootScope.$on('$stateChangeStart', function (event, next, current) {
-          if(/^app/.test(next.name)) {
-            if(!SystemService.isLogin()) {
-              event.preventDefault();
-              $state.go('portal.login');
-            }
-          }
-        });
-      }
-    ]
+    // ['$rootScope', 'SystemService', '$state',
+    //   function ($rootScope, SystemService, $state) {
+    //     $rootScope.$on('$stateChangeStart', function (event, next, current) {
+    //       if(/^app/.test(next.name)) {
+    //         if(!SystemService.isLogin()) {
+    //           event.preventDefault();
+    //           $state.go('portal.login');
+    //         }
+    //       }
+    //     });
+    //   }
+    // ]
   );

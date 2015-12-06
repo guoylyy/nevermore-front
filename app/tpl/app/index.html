@@ -1,16 +1,27 @@
 
 <div class="hbox hbox-auto-xs hbox-auto-sm">
   <div class="col w bg-light dk b-r bg-auto">
-    <div class="panel panel-info" draggable="true">
-        <div class="panel-heading">
+    <div class="panel" draggable="true">
+        <div class="panel-heading second_nav_head">
           我的预约
         </div>
-        <div class="list-group bg-white">
+        <div class="list-group bg-white" ng-if="currentUser.role=='STUDENT'">
           <a href="" class="list-group-item">
             <i class="fa fa-fw"></i> 老师预约的实验
           </a>
           <a href="" class="list-group-item">
             <i class="fa fa-fw"></i> 自行预约的实验
+          </a>
+        </div>
+        <div class="list-group bg-white" ng-if="true">
+          <a href="" class="list-group-item">
+            <i class="fa fa-fw"></i> 未审核预约
+          </a>
+          <a href="" class="list-group-item">
+            <i class="fa fa-fw"></i> 已成功预约
+          </a>
+          <a href="" class="list-group-item">
+            <i class="fa fa-fw"></i> 失效的预约
           </a>
         </div>
       </div>
