@@ -179,6 +179,8 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/report-basic.js',
+                  'scripts/directives/app/graphic-table.js',
+                  'scripts/directives/app/lashen-report.js'
                 ]);
               }]
             }
