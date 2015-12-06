@@ -1,22 +1,22 @@
 <div>
   <div class="wrapper-md bg-light b-b">
     <button type="button" class="btn btn-default btn-addon pull-right m-t-n-xs" ui-toggle-class="show" target="#aside">
-      <i class="fa fa-bars"></i> List
+      <i class="fa fa-bars"></i> 列表
     </button>
-    <h1 class="m-n font-thin h3">Fullcalendar</h1>
+    <h1 class="m-n font-thin h3">实验预约日历</h1>
   </div>
   <div class="hbox hbox-auto-xs hbox-auto-sm">
     <div class="col wrapper-md">
       <div class="clearfix m-b">
         <button type="button" tooltip="Double click on calendar day to create event" class="btn btn-sm btn-primary btn-addon" ng-click="addEvent()">
-          <i class="fa fa-plus"></i>Add
+          <i class="fa fa-plus"></i>添加预约
         </button>
         <div class="pull-right">
-          <button type="button" class="btn btn-sm btn-default" ng-click="today()">today</button>
+          <button type="button" class="btn btn-sm btn-default" ng-click="today()">今天</button>
           <div class="btn-group m-l-xs">
-            <button class="btn btn-sm btn-default" ng-click="changeView('agendaDay')">Day</button>
-            <button class="btn btn-sm btn-default" ng-click="changeView('agendaWeek')">Week</button>
-            <button class="btn btn-sm btn-default" ng-click="changeView('month')">Month</button>
+            <button class="btn btn-sm btn-default" ng-click="changeView('agendaDay')">天</button>
+            <button class="btn btn-sm btn-default" ng-click="changeView('agendaWeek')">周</button>
+            <button class="btn btn-sm btn-default" ng-click="changeView('month')">月</button>
           </div>
         </div>
       </div>
