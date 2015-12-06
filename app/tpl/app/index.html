@@ -5,22 +5,22 @@
         <div class="panel-heading second_nav_head">
           我的预约
         </div>
-        <div class="list-group bg-white" ng-if="currentUser.role=='STUDENT'">
-          <a href="" class="list-group-item">
+        <div class="list-group bg-white" ng-if="true">
+          <a ui-sref="app.index.student-reservation" class="list-group-item">
             <i class="fa fa-fw"></i> 老师预约的实验
           </a>
-          <a href="" class="list-group-item">
+          <a ui-sref="app.index.student-reservation" class="list-group-item">
             <i class="fa fa-fw"></i> 自行预约的实验
           </a>
         </div>
         <div class="list-group bg-white" ng-if="true">
-          <a href="" class="list-group-item">
+          <a ui-sref="app.index.teacher-reservation" class="list-group-item">
             <i class="fa fa-fw"></i> 未审核预约
           </a>
-          <a href="" class="list-group-item">
+          <a ui-sref="app.index.teacher-reservation" class="list-group-item">
             <i class="fa fa-fw"></i> 已成功预约
           </a>
-          <a href="" class="list-group-item">
+          <a ui-sref="app.index.teacher-reservation" class="list-group-item">
             <i class="fa fa-fw"></i> 失效的预约
           </a>
         </div>
