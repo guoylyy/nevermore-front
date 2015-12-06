@@ -1896,3 +1896,14 @@ fieldset[disabled] .btn-black.active {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+.sencond_nav_gray {
+  background-color: #F6F8F8 !important;
+}
+.second_nav_body {
+  background-color: #F6F8F8 !important;
+  padding-left: 30px;
+  border: 0px none;
+}
+.no_border {
+  border: 0px none;
+}
