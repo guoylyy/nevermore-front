@@ -1,29 +1,29 @@
 
 <div class="hbox hbox-auto-xs hbox-auto-sm">
-  <div class="col w  dk b-r sencond_nav_gray">
-    <div class="panel" draggable="true">
+  <div class="col w  dk b-r bg-auto second_nav_gray">
+    <div class="panel no_border" draggable="true">
         <div class="panel-heading second_nav_head">
           我的课程
         </div>
         <div class="list-group" ng-if="true">
           <li class="list-group-item second_nav_body" ui-sref="app.course.student-class">
               <div class="clear">
-                <div><a>材料力学</a></div>
+                <div><a>材料力学(学生)</a></div>
                 <small class="text-muted">姜建华</small>
               </div>
             </li>
         </div>
         <div class="list-group"  ng-if="true">
-          <li class="list-group-item second_nav_body" ui-sref="app.course.teacher-class">
+          <li class="list-group-item second_nav_body" ui-sref="app.course.teacher-class({name:'材料力学A(嘉定)',number:'45017004'})">
               <div class="clear">
-                <div><a>材料力学A(嘉定)</a></div>
+                <div><a>材料力学A(嘉定)(老师)</a></div>
                 <small class="text-muted">45017004</small>
               </div>
             </li>
-            <li class="list-group-item second_nav_body" ui-sref="app.course.teacher-class">
+            <li class="list-group-item second_nav_body" ui-sref="app.course.teacher-class({name:'材料力学B(嘉定)',number:'45017005'})">
                 <div class="clear">
-                  <div><a>材料力学A(嘉定)</a></div>
-                  <small class="text-muted">45017004</small>
+                  <div><a>材料力学B(嘉定)(老师)</a></div>
+                  <small class="text-muted">45017005</small>
                 </div>
               </li>
         </div>

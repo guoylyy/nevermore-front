@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('studentReservationCtrl', ['$scope', function($scope) {
+app.controller('StudentReservationCtrl', ['$scope','$stateParams', function($scope, $stateParams) {
 
-
+  $scope.title = $stateParams.title;
 
 }]);
