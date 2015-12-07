@@ -19,25 +19,25 @@
                                     <span class="input-group-addon">
                                       <i class="fa fa-user"></i>
                                     </span>
-                                    <input type="text" class="form-control" ng-model="user.username" placeholder="请输入学号或者工号" required/>
+                                    <input type="text" class="form-control" ng-model="login_name" placeholder="请输入学号或者工号" required/>
                                 </div>
                                 <div class="input-group m-t-md">
                                     <span class="input-group-addon">
                                       <i class="fa fa-lock"></i>
                                     </span>
-                                    <input type="password" class="form-control" ng-model="user.password" placeholder="请输入密码" required/>
+                                    <input type="password" class="form-control" ng-model="login_password" placeholder="请输入密码" required/>
                                 </div>
                                 <div class="clearfix m-t-sm">
                                     <label class="i-checks i-checks-sm pull-left">
                                         <input type="checkbox" ng-model="autoLogin">
                                         <i></i>&nbsp;自动登录
                                     </label>
-                                    <a class="pull-right forgotpwd-link" href="#/forgotpwd">忘记密码?</a>
+                                    <a class="pull-right forgotpwd-link" ng-click="forgotPassword()">忘记密码?</a>
                                 </div>
                                 <div class="clearfix m-t-sm">
                                     <span class="text-danger">{{errorMsg}}</span>
                                 </div>
-                                <button class="btn btn-primary w-full m-t-sm" ui-sref="app.index.student-reservation({title:'老师预约的实验'})" ng-click="login()">登录</button>
+                                <button class="btn btn-primary w-full m-t-sm" ng-click="login()">登录</button>
                             </form>
                         </div>
                     </div>
