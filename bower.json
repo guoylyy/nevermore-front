@@ -23,7 +23,15 @@
     "simple-line-icons": "~2.2.3",
     "underscore": "~1.8.3",
     "angu-fixed-header-table": "~1.2.0",
-    "angular-ui-calendar": "latest"
+    "angular-ui-calendar": "latest",
+    "angular-sanitize": "~1.4.8",
+    "bootstrap": "~3.3.6",
+    "angular-bootstrap": "~0.14.3",
+    "angular-ui-router": "~0.2.15",
+    "ui-router-extras": "~0.1.0",
+    "angular-strap": "~2.3.6",
+    "ngstorage": "~0.3.10",
+    "oclazyload": "ocLazyLoad#~1.0.9"
   },
   "resolutions": {
     "angular": "1.4.7"
