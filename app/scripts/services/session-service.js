@@ -32,6 +32,15 @@ angular.module('nevermore').service('sessionService',
 			return gCurrSemester();
 		};
 
+		this.getCurrUser = function(){
+			if($localStorage.currentUser){
+				$rootScope.currentUser = $localStorage.currentUser;
+				return $localStorage.currentUser;
+			}else{
+				return null;
+			}
+		};
+
 		this.storageChecking = function(){
 			 checkLocalToken();
 			 checkLocalToken();

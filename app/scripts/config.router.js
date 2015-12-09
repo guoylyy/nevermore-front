@@ -233,15 +233,25 @@ angular.module('nevermore')
           .state('app.profile.person', {
             url: '^/app/profile/person',
             templateUrl: 'tpl/app/profile-person.html',
+            controller: 'ProfilePersonCtrl',
             resolve: {
-
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/profile-person.js'
+                ]);
+              }]
             }
           })
           .state('app.profile.password', {
             url: '^/app/profile/password',
             templateUrl: 'tpl/app/profile-password.html',
+            controller: 'ProfilePasswordCtrl',
             resolve: {
-
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/profile-password.js'
+                ]);
+              }]
             }
           })
           .state('app.message', {
