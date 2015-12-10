@@ -43,7 +43,7 @@ angular.module('nevermore')
             }
           })
           .state('portal.login', {
-            url: '/signin',
+            url: '^/signin',
             templateUrl: 'tpl/portal/login.html',
             controller: 'LoginController',
             resolve: {
@@ -57,7 +57,7 @@ angular.module('nevermore')
             }
           })
           .state('portal.calendar', {
-            url: '/calendar',
+            url: '^/calendar',
             templateUrl: 'tpl/portal/calendar.html',
             controller: 'CalendarController',
             resolve: {
@@ -65,7 +65,14 @@ angular.module('nevermore')
                 return $ocLazyLoad.load([
                   'scripts/controllers/portal/calendar.js',
                   'scripts/directives/portal/portal-footer.js',
-                  'scripts/directives/portal/portal-header.js'
+                  'scripts/directives/portal/portal-header.js',
+                  'lib/jquery/fullcalendar/fullcalendar.css',
+                  'lib/jquery/fullcalendar/theme.css',
+                  'lib/jquery/jquery-ui-1.10.3.custom.min.js',
+                  'lib/libs/moment.min.js',
+                  'lib/jquery/fullcalendar/fullcalendar.min.js',
+                  'ui.calendar',
+                  'scripts/controllers/app/app-calendar.js'
                 ]);
               }]
             }
