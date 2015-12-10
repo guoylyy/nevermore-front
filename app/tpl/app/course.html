@@ -14,7 +14,7 @@
             </li>
         </div>
         <div class="list-group"  ng-if="true">
-          <li ng-repeat="class in classes" class="list-group-item second_nav_body" ui-sref="app.course.teacher-class({name:'{{class.course.name}}',number:'{{class.number}}'})">
+          <li ng-repeat="class in classes" class="list-group-item second_nav_body" ui-sref="app.course.teacher-class({id:'{{class.id}}',name:'{{class.course.name}}',number:'{{class.number}}'})">
               <div class="clear">
                 <div><a class="text-info">{{class.course.name}}(老师)</a></div>
                 <small class="text-muted">{{class.number}}</small>

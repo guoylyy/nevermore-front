@@ -148,7 +148,7 @@ angular.module('nevermore')
             }
           })
           .state('app.course.teacher-class', {
-            url: '^/app/course/teacher/class/:name/:number',
+            url: '^/app/course/teacher/class/:id/:name/:number',
             templateUrl: 'tpl/app/teacher-class.html',
             controller: 'TeacherClassCtrl',
             resolve: {
