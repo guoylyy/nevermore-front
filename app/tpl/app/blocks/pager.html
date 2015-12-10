@@ -1,0 +1,5 @@
+<ul class="pagination pagination-sm m-t-none m-b-none">
+  <li ng-hide="cur<=1"><a ng-click="previous()"><i class="fa fa-chevron-left"></i></a></li>
+  <li ng-repeat="page in pages"><a ng-click="index(page)" ng-class="{'page_selected':cur==page}">{{page}}</a></li>
+  <li ng-hide="cur>=total"><a ng-click="next()"><i class="fa fa-chevron-right"></i></a></li>
+</ul>

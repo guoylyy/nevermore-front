@@ -29,7 +29,7 @@ app.controller('AppCourseController', function($rootScope, $scope, Clazz, qServi
   }
   //当前为学生的情况
   else if ($rootScope.currentUser.show_role=='STUDENT') {
-
+    alert("student");
   }
 
 
