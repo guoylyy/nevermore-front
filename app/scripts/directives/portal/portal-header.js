@@ -12,9 +12,6 @@ angular.module('nevermore')
       templateUrl: 'tpl/portal/block/header.html',
       restrict: 'E',
       controller: function ($scope, SystemService, $location) {
-        if(SystemService.isLogin()){
-            $location.path('/app/home');
-        }
       }
     };
   });

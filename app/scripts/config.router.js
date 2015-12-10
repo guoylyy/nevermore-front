@@ -43,7 +43,7 @@ angular.module('nevermore')
             }
           })
           .state('portal.login', {
-            url: '/signin',
+            url: '^/signin',
             templateUrl: 'tpl/portal/login.html',
             controller: 'LoginController',
             resolve: {
@@ -57,7 +57,7 @@ angular.module('nevermore')
             }
           })
           .state('portal.calendar', {
-            url: '/calendar',
+            url: '^/calendar',
             templateUrl: 'tpl/portal/calendar.html',
             controller: 'CalendarController',
             resolve: {
