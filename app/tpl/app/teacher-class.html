@@ -5,8 +5,8 @@
       <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="createNote()">实验</a> -->
       <div class="m-b-sm pull-right" style="margin-top:-6px">
         <div class="btn-group">
-          <button type="button" class="btn" ng-class="{'btn-info':tab=='student','btn-default':tab=='experiment'}" ng-click="view_student(students.curPageNum)">学生</button>
-          <button type="button" class="btn" ng-class="{'btn-info':tab=='experiment','btn-default':tab=='student'}" ng-click="view_exp()">实验</button>
+          <button type="button" class="btn" ng-class="{'btn-info':tab=='student','btn-default':tab=='experiment'||tab=='record'}" ng-click="view_student()">学生</button>
+          <button type="button" class="btn" ng-class="{'btn-info':tab=='experiment'||tab=='record','btn-default':tab=='student'}" ng-click="view_exp()">实验</button>
         </div>
       </div>
       <div class="subview3_title">{{course_name}} {{course_number}}</div>
@@ -50,7 +50,7 @@
                 <span class="id">{{exp.reservCount}}</span>
               </td>
               <td class="v-middle" style="width: 20px;">
-                <button class="btn btn-sm btn-default" ng-click="view_record(class.id,exp.experimentId,cur_record_page)" ng-if="true">查看详情</button>
+                <button class="btn btn-sm btn-default" ng-click="view_record(exp.experimentId)" ng-if="true">查看详情</button>
               </td>
           </tr>
 
@@ -83,7 +83,7 @@
               <td class="v-middle" style="width:100px">{{student.name}}</td>
               <td class="v-middle" style="width:150px;">{{student.major}}</td>
               <td class="v-middle" style="width:100px;">
-                <button class="btn btn-sm btn-default" ng-click="view_record(class.id,exp.experimentId,cur_record_page)" ng-if="true">移除</button>
+                <button class="btn btn-sm btn-default" ng-click="" ng-if="true">移除</button>
               </td>
             </tr>
           </tbody>
@@ -98,13 +98,59 @@
             <small class="text-muted inline m-t-sm m-b-sm">共{{students.totalItemNum}}个学生</small>
           </div>
           <div class="col-sm-4 text-right text-center-xs">
-            <nevermore-pager total="students.totalPageNum" cur="students.curPageNum" change="view_student(page)"></nevermore-pager>
+            <nevermore-pager total="students.totalPageNum" cur="students.curPageNum" change="page_student(page)"></nevermore-pager>
           </div>
         </div>
       </footer>
     </div>
 
+    <div class="panel panel-default" ng-if="tab=='record'">
+      <div class="panel-heading">
+        实验报告列表
+      </div>
 
+      <div class="table-responsive">
+        <table class="table table-striped b-t b-light">
+          <thead>
+            <tr>
+              <th style="width:100px;">学号</th>
+              <th style="width:100px;">姓名</th>
+              <th style="width:142px;">实验报告</th>
+              <th style="width:50px;">分数</th>
+              <th style="width:130px;">意见</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="record in records.data">
+              <td class="v-middle" style="width:100px;">{{record.student.number}}</td>
+              <td class="v-middle" style="width:100px">{{record.student.name}}</td>
+              <td class="v-middle" style="width:142px;">
+                <label class="label label-success">{{record.status|reportStatus}}</label>
+              </td>
+              <td class="v-middle" style="width:50px;">
+                <span ng-if="record.status=='COMPLETED'">{{record.experimentRecord}}</span>
+              </td>
+              <td class="v-middle" style="width:130px;">
+                <span ng-if="record.status=='COMPLETED'">{{record.experimentComment}}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <footer class="panel-footer">
+        <div class="row">
+          <div class="col-sm-4 hidden-xs">
+
+          </div>
+          <div class="col-sm-4 text-center">
+            <small class="text-muted inline m-t-sm m-b-sm">共{{records.totalItemNum}}份实验报告</small>
+          </div>
+          <div class="col-sm-4 text-right text-center-xs">
+            <nevermore-pager total="records.totalPageNum" cur="records.curPageNum" change="page_record(page)"></nevermore-pager>
+          </div>
+        </div>
+      </footer>
+    </div>
 
 </div>
 </div>
