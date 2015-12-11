@@ -3,7 +3,6 @@
 angular.module('nevermore')
   .factory('authInterceptor', function loadingHttpInterceptor($q, $timeout,
     $rootScope, $sessionStorage, $localStorage, $location) {
-
     var whiteList = [
       'tpl/portal',
       'tpl/ucenter',
@@ -19,7 +18,6 @@ angular.module('nevermore')
 			}
     };
     function isNotInWithList(url) {
-      console.log(url);
       for(var i = 0; i < whiteList.length; i++) {
         var regExp = new RegExp(whiteList[i]);
         if(regExp.test(url)) {
@@ -27,9 +25,10 @@ angular.module('nevermore')
         }
       }
       return true;
-    }
+    };
     return {
       request: function (config) {
+        //检查是否已经登录，如果没有登录强制跳转到登录框
         if(config && isNotInWithList(config.url)){
             checkToken();
         }
