@@ -58,7 +58,7 @@ angular.module('nevermore').service('sessionService',
 			$rootScope.currentUser = user;
 			$rootScope.token = token;
 			if(user.show_role == 'ADMINISTRATOR'){
-				// $location.path('/usermanage');
+				$state.go('portal.calendar');
 			}else if(user.show_role == 'TEACHER'){
 				$state.go('app.index.teacher-reservation',{title:'未审核的预约列表'});
 			}else{

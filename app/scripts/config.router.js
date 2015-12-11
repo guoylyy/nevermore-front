@@ -85,8 +85,10 @@ angular.module('nevermore')
             controller:'AppCtrl',
             resolve: {
               css: ['$ocLazyLoad', function($ocLazyLoad) {
+                // $httpProvider.interceptors.push('loadingInterceptor');
                 return $ocLazyLoad.load([
                   'scripts/controllers/app.js',
+                  'scripts/directives/app/app-header.js',
                   'styles/app.css'
                 ]);
               }]

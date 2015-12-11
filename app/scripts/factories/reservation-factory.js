@@ -23,6 +23,15 @@ angular.module('nevermore')
             }
           });
         },
+        allWithoutToekn: function() {
+          return $resource(baseUrl + '/semester/list/all', {
+          }, {
+            'get': {
+              method: 'GET',
+              headers: sessionService.headers()
+            }
+          });
+        },
         allByStatus: function() {
           return $resource(baseUrl + '/semester/:semesterId/reservations', {
             'semesterId': "@semesterId"

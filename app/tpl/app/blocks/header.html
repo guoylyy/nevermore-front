@@ -60,10 +60,9 @@
             <ul class="dropdown-menu" role="menu">
               <li><a translate="header.navbar.new.PROJECT" ui-sref="app.profile.person">个人信息</a></li>
               <li class="divider"></li>
-              <li>
-                <a ui-sref="portal.login">
-                  <!-- <span class="badge bg-danger pull-right">4</span> -->
-                  <span translate="header.navbar.new.EMAIL">退出</span>
+              <li ng-click="logout()">
+                <a>
+                  <span>退出</span>
                 </a>
               </li>
             </ul>

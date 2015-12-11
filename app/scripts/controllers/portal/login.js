@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('LoginController', function($scope,$localStorage,$http,
-    sessionService, tokenFactory, qService, Semester, ToasterTool) {
+app.controller('LoginController', function($scope, $localStorage, $http,
+    $location,sessionService, tokenFactory, qService, Semester, ToasterTool) {
 
   $scope.accountCharacter = 'TEACHER';
   $scope.login_name = "";
