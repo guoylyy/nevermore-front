@@ -26,4 +26,23 @@ angular.module('nevermore')
       }
       return text;
     };
+  })
+  .filter('reservationTitle', function(){
+    return function (title){
+      var text = "";
+      switch(title){
+        case 'PENDING':
+          text = "未审核的预约列表";
+          break;
+        case 'APPROVED':
+          text = "已成功的预约列表";
+          break;
+        case 'REJECTED':
+          text = "失效的预约列表";
+          break;
+        default:
+          text = "未知预约列表";
+      }
+      return text;
+    };
   });

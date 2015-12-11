@@ -118,6 +118,7 @@
               <th style="width:142px;">实验报告</th>
               <th style="width:50px;">分数</th>
               <th style="width:130px;">意见</th>
+              <th style="width:20px;"></th>
             </tr>
           </thead>
           <tbody>
@@ -132,6 +133,9 @@
               </td>
               <td class="v-middle" style="width:130px;">
                 <span ng-if="record.status=='COMPLETED'">{{record.experimentComment}}</span>
+              </td>
+              <td class="v-middle" style="width: 20px;">
+                <button class="btn btn-sm btn-default" ng-click="" ng-if="true">查看详情</button>
               </td>
             </tr>
           </tbody>
