@@ -60,9 +60,9 @@ angular.module('nevermore').service('sessionService',
 			if(user.show_role == 'ADMINISTRATOR'){
 				$state.go('portal.calendar');
 			}else if(user.show_role == 'TEACHER'){
-				$state.go('app.index.teacher-reservation',{title:'未审核的预约列表'});
+				$state.go('app.index.reservations',{title:'APPROVED'});
 			}else{
-				$state.go('app.index.student-reservation',{title:'老师预约的实验'});
+				$state.go('app.index.reservations',{title:'TEACHER'});
 			}
 		};
 

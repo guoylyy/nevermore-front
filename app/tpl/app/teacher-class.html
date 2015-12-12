@@ -9,7 +9,7 @@
           <button type="button" class="btn" ng-class="{'btn-info':tab=='experiment'||tab=='record','btn-default':tab=='student'}" ng-click="view_exp()">实验</button>
         </div>
       </div>
-      <div class="subview3_title">{{course_name}} {{course_number}}</div>
+      <div class="subview3_title">{{clazz.course.name}} {{clazz.number}}</div>
   </div>
 <div class="wrapper bg-white">
   <a href="" class="btn btn-sm btn-info m-t-n-xs" ng-click="createNote()">导入学生名单</a>
@@ -67,7 +67,7 @@
         学生列表
       </div>
 
-      <div class="table-responsive">
+      <div class="table-responsive" style="min-height:507px;">
         <table class="table table-striped b-t b-light">
           <thead>
             <tr>
@@ -91,14 +91,22 @@
       </div>
       <footer class="panel-footer">
         <div class="row">
-          <div class="col-sm-4 hidden-xs">
-
+          <div class="hidden-xs">
           </div>
           <div class="col-sm-4 text-center">
-            <small class="text-muted inline m-t-sm m-b-sm">共{{students.totalItemNum}}个学生</small>
           </div>
           <div class="col-sm-4 text-right text-center-xs">
-            <nevermore-pager total="students.totalPageNum" cur="students.curPageNum" change="page_student(page)"></nevermore-pager>
+            <!-- <nevermore-pager total="students.totalPageNum" cur="students.curPageNum" change="page_student(page)"></nevermore-pager> -->
+
+          </div>
+        </div>
+        <div class="row clearfix" style="width: 100%;" >
+          <div class="pull-left col-sm-4 m-t-sm">
+            <span class="text-muted inline m-t-sm">{{students.curPageNum}}/{{students.totalPageNum}}&nbsp;&nbsp;&nbsp;共&nbsp;{{students.totalItemNum}}&nbsp;个学生  </span>
+          </div>
+            <div class="pull-right">
+          <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="students.totalItemNum"
+            ng-model="students.curPageNum" ng-change="pageStudent()"></uib-pagination>
           </div>
         </div>
       </footer>
@@ -151,6 +159,8 @@
           </div>
           <div class="col-sm-4 text-right text-center-xs">
             <nevermore-pager total="records.totalPageNum" cur="records.curPageNum" change="page_record(page)"></nevermore-pager>
+
+
           </div>
         </div>
       </footer>

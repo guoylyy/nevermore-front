@@ -1,9 +1,13 @@
 'use strict';
 
-app.controller('TeacherClassCtrl', function($scope,$stateParams,qService,Exp,generalService,Clazz,StudentRecord) {
+app.controller('TeacherClassCtrl', function($scope,
+    $stateParams, qService, Exp, generalService, Clazz, StudentRecord) {
 
   $scope.course_name= $stateParams.name;
   $scope.course_number = $stateParams.number;
+
+  $scope.clazz = {};
+
   var class_id = $stateParams.id;
   var exp_id;
 
@@ -25,21 +29,29 @@ app.controller('TeacherClassCtrl', function($scope,$stateParams,qService,Exp,gen
       totalItemNum:0
   };
 
+  qService.tokenHttpGet(Clazz.clazz, {
+    id: $stateParams.id
+  }).then(function(rc){
+    $scope.clazz = rc.data;
+  });
+
   qService.tokenHttpGet(Exp.statusListByClazz, {
-      "classId": class_id
+    "classId": class_id
   }).then(function(rc){
       $scope.exps = rc;
   });
 
-  $scope.page_student = function(pageNumber) {
+  $scope.pageStudent = function() {
     qService.tokenHttpGet(Clazz.studentListByPage, {
         "id": class_id,
         "pageSize": pageSize,
-        "pageNumber": pageNumber
+        "pageNumber": $scope.students.curPageNum
     }).then(function(rc){
         $scope.students = rc;
     });
-  }
+  };
+
+  $scope.pageStudent();
 
   $scope.view_exp = function() {
     $scope.tab="experiment";
@@ -55,7 +67,6 @@ app.controller('TeacherClassCtrl', function($scope,$stateParams,qService,Exp,gen
   }
 
   $scope.page_record = function(pageNumber){
-
     qService.tokenHttpGet(StudentRecord.recordListByPage,{
         "clazzId": class_id,
         "experimentId": exp_id,

@@ -5,7 +5,7 @@
         <div class="panel-heading second_nav_head">
           我的课程
         </div>
-        <div class="list-group" ng-if="true">
+        <div class="list-group" ng-if="currentUser.show_role == 'STUDENT'">
           <li class="list-group-item second_nav_body" ui-sref="app.course.student-class">
               <div class="clear">
                 <div><a class="text-info">材料力学(学生)</a></div>
@@ -13,7 +13,7 @@
               </div>
             </li>
         </div>
-        <div class="list-group"  ng-if="true">
+        <div class="list-group"  ng-if="currentUser.show_role == 'TEACHER'">
           <li ng-repeat="class in classes" class="list-group-item second_nav_body" ui-sref="app.course.teacher-class({id:'{{class.id}}',name:'{{class.course.name}}',number:'{{class.number}}'})">
               <div class="clear">
                 <div><a class="text-info">{{class.course.name}}(老师)</a></div>

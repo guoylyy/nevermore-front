@@ -5,22 +5,22 @@
         <div class="panel-heading second_nav_head">
           我的预约
         </div>
-        <div class="list-group" ng-if="true">
-          <li ui-sref="app.index.student-reservation({title:'老师预约的实验'})" class="list-group-item second_nav_body">
+        <div class="list-group" ng-if="currentUser.show_role == 'STUDENT'">
+          <li ui-sref="app.index.reservations({title:'TEACHER'})" class="list-group-item second_nav_body">
             <a>老师预约的实验(学生)</a>
           </li>
-          <li ui-sref="app.index.student-reservation({title:'自行预约的实验'})" class="list-group-item second_nav_body">
+          <li ui-sref="app.index.reservations({title:'STUDENT'})" class="list-group-item second_nav_body">
             <a>自行预约的实验(学生)</a>
           </li>
         </div>
-        <div class="list-group" ng-if="true">
-          <li ui-sref="app.index.teacher-reservation({title:'PENDING'})" class="list-group-item second_nav_body">
+        <div class="list-group" ng-if="currentUser.show_role == 'TEACHER'">
+          <li ui-sref="app.index.reservations({title:'PENDING'})" class="list-group-item second_nav_body">
             <a>未审核预约(老师)</a>
           </li>
-          <li ui-sref="app.index.teacher-reservation({title:'APPROVED'})" class="list-group-item second_nav_body">
+          <li ui-sref="app.index.reservations({title:'APPROVED'})" class="list-group-item second_nav_body">
             <a>已成功预约(老师)</a>
           </li>
-          <li ui-sref="app.index.teacher-reservation({title:'REJECTED'})" class="list-group-item second_nav_body">
+          <li ui-sref="app.index.reservations({title:'REJECTED'})" class="list-group-item second_nav_body">
             <a>失效的预约(老师)</a>
           </li>
         </div>

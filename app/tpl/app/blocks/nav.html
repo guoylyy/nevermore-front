@@ -4,35 +4,35 @@
     <span translate="aside.nav.HEADER">功能</span>
   </li>
   <li>
-    <a ui-sref="app.index.student-reservation({title:'老师预约的实验'})" class="auto">
+    <a ui-sref="app.index.reservations({title:''})" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>
       </span>
       <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
-      <span class="font-bold" translate="aside.nav.DASHBOARD">我的预约(学生)</span>
+      <span class="font-bold" translate="aside.nav.DASHBOARD">我的预约</span>
     </a>
   </li>
-  <li>
+  <li ng-if="currentUser.show_role == 'STUDENT'">
     <a ui-sref="app.course.student-class" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>
       </span>
       <i class="glyphicon glyphicon-th-large icon text-info-dker"></i>
-      <span class="font-bold" translate="aside.nav.DASHBOARD">我的课程(学生)</span>
+      <span class="font-bold" translate="aside.nav.DASHBOARD">我的课程</span>
     </a>
   </li>
 
 
-  <li>
+  <li ng-if="currentUser.show_role == 'TEACHER'">
     <a ui-sref="app.course.teacher-class" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>
       </span>
       <i class="glyphicon glyphicon-th-large icon text-info-dker"></i>
-      <span class="font-bold" translate="aside.nav.DASHBOARD">我的班级(教师)</span>
+      <span class="font-bold" translate="aside.nav.DASHBOARD">我的班级</span>
     </a>
   </li>
 
