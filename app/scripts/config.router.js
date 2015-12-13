@@ -107,14 +107,27 @@ angular.module('nevermore')
               }]
             }
           })
-          .state('app.index.reservations', {
-            url: '^/app/index/reservations/:title',
+          .state('app.index.teacher-reservations', {
+            url: '^/app/index/teacher/reservations/:title',
             templateUrl: 'tpl/app/teacher-reservation.html',
             controller: 'TeacherReservationCtrl',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/teacher-reservation.js',
+                  'scripts/directives/app/pager.js'
+                ]);
+              }]
+            }
+          })
+          .state('app.index.student-reservations', {
+            url: '^/app/index/student/reservations/:title',
+            templateUrl: 'tpl/app/student-reservation.html',
+            controller: 'StudentReservationCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/student-reservation.js',
                   'scripts/directives/app/pager.js'
                 ]);
               }]
@@ -133,7 +146,7 @@ angular.module('nevermore')
               }]
             }
           })
-          .state('app.course.st-class', {
+          .state('app.course.student-class', {
             url: '^/app/course/student/class',
             templateUrl: 'tpl/app/student-class.html',
             controller: 'StudentClassCtrl',

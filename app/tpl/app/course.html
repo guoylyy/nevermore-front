@@ -8,24 +8,18 @@
         <div class="list-group" ng-if="currentUser.show_role == 'STUDENT'">
           <li class="list-group-item second_nav_body" ui-sref="app.course.student-class">
               <div class="clear">
-                <div><a class="text-info">材料力学(学生)</a></div>
+                <div><a class="text-info">材料力学</a></div>
                 <small class="text-muted">姜建华</small>
               </div>
             </li>
         </div>
         <div class="list-group"  ng-if="currentUser.show_role == 'TEACHER'">
-          <li ng-repeat="class in classes" class="list-group-item second_nav_body" ui-sref="app.course.teacher-class({id:'{{class.id}}',name:'{{class.course.name}}',number:'{{class.number}}'})">
+          <li ng-repeat="class in classes" class="list-group-item second_nav_body" ui-sref="app.course.teacher-class({id:'{{class.id}}'})">
               <div class="clear">
-                <div><a class="text-info">{{class.course.name}}(老师)</a></div>
+                <div><a class="text-info">{{class.course.name}}</a></div>
                 <small class="text-muted">{{class.number}}</small>
               </div>
             </li>
-            <!-- <li class="list-group-item second_nav_body" ui-sref="app.course.teacher-class({name:'材料力学B(嘉定)',number:'45017005'})">
-                <div class="clear">
-                  <div><a class="text-info">材料力学B(嘉定)(老师)</a></div>
-                  <small class="text-muted">45017005</small>
-                </div>
-              </li> -->
         </div>
       </div>
   </div>

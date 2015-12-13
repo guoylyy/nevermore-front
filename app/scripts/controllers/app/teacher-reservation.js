@@ -42,25 +42,25 @@ app.controller('TeacherReservationCtrl', function($scope, $rootScope, $statePara
     if (type == 'Reservations' && $scope.map.Reservations[status].data.totalItemNum > 0) {
       return;
     } else {
-      loadFactory[type](status,$scope.map.Reservations[status].data.curPageNum);
+      loadFactory[type](status);
     }
   };
 
   var loadFactory = {};
-  loadFactory.Reservations = function(status,pageNumber) {
+  loadFactory.Reservations = function(status) {
     qService.tokenHttpGet(Reservation.teacherResByStatusPage, {
       'semester': semester.id,
       'accountId': $rootScope.currentUser.id,
       'pageSize': generalService.pageSize(),
-      'pageNumber': pageNumber,
+      'pageNumber': $scope.map.Reservations[status].data.curPageNum,
       'status': status
     }).then(function(rc) {
       $scope.map.Reservations[status].data = rc;
     })
   };
 
-  $scope.page_reservation = function(page){
-    loadFactory['Reservations']($scope.title,page);
+  $scope.pageReservation = function(){
+    loadFactory['Reservations']($scope.title);
   }
 
   load('Reservations',$scope.title);

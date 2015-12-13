@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('LoginController', function($scope, $localStorage, $http,
+app.controller('LoginController', function($scope,$rootScope, $state, $localStorage, $http,
     $location,sessionService, tokenFactory, qService, Semester, ToasterTool) {
 
   $scope.accountCharacter = 'TEACHER';
@@ -26,6 +26,13 @@ app.controller('LoginController', function($scope, $localStorage, $http,
           {headers:{'x-auth-token':headers()['x-auth-token']}})
         .success(function(rc){
           sessionService.saveCurrSemeter(rc.data);
+          if($rootScope.currentUser.show_role == 'ADMINISTRATOR'){
+    				$state.go('portal.calendar');
+    			}else if($rootScope.currentUser.show_role == 'TEACHER'){
+    				$state.go('app.index.teacher-reservations',{title:'APPROVED'});
+    			}else if($rootScope.currentUser.show_role == 'STUDENT'){
+    				$state.go('app.index.student-reservations',{title:'TEACHER'});
+    			}
         }).error(function(error){
           ToasterTool.error('未知错误发生!','');
         });

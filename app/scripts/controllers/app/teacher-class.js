@@ -2,15 +2,10 @@
 
 app.controller('TeacherClassCtrl', function($scope,
     $stateParams, qService, Exp, generalService, Clazz, StudentRecord) {
-
-  $scope.course_name= $stateParams.name;
-  $scope.course_number = $stateParams.number;
-
   $scope.clazz = {};
 
   var class_id = $stateParams.id;
   var exp_id;
-
   var pageSize = generalService.pageSize();
 
   $scope.tab = 'experiment';
@@ -29,18 +24,6 @@ app.controller('TeacherClassCtrl', function($scope,
       totalItemNum:0
   };
 
-  qService.tokenHttpGet(Clazz.clazz, {
-    id: $stateParams.id
-  }).then(function(rc){
-    $scope.clazz = rc.data;
-  });
-
-  qService.tokenHttpGet(Exp.statusListByClazz, {
-    "classId": class_id
-  }).then(function(rc){
-      $scope.exps = rc;
-  });
-
   $scope.pageStudent = function() {
     qService.tokenHttpGet(Clazz.studentListByPage, {
         "id": class_id,
@@ -50,8 +33,6 @@ app.controller('TeacherClassCtrl', function($scope,
         $scope.students = rc;
     });
   };
-
-  $scope.pageStudent();
 
   $scope.view_exp = function() {
     $scope.tab="experiment";
@@ -64,17 +45,48 @@ app.controller('TeacherClassCtrl', function($scope,
   $scope.view_record = function(id){
     $scope.tab = 'record';
     exp_id = id;
+    $scope.pageRecord();
   }
 
-  $scope.page_record = function(pageNumber){
+  $scope.pageRecord = function(){
     qService.tokenHttpGet(StudentRecord.recordListByPage,{
         "clazzId": class_id,
         "experimentId": exp_id,
         "pageSize":pageSize,
-        "pageNumber":pageNumber
+        "pageNumber":$scope.records.curPageNum
     }).then(function(rc){
         $scope.records = rc;
     });
+  }
+
+  function init(){
+    qService.tokenHttpGet(Clazz.clazz, {
+      id: class_id
+    }).then(function(rc){
+      $scope.clazz = rc.data;
+    });
+
+    qService.tokenHttpGet(Exp.statusListByClazz, {
+      "classId": class_id
+    }).then(function(rc){
+        $scope.exps = rc;
+    });
+
+    $scope.pageStudent();
+  }
+
+  $scope.$on('classchange',function (event, arg) {
+    if ($scope.classes.length!=0) {
+      class_id = $scope.classes[0].id;
+      init();
+    }
+  });
+
+  if (class_id) {
+    init();
+  }else if ($scope.classes.length!=0) {
+    class_id = $scope.classes[0].id;
+    init();
   }
 
 });

@@ -46,10 +46,19 @@
 
         </div>
         <div class="col-sm-4 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">共{{map.Reservations[title].data.totalItemNum}}个预约</small>
+          <!-- <small class="text-muted inline m-t-sm m-b-sm">共{{map.Reservations[title].data.totalItemNum}}个预约</small> -->
         </div>
-        <div class="col-sm-4 text-right text-center-xs">
+        <!-- <div class="col-sm-4 text-right text-center-xs">
           <nevermore-pager total="map.Reservations[title].data.totalPageNum" cur="map.Reservations[title].data.curPageNum" change="page_reservation(page)"></nevermore-pager>
+        </div> -->
+        <div class="row clearfix" style="width: 100%;" >
+          <div class="pull-left col-sm-4 m-t-sm">
+            <span class="text-muted inline m-t-sm">{{map.Reservations[title].data.curPageNum}}/{{map.Reservations[title].data.totalPageNum}}&nbsp;&nbsp;&nbsp;共&nbsp;{{map.Reservations[title].data.totalItemNum}}&nbsp;个学生  </span>
+          </div>
+            <div class="pull-right">
+          <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="map.Reservations[title].data.totalItemNum"
+            ng-model="map.Reservations[title].data.curPageNum" ng-change="pageReservation()"></uib-pagination>
+          </div>
         </div>
       </div>
     </footer>

@@ -3,8 +3,8 @@
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.HEADER">功能</span>
   </li>
-  <li>
-    <a ui-sref="app.index.reservations({title:''})" class="auto">
+  <li ng-if="currentUser.show_role == 'TEACHER'">
+    <a ui-sref="app.index.teacher-reservations({title:'APPROVED'})" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -13,6 +13,18 @@
       <span class="font-bold" translate="aside.nav.DASHBOARD">我的预约</span>
     </a>
   </li>
+
+  <li ng-if="currentUser.show_role == 'STUDENT'">
+    <a ui-sref="app.index.student-reservations({title:'TEACHER'})" class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
+      <span class="font-bold" translate="aside.nav.DASHBOARD">我的预约</span>
+    </a>
+  </li>
+
   <li ng-if="currentUser.show_role == 'STUDENT'">
     <a ui-sref="app.course.student-class" class="auto">
       <span class="pull-right text-muted">

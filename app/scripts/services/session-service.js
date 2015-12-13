@@ -57,13 +57,6 @@ angular.module('nevermore').service('sessionService',
 			$localStorage.token = token;
 			$rootScope.currentUser = user;
 			$rootScope.token = token;
-			if(user.show_role == 'ADMINISTRATOR'){
-				$state.go('portal.calendar');
-			}else if(user.show_role == 'TEACHER'){
-				$state.go('app.index.reservations',{title:'APPROVED'});
-			}else{
-				$state.go('app.index.reservations',{title:'TEACHER'});
-			}
 		};
 
 

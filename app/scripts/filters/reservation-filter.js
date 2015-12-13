@@ -40,6 +40,12 @@ angular.module('nevermore')
         case 'REJECTED':
           text = "失效的预约列表";
           break;
+        case 'TEACHER':
+          text = "老师预约的实验";
+          break;
+        case 'STUDENT':
+          text = "自行预约的实验";
+          break;
         default:
           text = "未知预约列表";
       }
