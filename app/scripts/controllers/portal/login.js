@@ -31,7 +31,7 @@ app.controller('LoginController', function($scope,$rootScope, $state, $localStor
     			}else if($rootScope.currentUser.show_role == 'TEACHER'){
     				$state.go('app.index.teacher-reservations',{title:'APPROVED'});
     			}else if($rootScope.currentUser.show_role == 'STUDENT'){
-    				$state.go('app.index.student-reservations',{title:'TEACHER'});
+    				$state.go('app.index.student-reservations',{title:'clazz'});
     			}
         }).error(function(error){
           ToasterTool.error('未知错误发生!','');

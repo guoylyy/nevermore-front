@@ -32,9 +32,6 @@ app.controller('TeacherReservationCtrl', function($scope, $rootScope, $statePara
           data: []
         }
       }
-    },
-    Calender: {
-
     }
   };
 

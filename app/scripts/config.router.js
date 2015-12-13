@@ -147,7 +147,7 @@ angular.module('nevermore')
             }
           })
           .state('app.course.student-class', {
-            url: '^/app/course/student/class',
+            url: '^/app/course/student/class/:id',
             templateUrl: 'tpl/app/student-class.html',
             controller: 'StudentClassCtrl',
             resolve: {

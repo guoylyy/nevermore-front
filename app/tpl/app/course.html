@@ -6,10 +6,10 @@
           我的课程
         </div>
         <div class="list-group" ng-if="currentUser.show_role == 'STUDENT'">
-          <li class="list-group-item second_nav_body" ui-sref="app.course.student-class">
+          <li ng-repeat="course in courses" class="list-group-item second_nav_body" ui-sref="app.course.student-class({id:'{{course.classId}}'})">
               <div class="clear">
-                <div><a class="text-info">材料力学</a></div>
-                <small class="text-muted">姜建华</small>
+                <div><a class="text-info">{{course.coursename}}</a></div>
+                <small class="text-muted">{{course.classnumber}}&nbsp;{{course.teacher}}</small>
               </div>
             </li>
         </div>

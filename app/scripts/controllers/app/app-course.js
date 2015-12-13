@@ -24,7 +24,23 @@ app.controller('AppCourseController', function($rootScope, $scope, Clazz, qServi
   }
   //当前为学生的情况
   else if ($rootScope.currentUser.show_role=='STUDENT') {
-    // alert("student");
+    $scope.courses = [];//课程信息
+    qService.tokenHttpGet(Clazz.clazzByStudent,{
+    }).then(function(rc){
+      var classes = rc;
+      for (var i = 0; i < classes.data.length; i++) {
+          var entity = {
+              'id': classes.data[i].course.id,
+              'coursename': classes.data[i].course.name,
+              'classnumber': classes.data[i].number,
+              'teacher': classes.data[i].teacher.name,
+              'classId': classes.data[i].id,
+              'active':false
+          };
+          $scope.courses.push(entity);
+      }
+      $scope.$broadcast("classchange",0);
+    });
   }
 
 
