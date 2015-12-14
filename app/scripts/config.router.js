@@ -172,6 +172,7 @@ angular.module('nevermore')
             }
           })
           .state('app.course.report', {
+            abstract: true,
             url: '^/app/course/report',
             templateUrl: 'tpl/app/report.html',
             controller: 'ReportCtrl',
