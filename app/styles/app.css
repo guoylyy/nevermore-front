@@ -1978,3 +1978,17 @@ li.disabled > a:focus {
   -webkit-box-shadow: 0 0 0;
   box-shadow: 0 0 0;
 }
+.nevermore-profile-page .form-horizontal .control-label {
+  text-align: left !important;
+}
+.nevermore-profile-page .form-horizontal .avatar {
+  margin-right: 20px;
+}
+.nevermore-profile-page .form-horizontal .avatar-label {
+  padding-top: 35px;
+}
+.nevermore-profile-page .form-horizontal input,
+.nevermore-profile-page .form-horizontal select,
+.nevermore-profile-page .form-horizontal .btn-block {
+  max-width: 250px;
+}

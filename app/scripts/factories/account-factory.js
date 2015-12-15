@@ -65,6 +65,16 @@ angular.module('nevermore')
           }
         });
       },
+      accountIcon: function() {
+        var headers = sessionService.headers();
+        headers['Content-Type'] = 'multipart/form-data';
+        return $resource(baseUrl + '/:id/icon', {id: "@id"}, {
+          'post': {
+            method: 'POST',
+            headers: headers
+          }
+        })
+      },
       search: function(){
         return $resource(baseUrl + '/searchByNameAndNumber',{},{
           'get':{

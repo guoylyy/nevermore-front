@@ -200,7 +200,10 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/profile-person.js'
+                  'ngDialog',
+                  'ngImgCrop',
+                  'scripts/controllers/app/profile-person.js',
+                  'scripts/controllers/app/modal/profile-icon.js'
                 ]);
               }]
             }

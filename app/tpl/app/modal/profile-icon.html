@@ -1,0 +1,22 @@
+<div class="tiger-profile-icon">
+  <div class="tiger-dialog-header">
+    <div class="wrapper lter bg-white">
+      <div class="subview3_title">更新头像</div>
+    </div>
+  </div>
+  <div>
+    <div ngf-drop ng-model="picFile" ngf-pattern="image/*" style="width: 100%;height: 400px;background-color: #e4e4e4;">
+      <img-crop image="picFile  | ngfDataUrl" result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
+      </img-crop>
+    </div>
+  </div>
+  <div class="clearfix m-t-md">
+    <div class="pull-left">
+      <button class="btn btn-primary w-sm" ngf-select ng-model="picFile" accept="image/*">选择头像</button>
+    </div>
+    <div class="pull-right">
+      <button class="btn btn-primary w-sm" ng-disabled="!picFile" ng-click="upload(croppedDataUrl)">确定</button>
+      <button class="btn btn-default w-sm" ng-click="closeThisDialog(null)">取消</button>
+    </div>
+  </div>
+</div>

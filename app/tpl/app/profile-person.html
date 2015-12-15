@@ -1,67 +1,91 @@
-<div class="vbox">
-    <div class="wrapper lter b-b bg-white">
-      <div class="subview3_title">个人资料修改</div>
-</div>
-<div class="wrapper bg-white">
-  <form name="form-contact" class="form-validation ng-pristine ng-invalid ng-invalid-required ng-valid-email ng-valid-url">
-        <div class="panel panel-default">
-          <!-- <div class="panel-heading">
-            <span class="h4">个人资料</span>
-          </div> -->
+<div class="nevermore-profile-page">
+  <div class="vbox">
+      <div class="wrapper lter b-b bg-white">
+        <div class="subview3_title">个人资料修改</div>
+  </div>
+  <div class="wrapper bg-white">
+    <div class="panel panel-default">
+      <!-- <div class="panel-heading">
+        <span class="h4">个人资料</span>
+      </div> -->
 
-          <div class="panel-body">
-            <div class="hbox h-auto m-b-lg">
-                <div class="col text-center w-sm">
-                  <div class="thumb-lg avatar inline">
-                    <img  aria-hidden="false" class="" ng-src="images/a8.jpg" src="images/a8.jpg">
-                  </div>
-                </div>
-                <div class="col v-middle font-thin">
-                  <div ng-hide="item.editing" class="h1 ng-binding" aria-hidden="false">{{personData.currentUser.name}}</div>
-                  <div class="" ng-bind="personData.currentUser.title"></div>
-                  <div ng-show="item.editing" aria-hidden="true" class="ng-hide">
-                    <input type="text" placeholder="First" class="form-control w-auto input-lg m-b-n-xxs font-bold ng-pristine ng-untouched ng-valid" ng-model="item.first" aria-invalid="false">
-                    <input type="text" placeholder="Last" class="form-control w-auto input-lg font-bold ng-pristine ng-untouched ng-valid" ng-model="item.last" aria-invalid="false">
-                  </div>
-                </div>
+      <div class="panel-body">
+        <form class="form-horizontal form-validation" name="profilePersonForm">
+          <div class="form-group">
+            <label class="col-sm-2 control-label avatar-label">头像</label>
+            <div class="col-sm-10">
+              <div class="thumb-lg avatar inline">
+                <img  aria-hidden="false" ng-src="{{personData.editUser.iconPath}}"  src="images/a8.jpg">
               </div>
-
-            <p class="text-muted">以下资料可以修改</p>
-              <div class="form-group pull-in clearfix">
-                <div class="col-sm-6">
-                  <label>姓名</label>
-                  <input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="Name" ng-model="personData.editUser.name" required="" aria-required="true" aria-invalid="true">
-                </div>
-                <div class="col-sm-6">
-                  <label>性别</label>
-                  <input type="text" class="form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" placeholder="Enter Gender" ng-model="personData.editUser.gender" required="" aria-required="true" aria-invalid="true">
-                </div>
+              <div class="inline">
+                <button class="btn btn-primary" ng-click="updateProfileIcon()">上传新头像</button>
               </div>
-              <div class="form-group pull-in clearfix">
-                <div class="col-sm-6">
-                  <label>手机号码</label>
-                  <input type="text" class="form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" placeholder="Enter MobilePhone" ng-model="personData.editUser.mobilePhone" required="" aria-required="true" aria-invalid="true">
-                </div>
-                <div class="col-sm-6">
-                  <label>年级</label>
-                  <input type="text" class="form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" placeholder="Enter Grade" ng-model="personData.editUser.grade" required="" aria-required="true" aria-invalid="true">
-                </div>
-              </div>
-
-              <!-- <div class="form-group">
-                <label>Your website</label>
-                <input type="url" class="form-control ng-pristine ng-untouched ng-valid-url ng-invalid ng-invalid-required" placeholder="http://" ng-model="contact.url" required="" aria-required="true" aria-invalid="true">
-              </div>
-              <div class="form-group">
-                <label>Message</label>
-                <textarea class="form-control" rows="6" placeholder="Type your message"></textarea>
-              </div> -->
+            </div>
           </div>
-          <footer class="panel-footer text-right bg-light lter">
-            <button type="submit" class="btn btn-success">确认修改</button>
-          </footer>
-        </div>
-      </form>
+          <div class="form-group">
+            <label for="number" class="col-sm-2 control-label">账号</label>
+            <div class="col-sm-10">
+              <input type="text" name="number" class="form-control" ng-model="personData.editUser.number" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">姓名</label>
+            <div class="col-sm-10">
+              <input type="text" name="name" class="form-control" ng-model="personData.editUser.name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="gender" class="col-sm-2 control-label">性别</label>
+            <div class="col-sm-10">
+              <select class="form-control right" ng-model="personData.editUser.gender" ng-options="personData.genderMap[g] for g in personData.genders"></select>
+            </div>
+          </div>
+          <div class="form-group" ng-if="personData.editUser.role == 'ADMINISTRATOR' || personData.editUser.role == 'STUDENT'">
+            <label class="col-sm-2 control-label">职务</label>
+            <div class="col-sm-10">
+              <select class="form-control right" ng-model="personData.editUser.role" ng-options="personData.roleMap[g] for g in personData.roles" disabled></select>
+            </div>
+          </div>
+          <div class="form-group" ng-if="personData.editUser.role != 'ADMINISTRATOR' && personData.editUser.role != 'STUDENT'">
+            <label class="col-sm-2 control-label">职务</label>
+            <div class="col-sm-10">
+              <select class="form-control right" ng-model="personData.editUser.role" ng-options="personData.teacherMap[g] for g in personData.teachers"></select>
+            </div>
+          </div>
+          <div ng-if="personData.editUser.role == 'STUDENT'">
+            <div class="form-group">
+              <label for="grade" class="col-sm-2 control-label">年级</label>
+              <div class="col-sm-10">
+                <input type="text" name="grade" class="form-control" ng-model="personData.editUser.grade" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="major" class="col-sm-2 control-label">专业</label>
+              <div class="col-sm-10">
+                <input type="text" name="major" class="form-control" ng-model="personData.editUser.major" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mobilePhone" class="col-sm-2 control-label">手机号码</label>
+            <div class="col-sm-10">
+              <input type="text" name="mobilePhone" class="form-control" ng-model="personData.editUser.mobilePhone"
+                ng-pattern="/(^(13\d|14[57]|15[^4,\D]|17[678]|18\d)\d{8}|170[059]\d{7})$/">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">电子邮件</label>
+            <div class="col-sm-10">
+              <input type="email" name="email" class="form-control" ng-model="personData.editUser.email">
+            </div>
+          </div>
 
-
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-success btn-block" ng-disabled="!isvalidForm()" ng-click="save()">保存</button>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
 </div>
