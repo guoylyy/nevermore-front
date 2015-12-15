@@ -115,7 +115,8 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/teacher-reservation.js',
-                  'scripts/directives/app/pager.js'
+                  'scripts/directives/app/pager.js',
+                  'ngDialog'
                 ]);
               }]
             }

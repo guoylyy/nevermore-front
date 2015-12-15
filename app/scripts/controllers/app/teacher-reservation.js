@@ -1,9 +1,19 @@
 'use strict';
 
-app.controller('TeacherReservationCtrl', function($scope, $rootScope, $stateParams, Reservation, generalService, qService, sessionService) {
+app.controller('TeacherReservationCtrl', function($scope, ngDialog,
+   $rootScope, $stateParams, Reservation, generalService, qService, sessionService) {
 
   $scope.title = $stateParams.title;
   var semester = sessionService.getCurrSemeter();
+
+  $scope.testDialog = function(){
+    ngDialog.open({
+      template: 'tpl/app/modal/reservation-edit.html',
+      className: 'nm-dialog nm-dialog-md',
+      closeByDocument: true,
+      closeByEscape: true
+    });
+  }
 
 
   $scope.map = {
