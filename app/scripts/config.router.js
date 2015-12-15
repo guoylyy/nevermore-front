@@ -173,7 +173,6 @@ angular.module('nevermore')
             }
           })
           .state('app.course.report', {
-            abstract: true,
             url: '^/app/course/report',
             templateUrl: 'tpl/app/report.html',
             controller: 'ReportCtrl',
@@ -181,58 +180,8 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/report.js',
-                ]);
-              }]
-            }
-          })
-          .state('app.course.report.report-basic', {
-            url: '^/app/course/report/basic',
-            templateUrl: 'tpl/app/report-basic.html',
-            controller: 'ReportBasicCtrl',
-            resolve: {
-              controller: ['$ocLazyLoad', function($ocLazyLoad) {
-                return $ocLazyLoad.load([
-                  'scripts/controllers/app/report-basic.js',
                   'scripts/directives/app/graphic-table.js',
                   'scripts/directives/app/lashen-report.js'
-                ]);
-              }]
-            }
-          })
-          .state('app.course.report.report-data', {
-            url: '^/app/course/report/data',
-            templateUrl: 'tpl/app/report-data.html',
-            controller: 'ReportDataCtrl',
-            resolve: {
-              controller: ['$ocLazyLoad', function($ocLazyLoad) {
-                return $ocLazyLoad.load([
-                  'scripts/controllers/app/report-data.js',
-                  'scripts/directives/app/lashen-report.js'
-                ]);
-              }]
-            }
-          })
-          .state('app.course.report.report-graphic', {
-            url: '^/app/course/report/graphic',
-            templateUrl: 'tpl/app/report-graphic.html',
-            controller: 'ReportGraphicCtrl',
-            resolve: {
-              controller: ['$ocLazyLoad', function($ocLazyLoad) {
-                return $ocLazyLoad.load([
-                  'scripts/controllers/app/report-graphic.js',
-                  'scripts/directives/app/graphic-table.js'
-                ]);
-              }]
-            }
-          })
-          .state('app.course.report.report-question', {
-            url: '^/app/course/report/question',
-            templateUrl: 'tpl/app/report-question.html',
-            controller: 'ReportQuestionCtrl',
-            resolve: {
-              controller: ['$ocLazyLoad', function($ocLazyLoad) {
-                return $ocLazyLoad.load([
-                  'scripts/controllers/app/report-question.js'
                 ]);
               }]
             }
