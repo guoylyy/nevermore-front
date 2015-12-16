@@ -87,7 +87,7 @@ app.controller('TeacherReservationCtrl', function($scope, ngDialog,
     });
   }
 
-  $scope.reservationDetail = function (resId) {
+  $scope.reservationDetail = function (reservation) {
     ngDialog.open({
       template: 'tpl/app/modal/reservation-detail.html',
       controller: 'ReservationDetailModalCtrl',
@@ -96,7 +96,7 @@ app.controller('TeacherReservationCtrl', function($scope, ngDialog,
       closeByEscape: true,
       resolve: {
           data: function() {
-            return {};
+            return reservation;
           }
         }
     });

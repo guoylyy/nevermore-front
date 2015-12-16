@@ -118,7 +118,8 @@ angular.module('nevermore')
                   'scripts/directives/app/pager.js',
                   'ngDialog',
                   'NmDatepicker',
-                  'scripts/controllers/app/manage-modal.js'
+                  'scripts/controllers/app/modal/teacher-reservation-modal.js',
+                  'scripts/controllers/app/modal/reservation-detail-modal.js'
                 ]);
               }]
             }
