@@ -14,8 +14,7 @@
     "is-loading": "~1.0.6",
     "jsog": "~1.0.7",
     "moment": "~2.10.6",
-    "ng-file-upload": "~9.1.1",
-    "ng-img-crop": "ngImgCrop#~0.3.2",
+    "ng-img-crop": "~0.3.2",
     "ngLocale": "*",
     "ngSanitize": "~0.0.2",
     "ngSweetAlert": "angular-sweetalert#~1.1.0",
@@ -31,7 +30,9 @@
     "ui-router-extras": "~0.1.0",
     "angular-strap": "~2.3.6",
     "ngstorage": "~0.3.10",
-    "oclazyload": "ocLazyLoad#~1.0.9"
+    "oclazyload": "ocLazyLoad#~1.0.9",
+    "ng-dialog": "~0.5.6",
+    "ng-file-upload": "~10.1.9"
   },
   "resolutions": {
     "angular": "1.4.7"

@@ -14,7 +14,7 @@ function($scope, $rootScope, Account, ToasterTool, sessionService) {
   $scope.updatePassword = function() {
     Account.password().put({'id': currentUser.id}, $scope.password.passwordEdit,
       function success(data) {
-        ToasterTool.info("更新密码成功");
+        ToasterTool.success("更新密码成功");
 
         $scope.password.passwordEdit = {};
         $scope.passwordForm.$setPristine();
