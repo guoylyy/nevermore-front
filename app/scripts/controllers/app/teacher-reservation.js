@@ -6,16 +6,6 @@ app.controller('TeacherReservationCtrl', function($scope, ngDialog,
   $scope.title = $stateParams.title;
   var semester = sessionService.getCurrSemeter();
 
-  $scope.testDialog = function(){
-    ngDialog.open({
-      template: 'tpl/app/modal/reservation-edit.html',
-      className: 'nm-dialog nm-dialog-md',
-      closeByDocument: true,
-      closeByEscape: true
-    });
-  }
-
-
   $scope.map = {
     Reservations: {
       'PENDING': {
@@ -68,6 +58,48 @@ app.controller('TeacherReservationCtrl', function($scope, ngDialog,
 
   $scope.pageReservation = function(){
     loadFactory['Reservations']($scope.title);
+  }
+
+  $scope.addReservation = function(){
+    ngDialog.open({
+      template: 'tpl/app/modal/reservation-edit.html',
+      controller:'TeacherReservationModalCtrl',
+      className: 'nm-dialog nm-dialog-sm',
+      closeByDocument: true,
+      closeByEscape: true,
+      resolve: {
+          data: function() {
+            return {};
+          },
+          clazzs: function(qService, Clazz) {
+            return qService.tokenHttpGet(Clazz.teacherClazzs, {
+              'teacherId':$rootScope.currentUser.id,
+              'semesterId':sessionService.getCurrSemeter().id
+            }); //获取教师本人的clazz
+          },
+          semester: function(sessionService) {
+            return sessionService.getCurrSemeter();
+          },
+          slots: function(qService, Semester) {
+            return qService.tokenHttpGet(Semester.slots, {});
+          }
+        }
+    });
+  }
+
+  $scope.reservationDetail = function (resId) {
+    ngDialog.open({
+      template: 'tpl/app/modal/reservation-detail.html',
+      controller: 'ReservationDetailModalCtrl',
+      className: 'nm-dialog nm-dialog-sm',
+      closeByDocument: true,
+      closeByEscape: true,
+      resolve: {
+          data: function() {
+            return {};
+          }
+        }
+    });
   }
 
   load('Reservations',$scope.title);

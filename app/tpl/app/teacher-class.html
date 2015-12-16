@@ -90,16 +90,7 @@
         </table>
       </div>
       <footer class="panel-footer">
-        <div class="row">
-          <div class="hidden-xs">
-          </div>
-          <div class="col-sm-4 text-center">
-          </div>
-          <div class="col-sm-4 text-right text-center-xs">
-            <!-- <nevermore-pager total="students.totalPageNum" cur="students.curPageNum" change="page_student(page)"></nevermore-pager> -->
 
-          </div>
-        </div>
         <div class="row clearfix" style="width: 100%;" >
           <div class="pull-left col-sm-4 m-t-sm">
             <span class="text-muted inline m-t-sm">{{students.curPageNum}}/{{students.totalPageNum}}&nbsp;&nbsp;&nbsp;共&nbsp;{{students.totalItemNum}}&nbsp;个学生  </span>
@@ -150,12 +141,6 @@
         </table>
       </div>
       <footer class="panel-footer">
-        <div class="row">
-          <div class="col-sm-4 hidden-xs">
-
-          </div>
-          <div class="col-sm-4 text-center">
-          </div>
           <div class="row clearfix" style="width: 100%;" >
             <div class="pull-left col-sm-4 m-t-sm">
               <span class="text-muted inline m-t-sm">{{records.curPageNum}}/{{records.totalPageNum}}&nbsp;&nbsp;&nbsp;共&nbsp;{{records.totalItemNum}}&nbsp;个报告  </span>
@@ -165,7 +150,6 @@
               ng-model="records.curPageNum" ng-change="pageRecord()"></uib-pagination>
             </div>
           </div>
-        </div>
       </footer>
     </div>
 

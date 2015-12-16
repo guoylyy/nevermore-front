@@ -1,7 +1,7 @@
 <div class="nm-dialog">
   <div class="nm-dialog-header">
     <h1 class="header-title" style="margin-top: 5px;">
-      <span >新建xxx</span>
+      <span >添加预约</span>
     </h1>
   </div>
 
@@ -10,82 +10,87 @@
       <tbody>
       <tr>
         <td style="width: 100px;">
-          <span class="block m-t-xs"><span class="text-danger">*</span>姓名:</span>
+          <span class="block m-t-xs"><span class="text-danger">*</span>学期:</span>
         </td>
+
         <td>
-          <input type="text" class="form-control w-md noblock" name="customerName" ng-model="customer.name" required>
-          <span class="dialog-input-desc text-muted m-t-xs">  <i class="icon-info"></i> 这个是默认提示 </span>
-          <span class="text-danger block m-t-xs"><i class="icon-info"></i> 这个是错误提示</span>
-          <span class="text-danger block m-t-xs"
-                ng-show="customerForm.customerName.$error.required && customerForm.customerName.$dirty">姓名不能为空</span>
-        </td>
-        <td>
-        </td>
-        <td>
+          <input type="text" class="form-control w-lg pull-right ng-binding" readonly name="qq" ng-model="data.semester.name">
         </td>
       </tr>
 
       <tr>
         <td>
-          <span class="block m-t-xs">手机号码:</span>
+          <span class="block m-t-xs">预约日期:</span>
         </td>
         <td>
-          <input type="text" class="form-control w-sm" name="mobile" ng-model="customer.mobile"
-                 ng-pattern="/(^(13\d|14[57]|15[^4,\D]|17[678]|18\d)\d{8}|170[059]\d{7})$/">
-          <span class="text-danger block m-t-xs"
-                ng-show="customerForm.mobile.$error.pattern && customerForm.mobile.$dirty">手机号码格式不正确</span>
+            <button type="dropdown-toggle button" class="btn btn-default pull-right" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            <div class="dropdown-menu" ng-click="$event.preventDefault();$event.stopPropagation()">
+                <div date-picker="data.applyDate" min-view="date" max-view"year"></div>
+            </div>
+          <input type="text" class="form-control w-md pull-right" name="qq" ng-model="customer.qq">
         </td>
-        <td></td>
-        <td></td>
       </tr>
       <tr>
         <td>
-          <span class="block m-t-xs">xxx:</span>
+          <span class="block m-t-xs">班级:</span>
         </td>
         <td>
-          <input type="text" class="form-control w-sm" name="qq" ng-model="customer.qq">
+          <select class="form-control ng-pristine ng-valid ng-touched w-lg pull-right" ng-model="data.clazz" ng-options="(item.number + '' + item.teacher.name + ' '+ item.course.name)  for item in clazzs track by item.id" ng-change="clazzChanged()" aria-invalid="false">
+            <option value="">--请选择班级--</option>
+          </select>
         </td>
-        <td></td>
-        <td></td>
+      </tr>
+
+      <tr ng-show="data.clazz!=undefined">
+        <td>
+          <span class="block m-t-xs">实验:</span>
+        </td>
+        <td>
+          <select class="form-control ng-pristine ng-valid ng-touched w-lg pull-right" ng-model="data.exp"  ng-options="item.name for item in exps track by item.id" ng-change="expChanged()" aria-invalid="false">
+            <option value="">--请选择实验--</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr ng-show="data.exp != undefined">
+        <td>
+          <span class="block m-t-xs">实验室:</span>
+        </td>
+        <td>
+          <select class="form-control ng-pristine ng-valid ng-touched w-lg pull-right" ng-model="data.lab"  ng-options="item.name for item in labs track by item.id" aria-invalid="false">
+            <option value="">--请选择实验室--</option>
+          </select>
+        </td>
       </tr>
 
       <tr>
         <td>
-          <span class="block m-t-xs">xxxx:</span>
+          <span class="block m-t-xs">时间:</span>
         </td>
         <td>
-          <input type="text" class="form-control w-md" name="wx" ng-model="customer.wx">
+          <select class="form-control ng-pristine ng-valid ng-touched w-lg pull-right" ng-model="data.slot"  ng-options="item.title for item in slots track by item.id" aria-invalid="false">
+            <option value="">--请选择预约时间--</option>
+          </select>
         </td>
-        <td></td>
-        <td></td>
       </tr>
 
       <tr>
         <td>
-          <span class="block m-t-xs">电子邮箱:</span>
+          <span class="block m-t-xs">预约人数:</span>
         </td>
         <td>
-          <input type="email" class="form-control w-sm" name="email" ng-model="customer.email">
+          <input type="text" class="form-control w-lg pull-right" name="qq" ng-model="customer.qq">
         </td>
-        <td></td>
-        <td></td>
       </tr>
 
 
       <tr>
         <td>
-          <span class="block m-t-xs">xxx:</span>
+          <span class="block m-t-xs">备注:</span>
         </td>
         <td>
-          <input type="text" class="form-control w-sm" name="idCard" ng-model="customer.idCard"
-                 ng-pattern="/^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/">
-          <!--<span class="text-danger block m-t-xs"
-                ng-show="customerForm.idCard.$error.required && customerForm.idCard.$dirty">身份证不能为空</span>-->
-          <span class="text-danger block m-t-xs"
-                ng-show="customerForm.idCard.$error.pattern && customerForm.idCard.$dirty">身份证格式不正确</span>
+          <textarea class="form-control ng-pristine ng-valid ng-touched w-lg pull-right" placeholder="" rows="2" aria-multiline="true" aria-invalid="false"></textarea>
         </td>
-        <td></td>
-        <td></td>
       </tr>
 
 
@@ -95,7 +100,7 @@
     <div class="clearfix m-t">
       <div class="pull-right">
         <button class="btn btn-primary w-sm m-r-sm" ng-disabled="customerForm.$invalid" ng-click="save()">保存</button>
-        <button class="btn btn-default w-sm" ng-click="closeThisDialog(null)">取消</button>
+        <button class="btn btn-default w-sm" ng-click="cancel()">取消</button>
       </div>
     </div>
   </form>

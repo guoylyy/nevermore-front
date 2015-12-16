@@ -45,13 +45,7 @@
       </table>
     </div>
     <footer class="panel-footer">
-      <div class="row">
-        <div class="col-sm-4 hidden-xs">
 
-        </div>
-        <div class="col-sm-4 text-center">
-
-        </div>
         <div class="row clearfix" style="width: 100%;" >
           <div class="pull-left col-sm-4 m-t-sm">
             <span class="text-muted inline m-t-sm">{{map.Reservations[title].data.curPageNum}}/{{map.Reservations[title].data.totalPageNum}}&nbsp;&nbsp;&nbsp;共&nbsp;{{map.Reservations[title].data.totalItemNum}}&nbsp;个预约  </span>
@@ -61,7 +55,6 @@
             ng-model="map.Reservations[title].data.curPageNum" ng-change="pageReservation()"></uib-pagination>
           </div>
         </div>
-      </div>
     </footer>
   </div>
 </div>
