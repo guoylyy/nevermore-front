@@ -23,11 +23,7 @@
           <span class="block m-t-xs">预约日期:</span>
         </td>
         <td>
-            <button type="dropdown-toggle button" class="btn btn-default pull-right" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-            <div class="dropdown-menu" ng-click="$event.preventDefault();$event.stopPropagation()">
-                <div date-picker="data.applyDate" min-view="date" max-view"year"></div>
-            </div>
-          <input type="text" class="form-control w-md pull-right" name="qq" ng-model="customer.qq">
+            <nm-datepicker class="w-lg pull-right" ng-model="data.applyDate"  name="birthday"></nm-datepicker>  
         </td>
       </tr>
       <tr>

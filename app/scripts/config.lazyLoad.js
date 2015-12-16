@@ -34,6 +34,12 @@ angular.module('nevermore')
           ]
         },
         {
+          name: 'NmDatepicker',
+          files: [
+            '../scripts/directives/app/nm-datepicker.js'
+          ]
+        },
+        {
           name: 'ngImgCrop',
           files: [
             '../bower_components/ng-img-crop/compile/minified/ng-img-crop.js',
