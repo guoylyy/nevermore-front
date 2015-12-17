@@ -144,11 +144,7 @@ app.controller('CalendarController', ['$scope', 'ResTool', 'qService', 'ToasterT
         };
         /* add custom event*/
         $scope.addEvent = function() {
-          $scope.events.push({
-            title: 'New Event',
-            start: new Date(y, m, d),
-            className: ['b-l b-2x b-info']
-          });
+          
         };
         /* remove event */
         $scope.remove = function(index) {

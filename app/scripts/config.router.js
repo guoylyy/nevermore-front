@@ -242,6 +242,9 @@ angular.module('nevermore')
                   'lib/libs/moment.min.js',
                   'lib/jquery/fullcalendar/fullcalendar.min.js',
                   'ui.calendar',
+                  'ngDialog',
+                  'NmDatepicker',
+                  'scripts/controllers/app/manage-modal.js',
                   'scripts/controllers/app/app-calendar.js'
                 ]);
               }]

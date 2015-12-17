@@ -2,22 +2,85 @@
  * calendarDemoApp - 0.1.3
  */
 
-app.controller('FullcalendarCtrl', ['$scope', function($scope) {
+app.controller('FullcalendarCtrl', ['$scope','$rootScope', 'qService', 'Reservation',
+  'Clazz', 'Semester', 'sessionService', 'generalService', 'ngDialog',
+  function($scope, $rootScope, qService, Reservation, Clazz, Semester,
+    sessionService, generalService, ngDialog) {
 
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
     var y = date.getFullYear();
 
+    var semester = sessionService.getCurrSemeter();
+
+    //学生、老师和管理员会load不一样的实验列表
+    $scope.loadReservations = function() {
+     if($rootScope.currentUser.role == 'STUDENT'){
+       var promise = qService.tokenHttpGet(Reservation.studentResByStatusPage, {
+         'semester':semester.id,
+         'accountId': $rootScope.currentUser.id,
+         'pageSize':10000,
+         'pageNumber': 1,
+         'type': 'clazz'
+       });
+     }else if($rootScope.currentUser.role.indexOf('TEACHER') > 1){
+       var promise = qService.tokenHttpGet(
+         Reservation.allTeacherRes, {
+         "semesterId": semester.id,
+         "teacherId": $rootScope.currentUser.id
+       });
+     }
+     promise.then(function(rc) {
+       var list = rc.data;
+       var rcList = [];
+       for (var i = 0; i < list.length; i++) {
+         var res = list[i];
+         var type = "";
+         if (res.clazz == undefined) {
+           type = 'student';
+         } else {
+           type = 'clazz';
+         }
+         var map = {
+           'id': res.id,
+           'title': res.lab.name + '-' + res.experiment.name,
+           'start': new Date(res.applyDate + ' ' + res.slot.startTime),
+           'end': new Date(res.applyDate + ' ' + res.slot.endTime),
+           'color': generalService.getReservationColor(res),
+           'status': res.status,
+           'type': type,
+           'data':res
+         };
+         rcList.push(map);
+       };
+       $scope.eventSources.splice(0, $scope.eventSources.length);
+       $scope.addRemoveEventSource($scope.eventSources, rcList);
+     });
+   };
+   /* add and removes an event source of choice */
+   $scope.addRemoveEventSource = function(sources, source) {
+     var canAdd = 0;
+     angular.forEach(sources, function(value, key) {
+       if (sources[key] === source) {
+         sources.splice(key, 1);
+         canAdd = 1;
+       }
+     });
+     if (canAdd === 0) {
+       sources.push(source);
+     }
+   };
+   $scope.loadReservations();
+
+
     /* event source that pulls from google.com */
     $scope.eventSource = {
-            url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
-            className: 'gcal-event',           // an option!
-            currentTimezone: 'America/Chicago' // an option!
-    };
 
+    };
     /* event source that contains custom events on the scope */
     $scope.events = [
+
     ];
 
     /* alert on dayClick */
@@ -71,19 +134,45 @@ app.controller('FullcalendarCtrl', ['$scope', function($scope) {
           center: 'title',
           right: 'next'
         },
+        minTime: "08:00:00",
+        maxTime: "23:00:00",
+        allDaySlot: false,
         dayClick: $scope.alertOnEventClick,
         eventDrop: $scope.alertOnDrop,
         eventResize: $scope.alertOnResize,
-        eventMouseover: $scope.alertOnMouseOver
+        eventMouseover: $scope.alertOnMouseOver,
+        viewRender: function(view, element) {
+          //获取当前日历的日期，刷新出对应的预约
+          $scope.loadReservations();
+        }
       }
     };
 
     /* add custom event*/
     $scope.addEvent = function() {
-      $scope.events.push({
-        title: 'New Event',
-        start: new Date(y, m, d),
-        className: ['b-l b-2x b-info']
+      ngDialog.open({
+        template: 'tpl/app/modal/reservation-edit.html',
+        controller:'TeacherReservationModalCtrl',
+        className: 'nm-dialog nm-dialog-sm',
+        closeByDocument: true,
+        closeByEscape: true,
+        resolve: {
+            data: function() {
+              return {};
+            },
+            clazzs: function(qService, Clazz) {
+              return qService.tokenHttpGet(Clazz.teacherClazzs, {
+                'teacherId':$rootScope.currentUser.id,
+                'semesterId':sessionService.getCurrSemeter().id
+              }); //获取教师本人的clazz
+            },
+            semester: function(sessionService) {
+              return sessionService.getCurrSemeter();
+            },
+            slots: function(qService, Semester) {
+              return qService.tokenHttpGet(Semester.slots, {});
+            }
+          }
       });
     };
 
