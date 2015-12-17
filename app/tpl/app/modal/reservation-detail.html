@@ -142,7 +142,7 @@
       </tbody>
     </table>
 
-    <div class="clearfix m-t">
+    <div class="clearfix m-t" ng-if="currentUser.show_role!='STUDENT'">
       <div class="pull-right">
         <button class="btn btn-primary w-sm m-r-sm" ng-click="cancelReservation(data.id)">取消预约</button>
       </div>

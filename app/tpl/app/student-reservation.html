@@ -1,13 +1,15 @@
 
     <div class="vbox">
     <div class="wrapper lter b-b bg-white">
+      <a class="pull-right btn btn-sm btn-info m-t-n-xs" style="margin-left:10px" ng-click="back()" ng-if="tab=='openlab'">返回</a>
 
-      <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="createNote()">去预约实验</a>
+      <a class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="openLab()" ng-if="title=='student'">去预约实验</a>
+
       <div class="subview3_title">{{title|reservationTitle}}</div>
   </div>
 
 <div class="wrapper bg-white">
-<div class="panel panel-default">
+<div class="panel panel-default" ng-if="tab=='reservation'">
     <div class="panel-heading">
       预约列表
     </div>
@@ -38,7 +40,7 @@
             </td>
             <td style="width: 120px;" class="v-middle">{{res.status | reservationStatus}}</td>
             <td style="width: 20px;" class="v-middle">
-              <button class="btn btn-sm btn-default" ng-click="" ng-if="true">详情</button>
+              <button class="btn btn-sm btn-default" ng-click="reservationDetail(res)" ng-if="true">详情</button>
             </td>
           </tr>
         </tbody>
@@ -57,5 +59,51 @@
         </div>
     </footer>
   </div>
+
+
+  <div class="panel panel-default" ng-if="tab=='openlab'">
+      <div class="panel-heading">
+        开放预约的实验室
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-striped b-t b-light">
+          <thead>
+            <tr>
+              <th style="width: 106px;">日期</th>
+              <th style="width: 133px;">实验时段</th>
+              <th style="width: 115px;">实验</th>
+              <th style="width: 106px;">实验室</th>
+              <th style="width: 20px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="record in map.grabRes.data.data">
+              <td style="width: 106px;" class="v-middle">{{record.applyDate}}</td>
+              <td style="width: 133px;" class="v-middle">{{record.slot.title}}</td>
+              <td style="width: 115px;" class="v-middle">{{record.experiment.name}}</td>
+              <td style="width: 106px;" class="v-middle">{{record.lab.name}}</td>
+              <td style="width: 20px;" class="v-middle">
+                <button class="btn btn-sm btn-default" ng-click="grab(record)" ng-if="true">预定实验</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <footer class="panel-footer">
+
+          <div class="row clearfix" style="width: 100%;" >
+            <div class="pull-left col-sm-4 m-t-sm">
+              <span class="text-muted inline m-t-sm">{{map.grabRes.data.curPageNum}}/{{map.grabRes.data.totalPageNum}}&nbsp;&nbsp;&nbsp;共&nbsp;{{map.grabRes.data.totalItemNum}}&nbsp;个预约  </span>
+            </div>
+              <div class="pull-right">
+            <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="map.grabRes.data.totalItemNum"
+              ng-model="map.grabRes.data.curPageNum" ng-change="pageGrab()"></uib-pagination>
+            </div>
+          </div>
+      </footer>
+    </div>
+
+
 </div>
 </div>

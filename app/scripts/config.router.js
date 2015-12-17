@@ -132,7 +132,9 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/student-reservation.js',
-                  'scripts/directives/app/pager.js'
+                  'scripts/directives/app/pager.js',
+                  'ngDialog',
+                  'scripts/controllers/app/modal/reservation-detail-modal.js'
                 ]);
               }]
             }
