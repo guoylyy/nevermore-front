@@ -128,7 +128,7 @@ app.controller('FullcalendarCtrl', ['$scope','$rootScope', 'qService', 'Reservat
     $scope.uiConfig = {
       calendar:{
         height: 550,
-        editable: true,
+        editable: false,
         header:{
           left: 'prev',
           center: 'title',
