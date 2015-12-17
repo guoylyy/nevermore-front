@@ -260,6 +260,3 @@ angular.module('nevermore')
   .run(
 
   );
-
-  //定义请求地址，可修改
-  var base_Url = '//nevermore.daiguanwang.cn';

@@ -18,5 +18,4 @@ var app =
     .config(function ($httpProvider){
       // $httpProvider.interceptors.push('loadingInterceptor');
       $httpProvider.interceptors.push('authInterceptor');
-    })
-    .constant('apiBaseUrl', '//tiger.xiaoguotech.com/api');
+    });
