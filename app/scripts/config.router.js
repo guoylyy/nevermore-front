@@ -245,6 +245,9 @@ angular.module('nevermore')
                   'lib/libs/moment.min.js',
                   'lib/jquery/fullcalendar/fullcalendar.min.js',
                   'ui.calendar',
+                  'ngDialog',
+                  'NmDatepicker',
+                  'scripts/controllers/app/manage-modal.js',
                   'scripts/controllers/app/app-calendar.js'
                 ]);
               }]
@@ -259,4 +262,4 @@ angular.module('nevermore')
   );
 
   //定义请求地址，可修改
-  var base_Url = 'http://localhost:8080';
+  var base_Url = '//nevermore.daiguanwang.cn';

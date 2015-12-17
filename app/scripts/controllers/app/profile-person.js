@@ -23,14 +23,6 @@ function($scope, $rootScope, Account, sessionService, ResTool, ToasterTool, ngDi
       "LAB_TEACHER": "实验教师",
       "STUDENT": "学生"
     },
-    teachers: [
-      "ALL_TEACHER", "NOR_TEACHER", "LAB_TEACHER"
-    ],
-    teacherMap: {
-      "ALL_TEACHER": "实验和课程教师",
-      "NOR_TEACHER": "课程教师",
-      "LAB_TEACHER": "实验教师"
-    }
   };
   var personData = $scope.personData;
 
@@ -42,6 +34,9 @@ function($scope, $rootScope, Account, sessionService, ResTool, ToasterTool, ngDi
       function success(data) {
         $scope.personData.currentUser = data.data;
         $scope.personData.editUser = angular.copy(data.data);
+
+        sessionService.saveCurrUser(angular.copy(data.data));
+        $rootScope.currentUser = angular.copy(data.data);
       },
       function error(data) {
         ToasterTool.error("个人信息获取失败");
@@ -73,7 +68,7 @@ function($scope, $rootScope, Account, sessionService, ResTool, ToasterTool, ngDi
     var dialog = ngDialog.open({
       template: 'tpl/app/modal/profile-icon.html',
       controller: 'ProfileIconCtrl',
-      className: 'tiger-dialog tiger-dialog-md',
+      className: 'nevermore-dialog nevermore-dialog-md',
       closeByDocument: true,
       closeByEscape: true
     });

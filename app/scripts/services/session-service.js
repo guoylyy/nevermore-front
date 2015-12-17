@@ -41,6 +41,11 @@ angular.module('nevermore').service('sessionService',
 			}
 		};
 
+		this.saveCurrUser = function(currentUser){
+			$localStorage.currentUser = currentUser;
+			$rootScope.currentUser = currentUser;
+		};
+
 		this.storageChecking = function(){
 			 checkLocalToken();
 			 checkLocalToken();
