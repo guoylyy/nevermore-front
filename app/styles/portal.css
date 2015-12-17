@@ -1867,6 +1867,125 @@ fieldset[disabled] .btn-black.active {
   opacity: .5;
   filter: alpha(opacity=50);
 }
+.ngdialog.nevermore-dialog {
+  padding-bottom: 100px;
+  padding-top: 100px;
+  z-index: 9999;
+}
+.ngdialog.nevermore-dialog.ngdialog-closing .ngdialog-content {
+  -webkit-animation: ngdialog-flyout 0.5s;
+  animation: ngdialog-flyout 0.5s;
+}
+.ngdialog.nevermore-dialog .ngdialog-content {
+  -webkit-animation: ngdialog-flyin 0.5s;
+  animation: ngdialog-flyin 0.5s;
+  background: #fff;
+  border-radius: 5px;
+  color: #444;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 1em;
+  position: relative;
+  width: 450px;
+}
+.ngdialog.nevermore-dialog.nevermore-dialog-md .ngdialog-content {
+  width: 600px;
+}
+.ngdialog.nevermore-dialog.nevermore-dialog-lg .ngdialog-content {
+  width: 800px;
+}
+.ngdialog.nevermore-dialog .ngdialog-close {
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.ngdialog.nevermore-dialog .ngdialog-close:before {
+  background: transparent;
+  border-radius: 3px;
+  color: #bbb;
+  content: '\00D7';
+  font-size: 26px;
+  font-weight: 400;
+  height: 30px;
+  line-height: 26px;
+  position: absolute;
+  right: 3px;
+  text-align: center;
+  top: 3px;
+  width: 30px;
+}
+.ngdialog.nevermore-dialog .ngdialog-close:hover:before,
+.ngdialog.nevermore-dialog .ngdialog-close:active:before {
+  color: #777;
+}
+.ngdialog.nevermore-dialog .ngdialog-message {
+  margin-bottom: .5em;
+}
+.ngdialog.nevermore-dialog .ngdialog-input {
+  margin-bottom: 1em;
+}
+.ngdialog.nevermore-dialog .ngdialog-input textarea,
+.ngdialog.nevermore-dialog .ngdialog-input input[type="text"],
+.ngdialog.nevermore-dialog .ngdialog-input input[type="password"],
+.ngdialog.nevermore-dialog .ngdialog-input input[type="email"],
+.ngdialog.nevermore-dialog .ngdialog-input input[type="url"] {
+  background: #fff;
+  border: 0;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0 0 .25em;
+  min-height: 2.5em;
+  padding: .25em .67em;
+  width: 100%;
+}
+.ngdialog.nevermore-dialog .ngdialog-input textarea:focus,
+.ngdialog.nevermore-dialog .ngdialog-input input[type="text"]:focus,
+.ngdialog.nevermore-dialog .ngdialog-input input[type="password"]:focus,
+.ngdialog.nevermore-dialog .ngdialog-input input[type="email"]:focus,
+.ngdialog.nevermore-dialog .ngdialog-input input[type="url"]:focus {
+  box-shadow: inset 0 0 0 2px #8dbdf1;
+  outline: none;
+}
+.ngdialog.nevermore-dialog .ngdialog-buttons {
+  *zoom: 1;
+}
+.ngdialog.nevermore-dialog .ngdialog-buttons:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.ngdialog.nevermore-dialog .ngdialog-button {
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  float: right;
+  font-family: inherit;
+  font-size: .8em;
+  letter-spacing: .1em;
+  line-height: 1em;
+  margin: 0 0 0 .5em;
+  padding: .75em 2em;
+  text-transform: uppercase;
+}
+.ngdialog.nevermore-dialog .ngdialog-button:focus {
+  -webkit-animation: ngdialog-pulse 1.1s infinite;
+  animation: ngdialog-pulse 1.1s infinite;
+  outline: none;
+}
+.ngdialog.nevermore-dialog .ngdialog-button.ngdialog-button-primary {
+  background: #3288e6;
+  color: #fff;
+}
+.ngdialog.nevermore-dialog .ngdialog-button.ngdialog-button-secondary {
+  background: #e0e0e0;
+  color: #777;
+}
 .portal-header {
   height: 70px;
   border-bottom: 2px solid #ddd;

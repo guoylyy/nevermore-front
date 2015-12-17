@@ -259,4 +259,4 @@ angular.module('nevermore')
   );
 
   //定义请求地址，可修改
-  var base_Url = 'http://localhost:8080';
+  var base_Url = '//nevermore.daiguanwang.cn';
