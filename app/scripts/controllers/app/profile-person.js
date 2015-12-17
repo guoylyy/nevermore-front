@@ -35,8 +35,11 @@ function($scope, $rootScope, Account, sessionService, ResTool, ToasterTool, ngDi
         $scope.personData.currentUser = data.data;
         $scope.personData.editUser = angular.copy(data.data);
 
-        sessionService.saveCurrUser(angular.copy(data.data));
-        $rootScope.currentUser = angular.copy(data.data);
+        angular.forEach(data.data, function(value, key) {
+          $rootScope.currentUser[key] = value;
+        });
+        sessionService.saveCurrUser($rootScope.currentUser);
+        // $rootScope.currentUser = angular.copy(data.data);
       },
       function error(data) {
         ToasterTool.error("个人信息获取失败");
