@@ -40,16 +40,10 @@
               <select class="form-control right" ng-model="personData.editUser.gender" ng-options="personData.genderMap[g] for g in personData.genders"></select>
             </div>
           </div>
-          <div class="form-group" ng-if="personData.editUser.role == 'ADMINISTRATOR' || personData.editUser.role == 'STUDENT'">
+          <div class="form-group">
             <label class="col-sm-2 control-label">职务</label>
             <div class="col-sm-10">
               <select class="form-control right" ng-model="personData.editUser.role" ng-options="personData.roleMap[g] for g in personData.roles" disabled></select>
-            </div>
-          </div>
-          <div class="form-group" ng-if="personData.editUser.role != 'ADMINISTRATOR' && personData.editUser.role != 'STUDENT'">
-            <label class="col-sm-2 control-label">职务</label>
-            <div class="col-sm-10">
-              <select class="form-control right" ng-model="personData.editUser.role" ng-options="personData.teacherMap[g] for g in personData.teachers"></select>
             </div>
           </div>
           <div ng-if="personData.editUser.role == 'STUDENT'">

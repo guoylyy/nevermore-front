@@ -14,7 +14,7 @@
         </td>
 
         <td>
-          <input type="text" class="form-control w-lg pull-right ng-binding" readonly name="qq" ng-model="data.semester.name">
+          <input type="text" class="form-control w-lg pull-right ng-binding" readonly ng-model="data.semester.name">
         </td>
       </tr>
 
@@ -23,7 +23,7 @@
           <span class="block m-t-xs">预约日期:</span>
         </td>
         <td>
-            <nm-datepicker class="w-lg pull-right" ng-model="data.applyDate"  name="birthday"></nm-datepicker>  
+            <nm-datepicker class="w-lg pull-right" ng-model="data.applyDate"></nm-datepicker>
         </td>
       </tr>
       <tr>
@@ -70,12 +70,26 @@
         </td>
       </tr>
 
+      <tr ng-show="data.lab != undefined">
+        <td>
+          <span class="block m-t-xs">实验室容量:</span>
+        </td>
+        <td>
+          <label class="pull-right">
+          实验室容量为
+          <span style="font-size:15px;color:red;">{{data.lab.capacity}}</span>人
+          请不要提交多于
+          <span style="font-size:15px;color:red;">{{data.lab.capacity | recommendCount}}</span> 人的预约
+          </label>
+        </td>
+      </tr>
+
       <tr>
         <td>
           <span class="block m-t-xs">预约人数:</span>
         </td>
         <td>
-          <input type="text" class="form-control w-lg pull-right" name="qq" ng-model="customer.qq">
+          <input type="text" class="form-control w-lg pull-right" ng-model="data.count">
         </td>
       </tr>
 
@@ -85,7 +99,7 @@
           <span class="block m-t-xs">备注:</span>
         </td>
         <td>
-          <textarea class="form-control ng-pristine ng-valid ng-touched w-lg pull-right" placeholder="" rows="2" aria-multiline="true" aria-invalid="false"></textarea>
+          <textarea class="form-control ng-pristine ng-valid ng-touched w-lg pull-right" ng-model="data.remark" placeholder="" rows="2" aria-multiline="true" aria-invalid="false"></textarea>
         </td>
       </tr>
 
@@ -96,7 +110,6 @@
     <div class="clearfix m-t">
       <div class="pull-right">
         <button class="btn btn-primary w-sm m-r-sm" ng-disabled="customerForm.$invalid" ng-click="save()">保存</button>
-        <button class="btn btn-default w-sm" ng-click="cancel()">取消</button>
       </div>
     </div>
   </form>

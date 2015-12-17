@@ -1,0 +1,151 @@
+<div class="nm-dialog">
+  <div class="nm-dialog-header">
+    <h1 class="header-title" style="margin-top: 5px;">
+      <span >实验详情</span>
+    </h1>
+  </div>
+
+  <form class="form-validation" name="customerForm" novalidate>
+    <table class="table  customer-table">
+      <tbody>
+      <tr>
+        <td style="width: 100px;">
+          <span class="block m-t-xs">日期:</span>
+        </td>
+
+        <td>
+          <input type="text" class="form-control w-lg pull-right" readonly ng-model="data.applyDate">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <span class="block m-t-xs">实验任务:</span>
+        </td>
+        <td>
+          <input type="text" class="form-control w-lg pull-right" readonly ng-model="data.experiment.name">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="block m-t-xs">实验室:</span>
+        </td>
+        <td>
+          <input type="text" class="form-control w-lg pull-right" readonly ng-model="data.lab.name">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <span class="block m-t-xs">实验时段:</span>
+        </td>
+        <td>
+          <input type="text" class="form-control w-lg pull-right" readonly ng-model="data.slot.title">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <span class="block m-t-xs">班级:</span>
+        </td>
+        <td>
+          <input type="text" class="form-control w-lg pull-right" readonly ng-model="data.clazz.number">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <span class="block m-t-xs">任课老师:</span>
+        </td>
+        <td>
+          <input type="text" class="form-control w-lg pull-right" readonly ng-model="data.clazz.teacher.name">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <span class="block m-t-xs">课程:</span>
+        </td>
+        <td>
+          <input type="text" class="form-control w-lg pull-right" readonly ng-model="data.clazz.course.name">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <span class="block m-t-xs">实验室容量:</span>
+        </td>
+        <td>
+          <input type="text" class="form-control w-lg pull-right" readonly ng-model="data.lab.capacity">
+        </td>
+      </tr>
+
+
+      <tr>
+        <td>
+          <span class="block m-t-xs">申请人数:</span>
+        </td>
+        <td>
+          <input type="text" class="form-control w-lg pull-right" readonly ng-model="data.count">
+        </td>
+      </tr>
+
+
+      <tr>
+        <td>
+          <span class="block m-t-xs">审核状态:</span>
+        </td>
+        <td>
+          <input type="text" class="form-control w-lg pull-right" readonly value="{{data.status | reservationStatus}}">
+        </td>
+      </tr>
+
+
+      <tr>
+        <td>
+          <span class="block m-t-xs">备注:</span>
+        </td>
+        <td>
+          <textarea class="form-control ng-pristine ng-valid ng-touched w-lg pull-right" placeholder="" rows="2" readonly aria-multiline="true" aria-invalid="false" ng-model="data.remark"></textarea>
+        </td>
+      </tr>
+
+      <tr ng-show="data.status=='APPROVED'">
+        <td>
+          <span class="block m-t-xs">实验教师:</span>
+        </td>
+        <td>
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th style="width: 142px;">工号
+                      </th>
+                      <th style="width: 142px;">姓名
+                      </th>
+                  </tr>
+              </thead>
+                  <tr ng-repeat="teachers in data.labTeachers">
+                      <td style="width: 142px;">
+                          <span class="id">{{teachers.number}}</span>
+                      </td>
+                      <td style="width: 142px;">
+                          <span class="code">{{teachers.name}}</span>
+                      </td>
+                  </tr>
+              <tbody>
+              </tbody>
+          </table>
+        </td>
+      </tr>
+
+
+      </tbody>
+    </table>
+
+    <div class="clearfix m-t" ng-if="currentUser.show_role!='STUDENT'">
+      <div class="pull-right">
+        <button class="btn btn-primary w-sm m-r-sm" ng-click="cancelReservation(data.id)">取消预约</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -118,7 +118,8 @@ angular.module('nevermore')
                   'scripts/directives/app/pager.js',
                   'ngDialog',
                   'NmDatepicker',
-                  'scripts/controllers/app/manage-modal.js'
+                  'scripts/controllers/app/modal/teacher-reservation-modal.js',
+                  'scripts/controllers/app/modal/reservation-detail-modal.js'
                 ]);
               }]
             }
@@ -131,7 +132,9 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/student-reservation.js',
-                  'scripts/directives/app/pager.js'
+                  'scripts/directives/app/pager.js',
+                  'ngDialog',
+                  'scripts/controllers/app/modal/reservation-detail-modal.js'
                 ]);
               }]
             }
@@ -259,4 +262,4 @@ angular.module('nevermore')
   );
 
   //定义请求地址，可修改
-  var base_Url = 'http://localhost:8080';
+  var base_Url = '//nevermore.daiguanwang.cn';
