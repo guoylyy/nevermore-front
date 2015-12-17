@@ -247,8 +247,8 @@ angular.module('nevermore')
                   'ui.calendar',
                   'ngDialog',
                   'NmDatepicker',
-                  'scripts/controllers/app/manage-modal.js',
-                  'scripts/controllers/app/app-calendar.js'
+                  'scripts/controllers/app/app-calendar.js',
+                  'scripts/controllers/app/modal/teacher-reservation-modal.js',
                 ]);
               }]
             }

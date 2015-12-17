@@ -150,7 +150,7 @@ app.controller('FullcalendarCtrl', ['$scope','$rootScope', 'qService', 'Reservat
 
     /* add custom event*/
     $scope.addEvent = function() {
-      ngDialog.open({
+      var dialog = ngDialog.open({
         template: 'tpl/app/modal/reservation-edit.html',
         controller:'TeacherReservationModalCtrl',
         className: 'nm-dialog nm-dialog-sm',
@@ -173,6 +173,14 @@ app.controller('FullcalendarCtrl', ['$scope','$rootScope', 'qService', 'Reservat
               return qService.tokenHttpGet(Semester.slots, {});
             }
           }
+      });
+      dialog.closePromise.then(function(data) {
+        if (data.value!=null
+            &&data.value!='$escape'
+            &&data.value!='$closeButton'
+            &&data.value!='$document') {
+            $scope.loadReservations();
+        }
       });
     };
 
