@@ -61,7 +61,7 @@ app.controller('TeacherReservationCtrl', function($scope, ngDialog,
   }
 
   $scope.addReservation = function(){
-    ngDialog.open({
+    var dialog = ngDialog.open({
       template: 'tpl/app/modal/reservation-edit.html',
       controller:'TeacherReservationModalCtrl',
       className: 'nm-dialog nm-dialog-sm',
@@ -85,10 +85,20 @@ app.controller('TeacherReservationCtrl', function($scope, ngDialog,
           }
         }
     });
+
+    dialog.closePromise.then(function(data) {
+      if (data.value!=null
+          &&data.value!='$escape'
+          &&data.value!='$closeButton'
+          &&data.value!='$document') {
+        $scope.map.Reservations[$scope.title].data.curPageNum = 1;
+        $scope.pageReservation();
+      }
+    });
   }
 
   $scope.reservationDetail = function (reservation) {
-    ngDialog.open({
+    var dialog = ngDialog.open({
       template: 'tpl/app/modal/reservation-detail.html',
       controller: 'ReservationDetailModalCtrl',
       className: 'nm-dialog nm-dialog-sm',
@@ -99,6 +109,15 @@ app.controller('TeacherReservationCtrl', function($scope, ngDialog,
             return reservation;
           }
         }
+    });
+    dialog.closePromise.then(function(data) {
+      if (data.value!=null
+          &&data.value!='$escape'
+          &&data.value!='$closeButton'
+          &&data.value!='$document') {
+        $scope.map.Reservations[$scope.title].data.curPageNum = 1;
+        $scope.pageReservation();
+      }
     });
   }
 

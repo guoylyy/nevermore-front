@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('TeacherClassCtrl', function($scope,
-    $stateParams, qService, Exp, generalService, Clazz, StudentRecord) {
+    $stateParams, qService, Exp, generalService, Clazz, StudentRecord, Account, ToasterTool, AlertTool) {
   $scope.clazz = {};
 
   var class_id = $stateParams.id;
@@ -58,6 +58,22 @@ app.controller('TeacherClassCtrl', function($scope,
         $scope.records = rc;
     });
   }
+
+  $scope.removeStudent = function(stId){
+    qService.tokenHttpDelete(Account.removeClazzStudent,{
+        'clazzId': class_id,
+        'studentId': stId,
+    }).then(function(rc){
+        if(rc.errorCode == 'NO_ERROR'){
+            AlertTool.success({title:'删除学生成功',text:''}).then(function() {
+              $scope.students.curPageNum = 1;
+              $scope.pageStudent();
+            });
+        }else{
+            ToasterTool.error("删除学生失败!","未知错误");
+        }
+    });
+  };
 
   function init(){
     qService.tokenHttpGet(Clazz.clazz, {

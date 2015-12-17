@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('StudentReservationCtrl', function($rootScope,$scope, $stateParams,sessionService, Reservation, generalService, qService, ngDialog, ToasterTool) {
+app.controller('StudentReservationCtrl', function($rootScope,$scope, $stateParams,sessionService, Reservation, generalService, qService, ngDialog, ToasterTool, AlertTool) {
 
   $scope.title = $stateParams.title;
   $scope.tab = 'reservation';//reservation显示预约列表。openlab表示开放可预约的实验室
@@ -26,7 +26,7 @@ app.controller('StudentReservationCtrl', function($rootScope,$scope, $stateParam
         }
       }
     },
-    grabRes:{//可以抢的预约
+    'grabRes':{//可以抢的预约
       data:{
           curPageNum: 1,
           totalItemNum: 0,
@@ -90,8 +90,9 @@ app.controller('StudentReservationCtrl', function($rootScope,$scope, $stateParam
     qService.tokenHttpPost(Reservation.studentGrabLab, {
       'id':record.id
     }).then(function(rc){
-      ToasterTool.success('预约成功！','');
-      load('grabRes','all');
+      AlertTool.success({title:'预约成功！',text:''}).then(function() {
+        load('grabRes','');
+      });
     });
   };
 

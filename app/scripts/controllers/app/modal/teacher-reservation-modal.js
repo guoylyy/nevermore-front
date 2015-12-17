@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs, semester, slots, qService, ToasterTool, Course, Exp, Reservation) {
+app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs, semester, slots, qService, ToasterTool, Course, Exp, Reservation, AlertTool) {
     $scope.slots = slots.data,
     $scope.clazzs = clazzs.data;
     $scope.data = data;
@@ -62,8 +62,9 @@ app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs, sem
           if(rdata.errorCode == "DUPLICATION"){
             ToasterTool.warning('该实验室在您选择的时间段已有预约!','');
           }else{
-            ToasterTool.success('添加成功!','');
-            $scope.closeThisDialog();
+            AlertTool.success({title:'预约成功！',text:''}).then(function() {
+              $scope.closeThisDialog('refresh');
+            });
           }
 
         });
