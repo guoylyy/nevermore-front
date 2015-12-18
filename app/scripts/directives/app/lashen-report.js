@@ -11,13 +11,18 @@ angular.module('nevermore')
     return {
       templateUrl: 'tpl/app/blocks/lashen-report.html',
       restrict: 'EA',
-      link:function(scope, element, attrs) {
+      require: 'ngModel',
+      link:function(scope, element, attrs, ngModelCtrl) {
         scope.title = attrs.title;
+        ngModelCtrl.$render = function () {
+          scope.table = ngModelCtrl.$viewValue;
+        };
+        scope.$watch('table', function () {
+          ngModelCtrl.$setViewValue(scope.table);
+        });
       },
-      controller: function ($scope, SystemService, $location) {
-        if(SystemService.isLogin()){
-            $location.path('/app/home');
-        }
+      controller: function ($scope, $localStorage) {
+        $scope.table = $localStorage.report['3origin_size']['3.1stretch_test-piece'];
       }
     };
   });

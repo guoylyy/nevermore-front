@@ -186,7 +186,10 @@ angular.module('nevermore')
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/report.js',
                   'scripts/directives/app/graphic-table.js',
-                  'scripts/directives/app/lashen-report.js'
+                  'scripts/directives/app/lashen-report.js',
+                  'NmDatepicker',
+                  'ngDialog',
+                  'scripts/controllers/app/modal/choose-chart.js'
                 ]);
               }]
             }

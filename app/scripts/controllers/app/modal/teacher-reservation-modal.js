@@ -10,12 +10,6 @@ app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs, sem
     $scope.exps = [];
     $scope.labs = [];
 
-    $scope.open = function($event) {
-      $event.preventDefault();
-      $event.stopPropagation();
-      $scope.opened = true;
-    };
-
     $scope.clazzChanged = function() {
       qService.tokenHttpGet(Course.courseExps, {
         id: $scope.data.clazz.course.id
