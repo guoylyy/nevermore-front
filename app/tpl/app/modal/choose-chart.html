@@ -6,28 +6,27 @@
   </div>
 
   <form class="form-validation" name="customerForm" novalidate>
+    <table class="table  customer-table">
+      <tbody>
+        <tr ng-repeat = "option in data['options']">
+          <td style="width: 100px;">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" ng-model="data['answer']" value="{{option.label}}">
+                    <div class="panel-heading">{{option.label}}
+                    </div>
+                    <div class="panel-body">
+                      <div ui-jq="plot" ui-options="" style="height: 50px; width: 70px; padding: 0px; position: relative;">
+                      <canvas class="flot-base" width="70" height="50" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 70px; height: 50px;"></canvas>
+                      </div>
+                    </div>
+                </label>
+              </div>
+          </td>
+        </tr>
 
-    <div class="panel panel-default">
-      <div class="radio">
-          <input type="radio" name="optionsRadios"  value="option1">
-          <div class="panel-heading font-bold">Spline</div>
-          <div class="panel-body">
-            <div ui-jq="plot" ui-options="" style="height: 240px; padding: 0px; position: relative;">
-            <canvas class="flot-base" width="466" height="240" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 466px; height: 240px;"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="radio">
-          <input type="radio" name="optionsRadios"  value="option2">
-          <div class="panel-heading font-bold">Spline</div>
-          <div class="panel-body">
-            <div ui-jq="plot" ui-options="" style="height: 240px; padding: 0px; position: relative;">
-            <canvas class="flot-base" width="466" height="240" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 466px; height: 240px;"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
+      </tbody>
+    </table>
 
   </form>
 </div>

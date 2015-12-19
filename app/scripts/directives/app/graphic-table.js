@@ -11,8 +11,8 @@ angular.module('nevermore')
     return {
       templateUrl: 'tpl/app/blocks/graphic-table.html',
       restrict: 'E',
-      controller: function ($scope, ngDialog) {
-        $scope.chooseChart = function () {
+      controller: function ($scope, $localStorage, ngDialog) {
+        $scope.chooseChart = function (type,material) {
           var dialog = ngDialog.open({
             template: 'tpl/app/modal/choose-chart.html',
             controller:'ChooseChartModalCtrl',
@@ -20,8 +20,13 @@ angular.module('nevermore')
             closeByDocument: true,
             closeByEscape: true,
             resolve: {
-
+              type : function() {
+                return type;
+              },
+              material: function () {
+                return material;
               }
+            }
           });
         }
       }
