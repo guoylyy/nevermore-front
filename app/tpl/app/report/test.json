@@ -438,7 +438,8 @@
             }
         ]
     },
-    "7questions": [
+    "7questions": {
+      "choice":[
         {
             "label": "a",
             "question": "铸铁拉伸受（拉、剪）应力破坏",
@@ -454,7 +455,7 @@
                         "content": "剪"
                     }
                 ],
-                "answer": "A"
+                "answer": ""
             }
         },
         {
@@ -472,7 +473,7 @@
                         "content": "压"
                     }
                 ],
-                "answer": "A"
+                "answer": ""
             }
         },
         {
@@ -494,7 +495,7 @@
                         "content": "等于"
                     }
                 ],
-                "answer": "A"
+                "answer": ""
             }
         },
         {
@@ -516,7 +517,7 @@
                         "content": "等于"
                     }
                 ],
-                "answer": "A"
+                "answer": ""
             }
         },
         {
@@ -538,7 +539,7 @@
                         "content": "等于"
                     }
                 ],
-                "answer": "A"
+                "answer": ""
             }
         },
         {
@@ -556,7 +557,7 @@
                         "content": "钢"
                     }
                 ],
-                "answer": "A"
+                "answer": ""
             }
         },
         {
@@ -574,13 +575,18 @@
                         "content": "钢"
                     }
                 ],
-                "answer": "A"
+                "answer": ""
             }
         }
     ],
-    "question": "通过试验，试从强度、塑性、断口形状和破坏原因等方面分析、对比低碳钢和铸铁在拉伸、压缩试验中的力学性能",
-    "answer": {
-        "type": "question",
-        "answer": "aa"
-    }
+    "text":[
+      {
+        "question": "通过试验，试从强度、塑性、断口形状和破坏原因等方面分析、对比低碳钢和铸铁在拉伸、压缩试验中的力学性能",
+        "answer": {
+            "type": "question",
+            "answer": "aa"
+        }
+      }
+    ]
+  }
 }

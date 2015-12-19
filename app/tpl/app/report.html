@@ -153,41 +153,26 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
           <label class="">实验相关问答</label>
-          <label class="pull-right">共20题，已完成10题</label>
+          <label class="pull-right">共{{data['7questions'].choice.length+data['7questions'].text.length}}题，已完成{{completed_question}}题</label>
           <div class="line line-dashed line-lg pull-in"></div>
           <div class="form-group pull-in clearfix" style="padding-left:20px">
-            <label class="text-muted">1、铸铁受拉伸力（拉、剪）而破坏？</label>
-            <div class="l_space">
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios"  value="option1">
-                  是
-                </label>
+            <div ng-repeat = "question in data['7questions'].choice">
+              <label class="text-muted">{{question.label}}) {{question.question}}</label>
+              <div class="l_space">
+                <div class="radio" ng-repeat="option in question.choice.options">
+                  <label>
+                    <input type="radio" value="{{option.label}}" ng-model="question.choice.answer">
+                    {{option.label}}. {{option.content}}
+                  </label>
+                </div>
               </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios"  value="option2">
-                  否
-                </label>
-              </div>
+              <div class="line line-dashed line-lg pull-in"></div>
             </div>
 
-            <div class="line line-dashed line-lg pull-in"></div>
-
-            <label class="text-muted">2、铸铁受拉伸力（拉、剪）而破坏？</label>
-            <div class="l_space">
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios2"  value="option1">
-                  是
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios2"  value="option2">
-                  否
-                </label>
-              </div>
+            <div ng-repeat = "question in data['7questions'].text">
+              <label class="text-muted">{{question.question}}</label>
+              <textarea class="form-control ng-pristine ng-valid ng-touched" placeholder="" rows="5" ng-model="question.answer.answer" aria-multiline="true" aria-invalid="false"></textarea>
+              <div class="line line-dashed line-lg pull-in"></div>
             </div>
 
           </div>
@@ -202,6 +187,7 @@
           </div>
           <div class="col-sm-1"></div>
         </footer>
+        <div class="line line-dashed line-lg pull-in"></div>
       </div>
 
 </div>
