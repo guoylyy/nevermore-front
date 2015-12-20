@@ -11,6 +11,9 @@ angular.module('nevermore')
     return {
       templateUrl: 'tpl/app/blocks/graphic-table.html',
       restrict: 'E',
+      scope: {
+        editable: '='
+      },
       controller: function ($scope, $localStorage, ngDialog) {
         $scope.chooseChart = function (type,material) {
           var dialog = ngDialog.open({

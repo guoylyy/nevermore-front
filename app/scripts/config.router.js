@@ -194,6 +194,23 @@ angular.module('nevermore')
               }]
             }
           })
+          .state('app.course.report-result', {
+            url: '^/app/course/report/result',
+            templateUrl: 'tpl/app/report-result.html',
+            controller: 'ReportResultCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/report-result.js',
+                  'scripts/directives/app/graphic-table.js',
+                  'scripts/directives/app/lashen-report.js',
+                  'NmDatepicker',
+                  'ngDialog',
+                  'scripts/controllers/app/modal/choose-chart.js'
+                ]);
+              }]
+            }
+          })
           .state('app.profile', {
             abstract: true,
             url: '^/app/profile',

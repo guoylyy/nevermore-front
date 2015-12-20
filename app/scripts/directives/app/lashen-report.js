@@ -12,6 +12,9 @@ angular.module('nevermore')
       templateUrl: 'tpl/app/blocks/lashen-report.html',
       restrict: 'EA',
       require: 'ngModel',
+      scope: {
+        editable: '='
+      },
       link:function(scope, element, attrs, ngModelCtrl) {
         scope.title = attrs.title;
         ngModelCtrl.$render = function () {
