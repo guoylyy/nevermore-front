@@ -9,27 +9,27 @@
       <div class="form-group">
         <div class="col-sm-1"></div>
         <div class="col-sm-2">
-        <a class="btn btn-sm btn-bg btn-rounded btn-default btn-icon" ng-class="{'btn_step_doing':report_step==1,'btn_step_done':report_step>1}"><i class="fa">1</i></a>
+        <a class="btn btn-sm btn-bg btn-rounded btn-icon" ng-class="{'btn_step_doing':report_step==1,'btn_step_done':report_step>1}"><i class="fa">1</i></a>
         <label class="text-muted" style="margin-left:5px;">基本信息</label>
         </div>
 
         <div class="col-sm-2">
-        <a class="btn btn-sm btn-bg btn-rounded btn-default btn-icon" ng-class="{'btn_step_undo':report_step<2,'btn_step_doing':report_step==2,'btn_step_done':report_step>2}"><i class="fa">2</i></a>
+        <a class="btn btn-sm btn-bg btn-rounded btn-icon" ng-class="{'btn_step_undo':report_step<2,'btn_step_doing':report_step==2,'btn_step_done':report_step>2}"><i class="fa">2</i></a>
         <label class="text-muted" style="margin-left:5px;">测量数据</label>
         </div>
 
         <div class="col-sm-2">
-        <a class="btn btn-sm  btn-rounded btn-default btn-icon" ng-class="{'btn_step_undo':report_step<3,'btn_step_doing':report_step==3,'btn_step_done':report_step>3}"><i class="fa">3</i></a>
+        <a class="btn btn-sm  btn-rounded btn-icon" ng-class="{'btn_step_undo':report_step<3,'btn_step_doing':report_step==3,'btn_step_done':report_step>3}"><i class="fa">3</i></a>
         <label class="text-muted" style="margin-left:5px;">实验图表</label>
         </div>
 
         <div class="col-sm-2">
-        <a class="btn btn-sm btn-bg btn-rounded btn-default btn-icon" ng-class="{'btn_step_undo':report_step<4,'btn_step_doing':report_step==4,'btn_step_done':report_step>4}"><i class="fa">4</i></a>
+        <a class="btn btn-sm btn-bg btn-rounded btn-icon" ng-class="{'btn_step_undo':report_step<4,'btn_step_doing':report_step==4,'btn_step_done':report_step>4}"><i class="fa">4</i></a>
         <label class="text-muted" style="margin-left:5px;">计算数据</label>
         </div>
 
         <div class="col-sm-2">
-        <a class="btn btn-sm btn-bg btn-rounded btn-default btn-icon" ng-class="{'btn_step_undo':report_step<5,'btn_step_doing':report_step==5,'btn_step_done':report_step>5}"><i class="fa">5</i></a>
+        <a class="btn btn-sm btn-bg btn-rounded btn-icon" ng-class="{'btn_step_undo':report_step<5,'btn_step_doing':report_step==5,'btn_step_done':report_step>5}"><i class="fa">5</i></a>
         <label class="text-muted" style="margin-left:5px;">相关问答</label>
         </div>
 
@@ -193,7 +193,7 @@
               <div class="l_space">
                 <div class="radio" ng-repeat="option in question.choice.options">
                   <label>
-                    <input type="radio" value="{{option.label}}" ng-model="question.choice.answer">
+                    <input type="radio" value="{{option.label}}" ng-model="question.choice.answer" ng-change="question_change()">
                     {{option.label}}. {{option.content}}
                   </label>
                 </div>
@@ -203,7 +203,7 @@
 
             <div ng-repeat = "question in data['7questions'].text">
               <label class="text-muted">{{question.question}}</label>
-              <textarea class="form-control ng-pristine ng-valid ng-touched" placeholder="" rows="5" ng-model="question.answer.answer" aria-multiline="true" aria-invalid="false"></textarea>
+              <textarea class="form-control ng-pristine ng-valid ng-touched" ng-change="question_change()" placeholder="" rows="5" ng-model="question.answer.answer" aria-multiline="true" aria-invalid="false"></textarea>
               <div class="line line-dashed line-lg pull-in"></div>
             </div>
 

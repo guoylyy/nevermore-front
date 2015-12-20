@@ -22,18 +22,22 @@ app.controller('ReportCtrl',  function($scope, $http, $state, $localStorage) {
     $scope.report_step--;
   }
 
-  $scope.$watch("data['7questions']",function(){
+  $scope.question_change = function(){
     $scope.completed_question = 0;
-    $scope.data['7questions'].choice.forEach(function(data) {
-      if (data['choice']['answer']!=null&&data['choice']['answer']!=""&&data['choice']['answer']!=undefined) {
-        $scope.completed_question++;
-      }
-    });
-    $scope.data['7questions'].text.forEach(function(data) {
-      if (data['answer']['answer']!=null&&data['answer']['answer']!=""&&data['answer']['answer']!=undefined) {
-        $scope.completed_question++;
-      }
-    });
-  });
+    if ($scope.data) {
+      $scope.data['7questions'].choice.forEach(function(data) {
+        if (data['choice']['answer']!=null&&data['choice']['answer']!=""&&data['choice']['answer']!=undefined) {
+          $scope.completed_question++;
+        }
+      });
+      $scope.data['7questions'].text.forEach(function(data) {
+        if (data['answer']['answer']!=null&&data['answer']['answer']!=""&&data['answer']['answer']!=undefined) {
+          $scope.completed_question++;
+        }
+      });
+    }
+  };
+
+  $scope.question_change();
 
 });
