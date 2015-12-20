@@ -1,0 +1,40 @@
+<div class="form-group">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+    <div class="panel-heading">{{title}}</div>
+    <table st-table="rowCollectionBasic" class="table table-bordered table-striped table_center">
+      <thead>
+        <tr>
+          <th>材料</th>
+          <th style="width:33%">屈服荷载</th>
+          <th style="width:33%">最大荷载</th>
+        </tr>
+        <tr style="padding-bottom:0px;padding-top:0px">
+          <th>低碳钢</th>
+          <th class="table_cell">
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].qufuhezai">
+            <label ng-show="!editable">{{table[0].qufuhezai}}</label>
+          </th>
+          <th class="table_cell">
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].zuidahezai">
+            <label ng-show="!editable">{{table[0].zuidahezai}}</label>
+          </th>
+        </tr>
+        <tr style="padding-bottom:0px;padding-top:0px">
+          <th>铸铁</th>
+          <th class="table_cell">
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].qufuhezai">
+            <label ng-show="!editable">{{table[1].qufuhezai}}</label>
+          </th>
+          <th class="table_cell">
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].zuidahezai">
+            <label ng-show="!editable">{{table[1].zuidahezai}}</label>
+          </th>
+        </tr>
+      </thead>
+
+    </table>
+  </div>
+  </div>
+
+</div>

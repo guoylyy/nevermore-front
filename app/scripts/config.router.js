@@ -187,6 +187,9 @@ angular.module('nevermore')
                   'scripts/controllers/app/report.js',
                   'scripts/directives/app/graphic-table.js',
                   'scripts/directives/app/lashen-report.js',
+                  'scripts/directives/app/yasuo-report.js',
+                  'scripts/directives/app/lashen-experiment.js',
+                  'scripts/directives/app/yasuo-experiment.js',
                   'NmDatepicker',
                   'ngDialog',
                   'scripts/controllers/app/modal/choose-chart.js'
@@ -204,6 +207,9 @@ angular.module('nevermore')
                   'scripts/controllers/app/report-result.js',
                   'scripts/directives/app/graphic-table.js',
                   'scripts/directives/app/lashen-report.js',
+                  'scripts/directives/app/yasuo-report.js',
+                  'scripts/directives/app/lashen-experiment.js',
+                  'scripts/directives/app/yasuo-experiment.js',
                   'NmDatepicker',
                   'ngDialog',
                   'scripts/controllers/app/modal/choose-chart.js'

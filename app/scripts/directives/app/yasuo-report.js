@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc directive
- * @name morningStudioApp.directive:llashenReport
+ * @name morningStudioApp.directive:yasuoReport
  * @description
- * # lashenReport
+ * # yasuoReport
  */
 angular.module('nevermore')
-  .directive('lashen', function () {
+  .directive('yasuo', function () {
     return {
-      templateUrl: 'tpl/app/blocks/lashen-report.html',
+      templateUrl: 'tpl/app/blocks/yasuo-report.html',
       restrict: 'EA',
       require: 'ngModel',
       scope: {
