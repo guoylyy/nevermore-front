@@ -278,8 +278,7 @@
                     "answer": "A"
                 }
             }
-        ]
-    },
+        ],
     "compress": [
         {
             "material": "ditangang",
@@ -343,7 +342,7 @@
                 "answer": "A"
             }
         }
-    ],
+    ]},
     "6performance": {
         "ditangang": [
             {

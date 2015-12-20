@@ -58,6 +58,56 @@
             </table>
           </th>
         </tr>
+
+        <tr style="padding-bottom:0px;padding-top:0px">
+          <th>压缩</th>
+          <th class="table_cell" style="padding:0px">
+            <table st-table="rowCollectionBasic" class="table table-bordered" style="margin-bottom:0px; border:0px none;">
+              <thread>
+                <tr>
+                  <th style="border-top:0px none; border-bottom:0px none;border-left:0px none; border-right:0px none;height:150px">低碳钢</th>
+                </tr>
+                <tr>
+                  <th style="border-bottom:0px none;border-left:0px none; border-right:0px none; height:150px">铸铁</th>
+                </tr>
+              </thread>
+            </table>
+          </th>
+
+          <th class="table_cell" style="padding:0px">
+            <table st-table="rowCollectionBasic" class="table table-bordered" style="margin-bottom:0px; border:0px none;">
+              <thread>
+                <tr>
+                  <th style="border-top:0px none; border-bottom:0px none;border-left:0px none; border-right:0px none;height:150px">
+                    <button type="submit" class="btn btn-info" ng-click="chooseChart('compress','ditangang')" ng-show="editable">点击选择图表</button>
+                  </th>
+                </tr>
+                <tr>
+                  <th style="border-bottom:0px none;border-left:0px none; border-right:0px none; height:150px">
+                    <button type="submit" class="btn btn-info" ng-click="chooseChart('compress','zhutie')" ng-show="editable">点击选择图表</button>
+                  </th>
+                </tr>
+              </thread>
+            </table>
+          </th>
+          <th class="table_cell" style="padding:0px">
+            <table st-table="rowCollectionBasic" class="table table-bordered" style="margin-bottom:0px; border:0px none;">
+              <thread>
+                <tr>
+                  <th style="border-top:0px none; border-bottom:0px none;border-left:0px none; border-right:0px none;height:150px">
+                    <textarea class="form-control ng-pristine ng-valid ng-touched" placeholder="" rows="5" aria-multiline="true" aria-invalid="false" ng-disabled="!editable"></textarea>
+                  </th>
+                </tr>
+                <tr>
+                  <th style="border-bottom:0px none;border-left:0px none; border-right:0px none; height:150px">
+                    <textarea class="form-control ng-pristine ng-valid ng-touched" placeholder="" rows="5" aria-multiline="true" aria-invalid="false" ng-disabled="!editable"></textarea>
+                  </th>
+                </tr>
+              </thread>
+            </table>
+          </th>
+        </tr>
+
       </thead>
 
     </table>
