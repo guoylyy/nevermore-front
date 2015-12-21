@@ -255,7 +255,18 @@ angular.module('nevermore')
             url: '^/app/message',
             templateUrl: 'tpl/app/message.html',
             resolve: {
-
+            }
+          })
+          .state('app.message.list', {
+            url: '^/app/message/list?isRead',
+            templateUrl: 'tpl/app/message-list.html',
+            controller: 'MessageListCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/message-list.js'
+                ]);
+              }]
             }
           })
           .state('app.calendar', {
