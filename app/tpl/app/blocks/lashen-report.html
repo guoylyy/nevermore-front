@@ -1,6 +1,5 @@
 <div class="form-group">
-  <div class="col-sm-1"></div>
-  <div class="col-sm-10">
+  <div class="col-sm-12">
     <div class="panel panel-default">
     <div class="panel-heading">{{title}}</div>
     <table st-table="rowCollectionBasic" class="table table-bordered table-striped table_center">
@@ -30,15 +29,6 @@
                 <th style="padding:0px">
                   <table st-table="rowCollectionBasic" class="table table-bordered" style="margin-bottom:0px; border:0px none;">
                     <tr>
-                        <!-- <th style="border-top:0px none; border-bottom:0px none;border-left:0px none;">(1)</th>
-                        <th style="border-top:0px none; border-bottom:0px none;border-right:0px none;">(2)</th>
-                        <th style="border-top:0px none; border-bottom:0px none;">平均</th>
-                        <th style="border-top:0px none; border-bottom:0px none;border-left:0px none;">(1)</th>
-                        <th style="border-top:0px none; border-bottom:0px none;border-right:0px none;">(2)</th>
-                        <th style="border-top:0px none; border-bottom:0px none;">平均</th>
-                        <th style="border-top:0px none; border-bottom:0px none;border-left:0px none;">(1)</th>
-                        <th style="border-top:0px none; border-bottom:0px none;border-right:0px none;">(2)</th>
-                        <th style="border-top:0px none; border-bottom:0px none;border-right:0px none;">平均</th> -->
                         <div class="col-sm-4 table_wrap">
                           <div class="col-sm-4 table_cell">
                             (1)
@@ -83,81 +73,111 @@
         <tr style="padding-bottom:0px;padding-top:0px">
           <th>低碳钢</th>
           <th class="table_cell">
-            <input placeholder="" class="input-sm form-control ng-isolate-scope" type="text">
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].yuanshibiaoju">
+            <label ng-show="!editable">{{table[0].yuanshibiaoju}}</label>
           </th>
           <th class="table_wrap"  style="padding-left:0px;padding-right:0px">
             <div class="col-sm-4 table_wrap">
               <div class="col-sm-4 table_cell">
-                <input placeholder="" class="input-sm form-control ng-isolate-scope" type="text">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].diameter.sectionI.No1.answer">
+                <label ng-show="!editable">{{table[0].diameter.sectionI.No1.answer}}</label>
               </div>
               <div class="col-sm-4 table_cell">
-                <input placeholder="" class="input-sm form-control ng-isolate-scope" type="text">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].diameter.sectionI.No2.answer">
+                <label ng-show="!editable">{{table[0].diameter.sectionI.No2.answer}}</label>
               </div>
-              <div class="col-sm-4 table_cell"></div>
+              <div class="col-sm-4 table_cell">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].diameter.sectionI.avg.answer">
+                <label ng-show="!editable">{{table[0].diameter.sectionI.avg.answer}}</label>
+              </div>
             </div>
             <div class="col-sm-4 table_wrap">
               <div class="col-sm-4 table_cell">
-                <input placeholder="" class="input-sm form-control ng-isolate-scope" type="text">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].diameter.section2.No1.answer">
+                <label ng-show="!editable">{{table[0].diameter.section2.No1.answer}}</label>
               </div>
               <div class="col-sm-4 table_cell">
-                <input placeholder="" class="input-sm form-control ng-isolate-scope" type="text">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].diameter.section2.No2.answer">
+                <label ng-show="!editable">{{table[0].diameter.section2.No2.answer}}</label>
               </div>
-              <div class="col-sm-4 table_cell"></div>
+              <div class="col-sm-4 table_cell">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].diameter.section2.avg.answer">
+                <label ng-show="!editable">{{table[0].diameter.section2.avg.answer}}</label>
+              </div>
             </div>
             <div class="col-sm-4 table_wrap">
               <div class="col-sm-4 table_cell">
-                <input placeholder="" class="input-sm form-control ng-isolate-scope" type="text">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].diameter.section3.No1.answer">
+                <label ng-show="!editable">{{table[0].diameter.section3.No1.answer}}</label>
               </div>
               <div class="col-sm-4 table_cell">
-                <input placeholder="" class="input-sm form-control ng-isolate-scope" type="text">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].diameter.section3.No2.answer">
+                <label ng-show="!editable">{{table[0].diameter.section3.No2.answer}}</label>
               </div>
               <div class="col-sm-4 table_cell">
-
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].diameter.section3.avg.answer">
+                <label ng-show="!editable">{{table[0].diameter.section3.avg.answer}}</label>
               </div>
             </div>
           </th>
           <th>
-
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].min_CSA">
+            <label ng-show="!editable">{{table[0].min_CSA}}</label>
           </th>
         </tr>
         <tr style="padding-bottom:0px;padding-top:0px">
           <th>铸铁</th>
           <th class="table_cell">
-            <input placeholder="" class="input-sm form-control ng-isolate-scope" type="text">
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].yuanshibiaoju">
+            <label ng-show="!editable">{{table[1].yuanshibiaoju}}</label>
           </th>
           <th class="table_wrap"  style="padding-left:0px;padding-right:0px">
             <div class="col-sm-4 table_wrap">
               <div class="col-sm-4 table_cell">
-                <input placeholder="" class="input-sm form-control ng-isolate-scope" type="text">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].diameter.sectionI.No1.answer">
+                <label ng-show="!editable">{{table[1].diameter.sectionI.No1.answer}}</label>
               </div>
               <div class="col-sm-4 table_cell">
-                <input placeholder="" class="input-sm form-control ng-isolate-scope" type="text">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].diameter.sectionI.No2.answer">
+                <label ng-show="!editable">{{table[1].diameter.sectionI.No2.answer}}</label>
               </div>
-              <div class="col-sm-4 table_cell"></div>
+              <div class="col-sm-4 table_cell">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].diameter.sectionI.avg.answer">
+                <label ng-show="!editable">{{table[1].diameter.sectionI.avg.answer}}</label>
+              </div>
             </div>
             <div class="col-sm-4 table_wrap">
               <div class="col-sm-4 table_cell">
-                <input placeholder="" class="input-sm form-control ng-isolate-scope" type="text">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].diameter.section2.No1.answer">
+                <label ng-show="!editable">{{table[1].diameter.section2.No1.answer}}</label>
               </div>
               <div class="col-sm-4 table_cell">
-                <input placeholder="" class="input-sm form-control ng-isolate-scope" type="text">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].diameter.section2.No2.answer">
+                <label ng-show="!editable">{{table[1].diameter.section2.No2.answer}}</label>
               </div>
-              <div class="col-sm-4 table_cell"></div>
+              <div class="col-sm-4 table_cell">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].diameter.section2.avg.answer">
+                <label ng-show="!editable">{{table[1].diameter.section2.avg.answer}}</label>
+              </div>
             </div>
             <div class="col-sm-4 table_wrap">
               <div class="col-sm-4 table_cell">
-                <input placeholder="" class="input-sm form-control ng-isolate-scope" type="text">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].diameter.section3.No1.answer">
+                <label ng-show="!editable">{{table[1].diameter.section3.No1.answer}}</label>
               </div>
               <div class="col-sm-4 table_cell">
-                <input placeholder="" class="input-sm form-control ng-isolate-scope" type="text">
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].diameter.section3.No2.answer">
+                <label ng-show="!editable">{{table[1].diameter.section3.No2.answer}}</label>
               </div>
               <div class="col-sm-4 table_cell">
-
+                <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].diameter.section3.avg.answer">
+                <label ng-show="!editable">{{table[1].diameter.section3.avg.answer}}</label>
               </div>
             </div>
           </th>
           <th>
-
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].min_CSA">
+            <label ng-show="!editable">{{table[1].min_CSA}}</label>
           </th>
         </tr>
       </thead>
@@ -165,14 +185,5 @@
     </table>
   </div>
   </div>
-  <div class="col-sm-1"></div>
-  <div class="line line-dashed line-lg pull-in"></div>
-  <!-- <div class="form-group">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-11">
-
-    </div>
-  </div> -->
-  <!-- <div class="col-sm-1"></div> -->
 
 </div>

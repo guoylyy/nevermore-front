@@ -81,6 +81,7 @@ angular.module('nevermore').service('sessionService',
 			delete $rootScope.token;
 			delete $localStorage.semester;
 			delete $rootScope.semester;
+			delete $localStorage.report;
 			$state.go('portal.login');
 		};
 		this.headers = function(){

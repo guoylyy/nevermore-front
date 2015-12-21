@@ -1,0 +1,88 @@
+<div class="form-group">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+    <div class="panel-heading">{{title}}</div>
+    <table st-table="rowCollectionBasic" class="table table-bordered table-striped table_center">
+      <thead>
+        <tr>
+          <th>材料</th>
+          <th style="width:15%">长度</th>
+          <th style="padding:0px;width:60%">
+            <table st-table="rowCollectionBasic" class="table " style="margin-bottom:0px">
+              <tr>
+                <th style="border-top:0px none">直径</th>
+              </tr>
+              <tr>
+                <th style="padding:0px">
+                <table st-table="rowCollectionBasic" class="table table-bordered" style="margin-bottom:0px; border:0px none;">
+                  <thread>
+                    <tr>
+                      <th style="border-top:0px none; border-bottom:0px none;border-left:0px none;" class="col-sm-4">(1)</th>
+                      <th style="border-top:0px none; border-bottom:0px none;border-right:0px none;" class="col-sm-4">(2)</th>
+                      <th style="border-top:0px none; border-bottom:0px none;border-right:0px none;" class="col-sm-4">平均</th>
+                    </tr>
+                  </thread>
+                </table>
+              </th>
+              </tr>
+            </table>
+          </th>
+          <th style="width:15%">横截面积</th>
+        </tr>
+        <tr style="padding-bottom:0px;padding-top:0px">
+          <th>低碳钢</th>
+          <th class="table_cell">
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].length.answer">
+            <label ng-show="!editable">{{table[0].length.answer}}</label>
+          </th>
+          <th class="table_wrap"  style="padding-left:0px;padding-right:0px">
+            <div class="col-sm-4 table_wrap">
+              <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].diameter.No1.answer">
+              <label ng-show="!editable">{{table[0].diameter.No1.answer}}</label>
+            </div>
+            <div class="col-sm-4 table_wrap">
+              <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].diameter.No2.answer">
+              <label ng-show="!editable">{{table[0].diameter.No2.answer}}</label>
+            </div>
+            <div class="col-sm-4 table_wrap">
+              <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].diameter.avg.answer">
+              <label ng-show="!editable">{{table[0].diameter.avg.answer}}</label>
+            </div>
+          </th>
+          <th>
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].CSA">
+            <label ng-show="!editable">{{table[0].CSA}}</label>
+          </th>
+        </tr>
+        <tr style="padding-bottom:0px;padding-top:0px">
+          <th>铸铁</th>
+          <th class="table_cell">
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].length.answer">
+            <label ng-show="!editable">{{table[1].length.answer}}</label>
+          </th>
+          <th class="table_wrap"  style="padding-left:0px;padding-right:0px">
+            <div class="col-sm-4 table_wrap">
+              <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].diameter.No1.answer">
+              <label ng-show="!editable">{{table[1].diameter.No1.answer}}</label>
+            </div>
+            <div class="col-sm-4 table_wrap">
+              <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].diameter.No2.answer">
+              <label ng-show="!editable">{{table[1].diameter.No2.answer}}</label>
+            </div>
+            <div class="col-sm-4 table_wrap">
+              <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].diameter.avg.answer">
+              <label ng-show="!editable">{{table[1].diameter.avg.answer}}</label>
+            </div>
+          </th>
+          <th>
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].CSA">
+            <label ng-show="!editable">{{table[1].CSA}}</label>
+          </th>
+        </tr>
+      </thead>
+
+    </table>
+  </div>
+  </div>
+
+</div>

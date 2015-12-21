@@ -9,12 +9,6 @@ app.controller('ReservationDetailModalCtrl', function($scope, data, qService, Re
           $scope.data.labTeachers = data.data;
         });
     }
-    $scope.cancel = function() {
-      $modalInstance.dismiss('canceled');
-    };
-    $scope.save = function() {
-      $modalInstance.close($scope.data);
-    };
 
     $scope.cancelReservation = function(rId){
       AlertTool.deleteConfirm({title:'确定要取消这个预约么?',text:''}).then(function(isConfirm) {

@@ -1,0 +1,591 @@
+{
+    "title": "拉伸和压缩试验报告",
+    "student": {
+        "class": "三班",
+        "name": "李糜"
+    },
+    "1date": "2015-12-15",
+    "2equipment": {
+        "equipment_name": "挖掘机",
+        "measure_name": "尺",
+        "min_measure": 1
+    },
+    "3origin_size": {
+        "3.1stretch_test-piece": [
+            {
+                "material": "ditangang",
+                "yuanshibiaoju": 1,
+                "diameter": {
+                    "sectionI": {
+                        "No1": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        },
+                        "No2": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        },
+                        "avg": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        }
+                    },
+                    "section2": {
+                        "No1": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        },
+                        "No2": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        },
+                        "avg": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        }
+                    },
+                    "section3": {
+                        "No1": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        },
+                        "No2": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        },
+                        "avg": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        }
+                    }
+                },
+                "min_CSA": 10
+            },
+            {
+                "material": "zhutie",
+                "yuanshibiaoju": 1,
+                "diameter": {
+                    "sectionI": {
+                        "No1": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        },
+                        "No2": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        },
+                        "avg": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        }
+                    },
+                    "section2": {
+                        "No1": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        },
+                        "No2": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        },
+                        "avg": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        }
+                    },
+                    "section3": {
+                        "No1": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        },
+                        "No2": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        },
+                        "avg": {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.5
+                        }
+                    }
+                },
+                "min_CSA": 10
+            }
+        ],
+        "3.2compress_test-piece": [
+            {
+                "material": "ditangang",
+                "length": {
+                    "type": "fill-in-the-blank",
+                    "answer": 1.5
+                },
+                "diameter": {
+                    "No1": {
+                        "type": "fill-in-the-blank",
+                        "answer": 1.5
+                    },
+                    "No2": {
+                        "type": "fill-in-the-blank",
+                        "answer": 1.5
+                    },
+                    "avg": {
+                        "type": "fill-in-the-blank",
+                        "answer": 1.5
+                    }
+                },
+                "CSA": 1.5
+            },
+            {
+                "material": "zhutie",
+                "length": {
+                    "type": "fill-in-the-blank",
+                    "answer": 1.5
+                },
+                "diameter": {
+                    "No1": {
+                        "type": "fill-in-the-blank",
+                        "answer": 1.5
+                    },
+                    "No2": {
+                        "type": "fill-in-the-blank",
+                        "answer": 1.5
+                    },
+                    "avg": {
+                        "type": "fill-in-the-blank",
+                        "answer": 1.5
+                    }
+                },
+                "CSA": 1.5
+            }
+        ]
+    },
+    "4data": {
+        "4.1stretch": [
+            {
+                "material": "ditangang",
+                "qufuhezai": 1.5,
+                "zuidahezai": 1.5,
+                "duanhoubiaoju": 1.5,
+                "duanliechuzuixiaozhijing": {
+                    "No1": {
+                        "type": "fill-in-the-blank",
+                        "answer": 1.5
+                    },
+                    "No2": {
+                        "type": "fill-in-the-blank",
+                        "answer": 1.5
+                    },
+                    "avg": {
+                        "type": "fill-in-the-blank",
+                        "answer": 1.5
+                    }
+                }
+            },
+            {
+                "material": "zhutie",
+                "qufuhezai": 1.5,
+                "zuidahezai": 1.5,
+                "duanhoubiaoju": 1.5,
+                "duanliechuzuixiaozhijing": {
+                    "No1": {
+                        "type": "fill-in-the-blank",
+                        "answer": 1.5
+                    },
+                    "No2": {
+                        "type": "fill-in-the-blank",
+                        "answer": 1.5
+                    },
+                    "avg": {
+                        "type": "fill-in-the-blank",
+                        "answer": 1.5
+                    }
+                }
+            }
+        ],
+        "4.2compress": [
+            {
+                "material": "ditangang",
+                "qufuhezai": 1.5,
+                "zuidahezai": 1.5
+            },
+            {
+                "material": "zhutie",
+                "qufuhezai": 1.5,
+                "zuidahezai": 1.5
+            }
+        ]
+    },
+    "5plot": {
+        "stretch": [
+            {
+                "material": "ditangang",
+                "P-deltaL": {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "label": "A",
+                            "answer": "图1"
+                        },
+                        {
+                            "label": "B",
+                            "answer": "图2"
+                        }
+                    ],
+                    "answer": "A"
+                },
+                "duankouxingzhuanghetezheng": {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "label": "A",
+                            "answer": "特征1"
+                        },
+                        {
+                            "label": "B",
+                            "answer": "特征2"
+                        }
+                    ],
+                    "answer": "A"
+                }
+            },
+            {
+                "material": "zhutie",
+                "P-deltaL": {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "label": "A",
+                            "answer": "图1"
+                        },
+                        {
+                            "label": "B",
+                            "answer": "图2"
+                        }
+                    ],
+                    "answer": "A"
+                },
+                "duankouxingzhuanghetezheng": {
+                    "type": "choice",
+                    "options": [
+                        {
+                            "label": "A",
+                            "answer": "特征1"
+                        },
+                        {
+                            "label": "B",
+                            "answer": "特征2"
+                        }
+                    ],
+                    "answer": "A"
+                }
+            }
+        ],
+    "compress": [
+        {
+            "material": "ditangang",
+            "P-deltaL": {
+                "type": "choice",
+                "options": [
+                    {
+                        "label": "A",
+                        "answer": "图1"
+                    },
+                    {
+                        "label": "B",
+                        "answer": "图2"
+                    }
+                ],
+                "answer": "A"
+            },
+            "duankouxingzhuanghetezheng": {
+                "type": "choice",
+                "options": [
+                    {
+                        "label": "A",
+                        "answer": "特征1"
+                    },
+                    {
+                        "label": "B",
+                        "answer": "特征2"
+                    }
+                ],
+                "answer": "A"
+            }
+        },
+        {
+            "material": "zhutie",
+            "P-deltaL": {
+                "type": "choice",
+                "options": [
+                    {
+                        "label": "A",
+                        "content": "图1"
+                    },
+                    {
+                        "label": "B",
+                        "content": "图2"
+                    }
+                ],
+                "answer": "A"
+            },
+            "duankouxingzhuanghetezheng": {
+                "type": "choice",
+                "options": [
+                    {
+                        "label": "A",
+                        "content": "特征1"
+                    },
+                    {
+                        "label": "B",
+                        "content": "特征2"
+                    }
+                ],
+                "answer": "A"
+            }
+        }
+    ]},
+    "6performance": {
+        "ditangang": [
+            {
+                "subject": "qufujixian",
+                "formula": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                },
+                "result": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                }
+            },
+            {
+                "subject": "qiangdujixian",
+                "formula": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                },
+                "result": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                }
+            },
+            {
+                "subject": "yanshenlv",
+                "formula": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                },
+                "result": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                }
+            },
+            {
+                "subject": "jiemianshousuolv",
+                "formula": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                },
+                "result": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                }
+            },
+            {
+                "subject": "yasuoqufujixian",
+                "formula": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                },
+                "result": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                }
+            }
+        ],
+        "zhutie": [
+            {
+                "subject": "qiangdujixian",
+                "formula": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                },
+                "result": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                }
+            },
+            {
+                "subject": "yanshenlv",
+                "formula": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                },
+                "result": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                }
+            },
+            {
+                "subject": "yasuoqiangdujixian",
+                "formula": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                },
+                "result": {
+                    "type": "fill-in-the-blank",
+                    "answer": "aaaa"
+                }
+            }
+        ]
+    },
+    "7questions": {
+      "choice":[
+        {
+            "label": "a",
+            "question": "铸铁拉伸受（拉、剪）应力破坏",
+            "choice": {
+                "type": "choice",
+                "options": [
+                    {
+                        "label": "A",
+                        "content": "拉"
+                    },
+                    {
+                        "label": "B",
+                        "content": "剪"
+                    }
+                ],
+                "answer": ""
+            }
+        },
+        {
+            "label": "b",
+            "question": "铸铁压缩受（剪、压）应力破坏",
+            "choice": {
+                "type": "choice",
+                "options": [
+                    {
+                        "label": "A",
+                        "content": "剪"
+                    },
+                    {
+                        "label": "B",
+                        "content": "压"
+                    }
+                ],
+                "answer": ""
+            }
+        },
+        {
+            "label": "c",
+            "question": "铸铁抗拉能力（大于、小于、等于）抗压能力",
+            "choice": {
+                "type": "choice",
+                "options": [
+                    {
+                        "label": "A",
+                        "content": "大于"
+                    },
+                    {
+                        "label": "B",
+                        "content": "小于"
+                    },
+                    {
+                        "label": "C",
+                        "content": "等于"
+                    }
+                ],
+                "answer": ""
+            }
+        },
+        {
+            "label": "d",
+            "question": "低碳钢抗剪能力（大于、小于、等于）抗拉能力",
+            "choice": {
+                "type": "choice",
+                "options": [
+                    {
+                        "label": "A",
+                        "content": "大于"
+                    },
+                    {
+                        "label": "B",
+                        "content": "小于"
+                    },
+                    {
+                        "label": "C",
+                        "content": "等于"
+                    }
+                ],
+                "answer": ""
+            }
+        },
+        {
+            "label": "e",
+            "question": "低碳钢的塑性（大于、小于、等于）铸铁的塑性",
+            "choice": {
+                "type": "choice",
+                "options": [
+                    {
+                        "label": "A",
+                        "content": "大于"
+                    },
+                    {
+                        "label": "B",
+                        "content": "小于"
+                    },
+                    {
+                        "label": "C",
+                        "content": "等于"
+                    }
+                ],
+                "answer": ""
+            }
+        },
+        {
+            "label": "f",
+            "question": "若制造机床的床身，应该选择（铸铁、钢）为材料",
+            "choice": {
+                "type": "choice",
+                "options": [
+                    {
+                        "label": "A",
+                        "content": "铸铁"
+                    },
+                    {
+                        "label": "B",
+                        "content": "钢"
+                    }
+                ],
+                "answer": ""
+            }
+        },
+        {
+            "label": "g",
+            "question": "若制造内燃机气缸活塞杆，应该选择（铸铁、钢）为材料",
+            "choice": {
+                "type": "choice",
+                "options": [
+                    {
+                        "label": "A",
+                        "content": "铸铁"
+                    },
+                    {
+                        "label": "B",
+                        "content": "钢"
+                    }
+                ],
+                "answer": ""
+            }
+        }
+    ],
+    "text":[
+      {
+        "question": "通过试验，试从强度、塑性、断口形状和破坏原因等方面分析、对比低碳钢和铸铁在拉伸、压缩试验中的力学性能",
+        "answer": {
+            "type": "question",
+            "answer": ""
+        }
+      }
+    ]
+  }
+}

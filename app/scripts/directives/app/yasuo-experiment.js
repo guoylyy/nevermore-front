@@ -7,9 +7,9 @@
  * # lashenReport
  */
 angular.module('nevermore')
-  .directive('lashen', function () {
+  .directive('yasuoexp', function () {
     return {
-      templateUrl: 'tpl/app/blocks/lashen-report.html',
+      templateUrl: 'tpl/app/blocks/yasuo-experiment.html',
       restrict: 'EA',
       require: 'ngModel',
       scope: {
