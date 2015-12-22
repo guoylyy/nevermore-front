@@ -1,10 +1,8 @@
 'use strict';
 
-app.controller('ChooseChartModalCtrl', function($scope, $localStorage,type, material, expId) {
+app.controller('ChooseChartModalCtrl', function($scope, type, material, expId, table) {
     $scope.data = {};
-    var key = ""+expId;
-    var graphic = "5plot";
-    $localStorage.report[key][graphic][type].forEach(function(data){
+    table[type].forEach(function(data){
       if (data['material']==material) {
         $scope.data = data['P-deltaL'];
       }

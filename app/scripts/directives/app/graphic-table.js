@@ -11,9 +11,18 @@ angular.module('nevermore')
     return {
       templateUrl: 'tpl/app/blocks/graphic-table.html',
       restrict: 'E',
+      require: 'ngModel',
       scope: {
         editable: '=',
         experiment: '='
+      },
+      link:function(scope, element, attrs, ngModelCtrl) {
+        ngModelCtrl.$render = function () {
+          scope.table = ngModelCtrl.$viewValue;
+        };
+        scope.$watch('table', function () {
+          ngModelCtrl.$setViewValue(scope.table);
+        });
       },
       controller: function ($scope, $localStorage, ngDialog) {
         $scope.chooseChart = function (type,material) {
@@ -32,6 +41,9 @@ angular.module('nevermore')
               },
               expId: function () {
                 return $scope.experiment;
+              },
+              table: function () {
+                return $scope.table;
               }
             }
           });

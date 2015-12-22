@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ReportResultCtrl',  function($scope, $localStorage, $stateParams, Clazz, Exp, qService, sessionService, Account) {
+app.controller('ReportResultCtrl',  function($scope, $http, $localStorage, $stateParams, Clazz, Exp, qService, sessionService, Account) {
 
   $scope.exp_id = $stateParams.expId;
 
@@ -8,9 +8,13 @@ app.controller('ReportResultCtrl',  function($scope, $localStorage, $stateParams
 
   $scope.student_id = $stateParams.stuId;
 
-  // $scope.student = sessionService.getCurrUser();
-
   $scope.semester = sessionService.getCurrSemeter();
+
+  $scope.correct_answer_view = {
+    'init_data':false,
+    'graphic':false,
+    'experiment_data':false
+  }
 
   qService.tokenHttpGet(Clazz.clazz, {
     id: $scope.class_id
@@ -29,5 +33,17 @@ app.controller('ReportResultCtrl',  function($scope, $localStorage, $stateParams
   }).then(function(rc){
     $scope.student = rc.data;
   });
+
+  $http.get("tpl/app/report/test.json").success(function(data) {
+    $scope.data = data;
+  });
+
+  $scope.show = function (view){
+    $scope.correct_answer_view[view]=true;
+  }
+
+  $scope.hide = function (view){
+    $scope.correct_answer_view[view]=false;
+  }
 
 });
