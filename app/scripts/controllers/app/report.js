@@ -14,7 +14,7 @@ app.controller('ReportCtrl',  function($scope, $http, $state, $localStorage, $st
     $localStorage.report = {};
   }
 
-  var key = ""+$scope.exp_id;
+  var key = $scope.class_id+"-"+$scope.exp_id;
   if (!$localStorage.report.hasOwnProperty(key)) {
     $http.get("tpl/app/report/test.json").success(function(data) {
       $scope.data = data;
