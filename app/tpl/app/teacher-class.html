@@ -134,7 +134,7 @@
                 <span ng-if="record.status=='COMPLETED'">{{record.experimentComment}}</span>
               </td>
               <td class="v-middle" style="width: 20px;">
-                <button class="btn btn-sm btn-default" ng-click="" ng-if="true">查看详情</button>
+                <button class="btn btn-sm btn-default" ui-sref="app.course.report-result({expId:exp_id,classId:class_id,stuId:record.student.id})" ng-if="true">查看详情</button>
               </td>
             </tr>
           </tbody>
