@@ -6,6 +6,8 @@ app.controller('ReportCtrl',  function($scope, $http, $state, $localStorage, $st
 
   $scope.exp_id = $stateParams.expId;
 
+  $scope.class_id = $stateParams.classId;
+
   $scope.completed_question = 0;
 
   if ($localStorage.report==null){

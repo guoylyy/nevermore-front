@@ -178,7 +178,7 @@ angular.module('nevermore')
             }
           })
           .state('app.course.report', {
-            url: '^/app/course/report/:expId',
+            url: '^/app/course/report/:expId/:classId',
             templateUrl: 'tpl/app/report.html',
             controller: 'ReportCtrl',
             resolve: {
