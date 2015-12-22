@@ -9,27 +9,27 @@
       <div class="line line-dashed line-lg pull-in"></div>
 
       <div class="col-sm-4">
-      <label class="text-black" style="">实验名称：</label>
+      <label class="text-black" style="">实验名称：{{exp.name}}</label>
       </div>
 
       <div class="col-sm-4">
-      <label class="text-black" style="">任课教师：</label>
+      <label class="text-black" style="">任课教师：{{clazz.teacher.name}}</label>
       </div>
 
       <div class="col-sm-4">
-      <label class="text-black" style="">实验学期：</label>
+      <label class="text-black" style="">实验学期：{{semester.name}}</label>
       </div>
 
       <div class="col-sm-4">
-        <label class="text-black">姓名:</label> <label class="text-black m-l-sm text-u-l">潘岩</label>
+        <label class="text-black">姓名:</label> <label class="text-black m-l-sm text-u-l">{{student.name}}</label>
       </div>
 
       <div class="col-sm-4">
-        <label class="text-black">学号:</label> <label class="text-black m-l-sm text-u-l">1435846</label>
+        <label class="text-black">学号:</label> <label class="text-black m-l-sm text-u-l">{{student.number}}</label>
       </div>
 
       <div class="col-sm-4">
-        <label class="text-black">班级:</label> <label class="text-black m-l-sm text-u-l">test</label>
+        <label class="text-black">班级:</label> <label class="text-black m-l-sm text-u-l">{{clazz.course.name}} {{clazz.course.number}}</label>
       </div>
 
       <div class="line line-lg pull-in b-b" style="padding-top:15px"></div>
@@ -48,7 +48,7 @@
       <div class="text-danger h4 pull-right" style="font-weight:500;margin-right:20px">19/20</div>
       <div class="line line-dashed line-lg pull-in"></div>
 
-      <graphictable editable="false"></graphictable>
+      <graphictable editable="false" experiment="exp_id"></graphictable>
       <a class="text-info pull-right" style="margin-right:20px;color:#23b7e5;">查看正确答案</a>
       <div class="line line-lg pull-in b-b" style="padding-top:15px"></div>
 
