@@ -2045,6 +2045,14 @@ li.disabled > a:hover,
 li.disabled > a:focus {
   cursor: pointer;
 }
+.empty-list-panel {
+  width: 100%;
+  padding: 50px;
+}
+.empty-list-panel .empty-list-img {
+  margin: 0 auto;
+  display: block;
+}
 .subview3_title {
   border: 0px solid;
   border-left-width: 3px;

@@ -89,7 +89,8 @@ angular.module('nevermore')
                 return $ocLazyLoad.load([
                   'scripts/controllers/app.js',
                   'scripts/directives/app/app-header.js',
-                  'styles/app.css'
+                  'styles/app.css',
+                  'scripts/directives/app/nevermore-empty-panel.js'
                 ]);
               }]
             }
