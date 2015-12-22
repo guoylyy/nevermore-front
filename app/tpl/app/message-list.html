@@ -10,31 +10,21 @@
         </div> -->
 
         <div class="panel-body">
-          <table class="tiger-table-option m-t m-b" style="width: 100%;">
-            <tbody>
-              <tr>
-                <td>
-                  <label class="i-checks m-l m-t-xs m-r-lg">
-                    <input type="checkbox" ng-model="pageData.checkAll" ng-click="checkAll()">
-                    <i></i> 全选
-                  </label>
-                </td>
-
-                <td>
-                  <div class="btn-group dropdown" uib-dropdown>
-                    <button class="btn btn-primary w-sm" ng-click="deleteMessages()">删除</button>
-                    <button class="btn btn-default w-sm" ng-click="markAsRead()">标记已读</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="m-b-sm nav">
+            <button class="btn btn-default m-r-xs" ng-repeat="paramItem in pageData.paramItems"
+              ng-class="paramItem == pageData.currentParam ? 'active' : ''" ng-click="getList(paramItem)">{{paramItem.show_title}}</button>
+          </div>
 
 
-          <table class="table tiger-table tiger-table-panel  text-l" style="width: 100%;">
+          <table class="table text-l" style="width: 100%;">
             <thead>
-              <tr class="tiger-head-tr">
-                <th></th>
+              <tr>
+                <th>
+                  <label class="i-checks">
+                    <input type="checkbox" ng-model="pageData.checkAll" ng-click="checkAll()">
+                    <i></i>
+                  </label>
+                </th>
                 <th class="state-column"></th>
                 <th class="title-column">标题内容</th>
                 <th>提交时间</th>
@@ -54,7 +44,7 @@
                   <span ng-if="!message.isRead" class="unreadTip"></span>
                 </td>
                 <td>
-                  <a href="javascript:void(0);" class="tiger-link" ng-click="viewMessageDetail(message)">{{message.title}}</a>
+                  <a href="javascript:void(0);" ng-click="viewMessageDetail(message)">{{message.title}}</a>
                 </td>
                 <td>
                   {{message.createTime | date}}
@@ -65,29 +55,28 @@
               </tr>
             </tbody>
           </table>
-          <tiger-empty-panel ng-if="pageData.list.length == 0" type="user"></tiger-empty-panel>
+          <nevermore-empty-panel ng-if="pageData.list.length == 0"></nevermore-empty-panel>
 
           <div style="width: 100%;" class="clearfix" >
-            <table class="tiger-table-option" style="width: 100%;">
+            <table class="table" style="width: 100%;">
               <tbody>
                 <tr>
-                  <td>
-                    <label class="i-checks m-l m-t-xs m-r-lg">
+                  <td width="10" style="width: 29px;">
+                    <label class="i-checks m-t-xs">
                       <input type="checkbox" ng-model="pageData.checkAll" ng-click="checkAll()">
-                      <i></i> 全选
+                      <i></i>
                     </label>
                   </td>
-
-                  <td>
-                    <div class="btn-group dropdown" uib-dropdown>
-                      <button class="btn btn-primary w-sm" ng-click="deleteMessages()">删除</button>
-                      <button class="btn btn-default w-sm" ng-click="markAsRead()">标记已读</button>
+                  <td colspan="4">
+                    <div class="btn-group dropdown">
+                      <button class="btn btn-default m-r-sm" ng-click="deleteMessages()">删除</button>
+                      <button class="btn btn-default" ng-click="markAsRead()">标记已读</button>
                     </div>
-                  </td>
-                  <td class="pull-right">
-                    <uib-pagination class="m-t-none m-b-none" ng-if="pageData.list.length > 0" max-size="5" previous-text="上一页" next-text="下一页"
-                      total-items="pageData.paginator.items" items-per-page="10" ng-model="pageData.paginator.page" ng-change="pageChanged()">
-                    </uib-pagination>
+                    <div class="pull-right" ng-if="pageData.list.length > 0">
+                      <uib-pagination class="m-t-none m-b-none" max-size="5" previous-text="上一页" next-text="下一页"
+                        total-items="pageData.paginator.items" items-per-page="10" ng-model="pageData.paginator.page" ng-change="pageChanged()">
+                      </uib-pagination>
+                    </div>
                   </td>
                 </tr>
               </tbody>

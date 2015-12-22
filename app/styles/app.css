@@ -2111,16 +2111,26 @@ li.disabled > a:focus {
 .nevermore-profile-page .form-horizontal .btn-block {
   max-width: 250px;
 }
+.nevermore-message-page .nav button {
+  background-color: #dce2e7;
+}
+.nevermore-message-page .nav button.active {
+  color: #fff !important;
+  background-color: #546478;
+}
 .nevermore-message-page .table {
   font-size: 14px;
   margin-bottom: 5px;
+  border: 1px solid #e1e6eb;
+}
+.nevermore-message-page .table .i-checks {
+  margin-bottom: 0px;
 }
 .nevermore-message-page .table thead tr th {
   background-color: #f5f6fa;
   border-bottom: 1px solid #e1e6eb;
   color: #999;
   font-weight: normal;
-  padding: 8px;
 }
 .nevermore-message-page .table tbody tr td .unreadTip,
 .nevermore-message-page .table tbody tr td .readTip {

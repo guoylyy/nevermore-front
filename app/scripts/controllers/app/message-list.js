@@ -4,9 +4,13 @@ app.controller('MessageListCtrl', ['$scope', '$stateParams',
 function($scope, $stateParams) {
   $scope.pageData = {
     pageTitle: '',
+    checkAll: false,
     queryObject: {
       isRead: null
-    }
+    },
+    list: [],
+    paramItems: [],
+    currentParam: null
   };
   var pageData = $scope.pageData;
 
@@ -20,6 +24,27 @@ function($scope, $stateParams) {
     {"isRead": false, "title": "云端双11火力全开！云服务器5折起，满千元最高送千元！", "createTime": "2015-11-11 18:12:00", "type": "活动消息-优惠活动"}
   ]
 
+  pageData.paramItems = [
+    {"title": "全部类型消息", "show_title": ""},
+    {"title": "课程信息", "count": 1, "show_title": ""},
+    {"title": "实验信息", "count": 0, "show_title": ""},
+    {"title": "通知信息", "count": 3, "show_title": ""},
+    {"title": "站内信息", "count": 0, "show_title": ""},
+    {"title": "其他信息", "count": 0, "show_title": ""},
+  ]
+
+  angular.forEach(pageData.paramItems, function(item) {
+    if (item['count']) {
+      item['show_title'] = item['title'] + "(" + item['count'] + ")";
+    } else {
+      item['show_title'] = item['title'];
+    }
+  });
+  pageData.currentParam = pageData.paramItems[0];
+  $scope.getList = function(paramItem) {
+    pageData.currentParam = paramItem;
+  }
+
   pageData.queryObject.isRead = $stateParams.isRead;
   switch (pageData.queryObject.isRead) {
     case "true":
@@ -32,5 +57,22 @@ function($scope, $stateParams) {
       pageData.pageTitle = '全部消息';
       break;
   }
+
+  //全选
+  $scope.checkAll = function() {
+      var markAs = pageData.checkAll;
+      markCheckOfList(pageData.list, markAs);
+  };
+
+  // 给返回的用户打标签
+  function markCheckOfList(list, checkValue) {
+    if(!checkValue){
+      pageData.checkAll = checkValue;
+    }
+    for (var i = 0; i < list.length; i++) {
+      list[i]['isCheck'] = checkValue;
+      list[i]['birthday'] = new Date(list[i].birthday);
+    }
+  };
 
 }]);
