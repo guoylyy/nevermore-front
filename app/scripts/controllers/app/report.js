@@ -1,5 +1,5 @@
 'use strict';
-
+//
 app.controller('ReportCtrl',  function($scope, $http, $state, $localStorage) {
 
   $scope.report_step = 1;
