@@ -12,7 +12,8 @@ angular.module('nevermore')
       templateUrl: 'tpl/app/blocks/graphic-table.html',
       restrict: 'E',
       scope: {
-        editable: '='
+        editable: '=',
+        experiment: '='
       },
       controller: function ($scope, $localStorage, ngDialog) {
         $scope.chooseChart = function (type,material) {
@@ -28,6 +29,9 @@ angular.module('nevermore')
               },
               material: function () {
                 return material;
+              },
+              expId: function () {
+                return $scope.experiment;
               }
             }
           });

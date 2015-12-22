@@ -1,17 +1,25 @@
 'use strict';
 //
-app.controller('ReportCtrl',  function($scope, $http, $state, $localStorage) {
+app.controller('ReportCtrl',  function($scope, $http, $state, $localStorage, $stateParams) {
 
   $scope.report_step = 1;
 
+  $scope.exp_id = $stateParams.expId;
+
   $scope.completed_question = 0;
 
-  if ($localStorage.report == null) {
+  if ($localStorage.report==null){
+    $localStorage.report = {};
+  }
+
+  var key = ""+$scope.exp_id;
+  if (!$localStorage.report.hasOwnProperty(key)) {
     $http.get("tpl/app/report/test.json").success(function(data) {
-      $scope.data = $localStorage.report = data;
+      $scope.data = data;
+      $localStorage.report[key] = data;
     });
   }else {
-    $scope.data = $localStorage.report;
+    $scope.data = $localStorage.report[key];
   }
 
   $scope.next = function() {

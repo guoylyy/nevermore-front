@@ -23,7 +23,6 @@
             <th style="width: 100px;">评语</th>
             <th style="width: 20px;"></th>
             <th style="width: 20px;"></th>
-            <th style="width: 20px;"></th>
           </tr>
         </thead>
         <tbody>
@@ -36,15 +35,11 @@
             <td style="width: 90px;" class="v-middle">{{eachExpResult.experiment_record |isEmpty}}</td>
             <td style="width: 100px;" class="v-middle">{{eachExpResult.experiment_comment| isEmpty}}</td>
             <td style="width: 20px;" class="v-middle">
-              <button class="btn btn-sm btn-default" ng-click="view_record(exp.experimentId)" ng-if="true">查看详情</button>
+              <button class="btn btn-sm btn-default" ng-click="" ng-if="true">查看详情</button>
             </td>
 
             <td style="width: 20px;" class="v-middle">
-              <button class="btn btn-sm btn-default" ng-click="view_record(exp.experimentId)" ng-if="true">上传作业</button>
-            </td>
-
-            <td style="width: 20px;" class="v-middle">
-              <button class="btn btn-sm btn-default" ng-click="view_record(exp.experimentId)" ng-if="true">下载模板</button>
+              <button class="btn btn-sm btn-default" ui-sref="app.course.report({expId:eachExpResult.expId})" ng-if="true">录入试卷</button>
             </td>
           </tr>
         </tbody>
