@@ -25,6 +25,9 @@ app.controller('TeacherClassCtrl', function($scope,
   };
 
   $scope.pageStudent = function() {
+    //这写法莫名其妙。。。clazz-factory中明明封装好了方法，为何还要用qService？
+    //如果为了异步流程控制，$resource的返回值中包括promise对象，也无需再引入qService。
+    //还是此处有深意，我其实没看懂? 
     qService.tokenHttpGet(Clazz.studentListByPage, {
         "id": class_id,
         "pageSize": pageSize,
