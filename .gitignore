@@ -9,5 +9,5 @@ bower_components
 .idea/
 nm.run.config.js
 
-.styles/
-.md
+./app/styles
+*.md
