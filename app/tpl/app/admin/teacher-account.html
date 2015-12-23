@@ -1,0 +1,54 @@
+<div class="vbox">
+    <form id = "actionBar" class="form-inline wrapper lter b-b bg-white">
+        <input type="text" class="form-control searchInputScale" placeholder="搜索：输入工号或姓名" ng-class = "{'': isListing(), 'searchInputExtend': !isListing()}" ng-model="searchWord" ng-focus = "searching('listing')" ng-blur = "listing('searching')"/>
+        <button class="btn btn-info searchButtonOpacity" ng-class = "{'': isListing(), 'searchButtonShow': !isListing()}" ng-mousedown = "searched()">搜索</button>
+        <button class="btn btn-primary listingButtonOpacity" ng-class = "{'': !isSearched(), 'listingButtonShow': isSearched()}" ng-click="listing()">返回</button>
+        <button class="btn btn-info pull-right addAccountButtonOpacity" ng-click="addAccount()" ng-class = "{'': isListing(), 'addAccountButtonHide': !isListing()}">添加教师</button>
+    </form>
+    <div class = "wrapper-md">
+        <div class="panel panel-default">
+            <table class = "table table-striped b-t b-light">
+                <thead>
+                    <tr>
+                        <th style="width: 25%; min-width: 205px;">工号</th>
+                        <th style="width: 25%; min-width: 205px;">名字</th>
+                        <th style="width: 25%; min-width: 205px;">性别</th>
+                        <th style="width: 25%; min-width: 205px;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="account in accounts.data">
+                        <td>
+                            <span>{{account.number}}</span>
+                        </td>
+                        <td>
+                            <span>{{account.name}}</span>
+                        </td>
+                        <td>
+                            <span>{{account.gender | genderFilter}}</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" ng-click="modifyAccount(account)"> 
+                                编辑
+                            </button>
+                            <button class="btn btn-sm btn-primary" ng-click="modifyPassword(account)">修改密码</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+        <footer class="panel-footer">
+          <div class="row clearfix" style="width: 100%;" >
+            <div class="pull-left col-sm-4 m-t-sm">
+              <span class="text-muted inline m-t-sm">{{accounts.curPageNum}}/{{accounts.totalPageNum}}&nbsp;&nbsp;&nbsp;共&nbsp;{{accounts.totalItemNum}}&nbsp;个教师</span>
+            </div>
+              <div class="pull-right">
+            <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="accounts.totalItemNum"
+              ng-model="accounts.curPageNum" ng-change="pageChanged()"></uib-pagination>
+            </div>
+          </div>
+      </footer>       
+    </div>
+</div>
+
+<lab-footer></lab-footer>

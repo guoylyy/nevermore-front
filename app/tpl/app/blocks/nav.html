@@ -3,7 +3,7 @@
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.HEADER">功能</span>
   </li>
-  <li ng-if="currentUser.show_role == 'TEACHER'">
+  <li ui-sref-active="active" ng-if="currentUser.show_role == 'TEACHER'">
     <a ui-sref="app.index.teacher-reservations({title:'APPROVED'})" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -14,7 +14,7 @@
     </a>
   </li>
 
-  <li ng-if="currentUser.show_role == 'STUDENT'">
+  <li ui-sref-active="active" ng-if="currentUser.show_role == 'STUDENT'">
     <a ui-sref="app.index.student-reservations({title:'clazz'})" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -25,7 +25,7 @@
     </a>
   </li>
 
-  <li ng-if="currentUser.show_role == 'STUDENT'">
+  <li ui-sref-active="active" ng-if="currentUser.show_role == 'STUDENT'">
     <a ui-sref="app.course.student-class" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -37,7 +37,7 @@
   </li>
 
 
-  <li ng-if="currentUser.show_role == 'TEACHER'">
+  <li ui-sref-active="active" ng-if="currentUser.show_role == 'TEACHER'">
     <a ui-sref="app.course.teacher-class" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -48,14 +48,25 @@
     </a>
   </li>
 
-  <li>
-    <a ui-sref="app.course.report" class="auto">
+  <li ui-sref-active="active" ng-if="currentUser.show_role == 'ADMINISTRATOR'">
+    <a ui-sref="app.account-admin.admin-account" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>
       </span>
       <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
-      <span class="font-bold" translate="aside.nav.DASHBOARD">录入试卷</span>
+      <span class="font-bold" translate="aside.nav.DASHBOARD">用户账户</span>
+    </a>
+  </li>
+  <li class="line dk"></li>
+  <li ui-sref-active="active" ng-if="currentUser.show_role == 'ADMINISTRATOR'">
+    <a ui-sref="app.experiment-resource.experiment-lab" class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
+      <span class="font-bold" translate="aside.nav.DASHBOARD">实验资源</span>
     </a>
   </li>
   <li class="line dk"></li>
