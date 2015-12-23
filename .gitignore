@@ -11,5 +11,6 @@ nm.run.config.js
 
 /app/styles/
 *.md
+!README.md
 
 api.html
