@@ -27,7 +27,7 @@ app.controller('LoginController', function($scope,$rootScope, $state, $localStor
         .success(function(rc){
           sessionService.saveCurrSemeter(rc.data);
           if($rootScope.currentUser.show_role == 'ADMINISTRATOR'){
-    				$state.go('portal.calendar');
+    				$state.go('app.account-admin.admin-account');
     			}else if($rootScope.currentUser.show_role == 'TEACHER'){
     				$state.go('app.index.teacher-reservations',{title:'APPROVED'});
     			}else if($rootScope.currentUser.show_role == 'STUDENT'){
