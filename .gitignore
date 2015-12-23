@@ -11,3 +11,5 @@ nm.run.config.js
 
 ./app/styles/*
 *.md
+
+api.html
