@@ -50,81 +50,111 @@ angular.module('nevermore')
           });
       },
       account: function() {
-        return $resource(baseUrl + '/:id', {id:"@id"}, {
-          'get': {
-            method: 'GET',
-            headers: sessionService.headers()
-          },
-          'put': {
-            method: 'PUT',
-            headers: sessionService.headers()
-          },
-          'delete': {
-            method: 'DELETE',
-            headers: sessionService.headers()
-          }
-        });
+        return $resource(baseUrl + '/:id', 
+          {
+            id:"@id"
+          }, 
+          {
+            'get': {
+              method: 'GET',
+              headers: sessionService.headers()
+            },
+            'put': {
+              method: 'PUT',
+              headers: sessionService.headers()
+            },
+            'delete': {
+              method: 'DELETE',
+              headers: sessionService.headers()
+            }
+          });
       },
       accountIcon: function() {
         var headers = sessionService.headers();
         headers['Content-Type'] = 'multipart/form-data';
-        return $resource(baseUrl + '/:id/icon', {id: "@id"}, {
-          'post': {
-            method: 'POST',
-            headers: headers
-          }
-        })
+        return $resource(baseUrl + '/:id/icon', 
+          {
+            id: "@id"
+          }, 
+          {
+            'post': {
+              method: 'POST',
+              headers: headers
+            }
+          })
       },
       search: function(){
-        return $resource(baseUrl + '/searchByNameAndNumber',{},{
-          'get':{
-            method: 'GET',
-            headers: sessionService.headers()
-          }
-        });
+        return $resource(baseUrl + '/searchByNameAndNumber',
+          {
+
+          },
+          {
+            'get':{
+              method: 'GET',
+              headers: sessionService.headers()
+            }
+          });
       },
       password: function(){
-        return $resource(baseUrl + '/:id/password',{id:"@id"},{
-          'put':{
-            method: 'PUT',
-            headers: sessionService.headers()
-          }
-        });
+        return $resource(baseUrl + '/:id/password',
+          {
+            id : "@id"
+          },
+          {
+            'put':{
+              method: 'PUT',
+              headers: sessionService.headers()
+            }
+          });
       },
       passwordByAdmin: function(){
-        return $resource(baseUrl + '/:id/passwordByAdmin',{id:"@id"},{
-          'put':{
-            method: 'PUT',
-            headers: sessionService.headers()
-          }
-        });
+        return $resource(baseUrl + '/:id/passwordByAdmin',
+          {
+            id:"@id"
+          },
+          {
+            'put':{
+              method: 'PUT',
+              headers: sessionService.headers()
+            }
+          });
       },
       create: function() {
-        return $resource(baseUrl, {}, {
-          'post': {
-            method: 'POST',
-            headers: sessionService.headers()
-          }
-        })
+        return $resource(baseUrl, 
+          {
+
+          }, 
+          {
+            'post': {
+              method: 'POST',
+              headers: sessionService.headers()
+            }
+          })
       },
       all: function() {
-        return $resource(baseUrl + '/list/all', {}, {
-          'get': {
-            method: 'GET',
-            headers: sessionService.headers()
-          }
-        });
+        return $resource(baseUrl + '/list/all', 
+          {
+            
+          }, 
+          {
+            'get': {
+              method: 'GET',
+              headers: sessionService.headers()
+            }
+          });
       },
       page: function() {//分页获取用户
-        return $resource(baseUrl + '/list/page/:pageSize/:pageNumber', {
-          pageSize: "@pageSize",
-          pageNumber: "@pageNumber"
-        }, {
-          'get': {
-            method: 'GET',
-            headers: sessionService.headers()
-          }
-        });
+        return $resource(baseUrl + '/list/page/:pageSize/:pageNumber', 
+          {
+            pageSize: "@pageSize",
+            pageNumber: "@pageNumber"
+          }, 
+          {
+            'get': {
+              method: 'GET',
+              headers: sessionService.headers()
+            }
+          });
       }
     };
   });
