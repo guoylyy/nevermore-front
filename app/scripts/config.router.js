@@ -283,6 +283,15 @@ angular.module('nevermore')
             abstract: true,
             url: '^/app/account/admin',
             templateUrl: 'tpl/app/admin/account-index.html',
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/services/general-service.js",
+                  "scripts/services/toaster-tool.js",
+                  "ngDialog",
+                ])
+              }]
+            }
           })
           .state('app.account-admin.admin-account', {
             url: '^/app/account/admin/admin/account',
@@ -295,9 +304,36 @@ angular.module('nevermore')
                   "scripts/controllers/app/admin/modify-admin-account.js",
                   "scripts/controllers/app/admin/add-admin-account.js",
                   "scripts/controllers/app/admin/modify-admin-password.js",
-                  "scripts/services/general-service.js",
-                  "ngDialog",
-                  "scripts/services/toaster-tool.js",
+                ])
+              }]
+            },
+          })
+          .state('app.account-admin.teacher-account', {
+            url: '^/app/account/admin/teacher/account',
+            templateUrl: 'tpl/app/admin/teacher-account.html',
+            controller: 'TeacherAccountCtrl',
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/teacher-account.js",
+                  "scripts/controllers/app/admin/modify-teacher-account.js",
+                  "scripts/controllers/app/admin/add-teacher-account.js",
+                  "scripts/controllers/app/admin/modify-teacher-password.js",
+                ])
+              }]
+            },
+          })
+          .state('app.account-admin.student-account', {
+            url: '^/app/account/admin/student/account',
+            templateUrl: 'tpl/app/admin/student-account.html',
+            controller: 'StudentAccountCtrl',
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/student-account.js",
+                  "scripts/controllers/app/admin/modify-student-account.js",
+                  "scripts/controllers/app/admin/add-student-account.js",
+                  "scripts/controllers/app/admin/modify-student-password.js",
                 ])
               }]
             },
