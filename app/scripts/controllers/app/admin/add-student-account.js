@@ -1,22 +1,25 @@
-app.controller("AddAdminAccountCtrl", ["$scope", "Account",
+app.controller("AddStudentAccountCtrl", ["$scope", "Account",
 function($scope, Account){
 	var DEFAULT_ACCOUNT = {
 		"number" : "",
 		"initialPassword" : "",
-		"role" : "ADMINISTRATOR",
-		"name" : "",
+		"grade" : "",
 		"gender": "MALE",
 		"mobilePhone": "",
+		"name": "",
+		"major": "",
+		"role": "STUDENT",
+		"email": "",
 	}
 
 	var genderManager = new GenderManager()
-	var adding = false
 	var account = angular.copy(DEFAULT_ACCOUNT)
 
 	$scope.account = account
 	$scope.genderList = genderManager.getGenderList()
 	$scope.addAccount = addAccount
 	$scope.errorTip = ""
+	$scope.adding = false
 
 
 	
@@ -56,14 +59,16 @@ function($scope, Account){
 	}
 
 	function accountComplete(){
-		if($scope.account.number === "" || $scope.account.name === ""){
+		if($scope.account.number === "" ||
+			$scope.account.name === "" ||
+			$scope.account.initialPassword === ""){
 			return false
 		}
 		return true
 	}
 
 	function commitAccount(){
-		adding = true
+		$scope.adding = true
 		return Account.create().post(account)
 	}
 
@@ -73,6 +78,7 @@ function($scope, Account){
 	}
 
 	function accountValid(data){
+		console.log(data)
 		var RIGHT_CODE = "NO_ERROR"
 		if(data.errorCode === RIGHT_CODE){
 			return data
@@ -82,7 +88,7 @@ function($scope, Account){
 	}
 
 	function errorHandler(error){
-		adding = false
+		$scope.adding = false
 		var errorMessage = getErrorMessage(error)
 		showErrorTip(errorMessage)
 	}

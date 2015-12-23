@@ -1,22 +1,24 @@
-app.controller("AddAdminAccountCtrl", ["$scope", "Account",
+app.controller("AddTeacherAccountCtrl", ["$scope", "Account",
 function($scope, Account){
 	var DEFAULT_ACCOUNT = {
 		"number" : "",
 		"initialPassword" : "",
-		"role" : "ADMINISTRATOR",
-		"name" : "",
+		"role" : "ALL_TEACHER",
 		"gender": "MALE",
 		"mobilePhone": "",
+		"name": "",
 	}
 
 	var genderManager = new GenderManager()
-	var adding = false
+	var roleManager = new RoleManager()
 	var account = angular.copy(DEFAULT_ACCOUNT)
 
 	$scope.account = account
 	$scope.genderList = genderManager.getGenderList()
+	$scope.roleList = roleManager.getRoleList()
 	$scope.addAccount = addAccount
 	$scope.errorTip = ""
+	$scope.adding = false
 
 
 	
@@ -39,6 +41,27 @@ function($scope, Account){
 		}
 	}
 
+	function RoleManager(){
+		var ROLE_LIST = [
+			{
+				"chinese": "课程和实验教师",
+				"english": "ALL_TEACHER",
+			},
+			{
+				"chinese": "课程教师",
+				"english": "NOR_TEACHER",
+			},
+			{
+				"chinese": "实验教师",
+				"english": "LAB_TEACHER",
+			},
+		]
+
+		this.getRoleList = function(){
+			return ROLE_LIST
+		}
+	}
+
 	function addAccount(){
 		if(accountComplete()){
 			commitAccount().$promise
@@ -56,14 +79,16 @@ function($scope, Account){
 	}
 
 	function accountComplete(){
-		if($scope.account.number === "" || $scope.account.name === ""){
+		if($scope.account.number === "" ||
+			$scope.account.name === "" ||
+			$scope.account.initialPassword === ""){
 			return false
 		}
 		return true
 	}
 
 	function commitAccount(){
-		adding = true
+		$scope.adding = true
 		return Account.create().post(account)
 	}
 
@@ -73,6 +98,7 @@ function($scope, Account){
 	}
 
 	function accountValid(data){
+		console.log(data)
 		var RIGHT_CODE = "NO_ERROR"
 		if(data.errorCode === RIGHT_CODE){
 			return data
@@ -82,7 +108,7 @@ function($scope, Account){
 	}
 
 	function errorHandler(error){
-		adding = false
+		$scope.adding = false
 		var errorMessage = getErrorMessage(error)
 		showErrorTip(errorMessage)
 	}

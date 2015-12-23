@@ -1,25 +1,15 @@
-app.controller("AddAdminAccountCtrl", ["$scope", "Account",
-function($scope, Account){
-	var DEFAULT_ACCOUNT = {
-		"number" : "",
-		"initialPassword" : "",
-		"role" : "ADMINISTRATOR",
-		"name" : "",
-		"gender": "MALE",
-		"mobilePhone": "",
-	}
-
+app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "Account",
+function($scope, data, Account){
+	var originAccount = data
+	,	copiedAccount = angular.copy(originAccount)
 	var genderManager = new GenderManager()
-	var adding = false
-	var account = angular.copy(DEFAULT_ACCOUNT)
-
-	$scope.account = account
+	$scope.account = copiedAccount
+	$scope.pending = false
+	$scope.modifyAccount = modifyAccount
+	$scope.deleteAccount = deleteAccount
 	$scope.genderList = genderManager.getGenderList()
-	$scope.addAccount = addAccount
 	$scope.errorTip = ""
 
-
-	
 
 	//TODO: 这种manager抽象出来
 	function GenderManager(){
@@ -39,15 +29,13 @@ function($scope, Account){
 		}
 	}
 
-	function addAccount(){
+	function modifyAccount(){
 		if(accountComplete()){
-			commitAccount().$promise
+			commitModify().$promise
 			.then(removeErrorTip)
-			.then(accountValid)
-			.then(function(data){
-				$scope.closeThisDialog({
-					account: data.data
-				})
+			.then(updateLocalAccount)
+			.then(function(){
+				$scope.closeThisDialog("modify")
 			})
 			.catch(errorHandler)
 		}else{
@@ -62,9 +50,30 @@ function($scope, Account){
 		return true
 	}
 
-	function commitAccount(){
-		adding = true
-		return Account.create().post(account)
+	function commitModify(){
+		$scope.pending = true
+		return Account.account().put({
+			"id": copiedAccount.id,
+		}, copiedAccount)
+	}
+
+	function updateLocalAccount(data){
+		angular.copy(copiedAccount, originAccount)
+	}
+
+	function deleteAccount(){
+		commitDelete().$promise
+		.then(function(){
+			$scope.closeThisDialog("delete")
+		})
+		.catch(errorHandler)
+	}
+
+	function commitDelete(){
+		$scope.pending = true
+		return Account.account().delete({
+			"id": copiedAccount.id,
+		})
 	}
 
 	function removeErrorTip(data){
@@ -72,19 +81,10 @@ function($scope, Account){
 		return data
 	}
 
-	function accountValid(data){
-		var RIGHT_CODE = "NO_ERROR"
-		if(data.errorCode === RIGHT_CODE){
-			return data
-		}else{
-			throw new Error(data)
-		}
-	}
-
 	function errorHandler(error){
-		adding = false
+		$scope.pending = false
 		var errorMessage = getErrorMessage(error)
-		showErrorTip(errorMessage)
+		showErrorTip(errorMessage)	
 	}
 
 	function getErrorMessage(error){
