@@ -8,4 +8,6 @@ bower_components
 
 .idea/
 nm.run.config.js
-tiger-front.iml
+
+.styles/
+.md
