@@ -6,7 +6,7 @@
     </div>
     <div class="wrapper bg-white padder-lg report">
       <div class="h4 text-black pull-right" style="margin-top:15px;margin-right:20px">得分</div>
-      <div class="h1 text-danger h1 pull-right" style="font-weight:500;margin-right:10px">98/100</div>
+      <div class="h1 text-danger h1 pull-right" style="font-weight:500;margin-right:10px">{{data.final_score}}/100</div>
       <div class="line line-dashed line-lg pull-in"></div>
 
       <div class="col-sm-4">
@@ -35,26 +35,26 @@
 
       <div class="line line-lg pull-in b-b" style="padding-top:15px"></div>
 
-      <div class="text-danger h4 pull-right" style="font-weight:500;margin-right:20px">19/20</div>
+      <div class="text-danger h4 pull-right" style="font-weight:500;margin-right:20px">{{data.section_scores[2]}}/{{data.section_total_scores[2]}}</div>
 
       <div class="line line-dashed line-lg pull-in"></div>
 
-      <lashen title="拉伸试件" editable="false" ng-model="data['3origin_size']['3.1stretch_test-piece']"></lashen>
+      <lashen title="拉伸试件" editable="false" ng-model="data['3origin_size']['3-1stretch_test-piece']"></lashen>
 
-      <yasuo title="压缩试件" editable="false" ng-model="data['3origin_size']['3.2compress_test-piece']"></yasuo>
+      <yasuo title="压缩试件" editable="false" ng-model="data['3origin_size']['3-2compress_test-piece']"></yasuo>
 
       <a class="text-info pull-right" style="margin-right:20px;color:#23b7e5;" ng-click="show('init_data')" ng-show="!correct_answer_view['init_data']">查看正确答案</a>
 
       <a class="text-danger pull-right" style="margin-right:20px;color:#f05050;" ng-click="hide('init_data')" ng-show="correct_answer_view['init_data']">收起正确答案</a>
 
       <div class="vbox col-sm-10 b-a" ng-show="correct_answer_view['init_data']">
-        <lashen title="拉伸试件" editable="false" ng-model=""></lashen>
-        <yasuo title="压缩试件" editable="false" ng-model="" ></yasuo>
+        <lashen title="拉伸试件" editable="false" ng-model="answer['3origin_size']['3-1stretch_test-piece']"></lashen>
+        <yasuo title="压缩试件" editable="false" ng-model="answer['3origin_size']['3-2compress_test-piece']" ></yasuo>
       </div>
 
       <div class="line line-lg pull-in b-b" style="padding-top:15px"></div>
 
-      <div class="text-danger h4 pull-right" style="font-weight:500;margin-right:20px">19/20</div>
+      <div class="text-danger h4 pull-right" style="font-weight:500;margin-right:20px">{{data.section_scores[4]}}/{{data.section_total_scores[4]}}</div>
       <div class="line line-dashed line-lg pull-in"></div>
 
       <graphictable editable="false" experiment="exp_id" ng-model="data['5plot']"></graphictable>
@@ -64,17 +64,17 @@
       <a class="text-danger pull-right" style="margin-right:20px;color:#f05050;" ng-click="hide('graphic')" ng-show="correct_answer_view['graphic']">收起正确答案</a>
 
       <div class="vbox col-sm-10 b-a" ng-show="correct_answer_view['graphic']">
-        <graphictable editable="false" experiment="exp_id" ng-model=""></graphictable>
+        <graphictable editable="false" experiment="exp_id" ng-model="answer['5plot']"></graphictable>
       </div>
 
       <div class="line line-lg pull-in b-b" style="padding-top:15px"></div>
 
-      <div class="text-danger h4 pull-right" style="font-weight:500;margin-right:20px">19/20</div>
+      <div class="text-danger h4 pull-right" style="font-weight:500;margin-right:20px">{{data.section_scores[3]}}/{{data.section_total_scores[3]}}</div>
       <div class="line line-dashed line-lg pull-in"></div>
 
-      <lashenexp title="拉伸实验" editable="false" ng-model="data['4data']['4.1stretch']"></lashenexp>
+      <lashenexp title="拉伸实验" editable="false" ng-model="data['4data']['4-1stretch']"></lashenexp>
 
-      <yasuoexp title="压缩实验" editable="false" ng-model="data['4data']['4.2compress']"></yasuoexp>
+      <yasuoexp title="压缩实验" editable="false" ng-model="data['4data']['4-2compress']"></yasuoexp>
 
 
       <a class="text-info pull-right" style="margin-right:20px;color:#23b7e5;" ng-click="show('experiment_data')" ng-show="!correct_answer_view['experiment_data']">查看正确答案</a>
@@ -82,8 +82,8 @@
       <a class="text-danger pull-right" style="margin-right:20px;color:#f05050;" ng-click="hide('experiment_data')" ng-show="correct_answer_view['experiment_data']">收起正确答案</a>
 
       <div class="vbox col-sm-10 b-a" ng-show="correct_answer_view['experiment_data']">
-        <lashenexp title="拉伸实验" editable="false" ng-model=""></lashenexp>
-        <yasuoexp title="压缩实验" editable="false" ng-model=""></yasuoexp>
+        <lashenexp title="拉伸实验" editable="false" ng-model="answer['4data']['4-1stretch']"></lashenexp>
+        <yasuoexp title="压缩实验" editable="false" ng-model="answer['4data']['4-2compress']"></yasuoexp>
       </div>
 
 
@@ -91,64 +91,36 @@
 
       <div class="col-sm-12">
       <label class="h4" style="font-weight:800;">实验相关问答</label>
-      <div class="text-danger h4 pull-right" style="font-weight:500">19/20</div>
+      <div class="text-danger h4 pull-right" style="font-weight:500">{{data.section_scores[6]}}/{{data.section_total_scores[6]}}</div>
       <label class="pull-right" style="margin-right:20px">共20题，答对19题</label>
       </div>
 
       <div class="line line-dashed line-lg pull-in"></div>
 
-      <div class="col-sm-1"><b class="badge bg-success pull-right"><i class="fa fa-check"></i></b></div>
+      <div ng-repeat = "question in data['7questions'].choice">
+      <div class="col-sm-1"><b class="badge pull-right" ng-class="{'bg-success':question.choice.score!=0,'bg-danger':question.choice.score==0}"><i class="fa" ng-class="{'fa-check':question.choice.score!=0,'fa-times':question.choice.score==0}"></i></b></div>
       <div class="col-sm-10">
-        <label class="text-black">1. 铸铁受拉伸力（拉、剪）而破坏？</label>
-        <div class="l_space">
-          <div class="radio">
-              <label class="i-checks">
-                <input type="radio" value="option2" checked="" disabled="">
-                <i></i>
-                是
-              </label>
-            </div>
-            <div class="radio">
-              <label class="i-checks">
-                <input type="radio" name="a" disabled="">
-                <i></i>
-                否
-              </label>
-            </div>
-        </div>
-      </div>
-      <div class="col-sm-1"></div>
-      <div class="line line-dashed line-lg pull-in"></div>
 
-      <div class="col-sm-1"><b class="badge bg-danger pull-right"><i class="fa fa-times"></i></b></div>
-      <div class="col-sm-10">
-        <label class="text-black">1. 铸铁受拉伸力（拉、剪）而破坏？</label>
+        <label class="text-black">{{question.label}}) {{question.question}}</label>
         <div class="l_space">
-          <div class="radio">
+            <div class="radio" ng-repeat="option in question.choice.options">
               <label class="i-checks">
-                <input type="radio" value="option2" disabled="">
+                <input type="radio" checked="question.choice.answer==option.label" disabled="" value="{{option.label}}" ng-model="question.choice.answer">
                 <i></i>
-                是
-              </label>
-            </div>
-            <div class="radio">
-              <label class="i-checks">
-                <input type="radio" name="a" checked="" disabled="">
-                <i></i>
-                否
+                {{option.label}}. {{option.content}}
               </label>
             </div>
         </div>
 
-        <div class="panel-body b-a m-l-md">
-          <p>正确答案：是</p>
-          <p>答案解析：<span class="text-muted">是打发范德萨发大水发大水发的是福建省伽师瓜很老实的开个减肥的萨
-            克拉飞机啊SD卡楼房的萨拉克价格和沙拉和规范的索拉卡挤房</span></p>
+        <div class="panel-body b-a m-l-md" ng-show="question.choice.score==0">
+          <p>正确答案：{{answer['7questions'].choice[$index].choice.answer}}</p>
+          <p>答案解析：<span class="text-muted">{{answer['7questions'].choice[$index].choice.explaination}}</span></p>
         </div>
 
       </div>
       <div class="col-sm-1"></div>
       <div class="line line-dashed line-lg pull-in"></div>
+      </div>
 
     </div>
 </div>

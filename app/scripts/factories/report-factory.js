@@ -9,7 +9,9 @@
  */
 angular.module('nevermore')
   .factory('Report', function ($resource, $rootScope) {
-    var baseUrl = "http://nmscore.daiguanwang.cn/report"
+    var baseUrl = "http://192.168.3.25:5000/report";
+
+    // this.answer =
 
     return {
       template : function(){
@@ -20,7 +22,7 @@ angular.module('nevermore')
         });
       },
       report: function() {
-        return $resource(baseUrl, {}, {
+        return $resource(baseUrl + '/:stuId/:classId/:expId', {stuId:'@stuId', classId:'@classId', expId:'@expId'}, {
           'get': {
             method: 'GET'
           },
@@ -30,16 +32,17 @@ angular.module('nevermore')
         })
       },
       save: function() {
-        return $resource(baseUrl + '/save', {}, {
+        return $resource(baseUrl, {}, {
           'post': {
             method: 'POST'
           }
         })
       },
-      answer : function(){
+      answer: function(headers) {
         return $resource(baseUrl + '/answer/:expId', {expId:'@expId'}, {
           'get': {
-            method: 'GET'
+            method: 'GET',
+            headers: headers
           }
         });
       }

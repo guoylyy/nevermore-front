@@ -202,7 +202,7 @@
 
             <div ng-repeat = "question in data['7questions'].text">
               <label class="text-muted">{{question.question}}</label>
-              <textarea class="form-control ng-pristine ng-valid ng-touched" ng-change="question_change()" placeholder="" rows="5" ng-model="question.answer.answer" aria-multiline="true" aria-invalid="false"></textarea>
+              <textarea class="form-control ng-pristine ng-valid ng-touched" ng-change="question_change()" placeholder="" rows="5" ng-model="question.solution.answer" aria-multiline="true" aria-invalid="false"></textarea>
               <div class="line line-dashed line-lg pull-in"></div>
             </div>
 
@@ -213,8 +213,8 @@
           <div class="col-sm-1"></div>
           <div class="col-sm-10">
             <button type="submit" class="btn btn-default" ng-click="last()">上一步</button>
-            <button type="submit" class="btn btn-warning" ng-click="save()">保存草稿</button>
-            <button type="submit" class="btn btn-info">提交报告</button>
+            <button type="submit" class="btn btn-warning" ng-click="save()" ng-disabled="status=='committed'">保存草稿</button>
+            <button type="submit" class="btn btn-info" ng-click="submit()" ng-disabled="(status==null)||(status=='committed')">提交报告</button>
           </div>
           <div class="col-sm-1"></div>
         </footer>

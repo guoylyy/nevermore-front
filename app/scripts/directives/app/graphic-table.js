@@ -24,7 +24,7 @@ angular.module('nevermore')
           ngModelCtrl.$setViewValue(scope.table);
         });
       },
-      controller: function ($scope, $localStorage, ngDialog) {
+      controller: function ($scope, ngDialog) {
         $scope.chooseChart = function (type,material) {
           var dialog = ngDialog.open({
             template: 'tpl/app/modal/choose-chart.html',

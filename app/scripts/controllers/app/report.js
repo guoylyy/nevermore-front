@@ -1,6 +1,6 @@
 'use strict';
 //
-app.controller('ReportCtrl',  function($scope, $rootScope, $state, $localStorage, $stateParams, Report, qService) {
+app.controller('ReportCtrl',  function($scope, $rootScope, AlertTool, $stateParams, Report, qService) {
 
   $scope.report_step = 1;
 
@@ -10,21 +10,26 @@ app.controller('ReportCtrl',  function($scope, $rootScope, $state, $localStorage
 
   $scope.completed_question = 0;
 
-  if ($localStorage.report==null){
-    $localStorage.report = {};
-  }
-
-  var key = $scope.class_id+"-"+$scope.exp_id;
-  if (!$localStorage.report.hasOwnProperty(key)) {
-    qService.tokenHttpGet(Report.template, {
-      expId: 1
-    }).then(function(rc){
-      $scope.data = rc.data;
-      $localStorage.report[key] = rc.data;
-    });
-  }else {
-    $scope.data = $localStorage.report[key];
-  }
+  qService.tokenHttpGet(Report.report, {
+    stuId: $rootScope.currentUser.number,
+    classId: $scope.class_id,
+    expId: $scope.exp_id
+  }).then(function(rc){
+    if (rc.code == 200) {
+      $scope.data = rc.data.report;
+      $scope.status = rc.data.status;
+      $scope.question_change();
+    }
+    else {
+      qService.tokenHttpGet(Report.template, {
+        expId: "1"
+      }).then(function(rc){
+        $scope.data = rc.data;
+        $scope.status = rc.data.status;
+        $scope.question_change();
+      });
+    }
+  });
 
   $scope.next = function() {
     $scope.report_step++;
@@ -56,13 +61,38 @@ app.controller('ReportCtrl',  function($scope, $rootScope, $state, $localStorage
       'student_id':$rootScope.currentUser.number,
       'class_id':$scope.class_id,
       'experiment_id':$scope.exp_id,
-      'report':$localStorage.report[key]
+      'report':$scope.data
     }
     qService.tokenHttpPost(Report.save, {}, data).then(function(rc) {
-      alert(rc);
+      if (rc.code == 200) {
+        AlertTool.success({title:'保存成功！',text:''}).then(function() {
+          $scope.status = 'uncommitted';
+        });
+      }else {
+        AlertTool.error({title:'保存失败！',text:''}).then(function() {
+        });
+      }
     });
   }
 
-  $scope.question_change();
+  $scope.submit = function (){
+    qService.tokenHttpPost(Report.report, {
+      stuId: $rootScope.currentUser.number,
+      classId: $scope.class_id,
+      expId: $scope.exp_id
+    }).then(function(rc) {
+      if (rc.code == 200) {
+        AlertTool.success({title:'提交成功！',text:''}).then(function() {
+          $scope.status = 'committed';
+        });
+      }else if (rc.code == 110) {
+        AlertTool.error({title:'提交失败！',text:rc.data}).then(function() {
+        });
+      }else{
+        AlertTool.error({title:'提交失败！',text:''}).then(function() {
+        });
+      }
+    });
+  }
 
 });

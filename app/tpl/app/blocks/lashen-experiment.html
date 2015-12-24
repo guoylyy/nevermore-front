@@ -6,9 +6,10 @@
       <thead>
         <tr>
           <th>材料</th>
-          <th style="width:15%">屈服荷载</th>
-          <th style="width:15%">最大荷载</th>
-          <th style="width:15%">断后标距</th>
+          <th style="width:10%">弹性模量(x10^5)</th>
+          <th style="width:10%">屈服荷载</th>
+          <th style="width:10%">最大荷载</th>
+          <th style="width:10%">断后标距</th>
           <th style="padding:0px;width:45%">
             <table st-table="rowCollectionBasic" class="table " style="margin-bottom:0px">
               <tr>
@@ -33,37 +34,45 @@
         <tr style="padding-bottom:0px;padding-top:0px">
           <th>低碳钢</th>
           <th class="table_cell">
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].tanxingmoliang.answer">
+            <label ng-show="!editable">{{table[0].tanxingmoliang|reportFilter}}</label>
+          </th>
+          <th class="table_cell">
             <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].qufuhezai.answer">
-            <label ng-show="!editable">{{table[0].qufuhezai.answer}}</label>
+            <label ng-show="!editable">{{table[0].qufuhezai|reportFilter}}</label>
           </th>
           <th class="table_cell">
             <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].zuidahezai.answer">
-            <label ng-show="!editable">{{table[0].zuidahezai.answer}}</label>
+            <label ng-show="!editable">{{table[0].zuidahezai|reportFilter}}</label>
           </th>
           <th class="table_cell">
             <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].duanhoubiaoju.answer">
-            <label ng-show="!editable">{{table[0].duanhoubiaoju.answer}}</label>
+            <label ng-show="!editable">{{table[0].duanhoubiaoju|reportFilter}}</label>
           </th>
           <th class="table_wrap"  style="padding-left:0px;padding-right:0px">
             <div class="col-sm-4 table_wrap">
               <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].duanliechuzuixiaozhijing.No1.answer">
-              <label ng-show="!editable">{{table[0].duanliechuzuixiaozhijing.No1.answer}}</label>
+              <label ng-show="!editable">{{table[0].duanliechuzuixiaozhijing.No1|reportFilter}}</label>
             </div>
             <div class="col-sm-4 table_wrap">
               <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].duanliechuzuixiaozhijing.No2.answer">
-              <label ng-show="!editable">{{table[0].duanliechuzuixiaozhijing.No2.answer}}</label>
+              <label ng-show="!editable">{{table[0].duanliechuzuixiaozhijing.No2|reportFilter}}</label>
             </div>
             <div class="col-sm-4 table_wrap">
               <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].duanliechuzuixiaozhijing.avg.answer">
-              <label ng-show="!editable">{{table[0].duanliechuzuixiaozhijing.avg.answer}}</label>
+              <label ng-show="!editable">{{table[0].duanliechuzuixiaozhijing.avg|reportFilter}}</label>
             </div>
           </th>
         </tr>
         <tr style="padding-bottom:0px;padding-top:0px">
           <th>铸铁</th>
           <th class="table_cell">
-            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].qufuhezai.answer">
-            <label ng-show="!editable">{{table[1].qufuhezai.answer}}</label>
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="false" type="text" ng-model="table[1].tanxingmoliang.answer">
+            <label ng-show="false">{{table[1].tanxingmoliang.answer}}</label>
+          </th>
+          <th class="table_cell">
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="false" type="text" ng-model="table[1].qufuhezai.answer">
+            <label ng-show="false">{{table[1].qufuhezai.answer}}</label>
           </th>
           <th class="table_cell">
             <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].zuidahezai.answer">
@@ -75,16 +84,16 @@
           </th>
           <th class="table_wrap"  style="padding-left:0px;padding-right:0px">
             <div class="col-sm-4 table_wrap">
-              <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].duanliechuzuixiaozhijing.No1.answer">
-              <label ng-show="!editable">{{table[1].duanliechuzuixiaozhijing.No1.answer}}</label>
+              <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="false" type="text" ng-model="table[1].duanliechuzuixiaozhijing.No1.answer">
+              <label ng-show="false">{{table[1].duanliechuzuixiaozhijing.No1.answer}}</label>
             </div>
             <div class="col-sm-4 table_wrap">
-              <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].duanliechuzuixiaozhijing.No2.answer">
-              <label ng-show="!editable">{{table[1].duanliechuzuixiaozhijing.No2.answer}}</label>
+              <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="false" type="text" ng-model="table[1].duanliechuzuixiaozhijing.No2.answer">
+              <label ng-show="false">{{table[1].duanliechuzuixiaozhijing.No2.answer}}</label>
             </div>
             <div class="col-sm-4 table_wrap">
-              <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].duanliechuzuixiaozhijing.avg.answer">
-              <label ng-show="!editable">{{table[1].duanliechuzuixiaozhijing.avg.answer}}</label>
+              <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="false" type="text" ng-model="table[1].duanliechuzuixiaozhijing.avg.answer">
+              <label ng-show="false">{{table[1].duanliechuzuixiaozhijing.avg.answer}}</label>
             </div>
           </th>
         </tr>

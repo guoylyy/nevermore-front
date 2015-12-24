@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ReportResultCtrl',  function($scope, $http, $localStorage, $stateParams, Clazz, Exp, qService, sessionService, Account) {
+app.controller('ReportResultCtrl',  function($scope, $rootScope, $stateParams, Clazz, Exp, qService, Report, sessionService, Account, ToasterTool) {
 
   $scope.exp_id = $stateParams.expId;
 
@@ -34,8 +34,29 @@ app.controller('ReportResultCtrl',  function($scope, $http, $localStorage, $stat
     $scope.student = rc.data;
   });
 
-  $http.get("tpl/app/report/test.json").success(function(data) {
-    $scope.data = data;
+  qService.tokenHttpGet(Report.report, {
+    stuId: $rootScope.currentUser.number,
+    classId: $scope.class_id,
+    expId: $scope.exp_id
+  }).then(function(rc){
+    if (rc.code == 200) {
+      $scope.data = rc.data.report;
+
+      Report.answer({
+        'token': rc.data.token
+      }).get({
+          expId: $scope.exp_id
+        },
+        function success(data, headers) {
+          $scope.answer = data.data;
+        },
+        function error(data) {
+          ToasterTool.error('获取数据错误发生!','');
+        });
+    }
+    else {
+
+    }
   });
 
   $scope.show = function (view){
