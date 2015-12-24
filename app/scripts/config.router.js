@@ -165,7 +165,7 @@ angular.module('nevermore')
             }
           })
           .state('app.course.teacher-class', {
-            url: '^/app/course/teacher/class/:id',
+            url: '^/app/course/teacher/class/:id/:expId',
             templateUrl: 'tpl/app/teacher-class.html',
             controller: 'TeacherClassCtrl',
             resolve: {
@@ -178,7 +178,7 @@ angular.module('nevermore')
             }
           })
           .state('app.course.report', {
-            url: '^/app/course/report',
+            url: '^/app/course/report/:expId/:classId',
             templateUrl: 'tpl/app/report.html',
             controller: 'ReportCtrl',
             resolve: {
@@ -198,7 +198,7 @@ angular.module('nevermore')
             }
           })
           .state('app.course.report-result', {
-            url: '^/app/course/report/result',
+            url: '^/app/course/report/result/:expId/:classId/:stuId',
             templateUrl: 'tpl/app/report-result.html',
             controller: 'ReportResultCtrl',
             resolve: {

@@ -1,6 +1,7 @@
 <div class="vbox">
     <div class="wrapper lter b-b bg-white">
-      <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="createNote()">返回实验</a>
+      <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ui-sref="app.course.teacher-class({id:class_id,expId:exp_id})" ng-if="currentUser.show_role=='TEACHER'">返回班级</a>
+      <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ui-sref="app.course.student-class({id:class_id})" ng-if="currentUser.show_role=='STUDENT'">返回实验</a>
       <div class="subview3_title">扭转实验-实验报告详情和评分结果</div>
     </div>
     <div class="wrapper bg-white padder-lg report">
@@ -9,27 +10,27 @@
       <div class="line line-dashed line-lg pull-in"></div>
 
       <div class="col-sm-4">
-      <label class="text-black" style="">实验名称：</label>
+      <label class="text-black" style="">实验名称：{{exp.name}}</label>
       </div>
 
       <div class="col-sm-4">
-      <label class="text-black" style="">任课教师：</label>
+      <label class="text-black" style="">任课教师：{{clazz.teacher.name}}</label>
       </div>
 
       <div class="col-sm-4">
-      <label class="text-black" style="">实验学期：</label>
+      <label class="text-black" style="">实验学期：{{semester.name}}</label>
       </div>
 
       <div class="col-sm-4">
-        <label class="text-black">姓名:</label> <label class="text-black m-l-sm text-u-l">潘岩</label>
+        <label class="text-black">姓名:</label> <label class="text-black m-l-sm text-u-l">{{student.name}}</label>
       </div>
 
       <div class="col-sm-4">
-        <label class="text-black">学号:</label> <label class="text-black m-l-sm text-u-l">1435846</label>
+        <label class="text-black">学号:</label> <label class="text-black m-l-sm text-u-l">{{student.number}}</label>
       </div>
 
       <div class="col-sm-4">
-        <label class="text-black">班级:</label> <label class="text-black m-l-sm text-u-l">test</label>
+        <label class="text-black">班级:</label> <label class="text-black m-l-sm text-u-l">{{clazz.course.name}} {{clazz.course.number}}</label>
       </div>
 
       <div class="line line-lg pull-in b-b" style="padding-top:15px"></div>
@@ -38,28 +39,54 @@
 
       <div class="line line-dashed line-lg pull-in"></div>
 
-      <lashen title="拉伸试件" editable="false" ng-model=""></lashen>
+      <lashen title="拉伸试件" editable="false" ng-model="data['3origin_size']['3.1stretch_test-piece']"></lashen>
 
-      <yasuo title="压缩试件" editable="false" ng-model=""></yasuo>
+      <yasuo title="压缩试件" editable="false" ng-model="data['3origin_size']['3.2compress_test-piece']"></yasuo>
 
-      <a class="text-info pull-right" style="margin-right:20px;color:#23b7e5;">查看正确答案</a>
+      <a class="text-info pull-right" style="margin-right:20px;color:#23b7e5;" ng-click="show('init_data')" ng-show="!correct_answer_view['init_data']">查看正确答案</a>
+
+      <a class="text-danger pull-right" style="margin-right:20px;color:#f05050;" ng-click="hide('init_data')" ng-show="correct_answer_view['init_data']">收起正确答案</a>
+
+      <div class="vbox col-sm-10 b-a" ng-show="correct_answer_view['init_data']">
+        <lashen title="拉伸试件" editable="false" ng-model=""></lashen>
+        <yasuo title="压缩试件" editable="false" ng-model="" ></yasuo>
+      </div>
+
       <div class="line line-lg pull-in b-b" style="padding-top:15px"></div>
 
       <div class="text-danger h4 pull-right" style="font-weight:500;margin-right:20px">19/20</div>
       <div class="line line-dashed line-lg pull-in"></div>
 
-      <graphictable editable="false"></graphictable>
-      <a class="text-info pull-right" style="margin-right:20px;color:#23b7e5;">查看正确答案</a>
+      <graphictable editable="false" experiment="exp_id" ng-model="data['5plot']"></graphictable>
+
+      <a class="text-info pull-right" style="margin-right:20px;color:#23b7e5;" ng-click="show('graphic')" ng-show="!correct_answer_view['graphic']">查看正确答案</a>
+
+      <a class="text-danger pull-right" style="margin-right:20px;color:#f05050;" ng-click="hide('graphic')" ng-show="correct_answer_view['graphic']">收起正确答案</a>
+
+      <div class="vbox col-sm-10 b-a" ng-show="correct_answer_view['graphic']">
+        <graphictable editable="false" experiment="exp_id" ng-model=""></graphictable>
+      </div>
+
       <div class="line line-lg pull-in b-b" style="padding-top:15px"></div>
 
       <div class="text-danger h4 pull-right" style="font-weight:500;margin-right:20px">19/20</div>
       <div class="line line-dashed line-lg pull-in"></div>
 
-      <lashenexp title="拉伸实验" editable="false" ng-model=""></lashenexp>
+      <lashenexp title="拉伸实验" editable="false" ng-model="data['4data']['4.1stretch']"></lashenexp>
 
-      <yasuoexp title="压缩实验" editable="false" ng-model=""></yasuoexp>
+      <yasuoexp title="压缩实验" editable="false" ng-model="data['4data']['4.2compress']"></yasuoexp>
 
-      <a class="text-info pull-right" style="margin-right:20px;color:#23b7e5;">查看正确答案</a>
+
+      <a class="text-info pull-right" style="margin-right:20px;color:#23b7e5;" ng-click="show('experiment_data')" ng-show="!correct_answer_view['experiment_data']">查看正确答案</a>
+
+      <a class="text-danger pull-right" style="margin-right:20px;color:#f05050;" ng-click="hide('experiment_data')" ng-show="correct_answer_view['experiment_data']">收起正确答案</a>
+
+      <div class="vbox col-sm-10 b-a" ng-show="correct_answer_view['experiment_data']">
+        <lashenexp title="拉伸实验" editable="false" ng-model=""></lashenexp>
+        <yasuoexp title="压缩实验" editable="false" ng-model=""></yasuoexp>
+      </div>
+
+
       <div class="line line-lg pull-in b-b" style="padding-top:15px"></div>
 
       <div class="col-sm-12">
