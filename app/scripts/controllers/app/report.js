@@ -11,7 +11,7 @@ app.controller('ReportCtrl',  function($scope, $rootScope, AlertTool, $statePara
   $scope.completed_question = 0;
 
   qService.tokenHttpGet(Report.report, {
-    stuId: $rootScope.currentUser.number,
+    stuId: $rootScope.currentUser.id+"",
     classId: $scope.class_id,
     expId: $scope.exp_id
   }).then(function(rc){
@@ -58,7 +58,7 @@ app.controller('ReportCtrl',  function($scope, $rootScope, AlertTool, $statePara
   $scope.save = function () {
     $scope.data['1date'] = moment($scope.data['1date']).format('YYYY-MM-DD');
     var data = {
-      'student_id':$rootScope.currentUser.number,
+      'student_id':$rootScope.currentUser.id+"",
       'class_id':$scope.class_id,
       'experiment_id':$scope.exp_id,
       'report':$scope.data
@@ -77,7 +77,7 @@ app.controller('ReportCtrl',  function($scope, $rootScope, AlertTool, $statePara
 
   $scope.submit = function (){
     qService.tokenHttpPost(Report.report, {
-      stuId: $rootScope.currentUser.number,
+      stuId: $rootScope.currentUser.id+"",
       classId: $scope.class_id,
       expId: $scope.exp_id
     }).then(function(rc) {

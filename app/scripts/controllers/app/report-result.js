@@ -35,7 +35,7 @@ app.controller('ReportResultCtrl',  function($scope, $rootScope, $stateParams, C
   });
 
   qService.tokenHttpGet(Report.report, {
-    stuId: $rootScope.currentUser.number,
+    stuId: $scope.student_id,
     classId: $scope.class_id,
     expId: $scope.exp_id
   }).then(function(rc){

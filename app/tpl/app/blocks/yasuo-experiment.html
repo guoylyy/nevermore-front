@@ -12,23 +12,23 @@
         <tr style="padding-bottom:0px;padding-top:0px">
           <th>低碳钢</th>
           <th class="table_cell">
-            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0].qufuhezai.answer">
-            <label ng-show="!editable">{{table[0].qufuhezai.answer}}</label>
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[0]['4-2-1-1qufuhezai'].answer">
+            <label ng-show="!editable">{{table[0]['4-2-1-1qufuhezai']|reportFilter}}</label>
           </th>
           <th class="table_cell">
-            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="false" type="text" ng-model="table[0].zuidahezai.answer">
-            <label ng-show="false">{{table[0].zuidahezai.answer}}</label>
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="false" type="text" ng-model="table[0]['4-2-1-2zuidahezai'].answer">
+            <label ng-show="false">{{table[0]['4-2-1-2zuidahezai']|reportFilter}}</label>
           </th>
         </tr>
         <tr style="padding-bottom:0px;padding-top:0px">
           <th>铸铁</th>
           <th class="table_cell">
             <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="false" type="text" ng-model="table[1].qufuhezai.answer">
-            <label ng-show="false">{{table[1].qufuhezai.answer}}</label>
+            <label ng-show="false">{{table[1].qufuhezai|reportFilter}}</label>
           </th>
           <th class="table_cell">
-            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1].zuidahezai.answer">
-            <label ng-show="!editable">{{table[1].zuidahezai.answer}}</label>
+            <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="text" ng-model="table[1]['4-2-2-1zuidahezai'].answer">
+            <label ng-show="!editable">{{table[1]['4-2-2-1zuidahezai']|reportFilter}}</label>
           </th>
         </tr>
       </thead>

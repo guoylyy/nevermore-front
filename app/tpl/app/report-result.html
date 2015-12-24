@@ -92,7 +92,7 @@
       <div class="col-sm-12">
       <label class="h4" style="font-weight:800;">实验相关问答</label>
       <div class="text-danger h4 pull-right" style="font-weight:500">{{data.section_scores[6]}}/{{data.section_total_scores[6]}}</div>
-      <label class="pull-right" style="margin-right:20px">共20题，答对19题</label>
+      <label class="pull-right" style="margin-right:20px">共{{data.section_counts[6]}}题，答对{{data.section_correct_counts[6]}}题</label>
       </div>
 
       <div class="line line-dashed line-lg pull-in"></div>
@@ -121,6 +121,22 @@
       <div class="col-sm-1"></div>
       <div class="line line-dashed line-lg pull-in"></div>
       </div>
+
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+      <div ng-repeat = "question in data['7questions'].text">
+        <label class="text-black">{{question.question}}</label>
+        <textarea class="form-control ng-pristine ng-valid ng-touched" ng-change="question_change()" placeholder="" rows="5" ng-model="question.solution.answer" disabled="false"></textarea>
+        <div class="line line-dashed line-lg pull-in"></div>
+        <div class="panel-body b-a">
+          <p>正确答案：{{answer['7questions'].text[$index].solution.answer}}</p>
+          <p>答案解析：<span class="text-muted">{{answer['7questions'].text[$index].solution.explaination}}</span></p>
+        </div>
+      </div>
+
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="line line-dashed line-lg pull-in"></div>
 
     </div>
 </div>
