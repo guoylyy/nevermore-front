@@ -4,8 +4,9 @@ app.controller('TeacherClassCtrl', function($scope,
     $stateParams, qService, Exp, generalService, Clazz, StudentRecord, Account, ToasterTool, AlertTool) {
   $scope.clazz = {};
 
-  var class_id = $stateParams.id;
-  var exp_id;
+  $scope.class_id = $stateParams.id;
+  $scope.exp_id = $stateParams.expId;
+
   var pageSize = generalService.pageSize();
 
   $scope.tab = 'experiment';
@@ -29,7 +30,7 @@ app.controller('TeacherClassCtrl', function($scope,
     //如果为了异步流程控制，$resource的返回值中包括promise对象，也无需再引入qService。
     //还是此处有深意，我其实没看懂? 
     qService.tokenHttpGet(Clazz.studentListByPage, {
-        "id": class_id,
+        "id": $scope.class_id,
         "pageSize": pageSize,
         "pageNumber": $scope.students.curPageNum
     }).then(function(rc){
@@ -47,14 +48,14 @@ app.controller('TeacherClassCtrl', function($scope,
 
   $scope.view_record = function(id){
     $scope.tab = 'record';
-    exp_id = id;
+    $scope.exp_id = id;
     $scope.pageRecord();
   }
 
   $scope.pageRecord = function(){
     qService.tokenHttpGet(StudentRecord.recordListByPage,{
-        "clazzId": class_id,
-        "experimentId": exp_id,
+        "clazzId": $scope.class_id,
+        "experimentId": $scope.exp_id,
         "pageSize":pageSize,
         "pageNumber":$scope.records.curPageNum
     }).then(function(rc){
@@ -64,7 +65,7 @@ app.controller('TeacherClassCtrl', function($scope,
 
   $scope.removeStudent = function(stId){
     qService.tokenHttpDelete(Account.removeClazzStudent,{
-        'clazzId': class_id,
+        'clazzId': $scope.class_id,
         'studentId': stId,
     }).then(function(rc){
         if(rc.errorCode == 'NO_ERROR'){
@@ -80,31 +81,35 @@ app.controller('TeacherClassCtrl', function($scope,
 
   function init(){
     qService.tokenHttpGet(Clazz.clazz, {
-      id: class_id
+      id: $scope.class_id
     }).then(function(rc){
       $scope.clazz = rc.data;
     });
 
     qService.tokenHttpGet(Exp.statusListByClazz, {
-      "classId": class_id
+      "classId": $scope.class_id
     }).then(function(rc){
         $scope.exps = rc;
     });
+
+    if ($scope.exp_id) {
+      $scope.view_record($scope.exp_id);
+    }
 
     $scope.pageStudent();
   }
 
   $scope.$on('classchange',function (event, arg) {
     if ($scope.classes.length!=0) {
-      class_id = $scope.classes[0].id;
+      $scope.class_id = $scope.classes[0].id;
       init();
     }
   });
 
-  if (class_id) {
+  if ($scope.class_id) {
     init();
   }else if ($scope.classes.length!=0) {
-    class_id = $scope.classes[0].id;
+    $scope.class_id = $scope.classes[0].id;
     init();
   }
 

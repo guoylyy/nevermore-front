@@ -1,8 +1,7 @@
 
 <div class="vbox">
     <div class="wrapper lter b-b bg-white">
-      <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="createNote()">返回实验</a>
-      <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" style="margin-right:10px" ui-sref="app.course.report-result">报告结果</a>
+      <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ui-sref="app.course.student-class({id:class_id})">返回实验</a>
       <div class="subview3_title">扭转实验-实验报告</div>
     </div>
     <div class="wrapper bg-white">
@@ -108,14 +107,14 @@
       <div ng-if="report_step==2">
       <div class="col-sm-1"></div>
       <div class="col-sm-10">
-      <lashen title="拉伸试件" editable="true" ng-model="data['3origin_size']['3.1stretch_test-piece']"></lashen>
+      <lashen title="拉伸试件" editable="true" ng-model="data['3origin_size']['3-1stretch_test-piece']"></lashen>
       </div>
       <div class="col-sm-1"></div>
       <div class="line line-dashed line-lg pull-in"></div>
 
       <div class="col-sm-1"></div>
       <div class="col-sm-10">
-      <yasuo title="压缩试件" editable="true" ng-model="data['3origin_size']['3.2compress_test-piece']"></yaosuo>
+      <yasuo title="压缩试件" editable="true" ng-model="data['3origin_size']['3-2compress_test-piece']"></yaosuo>
       </div>
       <div class="col-sm-1"></div>
       <div class="line line-dashed line-lg pull-in"></div>
@@ -137,7 +136,7 @@
       <div ng-if="report_step==3">
       <div class="col-sm-1"></div>
       <div class="col-sm-10">
-      <graphictable editable="true"></graphictable>
+      <graphictable editable="true" experiment="exp_id" ng-model="data['5plot']"></graphictable>
       </div>
       <div class="col-sm-1"></div>
       <div class="line line-dashed line-lg pull-in"></div>
@@ -157,14 +156,14 @@
       <div ng-if="report_step==4">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-        <lashenexp title="拉伸实验" editable="true" ng-model="data['4data']['4.1stretch']"></lashenexp>
+        <lashenexp title="拉伸实验" editable="true" ng-model="data['4data']['4-1stretch']"></lashenexp>
         </div>
         <div class="col-sm-1"></div>
         <div class="line line-dashed line-lg pull-in"></div>
 
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-        <yasuoexp title="压缩实验" editable="true" ng-model="data['4data']['4.2compress']"></yasuoexp>
+        <yasuoexp title="压缩实验" editable="true" ng-model="data['4data']['4-2compress']"></yasuoexp>
         </div>
         <div class="col-sm-1"></div>
         <div class="line line-dashed line-lg pull-in"></div>
@@ -214,7 +213,7 @@
           <div class="col-sm-1"></div>
           <div class="col-sm-10">
             <button type="submit" class="btn btn-default" ng-click="last()">上一步</button>
-            <button type="submit" class="btn btn-warning">保存草稿</button>
+            <button type="submit" class="btn btn-warning" ng-click="save()">保存草稿</button>
             <button type="submit" class="btn btn-info">提交报告</button>
           </div>
           <div class="col-sm-1"></div>

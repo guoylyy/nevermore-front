@@ -30,12 +30,14 @@
               <thread>
                 <tr>
                   <th style="border-top:0px none; border-bottom:0px none;border-left:0px none; border-right:0px none;height:150px">
-                    <button type="submit" class="btn btn-info" ng-click="chooseChart('stretch','ditangang')" ng-show="editable">点击选择图表</button>
+                    <button type="submit" class="btn btn-info" ng-click="chooseChart('stretch','ditangang',experiment)" ng-show="editable">点击选择图表</button>
+                    <label ng-show="!editable">{{table['stretch'][0]['P-deltaL'].answer}}</label>
                   </th>
                 </tr>
                 <tr>
                   <th style="border-bottom:0px none;border-left:0px none; border-right:0px none; height:150px">
-                    <button type="submit" class="btn btn-info" ng-click="chooseChart('stretch','zhutie')" ng-show="editable">点击选择图表</button>
+                    <button type="submit" class="btn btn-info" ng-click="chooseChart('stretch','zhutie',experiment)" ng-show="editable">点击选择图表</button>
+                    <label ng-show="!editable">{{table['stretch'][1]['P-deltaL'].answer}}</label>
                   </th>
                 </tr>
               </thread>
@@ -46,12 +48,27 @@
               <thread>
                 <tr>
                   <th style="border-top:0px none; border-bottom:0px none;border-left:0px none; border-right:0px none;height:150px">
-                    <textarea class="form-control ng-pristine ng-valid ng-touched" placeholder="" rows="5" aria-multiline="true" aria-invalid="false" ng-disabled="!editable"></textarea>
+
+                      <div class="radio" ng-repeat="option in table['stretch'][0]['duankouxingzhuanghetezheng']['options']" ng-show="editable">
+                        <label>
+                          <input type="radio" value="{{option.label}}" ng-model="table['stretch'][0]['duankouxingzhuanghetezheng'].answer">
+                          {{option.label}}. {{option.content}}
+                        </label>
+                      </div>
+
+                      <label ng-show="!editable">{{table['stretch'][0]['duankouxingzhuanghetezheng'].answer}}</label>
+
                   </th>
                 </tr>
                 <tr>
                   <th style="border-bottom:0px none;border-left:0px none; border-right:0px none; height:150px">
-                    <textarea class="form-control ng-pristine ng-valid ng-touched" placeholder="" rows="5" aria-multiline="true" aria-invalid="false" ng-disabled="!editable"></textarea>
+                    <div class="radio" ng-repeat="option in table['stretch'][1]['duankouxingzhuanghetezheng']['options']" ng-show="editable">
+                      <label>
+                        <input type="radio" value="{{option.label}}" ng-model="table['stretch'][1]['duankouxingzhuanghetezheng'].answer">
+                        {{option.label}}. {{option.content}}
+                      </label>
+                    </div>
+                    <label ng-show="!editable">{{table['stretch'][1]['duankouxingzhuanghetezheng'].answer}}</label>
                   </th>
                 </tr>
               </thread>
@@ -79,12 +96,14 @@
               <thread>
                 <tr>
                   <th style="border-top:0px none; border-bottom:0px none;border-left:0px none; border-right:0px none;height:150px">
-                    <button type="submit" class="btn btn-info" ng-click="chooseChart('compress','ditangang')" ng-show="editable">点击选择图表</button>
+                    <button type="submit" class="btn btn-info" ng-click="chooseChart('compress','ditangang',experiment)" ng-show="editable">点击选择图表</button>
+                    <label ng-show="!editable">{{table['compress'][0]['P-deltaL'].answer}}</label>
                   </th>
                 </tr>
                 <tr>
                   <th style="border-bottom:0px none;border-left:0px none; border-right:0px none; height:150px">
-                    <button type="submit" class="btn btn-info" ng-click="chooseChart('compress','zhutie')" ng-show="editable">点击选择图表</button>
+                    <button type="submit" class="btn btn-info" ng-click="chooseChart('compress','zhutie',experiment)" ng-show="editable">点击选择图表</button>
+                    <label ng-show="!editable">{{table['compress'][1]['P-deltaL'].answer}}</label>
                   </th>
                 </tr>
               </thread>
@@ -95,12 +114,24 @@
               <thread>
                 <tr>
                   <th style="border-top:0px none; border-bottom:0px none;border-left:0px none; border-right:0px none;height:150px">
-                    <textarea class="form-control ng-pristine ng-valid ng-touched" placeholder="" rows="5" aria-multiline="true" aria-invalid="false" ng-disabled="!editable"></textarea>
+                    <div class="radio" ng-repeat="option in table['compress'][0]['duankouxingzhuanghetezheng']['options']" ng-show="editable">
+                      <label>
+                        <input type="radio" value="{{option.label}}" ng-model="table['compress'][0]['duankouxingzhuanghetezheng'].answer">
+                        {{option.label}}. {{option.content}}
+                      </label>
+                    </div>
+                    <label ng-show="!editable">{{table['compress'][0]['duankouxingzhuanghetezheng'].answer}}</label>
                   </th>
                 </tr>
                 <tr>
                   <th style="border-bottom:0px none;border-left:0px none; border-right:0px none; height:150px">
-                    <textarea class="form-control ng-pristine ng-valid ng-touched" placeholder="" rows="5" aria-multiline="true" aria-invalid="false" ng-disabled="!editable"></textarea>
+                    <div class="radio" ng-repeat="option in table['compress'][1]['duankouxingzhuanghetezheng']['options']" ng-show="editable">
+                      <label>
+                        <input type="radio" value="{{option.label}}" ng-model="table['compress'][1]['duankouxingzhuanghetezheng'].answer">
+                        {{option.label}}. {{option.content}}
+                      </label>
+                    </div>
+                    <label ng-show="!editable">{{table['compress'][1]['duankouxingzhuanghetezheng'].answer}}</label>
                   </th>
                 </tr>
               </thread>
