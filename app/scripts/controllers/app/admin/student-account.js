@@ -27,12 +27,16 @@ function($scope, Account, ngDialog, generalService, ToasterTool){
 	$scope.modifyPassword = modifyPassword
 	$scope.addAccount = addAccount
 	$scope.pageChanged = loadAccounts
-	$scope.isSearching = actionBarManager.isSearching
-	$scope.isListing = actionBarManager.isListing
-	$scope.isSearched = actionBarManager.isSearched
-	$scope.listing = actionBarManager.listing
-	$scope.searching = actionBarManager.searching
-	$scope.searched = actionBarManager.searched
+	$scope.onTransit = function(lastAction, nowAction, searchWord){
+		if(lastAction === "searching" && nowAction === "searched"){
+			searchAccount(searchWord)
+		}else if(lastAction === "searched" && nowAction === "searched"){
+			searchAccount(searchWord)
+		}else if(lastAction === "searched" && nowAction === "listing"){
+			$scope.accounts.curPageNum = 1
+			loadAccounts()
+		}
+	}
 	
 	loadAccounts()
 
@@ -111,16 +115,16 @@ function($scope, Account, ngDialog, generalService, ToasterTool){
 		})
 	}
 
-	function searchAccount(){
-		commitSearch().$promise
+	function searchAccount(searchWord){
+		commitSearch(searchWord).$promise
 		.then(updateAccountsAfterSearch)
 		.catch(errorHandler)
 	}
 
-	function commitSearch(){
+	function commitSearch(searchWord){
 		return Account.search().get({
 			"userType": "STUDENT",
-			"value": $scope.searchWord,
+			"value": searchWord,
 		})
 	}
 
@@ -130,71 +134,5 @@ function($scope, Account, ngDialog, generalService, ToasterTool){
 
 	function errorHandler(error){
 		console.log(error)
-	}
-
-	function ActionBarManager(){
-		var ACTIONS_MAP = {
-			"listing": 0,
-			"searching": 1,
-			"searched": 2
-		}
-		var nowAction = "listing"
-		,	lastAction = "listing"
-
-		var transitListener = undefined
-		this.setTransitListener = function(callback){
-			if(typeof callback === "function"){
-				transitListener = callback
-			}
-		}
-
-		this.isListing = function(){
-			return nowAction === "listing"
-		}
-
-		this.isSearching = function(){
-			return nowAction === "searching"
-		}
-
-		this.isSearched = function(){
-			return nowAction === "searched"
-		}
-
-		//3个基本状态转移函数。
-		//通过状态转移函数，改变变量，改变外观。
-		this.listing = function(expectedNowAction){
-			var newAction = "listing"
-			actionTransitTo(newAction, expectedNowAction)
-			
-		}
-
-		this.searching = function(expectedNowAction){
-			var newAction = "searching"
-			actionTransitTo(newAction, expectedNowAction)
-		}
-
-		this.searched = function(expectedNowAction){
-			var newAction = "searched"
-			actionTransitTo(newAction, expectedNowAction)
-		}
-
-		function actionTransitTo(newAction, expectedNowAction){
-			if(canTransitTo(newAction, expectedNowAction)){
-				transit(newAction)
-			}
-		}
-
-		function canTransitTo(newAction, expectedNowAction){
-			if(!!expectedNowAction && expectedNowAction !== nowAction){
-				return false
-			}
-			return true
-		}
-
-		function transit(newAction){
-			lastAction = nowAction
-			nowAction = newAction
-			typeof transitListener === "function" && transitListener(lastAction, nowAction)
-		}
 	}
 }])
