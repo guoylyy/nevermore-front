@@ -1,10 +1,7 @@
 <div class="vbox">
-    <form id = "actionBar" class="form-inline wrapper lter b-b bg-white">
-        <input type="text" class="form-control searchInputScale" placeholder="搜索：输入工号或姓名" ng-class = "{'': isListing(), 'searchInputExtend': !isListing()}" ng-model="searchWord" ng-focus = "searching('listing')" ng-blur = "listing('searching')"/>
-        <button class="btn btn-info searchButtonOpacity" ng-class = "{'': isListing(), 'searchButtonShow': !isListing()}" ng-mousedown = "searched()">搜索</button>
-        <button class="btn btn-primary listingButtonOpacity" ng-class = "{'': !isSearched(), 'listingButtonShow': isSearched()}" ng-click="listing()">返回</button>
-        <button class="btn btn-info pull-right addAccountButtonOpacity" ng-click="addAccount()" ng-class = "{'': isListing(), 'addAccountButtonHide': !isListing()}">添加教师</button>
-    </form>
+    <searchactionbar placeholder = "'搜索：输入工号或姓名'" init-action = "'listing'"       on-transit = "onTransit(lastAction, nowAction, searchWord)">
+        <button class="btn btn-info pull-right" ng-click="addAccount()">添加教师</button>
+    </searchactionbar>
     <div class = "wrapper-md">
         <div class="panel panel-default">
             <table class = "table table-striped b-t b-light">

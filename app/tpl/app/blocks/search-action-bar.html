@@ -1,0 +1,6 @@
+<form id = "searchActionBar" class="form-inline wrapper lter b-b bg-white">
+    <input type="text" class="form-control searchInputScale" placeholder="{{placeholder}}" ng-class = "{'': isListing(), 'searchInputExtend': !isListing()}" ng-model="searchWord" ng-focus = "searching('listing')" ng-blur = "listing('searching')"/>
+    <button class="btn btn-info searchButtonOpacity" ng-class = "{'': isListing(), 'searchButtonShow': !isListing()}" ng-mousedown = "searched()">搜索</button>
+    <button class="btn btn-primary listingButtonOpacity" ng-class = "{'': !isSearched(), 'listingButtonShow': isSearched()}" ng-click="listing()">返回</button>
+    <div class = "pull-right addAccountButtonOpacity" ng-class = "{'': isListing(), 'addAccountButtonHide': !isListing()}" ng-transclude></div>
+</form>

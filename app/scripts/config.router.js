@@ -288,6 +288,7 @@ angular.module('nevermore')
                 return $ocLazyLoad.load([
                   "scripts/services/general-service.js",
                   "scripts/services/toaster-tool.js",
+                  "scripts/directives/app/search-action-bar.js",
                   "ngDialog",
                 ])
               }]
