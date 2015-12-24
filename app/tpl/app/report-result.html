@@ -57,14 +57,14 @@
       <div class="text-danger h4 pull-right" style="font-weight:500;margin-right:20px">19/20</div>
       <div class="line line-dashed line-lg pull-in"></div>
 
-      <graphictable editable="false" experiment="exp_id"></graphictable>
+      <graphictable editable="false" experiment="exp_id" ng-model="data['5plot']"></graphictable>
 
       <a class="text-info pull-right" style="margin-right:20px;color:#23b7e5;" ng-click="show('graphic')" ng-show="!correct_answer_view['graphic']">查看正确答案</a>
 
       <a class="text-danger pull-right" style="margin-right:20px;color:#f05050;" ng-click="hide('graphic')" ng-show="correct_answer_view['graphic']">收起正确答案</a>
 
       <div class="vbox col-sm-10 b-a" ng-show="correct_answer_view['graphic']">
-        <graphictable editable="false" experiment="exp_id"></graphictable>
+        <graphictable editable="false" experiment="exp_id" ng-model=""></graphictable>
       </div>
 
       <div class="line line-lg pull-in b-b" style="padding-top:15px"></div>
