@@ -1,19 +1,17 @@
 <div>
     <div class = "wrapper lter b-b bg-white" style = "overflow: hidden;">
-        <span>实验室资源</span>
-        <button class="btn btn-info pull-right" ng-click="addResource()">添加实验室</button>
+        <span>实验资源</span>
+        <button class="btn btn-info pull-right" ng-click="addResource()">添加实验</button>
     </div>
     <div class = "wrapper-md">
         <div class="panel panel-default">
             <table class = "table table-striped b-t b-light">
                 <thead>
                     <tr>
-                        <th style="width: 10%; min-width: 82px;">编号</th>
-                        <th style="width: 20%; min-width: 164px;">名字</th>
-                        <th style="width: 10%; min-width: 82px;">容量</th>
-                        <th style="width: 10%; min-width: 82px;">当前状态</th>
-                        <th style="width: 30%; min-width: 246px;">基本信息</th>
-                        <th style="width: 20%; min-width: 164px;">操作</th>
+                        <th style="width: 25%; min-width: 205px;">编号</th>
+                        <th style="width: 25%; min-width: 205px;">名字</th>
+                        <th style="width: 25%; min-width: 205px;">是否开放</th>
+                        <th style="width: 25%; min-width: 205px;">操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,13 +23,7 @@
                             <span>{{resource.name}}</span>
                         </td>
                         <td>
-                            <span>{{resource.capacity}}</span>
-                        </td>
-                        <td>
                             <span class = "badge" ng-class = "{'bg-danger':!resource.active,'bg-success':resource.active}">{{resource.active|activeFilter}}</span>
-                        </td>
-                        <td>
-                            <span>{{resource.description}}</span>
                         </td>
                         <td>
                             <button class="btn btn-sm btn-primary" ng-click="modifyResource(resource)"> 

@@ -19,7 +19,8 @@ angular.module('nevermore')
             "name":"",
             "minGrpStuCnt":0,
             "maxGrpStuCnt":0,
-            "active":true
+            "active":true,
+            "virtualExpLink": "",
           };
       },
       fid: function() {
