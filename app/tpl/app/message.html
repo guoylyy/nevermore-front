@@ -5,13 +5,13 @@
           消息中心
         </div>
         <div class="list-group" ng-if="true">
-          <li ui-sref="app.message.list({isRead: null})" class="list-group-item second_nav_body">
+          <li ui-sref-active="active" ui-sref="app.message.list({isRead: null})" class="list-group-item cusor-pointer second_nav_body">
             <a>全部消息</a>
           </li>
-          <li ui-sref="app.message.list({isRead: false})" class="list-group-item second_nav_body">
+          <li ui-sref-active="active" ui-sref="app.message.list({isRead: false})" class="list-group-item cusor-pointer second_nav_body">
             <a>未读消息</a>
           </li>
-          <li ui-sref="app.message.list({isRead: true})" class="list-group-item second_nav_body">
+          <li ui-sref-active="active" ui-sref="app.message.list({isRead: true})" class="list-group-item cusor-pointer second_nav_body">
             <a>已读消息</a>
           </li>
         </div>

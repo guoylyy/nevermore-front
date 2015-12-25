@@ -1994,6 +1994,22 @@ fieldset[disabled] .btn-black.active {
   margin: 0 auto;
   display: block;
 }
+.list-group-item.active {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+.list-group-item.active a {
+  color: #141719;
+}
+.list-group-item.active a.text-info {
+  color: #23b7e5;
+}
+.list-group-item.active .text-muted {
+  color: #141719 !important;
+}
+.cusor-pointer {
+  cursor: pointer;
+}
 .subview3_title {
   border: 0px solid;
   border-left-width: 3px;
