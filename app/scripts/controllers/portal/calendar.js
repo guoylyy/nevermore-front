@@ -66,7 +66,9 @@ app.controller('CalendarController', ['$scope', 'ResTool', 'qService', 'ToasterT
               'type': type,
               'data': res
             };
-            rcList.push(map);
+            if(res.status === 'APPROVED'){
+              rcList.push(map);
+            }
           };
           return rcList;
         };
@@ -144,7 +146,7 @@ app.controller('CalendarController', ['$scope', 'ResTool', 'qService', 'ToasterT
         };
         /* add custom event*/
         $scope.addEvent = function() {
-          
+
         };
         /* remove event */
         $scope.remove = function(index) {

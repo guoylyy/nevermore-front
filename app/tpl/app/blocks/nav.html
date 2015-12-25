@@ -3,79 +3,76 @@
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.HEADER">功能</span>
   </li>
-  <li ui-sref-active="active" ng-if="currentUser.show_role == 'TEACHER'">
-    <a ui-sref="app.index.teacher-reservations({title:'APPROVED'})" class="auto">
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-      <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
-      <span class="font-bold" translate="aside.nav.DASHBOARD">我的预约</span>
-    </a>
-  </li>
-
-  <li ui-sref-active="active" ng-if="currentUser.show_role == 'STUDENT'">
-    <a ui-sref="app.index.student-reservations({title:'clazz'})" class="auto">
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-      <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
-      <span class="font-bold" translate="aside.nav.DASHBOARD">我的预约</span>
-    </a>
-  </li>
-
-  <li ui-sref-active="active" ng-if="currentUser.show_role == 'STUDENT'">
-    <a ui-sref="app.course.student-class" class="auto">
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-      <i class="glyphicon glyphicon-th-large icon text-info-dker"></i>
-      <span class="font-bold" translate="aside.nav.DASHBOARD">我的课程</span>
-    </a>
-  </li>
+  <!-- teacher items -->
+    <li ui-sref-active="active" ng-if="currentUser.show_role == 'TEACHER'">
+      <a ui-sref="app.index" data-ui-sref-opts="{reload: true}" class="auto">
+        <span class="pull-right text-muted">
+          <i class="fa fa-fw fa-angle-right text"></i>
+          <i class="fa fa-fw fa-angle-down text-active"></i>
+        </span>
+        <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
+        <span class="font-bold" translate="aside.nav.DASHBOARD">我的预约</span>
+      </a>
+    </li>
+    <li ui-sref-active="active" ng-if="currentUser.show_role == 'TEACHER'">
+      <a ui-sref="app.course" data-ui-sref-opts="{reload: true}" class="auto">
+        <span class="pull-right text-muted">
+          <i class="fa fa-fw fa-angle-right text"></i>
+          <i class="fa fa-fw fa-angle-down text-active"></i>
+        </span>
+        <i class="glyphicon glyphicon-th-large icon text-info-dker"></i>
+        <span class="font-bold" translate="aside.nav.DASHBOARD">我的班级</span>
+      </a>
+    </li>
 
 
-  <li ui-sref-active="active" ng-if="currentUser.show_role == 'TEACHER'">
-    <a ui-sref="app.course.teacher-class" class="auto">
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-      <i class="glyphicon glyphicon-th-large icon text-info-dker"></i>
-      <span class="font-bold" translate="aside.nav.DASHBOARD">我的班级</span>
-    </a>
-  </li>
-
-  <li ui-sref-active="active" ng-if="currentUser.show_role == 'ADMINISTRATOR'">
-    <a ui-sref="app.account-admin.admin-account" class="auto">
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-      <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
-      <span class="font-bold" translate="aside.nav.DASHBOARD">用户账户</span>
-    </a>
-  </li>
-  <li class="line dk"></li>
-  <li ui-sref-active="active" ng-if="currentUser.show_role == 'ADMINISTRATOR'">
-    <a ui-sref="app.experiment-resource.experiment-lab" class="auto">
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-      <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
-      <span class="font-bold" translate="aside.nav.DASHBOARD">实验资源</span>
-    </a>
-  </li>
+    <li ui-sref-active="active" ng-if="currentUser.show_role == 'STUDENT'">
+      <a ui-sref="app.index" data-ui-sref-opts="{reload: true}" class="auto">
+        <span class="pull-right text-muted">
+          <i class="fa fa-fw fa-angle-right text"></i>
+          <i class="fa fa-fw fa-angle-down text-active"></i>
+        </span>
+        <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
+        <span class="font-bold" translate="aside.nav.DASHBOARD">我的预约</span>
+      </a>
+    </li>
+    <li ui-sref-active="active" ng-if="currentUser.show_role == 'STUDENT'" >
+      <a ui-sref="app.course" data-ui-sref-opts="{reload: true}" class="auto">
+        <span class="pull-right text-muted">
+          <i class="fa fa-fw fa-angle-right text"></i>
+          <i class="fa fa-fw fa-angle-down text-active"></i>
+        </span>
+        <i class="glyphicon glyphicon-th-large icon text-info-dker"></i>
+        <span class="font-bold" translate="aside.nav.DASHBOARD">我的课程</span>
+      </a>
+    </li>
+    <li ui-sref-active="active" ng-if="currentUser.show_role == 'ADMINISTRATOR'">
+      <a ui-sref="app.account-admin.admin-account" class="auto">
+        <span class="pull-right text-muted">
+          <i class="fa fa-fw fa-angle-right text"></i>
+          <i class="fa fa-fw fa-angle-down text-active"></i>
+        </span>
+        <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
+        <span class="font-bold" translate="aside.nav.DASHBOARD">用户账户</span>
+      </a>
+    </li>
+    <li ui-sref-active="active" ng-if="currentUser.show_role == 'ADMINISTRATOR'">
+      <a ui-sref="app.experiment-resource.experiment-lab" class="auto">
+        <span class="pull-right text-muted">
+          <i class="fa fa-fw fa-angle-right text"></i>
+          <i class="fa fa-fw fa-angle-down text-active"></i>
+        </span>
+        <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
+        <span class="font-bold" translate="aside.nav.DASHBOARD">实验资源</span>
+      </a>
+    </li>
   <li class="line dk"></li>
 
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.HEADER">设置</span>
   </li>
-  <li>
-    <a href class="auto" ui-sref="app.profile.person">
+  <li ui-sref-active="active">
+    <a href class="auto" ui-sref="app.profile" data-ui-sref-opts="{reload: true}">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>

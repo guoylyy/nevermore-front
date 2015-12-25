@@ -20,8 +20,7 @@
             <th style="width: 90px;">状态</th>
             <th style="width: 90px;">虚拟实验</th>
             <th style="width: 90px;">成绩</th>
-            <th style="width: 20px;"></th>
-            <th style="width: 20px;"></th>
+            <th style="width: 150px;"></th>
           </tr>
         </thead>
         <tbody>
@@ -32,15 +31,14 @@
               <a class="code" target="_blank" href="{{eachExpResult.virtualExpLink}}" ng-show="eachExpResult.virtualExpLink!=undefined&&eachExpResult.virtualExpLink!=''">虚拟实验</a>
             </td>
             <td style="width: 90px;" class="v-middle">{{eachExpResult.experiment_record |isEmpty}}</td>
-            <td style="width: 20px;" class="v-middle">
-              <button class="btn btn-sm btn-default" ui-sref="app.course.report-result({expId:eachExpResult.expId,classId:eachExpResult.clazzId,stuId:currentUser.id})" ng-if="true">查看详情</button>
-            </td>
-
-            <td style="width: 20px;" class="v-middle">
-              <button class="btn btn-sm btn-default" ui-sref="app.course.report({expId:eachExpResult.expId,classId:class_id})" ng-if="true">录入试卷</button>
+            <td style="width: 90px;" class="v-middle">
+              <button class="btn btn-sm btn-default" ui-sref="app.course.report-result({expId:eachExpResult.expId,classId:eachExpResult.clazzId,stuId:currentUser.id})" ng-if="eachExpResult.status=='COMPLETED'">查看详情</button>
+              <button class="btn btn-sm btn-default" ui-sref="app.course.report({expId:eachExpResult.expId,classId:class_id})" ng-if="eachExpResult.status=='IN_PROGRESS'||eachExpResult.status=='SUBMITTED'">录入试卷</button>
             </td>
           </tr>
         </tbody>
+        <nevermore-empty-panel ng-if="exps.length == 0" >
+        </nevermore-empty-panel>
       </table>
     </div>
     <footer class="panel-footer">

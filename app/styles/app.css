@@ -1030,6 +1030,10 @@
   width: 1024px !important;
   margin: 0 auto;
 }
+.fc-day-grid-event .fc-content,
+.fc-time-grid-event .fc-content {
+  color: #fff;
+}
 .btn {
   font-weight: 500;
   border-radius: 2px;
@@ -1994,6 +1998,29 @@ fieldset[disabled] .btn-black.active {
   margin: 0 auto;
   display: block;
 }
+.list-group-item.active {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+.list-group-item.active a {
+  color: #141719;
+}
+.list-group-item.active a.text-info {
+  color: #23b7e5;
+}
+.list-group-item.active .text-muted {
+  color: #141719 !important;
+}
+.nav > li.active a {
+  color: #fff;
+  background-color: #00a2ca !important;
+}
+.nav > li.active i.icon {
+  color: #fff;
+}
+.cusor-pointer {
+  cursor: pointer;
+}
 .subview3_title {
   border: 0px solid;
   border-left-width: 3px;
@@ -2130,6 +2157,17 @@ fieldset[disabled] .btn-black.active {
 }
 .nevermore-message-page .table .title-column {
   width: 60%;
+}
+.app:before {
+  content: "";
+  position: absolute;
+  width: inherit;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background-color: #fff;
+  border: inherit;
+  display: block;
 }
 .subview3_title {
   border: 0px solid;

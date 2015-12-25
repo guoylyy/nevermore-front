@@ -1,6 +1,6 @@
 'use strict';
 //
-app.controller('ReportCtrl',  function($scope, $rootScope, AlertTool, $stateParams, Report, qService) {
+app.controller('ReportCtrl',  function($scope, $state, $rootScope, AlertTool, $stateParams, Report, qService, ToasterTool, StudentRecord, Clazz) {
 
   $scope.report_step = 1;
 
@@ -18,6 +18,13 @@ app.controller('ReportCtrl',  function($scope, $rootScope, AlertTool, $statePara
     if (rc.code == 200) {
       $scope.data = rc.data.report;
       $scope.status = rc.data.status;
+      $scope.data.student.name = $rootScope.currentUser.name;
+      qService.tokenHttpGet(Clazz.clazz, {
+        id: $scope.class_id
+      }).then(function(rc){
+        $scope.data.student.class = rc.data.clazz.course.name+" "+rc.data.clazz.course.number;
+      });
+      $scope.data['1date'] = new Date();
       $scope.question_change();
     }
     else {
@@ -26,6 +33,13 @@ app.controller('ReportCtrl',  function($scope, $rootScope, AlertTool, $statePara
       }).then(function(rc){
         $scope.data = rc.data;
         $scope.status = rc.data.status;
+        $scope.data.student.name = $rootScope.currentUser.name;
+        qService.tokenHttpGet(Clazz.clazz, {
+          id: $scope.class_id
+        }).then(function(rc){
+          $scope.data.student.class = rc.data.course.name+" "+rc.data.course.number;
+        });
+        $scope.data['1date'] = new Date();
         $scope.question_change();
       });
     }
@@ -84,6 +98,19 @@ app.controller('ReportCtrl',  function($scope, $rootScope, AlertTool, $statePara
       if (rc.code == 200) {
         AlertTool.success({title:'提交成功！',text:''}).then(function() {
           $scope.status = 'committed';
+          $state.go('app.course.report-result',{expId:$scope.exp_id,classId:$scope.class_id,stuId:$rootScope.currentUser.id});
+          var record = {
+            "experimentRecord": 66
+          };
+          qService.tokenHttpGet(StudentRecord.studentRecord, {
+            student: $rootScope.currentUser.id,
+            clazz: $scope.class_id,
+            experiment: $scope.exp_id
+          }).then(function(rc){
+            qService.tokenHttpPut(StudentRecord.update, {id:rc.data.id} , record).then(function(result) {
+
+            });
+          });
         });
       }else if (rc.code == 110) {
         AlertTool.error({title:'提交失败！',text:rc.data}).then(function() {

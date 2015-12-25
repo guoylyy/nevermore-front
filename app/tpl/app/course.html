@@ -6,7 +6,7 @@
           我的课程
         </div>
         <div class="list-group" ng-if="currentUser.show_role == 'STUDENT'">
-          <li ng-repeat="course in courses" class="list-group-item second_nav_body" ui-sref="app.course.student-class({id:'{{course.classId}}'})">
+          <li ui-sref-active="active" ng-repeat="course in courses" class="list-group-item second_nav_body cusor-pointer" ui-sref="app.course.student-class({id:'{{course.classId}}'})">
               <div class="clear">
                 <div><a class="text-info">{{course.coursename}}</a></div>
                 <small class="text-muted">{{course.classnumber}}&nbsp;{{course.teacher}}</small>
@@ -14,7 +14,7 @@
             </li>
         </div>
         <div class="list-group"  ng-if="currentUser.show_role == 'TEACHER'">
-          <li ng-repeat="class in classes" class="list-group-item second_nav_body" ui-sref="app.course.teacher-class({id:'{{class.id}}',expId:''})">
+          <li  ui-sref-active="active" ng-repeat="class in classes" class="list-group-item second_nav_body cusor-pointer" ui-sref="app.course.teacher-class({id:'{{class.id}}',expId:''})">
               <div class="clear">
                 <div><a class="text-info">{{class.course.name}}</a></div>
                 <small class="text-muted">{{class.number}}</small>

@@ -37,7 +37,10 @@
             </td>
           </tr>
         </tbody>
+
       </table>
+      <nevermore-empty-panel ng-if="map.Reservations[title].data.data.length == 0" text="暂时没有任何预约">
+      </nevermore-empty-panel>
     </div>
     <footer class="panel-footer">
         <div class="row clearfix" style="width: 100%;" >

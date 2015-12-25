@@ -96,7 +96,6 @@ angular.module('nevermore')
             }
           })
           .state('app.index', {
-            abstract: true,
             url: '^/app/index',
             templateUrl: 'tpl/app/index.html',
             controller: 'AppIndexController',
@@ -141,7 +140,6 @@ angular.module('nevermore')
             }
           })
           .state('app.course', {
-            abstract: true,
             url: '^/app/course',
             templateUrl: 'tpl/app/course.html',
             controller: 'AppCourseController',
@@ -173,7 +171,10 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/teacher-class.js',
-                  'scripts/directives/app/pager.js'
+                  'scripts/directives/app/pager.js',
+                  'scripts/directives/app/nm-file-upload.js',
+                  'scripts/controllers/app/modal/file-upload.js',
+                  'ngDialog'
                 ]);
               }]
             }
@@ -219,11 +220,11 @@ angular.module('nevermore')
             }
           })
           .state('app.profile', {
-            abstract: true,
             url: '^/app/profile',
             templateUrl: 'tpl/app/profile.html',
-            resolve: {
-            }
+            controller: ['$state', function($state){
+              $state.go('app.profile.person');
+            }]
           })
           .state('app.profile.person', {
             url: '^/app/profile/person',
