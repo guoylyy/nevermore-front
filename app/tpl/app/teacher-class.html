@@ -55,6 +55,8 @@
           </tr>
 
         </tbody>
+        <nevermore-empty-panel ng-if="exps.data.length == 0" >
+        </nevermore-empty-panel>
       </table>
     </div>
 
@@ -88,6 +90,8 @@
             </tr>
           </tbody>
         </table>
+        <nevermore-empty-panel ng-if="students.data.length == 0" >
+        </nevermore-empty-panel>
       </div>
       <footer class="panel-footer">
 
@@ -139,6 +143,8 @@
             </tr>
           </tbody>
         </table>
+        <nevermore-empty-panel ng-if="records.data.length == 0" >
+        </nevermore-empty-panel>
       </div>
       <footer class="panel-footer">
           <div class="row clearfix" style="width: 100%;" >

@@ -1,6 +1,7 @@
 'use strict';
 
-app.controller('StudentClassCtrl', function($scope,$stateParams, generalService, qService, Clazz, Course) {
+app.controller('StudentClassCtrl', function($scope,$stateParams,
+  generalService, qService, Clazz, Course) {
 
     $scope.clazz = {};
     $scope.class_id = $stateParams.id;
@@ -23,12 +24,12 @@ app.controller('StudentClassCtrl', function($scope,$stateParams, generalService,
       });
     }
 
-    $scope.$on('classchange',function (event, arg) {
-      if ($scope.courses.length!=0) {
-        $scope.class_id = $scope.courses[0].classId;
-        init();
-      }
-    });
+    // $scope.$on('classchange',function (event, arg) {
+    //   if ($scope.courses.length!=0) {
+    //     // $scope.class_id = $scope.courses[0].classId;
+    //     // init();
+    //   }
+    // });
 
     if ($scope.class_id) {
       init();

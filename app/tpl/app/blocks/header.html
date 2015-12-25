@@ -7,7 +7,7 @@
           <i class="glyphicon glyphicon-align-justify"></i>
         </button>
         <!-- brand -->
-        <a ui-sref="app.index" class="navbar-brand">
+        <a ui-sref="app.index" data-ui-sref-opts="{reload: true}" class="navbar-brand">
           <img src="images/logos/app/logo-white.png" alt="." class="" style="margin-top:15px; max-height:32px;">
         </a>
         <!-- / brand -->
@@ -29,8 +29,8 @@
         </div>
         <!-- / buttons -->
         <ul class="nav navbar-nav hidden-sm">
-          <li>
-            <a ui-sref="app.calendar" class="dropdown-toggle" dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
+          <li ui-sref-active="active">
+            <a ui-sref="app.calendar"  data-ui-sref-opts="{reload: true}"  class="dropdown-toggle" dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
               <span translate="header.navbar.new.NEW" class="ng-scope">实验日历</span>
             </a>

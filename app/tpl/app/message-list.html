@@ -55,7 +55,7 @@
               </tr>
             </tbody>
           </table>
-          <nevermore-empty-panel ng-if="pageData.list.length == 0"></nevermore-empty-panel>
+          <nevermore-empty-panel ng-if="pageData.list.length == 0" text="暂时没有任何消息"></nevermore-empty-panel>
 
           <div style="width: 100%;" class="clearfix" ng-if="pageData.list.length > 0">
             <table class="table" style="width: 100%;">
@@ -68,7 +68,7 @@
                     </label>
                   </td>
                   <td colspan="4">
-                    <div class="btn-group dropdown">
+                    <div class="btn-group uib-dropdown">
                       <button class="btn btn-default m-r-sm" ng-click="deleteMessages()">删除</button>
                       <button class="btn btn-default" ng-click="markAsRead()">标记已读</button>
                     </div>

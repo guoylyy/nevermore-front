@@ -2007,6 +2007,13 @@ fieldset[disabled] .btn-black.active {
 .list-group-item.active .text-muted {
   color: #141719 !important;
 }
+.nav > li.active a {
+  color: #fff;
+  background-color: #00a2ca !important;
+}
+.nav > li.active i.icon {
+  color: #fff;
+}
 .cusor-pointer {
   cursor: pointer;
 }
@@ -2146,6 +2153,17 @@ fieldset[disabled] .btn-black.active {
 }
 .nevermore-message-page .table .title-column {
   width: 60%;
+}
+.app:before {
+  content: "";
+  position: absolute;
+  width: inherit;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background-color: #fff;
+  border: inherit;
+  display: block;
 }
 .subview3_title {
   border: 0px solid;
