@@ -338,7 +338,34 @@ angular.module('nevermore')
               }]
             },
           })
-          ;
+          .state('app.experiment-resource', {
+            abstract: true,
+            url: '^/app/experiment/resource',
+            templateUrl: 'tpl/app/admin/experiment-index.html',
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/services/general-service.js",
+                  "scripts/services/toaster-tool.js",
+                  "ngDialog",
+                ])
+              }]
+            }
+          })
+          .state('app.experiment-resource.experiment-lab', {
+            url: '^/app/experiment/resource/experiment/lab',
+            templateUrl: 'tpl/app/admin/experiment-lab.html',
+            controller: 'ExperimentLabCtrl',
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/experiment-lab.js",
+                  "scripts/controllers/app/admin/add-experiment-lab.js",
+                  "scripts/controllers/app/admin/modify-experiment-lab.js",
+                ])
+              }]
+            },
+          });
       }
     ]
   )
