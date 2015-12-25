@@ -378,6 +378,20 @@ angular.module('nevermore')
                 ])
               }]
             },
+          })
+          .state("app.experiment-resource.experiment", {
+            url: "^/app/experiment/resource/experiment-content",
+            templateUrl: "tpl/app/admin/experiment.html",
+            controller: "ExperimentCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/experiment.js",
+                  "scripts/controllers/app/admin/add-experiment.js",
+                  "scripts/controllers/app/admin/modify-experiment.js",
+                ])
+              }]
+            }
           });
       }
     ]

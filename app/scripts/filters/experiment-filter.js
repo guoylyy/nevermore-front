@@ -2,7 +2,7 @@
 
 
 angular.module('nevermore')
-  .filter('labActiveFilter', function () {
+  .filter('activeFilter', function () {
   	return function(active){
 			if(active){
 		      return "开放"
