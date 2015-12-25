@@ -352,7 +352,62 @@ angular.module('nevermore')
               }]
             },
           })
-          ;
+          .state('app.experiment-resource', {
+            abstract: true,
+            url: '^/app/experiment/resource',
+            templateUrl: 'tpl/app/admin/experiment-index.html',
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/services/general-service.js",
+                  "scripts/services/toaster-tool.js",
+                  "ngDialog",
+                ])
+              }]
+            }
+          })
+          .state('app.experiment-resource.experiment-lab', {
+            url: '^/app/experiment/resource/experiment/lab',
+            templateUrl: 'tpl/app/admin/experiment-lab.html',
+            controller: 'ExperimentLabCtrl',
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/experiment-lab.js",
+                  "scripts/controllers/app/admin/add-experiment-lab.js",
+                  "scripts/controllers/app/admin/modify-experiment-lab.js",
+                ])
+              }]
+            },
+          })
+          .state("app.experiment-resource.experiment", {
+            url: "^/app/experiment/resource/experiment-content",
+            templateUrl: "tpl/app/admin/experiment.html",
+            controller: "ExperimentCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/experiment.js",
+                  "scripts/controllers/app/admin/add-experiment.js",
+                  "scripts/controllers/app/admin/modify-experiment.js",
+                ])
+              }]
+            }
+          })
+          .state("app.experiment-resource.experiment-course", {
+            url: "^/app/experiment/resource/experiment-resource",
+            templateUrl: "tpl/app/admin/experiment-course.html",
+            controller: "ExperimentCourseCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/experiment-course.js",
+                  "scripts/controllers/app/admin/add-experiment-course.js",
+                  "scripts/controllers/app/admin/modify-experiment-course.js",
+                ])
+              }]
+            }
+          });
       }
     ]
   )

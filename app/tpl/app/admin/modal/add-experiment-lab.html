@@ -1,0 +1,45 @@
+<div class="nm-dialog">
+  <div class="nm-dialog-header">
+    <h1 class="header-title" style="margin-top: 5px;">
+      <span>实验室详情</span>
+    </h1>
+  </div>
+
+  <form class="form-horizontal" name="resourceForm" novalidate>
+    <div class="form-group">
+      <label for="number" class="col-sm-3 control-label">编号*</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="number" ng-model = "resource.number"
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-3 control-label">实验室名*</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="name" ng-model = "resource.name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="capacity" class="col-sm-3 control-label">容量</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="capacity" ng-model = "resource.capacity">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="col-sm-3 control-label">描述</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="description" ng-model = "resource.description">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="active" class="col-sm-3 control-label">实验室状态</label>
+      <div class="col-sm-9">
+        <select class="form-control" id = "active" ng-model="resource.active" ng-options="active.bool as active.chinese for active in activeList"></select>
+      </div>
+    </div>
+    <div class="clearfix m-t">
+      <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
+      <button class = "btn btn-primary pull-right" ng-click = "addResource()" ng-disabled = "adding">创建</button>
+    </div>
+  </form>
+</div>

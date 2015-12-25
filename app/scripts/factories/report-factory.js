@@ -9,10 +9,6 @@
  */
 angular.module('nevermore')
   .factory('Report', function ($resource, $rootScope) {
-    // var baseUrl = "http://192.168.3.25:5000/report";
-
-    // this.answer =
-
     return {
       template : function(){
         return $resource(report_Url + '/template/:expId', {expId:'@expId'}, {
