@@ -175,6 +175,7 @@ angular.module('nevermore')
                   'scripts/controllers/app/teacher-class.js',
                   'scripts/directives/app/pager.js',
                   'scripts/directives/app/nm-file-upload.js',
+                  'scripts/controllers/app/modal/file-upload.js',
                   'ngDialog'
                 ]);
               }]

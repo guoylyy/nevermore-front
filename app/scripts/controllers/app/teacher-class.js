@@ -28,11 +28,21 @@ app.controller('TeacherClassCtrl', function($scope, $stateParams, qService, Exp,
   $scope.uploadStudents = function(){
     var dialog = ngDialog.open({
       template: 'tpl/app/modal/file-upload.html',
-      // controller: 'FileUploadCtrl',
+      controller: 'FileUploadCtrl',
       className: 'nm-dialog nm-dialog-md',
       closeByDocument: false,
-      closeByEscape: true
+      closeByEscape: true,
+      resolve: {
+          classId: function() {
+            return $scope.class_id;
+          }
+        }
     });
+
+    dialog.closePromise.then(function(data) {
+      $scope.view_student();
+    });
+
   };
   $scope.pageStudent = function() {
     //这写法莫名其妙。。。clazz-factory中明明封装好了方法，为何还要用qService？
@@ -53,6 +63,7 @@ app.controller('TeacherClassCtrl', function($scope, $stateParams, qService, Exp,
 
   $scope.view_student = function(){
     $scope.tab="student";
+    $scope.pageStudent();
   }
 
   $scope.view_record = function(id){
