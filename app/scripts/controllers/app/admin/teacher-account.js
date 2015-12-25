@@ -31,18 +31,6 @@ function($scope, Account, ngDialog, generalService, ToasterTool){
 	loadAccounts()
 
 
-	app.filter("genderFilter", function(gender){
-		if(gender === "MALE"){
-			return "男"
-		}else if(gender === "FEMALE"){
-			return "女"
-		}else{
-			return "未知"
-		}
-	})
-
-
-
 	function loadAccounts(){
 		Account.page().get({
 			"pageSize": generalService.pageSize(),
