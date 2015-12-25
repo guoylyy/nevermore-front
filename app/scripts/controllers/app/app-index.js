@@ -2,7 +2,6 @@
 
 app.controller('AppIndexController', ['$scope', '$state', '$rootScope', function($scope,
     $state, $rootScope) {
-
   var statusList = ['APPROVED', 'PENDING', 'REJECTED'];
   var studentResList = ['clazz', 'student'];
 

@@ -5,7 +5,7 @@
   </li>
   <!-- teacher items -->
     <li ui-sref-active="active" ng-if="currentUser.show_role == 'TEACHER'">
-      <a ui-sref="app.index" class="auto">
+      <a ui-sref="app.index" data-ui-sref-opts="{reload: true}" class="auto">
         <span class="pull-right text-muted">
           <i class="fa fa-fw fa-angle-right text"></i>
           <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -15,7 +15,7 @@
       </a>
     </li>
     <li ui-sref-active="active" ng-if="currentUser.show_role == 'TEACHER'">
-      <a ui-sref="app.course.teacher-class" class="auto">
+      <a ui-sref="app.course.teacher-class" data-ui-sref-opts="{reload: true}" class="auto">
         <span class="pull-right text-muted">
           <i class="fa fa-fw fa-angle-right text"></i>
           <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -27,7 +27,7 @@
 
 
     <li ui-sref-active="active" ng-if="currentUser.show_role == 'STUDENT'">
-      <a ui-sref="app.index" class="auto">
+      <a ui-sref="app.index" data-ui-sref-opts="{reload: true}" class="auto">
         <span class="pull-right text-muted">
           <i class="fa fa-fw fa-angle-right text"></i>
           <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -36,8 +36,8 @@
         <span class="font-bold" translate="aside.nav.DASHBOARD">我的预约</span>
       </a>
     </li>
-    <li ui-sref-active="active" ng-if="currentUser.show_role == 'STUDENT'">
-      <a ui-sref="app.course.student-class" class="auto">
+    <li ui-sref-active="active" ng-if="currentUser.show_role == 'STUDENT'" >
+      <a ui-sref="app.course.student-class" data-ui-sref-opts="{reload: true}" class="auto">
         <span class="pull-right text-muted">
           <i class="fa fa-fw fa-angle-right text"></i>
           <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -72,7 +72,7 @@
     <span translate="aside.nav.HEADER">设置</span>
   </li>
   <li ui-sref-active="active">
-    <a  href class="auto" ui-sref="app.profile">
+    <a href class="auto" ui-sref="app.profile" data-ui-sref-opts="{reload: true}">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>
