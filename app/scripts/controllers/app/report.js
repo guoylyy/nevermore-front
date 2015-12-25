@@ -1,6 +1,6 @@
 'use strict';
 //
-app.controller('ReportCtrl',  function($scope, $rootScope, AlertTool, $stateParams, Report, qService) {
+app.controller('ReportCtrl',  function($scope, $state, $rootScope, AlertTool, $stateParams, Report, qService) {
 
   $scope.report_step = 1;
 
@@ -84,6 +84,7 @@ app.controller('ReportCtrl',  function($scope, $rootScope, AlertTool, $statePara
       if (rc.code == 200) {
         AlertTool.success({title:'提交成功！',text:''}).then(function() {
           $scope.status = 'committed';
+          $state.go('app.course.report-result',{expId:$scope.exp_id,classId:$scope.class_id,stuId:$rootScope.currentUser.id});
         });
       }else if (rc.code == 110) {
         AlertTool.error({title:'提交失败！',text:rc.data}).then(function() {
