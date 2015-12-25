@@ -9,7 +9,7 @@
  */
 angular.module('nevermore')
   .factory('Report', function ($resource, $rootScope) {
-    var baseUrl = "http://192.168.3.25:5000/report";
+    var baseUrl = "http://nmscore.daiguanwang.cn/report";
 
     // this.answer =
 
