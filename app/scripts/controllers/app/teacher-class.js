@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('TeacherClassCtrl', function($scope,
-    $stateParams, qService, Exp, generalService, Clazz, StudentRecord, Account, ToasterTool, AlertTool) {
+app.controller('TeacherClassCtrl', function($scope, $stateParams, qService, Exp,
+   generalService, Clazz, StudentRecord, Account, ToasterTool, AlertTool, ngDialog) {
   $scope.clazz = {};
 
   $scope.class_id = $stateParams.id;
@@ -25,10 +25,19 @@ app.controller('TeacherClassCtrl', function($scope,
       totalItemNum:0
   };
 
+  $scope.uploadStudents = function(){
+    var dialog = ngDialog.open({
+      template: 'tpl/app/modal/file-upload.html',
+      // controller: 'FileUploadCtrl',
+      className: 'nm-dialog nm-dialog-md',
+      closeByDocument: false,
+      closeByEscape: true
+    });
+  };
   $scope.pageStudent = function() {
     //这写法莫名其妙。。。clazz-factory中明明封装好了方法，为何还要用qService？
     //如果为了异步流程控制，$resource的返回值中包括promise对象，也无需再引入qService。
-    //还是此处有深意，我其实没看懂? 
+    //还是此处有深意，我其实没看懂?
     qService.tokenHttpGet(Clazz.studentListByPage, {
         "id": $scope.class_id,
         "pageSize": pageSize,

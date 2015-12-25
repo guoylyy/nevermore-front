@@ -1,0 +1,48 @@
+<div class="nm-dialog">
+  <div class="nm-dialog-header">
+    <h1 class="header-title" style="margin-top: 5px;">
+      <span>上传文件</span>
+    </h1>
+  </div>
+  <div class="m-t-sm clearfix">
+    <div class="pull-left">
+      <ui-select ng-model="tmpData.attachTag" theme="bootstrap" class="w-sm">
+        <ui-select-match placeholder="">{{$select.selected.name}}</ui-select-match>
+        <ui-select-choices repeat="item in tmpData.attachTagList | filter: $select.search">
+          <div ng-bind-html="item.name"></div>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+    <div class="pull-right">
+      <div ng-show="!file" class="tiger-upload-container" style="width: 400px;" ngf-drop ngf-select ng-model="file" ngf-max-size="4MB">
+        <span>将文件拖动到此上传 或 点击此处选择文件</span>
+      </div>
+      <div ng-show="file">
+        <table class="table tiger-table tiger-table-panel text-c" style="width: 400px;">
+          <thead>
+            <tr>
+              <th>文件名称</th>
+              <th>文件大小(MB)</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{fileInfo.name}}</td>
+              <td>{{fileInfo.size/(1024*1024) | number:2}}</td>
+              <td>
+                <a class="tiger-link" ng-click="deleteFile()">删除</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="m-t clearfix">
+    <div class="pull-right">
+      <button class="btn btn-primary w-sm" ng-click="confirm()" ng-disabled="!fileInfo">确定</button>
+      <button class="btn btn-default w-sm" ng-click="closeThisDialog(null)">取消</button>
+    </div>
+  </div>
+</div>

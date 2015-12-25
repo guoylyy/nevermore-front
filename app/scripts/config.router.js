@@ -173,7 +173,9 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/teacher-class.js',
-                  'scripts/directives/app/pager.js'
+                  'scripts/directives/app/pager.js',
+                  'scripts/directives/app/nm-file-upload.js',
+                  'ngDialog'
                 ]);
               }]
             }
