@@ -2007,6 +2007,13 @@ fieldset[disabled] .btn-black.active {
 .list-group-item.active .text-muted {
   color: #141719 !important;
 }
+.nav > li.active a {
+  color: #fff;
+  background-color: #00a2ca !important;
+}
+.nav > li.active i.icon {
+  color: #fff;
+}
 .cusor-pointer {
   cursor: pointer;
 }
