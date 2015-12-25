@@ -392,6 +392,20 @@ angular.module('nevermore')
                 ])
               }]
             }
+          })
+          .state("app.experiment-resource.experiment-course", {
+            url: "^/app/experiment/resource/experiment-resource",
+            templateUrl: "tpl/app/admin/experiment-course.html",
+            controller: "ExperimentCourseCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/experiment-course.js",
+                  "scripts/controllers/app/admin/add-experiment-course.js",
+                  "scripts/controllers/app/admin/modify-experiment-course.js",
+                ])
+              }]
+            }
           });
       }
     ]
