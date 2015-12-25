@@ -2,13 +2,33 @@ app.controller("AddExperimentCtrl", ["$scope", "Exp",
 function($scope, Exp){
 	var DEFAULT_ACCOUNT = Exp.template()
 
+	var activeManager = new ActiveManager()
 	var adding = false
 	var resource = angular.copy(DEFAULT_ACCOUNT)
 
 	$scope.resource = resource
+	$scope.activeList = activeManager.getActiveList()
 	$scope.addResource = addResource
 	$scope.errorTip = ""
 
+
+	//TODO: 这种manager抽象出来
+	function ActiveManager(){
+		var ACTIVE_LIST = [
+			{
+				"chinese": "开放",
+				"bool": true,
+			},
+			{
+				"chinese": "关闭",
+				"bool": false,
+			},
+		]
+
+		this.getActiveList = function(){
+			return ACTIVE_LIST
+		}
+	}
 
 	function addResource(){
 		if(resourceComplete()){
