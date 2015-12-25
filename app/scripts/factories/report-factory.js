@@ -9,20 +9,20 @@
  */
 angular.module('nevermore')
   .factory('Report', function ($resource, $rootScope) {
-    var baseUrl = "http://192.168.3.25:5000/report";
+    // var baseUrl = "http://192.168.3.25:5000/report";
 
     // this.answer =
 
     return {
       template : function(){
-        return $resource(baseUrl + '/template/:expId', {expId:'@expId'}, {
+        return $resource(report_Url + '/template/:expId', {expId:'@expId'}, {
           'get': {
             method: 'GET'
           }
         });
       },
       report: function() {
-        return $resource(baseUrl + '/:stuId/:classId/:expId', {stuId:'@stuId', classId:'@classId', expId:'@expId'}, {
+        return $resource(report_Url + '/:stuId/:classId/:expId', {stuId:'@stuId', classId:'@classId', expId:'@expId'}, {
           'get': {
             method: 'GET'
           },
@@ -32,14 +32,14 @@ angular.module('nevermore')
         })
       },
       save: function() {
-        return $resource(baseUrl, {}, {
+        return $resource(report_Url, {}, {
           'post': {
             method: 'POST'
           }
         })
       },
       answer: function(headers) {
-        return $resource(baseUrl + '/answer/:expId', {expId:'@expId'}, {
+        return $resource(report_Url + '/answer/:expId', {expId:'@expId'}, {
           'get': {
             method: 'GET',
             headers: headers

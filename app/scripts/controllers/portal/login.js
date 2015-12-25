@@ -33,6 +33,7 @@ app.controller('LoginController', function($scope,$rootScope, $state, $localStor
     			}else if($rootScope.currentUser.show_role == 'STUDENT'){
     				$state.go('app.index.student-reservations',{title:'clazz'});
     			}
+          ToasterTool.success('登录成功','欢迎回到航力云平台!');
         }).error(function(error){
           ToasterTool.error('未知错误发生!','');
         });
