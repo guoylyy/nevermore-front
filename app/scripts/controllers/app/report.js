@@ -1,6 +1,6 @@
 'use strict';
 //
-app.controller('ReportCtrl',  function($scope, $state, $rootScope, AlertTool, $stateParams, Report, qService, ToasterTool, StudentRecord) {
+app.controller('ReportCtrl',  function($scope, $state, $rootScope, AlertTool, $stateParams, Report, qService, ToasterTool, StudentRecord, Clazz) {
 
   $scope.report_step = 1;
 
@@ -18,6 +18,13 @@ app.controller('ReportCtrl',  function($scope, $state, $rootScope, AlertTool, $s
     if (rc.code == 200) {
       $scope.data = rc.data.report;
       $scope.status = rc.data.status;
+      $scope.data.student.name = $rootScope.currentUser.name;
+      qService.tokenHttpGet(Clazz.clazz, {
+        id: $scope.class_id
+      }).then(function(rc){
+        $scope.data.student.class = rc.data.clazz.course.name+" "+rc.data.clazz.course.number;
+      });
+      $scope.data['1date'] = new Date();
       $scope.question_change();
     }
     else {
@@ -26,6 +33,13 @@ app.controller('ReportCtrl',  function($scope, $state, $rootScope, AlertTool, $s
       }).then(function(rc){
         $scope.data = rc.data;
         $scope.status = rc.data.status;
+        $scope.data.student.name = $rootScope.currentUser.name;
+        qService.tokenHttpGet(Clazz.clazz, {
+          id: $scope.class_id
+        }).then(function(rc){
+          $scope.data.student.class = rc.data.course.name+" "+rc.data.course.number;
+        });
+        $scope.data['1date'] = new Date();
         $scope.question_change();
       });
     }
