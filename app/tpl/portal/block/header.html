@@ -8,12 +8,12 @@
         </div> -->
         <div class="header-nav m-l-lg">
           <ul>
-            <a ui-sref="portal.index"><li ui-sref="portal.index">首页</li></a>
-            <a ui-sref="portal.calendar"><li>实验日历</li></a>
+            <a ui-sref="portal.index" data-ui-sref-opts="{reload: true}"><li >首页</li></a>
+            <a ui-sref="portal.calendar" data-ui-sref-opts="{reload: true}"><li>实验日历</li></a>
           </ul>
         </div>
         <div class="header-btn-group">
-            <a ui-sref="portal.login" class="btn btn-default w-xs m-r">登录</a>
+            <a ui-sref="portal.login" data-ui-sref-opts="{reload: true}" class="btn btn-default w-xs m-r">登录</a>
         </div>
     </div>
 </div>

@@ -1030,6 +1030,9 @@
   width: 1024px !important;
   margin: 0 auto;
 }
+.fc-day-grid-event .fc-content {
+  color: #fff;
+}
 .btn {
   font-weight: 500;
   border-radius: 2px;
