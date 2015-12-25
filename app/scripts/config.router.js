@@ -140,7 +140,6 @@ angular.module('nevermore')
             }
           })
           .state('app.course', {
-            abstract: true,
             url: '^/app/course',
             templateUrl: 'tpl/app/course.html',
             controller: 'AppCourseController',

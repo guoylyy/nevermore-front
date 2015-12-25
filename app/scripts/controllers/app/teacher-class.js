@@ -108,12 +108,12 @@ app.controller('TeacherClassCtrl', function($scope, $stateParams, qService, Exp,
     $scope.pageStudent();
   }
 
-  $scope.$on('classchange',function (event, arg) {
-    if ($scope.classes.length!=0) {
-      $scope.class_id = $scope.classes[0].id;
-      init();
-    }
-  });
+  // $scope.$on('classchange',function (event, arg) {
+  //   if ($scope.classes.length!=0) {
+  //     $scope.class_id = $scope.classes[0].id;
+  //     init();
+  //   }
+  // });
 
   if ($scope.class_id) {
     init();
