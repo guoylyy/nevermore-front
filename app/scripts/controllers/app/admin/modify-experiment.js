@@ -2,11 +2,32 @@ app.controller("ModifyExperimentCtrl", ["$scope", "data", "Exp",
 function($scope, data, Exp){
 	var originResource = data
 	,	copiedResource = angular.copy(originResource)
+	var activeManager = new ActiveManager()
+
 	$scope.resource = copiedResource
+	$scope.activeList = activeManager.getActiveList()
 	$scope.pending = false
 	$scope.modifyResource = modifyResource
 	$scope.deleteResource = deleteResource
 	$scope.errorTip = ""
+
+	//TODO: 这种manager抽象出来
+	function ActiveManager(){
+		var ACTIVE_LIST = [
+			{
+				"chinese": "开放",
+				"bool": true,
+			},
+			{
+				"chinese": "关闭",
+				"bool": false,
+			},
+		]
+
+		this.getActiveList = function(){
+			return ACTIVE_LIST
+		}
+	}
 
 	function modifyResource(){
 		if(resourceComplete()){
