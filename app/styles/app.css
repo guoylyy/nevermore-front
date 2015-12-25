@@ -2154,6 +2154,17 @@ fieldset[disabled] .btn-black.active {
 .nevermore-message-page .table .title-column {
   width: 60%;
 }
+.app:before {
+  content: "";
+  position: absolute;
+  width: inherit;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background-color: #fff;
+  border: inherit;
+  display: block;
+}
 .subview3_title {
   border: 0px solid;
   border-left-width: 3px;

@@ -10,7 +10,15 @@ angular.module('nevermore')
       scope: '=',
       link: function(scope, element, attrs){
         scope.text = attrs.text;
-        scope.url = 'images/app/common/message_blank.png';
+        scope.type = attrs.type;
+        if(scope.type == 'message'){
+            scope.url = 'images/app/common/message_blank.png';
+        }else{
+            scope.url = 'images/app/common/nodata.png';
+        }
+        if(!scope.text){
+          scope.text = '暂时没有任何数据';
+        }
       }
     };
   }
