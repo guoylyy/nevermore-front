@@ -130,7 +130,7 @@
               <td class="v-middle" style="width:100px;">{{record.student.number}}</td>
               <td class="v-middle" style="width:100px">{{record.student.name}}</td>
               <td class="v-middle" style="width:142px;">
-                <label class="label label-success">{{record.status|reportStatus}}</label>
+                <label class="label" ng-class="{'label-sucess':record.status == 'COMPLETED','label-danger':record.status == 'IN_PROGRESS'}">{{record.status|reportStatus}}</label>
               </td>
               <td class="v-middle" style="width:50px;">
                 <span ng-if="record.status=='COMPLETED'">{{record.experimentRecord}}</span>
@@ -139,7 +139,7 @@
                 <span ng-if="record.status=='COMPLETED'">{{record.experimentComment}}</span>
               </td>
               <td class="v-middle" style="width: 20px;">
-                <button class="btn btn-sm btn-default" ui-sref="app.course.report-result({expId:exp_id,classId:class_id,stuId:record.student.id})" ng-if="true">查看详情</button>
+                <button class="btn btn-sm btn-default" ui-sref="app.course.report-result({expId:exp_id,classId:class_id,stuId:record.student.id})" ng-if="record.status=='COMPLETED'">查看详情</button>
               </td>
             </tr>
           </tbody>

@@ -26,7 +26,9 @@
         <tbody>
           <tr ng-repeat="eachExpResult in exps">
             <td style="width: 150px;" class="v-middle">{{eachExpResult.expName}}</td>
-            <td style="width: 90px;" class="v-middle">{{eachExpResult.status|experimentStatus}}</td>
+            <td style="width: 90px;" class="v-middle">
+              <label class="label" ng-class="{'label-sucess':eachExpResult.status == 'COMPLETED','label-danger':eachExpResult.status == 'IN_PROGRESS','label-info': eachExpResult.status==null}">{{eachExpResult.status|experimentStatus}}</label>
+            </td>
             <td style="width: 90px;" class="v-middle">
               <a class="code" target="_blank" href="{{eachExpResult.virtualExpLink}}" ng-show="eachExpResult.virtualExpLink!=undefined&&eachExpResult.virtualExpLink!=''">虚拟实验</a>
             </td>
