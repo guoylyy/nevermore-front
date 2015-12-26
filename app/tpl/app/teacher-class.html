@@ -130,7 +130,7 @@
               <td class="v-middle" style="width:100px;">{{record.student.number}}</td>
               <td class="v-middle" style="width:100px">{{record.student.name}}</td>
               <td class="v-middle" style="width:142px;">
-                <label class="label" ng-class="{'label-sucess':record.status == 'COMPLETED','label-danger':record.status == 'IN_PROGRESS'}">{{record.status|reportStatus}}</label>
+                <label class="label" ng-class="{'label-success':record.status == 'COMPLETED','label-danger':record.status == 'IN_PROGRESS'}">{{record.status|reportStatus}}</label>
               </td>
               <td class="v-middle" style="width:50px;">
                 <span ng-if="record.status=='COMPLETED'">{{record.experimentRecord}}</span>
