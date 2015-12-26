@@ -13,7 +13,7 @@ angular.module('nevermore')
       restrict: 'E',
       controller: function ($scope, $rootScope, sessionService, $location) {
         var currentUser = sessionService.getCurrUser();
-        $rootScope.baseUrl = base_Url || '';
+        $rootScope.image_Url = image_Url || '';
         $scope.logout = function(){
             sessionService.delToken();
         }
