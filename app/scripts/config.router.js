@@ -342,11 +342,13 @@ angular.module('nevermore')
             abstract: true,
             url: '^/app/experiment/resource',
             templateUrl: 'tpl/app/admin/experiment-index.html',
+            controller: 'ExperimentIndexCtrl',
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
                   "scripts/services/general-service.js",
                   "scripts/services/toaster-tool.js",
+                  "scripts/controllers/app/admin/experiment-index.js",
                   "ngDialog",
                 ])
               }]
