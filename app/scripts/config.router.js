@@ -19,11 +19,13 @@ angular.module('nevermore')
           .state('portal', {
             abstract: true,
             url: '/portal',
+            controller: 'PortalController',
             templateUrl: 'tpl/portal/portal.html',
             resolve: {
               css: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'styles/portal.css',
+                  'scripts/controllers/portal/portal.js'
                 ]);
               }]
             }
