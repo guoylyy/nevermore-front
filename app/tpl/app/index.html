@@ -1,6 +1,7 @@
 
 <div class="hbox hbox-auto-xs hbox-auto-sm">
-  <div class="col w  dk b-r bg-auto second_nav_gray">
+  <div class="col w lter dk b-r bg-auto second_nav_gray">
+    <div class = "vbox">
     <div class="panel no_border" draggable="true">
         <div class="panel-heading second_nav_head">
           我的预约
@@ -25,8 +26,17 @@
           </li>
         </div>
       </div>
+    </div>
   </div>
   <div class="col">
-    <div ui-view ></div>
+    <div class="vbox">
+      <div class="row-row">
+        <div class="cell">
+          <div class="cell-inner">
+            <div ui-view ></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
