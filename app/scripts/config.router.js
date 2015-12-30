@@ -89,13 +89,13 @@ angular.module('nevermore')
                 return $ocLazyLoad.load([
                   'scripts/controllers/app.js',
                   'scripts/directives/app/app-header.js',
-                  'styles/app.css'
+                  'styles/app.css',
+                  'scripts/directives/app/nevermore-empty-panel.js'
                 ]);
               }]
             }
           })
           .state('app.index', {
-            abstract: true,
             url: '^/app/index',
             templateUrl: 'tpl/app/index.html',
             controller: 'AppIndexController',
@@ -140,7 +140,6 @@ angular.module('nevermore')
             }
           })
           .state('app.course', {
-            abstract: true,
             url: '^/app/course',
             templateUrl: 'tpl/app/course.html',
             controller: 'AppCourseController',
@@ -165,20 +164,23 @@ angular.module('nevermore')
             }
           })
           .state('app.course.teacher-class', {
-            url: '^/app/course/teacher/class/:id',
+            url: '^/app/course/teacher/class/:id/:expId',
             templateUrl: 'tpl/app/teacher-class.html',
             controller: 'TeacherClassCtrl',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/teacher-class.js',
-                  'scripts/directives/app/pager.js'
+                  'scripts/directives/app/pager.js',
+                  'scripts/directives/app/nm-file-upload.js',
+                  'scripts/controllers/app/modal/file-upload.js',
+                  'ngDialog'
                 ]);
               }]
             }
           })
           .state('app.course.report', {
-            url: '^/app/course/report',
+            url: '^/app/course/report/:expId/:classId',
             templateUrl: 'tpl/app/report.html',
             controller: 'ReportCtrl',
             resolve: {
@@ -198,7 +200,7 @@ angular.module('nevermore')
             }
           })
           .state('app.course.report-result', {
-            url: '^/app/course/report/result',
+            url: '^/app/course/report/result/:expId/:classId/:stuId',
             templateUrl: 'tpl/app/report-result.html',
             controller: 'ReportResultCtrl',
             resolve: {
@@ -218,11 +220,11 @@ angular.module('nevermore')
             }
           })
           .state('app.profile', {
-            abstract: true,
             url: '^/app/profile',
             templateUrl: 'tpl/app/profile.html',
-            resolve: {
-            }
+            controller: ['$state', function($state){
+              $state.go('app.profile.person');
+            }]
           })
           .state('app.profile.person', {
             url: '^/app/profile/person',
@@ -255,7 +257,18 @@ angular.module('nevermore')
             url: '^/app/message',
             templateUrl: 'tpl/app/message.html',
             resolve: {
-
+            }
+          })
+          .state('app.message.list', {
+            url: '^/app/message/list?isRead',
+            templateUrl: 'tpl/app/message-list.html',
+            controller: 'MessageListCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/message-list.js'
+                ]);
+              }]
             }
           })
           .state('app.calendar', {
@@ -288,6 +301,7 @@ angular.module('nevermore')
                 return $ocLazyLoad.load([
                   "scripts/services/general-service.js",
                   "scripts/services/toaster-tool.js",
+                  "scripts/directives/app/search-action-bar.js",
                   "ngDialog",
                 ])
               }]

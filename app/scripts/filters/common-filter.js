@@ -88,7 +88,7 @@ angular.module('nevermore')
   .filter('reportStatus',function(){
     return function (input) {
       if(input == 'IN_PROGRESS'){
-        return '已提交';
+        return '待上传';
       }else if (input == 'SUBMITTED') {
         return '已提交';
       }else if (input == 'COMPLETED'){

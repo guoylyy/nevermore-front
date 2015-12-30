@@ -11,10 +11,20 @@ angular.module('nevermore')
     return {
       templateUrl: 'tpl/app/blocks/graphic-table.html',
       restrict: 'E',
+      require: 'ngModel',
       scope: {
-        editable: '='
+        editable: '=',
+        experiment: '='
       },
-      controller: function ($scope, $localStorage, ngDialog) {
+      link:function(scope, element, attrs, ngModelCtrl) {
+        ngModelCtrl.$render = function () {
+          scope.table = ngModelCtrl.$viewValue;
+        };
+        scope.$watch('table', function () {
+          ngModelCtrl.$setViewValue(scope.table);
+        });
+      },
+      controller: function ($scope, ngDialog) {
         $scope.chooseChart = function (type,material) {
           var dialog = ngDialog.open({
             template: 'tpl/app/modal/choose-chart.html',
@@ -28,6 +38,12 @@ angular.module('nevermore')
               },
               material: function () {
                 return material;
+              },
+              expId: function () {
+                return $scope.experiment;
+              },
+              table: function () {
+                return $scope.table;
               }
             }
           });

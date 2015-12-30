@@ -16,38 +16,31 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th style="width: 120px;">实验名</th>
+            <th style="width: 150px;">实验名</th>
             <th style="width: 90px;">状态</th>
             <th style="width: 90px;">虚拟实验</th>
             <th style="width: 90px;">成绩</th>
-            <th style="width: 100px;">评语</th>
-            <th style="width: 20px;"></th>
-            <th style="width: 20px;"></th>
-            <th style="width: 20px;"></th>
+            <th style="width: 150px;"></th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="eachExpResult in exps">
-            <td style="width: 120px;" class="v-middle">{{eachExpResult.expName}}</td>
-            <td style="width: 90px;" class="v-middle">{{eachExpResult.status|experimentStatus}}</td>
+            <td style="width: 150px;" class="v-middle">{{eachExpResult.expName}}</td>
+            <td style="width: 90px;" class="v-middle">
+              <label class="label" ng-class="{'label-success':eachExpResult.status == 'COMPLETED','label-danger':eachExpResult.status == 'IN_PROGRESS','label-info': eachExpResult.status==null}">{{eachExpResult.status|experimentStatus}}</label>
+            </td>
             <td style="width: 90px;" class="v-middle">
               <a class="code" target="_blank" href="{{eachExpResult.virtualExpLink}}" ng-show="eachExpResult.virtualExpLink!=undefined&&eachExpResult.virtualExpLink!=''">虚拟实验</a>
             </td>
             <td style="width: 90px;" class="v-middle">{{eachExpResult.experiment_record |isEmpty}}</td>
-            <td style="width: 100px;" class="v-middle">{{eachExpResult.experiment_comment| isEmpty}}</td>
-            <td style="width: 20px;" class="v-middle">
-              <button class="btn btn-sm btn-default" ng-click="view_record(exp.experimentId)" ng-if="true">查看详情</button>
-            </td>
-
-            <td style="width: 20px;" class="v-middle">
-              <button class="btn btn-sm btn-default" ng-click="view_record(exp.experimentId)" ng-if="true">上传作业</button>
-            </td>
-
-            <td style="width: 20px;" class="v-middle">
-              <button class="btn btn-sm btn-default" ng-click="view_record(exp.experimentId)" ng-if="true">下载模板</button>
+            <td style="width: 90px;" class="v-middle">
+              <button class="btn btn-sm btn-default" ui-sref="app.course.report-result({expId:eachExpResult.expId,classId:eachExpResult.clazzId,stuId:currentUser.id})" ng-if="eachExpResult.status=='COMPLETED'">查看详情</button>
+              <button class="btn btn-sm btn-default" ui-sref="app.course.report({expId:eachExpResult.expId,classId:class_id})" ng-if="eachExpResult.status=='IN_PROGRESS'||eachExpResult.status=='SUBMITTED'">录入试卷</button>
             </td>
           </tr>
         </tbody>
+        <nevermore-empty-panel ng-if="exps.length == 0" >
+        </nevermore-empty-panel>
       </table>
     </div>
     <footer class="panel-footer">

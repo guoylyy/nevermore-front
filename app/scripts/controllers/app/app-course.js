@@ -1,6 +1,7 @@
 'use strict';
 
-app.controller('AppCourseController', function($rootScope, $scope, Clazz, qService) {
+app.controller('AppCourseController', function($rootScope, $scope, Clazz, qService,
+   $state) {
 
   //当前角色为老师的情况
   if ($rootScope.currentUser.show_role=='TEACHER') {
@@ -18,8 +19,12 @@ app.controller('AppCourseController', function($rootScope, $scope, Clazz, qServi
               'active':false
           };
           $scope.classes.push(entity);
+          if($scope.classes.length != 0){
+            $state.go('app.course.teacher-class',{'id':$scope.classes[0].id});
+          }
       }
-      $scope.$broadcast("classchange",0);
+
+      // $scope.$broadcast("classchange",0);
     });
   }
   //当前为学生的情况
@@ -38,8 +43,12 @@ app.controller('AppCourseController', function($rootScope, $scope, Clazz, qServi
               'active':false
           };
           $scope.courses.push(entity);
+          if($scope.courses.length != 0){
+            $state.go('app.course.student-class',{'id':$scope.courses[0].classId});
+          }
       }
-      $scope.$broadcast("classchange",0);
+
+      // $scope.$broadcast("classchange",0);
     });
   }
 

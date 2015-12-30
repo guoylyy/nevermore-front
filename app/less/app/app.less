@@ -4,6 +4,11 @@
 @import "../mixins";
 
 @import "index";
+@import "base";
+@import "slide";
+@import "profile";
+@import "./admin/admin-account.less";
+@import "message";
 
 @info_color: #23b7e5;
 
@@ -12,6 +17,18 @@
 @done_color: #7ED321;
 
 @doing_color: #F5A623;
+
+.app:before{
+    content: "";
+    position: absolute;
+    width: inherit;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: #fff;
+    border: inherit;
+    display: block;
+}
 
 .subview3_title{
   border: 0px solid;
@@ -85,8 +102,3 @@ li.disabled > a:hover,
 li.disabled > a:focus {
   cursor: pointer;
 }
-
-@import "slide";
-@import "profile";
-
-@import "./admin/admin-account.less";

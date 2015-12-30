@@ -1,85 +1,87 @@
 <div class="nevermore-profile-page">
   <div class="vbox">
-      <div class="wrapper lter b-b bg-white">
-        <div class="subview3_title">个人资料修改</div>
-  </div>
-  <div class="wrapper bg-white">
-    <div class="panel panel-default">
-      <!-- <div class="panel-heading">
-        <span class="h4">个人资料</span>
-      </div> -->
+    <div class="wrapper lter b-b bg-white">
+      <div class="subview3_title">个人资料修改</div>
+    </div>
+    <div class="wrapper bg-white">
+      <div class="panel panel-default">
+        <!-- <div class="panel-heading">
+          <span class="h4">个人资料</span>
+        </div> -->
 
-      <div class="panel-body">
-        <form class="form-horizontal form-validation" name="profilePersonForm">
-          <div class="form-group">
-            <label class="col-sm-2 control-label avatar-label">头像</label>
-            <div class="col-sm-10">
-              <div class="thumb-lg avatar inline">
-                <img  aria-hidden="false" ng-src="{{baseUrl}}/{{personData.editUser.iconPath}}" >
-              </div>
-              <div class="inline">
-                <button class="btn btn-primary" ng-click="updateProfileIcon()">上传新头像</button>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="number" class="col-sm-2 control-label">账号</label>
-            <div class="col-sm-10">
-              <input type="text" name="number" class="form-control" ng-model="personData.editUser.number" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="name" class="col-sm-2 control-label">姓名</label>
-            <div class="col-sm-10">
-              <input type="text" name="name" class="form-control" ng-model="personData.editUser.name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="gender" class="col-sm-2 control-label">性别</label>
-            <div class="col-sm-10">
-              <select class="form-control right" ng-model="personData.editUser.gender" ng-options="personData.genderMap[g] for g in personData.genders"></select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">职务</label>
-            <div class="col-sm-10">
-              <select class="form-control right" ng-model="personData.editUser.role" ng-options="personData.roleMap[g] for g in personData.roles" disabled></select>
-            </div>
-          </div>
-          <div ng-if="personData.editUser.role == 'STUDENT'">
+        <div class="panel-body">
+          <form class="form-horizontal form-validation" name="profilePersonForm">
             <div class="form-group">
-              <label for="grade" class="col-sm-2 control-label">年级</label>
+              <label class="col-sm-2 control-label avatar-label">头像</label>
               <div class="col-sm-10">
-                <input type="text" name="grade" class="form-control" ng-model="personData.editUser.grade" disabled>
+                <div class="thumb-lg avatar inline">
+                  <img  aria-hidden="false" ng-src="{{image_Url}}/{{personData.editUser.iconPath}}" >
+                </div>
+                <div class="inline">
+                  <button class="btn btn-primary" ng-click="updateProfileIcon()">上传新头像</button>
+                </div>
               </div>
             </div>
             <div class="form-group">
-              <label for="major" class="col-sm-2 control-label">专业</label>
+              <label for="number" class="col-sm-2 control-label">账号</label>
               <div class="col-sm-10">
-                <input type="text" name="major" class="form-control" ng-model="personData.editUser.major" disabled>
+                <input type="text" name="number" class="form-control" ng-model="personData.editUser.number" disabled>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="mobilePhone" class="col-sm-2 control-label">手机号码</label>
-            <div class="col-sm-10">
-              <input type="text" name="mobilePhone" class="form-control" ng-model="personData.editUser.mobilePhone"
-                ng-pattern="/(^(13\d|14[57]|15[^4,\D]|17[678]|18\d)\d{8}|170[059]\d{7})$/">
+            <div class="form-group">
+              <label for="name" class="col-sm-2 control-label">姓名</label>
+              <div class="col-sm-10">
+                <input type="text" name="name" class="form-control" ng-model="personData.editUser.name">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="email" class="col-sm-2 control-label">电子邮件</label>
-            <div class="col-sm-10">
-              <input type="email" name="email" class="form-control" ng-model="personData.editUser.email">
+            <div class="form-group">
+              <label for="gender" class="col-sm-2 control-label">性别</label>
+              <div class="col-sm-10">
+                <select class="form-control right" ng-model="personData.editUser.gender" ng-options="personData.genderMap[g] for g in personData.genders"></select>
+              </div>
             </div>
-          </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">职务</label>
+              <div class="col-sm-10">
+                <select class="form-control right" ng-model="personData.editUser.role" ng-options="personData.roleMap[g] for g in personData.roles" disabled></select>
+              </div>
+            </div>
+            <div ng-if="personData.editUser.role == 'STUDENT'">
+              <div class="form-group">
+                <label for="grade" class="col-sm-2 control-label">年级</label>
+                <div class="col-sm-10">
+                  <input type="text" name="grade" class="form-control" ng-model="personData.editUser.grade" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="major" class="col-sm-2 control-label">专业</label>
+                <div class="col-sm-10">
+                  <input type="text" name="major" class="form-control" ng-model="personData.editUser.major" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mobilePhone" class="col-sm-2 control-label">手机号码</label>
+              <div class="col-sm-10">
+                <input type="text" name="mobilePhone" class="form-control" ng-model="personData.editUser.mobilePhone"
+                  ng-pattern="/(^(13\d|14[57]|15[^4,\D]|17[678]|18\d)\d{8}|170[059]\d{7})$/">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-sm-2 control-label">电子邮件</label>
+              <div class="col-sm-10">
+                <input type="email" name="email" class="form-control" ng-model="personData.editUser.email">
+              </div>
+            </div>
 
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-success btn-block" ng-disabled="!isvalidForm()" ng-click="save()">保存</button>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success btn-block" ng-disabled="!isvalidForm()" ng-click="save()">保存</button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
+    </div>
   </div>
 </div>
