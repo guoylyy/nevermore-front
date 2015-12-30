@@ -395,6 +395,51 @@ angular.module('nevermore')
                 ])
               }]
             }
+          })
+          .state("app.semester-class", {
+            url: "^/app/semester/class",
+            templateUrl: "tpl/app/admin/semester-class.html",
+            controller: "SemesterClassCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/semester-class.js",
+                  "scripts/services/general-service.js",
+                  "scripts/services/toaster-tool.js",
+                  "scripts/services/session-service.js",
+                  "scripts/directives/app/nm-datepicker.js",
+                  "ngDialog",
+                ])
+              }]
+            }
+          })
+          .state("app.semester-class.class-management", {
+            url: "^/app/semester/class/class/management",
+            templateUrl: "tpl/app/admin/class-management.html",
+            controller: "ClassManagementCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/class-management.js",
+                  "scripts/controllers/app/admin/add-class.js",
+                  "scripts/controllers/app/admin/modify-class.js",
+                ])
+              }]
+            }
+          })
+          .state("app.semester-class.semester-management", {
+            url: "^/app/semester/class/semester/management",
+            templateUrl: "tpl/app/admin/semester-management.html",
+            controller: "SemesterManagementCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/semester-management.js",
+                  "scripts/controllers/app/admin/add-semester.js",
+                  // "scripts/controllers/app/admin/modify-semester.js",
+                ])
+              }]
+            }
           });
       }
     ]

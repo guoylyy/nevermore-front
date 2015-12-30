@@ -1,0 +1,59 @@
+<div>
+    <div class = "wrapper lter b-b bg-white" style = "overflow: hidden;">
+        <span>已开设班级</span>
+        <button class="btn btn-info pull-right" ng-click="addResource()">添加班级</button>
+    </div>
+    <div class = "wrapper-md">
+        <div class="panel panel-default">
+            <table class = "table table-striped b-t b-light">
+                <thead>
+                    <tr>
+                        <th style="width: 15%; min-width: 123px;">编号</th>
+                        <th style="width: 15%; min-width: 123px;">名字</th>
+                        <th style="width: 15%; min-width: 123px;">任课老师</th>
+                        <th style="width: 15%; min-width: 123px;">授课时间</th>
+                        <th style="width: 20%; min-width: 164px;">说明</th>
+                        <th style="width: 20%; min-width: 164px;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="resource in resources.data">
+                        <td>
+                            <span>{{resource.number}}</span>
+                        </td>
+                        <td>
+                            <span>{{resource.course.name}}</span>
+                        </td>
+                        <td>
+                            <span>{{resource.teacher.name}}</span>
+                        </td>
+                        <td>
+                            <span>{{resource.clazzHour}}</span>
+                        </td>
+                        <td>
+                            <span>{{resource.description}}</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" ng-click="modifyResource(resource)"> 
+                                编辑
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+        <footer class="panel-footer">
+          <div class="row clearfix" style="width: 100%;" >
+            <div class="pull-left col-sm-4 m-t-sm">
+              <span class="text-muted inline m-t-sm">{{resources.curPageNum}}/{{resources.totalPageNum}}&nbsp;&nbsp;&nbsp;共&nbsp;{{resources.totalItemNum}}&nbsp;个班级</span>
+            </div>
+              <div class="pull-right">
+            <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="resources.totalItemNum"
+              ng-model="resources.curPageNum" ng-change="pageChanged()"></uib-pagination>
+            </div>
+          </div>
+      </footer>       
+    </div>
+</div>
+
+<lab-footer></lab-footer>

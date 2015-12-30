@@ -1,0 +1,20 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm">
+  <div class="col w dk b-r bg-auto second_nav_gray">
+    <div class="panel no_border" draggable="true">
+      <div class="panel-heading second_nav_head">
+        学期班级
+      </div>
+      <ul class="list-group">
+        <li ui-sref-active="active" ui-sref="app.semester-class.class-management" class="list-group-item second_nav_body">
+          已开设班级
+        </li>
+        <li ui-sref-active="active" ui-sref="app.semester-class.semester-management" class="list-group-item second_nav_body">
+          配置新学期
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div ui-view></div>
+  </div>
+</div>
