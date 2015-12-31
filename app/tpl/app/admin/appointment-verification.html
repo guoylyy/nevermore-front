@@ -1,0 +1,20 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm">
+  <div class="col w dk b-r bg-auto second_nav_gray">
+    <div class="panel no_border" draggable="true">
+      <div class="panel-heading second_nav_head">
+        预约审核
+      </div>
+      <ul class="list-group">
+        <li ui-sref-active="active" ui-sref="app.appointment-verification.unverified-experiment-appointment" class="list-group-item second_nav_body">
+          待审核实验预约
+        </li>
+        <li ui-sref-active="active" ui-sref="app.appointment-verification.verified-experiment-appointment" class="list-group-item second_nav_body">
+          通过审核实验预约
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div ui-view></div>
+  </div>
+</div>

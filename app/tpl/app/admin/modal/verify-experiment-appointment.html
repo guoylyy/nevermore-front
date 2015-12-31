@@ -1,0 +1,84 @@
+<div class="tab-container ng-isolate-scope">
+  <ul class="nav nav-tabs">
+    <li ng-class="{active: step === 1, disabled: step !== 1}" class="ng-isolate-scope" style="">
+      <a href="" class="ng-binding">1. 实验信息</a>
+    </li>
+    <li ng-class="{active: step === 2, disabled: step != 2}" class="ng-isolate-scope">
+      <a href="" class="ng-binding">2. 指派实验教师</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane ng-scope" ng-class="{active: step === 1}">
+      <form class="form-horizontal" name="customerForm" novalidate>
+        <div class="form-group">
+          <label for="number" class="col-sm-3 control-label">日期</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="number" ng-model = "resource.applyDate" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="experimentName" class="col-sm-3 control-label">实验任务</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="experimentName" ng-model = "resource.experiment.name" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="labName" class="col-sm-3 control-label">实验室</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="labName" ng-model = "resource.lab.name" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="experimentTime" class="col-sm-3 control-label">实验时段</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="experimentTime" ng-model = "resource.slot.title" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="class" class="col-sm-3 control-label">班级</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="class" ng-model = "resource.clazz.number" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="course" class="col-sm-3 control-label">课程</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="course" ng-model = "resource.clazz.course.name" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="count" class="col-sm-3 control-label">申请人数</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="count" ng-model = "resource.count" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="remark" class="col-sm-3 control-label">备注</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="remark" ng-model = "resource.remark" readonly>
+          </div>
+        </div>
+        <div class="clearfix m-t">
+          <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
+          <button class = "btn btn-primary pull-right" ng-click = "assignTeacher()" ng-disabled = "pending">指派实验教师</button>
+          <button class="btn btn-danger pull-right" ng-click = "rejectAppointment()" ng-disabled = "pending">拒绝</button>
+        </div>
+      </form>
+    </div>
+    <div class="tab-pane ng-scope" ng-class = "{active: step === 2}">
+      <form class="form-horizontal" name="customerForm" novalidate style = "max-height: 380px; overflow: auto;">
+        <div class="checkbox" ng-repeat = "teacher in teacherList">
+          <label>
+            <input type = "checkbox" ng-model = "teacher.chosen" ng-true-value = "1" ng-false-value = "0">{{teacher.data.number + "-" + teacher.data.name}}
+          </label>
+        </div>
+      </form>
+      <div class="clearfix m-t">
+          <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
+          <button class = "btn btn-primary pull-right" ng-click = "verifyAppointment()" ng-disabled = "pending">通过</button>
+          <button class = "btn btn-primary pull-right" ng-click = "previousStep()" ng-disabled = "pending">上一步</button>
+          <button class="btn btn-danger pull-right" ng-click = "rejectAppointment()" ng-disabled = "pending">拒绝</button>
+        </div>
+    </div>
+  </div>
+</div>

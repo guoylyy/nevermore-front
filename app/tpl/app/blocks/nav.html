@@ -47,6 +47,7 @@
       <span class="font-bold" translate="aside.nav.DASHBOARD">用户账户</span>
     </a>
   </li>
+  <li class="line dk"></li>
   <li ui-sref-active="active" ng-if="currentUser.show_role == 'ADMINISTRATOR'">
     <a ui-sref="app.experiment-resource.experiment-lab" class="auto">
       <span class="pull-right text-muted">
@@ -69,7 +70,17 @@
     </a>
   </li>
   <li class="line dk"></li>
-
+  <li ui-sref-active="active" ng-if="currentUser.show_role == 'ADMINISTRATOR'">
+    <a ui-sref="app.appointment-verification.unverified-experiment-appointment" class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
+      <span class="font-bold" translate="aside.nav.DASHBOARD">预约审批</span>
+    </a>
+  </li>
+  <li class="line dk"></li>
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.HEADER">设置</span>
   </li>

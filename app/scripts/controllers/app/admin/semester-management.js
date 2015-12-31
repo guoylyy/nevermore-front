@@ -1,7 +1,7 @@
 app.controller("SemesterManagementCtrl", ["$scope", "Semester", "generalService", "ToasterTool", 
 function($scope, Semester, generalService, ToasterTool){
 	$scope.resources = angular.copy($scope.DEFAULT_RESOURCE_TEMPLATE)
-	$scope.modifyResource = modifyResource
+	$scope.deleteResource = deleteResource
 	$scope.addResource = addResource
 	$scope.pageChanged = loadResources
 
@@ -22,28 +22,16 @@ function($scope, Semester, generalService, ToasterTool){
 		$scope.errorHandler(error)
 	}
 
-	function modifyResource(resource){
-		var templateUrl = "tpl/app/admin/modal/modify-semester.html"
-		var controller = "ModifySemesterCtrl"
-		var modifyDialog = new $scope.ModifyDialog()
-		modifyDialog.setCloseListener(onModify, onDelete)
-		modifyDialog.open(resource, templateUrl, controller, {
-			semester: function(){
-				return sessionService.getCurrSemeter()
-			},
-			teacherResource: function(){
-				return Account.all().get({
-					userType: "ALL_TEACHER",
-				}).$promise	
-			},
-			courseResource: function(){
-				return Course.all().get().$promise
-			},
-		})
+	function deleteResource(resource){
+		commitDelete(resource)
+		.then(onDelete)
+		.catch($scope.errorHandler)
 	}
 
-	function onModify(){
-		ToasterTool.success("编辑学期", "编辑学期成功！")
+	function commitDelete(resource){
+		return Semester.semester().delete({
+			id: resource.id
+		}).$promise
 	}
 
 	function onDelete(){

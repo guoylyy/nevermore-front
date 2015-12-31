@@ -2,8 +2,8 @@ app.controller("AddSemesterCtrl", ["$scope", "Semester",
 function($scope, Semester){
 	var DEFAULT_ACCOUNT = {
 		name: "",
-		startDate: "",
-		endDate: "",
+		startDate: new Date(),
+		endDate: new Date(),
 	}
 
 	var adding = false

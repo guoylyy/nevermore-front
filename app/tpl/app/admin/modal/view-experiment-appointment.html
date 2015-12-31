@@ -1,0 +1,92 @@
+<div class="tab-container ng-isolate-scope">
+  <ul class="nav nav-tabs">
+    <li ng-class="{active: step === 1, disabled: step !== 1}" class="ng-isolate-scope" style="">
+      <a href="" class="ng-binding">1. 实验信息</a>
+    </li>
+    <li ng-class="{active: step === 2, disabled: step != 2}" class="ng-isolate-scope">
+      <a href="" class="ng-binding">2. 实验教师</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane ng-scope" ng-class="{active: step === 1}">
+      <form class="form-horizontal" name="customerForm" novalidate>
+        <div class="form-group">
+          <label for="number" class="col-sm-3 control-label">日期</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="number" ng-model = "resource.applyDate" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="experimentName" class="col-sm-3 control-label">实验任务</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="experimentName" ng-model = "resource.experiment.name" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="labName" class="col-sm-3 control-label">实验室</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="labName" ng-model = "resource.lab.name" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="experimentTime" class="col-sm-3 control-label">实验时段</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="experimentTime" ng-model = "resource.slot.title" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="class" class="col-sm-3 control-label">班级</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="class" ng-model = "resource.clazz.number" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="course" class="col-sm-3 control-label">课程</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="course" ng-model = "resource.clazz.course.name" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="count" class="col-sm-3 control-label">申请人数</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="count" ng-model = "resource.count" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="remark" class="col-sm-3 control-label">备注</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="remark" ng-model = "resource.remark" readonly>
+          </div>
+        </div>
+        <div class="clearfix m-t">
+          <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
+          <button class = "btn btn-primary pull-right" ng-click = "viewTeacher()" ng-disabled = "pending">查看实验教师</button>
+        </div>
+      </form>
+    </div>
+    <div class="tab-pane ng-scope" ng-class = "{active: step === 2}">
+      <table class = "table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th style="width: 50%">工号</th>
+            <th style="width: 50%">姓名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="teacher in teacherList">
+            <td>
+              <span>{{teacher.number}}</span>
+            </td>
+            <td>
+              <span>{{teacher.name}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="clearfix m-t">
+          <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
+          <button class = "btn btn-primary pull-right" ng-click = "viewExperiment()" ng-disabled = "pending">查看实验信息</button>
+        </div>
+    </div>
+  </div>
+</div>

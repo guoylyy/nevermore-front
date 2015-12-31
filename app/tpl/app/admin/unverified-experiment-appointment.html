@@ -1,37 +1,48 @@
 <div>
     <div class = "wrapper lter b-b bg-white" style = "overflow: hidden;">
-        <span>配置学期</span>
-        <button class="btn btn-info pull-right" ng-click="addResource()">添加学期</button>
+        <span>待审核实验预约</span>
     </div>
     <div class = "wrapper-md">
         <div class="panel panel-default">
             <table class = "table table-striped b-t b-light">
                 <thead>
                     <tr>
-                        <th style="width: 20%; min-width: 164px;">编号</th>
-                        <th style="width: 20%; min-width: 164px;">开始日期</th>
-                        <th style="width: 20%; min-width: 164px;">结束日期</th>
-                        <th style="width: 20%; min-width: 164px;">当前激活</th>
-                        <th style="width: 20%; min-width: 164px;">操作</th>
+                        <th style="width: 10%; min-width: 82px;">编号</th>
+                        <th style="width: 20%; min-width: 164px;">日期</th>
+                        <th style="width: 15%; min-width: 123px;">实验时间段</th>
+                        <th style="width: 10%; min-width: 82px;">班级编号</th>
+                        <th style="width: 10%; min-width: 82px;">任课教师</th>
+                        <th style="width: 15%; min-width: 123px;">实验室</th>
+                        <th style="width: 10%; min-width: 82px;">实验任务</th>
+                        <th style="width: 10%; min-width: 82px;">操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="resource in resources.data">
                         <td>
-                            <span>{{resource.name}}</span>
+                            <span>{{resource.number}}</span>
                         </td>
                         <td>
-                            <span>{{resource.startDate}}</span>
+                            <span>{{resource.applyDate}}</span>
                         </td>
                         <td>
-                            <span>{{resource.endDate}}</span>
+                            <span>{{resource.slot.title}}</span>
                         </td>
                         <td>
-                            <span>{{resource.status}}</span>
+                            <span>{{resource.clazz.number}}</span>
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-primary" ng-click="deleteResource(resource)"> 
-                                删除
+                            <span>{{resource.reserver.name}}</span>
+                        </td>
+                        <td>
+                            <span>{{resource.lab.name}}</span>
+                        </td>
+                        <td>
+                            <span>{{resource.experiment.name}}</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" ng-click="verifyResource(resource)"> 
+                                审批
                             </button>
                         </td>
                     </tr>

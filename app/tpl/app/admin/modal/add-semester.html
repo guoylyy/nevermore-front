@@ -6,38 +6,21 @@
   </div>
   <form class="form-horizontal" name="customerForm" novalidate>
     <div class="form-group">
-      <label for="name" class="col-sm-3 control-label">学期名</label>
+      <label for="name" class="col-sm-3 control-label">学期名*</label>
       <div class="col-sm-9">
         <input type="text" class="form-control" id="name" ng-model = "resource.name">
       </div>
     </div>
-    <div class="row">
-      <label for="startDate" class="col-sm-3 control-label">学期开始日期</label>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">学期开始日期</label>
       <div class="col-sm-9">
-        <input type="text" name="name" value="{{data.startDate|date:'yyyy-MM-dd'}}" class="form-control" style="width:50%; display: inline-block;" readonly=""/>
-        <span class="dropdown">
-          <a id = "changeDate" class="dropdown-toggle btn btn-danger" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="icon-calendar">更改日期</i>
-          </a>
-          <div class="dropdown-menu" aria-labelledby = "changeDate">
-            <nmDatepicker minDate = "resource.startDate" maxDate = "resource.endDate"></nmDatepicker>            
-          </div>
-        </span>
+        <nm-datepicker ng-model = "resource.startDate"></nm-datepicker>  
       </div>
-        
     </div>
-    </div>
-    <div class="row">
-      <div class="cell title" style="width: 37%;height: 50px;">学期末日期</div>
-      <div class="cell" style="width: 63%;height: 50px;">
-        <div class="dropdown right">
-          <a class="dropdown-toggle btn btn-danger"> <i class="icon-calendar">更改日期</i>
-          </a>
-          <div class="dropdown-menu" ng-click="$event.preventDefault();$event.stopPropagation()">
-            <div date-picker="data.endDate" min-view="date" max-view"year"></div>
-          </div>
-        </div>
-        <input type="text" name="name" value="{{data.endDate|date:'yyyy-MM-dd'}}" class="right form-control" style="width:70%;" readonly=""/>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">学期结束日期</label>
+      <div class="col-sm-9">
+        <nm-datepicker ng-model = "resource.endDate"></nm-datepicker>  
       </div>
     </div>
     <div class="clearfix m-t">

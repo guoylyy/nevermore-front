@@ -450,7 +450,48 @@ angular.module('nevermore')
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/admin/semester-management.js",
                   "scripts/controllers/app/admin/add-semester.js",
-                  // "scripts/controllers/app/admin/modify-semester.js",
+                ])
+              }]
+            }
+          })
+          .state("app.appointment-verification", {
+            url: "^/app/appointment/verification",
+            templateUrl: "tpl/app/admin/appointment-verification.html",
+            controller: "AppointmentVerificationCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/appointment-verification.js",
+                  "scripts/services/general-service.js",
+                  "scripts/services/toaster-tool.js",
+                  "scripts/services/session-service.js",
+                  "ngDialog",
+                ])
+              }]
+            }
+          })
+          .state("app.appointment-verification.unverified-experiment-appointment", {
+            url: "^/app/appointment/verification/unverified/experiment/appointment",
+            templateUrl: "tpl/app/admin/unverified-experiment-appointment.html",
+            controller: "UnverifiedExperimentAppointmentCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/unverified-experiment-appointment.js",
+                  "scripts/controllers/app/admin/verify-experiment-appointment.js",
+                ])
+              }]
+            }
+          })
+          .state("app.appointment-verification.verified-experiment-appointment", {
+            url: "^/app/appointment/verification/verified/experiment/appointment",
+            templateUrl: "tpl/app/admin/verified-experiment-appointment.html",
+            controller: "VerifiedExperimentAppointmentCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/verified-experiment-appointment.js",
+                  "scripts/controllers/app/admin/view-experiment-appointment.js",
                 ])
               }]
             }
