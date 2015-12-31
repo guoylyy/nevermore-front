@@ -409,6 +409,92 @@ angular.module('nevermore')
                 ])
               }]
             }
+          })
+          .state("app.semester-class", {
+            url: "^/app/semester/class",
+            templateUrl: "tpl/app/admin/semester-class.html",
+            controller: "SemesterClassCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/semester-class.js",
+                  "scripts/services/general-service.js",
+                  "scripts/services/toaster-tool.js",
+                  "scripts/services/session-service.js",
+                  "scripts/directives/app/nm-datepicker.js",
+                  "ngDialog",
+                ])
+              }]
+            }
+          })
+          .state("app.semester-class.class-management", {
+            url: "^/app/semester/class/class/management",
+            templateUrl: "tpl/app/admin/class-management.html",
+            controller: "ClassManagementCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/class-management.js",
+                  "scripts/controllers/app/admin/add-class.js",
+                  "scripts/controllers/app/admin/modify-class.js",
+                ])
+              }]
+            }
+          })
+          .state("app.semester-class.semester-management", {
+            url: "^/app/semester/class/semester/management",
+            templateUrl: "tpl/app/admin/semester-management.html",
+            controller: "SemesterManagementCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/semester-management.js",
+                  "scripts/controllers/app/admin/add-semester.js",
+                ])
+              }]
+            }
+          })
+          .state("app.appointment-verification", {
+            url: "^/app/appointment/verification",
+            templateUrl: "tpl/app/admin/appointment-verification.html",
+            controller: "AppointmentVerificationCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/appointment-verification.js",
+                  "scripts/services/general-service.js",
+                  "scripts/services/toaster-tool.js",
+                  "scripts/services/session-service.js",
+                  "ngDialog",
+                ])
+              }]
+            }
+          })
+          .state("app.appointment-verification.unverified-experiment-appointment", {
+            url: "^/app/appointment/verification/unverified/experiment/appointment",
+            templateUrl: "tpl/app/admin/unverified-experiment-appointment.html",
+            controller: "UnverifiedExperimentAppointmentCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/unverified-experiment-appointment.js",
+                  "scripts/controllers/app/admin/verify-experiment-appointment.js",
+                ])
+              }]
+            }
+          })
+          .state("app.appointment-verification.verified-experiment-appointment", {
+            url: "^/app/appointment/verification/verified/experiment/appointment",
+            templateUrl: "tpl/app/admin/verified-experiment-appointment.html",
+            controller: "VerifiedExperimentAppointmentCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/verified-experiment-appointment.js",
+                  "scripts/controllers/app/admin/view-experiment-appointment.js",
+                ])
+              }]
+            }
           });
       }
     ]
