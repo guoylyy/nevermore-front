@@ -45,7 +45,7 @@ angular.module('nevermore')
           .state('portal.login', {
             url: '^/signin',
             templateUrl: 'tpl/portal/login.html',
-            controller: 'LoginController',
+            controller: 'LoginCtrl',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
