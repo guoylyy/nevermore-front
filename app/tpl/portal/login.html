@@ -1,31 +1,26 @@
-
 <div class="login-page" >
     <div class="banner-section banner-01">
         <div class="banner-overlay"></div>
         <div class="banner-content">
             <div class="tiger-container clearfix">
-                <!-- <div class="image-wrapper pull-left">
-                    <img src="images/portal/login/image-01.png" alt="..."/>
-                </div> -->
                 <div class="panel-wrapper pull-right">
                     <div class="panel pane-default login-panel">
                         <div class="panel-body">
                             <div class="clearfix">
                                 <h4 class="pull-left">欢迎来到同济力学云平台</h4>
-                                <!-- <a class="pull-right text-red register-link" href="#/register">立即注册&nbsp;<i class="fa fa-angle-right"></i></a> -->
                             </div>
                             <form class="login-form form-validation" name="loginForm" novalidate>
                                 <div class="input-group m-t-md">
                                     <span class="input-group-addon">
                                       <i class="fa fa-user"></i>
                                     </span>
-                                    <input type="text" class="form-control" ng-model="login_name" placeholder="请输入学号或者工号" required/>
+                                    <input type="text" class="form-control" ng-model="loginName" placeholder="请输入学号或者工号" required/>
                                 </div>
                                 <div class="input-group m-t-md">
                                     <span class="input-group-addon">
                                       <i class="fa fa-lock"></i>
                                     </span>
-                                    <input type="password" class="form-control" ng-model="login_password" placeholder="请输入密码" required/>
+                                    <input type="password" class="form-control" ng-model="loginPassword" placeholder="请输入密码" required/>
                                 </div>
                                 <div class="clearfix m-t-sm">
                                     <label class="i-checks i-checks-sm pull-left">
@@ -33,9 +28,6 @@
                                         <i></i>&nbsp;自动登录
                                     </label>
                                     <a class="pull-right forgotpwd-link" ng-click="forgotPassword()">忘记密码?</a>
-                                </div>
-                                <div class="clearfix m-t-sm">
-                                    <span class="text-danger">{{errorMsg}}</span>
                                 </div>
                                 <button class="btn btn-primary w-full m-t-sm" ng-click="login()">登录</button>
                             </form>
