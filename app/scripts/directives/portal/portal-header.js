@@ -12,8 +12,9 @@ angular.module('nevermore')
       templateUrl: 'tpl/portal/block/header.html',
       restrict: 'E',
       controller: function ($scope, sessionService, $rootScope, $localStorage, $state) {
-        var currentUser = sessionService.getCurrUser();
-        $rootScope.image_Url = image_Url || '';
+        $scope.currentUser = sessionService.getCurrUser();
+        $scope.showLoginButton = showLoginButton
+      	
         $scope.head_click = function(){
           if ($localStorage.token!=null) {
             if ($localStorage.currentUser.show_role == 'STUDENT') {
@@ -26,6 +27,15 @@ angular.module('nevermore')
             return;
           }
         }
+
+        function showLoginButton(){
+      		var CALENDAR_PAGE_HASH = "#/calendar"
+
+      		if(location.hash === CALENDAR_PAGE_HASH){
+      			return true
+      		}
+      		return false
+      	}
       }
     };
   });
