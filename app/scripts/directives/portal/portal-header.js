@@ -13,7 +13,6 @@ angular.module('nevermore')
       restrict: 'E',
       controller: function ($scope, sessionService, $rootScope, $localStorage, $state) {
         var currentUser = sessionService.getCurrUser();
-        $rootScope.image_Url = image_Url || '';
         $scope.showLoginButton = showLoginButton
       	
         $scope.head_click = function(){
