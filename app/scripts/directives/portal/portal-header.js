@@ -12,6 +12,16 @@ angular.module('nevermore')
       templateUrl: 'tpl/portal/block/header.html',
       restrict: 'E',
       controller: function ($scope, SystemService, $location) {
+      	$scope.showLoginButton = showLoginButton
+      	
+      	function showLoginButton(){
+      		var CALENDAR_PAGE_HASH = "#/calendar"
+
+      		if(location.hash === CALENDAR_PAGE_HASH){
+      			return true
+      		}
+      		return false
+      	}
       }
     };
   });

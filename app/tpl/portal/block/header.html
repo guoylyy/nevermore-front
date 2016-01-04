@@ -1,19 +1,28 @@
 <div class="portal-header">
     <div class="tiger-container">
-        <a href="javascript(0);"><div class="header-logo" ui-sref="portal.index">
-            <img src="images/logos/portal/s-logo.png" alt="..."/>
-        </div></a>
-        <!-- <div class="header-slogan">
-            <img src="images/logos/portal/slogan.png" alt="..."/>
-        </div> -->
+        <div class="header-logo" ui-sref="portal.index">
+            <a href="javascript(0);">
+                <img src="images/logos/portal/s-logo.png" alt="..."/>
+            </a>
+        </div>
         <div class="header-nav m-l-lg">
           <ul>
-            <a ui-sref="portal.index" data-ui-sref-opts="{reload: true}"><li >首页</li></a>
-            <a ui-sref="portal.calendar" data-ui-sref-opts="{reload: true}"><li>实验日历</li></a>
+            <li>
+                <a ui-sref="portal.index" style = "display: inline-block;" data-ui-sref-opts="{reload: true}">
+                    首页
+                </a>
+            </li>
+            <li>
+                <a ui-sref="portal.calendar" style = "display: inline-block;" data-ui-sref-opts="{reload: true}">
+                    实验日历
+                </a>
+            </li>
           </ul>
         </div>
         <div class="header-btn-group">
-            <a ui-sref="portal.login" data-ui-sref-opts="{reload: true}" class="btn btn-default w-xs m-r">登录</a>
+        <a ui-sref="portal.login" data-ui-sref-opts="{reload: true}" class="btn btn-default w-xs m-r" ng-if = "showLoginButton()">
+            登录
+        </a>
         </div>
     </div>
 </div>
