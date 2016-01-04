@@ -8,9 +8,9 @@
 
   function LoginCtrl($scope, $rootScope, $state,
    sessionService, tokenFactory, Semester, ToasterTool){
-    $scope.accountCharacter = 'TEACHER';
-    $scope.loginName = "";
-    $scope.loginPassword = "";
+    $scope.accountCharacter = 'TEACHER'
+    $scope.loginName = ""
+    $scope.loginPassword = ""
     $scope.login = login
     $scope.forgotPassword = forgotPassword
 
