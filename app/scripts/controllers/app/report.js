@@ -22,7 +22,7 @@ app.controller('ReportCtrl',  function($scope, $state, $rootScope, AlertTool, $s
       qService.tokenHttpGet(Clazz.clazz, {
         id: $scope.class_id
       }).then(function(rc){
-        $scope.data.student.class = rc.data.clazz.course.name+" "+rc.data.clazz.course.number;
+        $scope.data.student.class = rc.data.course.name+" "+rc.data.course.number;
       });
       $scope.data['1date'] = new Date();
       $scope.question_change();
@@ -100,14 +100,14 @@ app.controller('ReportCtrl',  function($scope, $state, $rootScope, AlertTool, $s
           $scope.status = 'committed';
           $state.go('app.course.report-result',{expId:$scope.exp_id,classId:$scope.class_id,stuId:$rootScope.currentUser.id});
           var record = {
-            "experimentRecord": 66
+            "experimentRecord": rc.data.report.final_score
           };
           qService.tokenHttpGet(StudentRecord.studentRecord, {
             student: $rootScope.currentUser.id,
             clazz: $scope.class_id,
             experiment: $scope.exp_id
-          }).then(function(rc){
-            qService.tokenHttpPut(StudentRecord.update, {id:rc.data.id} , record).then(function(result) {
+          }).then(function(srrc){
+            qService.tokenHttpPut(StudentRecord.update, {id:srrc.data.id} , record).then(function(result) {
 
             });
           });

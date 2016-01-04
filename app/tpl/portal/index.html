@@ -6,7 +6,8 @@
             <h1 class="text-l" style="padding-top: 70px;">同济大学力学实验云平台</h1>
             <h3 class="text-l" style="padding-top: 30px;">简单方便，服务师生</h3>
             <div class="text-l" style="padding-top: 30px;">
-              <a ui-sref="portal.login"><button class="btn btn-primary w-xs m-r">现在登录</button></a>
+              <a ui-sref="portal.login" ng-if="!currentUser"><button class="btn btn-primary w-xs m-r">现在登录</button></a>
+              <a ng-click="enter()" ng-if="currentUser"><button class="btn btn-primary w-xs m-r">直接进入</button></a>
             </div>
         </div>
     </div>
