@@ -30,6 +30,7 @@ angular.module('nevermore').service('sessionService',
 
 		this.storageChecking = function(){
 			 checkLocalToken();
+			 //
 			 checkLocalToken();
 		};
 
