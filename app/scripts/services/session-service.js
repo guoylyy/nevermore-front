@@ -6,28 +6,6 @@ angular.module('nevermore').service('sessionService',
 	function categoryService ($localStorage, $location,
 		$rootScope, tokenFactory, qService,$state) {
 
-
-		//这和session有一毛钱关系。。。
-		function gCurrSemester(){
-			if($localStorage.semester){
-				$rootScope.semester = $localStorage.semester;
-				return $localStorage.semester;
-			}else{
-				return null;
-			}
-		};
-
-		function checkLocalToken(){
-			//这边比较token用$localstorage,因为$rootScope一刷新页面就清空了
-			if (!$localStorage.token  || !$localStorage.currentUser) {
-				$state.go('portal.login');
-				return false;
-			}else{
-				$rootScope.currentUser = $localStorage.currentUser;
-				$rootScope.token = $localStorage.token;
-			}
-		};
-
 		this.checkToken = function() {
 			return checkLocalToken();
 		};
@@ -70,6 +48,26 @@ angular.module('nevermore').service('sessionService',
 			$rootScope.token = token;
 		};
 
+		//这和session有一毛钱关系。。。
+		function gCurrSemester(){
+			if($localStorage.semester){
+				$rootScope.semester = $localStorage.semester;
+				return $localStorage.semester;
+			}else{
+				return null;
+			}
+		};
+
+		function checkLocalToken(){
+			//这边比较token用$localstorage,因为$rootScope一刷新页面就清空了
+			if (!$localStorage.token  || !$localStorage.currentUser) {
+				$state.go('portal.login');
+				return false;
+			}else{
+				$rootScope.currentUser = $localStorage.currentUser;
+				$rootScope.token = $localStorage.token;
+			}
+		};
 
 		function wrapperUser(user){
 			if(user.role == 'STUDENT' || user.role =='ADMINISTRATOR'){
@@ -90,10 +88,11 @@ angular.module('nevermore').service('sessionService',
 			delete $localStorage.report;
 			$state.go('portal.login');
 		};
+
 		this.headers = function(){
 			return {
-      	'x-auth-token': $localStorage.token
-    	};
+      			'x-auth-token': $localStorage.token
+    		};
 		};
 	}
 );
