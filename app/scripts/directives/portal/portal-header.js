@@ -12,7 +12,7 @@ angular.module('nevermore')
       templateUrl: 'tpl/portal/block/header.html',
       restrict: 'E',
       controller: function ($scope, sessionService, $rootScope, $localStorage, $state) {
-        var currentUser = sessionService.getCurrUser();
+        $scope.currentUser = sessionService.getCurrUser();
         $scope.showLoginButton = showLoginButton
       	
         $scope.head_click = function(){
