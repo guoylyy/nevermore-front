@@ -19,10 +19,18 @@
             </li>
           </ul>
         </div>
-        <div class="header-btn-group">
-        <a ui-sref="portal.login" data-ui-sref-opts="{reload: true}" class="btn btn-default w-xs m-r" ng-if = "showLoginButton()">
-            登录
-        </a>
+        <div class="header-btn-group" >
+            <a ui-sref="portal.login" data-ui-sref-opts="{reload: true}" class="btn btn-default w-xs m-r" ng-if="currentUser==null&&showLoginButton()">登录</a>
+        </div>
+        <div class="header-nav m-l-lg pull-right" ng-if="currentUser!=null">
+          <ul>
+          <a ng-click="head_click()" class="clear">
+            <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm" style="margin-top:1px">
+              <img ng-src="{{image_Url}}/{{currentUser.iconPath}}" alt="...">
+            </span>
+            <span class="hidden-sm hidden-md">{{currentUser.name}}</span> </b>
+          </a>
+        </ul>
         </div>
     </div>
 </div>

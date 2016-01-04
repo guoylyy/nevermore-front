@@ -2158,6 +2158,11 @@ fieldset[disabled] .btn-black.active {
 .nevermore-message-page .table .title-column {
   width: 60%;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
 .app:before {
   content: "";
   position: absolute;
