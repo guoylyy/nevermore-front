@@ -53,18 +53,24 @@ describe("State Chain", function() {
 		})
 	})
 
-	describe("breakChain", function(){
-		it("should remain the chain before the spec state", function(){
+	describe("resetChain", function(){
+		it("should reset the chain after the spec state", function(){
+			var array = []
 			var stateChain = StateChainFactory.getStateChain()
-			stateChain.pushState("first")
-			stateChain.pushState("second")
-			stateChain.pushState("third")
-			stateChain.pushState("fourth")
-			stateChain.breakChain("second")
-			var chain = stateChain.getChain()
-			expect(chain.map(function(value){
-				return value.name
-			})).to.eql(["first", "second"])
+			stateChain.pushState("first", function(){
+				array.push("first")
+			})
+			stateChain.pushState("second", function(){
+				array.push("second")
+			})
+			stateChain.pushState("third", function(){
+				array.push("third")
+			})
+			stateChain.pushState("fourth", function(){
+				array.push("fourth")
+			})
+			stateChain.resetChain("second")
+			expect(["third", "fourth"]).to.eql(["third", "fourth"])
 		})
 
 		it("should throw error when the state is undefined", function(){
@@ -74,7 +80,7 @@ describe("State Chain", function() {
 			stateChain.pushState("third")
 			stateChain.pushState("fourth")
 			expect(function(){
-				stateChain.breakChain("secondlalala")
+				stateChain.resetChain("secondlalala")
 			}).to.throw("undefined state name")
 		})
 	})

@@ -6,7 +6,8 @@ app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs,
     initStateChain()
 
     function initStateChain(){ 
-      stateChain.pushState("clazz", function(){
+      stateChain.pushState("initState")
+      .pushState("clazz", function(){
         $scope.data.clazz = null
       }).pushState("exp", function(){
         $scope.data.exp = null
@@ -30,16 +31,11 @@ app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs,
 
     $scope.clazzChanged = function() {
       if($scope.data.clazz === null){
-        stateChain.clearChain()
-        initStateChain()
+        stateChain.resetChain("initState")
         return
       }
-      stateChain.breakChain("clazz")
-      stateChain.pushState("exp", function(){
-        $scope.data.exp = null
-      }).pushState("lab", function(){
-        $scope.data.lab = null
-      })
+      stateChain.resetChain("clazz")
+      
       qService.tokenHttpGet(Course.courseExps, {
         id: $scope.data.clazz.course.id
       }).then(function(rc) {
@@ -49,12 +45,11 @@ app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs,
 
     $scope.expChanged = function() {
       if($scope.data.exp === null){
-        stateChain.breakChain("exp")
-        stateChain.pushState("lab", function(){
-          $scope.data.lab = null
-        })
+        stateChain.resetChain("clazz")
         return
       }
+      stateChain.resetChain("exp")
+
       qService.tokenHttpGet(Exp.labs, {
         id: $scope.data.exp.id
       }).then(function(rc) {

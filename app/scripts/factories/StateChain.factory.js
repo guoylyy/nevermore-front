@@ -19,7 +19,7 @@
 		var self = this
 
 		this.pushState = pushState
-		this.breakChain = breakChain
+		this.resetChain = resetChain
 		this.clearChain = clearChain
 
 
@@ -74,9 +74,9 @@
 			chain = []
 		}
 
-		function breakChain(name){
+		function resetChain(name){
 			var stateIndex = getStateIndex(name)
-			var cuttedStateChain = cutStateChain(stateIndex)
+			var cuttedStateChain = sliceStateChain(stateIndex)
 			triggerBreakEvent(cuttedStateChain)
 		}
 
@@ -96,11 +96,11 @@
 			return stateIndex
 		}
 
-		function cutStateChain(stateIndex){
+		function sliceStateChain(stateIndex){
 			if(stateIndex === chain.length - 1){
 				return []
 			}
-			return chain.splice(stateIndex + 1)
+			return chain.slice(stateIndex + 1)
 		}
 
 		function triggerBreakEvent(chain){
