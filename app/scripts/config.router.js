@@ -118,6 +118,7 @@ angular.module('nevermore')
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/teacher-reservation.js',
                   'scripts/directives/app/pager.js',
+                  "scripts/factories/StateChain.factory.js",
                   'ngDialog',
                   'NmDatepicker',
                   'scripts/controllers/app/modal/teacher-reservation-modal.js',
