@@ -5,111 +5,78 @@
     </h1>
   </div>
 
-  <form class="form-validation" name="customerForm" novalidate>
-    <table class="table  customer-table">
-      <tbody>
-      <tr>
-        <td style="width: 100px;">
-          <span class="block m-t-xs"><span class="text-danger">*</span>学期:</span>
-        </td>
-
-        <td>
-          <input type="text" class="form-control w-lg pull-right ng-binding" readonly ng-model="data.semester.name">
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <span class="block m-t-xs">预约日期:</span>
-        </td>
-        <td>
-            <nm-datepicker class="w-lg pull-right" ng-model="data.applyDate"></nm-datepicker>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span class="block m-t-xs">班级:</span>
-        </td>
-        <td>
-          <select class="form-control ng-pristine ng-valid ng-touched w-lg pull-right" ng-model="data.clazz" ng-options="(item.number + '' + item.teacher.name + ' '+ item.course.name)  for item in clazzs track by item.id" ng-change="clazzChanged()" aria-invalid="false">
+  <form class="form-horizontal" name="customerForm" novalidate>
+    <div class="form-group">
+      <label for="semester" class="col-sm-3 control-label">学期<span class="text-danger">*</span>：</label>
+      <div class="col-sm-9">
+        <input type="text" name = "semester" class="form-control" readonly ng-model="data.semester.name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="applyDate" class="col-sm-3 control-label">预约日期：</label>
+      <div class="col-sm-9">
+        <nm-datepicker class="form-control" ng-model="data.applyDate"></nm-datepicker>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="class" class="col-sm-3 control-label">班级：</label>
+      <div class="col-sm-9">
+        <select name = "class" class="form-control" ng-model="data.clazz" ng-options="(item.number + '' + item.teacher.name + ' '+ item.course.name)  for item in clazzs track by item.id" ng-change="clazzChanged()" aria-invalid="false">
             <option value="">--请选择班级--</option>
           </select>
-        </td>
-      </tr>
-
-      <tr ng-show="data.clazz!=undefined">
-        <td>
-          <span class="block m-t-xs">实验:</span>
-        </td>
-        <td>
-          <select class="form-control ng-pristine ng-valid ng-touched w-lg pull-right" ng-model="data.exp"  ng-options="item.name for item in exps track by item.id" ng-change="expChanged()" aria-invalid="false">
-            <option value="">--请选择实验--</option>
-          </select>
-        </td>
-      </tr>
-
-      <tr ng-show="data.exp != undefined">
-        <td>
-          <span class="block m-t-xs">实验室:</span>
-        </td>
-        <td>
-          <select class="form-control ng-pristine ng-valid ng-touched w-lg pull-right" ng-model="data.lab"  ng-options="item.name for item in labs track by item.id" aria-invalid="false">
+      </div>
+    </div>
+    <div class="form-group" ng-show="data.clazz !== null">
+      <label for="experiment" class="col-sm-3 control-label">实验：</label>
+      <div class="col-sm-9">
+        <select name = "experiment" class="form-control" ng-model="data.exp"  ng-options="item.name for item in exps track by item.id" ng-change="expChanged()" aria-invalid="false">
+          <option value="">--请选择实验--</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group" ng-show="data.exp !== null">
+      <label for="lab" class="col-sm-3 control-label">实验室：</label>
+      <div class="col-sm-9">
+        <select name = "lab" class="form-control" ng-model="data.lab"  ng-options="item.name for item in labs track by item.id" aria-invalid="false">
             <option value="">--请选择实验室--</option>
           </select>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <span class="block m-t-xs">时间:</span>
-        </td>
-        <td>
-          <select class="form-control ng-pristine ng-valid ng-touched w-lg pull-right" ng-model="data.slot"  ng-options="item.title for item in slots track by item.id" aria-invalid="false">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="time" class="col-sm-3 control-label">时间：</label>
+      <div class="col-sm-9">
+        <select name = "time" class="form-control" ng-model="data.slot"  ng-options="item.title for item in slots track by item.id" aria-invalid="false">
             <option value="">--请选择预约时间--</option>
           </select>
-        </td>
-      </tr>
-
-      <tr ng-show="data.lab != undefined">
-        <td>
-          <span class="block m-t-xs">实验室容量:</span>
-        </td>
-        <td>
-          <label class="pull-right">
-          实验室容量为
-          <span style="font-size:15px;color:red;">{{data.lab.capacity}}</span>人
-          请不要提交多于
-          <span style="font-size:15px;color:red;">{{data.lab.capacity | recommendCount}}</span> 人的预约
-          </label>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <span class="block m-t-xs">预约人数:</span>
-        </td>
-        <td>
-          <input type="text" class="form-control w-lg pull-right" ng-model="data.count">
-        </td>
-      </tr>
-
-
-      <tr>
-        <td>
-          <span class="block m-t-xs">备注:</span>
-        </td>
-        <td>
-          <textarea class="form-control ng-pristine ng-valid ng-touched w-lg pull-right" ng-model="data.remark" placeholder="" rows="2" aria-multiline="true" aria-invalid="false"></textarea>
-        </td>
-      </tr>
-
-
-      </tbody>
-    </table>
-
+      </div>
+    </div>
+    <div class="form-group" ng-show="data.lab !== null">
+      <label class="col-sm-3 control-label"><span class="text-danger">注意：</span></label>
+      <div class="col-sm-9">
+        <label>
+          实验室可容纳最大人数为
+          <span class = "text-danger">
+            {{data.lab.capacity}}
+          </span>
+          人
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="capacity" class="col-sm-3 control-label">预约人数：</label>
+      <div class="col-sm-9">
+        <input name = "capacity" type="text" class="form-control" ng-model="data.count">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="remark" class="col-sm-3 control-label">备注：</label>
+      <div class="col-sm-9">
+        <textarea name = "remark" class="form-control" ng-model="data.remark" placeholder="" rows="2" aria-multiline="true" aria-invalid="false"></textarea>
+      </div>
+    </div>
     <div class="clearfix m-t">
       <div class="pull-right">
-        <button class="btn btn-primary w-sm m-r-sm" ng-disabled="customerForm.$invalid" ng-click="save()">保存</button>
+        <button class="btn btn-primary" ng-disabled="customerForm.$invalid" ng-click="save()">保存</button>
       </div>
     </div>
   </form>

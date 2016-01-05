@@ -1,16 +1,45 @@
 'use strict';
 
-app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs, semester, slots, qService, ToasterTool, Course, Exp, Reservation, AlertTool) {
+app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs,
+ semester, slots, qService, ToasterTool, Course, Exp, Reservation, StateChainFactory) {
+    var stateChain = StateChainFactory.getStateChain()
+    initStateChain()
+
+    function initStateChain(){ 
+      stateChain.pushState("clazz", function(){
+        $scope.data.clazz = null
+      }).pushState("exp", function(){
+        $scope.data.exp = null
+      }).pushState("lab", function(){
+        $scope.data.lab = null
+      })
+    }
+
     $scope.slots = slots.data,
     $scope.clazzs = clazzs.data;
     $scope.data = data;
     $scope.data['semester'] = semester;
     $scope.data['slot'] = slots.data[0];
     $scope.data['applyDate'] = new Date();
+    $scope.data["clazz"] = null
+    $scope.data["exp"] = null
+    $scope.data["lab"] = null
     $scope.exps = [];
     $scope.labs = [];
 
+
     $scope.clazzChanged = function() {
+      if($scope.data.clazz === null){
+        stateChain.clearChain()
+        initStateChain()
+        return
+      }
+      stateChain.breakChain("clazz")
+      stateChain.pushState("exp", function(){
+        $scope.data.exp = null
+      }).pushState("lab", function(){
+        $scope.data.lab = null
+      })
       qService.tokenHttpGet(Course.courseExps, {
         id: $scope.data.clazz.course.id
       }).then(function(rc) {
@@ -19,6 +48,13 @@ app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs, sem
     };
 
     $scope.expChanged = function() {
+      if($scope.data.exp === null){
+        stateChain.breakChain("exp")
+        stateChain.pushState("lab", function(){
+          $scope.data.lab = null
+        })
+        return
+      }
       qService.tokenHttpGet(Exp.labs, {
         id: $scope.data.exp.id
       }).then(function(rc) {
@@ -56,9 +92,8 @@ app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs, sem
           if(rdata.errorCode == "DUPLICATION"){
             ToasterTool.warning('该实验室在您选择的时间段已有预约!','');
           }else{
-            AlertTool.success({title:'预约成功！',text:''}).then(function() {
-              $scope.closeThisDialog('refresh');
-            });
+            ToasterTool.success("预约成功！", "")
+            $scope.closeThisDialog('refresh');
           }
 
         });
