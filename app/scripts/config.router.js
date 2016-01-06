@@ -122,7 +122,8 @@ angular.module('nevermore')
                   'ngDialog',
                   'NmDatepicker',
                   'scripts/controllers/app/modal/teacher-reservation-modal.js',
-                  'scripts/controllers/app/modal/reservation-detail-modal.js'
+                  'scripts/controllers/app/modal/reservation-detail-modal.js',
+                  "scripts/factories/InputValidator.factory.js",
                 ]);
               }]
             }
