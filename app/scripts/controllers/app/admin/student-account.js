@@ -9,17 +9,6 @@ function($scope, Account, ngDialog, generalService, ToasterTool){
 		"curPageNum": 1,
 		"totalItemNum": 0,
 	}
-	var actionBarManager = new ActionBarManager()
-	actionBarManager.setTransitListener(function(lastAction, nowAction){
-		if(lastAction === "searching" && nowAction === "searched"){
-			searchAccount()
-		}else if(lastAction === "searched" && nowAction === "searched"){
-			searchAccount()
-		}else if(lastAction === "searched" && nowAction === "listing"){
-			$scope.accounts.curPageNum = 1
-			loadAccounts()
-		}
-	})
 
 	$scope.accounts = angular.copy(DEFAULT_ACCOUNTS)
 
@@ -70,7 +59,6 @@ function($scope, Account, ngDialog, generalService, ToasterTool){
 			var DELETE_ACTION = "delete"
 			var MODIFY_ACTION = "modify"
 			if(data.value === DELETE_ACTION){
-				actionBarManager.listing()
 				loadAccounts()
 				ToasterTool.success("编辑学生", "删除学生成功！")
 			}else if(data.value === MODIFY_ACTION){

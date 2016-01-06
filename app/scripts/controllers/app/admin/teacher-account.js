@@ -59,7 +59,6 @@ function($scope, Account, ngDialog, generalService, ToasterTool){
 			var DELETE_ACTION = "delete"
 			var MODIFY_ACTION = "modify"
 			if(data.value === DELETE_ACTION){
-				actionBarManager.listing()
 				loadAccounts()
 				ToasterTool.success("编辑教师", "删除教师成功！")
 			}else if(data.value === MODIFY_ACTION){
