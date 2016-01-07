@@ -1,4 +1,5 @@
 ;void function(){
+
 	angular.module("nevermore")
 		.factory("InputValidator", InputValidator)
 
@@ -6,11 +7,13 @@
 		return {
 			injectToScope: injectToScope,
 		}
-	}
 
-	function injectToScope($scope){
-		$scope.validatePhoneNumber = validatePhoneNumber
-		$scope.validateSelect = validateSelect
+		function injectToScope($scope){
+			$scope.validatePhoneNumber = validatePhoneNumber
+			$scope.validateSelect = validateSelect
+			$scope.validateString = validateString
+			$scope.validateNonEmptyString = validateNonEmptyString
+		}
 	}
 
 	function validatePhoneNumber(phoneNumber){
@@ -24,5 +27,23 @@
 		}else{
 			return true
 		}
+	}
+
+	function validateString(content){
+		if(typeof content === "string"){
+			return true
+		}else{
+			return false
+		}
+	}
+
+	function validateNonEmptyString(content){
+		if(validateString(content) === false){
+			return false
+		}
+		if(content === ""){
+			return false
+		}
+		return true
 	}
 }()

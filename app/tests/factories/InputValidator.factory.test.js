@@ -1,19 +1,19 @@
 chai.should()
 var expect = chai.expect
-chai.should()
+
+var InputValidator = undefined
+var StateChainFactory = undefined
+,	$scope = {}
 
 
 
 describe("Input Validator", function(){
-	beforeEach(module("nevermore"))
-	var InputValidator = undefined
 
+	beforeEach(module("nevermore"))
 	beforeEach(inject(function(_InputValidator_){
 		InputValidator = _InputValidator_
+		InputValidator.injectToScope($scope)
 	}))
-
-	var $scope = {}
-	$scope = InputValidator.injectToScope($scope)
 
 	describe("validatePhoneNumber", function(){
 		it("should pass when given 13681622894", function(){
@@ -71,6 +71,35 @@ describe("Input Validator", function(){
 		it("should fail when given empty string", function(){
 			var selectValue = ""
 			$scope.validateSelect(selectValue).should.be.false
+		})
+	})
+
+	describe("validateString", function(){
+		it("should pass when given string", function(){
+			var string = ""
+			$scope.validateString(string).should.be.true
+		})
+
+		it("should fail when not given string", function(){
+			var string = 123
+			$scope.validateString(string).should.be.falses
+		})
+	})
+
+	describe("validateNonEmptyString", function(){
+		it("should pass when given non empty string", function(){
+			var string = "test"
+			$scope.validateNonEmptyString(string).should.be.true
+		})
+
+		it("should fail when given empty string", function(){
+			var string = ""
+			$scope.validateNonEmptyString(string).should.be.false
+		})
+
+		it("should fail when not given string", function(){
+			var string = 123
+			$scope.validateNonEmptyString(string).should.be.false
 		})
 	})
 })
