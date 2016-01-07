@@ -21,7 +21,7 @@
         <input type="text" name = "semester" class="form-control" readonly ng-model="data.semester.name">
       </div>
     </div>
-    <div style = "color: red; font-size: 10px; text-align: center;" class = "ng-hide pull-right" ng-show = "!!ReservationForm.applyDate.$error.validator">
+    <div class = "ng-hide pull-right error-message" ng-show = "!!ReservationForm.applyDate.$error.validator">
       预约日期不能是今天之前的日期
     </div>
     <div class="clearfix"></div>
