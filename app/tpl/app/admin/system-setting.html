@@ -3,16 +3,13 @@
     <div class="vbox">
       <div class="wrapper">
         <!-- <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="createNote()">New</a> -->
-        <div class="h4">账户类别</div>
+        <div class="h4">系统设置</div>
       </div>
       <div class="row-row">
         <div class="cell scrollable hover">
           <ul class="list-group">
-            <li ui-sref-active="active" ui-sref="app.admin-account.teacher" class="list-group-item second_nav_body">
-              <a>教师</a>
-            </li>
-            <li ui-sref-active="active" ui-sref="app.admin-account.student" class="list-group-item second_nav_body">
-              <a>学生</a>
+            <li ui-sref-active="active" ui-sref="app.admin-setting.sms" class="list-group-item second_nav_body">
+              <a>短信息设置</a>
             </li>
           </ul>
         </div>
@@ -21,6 +18,8 @@
   </div>
 
   <div class="col">
+    <div class="vbox">
     <div ui-view></div>
+    </div>
   </div>
 </div>

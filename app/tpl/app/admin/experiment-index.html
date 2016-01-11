@@ -1,20 +1,24 @@
 <div class="hbox hbox-auto-xs hbox-auto-sm">
-  <div class="col w dk b-r bg-auto second_nav_gray">
-    <div class="panel no_border" draggable="true">
-      <div class="panel-heading second_nav_head">
-        实验资源
+  <div class="col w-md lt b-r">
+    <div class="vbox">
+      <div class="wrapper">
+        <div class="h4">实验资源</div>
       </div>
-      <ul class="list-group">
-        <li ui-sref-active="active" ui-sref="app.experiment-resource.experiment-lab" class="list-group-item second_nav_body">
-          全部实验室
-        </li>
-        <li ui-sref-active="active" ui-sref="app.experiment-resource.experiment" class="list-group-item second_nav_body">
-          全部实验
-        </li>
-        <li ui-sref-active="active" ui-sref="app.experiment-resource.experiment-course" class="list-group-item second_nav_body">
-          全部课程
-        </li>
-      </ul>
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <ul class="list-group">
+          <li ui-sref-active="active" ui-sref="app.admin-resource.lab" class="list-group-item second_nav_body">
+            <a>全部实验室</a>
+          </li>
+          <li ui-sref-active="active" ui-sref="app.admin-resource.experiment" class="list-group-item second_nav_body">
+            <a>全部实验</a>
+          </li>
+          <li ui-sref-active="active" ui-sref="app.admin-resource.course" class="list-group-item second_nav_body">
+            <a>全部课程</a>
+          </li>
+        </ul>
+        </div>
+      </div>
     </div>
   </div>
   <div class="col">
