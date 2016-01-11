@@ -133,6 +133,22 @@ angular.module('nevermore')
               }]
             },
           })
+          .state("app.teacher.class-selection", {
+            url: "^/app/teacher/class-selection",
+            templateUrl: "tpl/app/teacher/class-selection.html",
+            controller: "TeacherClassSelectionController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/factories/StateChain.factory.js",
+                  'ngDialog',
+                  'NmDatepicker',
+                  "scripts/factories/InputValidator.factory.js",
+                  "scripts/controllers/app/teacher/class-selection.controller.js",
+                ])
+              }]
+            },
+          })
           .state("app.teacher.class", {
             url: "^/app/teacher/class",
             templateUrl: "tpl/app/teacher/class.html",
@@ -285,6 +301,18 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/student/reservation.controller.js",
+                ])
+              }],
+            },
+          })
+          .state("app.student.class-selection", {
+            url: "^/app/student/class-selection",
+            templateUrl: "tpl/app/student/class-selection.html",
+            controller: "StudentClassSelectionController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/student/class-selection.controller.js",
                 ])
               }],
             },
