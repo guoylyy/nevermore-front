@@ -1,0 +1,81 @@
+<div class="vbox db-bg">
+    <div class = "wrapper lter no_border" style = "overflow: hidden;">
+    	<span class = "subview3_title db-title">学生列表</span>
+    	<span class = "pull-right">共&nbsp;&nbsp;<label class = "db-student-count">135</label>&nbsp;&nbsp;人</span>
+    </div>
+    <div class="db-line"></div>
+    <div class = "wrapper-md">
+    	<div style = "overflow: hidden; margin-bottom: 20px;">
+			<span>
+				以下是该参加该课程的学生列表，请教师谨慎操作！！
+			</span>
+			<button class="btn btn-primary db-btn-primary pull-right">
+				上传学生名单
+			</button>
+		</div>
+		<div class="nav-tabs-alt">
+			<button class = "btn btn-sm btn-primary db-btn-primary">添加学生</button>
+			<button class="btn btn-sm btn-danger db-btn-danger">移除所选</button>
+			<form class = "form-horizontal pull-right">
+				<div class="form-group">
+			      <div class="col-sm-6">
+			        <input type="text" class="form-control" id="name" ng-model = "resource.name">
+			      </div>
+			      <button class="btn btn-default db-btn-default">搜索</button>
+			    </div>
+			</form>
+		</div>
+		<table class="table table-bordered task-table">
+			<thead>
+				<tr>
+					<th style = "width: 4.5%"><input type = "radio"/></th>
+					<th style = "width: 15.5%">学号</th>
+					<th style = "width: 23%">姓名</th>
+					<th style = "width: 23%">专业</th>
+					<th style = "width: 17%">性别</th>
+					<th style = "width: 17%">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type = "radio"/></td>
+					<td>091114</td>
+					<td>
+						攀岩
+					</td>
+					<td>软件工程</td>
+					<td>男</td>
+					<td>
+						<button class="btn btn-sm btn-primary db-btn-primary">查看报告</button>
+					</td>
+				</tr>
+				<tr>
+					<td><input type = "radio"/></td>
+					<td>091114</td>
+					<td>
+						攀岩
+					</td>
+					<td>软件工程</td>
+					<td>男</td>
+					<td>
+						<button class="btn btn-sm btn-primary db-btn-primary">查看报告</button>
+					</td>
+				</tr>
+				<tr>
+					<td><input type = "radio"/></td>
+					<td>091114</td>
+					<td>
+						攀岩
+					</td>
+					<td>软件工程</td>
+					<td>男</td>
+					<td>
+						<button class="btn btn-sm btn-primary db-btn-primary">查看报告</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+    </div>
+</div>
+
+<lab-footer></lab-footer>

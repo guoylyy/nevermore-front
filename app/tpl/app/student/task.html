@@ -1,0 +1,134 @@
+<div class="vbox db-bg">
+    <div class = "wrapper lter no_border" style = "overflow: hidden;">
+        <span class = "subview3_title db-title">实验预约</span>
+    </div>
+    <div class="db-line"></div>
+    <div class = "wrapper-md">
+		<ul class = "db-list">
+			<li class = "wrapper-sm">
+				<div>
+					<span class="db-title db-exp-title db-m-r-15">
+						拉伸实验
+					</span>
+					<span class="db-text-danger">
+						待完成实验报告
+					</span>	
+					<button class="btn btn-primary db-btn-primary pull-right">
+						虚拟实验
+					</button>
+					<button class="btn btn-danger db-btn-danger pull-right db-m-r-20">
+						填写实验报告
+					</button>
+				</div>
+				<div class="db-line db-m-0 db-m-t-10"></div>
+				<div class="wrapper-md">
+					<div>
+						<span class="db-title db-m-r-15">
+							预约情况
+						</span>
+						<span class="db-text-success db-font-sm">
+							已预约2个时间段
+						</span>	
+					</div>
+					<table class = "table db-task-table db-no-bordered db-table-row-narrow" style = "width: 685px;">
+						<tbody>
+							<tr>
+								<td>
+									<span class = "db-exp-time">
+										2015-10-10(周三)
+									</span>
+								</td>
+								<td>
+									嘉定H317弯扭组合压杆稳定
+								</td>
+								<td>
+									5,6 节课（13:30~15:00)
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class = "db-exp-time">
+										2015-10-10(周三)
+									</span>
+								</td>
+								<td>
+									嘉定H317弯扭组合压杆稳定
+								</td>
+								<td>
+									5,6 节课（13:30~15:00)
+								</td>
+							</tr>	
+						</tbody>
+					</table>
+					<div class="db-title">
+						我的实验情况
+					</div>
+					<div class="wrapper-md">
+						<ul class = "db-list db-list-horizontal">
+							<li style = "width: 4em;">
+								<div>
+									<img src="images/app/unfinish.png" style = "width: 100%;">
+								</div>
+								实验报告
+							</li>
+							<li style = "width: 60px;"></li>
+							<li style = "width: 4em;">
+								<div>
+									<img src="images/app/unfinish.png" style = "width: 100%;">
+								</div>
+								实验情况
+							</li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			<li class = "wrapper-sm">
+				<div>
+					<span class="db-title db-exp-title db-m-r-15">
+						拉伸实验
+					</span>
+					<span class="db-text-danger">
+						该实验还没有任何预约
+					</span>	
+					<button class="btn btn-primary db-btn-primary pull-right">
+						虚拟实验
+					</button>
+					<button class="btn btn-danger db-btn-danger pull-right db-m-r-20">
+						填写实验报告
+					</button>
+				</div>
+				<div class="db-line db-m-0 db-m-t-10"></div>
+				<div class="wrapper-md">
+					<div>
+						<span class="db-title db-m-r-15">
+							预约情况
+						</span>
+					</div>
+					<nevermore-empty-panel ng-if="true" text="没有任何预约，可以在开放时段自行预约"></nevermore-empty-panel>
+					<div class="db-title">
+						我的实验情况
+					</div>
+					<div class="wrapper-md">
+						<ul class = "db-list db-list-horizontal">
+							<li style = "width: 4em;">
+								<div>
+									<img src="images/app/finish.png" style = "width: 100%;">
+								</div>
+								实验报告
+							</li>
+							<li style = "width: 60px;"></li>
+							<li style = "width: 4em;">
+								<div>
+									<img src="images/app/unfinish.png" style = "width: 100%;">
+								</div>
+								实验情况
+							</li>
+						</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+    </div>
+</div>
+
+<lab-footer></lab-footer>
