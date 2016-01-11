@@ -1,7 +1,8 @@
 'use strict';
 
 app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs,
- semester, slots, qService, ToasterTool, Course, Exp, Reservation, StateChainFactory) {
+ semester, slots, qService, ToasterTool, Course, Exp, Reservation,
+  StateChainFactory, InputValidator) {
     var stateChain = StateChainFactory.getStateChain()
     initStateChain()
 
@@ -27,6 +28,9 @@ app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs,
     $scope.data["lab"] = null
     $scope.exps = [];
     $scope.labs = [];
+    $scope.currentDate = new Date()
+
+    InputValidator.injectToScope($scope)
 
 
     $scope.clazzChanged = function() {
@@ -90,7 +94,6 @@ app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs,
             ToasterTool.success("预约成功！", "")
             $scope.closeThisDialog('refresh');
           }
-
         });
 
       }

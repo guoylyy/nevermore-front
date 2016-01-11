@@ -109,6 +109,262 @@ angular.module('nevermore')
               }]
             }
           })
+          .state("app.teacher", {
+            url: '^/app/teacher',
+            templateUrl: 'tpl/app/teacher/index.html',
+            controller: 'TeacherIndexController',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/teacher/index.js',
+                ]);
+              }]
+            },
+          })
+          .state("app.teacher.reservation", {
+            url: "^/app/teacher/reservation",
+            templateUrl: "tpl/app/teacher/reservation.html",
+            controller: "TeacherReservationController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/teacher/reservation.controller.js',
+                ]);
+              }]
+            },
+          })
+          .state("app.teacher.class-selection", {
+            url: "^/app/teacher/class-selection",
+            templateUrl: "tpl/app/teacher/class-selection.html",
+            controller: "TeacherClassSelectionController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/factories/StateChain.factory.js",
+                  'ngDialog',
+                  'NmDatepicker',
+                  "scripts/factories/InputValidator.factory.js",
+                  "scripts/controllers/app/teacher/class-selection.controller.js",
+                ])
+              }]
+            },
+          })
+          .state("app.teacher.class", {
+            url: "^/app/teacher/class",
+            templateUrl: "tpl/app/teacher/class.html",
+            controller: "TeacherClassController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/factories/StateChain.factory.js",
+                  'ngDialog',
+                  'NmDatepicker',
+                  "scripts/factories/InputValidator.factory.js",
+                  "scripts/controllers/app/teacher/class.controller.js",
+                ])
+              }]
+            },
+          })
+          .state("app.teacher.class.main-page", {
+            url: "/main-page",
+            templateUrl: "tpl/app/teacher/main-page.html",
+            controller: "TeacherMainPageController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/factories/StateChain.factory.js",
+                  'ngDialog',
+                  'NmDatepicker',
+                  "scripts/factories/InputValidator.factory.js",
+                  "scripts/controllers/app/teacher/main-page.controller.js",
+                ])
+              }]
+            },
+          })
+          .state("app.teacher.class.files", {
+            url: "/files",
+            templateUrl: "tpl/app/teacher/files.html",
+            controller: "TeacherFilesController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/factories/StateChain.factory.js",
+                  'ngDialog',
+                  'NmDatepicker',
+                  "scripts/factories/InputValidator.factory.js",
+                  "scripts/controllers/app/teacher/main-page.controller.js",
+                ])
+              }]
+            },
+          })
+          .state("app.teacher.class.appointment", {
+            url: "/appointment",
+            templateUrl: "tpl/app/teacher/appointment.html",
+            controller: "TeacherAppointmentController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/factories/StateChain.factory.js",
+                  'ngDialog',
+                  'NmDatepicker',
+                  "scripts/factories/InputValidator.factory.js",
+                  "scripts/controllers/app/teacher/appointment.controller.js",
+                ])
+              }],
+            },
+          })
+          .state("app.teacher.class.task", {
+            url: "/task",
+            templateUrl: "tpl/app/teacher/task.html",
+            controller: "TeacherTaskController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/factories/StateChain.factory.js",
+                  'ngDialog',
+                  'NmDatepicker',
+                  "scripts/factories/InputValidator.factory.js",
+                  "scripts/controllers/app/teacher/task.controller.js",
+                ])
+              }],
+            },
+          })
+          .state("app.teacher.class.task-detail", {
+            url: "/task-detail",
+            templateUrl: "tpl/app/teacher/task-detail.html",
+            controller: "TeacherTaskDetailController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/factories/StateChain.factory.js",
+                  'ngDialog',
+                  'NmDatepicker',
+                  "scripts/factories/InputValidator.factory.js",
+                  "scripts/controllers/app/teacher/task-detail.controller.js",
+                ])
+              }],
+            },
+          })
+          .state("app.teacher.class.task-report", {
+            url: "/task-report",
+            templateUrl: "tpl/app/teacher/task-report.html",
+            controller: "TeacherTaskReportController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/factories/StateChain.factory.js",
+                  'ngDialog',
+                  'NmDatepicker',
+                  "scripts/factories/InputValidator.factory.js",
+                  "scripts/controllers/app/teacher/task-report.controller.js",
+                ])
+              }],
+            },
+          })
+          .state("app.teacher.class.student", {
+            url: "/student",
+            templateUrl: "tpl/app/teacher/student.html",
+            controller: "TeacherStudentController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/factories/StateChain.factory.js",
+                  'ngDialog',
+                  'NmDatepicker',
+                  "scripts/factories/InputValidator.factory.js",
+                  "scripts/controllers/app/teacher/student.controller.js",
+                ])
+              }],
+            },
+          })
+          .state("app.student", {
+            url: "^/app/student",
+            templateUrl: "tpl/app/student/index.html",
+            controller: "StudentIndexController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/factories/StateChain.factory.js",
+                  'ngDialog',
+                  'NmDatepicker',
+                  "scripts/factories/InputValidator.factory.js",
+                  "scripts/controllers/app/student/index.controller.js",
+                ])
+              }],
+            },
+          })
+          .state("app.student.reservation", {
+            url: "^/app/student/reservation",
+            templateUrl: "tpl/app/student/reservation.html",
+            controller: "StudentReservationController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/student/reservation.controller.js",
+                ])
+              }],
+            },
+          })
+          .state("app.student.class-selection", {
+            url: "^/app/student/class-selection",
+            templateUrl: "tpl/app/student/class-selection.html",
+            controller: "StudentClassSelectionController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/student/class-selection.controller.js",
+                ])
+              }],
+            },
+          })
+          .state("app.student.class", {
+            url: "/class/:classID",
+            templateUrl: "tpl/app/student/class.html",
+            controller: "StudentClassController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/student/class.controller.js",
+                ])
+              }],
+            },
+          })
+          .state("app.student.class.main-page", {
+            url: "/main-page",
+            templateUrl: "tpl/app/student/main-page.html",
+            controller: "StudentMainPageController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/student/main-page.controller.js",
+                ])
+              }],
+            },
+          })
+          .state("app.student.class.task", {
+            url: "/task",
+            templateUrl: "tpl/app/student/task.html",
+            controller: "StudentTaskController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/student/task.controller.js",
+                ])
+              }],
+            },
+          })
+          .state("app.student.class.file", {
+            url: "/file",
+            templateUrl: "tpl/app/student/file.html",
+            controller: "StudentFileController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/student/file.controller.js",
+                ])
+              }],
+            },
+          })
           .state('app.index.teacher-reservations', {
             url: '^/app/index/teacher/reservations/:title',
             templateUrl: 'tpl/app/teacher-reservation.html',
@@ -122,7 +378,8 @@ angular.module('nevermore')
                   'ngDialog',
                   'NmDatepicker',
                   'scripts/controllers/app/modal/teacher-reservation-modal.js',
-                  'scripts/controllers/app/modal/reservation-detail-modal.js'
+                  'scripts/controllers/app/modal/reservation-detail-modal.js',
+                  "scripts/factories/InputValidator.factory.js",
                 ]);
               }]
             }
@@ -444,6 +701,9 @@ angular.module('nevermore')
                   "scripts/services/toaster-tool.js",
                   "scripts/directives/app/search-action-bar.js",
                   "ngDialog",
+                  "scripts/controllers/app/admin/modify-resource.js",
+                  "scripts/factories/InputValidator.factory.js",
+                  "scripts/factories/error-handler.factory.js",
                 ])
               }]
             }
@@ -456,7 +716,6 @@ angular.module('nevermore')
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/admin/admin-account.js",
-                  "scripts/controllers/app/admin/modify-admin-account.js",
                   "scripts/controllers/app/admin/add-admin-account.js",
                   "scripts/controllers/app/admin/modify-admin-password.js",
                 ])
