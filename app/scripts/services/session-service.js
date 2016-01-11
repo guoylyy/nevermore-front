@@ -29,9 +29,9 @@ angular.module('nevermore').service('sessionService',
 		};
 
 		this.storageChecking = function(){
-			 checkLocalToken();
-			 //
-			 checkLocalToken();
+			checkLocalToken();
+			//
+			checkLocalToken();
 		};
 
 		//get对应的save
