@@ -295,7 +295,7 @@ angular.module('nevermore')
               }]
             }
           })
-          
+
           //管理员界面
           .state('app.admin-account',{
             url: '^/app/admin/account',
@@ -322,7 +322,7 @@ angular.module('nevermore')
             url: '^/app/admin/account/student',
             templateUrl:'tpl/app/admin/student-account.html'
           })
-          .state('app.admin-resource',{
+          .state('app.admin-resource',{ //实验资源管理
             url: '^/app/admin/resource',
             templateUrl: 'tpl/app/admin/experiment-index.html',
             controller: ['$state', function($state){
@@ -351,7 +351,7 @@ angular.module('nevermore')
             url: '^/app/admin/resource/course',
             templateUrl: 'tpl/app/admin/experiment-course.html'
           })
-          .state('app.admin-semester',{
+          .state('app.admin-semester',{ //学期配置
             url: '^/app/admin/semester',
             templateUrl: "tpl/app/admin/semester-class.html",
             controller: ['$state', function($state){
@@ -379,7 +379,7 @@ angular.module('nevermore')
             templateUrl: "tpl/app/admin/class-management.html",
           })
 
-          .state('app.admin-appointment',{
+          .state('app.admin-appointment',{ //预约审批
             url: '^/app/admin/appointment',
             templateUrl: "tpl/app/admin/appointment-verification.html",
             controller: ['$state', function($state){
@@ -405,9 +405,34 @@ angular.module('nevermore')
             url: "^/app/admin/appointment/unverified",
             templateUrl: "tpl/app/admin/unverified-experiment-appointment.html",
           })
+          .state('app.admin-setting',{ //系统设置
+            url: '^/app/admin/setting',
+            templateUrl: "tpl/app/admin/system-setting.html",
+            controller: ['$state', function($state){
+              $state.go('app.admin-setting.sms');
+            }],
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/appointment-verification.js",
+                  "scripts/services/general-service.js",
+                  "scripts/services/toaster-tool.js",
+                  "scripts/services/session-service.js",
+                  "ngDialog",
+                ])
+              }]
+            }
+          })
+          .state('app.admin-setting.sms',{ //短信息设置
+            url: '^/app/admin/setting/sms',
+            templateUrl: "tpl/app/admin/sms-setting.html"
+          })
 
-
-          // 下面是姚神写得管理员路径-切换到上面的路径
+          /***
+            强大的分隔符：：路障路障
+            下面是姚神写得管理员路径-切换到上面的路径
+            强大的分隔符：：下面不要加代码了，往上面加
+          ***/
           .state('app.account-admin', {
             abstract: true,
             url: '^/app/account/admin',

@@ -1033,6 +1033,20 @@
 .bg-app {
   background-color: #f7f6f2 !important;
 }
+.nav > li.nm-tab:hover {
+  background-color: none;
+  border: none;
+}
+.nav > li.nm-tab > a:hover {
+  background-color: #f7f6f2;
+  border: #f7f6f2 1px solid;
+}
+.nav > li.nm-tab.active > a {
+  background-color: #f7f6f2 !important;
+  color: #000;
+  border: none;
+  border-bottom: 3px solid #00a2ca !important;
+}
 .fc-day-grid-event .fc-content,
 .fc-time-grid-event .fc-content {
   color: #fff;
@@ -2228,7 +2242,7 @@ input::-webkit-inner-spin-button {
   background-color: #F6F8F8 !important;
 }
 .second_nav_body {
-  background-color: #F6F8F8 !important;
+  background-color: #f7f6f2 !important;
   padding-left: 30px;
   border: 0px none;
 }

@@ -12,6 +12,24 @@
   background-color: @app-bg !important;
 }
 
+
+.nav > li {
+  &.nm-tab:hover{
+    background-color: none;
+    border:none;
+  }
+  &.nm-tab > a:hover{
+    background-color: @app-bg;
+    border: @app-bg 1px solid;
+  }
+  &.nm-tab.active > a{
+    background-color: @app-bg !important;
+    color: #000;
+    border: none;
+    border-bottom: 3px solid @brand-primary !important;
+  }
+}
+
 //calendar
 .fc-day-grid-event, .fc-time-grid-event{
   .fc-content{
