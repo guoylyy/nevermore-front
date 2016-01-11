@@ -1,0 +1,95 @@
+<div class="vbox db-bg">
+    <div class = "wrapper lter no_border" style = "overflow: hidden;">
+    	<ol class="breadcrumb db-breadcrumb subview3_title">
+    		<li>
+    			<a href="#">
+    				<span class="db-title">实验任务</span>
+    			</a>
+    		</li>
+    		<li>
+    			<a href="#">
+    				<span class="db-title">实验情况</span>
+    			</a>
+    		</li>
+    	</ol>
+    </div>
+    <div class="db-line"></div>
+    <div class = "wrapper-md">
+    	<div>
+			<span class="db-title db-exp-title db-m-r-25">
+				拉伸实验
+			</span>
+			<span class="db-title db-exp-info-primary">
+				100/200
+			</span>	
+			<button class="btn btn-primary pull-right">
+				返回
+			</button>
+		</div>
+		<div class="db-line db-m-0 db-m-t-10 db-m-b-10"></div>
+		<div class="nav-tabs-alt">
+			<ul class="db-tab-table pull-left">
+				<li class="active">
+					<a data-target = "#finishTask" role = "tab" data-toggle = "tab" aria-expanded = "true">
+						已完成
+					</a>
+				</li>
+				<li>
+					<a data-target = "#unfinishTask" role = "tab" data-toggle = "tab" aria-expanded = "false">
+						未完成
+					</a>
+				</li>
+			</ul>
+			<form class = "form-horizontal pull-right">
+				<div class="form-group">
+			      <div class="col-sm-9">
+			        <input type="text" class="form-control" id="name" ng-model = "resource.name">
+			      </div>
+			      <button class="btn btn-default">搜索</button>
+			    </div>
+			</form>
+		</div>
+		<table class="table table-bordered task-table">
+			<thead>
+				<tr>
+					<th style = "width: 15%">学号</th>
+					<th style = "width: 15%">姓名</th>
+					<th style = "width: 25%">实验状态</th>
+					<th style = "width: 15%">完成时间</th>
+					<th style = "width: 30%">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>09114</td>
+					<td>攀岩</td>
+					<td>已完成</td>
+					<td>2015-10-10</td>
+					<td>
+						<button ui-sref = "app.teacher.class.task-report" class="btn btn-sm btn-primary">查看详情</button>
+					</td>
+				</tr>
+				<tr>
+					<td>09114</td>
+					<td>攀岩</td>
+					<td>已完成</td>
+					<td>2015-10-10</td>
+					<td>
+						<button class="btn btn-sm btn-primary">查看详情</button>
+					</td>
+				</tr>
+				<tr>
+					<td>09114</td>
+					<td>攀岩</td>
+					<td>已完成</td>
+					<td>2015-10-10</td>
+					<td>
+						<button class="btn btn-sm btn-primary">查看详情</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+    </div>
+</div>
+
+<lab-footer></lab-footer>

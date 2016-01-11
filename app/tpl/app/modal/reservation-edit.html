@@ -5,39 +5,52 @@
     </h1>
   </div>
 
-  <form class="form-horizontal" name="customerForm" novalidate>
+  <form class="form-horizontal" name="ReservationForm" novalidate>
+    <div class="alert alert-warning ng-hide" ng-show = "!!ReservationForm.class.$error.validator">
+      1. 请选择班级
+    </div>
+    <div class="alert alert-warning ng-hide" ng-show = "!!ReservationForm.experiment.$error.validator && data.clazz !== null">
+      2. 请选择实验
+    </div>
+    <div class="alert alert-warning ng-hide" ng-show = "!!ReservationForm.lab.$error.validator && data.exp !== null">
+      3. 请选择实验室
+    </div>
     <div class="form-group">
       <label for="semester" class="col-sm-3 control-label">学期<span class="text-danger">*</span>：</label>
       <div class="col-sm-9">
         <input type="text" name = "semester" class="form-control" readonly ng-model="data.semester.name">
       </div>
     </div>
+    <div class = "ng-hide pull-right error-message" ng-show = "!!ReservationForm.applyDate.$error.validator">
+      预约日期不能是今天之前的日期
+    </div>
+    <div class="clearfix"></div>
     <div class="form-group">
-      <label for="applyDate" class="col-sm-3 control-label">预约日期：</label>
+      <label for="applyDate" class="col-sm-3 control-label">预约日期<span class="text-danger">*</span>：</label>
       <div class="col-sm-9">
-        <nm-datepicker class="form-control" ng-model="data.applyDate"></nm-datepicker>
+        <nm-datepicker name = "applyDate" class="form-control" ng-model="data.applyDate" ui-validate = "'$value > currentDate'"></nm-datepicker>
       </div>
     </div>
     <div class="form-group">
-      <label for="class" class="col-sm-3 control-label">班级：</label>
+      <label for="class" class="col-sm-3 control-label">班级<span class="text-danger">*</span>：</label>
       <div class="col-sm-9">
-        <select name = "class" class="form-control" ng-model="data.clazz" ng-options="(item.number + '' + item.teacher.name + ' '+ item.course.name)  for item in clazzs track by item.id" ng-change="clazzChanged()" aria-invalid="false">
+        <select name = "class" class="form-control" ng-model="data.clazz" ng-options="(item.number + '' + item.teacher.name + ' '+ item.course.name)  for item in clazzs track by item.id" ui-validate = "'validateSelect($value)'" ng-change="clazzChanged()" aria-invalid="false">
             <option value="">--请选择班级--</option>
           </select>
       </div>
     </div>
     <div class="form-group" ng-show="data.clazz !== null">
-      <label for="experiment" class="col-sm-3 control-label">实验：</label>
+      <label for="experiment" class="col-sm-3 control-label">实验<span class="text-danger">*</span>：</label>
       <div class="col-sm-9">
-        <select name = "experiment" class="form-control" ng-model="data.exp"  ng-options="item.name for item in exps track by item.id" ng-change="expChanged()" aria-invalid="false">
+        <select name = "experiment" class="form-control" ng-model="data.exp"  ng-options="item.name for item in exps track by item.id" ui-validate = "'validateSelect($value)'" ng-change="expChanged()" aria-invalid="false">
           <option value="">--请选择实验--</option>
         </select>
       </div>
     </div>
     <div class="form-group" ng-show="data.exp !== null">
-      <label for="lab" class="col-sm-3 control-label">实验室：</label>
+      <label for="lab" class="col-sm-3 control-label">实验室<span class="text-danger">*</span>：</label>
       <div class="col-sm-9">
-        <select name = "lab" class="form-control" ng-model="data.lab"  ng-options="item.name for item in labs track by item.id" aria-invalid="false">
+        <select name = "lab" class="form-control" ng-model="data.lab" ui-validate = "'validateSelect($value)'" ng-options="item.name for item in labs track by item.id" aria-invalid="false">
             <option value="">--请选择实验室--</option>
           </select>
       </div>
@@ -76,7 +89,7 @@
     </div>
     <div class="clearfix m-t">
       <div class="pull-right">
-        <button class="btn btn-primary" ng-disabled="customerForm.$invalid" ng-click="save()">保存</button>
+        <button class="btn btn-primary" ng-disabled="ReservationForm.$invalid" ng-click="save()">保存</button>
       </div>
     </div>
   </form>

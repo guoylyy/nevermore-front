@@ -51,4 +51,15 @@ angular.module('nevermore')
         return false;
       }
     };
+
+    this.getDefaultDataTemplate = function(){
+      var DATA_TEMPLATE = {
+        "data": [],
+        "totalPageNum": 0,
+        "curPageNum": 1,
+        "totalItemNum": 0,
+      }
+
+      return DATA_TEMPLATE
+    }
   });

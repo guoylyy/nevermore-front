@@ -2,10 +2,9 @@ chai.should()
 var expect = chai.expect
 
 describe("State Chain", function() {
-	beforeEach(module("nevermore"))
-
 	var StateChainFactory = undefined
 
+	beforeEach(module("nevermore"))
 	beforeEach(inject(function(_StateChainFactory_){
 		StateChainFactory = _StateChainFactory_
 	}))
