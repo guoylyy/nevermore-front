@@ -295,6 +295,8 @@ angular.module('nevermore')
               }]
             }
           })
+          
+          //管理员界面
           .state('app.admin-account',{
             url: '^/app/admin/account',
             templateUrl: 'tpl/app/admin/account-index.html',

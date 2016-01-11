@@ -1030,6 +1030,9 @@
   width: 1024px !important;
   margin: 0 auto;
 }
+.bg-app {
+  background-color: #f7f6f2 !important;
+}
 .fc-day-grid-event .fc-content,
 .fc-time-grid-event .fc-content {
   color: #fff;
@@ -1997,6 +2000,10 @@ fieldset[disabled] .btn-black.active {
 .empty-list-panel .empty-list-img {
   margin: 0 auto;
   display: block;
+}
+.app-content-body,
+.panel-footer {
+  background-color: #f7f6f2;
 }
 .list-group-item.active {
   background-color: rgba(0, 0, 0, 0.08) !important;
