@@ -12,14 +12,9 @@
    </li>
 
    <li ui-sref-active="active" class = "active" ng-if="currentUser.show_role == 'STUDENT'">
-     <a ui-sref-active = "active" class="auto t-l-c">
+     <a ui-sref = "app.student.class-selection" class="auto t-l-c">
        <span class="font-bold" translate="aside.nav.DASHBOARD">我的课程</span>
      </a>
-     <!-- <ul class="nav nav-sub">
-      <li>
-        <a ui-sref="app.student.class">材料力学课程</a>
-      </li>
-     </ul> -->
    </li>
 
   <!-- teacher items -->
@@ -29,7 +24,7 @@
       </a>
     </li>
     <li ui-sref-active="active" ng-if="currentUser.show_role == 'TEACHER'">
-      <a ui-sref="app.teacher.class" data-ui-sref-opts="{classID: '123'}" class="auto t-l-c">
+      <a ui-sref="app.teacher.class-selection" data-ui-sref-opts="{classID: '123'}" class="auto t-l-c">
         <span class="font-bold" translate="aside.nav.DASHBOARD">我的班级</span>
       </a>
     </li>
