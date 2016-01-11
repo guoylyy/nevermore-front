@@ -1,5 +1,5 @@
 <div>
-    <div class = "wrapper lter b-b bg-white" style = "overflow: hidden;">
+    <div class = "wrapper lter b-b" style = "overflow: hidden;">
         <span>配置学期</span>
         <button class="btn btn-info pull-right" ng-click="addResource()">添加学期</button>
     </div>
@@ -30,13 +30,13 @@
                             <span>{{resource.status}}</span>
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-primary" ng-click="deleteResource(resource)"> 
+                            <button class="btn btn-sm btn-primary" ng-click="deleteResource(resource)">
                                 删除
                             </button>
                         </td>
                     </tr>
                 </tbody>
-            </table> 
+            </table>
         </div>
         <footer class="panel-footer">
           <div class="row clearfix" style="width: 100%;" >
@@ -48,7 +48,7 @@
               ng-model="resources.curPageNum" ng-change="pageChanged()"></uib-pagination>
             </div>
           </div>
-      </footer>       
+      </footer>
     </div>
 </div>
 

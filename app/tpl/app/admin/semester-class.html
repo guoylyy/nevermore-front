@@ -1,17 +1,21 @@
 <div class="hbox hbox-auto-xs hbox-auto-sm">
-  <div class="col w dk b-r bg-auto second_nav_gray">
-    <div class="panel no_border" draggable="true">
-      <div class="panel-heading second_nav_head">
-        学期班级
+  <div class="col w-md lt b-r">
+    <div class="vbox">
+      <div class="wrapper">
+        <div class="h4">学期班级</div>
       </div>
-      <ul class="list-group">
-        <li ui-sref-active="active" ui-sref="app.semester-class.class-management" class="list-group-item second_nav_body">
-          已开设班级
-        </li>
-        <li ui-sref-active="active" ui-sref="app.semester-class.semester-management" class="list-group-item second_nav_body">
-          配置新学期
-        </li>
-      </ul>
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <ul class="list-group">
+          <li ui-sref-active="active" ui-sref="app.admin-semester.class" class="list-group-item second_nav_body">
+            <a>已开设班级</a>
+          </li>
+          <li ui-sref-active="active" ui-sref="app.admin-semester.semester" class="list-group-item second_nav_body">
+            <a>配置新学期</a>
+          </li>
+        </ul>
+        </div>
+      </div>
     </div>
   </div>
   <div class="col">
