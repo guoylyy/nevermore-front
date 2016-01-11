@@ -1,22 +1,26 @@
 <div class="hbox hbox-auto-xs hbox-auto-sm">
-  <div class="col w  dk b-r bg-auto second_nav_gray">
-    <div class="panel no_border" draggable="true">
-        <div class="panel-heading second_nav_head">
-          消息中心
-        </div>
-        <div class="list-group" ng-if="true">
-          <li ui-sref-active="active" ui-sref="app.message.list({isRead: null})" class="list-group-item cusor-pointer second_nav_body">
-            <a>全部消息</a>
-          </li>
-          <li ui-sref-active="active" ui-sref="app.message.list({isRead: false})" class="list-group-item cusor-pointer second_nav_body">
-            <a>未读消息</a>
-          </li>
-          <li ui-sref-active="active" ui-sref="app.message.list({isRead: true})" class="list-group-item cusor-pointer second_nav_body">
-            <a>已读消息</a>
-          </li>
-        </div>
-
+  <div class="col w-md lt b-r">
+    <div class="vbox">
+      <div class="wrapper">
+        <!-- <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="createNote()">New</a> -->
+        <div class="h4">消息中心</div>
       </div>
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <ul class="list-group">
+            <li ui-sref-active="active" ui-sref="app.message.list({isRead: null})" class="list-group-item cusor-pointer second_nav_body">
+              <a>全部消息</a>
+            </li>
+            <li ui-sref-active="active" ui-sref="app.message.list({isRead: false})" class="list-group-item cusor-pointer second_nav_body">
+              <a>未读消息</a>
+            </li>
+            <li ui-sref-active="active" ui-sref="app.message.list({isRead: true})" class="list-group-item cusor-pointer second_nav_body">
+              <a>已读消息</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="col">
     <div ui-view ></div>

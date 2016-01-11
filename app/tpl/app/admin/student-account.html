@@ -1,4 +1,4 @@
-<div class="vbox">
+<div>
     <searchactionbar placeholder = "'搜索：输入学号或姓名'" init-action = "'listing'"       on-transit = "onTransit(lastAction, nowAction, searchWord)">
         <button class="btn btn-info pull-right" ng-click="addAccount()">添加学生</button>
     </searchactionbar>
@@ -33,14 +33,14 @@
                             <span>{{account.email}}</span>
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-primary" ng-click="modifyAccount(account)"> 
+                            <button class="btn btn-sm btn-primary" ng-click="modifyAccount(account)">
                                 编辑
                             </button>
                             <button class="btn btn-sm btn-primary" ng-click="modifyPassword(account)">修改密码</button>
                         </td>
                     </tr>
                 </tbody>
-            </table> 
+            </table>
         </div>
         <footer class="panel-footer">
           <div class="row clearfix" style="width: 100%;" >
@@ -52,7 +52,7 @@
               ng-model="accounts.curPageNum" ng-change="pageChanged()"></uib-pagination>
             </div>
           </div>
-      </footer>       
+      </footer>
     </div>
 </div>
 
