@@ -22,10 +22,12 @@
         ToasterTool.error('用户名/密码不能为空!');
         return;
       }
+
       tokenFactory.login({
         'X-Username': name,
         'X-Password': password
       }).post({}, loginSuccess,
+
         //这里还是建议后端功能稍微强一点，能分辨出是用户名不存在还是密码错误。
         //最近用优酷被这个问题弄的很蛋疼。。。
         loginError);
