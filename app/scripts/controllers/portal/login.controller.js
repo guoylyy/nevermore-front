@@ -85,6 +85,8 @@
 
             if($scope.isAutoLogin){
                 saveAutoLoginInfo(currentUser, token)
+            }else{
+                sessionService.saveCurrentUser(currentUser)
             }
 
             transitStateByRole(currentUser.roles)
