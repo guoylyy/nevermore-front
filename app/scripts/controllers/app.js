@@ -1,13 +1,32 @@
 ;void function(){
   angular.module('nevermore').controller('AppCtrl', AppCtrl)
 
-  AppCtrl.$inject = ['$scope', '$localStorage', '$window', "sessionService"]
+  AppCtrl.$inject = ['$scope', '$localStorage', '$window', "sessionService",
+  "RoleFactory"]
 
-  function AppCtrl($scope, $localStorage, $window, sessionService) {
+  function AppCtrl($scope, $localStorage, $window, sessionService, RoleFactory) {
     // add 'ie' classes to html
     var isIE = !!navigator.userAgent.match(/MSIE/i);
     isIE && angular.element($window.document.body).addClass('ie');
     isSmartDevice( $window ) && angular.element($window.document.body).addClass('smart');
+
+    var currentUser = sessionService.getCurrentUser()
+
+    $scope.isStudent = isStudent
+    $scope.isTeacher = isTeacher
+    $scope.isAdmin = isAdmin
+
+    function isStudent(){
+      return RoleFactory.isStudent(currentUser.roles)
+    }
+
+    function isTeacher(){
+      return RoleFactory.isTeacher(currentUser.roles)
+    }
+
+    function isAdmin(){
+      return RoleFactory.isAdmin(currentUser.roles)
+    }
 
     // config
     $scope.app = {
