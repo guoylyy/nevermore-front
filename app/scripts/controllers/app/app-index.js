@@ -4,8 +4,9 @@ app.controller('AppIndexController', ['$scope', '$state', '$rootScope', function
     $state, $rootScope) {
   var statusList = ['APPROVED', 'PENDING', 'REJECTED'];
   var studentResList = ['clazz', 'student'];
+  alert(123)
 
-  $state.go('app.teacher.reservation');
+  $state.go('app.teacher.class');
   return
 
   if($rootScope.currentUser.show_role == 'TEACHER'){
