@@ -1,12 +1,12 @@
 app.controller("ClassManagementCtrl", ["$scope", "Clazz", "generalService", "Account",
-	"Course", "sessionService", "ToasterTool",
-function($scope, Clazz, generalService, Account, Course, sessionService, ToasterTool){
+	"Course", "sessionService", "ToasterTool", "ManagementService",
+function($scope, Clazz, generalService, Account, Course, sessionService, ToasterTool, ManagementService){
 	$scope.resources = angular.copy($scope.DEFAULT_RESOURCE_TEMPLATE)
 	$scope.modifyResource = modifyResource
 	$scope.addResource = addResource
 	$scope.pageChanged = loadResources
 
-	loadResources()
+	// loadResources()
 
 	function loadResources(){
 		$scope.loadResources(Clazz, {
@@ -55,7 +55,7 @@ function($scope, Clazz, generalService, Account, Course, sessionService, Toaster
 	function addResource(){
 		var templateUrl = "tpl/app/admin/modal/add-class.html"
 		var controller = "AddClassCtrl"
-		var addDialog = new $scope.AddDialog()
+		var addDialog = new ManagementService.AddDialog()
 		addDialog.setCloseListener(onAdd)
 		addDialog.open(templateUrl, controller, {
 			semester: function(){
@@ -76,4 +76,4 @@ function($scope, Clazz, generalService, Account, Course, sessionService, Toaster
 		loadResources()
 		ToasterTool.success("添加班级", "添加班级成功！")
 	}
-}])
+}]);
