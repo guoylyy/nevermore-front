@@ -9,7 +9,7 @@ function($scope, $rootScope, Account, ToasterTool, sessionService) {
     }
   };
 
-  var currentUser = sessionService.getCurrUser();
+  var currentUser = sessionService.getCurrentUser();
 
   $scope.updatePassword = function() {
     Account.password().put({'id': currentUser.id}, $scope.password.passwordEdit,

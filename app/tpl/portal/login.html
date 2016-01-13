@@ -12,24 +12,24 @@
                             <form class="login-form form-validation" name="loginForm" novalidate>
                                 <div class="input-group m-t-md">
                                     <span class="input-group-addon">
-                                      <i class="fa fa-user"></i>
+                                        <i class="fa fa-user"></i>
                                     </span>
-                                    <input type="text" class="form-control" ng-model="loginName" placeholder="请输入学号或者工号" required/>
+                                    <input type="text" class="form-control" ng-model="loginName" ui-validate = "'validateNonEmptyString($value)'" placeholder="请输入学号或者工号" required/>
                                 </div>
                                 <div class="input-group m-t-md">
                                     <span class="input-group-addon">
                                       <i class="fa fa-lock"></i>
                                     </span>
-                                    <input type="password" class="form-control" ng-model="loginPassword" placeholder="请输入密码" required/>
+                                    <input type="password" class="form-control" ng-model="loginPassword" ui-validate = "'validateNonEmptyString($value)'" placeholder="请输入密码" required/>
                                 </div>
                                 <div class="clearfix m-t-sm">
                                     <label class="i-checks i-checks-sm pull-left">
-                                        <input type="checkbox" ng-model="autoLogin">
+                                        <input type="checkbox" ng-model="isAutoLogin">
                                         <i></i>&nbsp;自动登录
                                     </label>
                                     <a class="pull-right forgotpwd-link" ng-click="forgotPassword()">忘记密码?</a>
                                 </div>
-                                <button class="btn btn-primary w-full m-t-sm" ng-click="login()">登录</button>
+                                <button class="btn btn-primary w-full m-t-sm" ng-disabled = "loginForm.$invalid" ng-click="login()">登录</button>
                             </form>
                         </div>
                     </div>
