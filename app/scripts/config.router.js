@@ -612,7 +612,10 @@ angular.module('nevermore')
             url: '^/app/admin/semester',
             templateUrl: "tpl/app/admin/semester-class.html",
             controller: ['$state', function($state){
-              $state.go('app.admin-semester.class');
+              var currState = $state.current.name;
+              if(currState === "app.admin-semester"){
+                  $state.go('app.admin-semester.class');
+              }
             }],
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){

@@ -4,6 +4,15 @@
         <button class="btn btn-info pull-right" ng-click="addResource()">添加学期</button>
     </div>
     <div class = "wrapper-md">
+      <div class="alert ng-isolate-scope alert-warning alert-dismissable" role="alert" type="warning">
+       <button ng-show="closeable" type="button" class="close" ng-click="close()" aria-hidden="false">
+           <span aria-hidden="true">×</span>
+           <span class="sr-only">Close</span>
+       </button>
+       <div ><span class="ng-binding ng-scope">
+         注意: 学期操作影响较大，请再三确认后再进行操作！！
+       </span></div>
+     </div>
         <div class="panel panel-default">
             <table class = "table table-striped b-t b-light">
                 <thead>
@@ -30,6 +39,10 @@
                             <span>{{resource.status.value}}</span>
                         </td>
                         <td>
+                          <button class="btn btn-sm btn-default" ng-click="setAsCurrent(resource)"
+                            ng-if="resource.status.code!='CURRENT'">
+                              置为当前学期
+                          </button>
                             <button class="btn btn-sm btn-primary" ng-click="deleteResource(resource)">
                                 删除
                             </button>
