@@ -5,7 +5,9 @@
  */
 angular.module('nevermore')
   .factory('Semester', function ($resource, sessionService, $rootScope) {
-    var baseUrl = base_Url+'/manage/semester';
+    var baseUrl = "http://localhost:8080/manage/semester";
+    //var baseUrl = base_Url+'/manage/semester';
+    return {
       create: function(){
         return $resource(baseUrl,{},{
           'post':{
@@ -35,7 +37,7 @@ angular.module('nevermore')
         })
       },
       page: function() {//分页获取用户
-        return $resource(baseUrl + '/semesters', {
+        return $resource(baseUrl + '/semesters?scope=list', {
           pageSize: "@pageSize",
           pageNumber: "@pageNumber"
         }, {

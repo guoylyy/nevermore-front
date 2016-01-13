@@ -1,16 +1,17 @@
-app.controller("SemesterManagementCtrl", ["$scope", "Semester", "generalService", "ToasterTool", "ManagementService",
-function($scope, Semester, generalService, ToasterTool, ManagementService){
-	$scope.resources = angular.copy($scope.DEFAULT_RESOURCE_TEMPLATE)
+app.controller("SemesterManagementCtrl", ["$scope", "Semester", "generalService",
+	"ToasterTool", "ManagementService", "AlertTool",
+function($scope, Semester, generalService, ToasterTool, ManagementService, AlertTool){
+	$scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
 	$scope.deleteResource = deleteResource
 	$scope.addResource = addResource
 	$scope.pageChanged = loadResources
 
-	// loadResources()
+	loadResources()
 
 	function loadResources(){
-		$scope.loadResources(Semester, {
+		ManagementService.loadResources(Semester, {
 			pageSize: generalService.pageSize(),
-			pageNumber: $scope.resources.curPageNum,
+			pageNum: $scope.resources.paginator.page
 		}).then(loadSuccess, loadFail)
 	}
 
@@ -19,13 +20,18 @@ function($scope, Semester, generalService, ToasterTool, ManagementService){
 	}
 
 	function loadFail(error){
-		$scope.errorHandler(error)
+		ManagementService.errorHandler(error)
 	}
 
 	function deleteResource(resource){
-		commitDelete(resource)
-		.then(onDelete)
-		.catch($scope.errorHandler)
+		AlertTool.deleteConfirm({title:"是否确认删除?"}).then(function(isConfirm) {
+	    if(isConfirm) {
+				AlertTool.close();
+				commitDelete(resource)
+				.then(onDelete)
+				.catch($scope.errorHandler)
+	    }
+	  })
 	}
 
 	function commitDelete(resource){
