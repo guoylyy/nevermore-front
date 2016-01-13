@@ -5,7 +5,7 @@ function($scope, Semester, generalService, ToasterTool, ManagementService, Alert
 	$scope.deleteResource = deleteResource
 	$scope.addResource = addResource
 	$scope.pageChanged = loadResources
-
+	$scope.setAsCurrent = setAsCurrent
 	loadResources()
 
 	function loadResources(){
@@ -23,6 +23,17 @@ function($scope, Semester, generalService, ToasterTool, ManagementService, Alert
 		ManagementService.errorHandler(error)
 	}
 
+	function setAsCurrent(resource){
+		AlertTool.confirm({title:"是否确认置为当前学期?"}).then(function(isConfirm) {
+	    if(isConfirm) {
+				AlertTool.close();
+				commitSetCurrent(resource)
+				.then(onSetCurrent)
+				.catch($scope.errorHandler)
+	    }
+	  })
+	}
+
 	function deleteResource(resource){
 		AlertTool.deleteConfirm({title:"是否确认删除?"}).then(function(isConfirm) {
 	    if(isConfirm) {
@@ -34,15 +45,26 @@ function($scope, Semester, generalService, ToasterTool, ManagementService, Alert
 	  })
 	}
 
+	function commitSetCurrent(resource){
+		return Semester.semester().put({
+			id:resource.id
+		}).$promise
+	}
+
 	function commitDelete(resource){
 		return Semester.semester().delete({
 			id: resource.id
 		}).$promise
 	}
 
+	function onSetCurrent(){
+		loadResources()
+		ToasterTool.success("设置当前学期成功！")
+	}
+
 	function onDelete(){
 		loadResources()
-		ToasterTool.success("删除学期", "删除学期成功！")
+		ToasterTool.success("删除学期成功！")
 	}
 
 	function addResource(){
@@ -55,6 +77,6 @@ function($scope, Semester, generalService, ToasterTool, ManagementService, Alert
 
 	function onAdd(){
 		loadResources()
-		ToasterTool.success("添加学期", "添加学期成功！")
+		ToasterTool.success("添加学期成功！")
 	}
-}])
+}]);
