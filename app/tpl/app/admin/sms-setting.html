@@ -5,10 +5,75 @@
     <div class="wrapper">
        <uib-tabset>
          <uib-tab heading="短信发送配置" class="nm-tab">
-           这是短信发送设置
+           <div class="panel panel-default m-t">
+          <div class="panel-heading">
+            短信发送配置列表
+            <button class="btn btn-success pull-right m-r w-sm" ng-click="createSmsConfig()" style="margin-top: -7px;">新增短信发送配置</button>
+          </div>
+          <div class="panel-body no-padder">
+            <table class="table tiger-table text-c b-b">
+              <thead>
+                <tr class="nm-head-tr">
+                  <th class="text-c">实验提前通知天数</th>
+                  <th class="text-c">实验通知时间</th>
+                  <th class="text-c">是否生效</th>
+                  <th class="text-c w">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="config in smsCtrl.smsConfigs">
+                  <td>
+                    {{config.notificationDay}}
+                  </td>
+                  <td>
+                    {{config.notificationTime | date:'HH:mm'}}
+                  </td>
+                  <td>
+                    <label class="i-switch text-l">
+                      <input type="checkbox" ng-model="config.isActive" ng-change="switchIsActive(config)"><i></i>
+                    </label>
+                  </td>
+                  <td class="inline">
+                    <button class="btn btn-danger pull-right" ng-click="deleteSmsConfig(config)">删除</button>
+                    <button class="btn btn-primary pull-right m-r-xs" ng-click="editSmsConfig(config)">修改</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="w-full">
+              <button class="btn btn-success pull-right m-r-lg m-b w-sm" ng-click="createSmsConfig()">新增短信发送配置</button>
+            </div>
+          </div>
+        </div>
          </uib-tab>
-         <uib-tab heading="短信历史记录" class="nm-tab">
-           短信历史记录
+         <uib-tab heading="短信历史记录" class="nm-tab" ng-click="initSmsList()">
+            <div class="panel-body no-padder">
+              <table class="clearfix m-t-sm m-b-sm" style="width: 100%;">
+                <td>
+                  <!-- <uib-tabset class="nm-tab-btn-group">
+                   <uib-tab ng-repeat="status in smsCtrl.smsStatusList" active="status.active" ng-click="filterConditionChange('type', status)">
+                     <uib-tab-heading>
+                       {{status.value}}
+                     </uib-tab-heading>
+                   </uib-tab>
+                  </uib-tabset> -->
+                  <ui-select ng-model="smsCtrl.smsQuery.stauts" ng-change="querySmsList(smsCtrl.smsQuery)" theme="bootstrap" class="w-sm inline">
+                    <ui-select-match placeholder="">{{$select.selected.value}}</ui-select-match>
+                    <ui-select-choices repeat="item in smsCtrl.smsStatusList | filter: $select.search">
+                      <div ng-bind-html="item.value | highlight: $select.search"></div>
+                    </ui-select-choices>
+                  </ui-select>
+                </td>
+                <td>
+                  <div class="block m-r-lg pull-right">
+                    <span class="font-bold" style="bottom: 8px;position: relative;">发送日期：</span>
+                    <div class="m-l-sm m-r-xxl inline">
+                      <nm-datepicker-range begin-date="smsCtrl.smsQuery.beginDate" end-date="smsCtrl.smsQuery.endDate" change-begin-date="changeQueryBeginDate()" change-end-date="changeQueryEndDate()"></tiger-datepicker-range>
+                    </div>
+                  </div>
+                </td>
+              </table>
+            </div>
          </uib-tab>
        </uib-tabset>
     </div>

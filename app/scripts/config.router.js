@@ -425,7 +425,19 @@ angular.module('nevermore')
           })
           .state('app.admin-setting.sms',{ //短信息设置
             url: '^/app/admin/setting/sms',
-            templateUrl: "tpl/app/admin/sms-setting.html"
+            templateUrl: "tpl/app/admin/sms-setting.html",
+            controller: 'ManageSmsCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/admin/sms-controller.js",
+                  'scripts/factories/manage-sms-factory.js',
+                  'scripts/controllers/app/modal/sms-config-edit-modal.js',
+                  'ngDialog',
+                  'nmDatepickerRange'
+                ]);
+              }]
+            }
           })
 
           /***
