@@ -1,5 +1,5 @@
-app.controller("AddClassCtrl", ["$scope", "Clazz", "semester", "teacherResource", "courseResource",
-function($scope, Clazz, semester, teacherResource, courseResource){
+app.controller("AddClassCtrl", ["$scope", "ClazzManage", "semester", "teacherResource", "courseResource",
+function($scope, ClazzManage, semester, teacherResource, courseResource){
 	var DEFAULT_RESOURCE = {
 		number: "",
 		teacher: undefined,
@@ -60,7 +60,7 @@ function($scope, Clazz, semester, teacherResource, courseResource){
 		delete resourceToCommit.teacher["@id"]
 		delete resourceToCommit.semester["@id"]
 		delete resourceToCommit.course["@id"]
-		return Clazz.create().post({
+		return ClazzManage.create().post({
 			course: resourceToCommit.course.id,
 			teacher: resourceToCommit.teacher.id,
 			semester: resourceToCommit.semester.id,

@@ -1,17 +1,17 @@
-app.controller("ClassManagementCtrl", ["$scope", "Clazz", "generalService", "Account",
-	"Course", "sessionService", "ToasterTool", "ManagementService",
-function($scope, Clazz, generalService, Account, Course, sessionService, ToasterTool, ManagementService){
-	$scope.resources = angular.copy($scope.DEFAULT_RESOURCE_TEMPLATE)
+app.controller("ClassManagementCtrl", ["$scope", "ClazzManage", "generalService", "AccountManage",
+	"CourseManage", "sessionService", "ToasterTool", "ManagementService",
+function($scope, ClazzManage, generalService, AccountManage, CourseManage, sessionService, ToasterTool, ManagementService){
+	$scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
 	$scope.modifyResource = modifyResource
 	$scope.addResource = addResource
 	$scope.pageChanged = loadResources
 
-	// loadResources()
+	loadResources()
 
 	function loadResources(){
-		$scope.loadResources(Clazz, {
-			pageSize: generalService.pageSize(),
-			pageNumber: $scope.resources.curPageNum,
+		ManagementService.loadResources(ClazzManage, {
+			pageSize: $scope.resources.paginator.itemsPerPage,
+			pageNum: $scope.resources.paginator.page
 		}).then(loadSuccess, loadFail)
 	}
 
@@ -62,12 +62,12 @@ function($scope, Clazz, generalService, Account, Course, sessionService, Toaster
 				return sessionService.getCurrSemeter()
 			},
 			teacherResource: function(){
-				return Account.all().get({
-					userType: "ALL_TEACHER",
+				return AccountManage.all().get({
+					role: "teachers",
 				}).$promise
 			},
 			courseResource: function(){
-				return Course.all().get().$promise
+				return CourseManage.all().get().$promise
 			},
 		})
 	}
