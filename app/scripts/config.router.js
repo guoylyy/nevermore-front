@@ -95,7 +95,8 @@ angular.module('nevermore')
                   'scripts/controllers/app.js',
                   'scripts/directives/app/app-header.js',
                   'styles/app.css',
-                  'scripts/directives/app/nevermore-empty-panel.js'
+                  'scripts/directives/app/nevermore-empty-panel.js',
+                  "scripts/factories/role.factory.js",
                 ]);
               }]
             }
