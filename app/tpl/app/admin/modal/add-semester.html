@@ -6,21 +6,21 @@
   </div>
   <form class="form-horizontal" name="customerForm" novalidate>
     <div class="form-group">
-      <label for="name" class="col-sm-3 control-label">学期名*</label>
+      <label for="name" class="col-sm-3 control-label">学期名 <span class="text-danger">*</span></label>
       <div class="col-sm-9">
         <input type="text" class="form-control" id="name" ng-model = "resource.name">
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-3 control-label">学期开始日期</label>
+      <label class="col-sm-3 control-label">开始日期</label>
       <div class="col-sm-9">
-        <nm-datepicker ng-model = "resource.startDate"></nm-datepicker>  
+        <nm-datepicker ng-model = "resource.startDate"></nm-datepicker>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-3 control-label">学期结束日期</label>
+      <label class="col-sm-3 control-label">结束日期</label>
       <div class="col-sm-9">
-        <nm-datepicker ng-model = "resource.endDate"></nm-datepicker>  
+        <nm-datepicker ng-model = "resource.endDate"></nm-datepicker>
       </div>
     </div>
     <div class="clearfix m-t">
