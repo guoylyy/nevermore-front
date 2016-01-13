@@ -1,17 +1,19 @@
-app.controller("ClassManagementCtrl", ["$scope", "Clazz", "generalService", "Account",
-	"Course", "sessionService", "ToasterTool",
-function($scope, Clazz, generalService, Account, Course, sessionService, ToasterTool){
-	$scope.resources = angular.copy($scope.DEFAULT_RESOURCE_TEMPLATE)
+app.controller("ClassManagementCtrl", ["$scope", "ClazzManage", "generalService", "AccountManage",
+	"CourseManage", "sessionService", "ToasterTool", "ManagementService", "AlertTool",
+function($scope, ClazzManage, generalService, AccountManage, CourseManage, sessionService,
+	 ToasterTool, ManagementService, AlertTool){
+	$scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
 	$scope.modifyResource = modifyResource
 	$scope.addResource = addResource
 	$scope.pageChanged = loadResources
+	$scope.deleteResource = deleteResource
 
 	loadResources()
 
 	function loadResources(){
-		$scope.loadResources(Clazz, {
-			pageSize: generalService.pageSize(),
-			pageNumber: $scope.resources.curPageNum,
+		ManagementService.loadResources(ClazzManage, {
+			pageSize: $scope.resources.paginator.itemsPerPage,
+			pageNum: $scope.resources.paginator.page
 		}).then(loadSuccess, loadFail)
 	}
 
@@ -20,27 +22,45 @@ function($scope, Clazz, generalService, Account, Course, sessionService, Toaster
 	}
 
 	function loadFail(error){
-		$scope.errorHandler(error)
+		ManagementService.errorHandler(error)
 	}
 
 	function modifyResource(resource){
 		var templateUrl = "tpl/app/admin/modal/modify-class.html"
 		var controller = "ModifyClassCtrl"
-		var modifyDialog = new $scope.ModifyDialog()
+		var modifyDialog = new ManagementService.ModifyDialog()
 		modifyDialog.setCloseListener(onModify, onDelete)
 		modifyDialog.open(resource, templateUrl, controller, {
 			semester: function(){
 				return sessionService.getCurrSemeter()
 			},
 			teacherResource: function(){
-				return Account.all().get({
-					userType: "ALL_TEACHER",
+				return AccountManage.all().get({
+					role: "teachers",
 				}).$promise
 			},
 			courseResource: function(){
-				return Course.all().get().$promise
+				return CourseManage.all().get().$promise
 			},
 		})
+	}
+
+
+	function deleteResource(resource){
+		AlertTool.deleteConfirm({title:"是否确认删除?"}).then(function(isConfirm) {
+    	if(isConfirm) {
+				AlertTool.close();
+				commitDelete(resource)
+				.then(onDelete)
+				.catch($scope.errorHandler)
+    	}
+  	})
+	}
+
+	function commitDelete(resource){
+		return ClazzManage.clazz().delete({
+			id: resource.id
+		}).$promise
 	}
 
 	function onModify(){
@@ -55,19 +75,19 @@ function($scope, Clazz, generalService, Account, Course, sessionService, Toaster
 	function addResource(){
 		var templateUrl = "tpl/app/admin/modal/add-class.html"
 		var controller = "AddClassCtrl"
-		var addDialog = new $scope.AddDialog()
+		var addDialog = new ManagementService.AddDialog()
 		addDialog.setCloseListener(onAdd)
 		addDialog.open(templateUrl, controller, {
 			semester: function(){
 				return sessionService.getCurrSemeter()
 			},
 			teacherResource: function(){
-				return Account.all().get({
-					userType: "ALL_TEACHER",
+				return AccountManage.all().get({
+					role: "teachers",
 				}).$promise
 			},
 			courseResource: function(){
-				return Course.all().get().$promise
+				return CourseManage.all().get().$promise
 			},
 		})
 	}
@@ -76,4 +96,4 @@ function($scope, Clazz, generalService, Account, Course, sessionService, Toaster
 		loadResources()
 		ToasterTool.success("添加班级", "添加班级成功！")
 	}
-}])
+}]);

@@ -1,4 +1,15 @@
-app.controller("VerifyExperimentAppointmentCtrl", ["$scope", "Account", "data", "Reservation",
+/**
+ * 预约审核控制类
+ *
+ * @param  {[type]} "RservationVerifyCtrl" [description]
+ * @param  {[type]} ["$scope"              [description]
+ * @param  {[type]} "Account"              [description]
+ * @param  {[type]} "data"                 [description]
+ * @param  {[type]} "Reservation"          [description]
+ * @param  {[type]} function($scope,       Account,      data, Reservation [description]
+ * @return {[type]}                        [description]
+ */
+app.controller("RservationVerifyCtrl", ["$scope", "Account", "data", "Reservation",
 function($scope, Account, data, Reservation){
 	var originResource = data
 	,	copiedResource = angular.copy(originResource)
