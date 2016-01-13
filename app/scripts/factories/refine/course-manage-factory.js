@@ -1,13 +1,15 @@
 'use strict';
 
 /**
- * 班级相关 api
+ * @ngdoc service
+ * @name labcloud.courseService
+ * @description
+ * # courseService
+ * Factory in the labcloud.
  */
 angular.module('nevermore')
-  .factory('Clazz', function($resource, sessionService, $rootScope) {
-    var baseUrl = base_Url+'/api/clazz';
-    var headers = sessionService.headers();
-    //var headers = {'x-auth-token': $rootScope.token};
+  .factory('CourseManage', function ($resource, sessionService, $rootScope) {
+    var baseUrl = base_Url+'/manage/course';
     return {
       create: function(){
         return $resource(baseUrl, {}, {
@@ -17,7 +19,7 @@ angular.module('nevermore')
           }
         });
       },
-      clazz: function(){
+      course: function(){
         return $resource(baseUrl + '/:id', {id:"@id"}, {
           'get': {
             method: 'GET',
@@ -33,10 +35,17 @@ angular.module('nevermore')
           }
         });
       },
-      page: function() { //分页获取用户
-        return $resource(baseUrl + '/list/page/:pageSize/:pageNumber', {
-          pageSize: "@pageSize",
-          pageNumber: "@pageNumber"
+      page: function() { //分页获取课程
+        return $resource(baseUrl + '/courses?scope=list', {
+        }, {
+          'get': {
+            method: 'GET',
+            headers: sessionService.headers()
+          }
+        });
+      },
+      all: function(){ //获取系统中所有可用课程
+        return $resource(baseUrl + '/courses?scope=all', {
         }, {
           'get': {
             method: 'GET',
@@ -45,5 +54,4 @@ angular.module('nevermore')
         });
       }
     };
-
   });
