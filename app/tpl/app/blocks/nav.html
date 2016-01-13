@@ -5,24 +5,44 @@
   </li>
 
   <!-- student items-->
-  <li ui-sref-active="active" ng-if="isStudent()">
-   <a ui-sref="app.index.student-reservations({title:'clazz'})" class="auto t-l-c">
+
+ <li ui-sref-active="active" ng-if="isStudent()">
+   <a ui-sref="app.index.student-reservations({title:'clazz'})"  data-ui-sref-opts="{reload: true}" class="auto">
+     <span class="pull-right text-muted">
+       <i class="fa fa-fw fa-angle-right text"></i>
+       <i class="fa fa-fw fa-angle-down text-active"></i>
+     </span>
+     <i class="glyphicon  glyphicon-calendar icon text-info-dker"></i>
      <span class="font-bold" translate="aside.nav.DASHBOARD">我的预约</span>
    </a>
  </li>
 
-   <li ui-sref-active="active" class = "active" ng-if="isStudent()">
-     <a ui-sref = "app.student.class-selection" class="auto t-l-c">
-       <span class="font-bold" translate="aside.nav.DASHBOARD">我的课程</span>
+
+   <li ui-sref-active="active" ng-if="isStudent()">
+     <a ui-sref="app.student.class-selection"  data-ui-sref-opts="{reload: true}" class="auto">
+       <span class="pull-right text-muted">
+         <i class="fa fa-fw fa-angle-right text"></i>
+         <i class="fa fa-fw fa-angle-down text-active"></i>
+       </span>
+       <i class="glyphicon glyphicon-list-alt icon text-info-dker"></i>
+       <span class="font-bold" translate="aside.nav.DASHBOARD">我的班级</span>
      </a>
    </li>
 
   <li ui-sref-active="active" ng-if="isTeacher()">
-    <a ui-sref="app.teacher.class-selection" data-ui-sref-opts="{classID: '123'}" class="auto t-l-c">
-      <span class="font-bold" translate="aside.nav.DASHBOARD">我的班级</span>
+    <a ui-sref="app.teacher.class-selection"  data-ui-sref-opts="{reload: true}" class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-tasks icon text-info-dker"></i>
+      <span class="font-bold" translate="aside.nav.DASHBOARD">我的课程</span>
     </a>
   </li>
 
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-if="isAdmin()">
+    <span translate="aside.nav.HEADER">网站管理</span>
+  </li>
 
   <li ui-sref-active="active" ng-if="isAdmin()">
     <a ui-sref="app.admin-account" data-ui-sref-opts="{reload: true}" class="auto">
