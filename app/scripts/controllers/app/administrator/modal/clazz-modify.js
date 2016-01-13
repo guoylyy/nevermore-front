@@ -1,13 +1,13 @@
-app.controller("ModifyClassCtrl", ["$scope", "Clazz", "data", "semester", "teacherResource", "courseResource",
-function($scope, Clazz, data, semester, teacherResource, courseResource){
+app.controller("ModifyClassCtrl", ["$scope", "ClazzManage", "data", "semester", "teacherResource", "courseResource",
+function($scope, ClazzManage, data, semester, teacherResource, courseResource){
 	var teacherList = []
 	,	courseList = []
 
-	if(teacherResource.errorCode === "NO_ERROR"){
+	if(teacherResource.success){
 		teacherList = teacherResource.data
 	}
 
-	if(courseResource.errorCode === "NO_ERROR"){
+	if(courseResource.success){
 		courseList = courseResource.data
 	}
 
@@ -45,9 +45,13 @@ function($scope, Clazz, data, semester, teacherResource, courseResource){
 
 	function commitModify(){
 		$scope.pending = true
-		return Clazz.clazz().put({
+		var submitResource = angular.copy(copiedResource);
+		submitResource['teacherId'] = submitResource.teacher.id;
+		submitResource['courseId'] = submitResource.course.id;
+		submitResource['semesterId'] = 23;
+		return ClazzManage.clazz().put({
 			"id": copiedResource.id,
-		}, copiedResource)
+		}, submitResource)
 	}
 
 	function updateLocalResource(data){
@@ -64,7 +68,7 @@ function($scope, Clazz, data, semester, teacherResource, courseResource){
 
 	function commitDelete(){
 		$scope.pending = true
-		return Clazz.clazz().delete({
+		return ClazzManage.clazz().delete({
 			"id": copiedResource.id,
 		})
 	}

@@ -1,10 +1,12 @@
 app.controller("ClassManagementCtrl", ["$scope", "ClazzManage", "generalService", "AccountManage",
-	"CourseManage", "sessionService", "ToasterTool", "ManagementService",
-function($scope, ClazzManage, generalService, AccountManage, CourseManage, sessionService, ToasterTool, ManagementService){
+	"CourseManage", "sessionService", "ToasterTool", "ManagementService", "AlertTool",
+function($scope, ClazzManage, generalService, AccountManage, CourseManage, sessionService,
+	 ToasterTool, ManagementService, AlertTool){
 	$scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
 	$scope.modifyResource = modifyResource
 	$scope.addResource = addResource
 	$scope.pageChanged = loadResources
+	$scope.deleteResource = deleteResource
 
 	loadResources()
 
@@ -20,27 +22,45 @@ function($scope, ClazzManage, generalService, AccountManage, CourseManage, sessi
 	}
 
 	function loadFail(error){
-		$scope.errorHandler(error)
+		ManagementService.errorHandler(error)
 	}
 
 	function modifyResource(resource){
 		var templateUrl = "tpl/app/admin/modal/modify-class.html"
 		var controller = "ModifyClassCtrl"
-		var modifyDialog = new $scope.ModifyDialog()
+		var modifyDialog = new ManagementService.ModifyDialog()
 		modifyDialog.setCloseListener(onModify, onDelete)
 		modifyDialog.open(resource, templateUrl, controller, {
 			semester: function(){
 				return sessionService.getCurrSemeter()
 			},
 			teacherResource: function(){
-				return Account.all().get({
-					userType: "ALL_TEACHER",
+				return AccountManage.all().get({
+					role: "teachers",
 				}).$promise
 			},
 			courseResource: function(){
-				return Course.all().get().$promise
+				return CourseManage.all().get().$promise
 			},
 		})
+	}
+
+
+	function deleteResource(resource){
+		AlertTool.deleteConfirm({title:"是否确认删除?"}).then(function(isConfirm) {
+    	if(isConfirm) {
+				AlertTool.close();
+				commitDelete(resource)
+				.then(onDelete)
+				.catch($scope.errorHandler)
+    	}
+  	})
+	}
+
+	function commitDelete(resource){
+		return ClazzManage.clazz().delete({
+			id: resource.id
+		}).$promise
 	}
 
 	function onModify(){
