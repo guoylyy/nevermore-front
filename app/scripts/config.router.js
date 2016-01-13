@@ -612,7 +612,10 @@ angular.module('nevermore')
             url: '^/app/admin/semester',
             templateUrl: "tpl/app/admin/semester-class.html",
             controller: ['$state', function($state){
-              $state.go('app.admin-semester.class');
+              var currState = $state.current.name;
+              if(currState === "app.admin-semester"){
+                  $state.go('app.admin-semester.class');
+              }
             }],
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
@@ -622,6 +625,7 @@ angular.module('nevermore')
                   "scripts/services/toaster-tool.js",
                   "scripts/services/session-service.js",
                   "scripts/directives/app/nm-datepicker.js",
+                  "scripts/services/app/admin/management-service.js",
                   "ngDialog",
                 ])
               }]
@@ -630,37 +634,61 @@ angular.module('nevermore')
           .state('app.admin-semester.semester', {
             url: '^/app/admin/semester/semester',
             templateUrl: "tpl/app/admin/semester-management.html",
+            controller: "SemesterManagementCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/administrator/semester-management.js",
+                  "scripts/controllers/app/administrator/modal/semester-add.js"
+                ])
+              }]
+            }
           })
           .state('app.admin-semester.class', {
             url: '^/app/admin/semester/class',
             templateUrl: "tpl/app/admin/class-management.html",
+            controller: "ClassManagementCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/administrator/clazz-management.js",
+                  "scripts/controllers/app/administrator/modal/clazz-add.js",
+                  "scripts/controllers/app/administrator/modal/clazz-modify.js"
+                ])
+              }]
+            }
           })
 
           .state('app.admin-appointment',{ //预约审批
             url: '^/app/admin/appointment',
             templateUrl: "tpl/app/admin/appointment-verification.html",
             controller: ['$state', function($state){
-              $state.go('app.admin-appointment.unverified');
+              $state.go('app.admin-appointment.list',{'status':'unverified'});
             }],
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/appointment-verification.js",
                   "scripts/services/general-service.js",
                   "scripts/services/toaster-tool.js",
                   "scripts/services/session-service.js",
+                  "scripts/services/app/admin/management-service.js",
                   "ngDialog",
                 ])
               }]
             }
           })
-          .state('app.admin-appointment.unverified',{
-            url: "^/app/admin/appointment/verified",
+          .state('app.admin-appointment.list',{
+            url: "^/app/admin/appointment/:status",
             templateUrl: "tpl/app/admin/verified-experiment-appointment.html",
-          })
-          .state('app.admin-appointment.verified',{
-            url: "^/app/admin/appointment/unverified",
-            templateUrl: "tpl/app/admin/unverified-experiment-appointment.html",
+            controller: "RservationAppointmentCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/administrator/reservation-management.js",
+                  "scripts/controllers/app/administrator/modal/clazz-add.js"
+                ])
+              }]
+            }
           })
           .state('app.admin-setting',{ //系统设置
             url: '^/app/admin/setting',
@@ -806,92 +834,6 @@ angular.module('nevermore')
                   "scripts/controllers/app/admin/experiment-course.js",
                   "scripts/controllers/app/admin/add-experiment-course.js",
                   "scripts/controllers/app/admin/modify-experiment-course.js",
-                ])
-              }]
-            }
-          })
-          .state("app.semester-class", {
-            url: "^/app/semester/class",
-            templateUrl: "tpl/app/admin/semester-class.html",
-            controller: "SemesterClassCtrl",
-            resolve: {
-              controller: ["$ocLazyLoad", function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/semester-class.js",
-                  "scripts/services/general-service.js",
-                  "scripts/services/toaster-tool.js",
-                  "scripts/services/session-service.js",
-                  "scripts/directives/app/nm-datepicker.js",
-                  "ngDialog",
-                ])
-              }]
-            }
-          })
-          .state("app.semester-class.class-management", {
-            url: "^/app/semester/class/class/management",
-            templateUrl: "tpl/app/admin/class-management.html",
-            controller: "ClassManagementCtrl",
-            resolve: {
-              controller: ["$ocLazyLoad", function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/class-management.js",
-                  "scripts/controllers/app/admin/add-class.js",
-                  "scripts/controllers/app/admin/modify-class.js",
-                ])
-              }]
-            }
-          })
-          .state("app.semester-class.semester-management", {
-            url: "^/app/semester/class/semester/management",
-            templateUrl: "tpl/app/admin/semester-management.html",
-            controller: "SemesterManagementCtrl",
-            resolve: {
-              controller: ["$ocLazyLoad", function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/semester-management.js",
-                  "scripts/controllers/app/admin/add-semester.js",
-                ])
-              }]
-            }
-          })
-          .state("app.appointment-verification", {
-            url: "^/app/appointment/verification",
-            templateUrl: "tpl/app/admin/appointment-verification.html",
-            controller: "AppointmentVerificationCtrl",
-            resolve: {
-              controller: ["$ocLazyLoad", function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/appointment-verification.js",
-                  "scripts/services/general-service.js",
-                  "scripts/services/toaster-tool.js",
-                  "scripts/services/session-service.js",
-                  "ngDialog",
-                ])
-              }]
-            }
-          })
-          .state("app.appointment-verification.unverified-experiment-appointment", {
-            url: "^/app/appointment/verification/unverified/experiment/appointment",
-            templateUrl: "tpl/app/admin/unverified-experiment-appointment.html",
-            controller: "UnverifiedExperimentAppointmentCtrl",
-            resolve: {
-              controller: ["$ocLazyLoad", function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/unverified-experiment-appointment.js",
-                  "scripts/controllers/app/admin/verify-experiment-appointment.js",
-                ])
-              }]
-            }
-          })
-          .state("app.appointment-verification.verified-experiment-appointment", {
-            url: "^/app/appointment/verification/verified/experiment/appointment",
-            templateUrl: "tpl/app/admin/verified-experiment-appointment.html",
-            controller: "VerifiedExperimentAppointmentCtrl",
-            resolve: {
-              controller: ["$ocLazyLoad", function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/verified-experiment-appointment.js",
-                  "scripts/controllers/app/admin/view-experiment-appointment.js",
                 ])
               }]
             }
