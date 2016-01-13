@@ -12,7 +12,7 @@ angular.module('nevermore')
       templateUrl: 'tpl/app/blocks/header.html',
       restrict: 'E',
       controller: function ($scope, $rootScope, sessionService, $location) {
-        var currentUser = sessionService.getCurrUser();
+        var currentUser = sessionService.getCurrentUser();
         $scope.currentUser = currentUser
         $scope.logout = function(){
             sessionService.delToken();

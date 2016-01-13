@@ -1,20 +1,16 @@
 <div class="index-page p-b-lg">
     <div class="banner-section banner-01">
         <div class="banner-overlay"></div>
-
         <div class="banner-content">
             <h1 class="text-l" style="padding-top: 70px;">同济大学力学实验云平台</h1>
             <h3 class="text-l" style="padding-top: 30px;">简单方便，服务师生</h3>
             <div class="text-l" style="padding-top: 30px;">
-              <a ui-sref="portal.login" ng-if="!currentUser"><button class="btn btn-primary w-xs m-r">现在登录</button></a>
-              <a ng-click="enter()" ng-if="currentUser"><button class="btn btn-primary w-xs m-r">直接进入</button></a>
+              <a ui-sref="portal.login" ng-if="!autoLogin" class="btn btn-primary w-xs m-r">现在登录</a>
             </div>
         </div>
     </div>
     <div class="content-section m-t-lg">
         <div class="tiger-container clearfix solution-content">
-            <!-- <h1 class="text-c" style="padding: 40px 0;">小额信贷管理一站式解决方案</h1> -->
-
             <div class="icon-tile">
                 <div class="icon-image">
                     <img src="images/portal/index/calendar-icon.png" alt="..."/>
