@@ -1,9 +1,10 @@
-app.controller("AddSemesterCtrl", ["$scope", "Semester",
-function($scope, Semester){
+app.controller("AddSemesterCtrl", ["$scope", "Semester", "DateTool",
+function($scope, Semester, DateTool){
 	var DEFAULT_ACCOUNT = {
-		name: "",
+		title: "",
 		startDate: new Date(),
 		endDate: new Date(),
+		description: null
 	}
 
 	var adding = false
@@ -38,7 +39,10 @@ function($scope, Semester){
 
 	function commitResource(){
 		adding = true
-		return Semester.create().post($scope.resource)
+		var postResouce = angular.copy($scope.resource);
+		postResouce.startDate = DateTool.format(postResouce.startDate);
+		postResouce.endDate = DateTool.format(postResouce.endDate);
+		return Semester.create().post(postResouce)
 	}
 
 	function removeErrorTip(data){
@@ -47,8 +51,7 @@ function($scope, Semester){
 	}
 
 	function resourceValid(data){
-		var RIGHT_CODE = "NO_ERROR"
-		if(data.errorCode === RIGHT_CODE){
+		if(data.success){
 			return data
 		}else{
 			throw new Error(data)

@@ -8,7 +8,7 @@
             <table class = "table table-striped b-t b-light">
                 <thead>
                     <tr>
-                        <th style="width: 20%; min-width: 164px;">编号</th>
+                        <th style="width: 20%; min-width: 164px;">学期名</th>
                         <th style="width: 20%; min-width: 164px;">开始日期</th>
                         <th style="width: 20%; min-width: 164px;">结束日期</th>
                         <th style="width: 20%; min-width: 164px;">当前激活</th>
@@ -18,16 +18,16 @@
                 <tbody>
                     <tr ng-repeat="resource in resources.data">
                         <td>
-                            <span>{{resource.name}}</span>
+                            <span>{{resource.title}}</span>
                         </td>
                         <td>
-                            <span>{{resource.startDate}}</span>
+                            <span>{{resource.startDate | date:'yyyy-MM-dd'}}</span>
                         </td>
                         <td>
-                            <span>{{resource.endDate}}</span>
+                            <span>{{resource.endDate | date:'yyyy-MM-dd'}}</span>
                         </td>
                         <td>
-                            <span>{{resource.status}}</span>
+                            <span>{{resource.status.value}}</span>
                         </td>
                         <td>
                             <button class="btn btn-sm btn-primary" ng-click="deleteResource(resource)">
@@ -41,11 +41,11 @@
         <footer class="panel-footer">
           <div class="row clearfix" style="width: 100%;" >
             <div class="pull-left col-sm-4 m-t-sm">
-              <span class="text-muted inline m-t-sm">{{resources.curPageNum}}/{{resources.totalPageNum}}&nbsp;&nbsp;&nbsp;共&nbsp;{{resources.totalItemNum}}&nbsp;个班级</span>
+              <span class="text-muted inline m-t-sm">{{resources.paginator.page}}/{{resources.paginator.page}}&nbsp;&nbsp;&nbsp;共&nbsp;{{resources.paginator.items}}&nbsp;个班级</span>
             </div>
               <div class="pull-right">
-            <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="resources.totalItemNum"
-              ng-model="resources.curPageNum" ng-change="pageChanged()"></uib-pagination>
+            <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="resources.paginator.items"
+              ng-model="resources.paginator.page" ng-change="pageChanged()"></uib-pagination>
             </div>
           </div>
       </footer>

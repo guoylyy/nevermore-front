@@ -1,17 +1,17 @@
 angular.module('nevermore')
   .service('ManagementService', ["ToasterTool", "ngDialog", "sessionService",
     function ( ToasterTool, ngDialog, sessionService) {
-
-      var DEFAULT_RESOURCE_TEMPLATE = {
+      this.DEFAULT_RESOURCE_TEMPLATE = {
     		"data": [],
-    		"totalPageNum": 0,
-    		"curPageNum": 1,
-    		"totalItemNum": 0,
+        "paginator": {
+          "page": 1,
+          "items": 0,
+          "itemsPerPage": 10,
+          "pages": 0
+        }
     	};
-
-      this.DEFAULT_RESOURCE_TEMPLATE = function(){
-        return DEFAULT_RESOURCE_TEMPLATE;
-      }
+      
+      this.loadResources = loadResources;
 
       function loadResources(resourceFactory, pageInfo){
         return resourceFactory.page().get(pageInfo).$promise
