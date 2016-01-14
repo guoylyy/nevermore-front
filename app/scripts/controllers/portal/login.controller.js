@@ -45,7 +45,6 @@
     }
 
     function autoLogin(){
-        console.log(currentUser.roles)
         transitStateByRole(currentUser.roles)
     }
 
@@ -87,6 +86,7 @@
                 saveAutoLoginInfo(currentUser, token)
             }else{
                 sessionService.saveCurrentUser(currentUser)
+                sessionService.saveToken(token)
             }
 
             transitStateByRole(currentUser.roles)
