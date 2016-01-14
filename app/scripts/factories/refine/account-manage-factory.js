@@ -32,8 +32,10 @@ angular.module('nevermore')
         });
       },
       page: function() { //分页获取用户 ~ students | teachers
-        return $resource(baseUrl + '/:role', {
-          role: "@role"
+        return $resource(baseUrl + '/:role?scope=list', {
+          role: "@role",
+          pageSize:"@pageSize",
+          pageNum:"@pageNum"
         }, {
           'get': {
             method: 'GET',

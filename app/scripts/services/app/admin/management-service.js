@@ -10,7 +10,7 @@ angular.module('nevermore')
           "pages": 0
         }
     	};
-      
+
       this.loadResources = loadResources;
 
       function loadResources(resourceFactory, pageInfo){
