@@ -5,7 +5,7 @@
  */
 angular.module('nevermore')
   .factory('ReservationManage', function ($resource, sessionService, $rootScope) {
-    var baseUrl = "http://localhost:8080/reservation";
+    var baseUrl = base_Url + "/reservation";
     return {
       reservation: function(){
         return $resource(baseUrl + '/:id', {id:"@id"}, {
@@ -27,9 +27,7 @@ angular.module('nevermore')
         return $resource(baseUrl + '/:id/verification', {id:"@id"}, {
           'post': {
             method: 'POST',
-            headers: {
-              'x-auth-token':"172581d693b0460ab48dfc09469a8567"
-            }
+            headers: sessionService.headers()
           }
         });
       },
@@ -38,9 +36,7 @@ angular.module('nevermore')
         }, {
           'get': {
             method: 'GET',
-            headers: {
-              'x-auth-token':"172581d693b0460ab48dfc09469a8567"
-            }
+            headers: sessionService.headers()
           }
         });
       }

@@ -5,7 +5,7 @@
  */
 angular.module('nevermore')
   .factory('ClazzManage', function($resource, sessionService, $rootScope) {
-    var baseUrl ="http://localhost:8080/manage/clazz";
+    var baseUrl = base_Url+ '/manage/clazz';
     return {
       create: function(){
         return $resource(baseUrl, {}, {
