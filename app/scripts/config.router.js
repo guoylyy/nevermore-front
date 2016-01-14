@@ -566,6 +566,7 @@ angular.module('nevermore')
                   "scripts/services/general-service.js",
                   "scripts/services/toaster-tool.js",
                   "scripts/directives/app/search-action-bar.js",
+                  "scripts/services/app/admin/management-service.js",
                   "ngDialog",
                 ])
               }]
@@ -573,7 +574,17 @@ angular.module('nevermore')
           })
           .state('app.admin-account.teacher',{ //教师列表
             url: '^/app/admin/account/teacher',
-            templateUrl:'tpl/app/admin/teacher-account.html'
+            templateUrl:'tpl/app/admin/teacher-account.html',
+            controller: "TeacherAccountCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/administrator/teacher-management.js",
+                  "scripts/controllers/app/administrator/modal/teacher-add.js",
+                  "scripts/controllers/app/administrator/modal/teacher-modify.js",
+                ])
+              }]
+            }
           })
           .state('app.admin-account.student',{ //学生列表
             url: '^/app/admin/account/student',
