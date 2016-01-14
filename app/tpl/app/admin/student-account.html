@@ -1,6 +1,6 @@
 <div>
     <searchactionbar placeholder = "'搜索：输入学号或姓名'" init-action = "'listing'"       on-transit = "onTransit(lastAction, nowAction, searchWord)">
-        <button class="btn btn-info pull-right" ng-click="addAccount()">添加学生</button>
+        <button class="btn btn-info pull-right" ng-click="addResource()">添加学生</button>
     </searchactionbar>
     <div class = "wrapper-md">
         <div class="panel panel-default">
@@ -16,27 +16,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="account in accounts.data">
+                    <tr ng-repeat="resource in resources.data">
                         <td>
-                            <span>{{account.number}}</span>
+                            <span>{{resource.account}}</span>
                         </td>
                         <td>
-                            <span>{{account.name}}</span>
+                            <span>{{resource.name}}</span>
                         </td>
                         <td>
-                            <span>{{account.grade}}</span>
+                            <span>{{resource.grade}}</span>
                         </td>
                         <td>
-                            <span>{{account.major}}</span>
+                            <span>{{resource.major}}</span>
                         </td>
                         <td>
-                            <span>{{account.email}}</span>
+                            <span>{{resource.mail}}</span>
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-primary" ng-click="modifyAccount(account)">
+                            <button class="btn btn-sm btn-primary" ng-click="modifyResource(resource)">
                                 编辑
                             </button>
-                            <button class="btn btn-sm btn-primary" ng-click="modifyPassword(account)">修改密码</button>
+                            <button class="btn btn-sm btn-primary" ng-click="modifyPassword(resource)">修改密码</button>
                         </td>
                     </tr>
                 </tbody>
@@ -45,11 +45,11 @@
         <footer class="panel-footer">
           <div class="row clearfix" style="width: 100%;" >
             <div class="pull-left col-sm-4 m-t-sm">
-              <span class="text-muted inline m-t-sm">{{accounts.curPageNum}}/{{accounts.totalPageNum}}&nbsp;&nbsp;&nbsp;共&nbsp;{{accounts.totalItemNum}}&nbsp;个学生</span>
+              <span class="text-muted inline m-t-sm">{{resources.paginator.page}}/{{resources.paginator.page}}&nbsp;&nbsp;&nbsp;共&nbsp;{{resources.paginator.items}}&nbsp;个教师</span>
             </div>
-            <div class="pull-right">
-                <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="accounts.totalItemNum"
-              ng-model="accounts.curPageNum" ng-change="pageChanged()"></uib-pagination>
+              <div class="pull-right">
+              <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="resources.paginator.items"
+                ng-model="resources.paginator.page" ng-change="pageChanged()"></uib-pagination>
             </div>
           </div>
       </footer>

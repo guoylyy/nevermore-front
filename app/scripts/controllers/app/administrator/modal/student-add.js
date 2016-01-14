@@ -1,4 +1,4 @@
-app.controller("AddTeacherAccountCtrl", ["$scope", "AccountManage","ManagementService",
+app.controller("AddStudentAccountCtrl", ["$scope", "AccountManage","ManagementService",
 function($scope, AccountManage, ManagementService){
 	$scope.genderList =[
   		{
@@ -11,11 +11,11 @@ function($scope, AccountManage, ManagementService){
   		},
 	];
 
-	$scope.addTeacher = addTeacher
+	$scope.addStudent = addStudent
 
 	var adding = false
 
-	function addTeacher(){
+	function addStudent(){
 		if(accountComplete()){
 			commitAccount().$promise
 			.then(removeErrorTip)
@@ -37,7 +37,7 @@ function($scope, AccountManage, ManagementService){
 	function commitAccount(){
 		adding = true
 		var postResouce = angular.copy($scope.resource)
-		postResouce.role = "TEACHER"
+		postResouce.role = "STUDENT"
 		return AccountManage.create().post(postResouce)
 	}
 
