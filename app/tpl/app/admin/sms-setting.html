@@ -5,13 +5,13 @@
     <div class="wrapper">
        <uib-tabset>
          <uib-tab heading="短信发送配置" class="nm-tab">
-           <div class="panel panel-default m-t">
+         <div class="panel panel-default m-t">
           <div class="panel-heading">
             短信发送配置列表
             <button class="btn btn-success pull-right m-r w-sm" ng-click="createSmsConfig()" style="margin-top: -7px;">新增短信发送配置</button>
           </div>
           <div class="panel-body no-padder">
-            <table class="table tiger-table text-c b-b">
+            <table class="table text-c b-b">
               <thead>
                 <tr class="nm-head-tr">
                   <th class="text-c">实验提前通知天数</th>
@@ -47,32 +47,76 @@
         </div>
          </uib-tab>
          <uib-tab heading="短信历史记录" class="nm-tab" ng-click="initSmsList()">
-            <div class="panel-body no-padder">
-              <table class="clearfix m-t-sm m-b-sm" style="width: 100%;">
-                <td>
-                  <!-- <uib-tabset class="nm-tab-btn-group">
-                   <uib-tab ng-repeat="status in smsCtrl.smsStatusList" active="status.active" ng-click="filterConditionChange('type', status)">
-                     <uib-tab-heading>
-                       {{status.value}}
-                     </uib-tab-heading>
-                   </uib-tab>
-                  </uib-tabset> -->
-                  <ui-select ng-model="smsCtrl.smsQuery.stauts" ng-change="querySmsList(smsCtrl.smsQuery)" theme="bootstrap" class="w-sm inline">
-                    <ui-select-match placeholder="">{{$select.selected.value}}</ui-select-match>
-                    <ui-select-choices repeat="item in smsCtrl.smsStatusList | filter: $select.search">
-                      <div ng-bind-html="item.value | highlight: $select.search"></div>
-                    </ui-select-choices>
-                  </ui-select>
-                </td>
-                <td>
-                  <div class="block m-r-lg pull-right">
-                    <span class="font-bold" style="bottom: 8px;position: relative;">发送日期：</span>
-                    <div class="m-l-sm m-r-xxl inline">
-                      <nm-datepicker-range begin-date="smsCtrl.smsQuery.beginDate" end-date="smsCtrl.smsQuery.endDate" change-begin-date="changeQueryBeginDate()" change-end-date="changeQueryEndDate()"></tiger-datepicker-range>
+            <div class="panel panel-default m-t">
+              <div class="panel-heading">
+                <table class="clearfix" style="width: 100%;">
+                  <td>
+                    <uib-tabset class="nm-tab-btn-group">
+                     <uib-tab ng-repeat="status in smsCtrl.smsStatusList" active="status.active" ng-click="filterConditionChange('status', status)">
+                       <uib-tab-heading>
+                         {{status.value}}
+                       </uib-tab-heading>
+                     </uib-tab>
+                    </uib-tabset>
+                    <!-- <ui-select ng-model="smsCtrl.smsQuery.stauts" ng-change="querySmsList(smsCtrl.smsQuery)" theme="bootstrap" class="w-sm inline">
+                      <ui-select-match placeholder="">{{$select.selected.value}}</ui-select-match>
+                      <ui-select-choices repeat="item in smsCtrl.smsStatusList | filter: $select.search">
+                        <div ng-bind-html="item.value | highlight: $select.search"></div>
+                      </ui-select-choices>
+                    </ui-select> -->
+                  </td>
+                  <td>
+                    <div class="block m-r-lg">
+                      <span class="font-bold" style="bottom: 10px;position: relative;">发送日期：</span>
+                      <div class="m-l-sm m-r-xxl inline">
+                        <nm-datepicker-range begin-date="smsCtrl.smsQuery.beginDate" end-date="smsCtrl.smsQuery.endDate" change-begin-date="filterConditionChange()" change-end-date="filterConditionChange()"></tiger-datepicker-range>
+                      </div>
                     </div>
+                  </td>
+                </table>
+              </div>
+              <div class="panel-body no-padder">
+                <table class="table text-c b-b" ng-if="smsCtrl.smsRecordList.length > 0">
+                  <thead>
+                    <tr class="nm-head-tr">
+                      <th class="text-c w-sm">发送时间</th>
+                      <th class="text-c w-xs">姓名</th>
+                      <th class="text-c w-xs">手机号</th>
+                      <th class="text-c w-xs">状态</th>
+                      <th class="text-c">内容</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="smsRecord in smsCtrl.smsRecordList">
+                      <td>
+                        {{smsRecord.sendTime | date:'yyyy-MM-dd HH:mm:ss'}}
+                      </td>
+                      <td>
+                        {{smsRecord.receiverName}}
+                      </td>
+                      <td>
+                        {{smsRecord.receiverMobile}}
+                      </td>
+                      <td>
+                        {{smsRecord.status.value}}
+                      </td>
+                      <td>
+                        {{smsRecord.content}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <nevermore-empty-panel ng-if="smsCtrl.smsRecordList.length == 0" text="暂时没有任何短信记录"></nevermore-empty-panel>
+
+                <div style="width: 100%;" class="clearfix" ng-if="smsCtrl.smsRecordList.length > 0">
+                  <div class="pull-right">
+                    <uib-pagination class="m-t-none m-b-none" max-size="5" previous-text="上一页" next-text="下一页"
+                      total-items="smsCtrl.paginator.items" items-per-page="10" ng-model="smsCtrl.paginator.page" ng-change="smsListPageChanged()">
+                    </uib-pagination>
                   </div>
-                </td>
-              </table>
+                </div>
+              </div>
             </div>
          </uib-tab>
        </uib-tabset>

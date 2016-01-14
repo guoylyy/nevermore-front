@@ -1,6 +1,7 @@
 void function() {
-  app.controller("ManageSmsCtrl", ['$scope', 'ManageSms', 'ToasterTool', 'ngDialog', 'AlertTool',
-  function($scope, ManageSms, ToasterTool, ngDialog, AlertTool){
+  app.controller("ManageSmsCtrl", ['$scope', '$filter', '$timeout', 'ManageSms', 'ToasterTool', 'ngDialog', 'AlertTool',
+  function($scope, $filter, $timeout, ManageSms, ToasterTool, ngDialog, AlertTool){
+    // 页面数据结构
     $scope.smsCtrl = {
       smsConfigs: [{
         notificationDay: 1,
@@ -24,6 +25,31 @@ void function() {
         code: "SENT_FAILED",
         isActive: false,
         value: "发送失败"
+      }],
+      smsRecordList: [{
+        "id": 1,
+        "receiverId": 2,
+        "receiverName": "高富好帅",
+        "receiverMobile": "15121083384",
+        "type": null,
+        "content": "大老板黄鹤带着小姨子跑路了",
+        "status": {
+          "code": "SENT_SUCCESS",
+          "value": "发送成功"
+        },
+        "sendTime": 1452698366000
+      },{
+        "id": 1,
+        "receiverId": 2,
+        "receiverName": "高富帅",
+        "receiverMobile": "15121083384",
+        "type": null,
+        "content": "大老板黄鹤带着小姨子跑路了",
+        "status": {
+          "code": "SENT_SUCCESS",
+          "value": "发送成功"
+        },
+        "sendTime": 1452698366000
       }]
     }
     var smsCtrl = $scope.smsCtrl;
@@ -40,6 +66,7 @@ void function() {
         });
     }
 
+    // 变更是否生效 —— 短信发送配置
     $scope.switchIsActive = function(config) {
       console.log(config);
     }
@@ -118,21 +145,31 @@ void function() {
       $scope.querySmsList(smsCtrl.smsQuery);
     }
 
+    // 查询条件变更 － 短信历史纪录
     $scope.filterConditionChange = function(varName, varValue) {
-      smsCtrl.smsQuery[varName] = varValue;
+      if (varName && varValue) {
+        smsCtrl.smsQuery[varName] = varValue;
+      }
       smsCtrl.smsQuery.pageNum = 1;
-      $scope.querySmsList(smsCtrl.smsQuery);
+      $timeout(function () {
+        $scope.querySmsList(smsCtrl.smsQuery);
+      }, 0);
     }
 
+    // 查询短信历史纪录列表
     $scope.querySmsList = function(smsQuery) {
       var tempQuery = angular.copy(smsQuery);
       tempQuery.status = tempQuery.status ? tempQuery.status.code : null;
       tempQuery.type = tempQuery.type ? tempQuery.type.code : null;
+      tempQuery.beginDate = tempQuery.beginDate ? $filter('date')(tempQuery.beginDate, 'yyyy-MM-dd') : null;
+      tempQuery.endDate = tempQuery.endDate ? $filter('date')(tempQuery.endDate, 'yyyy-MM-dd') : null;
+
       ManageSms.smses().get(tempQuery).$promise
       .then(
         function(data) {
           if (data.success) {
-
+            smsCtrl.smsRecordList = data.data;
+            smsCtrl.paginator = data.paginator;
           } else {
             //TODO: 获取数据失败处理逻辑
             ToasterTool.error("警告", "获取短信历史纪录失败");
@@ -141,6 +178,12 @@ void function() {
         function(error) {
           console.log(error);
         })
+    }
+
+    // 换页 —— 短信历史纪录
+    $scope.smsListPageChanged = function() {
+      smsCtrl.smsQuery.pageNum = smsCtrl.paginator.page;
+      $scope.querySmsList(smsCtrl.smsQuery);
     }
   }])
 }();
