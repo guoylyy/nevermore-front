@@ -1,5 +1,5 @@
-app.controller("AddClassCtrl", ["$scope", "Clazz", "semester", "teacherResource", "courseResource",
-function($scope, Clazz, semester, teacherResource, courseResource){
+app.controller("AddClassCtrl", ["$scope", "ClazzManage", "semester", "teacherResource", "courseResource",
+function($scope, ClazzManage, semester, teacherResource, courseResource){
 	var DEFAULT_RESOURCE = {
 		number: "",
 		teacher: undefined,
@@ -13,11 +13,11 @@ function($scope, Clazz, semester, teacherResource, courseResource){
 	var teacherList = []
 	,	courseList = []
 
-	if(teacherResource.errorCode === "NO_ERROR"){
+	if(teacherResource.success){
 		teacherList = teacherResource.data
 	}
 
-	if(courseResource.errorCode === "NO_ERROR"){
+	if(courseResource.success){
 		courseList = courseResource.data
 	}
 
@@ -57,13 +57,13 @@ function($scope, Clazz, semester, teacherResource, courseResource){
 	function commitResource(){
 		adding = true
 		var resourceToCommit = angular.copy($scope.resource)
-		delete resourceToCommit.teacher["@id"]
-		delete resourceToCommit.semester["@id"]
-		delete resourceToCommit.course["@id"]
-		return Clazz.create().post({
-			course: resourceToCommit.course.id,
-			teacher: resourceToCommit.teacher.id,
-			semester: resourceToCommit.semester.id,
+		resourceToCommit['teacherId'] = resourceToCommit.teacher.id;
+		resourceToCommit['courseId'] = resourceToCommit.course.id;
+		resourceToCommit['semesterId'] = 23;
+		delete resourceToCommit['teacher'];
+		delete resourceToCommit['course'];
+		delete resourceToCommit['semester'];
+		return ClazzManage.create().post({
 		}, resourceToCommit)
 	}
 
@@ -73,8 +73,7 @@ function($scope, Clazz, semester, teacherResource, courseResource){
 	}
 
 	function resourceValid(data){
-		var RIGHT_CODE = "NO_ERROR"
-		if(data.errorCode === RIGHT_CODE){
+		if(data.success){
 			return data
 		}else{
 			throw new Error(data)

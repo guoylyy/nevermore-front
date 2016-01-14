@@ -4,8 +4,8 @@
  * 班级相关 api
  */
 angular.module('nevermore')
-  .factory('AccountManage', function($resource, sessionService, $rootScope) {
-    var baseUrl ="http://localhost:8080/manage/account";
+  .factory('ClazzManage', function($resource, sessionService, $rootScope) {
+    var baseUrl ="http://localhost:8080/manage/clazz";
     return {
       create: function(){
         return $resource(baseUrl, {}, {
@@ -15,7 +15,7 @@ angular.module('nevermore')
           }
         });
       },
-      account: function(){
+      clazz: function(){
         return $resource(baseUrl + '/:id', {id:"@id"}, {
           'get': {
             method: 'GET',
@@ -31,21 +31,8 @@ angular.module('nevermore')
           }
         });
       },
-      page: function() { //分页获取用户 ~ students | teachers
-        return $resource(baseUrl + '/:role?scope=list', {
-          role: "@role",
-          pageSize:"@pageSize",
-          pageNum:"@pageNum"
-        }, {
-          'get': {
-            method: 'GET',
-            headers: sessionService.headers()
-          }
-        });
-      },
-      all: function(){//获取所有用户 ~ students | teachers
-        return $resource(baseUrl + '/:role?scope=all', {
-          role: "@role"
+      page: function() { //分页获取用户
+        return $resource(baseUrl + '/clazzes?scope=list', {
         }, {
           'get': {
             method: 'GET',
@@ -54,4 +41,5 @@ angular.module('nevermore')
         });
       }
     };
+
   });

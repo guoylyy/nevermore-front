@@ -663,7 +663,8 @@ angular.module('nevermore')
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/administrator/clazz-management.js",
-                  "scripts/controllers/app/administrator/modal/clazz-add.js"
+                  "scripts/controllers/app/administrator/modal/clazz-add.js",
+                  "scripts/controllers/app/administrator/modal/clazz-modify.js"
                 ])
               }]
             }
