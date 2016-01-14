@@ -639,7 +639,17 @@ angular.module('nevermore')
           })
           .state('app.admin-resource.experiment',{ //实验
             url: '^/app/admin/resource/experiment',
-            templateUrl: 'tpl/app/admin/experiment.html'
+            templateUrl: 'tpl/app/admin/experiment.html',
+            controller: "ExperimentManageCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/administrator/experiment-management.js",
+                  "scripts/controllers/app/administrator/modal/experiment-add.js",
+                  "scripts/controllers/app/administrator/modal/experiment-modify.js",
+                ])
+              }]
+            }
           })
           .state('app.admin-resource.course',{ //课程
             url: '^/app/admin/resource/course',
