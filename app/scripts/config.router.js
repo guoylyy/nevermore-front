@@ -676,13 +676,15 @@ angular.module('nevermore')
           })
           .state('app.admin-appointment.list',{
             url: "^/app/admin/appointment/:status",
-            templateUrl: "tpl/app/admin/verified-experiment-appointment.html",
+            templateUrl: "tpl/app/admin/experiment-appointment.html",
             controller: "RservationAppointmentCtrl",
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/administrator/reservation-management.js",
-                  "scripts/controllers/app/administrator/modal/clazz-add.js"
+                  "scripts/controllers/app/administrator/modal/clazz-add.js",
+                  "scripts/controllers/app/administrator/modal/reservation-verify.js",
+                  "scripts/controllers/app/administrator/modal/reservation-view.js",
                 ])
               }]
             }
