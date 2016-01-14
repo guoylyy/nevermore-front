@@ -1,4 +1,4 @@
-app.controller("ModifyTeacherAccountCtrl", ["$scope", "data", "AccountManage", "ManagementService", "AlertTool",
+app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManage", "ManagementService", "AlertTool",
     function($scope, data, AccountManage, ManagementService, AlertTool) {
         $scope.genderList = [{
             "value": "男",
@@ -13,13 +13,13 @@ app.controller("ModifyTeacherAccountCtrl", ["$scope", "data", "AccountManage", "
 
         $scope.resource = copiedResource
         $scope.pending = false
-        $scope.modifyTeacher = modifyTeacher
-        $scope.deleteTeacher = deleteTeacher
-        $scope.modifyTeacherPassword = modifyTeacherPassword
+        $scope.modifyStudent = modifyStudent
+        $scope.deleteStudent = deleteStudent
+        $scope.modifyStudentPassword = modifyStudentPassword
         $scope.errorTip = ""
 
         // ~ 修改
-        function modifyTeacher() {
+        function modifyStudent() {
             if (resourceComplete()) {
                 commitModify().$promise
                     .then(removeErrorTip)
@@ -52,7 +52,7 @@ app.controller("ModifyTeacherAccountCtrl", ["$scope", "data", "AccountManage", "
         }
 
         // ~ 删除
-        function deleteTeacher(resource) {
+        function deleteStudent(resource) {
             AlertTool.deleteConfirm({
                 title: "是否确认删除?"
             }).then(function(isConfirm) {
@@ -73,7 +73,7 @@ app.controller("ModifyTeacherAccountCtrl", ["$scope", "data", "AccountManage", "
         }
 
         // ~ 修改密码
-        function modifyTeacherPassword(resource) {
+        function modifyStudentPassword(resource) {
             if (resourceComplete()) {
                 commitModifyPassword().$promise
                     .then(removeErrorTip)

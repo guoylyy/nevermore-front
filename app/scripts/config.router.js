@@ -588,7 +588,17 @@ angular.module('nevermore')
           })
           .state('app.admin-account.student',{ //学生列表
             url: '^/app/admin/account/student',
-            templateUrl:'tpl/app/admin/student-account.html'
+            templateUrl:'tpl/app/admin/student-account.html',
+            controller: "StudentAccountCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/administrator/student-management.js",
+                  "scripts/controllers/app/administrator/modal/student-add.js",
+                  "scripts/controllers/app/administrator/modal/student-modify.js",
+                ])
+              }]
+            }
           })
           .state('app.admin-resource',{ //实验资源管理
             url: '^/app/admin/resource',
