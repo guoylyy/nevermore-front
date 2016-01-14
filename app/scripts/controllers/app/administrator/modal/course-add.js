@@ -1,5 +1,5 @@
-app.controller("AddExperimentCtrl", ["$scope", "ExperimentManage", "ManagementService",
-    function($scope, ExperimentManage, ManagementService) {
+app.controller("AddCourseCtrl", ["$scope", "CourseManage", "ManagementService",
+    function($scope, CourseManage, ManagementService) {
         $scope.activeList = [{
             "value": "开放",
             "code": true,
@@ -8,13 +8,13 @@ app.controller("AddExperimentCtrl", ["$scope", "ExperimentManage", "ManagementSe
             "code": false,
         }, ];
 
-        $scope.addExperiment = addExperiment
+        $scope.addCourse = addCourse
 
         var adding = false
 
-        function addExperiment() {
+        function addCourse() {
             if (resourceComplete()) {
-                commitExperiment().$promise
+                commitCourse().$promise
                     .then(removeErrorTip)
                     .then(resourceValid)
                     .then(function(data) {
@@ -33,10 +33,10 @@ app.controller("AddExperimentCtrl", ["$scope", "ExperimentManage", "ManagementSe
             return true;
         }
 
-        function commitExperiment() {
+        function commitCourse() {
             adding = true
             var postResouce = angular.copy($scope.resource)
-            return ExperimentManage.create().post(postResouce)
+            return CourseManage.create().post(postResouce)
         }
 
         function removeErrorTip(data) {

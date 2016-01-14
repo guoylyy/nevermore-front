@@ -653,7 +653,17 @@ angular.module('nevermore')
           })
           .state('app.admin-resource.course',{ //课程
             url: '^/app/admin/resource/course',
-            templateUrl: 'tpl/app/admin/experiment-course.html'
+            templateUrl: 'tpl/app/admin/experiment-course.html',
+            controller: "CourseManageCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/administrator/course-management.js",
+                  "scripts/controllers/app/administrator/modal/course-add.js",
+                  "scripts/controllers/app/administrator/modal/course-modify.js",
+                ])
+              }]
+            }
           })
           .state('app.admin-semester',{ //学期配置
             url: '^/app/admin/semester',
