@@ -558,7 +558,10 @@ angular.module('nevermore')
             url: '^/app/admin/account',
             templateUrl: 'tpl/app/admin/account-index.html',
             controller: ['$state', function($state){
-              $state.go('app.admin-account.teacher');
+              var currState = $state.current.name;
+              if(currState === "app.admin-account"){
+                  $state.go('app.admin-account.teacher');
+              }
             }],
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
@@ -604,28 +607,41 @@ angular.module('nevermore')
             url: '^/app/admin/resource',
             templateUrl: 'tpl/app/admin/experiment-index.html',
             controller: ['$state', function($state){
-              $state.go('app.admin-resource.lab');
+              var currState = $state.current.name;
+              if(currState === "app.admin-resource"){
+                  $state.go('app.admin-resource.lab');
+              }
             }],
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
                   "scripts/services/general-service.js",
                   "scripts/services/toaster-tool.js",
-                  "scripts/controllers/app/admin/experiment-index.js",
+                  "scripts/services/app/admin/management-service.js",
                   "ngDialog",
                 ])
               }]
             }
           })
-          .state('app.admin-resource.lab',{
+          .state('app.admin-resource.lab',{ //实验室
             url: '^/app/admin/resource/lab',
-            templateUrl: 'tpl/app/admin/experiment-lab.html'
+            templateUrl: 'tpl/app/admin/experiment-lab.html',
+            controller: "LabManageCtrl",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/administrator/lab-management.js",
+                  "scripts/controllers/app/administrator/modal/lab-add.js",
+                  "scripts/controllers/app/administrator/modal/lab-modify.js",
+                ])
+              }]
+            }
           })
-          .state('app.admin-resource.experiment',{
+          .state('app.admin-resource.experiment',{ //实验
             url: '^/app/admin/resource/experiment',
             templateUrl: 'tpl/app/admin/experiment.html'
           })
-          .state('app.admin-resource.course',{
+          .state('app.admin-resource.course',{ //课程
             url: '^/app/admin/resource/course',
             templateUrl: 'tpl/app/admin/experiment-course.html'
           })

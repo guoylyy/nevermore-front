@@ -1,11 +1,11 @@
 'use strict';
 
 /**
- * 用户相关 api
+ * 实验室相关 api
  */
 angular.module('nevermore')
-  .factory('AccountManage', function($resource, sessionService, $rootScope) {
-    var baseUrl ="http://localhost:8080/manage/account";
+  .factory('LabManage', function($resource, sessionService, $rootScope) {
+    var baseUrl ="http://localhost:8080/manage/lab";
     return {
       create: function(){
         return $resource(baseUrl, {}, {
@@ -15,7 +15,7 @@ angular.module('nevermore')
           }
         });
       },
-      account: function(){
+      lab: function(){
         return $resource(baseUrl + '/:id', {id:"@id"}, {
           'get': {
             method: 'GET',
@@ -31,9 +31,8 @@ angular.module('nevermore')
           }
         });
       },
-      page: function() { //分页获取用户 ~ students | teachers
-        return $resource(baseUrl + '/:role?scope=list', {
-          role: "@role",
+      page: function() {
+        return $resource(baseUrl + '/labs?scope=list', {
           pageSize:"@pageSize",
           pageNum:"@pageNum"
         }, {
@@ -43,9 +42,8 @@ angular.module('nevermore')
           }
         });
       },
-      all: function(){//获取所有用户 ~ students | teachers
-        return $resource(baseUrl + '/:role?scope=all', {
-          role: "@role"
+      all: function(){
+        return $resource(baseUrl + '/labs?scope=all', {
         }, {
           'get': {
             method: 'GET',
