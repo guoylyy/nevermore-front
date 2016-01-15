@@ -35,8 +35,8 @@ app.controller("AddCourseCtrl", ["$scope", "CourseManage", "ManagementService",
 
         function commitCourse() {
             adding = true
-            var postResouce = angular.copy($scope.resource)
-            return CourseManage.create().post(postResouce)
+            var postResource = angular.copy($scope.resource)
+            return CourseManage.create().post(postResource)
         }
 
         function removeErrorTip(data) {

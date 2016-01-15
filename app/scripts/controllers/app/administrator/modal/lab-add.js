@@ -35,8 +35,8 @@ app.controller("AddLabCtrl", ["$scope", "LabManage", "ManagementService",
 
         function commitLab() {
             adding = true
-            var postResouce = angular.copy($scope.resource)
-            return LabManage.create().post(postResouce)
+            var postResource = angular.copy($scope.resource)
+            return LabManage.create().post(postResource)
         }
 
         function removeErrorTip(data) {
