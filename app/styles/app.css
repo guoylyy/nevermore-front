@@ -2007,6 +2007,53 @@ fieldset[disabled] .btn-black.active {
   background: #e0e0e0;
   color: #777;
 }
+.table .nm-head-tr {
+  height: 40px;
+}
+.table .nm-head-tr th {
+  line-height: 40px;
+  font-size: 16px;
+}
+.nm-tab-btn-group .nav-tabs {
+  border-bottom: none;
+}
+.nm-tab-btn-group .nav-tabs > li {
+  margin-left: -1px;
+  margin-bottom: 0;
+  border: 1px solid #ccc;
+  min-width: 100px;
+  text-align: center;
+  border-radius: 4px;
+}
+.nm-tab-btn-group .nav-tabs > li:first-child {
+  margin-left: 0;
+}
+.nm-tab-btn-group .nav-tabs > li:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.nm-tab-btn-group .nav-tabs > li:first-child:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.nm-tab-btn-group .nav-tabs > li:last-child:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.nm-tab-btn-group .nav-tabs > li.active {
+  border: 1px solid #00A2CA;
+}
+.nm-tab-btn-group .nav-tabs > li.active > a {
+  border: none;
+  color: #fff;
+  background-color: #00A2CA;
+}
+.nm-tab-btn-group .nav-tabs > li > a {
+  border: none;
+  line-height: 20px;
+  margin-right: 0;
+  border-radius: 0;
+  padding: 7px 12px;
+}
 .empty-list-panel {
   width: 100%;
   padding: 50px;

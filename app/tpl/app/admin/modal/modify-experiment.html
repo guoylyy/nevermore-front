@@ -21,13 +21,13 @@
     <div class="form-group">
       <label for="minGrpStuCnt" class="col-sm-3 control-label">实验最少人数</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="minGrpStuCnt" ng-model = "resource.minGrpStuCnt">
+        <input type="text" class="form-control" id="minStuNum" ng-model = "resource.minStuNum">
       </div>
     </div>
     <div class="form-group">
       <label for="maxGrpStuCnt" class="col-sm-3 control-label">实验最大人数</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="maxGrpStuCnt" ng-model = "resource.maxGrpStuCnt">
+        <input type="text" class="form-control" id="maxStuNum" ng-model = "resource.maxStuNum">
       </div>
     </div>
     <div class="form-group">
@@ -39,13 +39,13 @@
     <div class="form-group">
       <label for="active" class="col-sm-3 control-label">是否开放</label>
       <div class="col-sm-9">
-        <select class="form-control" id = "active" ng-model="resource.active" ng-options="active.bool as active.chinese for active in activeList"></select>
+        <select class="form-control" id = "active" ng-model="resource.active" ng-options="active.code as active.value for active in activeList"></select>
       </div>
     </div>
     <div class="clearfix m-t">
       <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
-      <button class = "btn btn-primary pull-right" ng-click = "modifyResource()" ng-disabled = "pending">保存修改</button>
-      <!-- <button class="btn btn-danger pull-right" ng-click = "deleteResource()" ng-disabled = "pending">删除实验</button> -->
+      <button class = "btn btn-primary pull-right" ng-click = "modifyExperiment()" ng-disabled = "pending">保存修改</button>
+      <button class="btn btn-danger pull-right" ng-click = "deleteExperiment()" ng-disabled = "pending">删除实验</button>
     </div>
   </form>
 </div>

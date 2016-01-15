@@ -49,7 +49,7 @@
         <div class="form-group">
           <label for="count" class="col-sm-3 control-label">申请人数</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="count" ng-model = "resource.count" readonly>
+            <input type="text" class="form-control" id="count" ng-model = "resource.personCount" readonly>
           </div>
         </div>
         <div class="form-group">
@@ -60,7 +60,7 @@
         </div>
         <div class="clearfix m-t">
           <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
-          <button class = "btn btn-primary pull-right" ng-click = "assignTeacher()" ng-disabled = "pending">指派实验教师</button>
+          <button class = "btn btn-primary pull-right" ng-click = "assignTeacher()" ng-disabled = "pending">下一步</button>
           <button class="btn btn-danger pull-right" ng-click = "rejectAppointment()" ng-disabled = "pending">拒绝</button>
         </div>
       </form>
