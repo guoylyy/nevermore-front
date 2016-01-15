@@ -1,0 +1,37 @@
+<div class="nm-dialog">
+  <div class="nm-dialog-header">
+    <h1 class="header-title" style="margin-top: 5px;">
+      <span>短信发送配置</span>
+    </h1>
+  </div>
+
+  <form class="form-horizontal" name="smsConfigForm" novalidate>
+    <div class="form-group">
+      <label for="notificationDay" class="col-sm-3 control-label">实验提前通知天数*</label>
+      <div class="col-sm-9">
+        <input type="number" min="0" class="form-control" id="notificationDay" ng-model = "sms.smsConfig.notificationDay">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="notificationTime" class="col-sm-3 control-label">实验通知时间*</label>
+      <div class="col-sm-9">
+        <timepicker id="notificationTime" ng-model="sms.smsConfig.notificationTime" ng-change="changed(sms.smsConfig.notificationTime)" hour-step="1" minute-step="5" show-meridian="false"></timepicker>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="isActive" class="col-sm-3 control-label">是否生效*</label>
+      <div class="col-sm-9">
+        <label class="i-switch text-l" style="margin-top: 7px">
+          <input id="isActive" type="checkbox" ng-model="sms.smsConfig.isActive"><i></i>
+        </label>
+        <!-- <input type="text" class="form-control" id="isActive" ng-model = "smsConfig.isActive"> -->
+      </div>
+    </div>
+    <div class="clearfix m-t">
+      <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
+      <button class = "btn btn-success pull-right" ng-click = "updateSmsConfig()" ng-disabled = "updating" ng-if="!sms.isCreate">确认</button>
+      <button class = "btn btn-success pull-right" ng-click = "createSmsConfig()" ng-disabled = "adding" ng-if="sms.isCreate">创建</button>
+      <button class = "btn btn-primary pull-right m-r-xs" ng-click = "closeThisDialog(null)">取消</button>
+    </div>
+  </form>
+</div>
