@@ -1,21 +1,13 @@
 'use strict';
 
 /**
- * 班级相关 api
+ * 学期相关api
  */
 angular.module('nevermore')
-  .factory('ClazzManage', function($resource, sessionService, $rootScope) {
-    var baseUrl = base_Url+ '/manage/clazz';
+  .factory('ReservationManage', function ($resource, sessionService, $rootScope) {
+    var baseUrl = base_Url + "/reservation";
     return {
-      create: function(){
-        return $resource(baseUrl, {}, {
-          'post': {
-            method: 'POST',
-            headers: sessionService.headers()
-          }
-        });
-      },
-      clazz: function(){
+      reservation: function(){
         return $resource(baseUrl + '/:id', {id:"@id"}, {
           'get': {
             method: 'GET',
@@ -31,8 +23,16 @@ angular.module('nevermore')
           }
         });
       },
-      page: function() { //分页获取用户
-        return $resource(baseUrl + '/clazzes?scope=list', {
+      verify: function(){
+        return $resource(baseUrl + '/:id/verification', {id:"@id"}, {
+          'post': {
+            method: 'POST',
+            headers: sessionService.headers()
+          }
+        });
+      },
+      page: function() {//分页获取预约
+        return $resource(baseUrl + '/reservations?scope=list', {
         }, {
           'get': {
             method: 'GET',
@@ -41,5 +41,4 @@ angular.module('nevermore')
         });
       }
     };
-
   });

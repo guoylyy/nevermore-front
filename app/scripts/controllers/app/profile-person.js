@@ -26,7 +26,7 @@ function($scope, $rootScope, Account, sessionService, ResTool, ToasterTool, ngDi
   };
   var personData = $scope.personData;
 
-  var currentUser = sessionService.getCurrUser();
+  var currentUser = sessionService.getCurrentUser();
 
   // 获取个人信息
   function getProfileDate() {
@@ -38,7 +38,7 @@ function($scope, $rootScope, Account, sessionService, ResTool, ToasterTool, ngDi
         angular.forEach(data.data, function(value, key) {
           $rootScope.currentUser[key] = value;
         });
-        sessionService.saveCurrUser($rootScope.currentUser);
+        sessionService.saveCurrentUser($rootScope.currentUser);
         // $rootScope.currentUser = angular.copy(data.data);
       },
       function error(data) {

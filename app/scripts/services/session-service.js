@@ -14,7 +14,7 @@ angular.module('nevermore').service('sessionService',
 			return gCurrSemester();
 		};
 
-		this.getCurrUser = function(){
+		this.getCurrentUser = function(){
 			if($localStorage.currentUser){
 				$rootScope.currentUser = $localStorage.currentUser;
 				return $localStorage.currentUser;
@@ -23,14 +23,17 @@ angular.module('nevermore').service('sessionService',
 			}
 		};
 
-		this.saveCurrUser = function(currentUser){
+		this.saveCurrentUser = function(currentUser){
 			$localStorage.currentUser = currentUser;
 			$rootScope.currentUser = currentUser;
 		};
 
+		this.saveToken = function(token) {
+			$localStorage.token = token;
+			$rootScope.token = token;
+		};
+
 		this.storageChecking = function(){
-			checkLocalToken();
-			//
 			checkLocalToken();
 		};
 
@@ -39,14 +42,6 @@ angular.module('nevermore').service('sessionService',
 		this.saveCurrSemeter = function(semester){
 			$localStorage.semester = semester;
 			$rootScope.semester = semester;
-		};
-
-		this.saveToken = function(user, token) {
-			var user = wrapperUser(user);
-			$localStorage.currentUser = user;
-			$localStorage.token = token;
-			$rootScope.currentUser = user;
-			$rootScope.token = token;
 		};
 
 		//这和session有一毛钱关系。。。
@@ -70,15 +65,6 @@ angular.module('nevermore').service('sessionService',
 			}
 		};
 
-		function wrapperUser(user){
-			if(user.role == 'STUDENT' || user.role =='ADMINISTRATOR'){
-				user.show_role = user.role;
-			}else{
-				user.show_role = 'TEACHER';
-			}
-			return user;
-		};
-
 		this.delToken = function() {
 			delete $localStorage.currentUser;
 			delete $localStorage.token;
@@ -87,6 +73,7 @@ angular.module('nevermore').service('sessionService',
 			delete $localStorage.semester;
 			delete $rootScope.semester;
 			delete $localStorage.report;
+			delete $localStorage.isAutoLogin
 			$state.go('portal.login');
 		};
 

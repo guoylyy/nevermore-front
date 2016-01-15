@@ -25,7 +25,10 @@ angular.module('nevermore')
               css: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'styles/portal.css',
-                  'scripts/controllers/portal/portal.js'
+                  'scripts/controllers/portal/portal.js',
+                  "scripts/factories/token-factory.js",
+                  "scripts/factories/InputValidator.factory.js",
+                  "scripts/factories/role.factory.js",
                 ]);
               }]
             }
@@ -37,7 +40,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/portal/index.js',
+                  'scripts/controllers/portal/index.controller.js',
                   'scripts/directives/portal/portal-header.js',
                   'scripts/directives/portal/portal-footer.js'
                 ]);
@@ -47,11 +50,11 @@ angular.module('nevermore')
           .state('portal.login', {
             url: '^/signin',
             templateUrl: 'tpl/portal/login.html',
-            controller: 'LoginCtrl',
+            controller: 'LoginController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/portal/login.js',
+                  'scripts/controllers/portal/login.controller.js',
                   'scripts/directives/portal/portal-footer.js',
                   'scripts/directives/portal/portal-header.js'
                 ]);
@@ -92,7 +95,8 @@ angular.module('nevermore')
                   'scripts/controllers/app.js',
                   'scripts/directives/app/app-header.js',
                   'styles/app.css',
-                  'scripts/directives/app/nevermore-empty-panel.js'
+                  'scripts/directives/app/nevermore-empty-panel.js',
+                  "scripts/factories/role.factory.js",
                 ]);
               }]
             }
@@ -161,6 +165,8 @@ angular.module('nevermore')
                   'NmDatepicker',
                   "scripts/factories/InputValidator.factory.js",
                   "scripts/controllers/app/teacher/class.controller.js",
+                  "scripts/factories/error-handler.factory.js",
+                  "scripts/services/toaster-tool.js",
                 ])
               }]
             },
@@ -172,10 +178,6 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/factories/StateChain.factory.js",
-                  'ngDialog',
-                  'NmDatepicker',
-                  "scripts/factories/InputValidator.factory.js",
                   "scripts/controllers/app/teacher/main-page.controller.js",
                 ])
               }]
@@ -188,10 +190,6 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/factories/StateChain.factory.js",
-                  'ngDialog',
-                  'NmDatepicker',
-                  "scripts/factories/InputValidator.factory.js",
                   "scripts/controllers/app/teacher/main-page.controller.js",
                 ])
               }]
@@ -204,11 +202,10 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/factories/StateChain.factory.js",
-                  'ngDialog',
-                  'NmDatepicker',
-                  "scripts/factories/InputValidator.factory.js",
                   "scripts/controllers/app/teacher/appointment.controller.js",
+                  "scripts/factories/exp-factory.js",
+                  "scripts/factories/lab-factory.js",
+                  "scripts/factories/reservation-factory.js",
                 ])
               }],
             },
@@ -736,13 +733,15 @@ angular.module('nevermore')
           })
           .state('app.admin-appointment.list',{
             url: "^/app/admin/appointment/:status",
-            templateUrl: "tpl/app/admin/verified-experiment-appointment.html",
+            templateUrl: "tpl/app/admin/experiment-appointment.html",
             controller: "RservationAppointmentCtrl",
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/administrator/reservation-management.js",
-                  "scripts/controllers/app/administrator/modal/clazz-add.js"
+                  "scripts/controllers/app/administrator/modal/clazz-add.js",
+                  "scripts/controllers/app/administrator/modal/reservation-verify.js",
+                  "scripts/controllers/app/administrator/modal/reservation-view.js",
                 ])
               }]
             }

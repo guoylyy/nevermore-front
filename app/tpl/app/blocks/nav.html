@@ -5,32 +5,46 @@
   </li>
 
   <!-- student items-->
-  <li ui-sref-active="active" ng-if="currentUser.show_role == 'STUDENT'">
-     <a ui-sref="app.index.student-reservations({title:'clazz'})" class="auto t-l-c">
-       <span class="font-bold" translate="aside.nav.DASHBOARD">我的预约</span>
+
+ <li ui-sref-active="active" ng-if="isStudent()">
+   <a ui-sref="app.index.student-reservations({title:'clazz'})"  data-ui-sref-opts="{reload: true}" class="auto">
+     <span class="pull-right text-muted">
+       <i class="fa fa-fw fa-angle-right text"></i>
+       <i class="fa fa-fw fa-angle-down text-active"></i>
+     </span>
+     <i class="glyphicon  glyphicon-calendar icon text-info-dker"></i>
+     <span class="font-bold" translate="aside.nav.DASHBOARD">我的预约</span>
+   </a>
+ </li>
+
+
+   <li ui-sref-active="active" ng-if="isStudent()">
+     <a ui-sref="app.student.class-selection"  data-ui-sref-opts="{reload: true}" class="auto">
+       <span class="pull-right text-muted">
+         <i class="fa fa-fw fa-angle-right text"></i>
+         <i class="fa fa-fw fa-angle-down text-active"></i>
+       </span>
+       <i class="glyphicon glyphicon-list-alt icon text-info-dker"></i>
+       <span class="font-bold" translate="aside.nav.DASHBOARD">我的班级</span>
      </a>
    </li>
 
-   <li ui-sref-active="active" class = "active" ng-if="currentUser.show_role == 'STUDENT'">
-     <a ui-sref = "app.student.class-selection" class="auto t-l-c">
-       <span class="font-bold" translate="aside.nav.DASHBOARD">我的课程</span>
-     </a>
-   </li>
+  <li ui-sref-active="active" ng-if="isTeacher()">
+    <a ui-sref="app.teacher.class-selection"  data-ui-sref-opts="{reload: true}" class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-tasks icon text-info-dker"></i>
+      <span class="font-bold" translate="aside.nav.DASHBOARD">我的课程</span>
+    </a>
+  </li>
 
-  <!-- teacher items -->
-    <li ui-sref-active="active" ng-if="currentUser.show_role == 'TEACHER'">
-      <a ui-sref="app.index.teacher-reservations" data-ui-sref-opts="{reload: true}" class="auto t-l-c">
-        <span class="font-bold" translate="aside.nav.DASHBOARD">我的预约</span>
-      </a>
-    </li>
-    <li ui-sref-active="active" ng-if="currentUser.show_role == 'TEACHER'">
-      <a ui-sref="app.teacher.class-selection" data-ui-sref-opts="{classID: '123'}" class="auto t-l-c">
-        <span class="font-bold" translate="aside.nav.DASHBOARD">我的班级</span>
-      </a>
-    </li>
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-if="isAdmin()">
+    <span translate="aside.nav.HEADER">网站管理</span>
+  </li>
 
-
-  <li ui-sref-active="active" ng-if="currentUser.show_role == 'ADMINISTRATOR'">
+  <li ui-sref-active="active" ng-if="isAdmin()">
     <a ui-sref="app.admin-account" data-ui-sref-opts="{reload: true}" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -40,7 +54,7 @@
       <span class="font-bold" translate="aside.nav.DASHBOARD">平台用户管理</span>
     </a>
   </li>
-  <li ui-sref-active="active" ng-if="currentUser.show_role == 'ADMINISTRATOR'">
+  <li ui-sref-active="active" ng-if="isAdmin()">
     <a ui-sref="app.admin-resource" data-ui-sref-opts="{reload: true}" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -50,7 +64,7 @@
       <span class="font-bold" translate="aside.nav.DASHBOARD">实验资源管理</span>
     </a>
   </li>
-  <li ui-sref-active="active" ng-if="currentUser.show_role == 'ADMINISTRATOR'">
+  <li ui-sref-active="active" ng-if="isAdmin()">
     <a ui-sref="app.admin-semester" data-ui-sref-opts="{reload: true}"  class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -60,7 +74,7 @@
       <span class="font-bold" translate="aside.nav.DASHBOARD">学期班级管理</span>
     </a>
   </li>
-  <li ui-sref-active="active" ng-if="currentUser.show_role == 'ADMINISTRATOR'">
+  <li ui-sref-active="active" ng-if="isAdmin()">
     <a ui-sref="app.admin-appointment" data-ui-sref-opts="{reload: true}"  class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -70,7 +84,7 @@
       <span class="font-bold" translate="aside.nav.DASHBOARD">实验预约审批</span>
     </a>
   </li>
-  <li ui-sref-active="active" ng-if="currentUser.show_role == 'ADMINISTRATOR'">
+  <li ui-sref-active="active" ng-if="isAdmin()">
     <a ui-sref="app.admin-setting" data-ui-sref-opts="{reload: true}" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>

@@ -5,7 +5,7 @@
  */
 angular.module('nevermore')
   .factory('AccountManage', function($resource, sessionService, $rootScope) {
-    var baseUrl ="http://localhost:8080/manage/account";
+    var baseUrl = base_Url + '/manage/account';
     return {
       create: function(){
         return $resource(baseUrl, {}, {

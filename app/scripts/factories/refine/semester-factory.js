@@ -5,8 +5,8 @@
  */
 angular.module('nevermore')
   .factory('Semester', function ($resource, sessionService, $rootScope) {
-    var baseUrl = "http://localhost:8080/manage/semester";
-    //var baseUrl = base_Url+'/manage/semester';
+    // var baseUrl = "http://localhost:8080/manage/semester";
+    var baseUrl = base_Url+'/manage/semester';
     return {
       create: function(){
         return $resource(baseUrl,{},{
