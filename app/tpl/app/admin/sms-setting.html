@@ -4,14 +4,14 @@
     </div>
     <div class="wrapper">
        <uib-tabset>
-         <uib-tab heading="短信发送配置" class="nm-tab">
+         <uib-tab heading="短信发送配置" class="nm-tab" ng-click="initSmsSchedulerList()">
          <div class="panel panel-default m-t">
           <div class="panel-heading">
             短信发送配置列表
             <button class="btn btn-success pull-right m-r w-sm" ng-click="createSmsConfig()" style="margin-top: -7px;">新增短信发送配置</button>
           </div>
           <div class="panel-body no-padder">
-            <table class="table text-c b-b">
+            <table class="table text-c b-b" ng-if="smsCtrl.smsSchedulerList.length > 0">
               <thead>
                 <tr class="nm-head-tr">
                   <th class="text-c">实验提前通知天数</th>
@@ -21,7 +21,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="config in smsCtrl.smsConfigs">
+                <tr ng-repeat="config in smsCtrl.smsSchedulerList">
                   <td>
                     {{config.notificationDay}}
                   </td>
@@ -34,12 +34,13 @@
                     </label>
                   </td>
                   <td class="inline">
-                    <button class="btn btn-danger pull-right" ng-click="deleteSmsConfig(config)">删除</button>
-                    <button class="btn btn-primary pull-right m-r-xs" ng-click="editSmsConfig(config)">修改</button>
+                    <button class="btn btn-danger pull-right" ng-click="deleteSmsScheduler(config)">删除</button>
+                    <button class="btn btn-primary pull-right m-r-xs" ng-click="editSmsScheduler(config)">修改</button>
                   </td>
                 </tr>
               </tbody>
             </table>
+            <nevermore-empty-panel ng-if="smsCtrl.smsSchedulerList.length == 0" text="暂时没有任何短信发送配置"></nevermore-empty-panel>
             <div class="w-full">
               <button class="btn btn-success pull-right m-r-lg m-b w-sm" ng-click="createSmsConfig()">新增短信发送配置</button>
             </div>
@@ -66,9 +67,9 @@
                     </ui-select> -->
                   </td>
                   <td>
-                    <div class="block m-r-lg">
+                    <div class="block m-l">
                       <span class="font-bold" style="bottom: 10px;position: relative;">发送日期：</span>
-                      <div class="m-l-sm m-r-xxl inline">
+                      <div class="inline m-t-xs">
                         <nm-datepicker-range begin-date="smsCtrl.smsQuery.beginDate" end-date="smsCtrl.smsQuery.endDate" change-begin-date="filterConditionChange()" change-end-date="filterConditionChange()"></tiger-datepicker-range>
                       </div>
                     </div>
