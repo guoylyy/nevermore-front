@@ -33,10 +33,6 @@ app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManage", "
             }
         }
         function resourceComplete() {
-            //TODO:校验输入
-            if ($scope.resource.number === "") {
-                return false
-            }
             return true
         }
         function commitModify() {
@@ -87,7 +83,6 @@ app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManage", "
             }
         }
         function resourceComplete() {
-            //TODO:校验输入
             if($scope.resource.newPassword != $scope.resource.confirmPassword)
               return false
             return true
@@ -96,7 +91,7 @@ app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManage", "
             $scope.pending = true
             var submitResource = angular.copy(copiedResource);
             submitResource.gender = copiedResource.gender.code
-            submitResource.password = $scope.resource.newPassword
+            submitResource.password = md5($scope.resource.newPassword)
             return AccountManage.account().put({
                 "id": copiedResource.id,
             }, submitResource)

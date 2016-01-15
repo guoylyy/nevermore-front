@@ -10,7 +10,7 @@ app.controller("AddLabCtrl", ["$scope", "LabManage", "ManagementService",
 
         $scope.addLab = addLab
 
-        var adding = false
+        $scope.adding = false
 
         function addLab() {
             if (resourceComplete()) {
@@ -29,12 +29,11 @@ app.controller("AddLabCtrl", ["$scope", "LabManage", "ManagementService",
         }
 
         function resourceComplete() {
-            //TODO:校验输入
             return true;
         }
 
         function commitLab() {
-            adding = true
+            $scope.adding = true
             var postResource = angular.copy($scope.resource)
             return LabManage.create().post(postResource)
         }
@@ -53,7 +52,7 @@ app.controller("AddLabCtrl", ["$scope", "LabManage", "ManagementService",
         }
 
         function errorHandler(error) {
-            adding = false
+            $scope.adding = false
             var errorMessage = getErrorMessage(error)
             showErrorTip(errorMessage)
         }

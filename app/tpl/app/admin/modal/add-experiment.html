@@ -9,26 +9,25 @@
     <div class="form-group">
       <label for="number" class="col-sm-3 control-label">编号*</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="number" ng-model = "resource.number"
-        >
+        <input type="text" class="form-control" id="number" ng-model = "resource.number" required>
       </div>
     </div>
     <div class="form-group">
       <label for="name" class="col-sm-3 control-label">实验名*</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="name" ng-model = "resource.name">
+        <input type="text" class="form-control" id="name" ng-model = "resource.name" required>
       </div>
     </div>
     <div class="form-group">
-      <label for="minGrpStuCnt" class="col-sm-3 control-label">实验最小人数</label>
+      <label for="minGrpStuCnt" class="col-sm-3 control-label">实验最小人数*</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="minStuNum" ng-model = "resource.minStuNum">
+        <input type="number" class="form-control" id="minStuNum" ng-model = "resource.minStuNum" required>
       </div>
     </div>
     <div class="form-group">
-      <label for="maxGrpStuCnt" class="col-sm-3 control-label">实验最大人数</label>
+      <label for="maxGrpStuCnt" class="col-sm-3 control-label">实验最大人数*</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="maxStuNum" ng-model = "resource.maxStuNum">
+        <input type="number" class="form-control" id="maxStuNum" ng-model = "resource.maxStuNum" required>
       </div>
     </div>
     <div class="form-group">
@@ -38,14 +37,14 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="active" class="col-sm-3 control-label">是否开放</label>
+      <label for="active" class="col-sm-3 control-label">是否开放*</label>
       <div class="col-sm-9">
-        <select class="form-control" id = "active" ng-model="resource.active" ng-options="active.code as active.value for active in activeList"></select>
+        <select class="form-control" id = "active" ng-model="resource.active" ng-options="active.code as active.value for active in activeList" required></select>
       </div>
     </div>
     <div class="clearfix m-t">
       <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
-      <button class = "btn btn-primary pull-right" ng-click = "addExperiment()" ng-disabled = "adding">创建</button>
+      <button class = "btn btn-primary pull-right" ng-click = "addExperiment()" ng-disabled = "adding || !resourceForm.$valid">创建</button>
     </div>
   </form>
 </div>
