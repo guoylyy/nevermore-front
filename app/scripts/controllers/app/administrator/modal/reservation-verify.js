@@ -9,8 +9,8 @@
  * @param  {[type]} function($scope,       Account,      data, Reservation [description]
  * @return {[type]}                        [description]
  */
-app.controller("RservationVerifyCtrl", ["$scope", "Account", "data", "Reservation",
-function($scope, Account, data, Reservation){
+app.controller("RservationVerifyCtrl", ["$scope", "AccountManage", "data", "ReservationManage", "AlertTool",
+function($scope, AccountManage, data, ReservationManage, AlertTool){
 	var originResource = data
 	,	copiedResource = angular.copy(originResource)
 
@@ -35,13 +35,13 @@ function($scope, Account, data, Reservation){
 			$scope.errorTip = "必须选取实验教师"
 			return
 		}
-		Reservation.verify().post({
+		ReservationManage.verify().post({
 			id: copiedResource.id,
 			status: "APPROVED",
 			teacherIds: assignedTeacherList,
 		}, {}).$promise
 		.then(function(data){
-			if(data.errorCode === "NO_ERROR"){
+			if(data.success){
 				$scope.closeThisDialog("verify")
 			}
 		})
@@ -51,23 +51,29 @@ function($scope, Account, data, Reservation){
 	}
 
 	$scope.rejectAppointment = function(){
-		Reservation.verify().post({
-			id: copiedResource.id,
-			status: "REJECTED",
-			teacherIds: [],
-		}, {}),$promise
-		.then(function(data){
-			if(data.errorCode === "NO_ERROR"){
-				$scope.closeThisDialog("reject")
-			}
+		AlertTool.deleteConfirm({title:'是否确定拒绝',subtitle:'拒绝后将不可恢复'}).then(function(isConfirm) {
+		  if(isConfirm) {
+				ReservationManage.verify().post({
+					id: copiedResource.id,
+					status: "REJECTED",
+					teacherIds: [],
+				}, {}).$promise
+				.then(function(data){
+					if(data.success){
+						$scope.closeThisDialog("reject")
+					}
+				})
+				.catch(function(){
+					$scope.errorTip = data.errorCode
+				})
+		    AlertTool.close()
+		  }
 		})
-		.catch(function(){
-			$scope.errorTip = data.errorCode
-		})
+
 	}
 
-	Account.all().get({
-		userType: "ALL_TEACHER",
+	AccountManage.all().get({
+		role: "teachers",
 	}).$promise.then(function(data){
 		var teacherList = []
 		for(var i = 0 ; i < data.data.length ; i++){
