@@ -22,17 +22,39 @@ angular.module('nevermore')
           }
         });
       },
-      smsConfig: function() {
-        return $resource(baseUrl + 'sms/configuration', {}, {
-          'get': {
-            method: 'GET',
-            headers: sessionService.headers()
-          },
+      smsScheduler: function() {
+        return $resource(baseUrl + 'sms/scheduler', {}, {
           'post': {
             method: 'POST',
             headers: sessionService.headers()
           }
         })
+      },
+      smsSchedulerId: function() {
+        return $resource(baseUrl + 'sms/scheduler/:id', {
+          id: "@id"
+        }, {
+          'get': {
+            method: 'GET',
+            headers: sessionService.headers()
+          },
+          'put': {
+            method: 'PUT',
+            headers: sessionService.headers()
+          },
+          'delete': {
+            method: 'DELETE',
+            headers: sessionService.headers()
+          }
+        })
+      },
+      smsSchedulers: function() {
+        return $resource(baseUrl + 'sms/schedulers', {}, {
+          'get': {
+            method: 'GET',
+            headers: sessionService.headers()
+          }
+        });
       }
     };
   });
