@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * 班级相关 api
+ * 用户相关 api
  */
 angular.module('nevermore')
   .factory('AccountManage', function($resource, sessionService, $rootScope) {
@@ -32,8 +32,10 @@ angular.module('nevermore')
         });
       },
       page: function() { //分页获取用户 ~ students | teachers
-        return $resource(baseUrl + '/:role', {
-          role: "@role"
+        return $resource(baseUrl + '/:role?scope=list', {
+          role: "@role",
+          pageSize:"@pageSize",
+          pageNum:"@pageNum"
         }, {
           'get': {
             method: 'GET',

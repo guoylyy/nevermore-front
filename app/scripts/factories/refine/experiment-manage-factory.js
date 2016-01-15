@@ -1,16 +1,11 @@
 'use strict';
 
 /**
- * @ngdoc service
- * @name labcloud.courseService
- * @description
- * # courseService
- * Factory in the labcloud.
+ * 实验相关 api
  */
 angular.module('nevermore')
-  .factory('CourseManage', function ($resource, sessionService, $rootScope) {
-    //var baseUrl = base_Url+'/manage/course';
-    var baseUrl ="http://localhost:8080/manage/course";
+  .factory('ExperimentManage', function($resource, sessionService, $rootScope) {
+    var baseUrl ="http://localhost:8080/manage/experiment";
     return {
       create: function(){
         return $resource(baseUrl, {}, {
@@ -20,7 +15,7 @@ angular.module('nevermore')
           }
         });
       },
-      course: function(){
+      experiment: function(){
         return $resource(baseUrl + '/:id', {id:"@id"}, {
           'get': {
             method: 'GET',
@@ -36,8 +31,10 @@ angular.module('nevermore')
           }
         });
       },
-      page: function() { //分页获取课程
-        return $resource(baseUrl + '/courses?scope=list', {
+      page: function() {
+        return $resource(baseUrl + '/experiments?scope=list', {
+          pageSize:"@pageSize",
+          pageNum:"@pageNum"
         }, {
           'get': {
             method: 'GET',
@@ -45,8 +42,8 @@ angular.module('nevermore')
           }
         });
       },
-      all: function(){ //获取系统中所有可用课程
-        return $resource(baseUrl + '/courses?scope=all', {
+      all: function(){
+        return $resource(baseUrl + '/experiments?scope=all', {
         }, {
           'get': {
             method: 'GET',
