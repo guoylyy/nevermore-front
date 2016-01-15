@@ -90,8 +90,8 @@ function($scope, AccountManage, generalService, ToasterTool, ManagementService, 
 
 	// ~ 修改密码
 	function modifyPassword(resource){
-		var templateUrl = "tpl/app/admin/modal/modify-teacher-password.html"
-		var controller = "ModifyTeacherAccountCtrl"
+		var templateUrl = "tpl/app/admin/modal/modify-student-password.html"
+		var controller = "ModifyStudentAccountCtrl"
 		var modifyDialog = new ManagementService.ModifyDialog()
 		modifyDialog.setCloseListener(onModifyPassword)
 		modifyDialog.open(resource, templateUrl, controller, {})

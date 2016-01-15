@@ -10,7 +10,7 @@ app.controller("AddExperimentCtrl", ["$scope", "ExperimentManage", "ManagementSe
 
         $scope.addExperiment = addExperiment
 
-        var adding = false
+        $scope.adding = false
 
         function addExperiment() {
             if (resourceComplete()) {
@@ -29,12 +29,11 @@ app.controller("AddExperimentCtrl", ["$scope", "ExperimentManage", "ManagementSe
         }
 
         function resourceComplete() {
-            //TODO:校验输入
             return true;
         }
 
         function commitExperiment() {
-            adding = true
+            $scope.adding = true
             var postResource = angular.copy($scope.resource)
             return ExperimentManage.create().post(postResource)
         }
@@ -53,7 +52,7 @@ app.controller("AddExperimentCtrl", ["$scope", "ExperimentManage", "ManagementSe
         }
 
         function errorHandler(error) {
-            adding = false
+            $scope.adding = false
             var errorMessage = getErrorMessage(error)
             showErrorTip(errorMessage)
         }
