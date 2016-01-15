@@ -49,6 +49,10 @@ angular.module('nevermore')
         {
           name:'ui.calendar',
           files: ['../bower_components/angular-ui-calendar/src/calendar.js']
+        },
+        {
+          name: 'nmDatepickerRange',
+          files: ['../scripts/directives/app/nm-datepicker-range.js']
         }
       ]
     });
