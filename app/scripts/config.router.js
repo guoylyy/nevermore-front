@@ -56,7 +56,7 @@ angular.module('nevermore')
                 return $ocLazyLoad.load([
                   'scripts/controllers/portal/login.controller.js',
                   'scripts/directives/portal/portal-footer.js',
-                  'scripts/directives/portal/portal-header.js'
+                  'scripts/directives/portal/portal-header.js',
                 ]);
               }]
             }
@@ -205,7 +205,11 @@ angular.module('nevermore')
                   "scripts/controllers/app/teacher/appointment.controller.js",
                   "scripts/factories/exp-factory.js",
                   "scripts/factories/lab-factory.js",
+                  "scripts/factories/refine/experiment.factory.js",
+                  "scripts/factories/refine/lab.factory.js",
                   "scripts/factories/reservation-factory.js",
+                  "ngDialog",
+                  "scripts/controllers/app/teacher/modal/reserve.controller.js",
                 ])
               }],
             },
