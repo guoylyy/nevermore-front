@@ -35,8 +35,8 @@ app.controller("AddExperimentCtrl", ["$scope", "ExperimentManage", "ManagementSe
 
         function commitExperiment() {
             adding = true
-            var postResouce = angular.copy($scope.resource)
-            return ExperimentManage.create().post(postResouce)
+            var postResource = angular.copy($scope.resource)
+            return ExperimentManage.create().post(postResource)
         }
 
         function removeErrorTip(data) {

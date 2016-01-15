@@ -36,9 +36,10 @@ function($scope, AccountManage, ManagementService){
 	}
 	function commitAccount(){
 		adding = true
-		var postResouce = angular.copy($scope.resource)
-		postResouce.role = "TEACHER"
-		return AccountManage.create().post(postResouce)
+		var postResource = angular.copy($scope.resource)
+		postResource.role = "TEACHER"
+		postResource.password = md5(postResource.password)
+		return AccountManage.create().post(postResource)
 	}
 
 	function removeErrorTip(data){
