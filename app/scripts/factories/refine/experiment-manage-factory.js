@@ -1,11 +1,11 @@
 'use strict';
 
 /**
- * 班级相关 api
+ * 实验相关 api
  */
 angular.module('nevermore')
-  .factory('ClazzManage', function($resource, sessionService, $rootScope) {
-    var baseUrl = base_Url+ '/manage/clazz';
+  .factory('ExperimentManage', function($resource, sessionService, $rootScope) {
+    var baseUrl ="http://localhost:8080/manage/experiment";
     return {
       create: function(){
         return $resource(baseUrl, {}, {
@@ -15,7 +15,7 @@ angular.module('nevermore')
           }
         });
       },
-      clazz: function(){
+      experiment: function(){
         return $resource(baseUrl + '/:id', {id:"@id"}, {
           'get': {
             method: 'GET',
@@ -31,8 +31,19 @@ angular.module('nevermore')
           }
         });
       },
-      page: function() { //分页获取用户
-        return $resource(baseUrl + '/clazzes?scope=list', {
+      page: function() {
+        return $resource(baseUrl + '/experiments?scope=list', {
+          pageSize:"@pageSize",
+          pageNum:"@pageNum"
+        }, {
+          'get': {
+            method: 'GET',
+            headers: sessionService.headers()
+          }
+        });
+      },
+      all: function(){
+        return $resource(baseUrl + '/experiments?scope=all', {
         }, {
           'get': {
             method: 'GET',
@@ -41,5 +52,4 @@ angular.module('nevermore')
         });
       }
     };
-
   });
