@@ -3,15 +3,7 @@ void function() {
   function($scope, $filter, $timeout, ManageSms, ToasterTool, ngDialog, AlertTool){
     // 页面数据结构
     $scope.smsCtrl = {
-      smsConfigs: [{
-        notificationDay: 1,
-        notificationTime: new Date(),
-        isActive: true
-      }, {
-        notificationDay: 2,
-        notificationTime: new Date(),
-        isActive: true
-      }],
+      smsSchedulerList: null,
       smsQuery: null,
       smsStatusList: [{
         code: null,
@@ -26,70 +18,62 @@ void function() {
         isActive: false,
         value: "发送失败"
       }],
-      smsRecordList: [{
-        "id": 1,
-        "receiverId": 2,
-        "receiverName": "高富好帅",
-        "receiverMobile": "15121083384",
-        "type": null,
-        "content": "大老板黄鹤带着小姨子跑路了",
-        "status": {
-          "code": "SENT_SUCCESS",
-          "value": "发送成功"
-        },
-        "sendTime": 1452698366000
-      },{
-        "id": 1,
-        "receiverId": 2,
-        "receiverName": "高富帅",
-        "receiverMobile": "15121083384",
-        "type": null,
-        "content": "大老板黄鹤带着小姨子跑路了",
-        "status": {
-          "code": "SENT_SUCCESS",
-          "value": "发送成功"
-        },
-        "sendTime": 1452698366000
-      }]
+      smsRecordList: null
     }
     var smsCtrl = $scope.smsCtrl;
-    initSmsConfig();
+    initSmsSettingPage();
 
-    // 修改事件
-    $scope.deleteSmsConfig = function(config) {
+    // 删除事件
+    $scope.deleteSmsScheduler = function(config) {
       AlertTool.deleteConfirm({
         title: '确定要删除短信发送配置?'
       }).then(function(isConfirm) {
         if(isConfirm) {
-            AlertTool.close();
+          ManageSms.smsSchedulerId().delete({id: config.id}).$promise
+          .then(
+            function(data) {
+              if (data.success) {
+                AlertTool.close();
+                ToasterTool.success("删除短信发送配置成功。")
+                initSmsSettingPage();
+              } else {
+                ToasterTool.error("删除短信发送配置失败。")
+              }
+            },
+            function(error) {
+              console.log(error);
+            })
           }
         });
     }
 
     // 变更是否生效 —— 短信发送配置
     $scope.switchIsActive = function(config) {
-      console.log(config);
-    }
-
-    // 初始化短信设置页面,获取短信设置
-    function initSmsConfig() {
-      smsCtrl.smsClick = {
-        notificationDay: false,
-        notificationTime: false
-      }
-      ManageSms.smsConfig().get().$promise
-			.then(
+      ManageSms.smsSchedulerId().put({id: config.id}, config).$promise
+      .then(
         function(data) {
           if (data.success) {
-
+            if (config.isActive) {
+              ToasterTool.success("成功开启短信发送配置。");
+            }
           } else {
-            //TODO: 获取数据失败处理逻辑
-            ToasterTool.error("警告", "获取短信设置列表失败");
+            //TODO: 变更是否生效失败
+            if (config.isActive) {
+              ToasterTool.error("错误", "开启短信发送配置失败。");
+            } else {
+              ToasterTool.error("错误", "关闭短信发送配置失败。");
+            }
+            config.isActive = !config.isActive;
           }
-	      },
+        },
         function(error) {
           console.log(error);
         })
+    }
+
+    // 初始化短信设置页面,获取短信设置
+    $scope.initSmsSchedulerList = function() {
+      initSmsSettingPage();
     }
 
     // 新建短信发送配置
@@ -106,14 +90,13 @@ void function() {
       });
       dialog.closePromise.then(function(data) {
         if (data.value != null && data.value.success) {
-          ToasterTool.success('新建短信发送配置成功');
-          initSmsConfig();
+          initSmsSettingPage();
         }
       });
     };
 
     // 新建短信发送配置
-    $scope.editSmsConfig = function(config) {
+    $scope.editSmsScheduler = function(config) {
       var dialog = ngDialog.open({
         template: 'tpl/app/admin/modal/edit-sms-config.html',
         controller: 'SmsConfigEditCtrl',
@@ -126,11 +109,27 @@ void function() {
       });
       dialog.closePromise.then(function(data) {
         if (data.value != null && data.value.success) {
-          ToasterTool.success('更新短信发送配置成功');
-          initSmsConfig();
+          initSmsSettingPage();
         }
       });
     };
+
+    // 获取短信发送配置
+    function initSmsSettingPage() {
+      ManageSms.smsSchedulers().get().$promise
+      .then(
+        function(data) {
+          if (data.success) {
+            smsCtrl.smsSchedulerList = data.data;
+          } else {
+            //TODO: 获取数据失败处理逻辑
+            ToasterTool.error("警告", "获取短信设置列表失败。");
+          }
+        },
+        function(error) {
+          console.log(error);
+        })
+    }
 
 /*****************************短信历史纪录***************************************/
     // 初始化短信历史记录
@@ -172,7 +171,7 @@ void function() {
             smsCtrl.paginator = data.paginator;
           } else {
             //TODO: 获取数据失败处理逻辑
-            ToasterTool.error("警告", "获取短信历史纪录失败");
+            ToasterTool.error("警告", "获取短信历史纪录失败。");
           }
         },
         function(error) {

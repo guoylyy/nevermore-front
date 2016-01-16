@@ -515,7 +515,8 @@ angular.module('nevermore')
                   'ngDialog',
                   'ngImgCrop',
                   'scripts/controllers/app/profile-person.js',
-                  'scripts/controllers/app/modal/profile-icon.js'
+                  'scripts/controllers/app/modal/profile-icon.js',
+                  'scripts/factories/file-upload-factory.js'
                 ]);
               }]
             }

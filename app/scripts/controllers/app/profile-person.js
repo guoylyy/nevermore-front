@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('ProfilePersonCtrl', ['$scope', '$rootScope','Account', 'sessionService', 'ResTool', 'ToasterTool', 'ngDialog', 'Upload',
-function($scope, $rootScope, Account, sessionService, ResTool, ToasterTool, ngDialog, Upload) {
+app.controller('ProfilePersonCtrl', ['$scope', '$rootScope','Account', 'sessionService', 'ToasterTool', 'ngDialog', 'FileUpload',
+function($scope, $rootScope, Account, sessionService, ToasterTool, ngDialog, FileUpload) {
   $scope.personData = {
     currentUser: null,
     editUser: null,
@@ -26,25 +26,22 @@ function($scope, $rootScope, Account, sessionService, ResTool, ToasterTool, ngDi
   };
   var personData = $scope.personData;
 
-  var currentUser = sessionService.getCurrentUser();
-
   // 获取个人信息
   function getProfileDate() {
-    Account.account().get({'id': currentUser.id},
-      function success(data) {
-        $scope.personData.currentUser = data.data;
-        $scope.personData.editUser = angular.copy(data.data);
+    Account.profile().get(null).$promise
+    .then(function success(data) {
+      personData.currentUser = data.data;
+      personData.editUser = angular.copy(data.data);
 
-        angular.forEach(data.data, function(value, key) {
-          $rootScope.currentUser[key] = value;
-        });
-        sessionService.saveCurrentUser($rootScope.currentUser);
-        // $rootScope.currentUser = angular.copy(data.data);
-      },
-      function error(data) {
-        ToasterTool.error("个人信息获取失败");
-      }
-    );
+      angular.forEach(data.data, function(value, key) {
+        $rootScope.currentUser[key] = value;
+      });
+      sessionService.saveCurrentUser($rootScope.currentUser);
+      // $rootScope.currentUser = angular.copy(data.data);
+    },
+    function error(data) {
+      ToasterTool.error("个人信息获取失败");
+    })
   }
 
   // 检验表格是否可提交
@@ -55,15 +52,19 @@ function($scope, $rootScope, Account, sessionService, ResTool, ToasterTool, ngDi
 
   // 更新个人信息
   $scope.save = function() {
-    Account.account().put({'id': currentUser.id}, personData.editUser,
-      function success(data) {
-        ToasterTool.success("个人信息更新成功");
-        getProfileDate();
-      },
-      function error(data) {
-        ToasterTool.error("个人信息更新失败");
-      }
-    );
+    var tempUser = {};
+    tempUser.gender = personData.editUser.gender.code;
+    tempUser.name = personData.editUser.name;
+    tempUser.mobile = personData.editUser.mobile;
+
+    Account.profile().put(tempUser).$promise
+    .then(function success(data) {
+      ToasterTool.success("个人信息更新成功");
+      getProfileDate();
+    },
+    function error(data) {
+      ToasterTool.error("个人信息更新失败");
+    })
   }
 
   // 更新账号头像
@@ -81,23 +82,23 @@ function($scope, $rootScope, Account, sessionService, ResTool, ToasterTool, ngDi
         && data.value != '$escape'
         && data.value != '$closeButton'
         && data.value != '$document') {
-        if(data.value) {
-          var uploadPromise = Upload.upload({
-              url: base_Url + '/api/account/'+ currentUser.id +'/icon',
-              headers: sessionService.headers(),
-              data: {
-                file: Upload.dataUrltoBlob(data.value, 'icon.png')
+          if(data.value) {
+            Account.accountIcon().put({attachId: data.value}).$promise
+            .then(
+              function success(data) {
+                // 更新用户头像的后续操作
+                // if (data.success) {
+                //   ToasterTool.success("更新头像成功。");
+                // } else {
+                //   ToasterTool.error("更新头像失败。");
+                // }
+              },
+              function error(error) {
+                console.log(error);
               }
-            }).then(function (response) {
-              if(response.data && response.data.errorCode == "NO_ERROR") {
-                ToasterTool.success("头像更新成功");
-                getProfileDate();
-              } else {
-                ToasterTool.error("头像更新失败");
-              }
-            });
+            )
           } else {
-            ToasterTool.error("头像更新失败");
+            // ToasterTool.error("头像更新失败");
           }
         }
       });

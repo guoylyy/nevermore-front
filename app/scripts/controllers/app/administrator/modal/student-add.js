@@ -12,8 +12,7 @@ function($scope, AccountManage, ManagementService){
 	];
 
 	$scope.addStudent = addStudent
-
-	var adding = false
+ 	$scope.adding = false
 
 	function addStudent(){
 		if(accountComplete()){
@@ -31,14 +30,14 @@ function($scope, AccountManage, ManagementService){
 		}
 	}
 	function accountComplete(){
-		//TODO:校验输入
 		return true;
 	}
 	function commitAccount(){
-		adding = true
-		var postResouce = angular.copy($scope.resource)
-		postResouce.role = "STUDENT"
-		return AccountManage.create().post(postResouce)
+		$scope.adding = true
+		var postResource = angular.copy($scope.resource)
+		postResource.role = "STUDENT"
+		postResource.password = md5(postResource.password)
+		return AccountManage.create().post(postResource)
 	}
 
 	function removeErrorTip(data){
@@ -53,7 +52,7 @@ function($scope, AccountManage, ManagementService){
 		}
 	}
 	function errorHandler(error){
-		adding = false
+		$scope.adding = false
 		var errorMessage = getErrorMessage(error)
 		showErrorTip(errorMessage)
 	}

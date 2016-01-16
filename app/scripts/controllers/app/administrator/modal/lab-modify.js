@@ -33,10 +33,6 @@ app.controller("ModifyLabCtrl", ["$scope", "data", "LabManage", "ManagementServi
         }
 
         function resourceComplete() {
-            //TODO:校验输入
-            if ($scope.resource.number === "") {
-                return false
-            }
             return true
         }
 
