@@ -153,8 +153,23 @@ angular.module('nevermore')
               }]
             },
           })
+          .state("app.teacher.class-selection.all-class", {
+            url: "^/app/teacher/class-selection/all-class",
+            templateUrl: "tpl/app/teacher/all-class.html",
+            controller: "TeacherAllClassController",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/teacher/all-class.controller.js",
+                  "scripts/factories/refine/clazz.factory.js",
+                  "scripts/services/toaster-tool.js",
+                  "scripts/factories/refine/http-response.factory.js",
+                ])
+              }]
+            },
+          })
           .state("app.teacher.class", {
-            url: "^/app/teacher/class",
+            url: "^/app/teacher/class/:classID",
             templateUrl: "tpl/app/teacher/class.html",
             controller: "TeacherClassController",
             resolve: {
@@ -166,6 +181,8 @@ angular.module('nevermore')
                   "scripts/factories/InputValidator.factory.js",
                   "scripts/controllers/app/teacher/class.controller.js",
                   "scripts/factories/error-handler.factory.js",
+                  "scripts/factories/refine/clazz.factory.js",
+                  "scripts/factories/refine/http-response.factory.js",
                   "scripts/services/toaster-tool.js",
                 ])
               }]
@@ -183,14 +200,14 @@ angular.module('nevermore')
               }]
             },
           })
-          .state("app.teacher.class.files", {
-            url: "/files",
-            templateUrl: "tpl/app/teacher/files.html",
-            controller: "TeacherFilesController",
+          .state("app.teacher.class.file", {
+            url: "/file",
+            templateUrl: "tpl/app/teacher/file.html",
+            controller: "TeacherFileController",
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/teacher/main-page.controller.js",
+                  "scripts/controllers/app/teacher/file.controller.js",
                 ])
               }]
             },
@@ -210,6 +227,7 @@ angular.module('nevermore')
                   "scripts/factories/reservation-factory.js",
                   "ngDialog",
                   "scripts/controllers/app/teacher/modal/reserve.controller.js",
+                  "scripts/directives/app/stage-view.directive.js",
                 ])
               }],
             },

@@ -2,9 +2,10 @@
 	angular.module("nevermore")
 			.controller("TeacherClassController", TeacherClassController)
 
-	TeacherClassController.$inject = ["$scope", "$state"]
+	TeacherClassController.$inject = ["$scope", "$stateParams"]
 
-	function TeacherClassController($scope, $state){
-		$state.go('app.teacher.class.main-page');
+	function TeacherClassController($scope, $stateParams){
+
+		$scope.classID = $stateParams.classID
 	}
 }()

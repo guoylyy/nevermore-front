@@ -5,6 +5,6 @@
 	TeacherIndexController.$inject = ["$scope"]
 
 	function TeacherIndexController($scope){
-
+		
 	}
 }()
