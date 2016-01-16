@@ -1,0 +1,88 @@
+<div class="vbox db-bg">
+    <div class = "wrapper db-p-b-20 db-p-t-20 lter no_border" style = "overflow: hidden;">
+        <span class = "subview3_title db-title">实验文件</span>
+    </div>
+    <div class="db-line"></div>
+    <div class = "wrapper">
+		<div style = "overflow: hidden">
+			<ul class="db-tab db-m-0 pull-left" style = "padding: 0px;">
+				<li class="active">
+					<a data-target = "#publicFiles" role = "tab" data-toggle = "tab" aria-expanded = "true" class = "db-underline">
+						公共文件夹
+					</a>
+				</li>
+				<li>
+					<a data-target = "#privateFiles" role = "tab" data-toggle = "tab" aria-expanded = "false" class = "db-underline">
+						私有文件夹
+					</a>
+				</li>
+			</ul>
+        	<button class="btn btn-primary db-btn-primary pull-right db-m-r-20">上传文件</button>
+		</div>
+		<div class="db-line db-m-0 db-m-b-10"></div>
+		<div class="tab-content">
+			<div class="tab-pane active" id = "publicFiles">
+				<table class = "table db-file-table">
+					<tr>
+						<td style = "width: 6%;">
+							<div class="file-icon">
+								shi
+								<!-- {{file.name | limitTo: 2}} -->
+							</div>
+						</td>
+						<td class = "file-name" style = "width: 50%;">
+							name
+							<!-- {{file.name}} -->
+						</td>
+						<td style = "width: 10%;">
+							303kb
+							<!-- {{file.size}}kb -->
+						</td>
+						<td style = "width: 15%;">
+							2015-10-14
+						</td>
+						<td style = "width: 30%; text-align: right;">
+							<img class = "db-icon db-m-r-20" style = "height: auto;" src="images/app/download.png" alt="下载"/>
+							<img class = "db-icon db-m-r-20" src="images/app/delete.png" alt = "删除">
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="tab-pane" id = "privateFiles">
+				<table class = "table db-file-table">
+					<tr ng-repeat = "file in privateFileList">
+						<td style = "width: 6%;">
+							<div class="file-icon">
+								{{file.name | limitTo: 2}}
+							</div>
+						</td>
+						<td style = "width: 50%;">
+							{{file.name}}
+						</td>
+						<td style = "width: 10%;">
+							{{file.size}}kb
+						</td>
+						<td style = "width: 15%;">
+							2015-10-04
+						</td>
+						<td style = "width: 30%;">
+							<i class="fa fa-github db-m-r-10"></i>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+    </div>
+    <div class="wrapper db-m-t-10">
+    	<div class = "db-upload-wrapper">
+    		<div class="db-upload-area">
+    			<img src="images/app/upload.png" class = "db-icon" style = "height: auto">
+    			<span class = "title">点击或者拖拽文件至此上传</span>
+    			</br>
+    			<span class="content">支持所有文件格式，单个文件不超过20M。</span>
+    		</div>
+    	</div>
+    </div>
+</div>
+
+<lab-footer></lab-footer>

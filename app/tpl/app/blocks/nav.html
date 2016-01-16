@@ -1,11 +1,10 @@
 <!-- list -->
 <ul class="nav">
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-    <span translate="aside.nav.HEADER">功能</span>
-  </li>
 
   <!-- student items-->
-
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span translate="aside.nav.HEADER">学生功能</span>
+  </li>
  <li ui-sref-active="active" ng-if="isStudent()">
    <a ui-sref="app.index.student-reservations({title:'clazz'})"  data-ui-sref-opts="{reload: true}" class="auto">
      <span class="pull-right text-muted">
@@ -29,6 +28,9 @@
      </a>
    </li>
 
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span translate="aside.nav.HEADER">教师功能</span>
+  </li>
   <li ui-sref-active="active" ng-if="isTeacher()">
     <a ui-sref="app.teacher.class-selection"  data-ui-sref-opts="{reload: true}" class="auto">
       <span class="pull-right text-muted">

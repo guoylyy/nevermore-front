@@ -1,7 +1,5 @@
 'use strict';
 
-//看了下这个文件，用的都是localstorage，改为localStorageService更合适吧。
-//而且现在浏览器已经有了sessionStorage，再叫这个名字有点容易误解。
 angular.module('nevermore').service('sessionService',
 	function categoryService ($localStorage, $location,
 		$rootScope, tokenFactory, qService,$state) {
@@ -30,21 +28,17 @@ angular.module('nevermore').service('sessionService',
 
 		this.saveToken = function(token) {
 			$localStorage.token = token;
-			$rootScope.token = token;
 		};
 
 		this.storageChecking = function(){
 			checkLocalToken();
 		};
 
-		//get对应的save
-		//semester还拼错
 		this.saveCurrSemeter = function(semester){
 			$localStorage.semester = semester;
 			$rootScope.semester = semester;
 		};
 
-		//这和session有一毛钱关系。。。
 		function gCurrSemester(){
 			if($localStorage.semester){
 				$rootScope.semester = $localStorage.semester;

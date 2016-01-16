@@ -10,6 +10,7 @@
 angular.module('nevermore')
   .factory('Reservation', function($resource, sessionService, $rootScope) {
       var baseUrl = base_Url+'/api/reservation';
+      var new_baseUrl = base_Url + "/reservation"
       var headers = sessionService.headers();
       //var headers = {'x-auth-token': $rootScope.token};
       return {
@@ -53,6 +54,14 @@ angular.module('nevermore')
               headers: sessionService.headers()
             }
           });
+        },
+        reservation: function(){
+          return $resource(new_baseUrl, {}, {
+            "post": {
+              method: "POST",
+              headers: sessionService.headers(),
+            }
+          })
         },
         clazzReservation: function() {
           return $resource(baseUrl + '/classReservation', {}, {

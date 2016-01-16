@@ -10,6 +10,7 @@
 angular.module('nevermore')
   .factory('Lab', function ($resource, sessionService, $rootScope) {
     var baseUrl = base_Url+'/api/lab';
+    var new_baseUrl = base_Url + '/lab'
     var headers = sessionService.headers();
     //var headers = {'x-auth-token': $rootScope.token};
 
@@ -55,6 +56,14 @@ angular.module('nevermore')
             headers: sessionService.headers()
           }
         });
+      },
+      slots: function(){
+        return $resource(new_baseUrl + "/:id/slots", {}, {
+          "get": {
+            method: "GET",
+            headers: sessionService.headers(),
+          }
+        })
       }
     };
   });
