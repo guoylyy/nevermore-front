@@ -9,7 +9,7 @@
  */
 angular.module('nevermore')
   .factory('Account', function($resource, sessionService, $rootScope) {
-    var baseUrl = base_Url+'/api/account';
+    var baseUrl = base_Url+'/account';
     var headers = sessionService.headers();
     return {
       removeClazzStudent: function(){
@@ -49,11 +49,21 @@ angular.module('nevermore')
               }
           });
       },
-      account: function() {
-        return $resource(baseUrl + '/:id', 
+      accountIcon: function() {
+        var headers = sessionService.headers();
+        return $resource(baseUrl + '/icon/:attachId',
           {
-            id:"@id"
-          }, 
+            attachId: "@attachId"
+          },
+          {
+            'put': {
+              method: 'PUT',
+              headers: sessionService.headers()
+            }
+          })
+      },
+      profile: function() {
+        return $resource(baseUrl + '/profile', {},
           {
             'get': {
               method: 'GET',
@@ -62,26 +72,8 @@ angular.module('nevermore')
             'put': {
               method: 'PUT',
               headers: sessionService.headers()
-            },
-            'delete': {
-              method: 'DELETE',
-              headers: sessionService.headers()
             }
           });
-      },
-      accountIcon: function() {
-        var headers = sessionService.headers();
-        headers['Content-Type'] = 'multipart/form-data';
-        return $resource(baseUrl + '/:id/icon', 
-          {
-            id: "@id"
-          }, 
-          {
-            'post': {
-              method: 'POST',
-              headers: headers
-            }
-          })
       },
       search: function(){
         return $resource(baseUrl + '/searchByNameAndNumber',
@@ -96,10 +88,7 @@ angular.module('nevermore')
           });
       },
       password: function(){
-        return $resource(baseUrl + '/:id/password',
-          {
-            id : "@id"
-          },
+        return $resource(baseUrl + '/password', {},
           {
             'put':{
               method: 'PUT',
@@ -120,10 +109,10 @@ angular.module('nevermore')
           });
       },
       create: function() {
-        return $resource(baseUrl, 
+        return $resource(baseUrl,
           {
 
-          }, 
+          },
           {
             'post': {
               method: 'POST',
@@ -132,10 +121,10 @@ angular.module('nevermore')
           })
       },
       all: function() {
-        return $resource(baseUrl + '/list/all', 
+        return $resource(baseUrl + '/list/all',
           {
-            
-          }, 
+
+          },
           {
             'get': {
               method: 'GET',
@@ -144,11 +133,11 @@ angular.module('nevermore')
           });
       },
       page: function() {//分页获取用户
-        return $resource(baseUrl + '/list/page/:pageSize/:pageNumber', 
+        return $resource(baseUrl + '/list/page/:pageSize/:pageNumber',
           {
             pageSize: "@pageSize",
             pageNumber: "@pageNumber"
-          }, 
+          },
           {
             'get': {
               method: 'GET',

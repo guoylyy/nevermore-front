@@ -10,7 +10,7 @@ app.controller("AddCourseCtrl", ["$scope", "CourseManage", "ManagementService",
 
         $scope.addCourse = addCourse
 
-        var adding = false
+        $scope.adding = false
 
         function addCourse() {
             if (resourceComplete()) {
@@ -29,14 +29,13 @@ app.controller("AddCourseCtrl", ["$scope", "CourseManage", "ManagementService",
         }
 
         function resourceComplete() {
-            //TODO:校验输入
             return true;
         }
 
         function commitCourse() {
-            adding = true
-            var postResouce = angular.copy($scope.resource)
-            return CourseManage.create().post(postResouce)
+            $scope.adding = true
+            var postResource = angular.copy($scope.resource)
+            return CourseManage.create().post(postResource)
         }
 
         function removeErrorTip(data) {
@@ -53,7 +52,7 @@ app.controller("AddCourseCtrl", ["$scope", "CourseManage", "ManagementService",
         }
 
         function errorHandler(error) {
-            adding = false
+            $scope.adding = false
             var errorMessage = getErrorMessage(error)
             showErrorTip(errorMessage)
         }

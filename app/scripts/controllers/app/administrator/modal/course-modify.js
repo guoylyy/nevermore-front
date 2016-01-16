@@ -33,10 +33,6 @@ app.controller("ModifyCourseCtrl", ["$scope", "data", "CourseManage", "Managemen
         }
 
         function resourceComplete() {
-            //TODO:校验输入
-            if ($scope.resource.number === "") {
-                return false
-            }
             return true
         }
 
