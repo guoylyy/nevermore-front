@@ -1,61 +1,42 @@
 <div class="vbox db-bg">
-    <div class = "wrapper lter no_border" style = "overflow: hidden;">
+    <div class = "wrapper db-p-b-20 db-p-t-20 lter no_border" style = "overflow: hidden;">
         <span class = "subview3_title db-title">实验预约</span>
     </div>
     <div class="db-line"></div>
     <div class = "wrapper-md">
 		<ul class = "db-list">
-			<li class = "wrapper-sm">
+			<li class = "db-p-15" ng-repeat = "experiment in experimentList">
 				<div>
 					<span class="db-title db-exp-title">
-						拉伸实验
+						{{name}}拉伸试验
 					</span>
-					<span class="db-title db-exp-info-success">
-						已预约2时间段，共120人
+					<span ng-if = "experiment.reservations.length > 0" class="db-title db-exp-info-success">
+						已预约{{experiment.reservations.length}}时间段，共{{getTotalReservationPersonCount(experiment)}}人
 					</span>	
-					<button class="btn btn-default db-btn-default pull-right">
+					<span ng-if = "experiment.reservations.length === 0" class="db-title db-exp-info-danger">
+						还没有预约任何时间段
+					</span>	
+					<button ng-click = "openReserveDialog($index)" class="btn btn-default db-btn-default pull-right db-m-r-15">
 						立即预约
 					</button>
 				</div>
 				<div class="db-line db-m-0 db-m-t-10"></div>
-				<table class = "table db-file-table db-table-row-b">
-					<tr>
+				<table class = "table db-appointment-table db-m-b-0" ng-if = "experiment.reservations.length > 0">
+					<tr ng-repeat = "reservation in experiment.reservations">
 						<td style = "width: 25%">
-							<span class = "db-exp-time">2015-10-10(周三)</span>
+							<span class = "db-exp-time">{{reservation.applyDate}}2015-10-14</span>
 						</td>
 						<td style = "width: 25%;">
-							嘉定H317弯扭组合压杆稳定
+							{{reservation.lab}}实验室
 						</td>
 						<td style = "width: 10%;">
-							5,6节课
+							{{reservation.slot}}时间段
 						</td>
 						<td style = "width: 10%;">
-							61人
+							{{reservation.personCount}}人数
 						</td>
 						<td style = "width: 10%;">
-							审核中
-						</td>
-						<td style = "width: 20%;">
-							<button class="btn btn-danger db-btn-danger pull-right">
-								取消预约
-							</button>							
-						</td>
-					</tr>
-					<tr>
-						<td style = "width: 25%">
-							<span class = "db-exp-time">2015-10-10(周三)</span>
-						</td>
-						<td style = "width: 25%;">
-							嘉定H317弯扭组合压杆稳定
-						</td>
-						<td style = "width: 10%;">
-							5,6节课
-						</td>
-						<td style = "width: 10%;">
-							61人
-						</td>
-						<td style = "width: 10%;">
-							审核中
+							{{reservation.status}}状态
 						</td>
 						<td style = "width: 20%;">
 							<button class="btn btn-danger db-btn-danger pull-right">
@@ -64,21 +45,8 @@
 						</td>
 					</tr>
 				</table>
-			</li>
-			<li class = "wrapper-sm">
-				<div>
-					<span class="db-title db-exp-title">
-						拉伸实验
-					</span>
-					<span class="db-title db-exp-info-danger">
-						已预约2时间段，共120人
-					</span>	
-					<button class="btn btn-default db-btn-default pull-right">
-						立即预约
-					</button>
-				</div>
-				<div class="db-line db-m-0 db-m-t-10"></div>
-				<nevermore-empty-panel ng-if="true" text="赶快预约实验室吧！"></nevermore-empty-panel>
+				<nevermore-empty-panel ng-if="experiment.reservations.length === 0" text="赶快预约实验室吧！"></nevermore-empty-panel>
+				<div class="db-line db-m-0" ng-if = "experiment.reservations.length === 0"></div>
 			</li>
 		</ul>
     </div>
