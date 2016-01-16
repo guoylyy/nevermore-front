@@ -10,6 +10,7 @@
 angular.module('nevermore')
   .factory('Exp', function ($resource, sessionService, $rootScope) {
     var baseUrl = base_Url+'/api/experiment';
+    var new_baseUrl = base_Url + "/experiment"
     var headers = sessionService.headers();
     //var headers = {'x-auth-token': $rootScope.token};
     return {
@@ -56,7 +57,7 @@ angular.module('nevermore')
         });
       },
       labs: function(){
-        return $resource(baseUrl + '/:id/labs', {
+        return $resource(new_baseUrl + '/:id/labs', {
           id:'@id'
         }, {
           'get': {

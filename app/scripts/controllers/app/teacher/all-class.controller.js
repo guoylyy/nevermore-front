@@ -1,37 +1,35 @@
 ;void function(){
-	angular.module("nevermore")
-			.controller("TeacherMainPageController", TeacherMainPageController)
 
-	TeacherMainPageController.$inject = ["$scope", "clazzFactory", 
-		"httpResponseFactory", "ToasterTool"]
+	app.controller("TeacherAllClassController", TeacherAllClassController)
 
-	function TeacherMainPageController($scope, clazzFactory, httpResponseFactory, 
-		ToasterTool){
+	TeacherAllClassController.$inject = ["$scope", "clazzFactory", "ToasterTool", 
+	"httpResponseFactory"]
 
-		$scope.mainPageContent = null
-		
-		getMainPage()
+	function TeacherAllClassController($scope, clazzFactory, ToasterTool,
+		httpResponseFactory){
 
+		$scope.classList = []
 
-		function getMainPage(){
-			clazzFactory.mainPage().get({
-				id: $scope.classID,
+		getAllClass()
+
+		function getAllClass(){
+			clazzFactory.teacherClazzList().get({
+				scope: "all",
 			})
 			.$promise
 			.then(function(response){
 				if(httpResponseFactory.isResponseSuccess(response)){
 					var data = httpResponseFactory.getResponseData(response)
-					$scope.mainPageContent = data.content
+					angular.copy(data, $scope.classList)
 				}else{
 					throw new Error(response)
 				}
 			})
 			.catch(errorHandler)
-		}	
+		}
 
 		function errorHandler(error){
 			var message = httpResponseFactory.getResponseMessage(error)
-
 			if(!!message){
 				ToasterTool.error(message)
 			}else{
@@ -39,4 +37,4 @@
 			}
 		}
 	}
-}()	
+}()

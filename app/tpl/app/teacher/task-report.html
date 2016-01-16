@@ -1,5 +1,5 @@
 <div class="vbox db-bg">
-    <div class = "wrapper lter no_border" style = "overflow: hidden;">
+    <div class = "wrapper db-p-b-20 db-p-t-20 db-title-wrapper lter no_border" style = "overflow: hidden;">
     	<ol class="breadcrumb db-breadcrumb subview3_title">
     		<li>
     			<a href="#">
@@ -14,7 +14,7 @@
     	</ol>
     </div>
     <div class="db-line"></div>
-    <div class = "wrapper-md">
+    <div class = "wrapper">
     	<div>
 			<span class="db-title db-exp-title db-m-r-25">
 				拉伸实验
@@ -22,12 +22,12 @@
 			<span class="db-title db-exp-info-primary">
 				100/200
 			</span>	
-			<button class="btn btn-primary pull-right">
+			<button class="btn btn-primary db-btn-primary pull-right">
 				返回
 			</button>
 		</div>
-		<div class="db-line db-m-0 db-m-t-10 db-m-b-10"></div>
-		<div class="nav-tabs-alt">
+		<div class="db-line db-m-0 db-m-t-10 db-m-b-20"></div>
+		<div>
 			<ul class="db-tab-table pull-left">
 				<li class="active">
 					<a data-target = "#finishTask" role = "tab" data-toggle = "tab" aria-expanded = "true">
@@ -40,16 +40,12 @@
 					</a>
 				</li>
 			</ul>
-			<form class = "form-horizontal pull-right">
-				<div class="form-group">
-			      <div class="col-sm-9">
-			        <input type="text" class="form-control" id="name" ng-model = "resource.name">
-			      </div>
-			      <button class="btn btn-default">搜索</button>
-			    </div>
+			<form class = "pull-right db-search-form">
+			    <input type="text" placeholder = "输入学号或姓名">
+			   	<button class="search-btn">搜索</button>
 			</form>
 		</div>
-		<table class="table table-bordered task-table">
+		<table class="table table-bordered db-task-detail-table">
 			<thead>
 				<tr>
 					<th style = "width: 14%">学号</th>
@@ -65,36 +61,12 @@
 					<td>09114</td>
 					<td>攀岩</td>
 					<td>
-						<span class="db-exp-info-success bold">已提交</span>
+						<span class="db-text-success">已提交</span>
 					</td>
 					<td>2015-10-10</td>
 					<td>67/100</td>
 					<td>
-						<button class="btn btn-sm btn-primary">查看报告</button>
-					</td>
-				</tr>
-				<tr>
-					<td>09114</td>
-					<td>攀岩</td>
-					<td>
-						<span class="db-exp-info-success bold">已提交</span>
-					</td>
-					<td>2015-10-10</td>
-					<td>67/100</td>
-					<td>
-						<button class="btn btn-sm btn-primary">查看报告</button>
-					</td>
-				</tr>
-				<tr>
-					<td>09114</td>
-					<td>攀岩</td>
-					<td>
-						<span class="db-exp-info-success bold">已提交</span>
-					</td>
-					<td>2015-10-10</td>
-					<td>67/100</td>
-					<td>
-						<button class="btn btn-sm btn-primary">查看报告</button>
+						<button class="btn btn-sm btn-primary db-btn-primary">查看报告</button>
 					</td>
 				</tr>
 			</tbody>

@@ -1,10 +1,10 @@
 <div class="vbox db-bg">
-    <div class = "wrapper lter no_border" style = "overflow: hidden;">
+    <div class = "wrapper db-p-b-20 db-p-t-20 db-title-wrapper lter no_border" style = "overflow: hidden;">
     	<span class = "subview3_title db-title">学生列表</span>
     	<span class = "pull-right">共&nbsp;&nbsp;<label class = "db-student-count">135</label>&nbsp;&nbsp;人</span>
     </div>
     <div class="db-line"></div>
-    <div class = "wrapper-md">
+    <div class = "wrapper">
     	<div style = "overflow: hidden; margin-bottom: 20px;">
 			<span>
 				以下是该参加该课程的学生列表，请教师谨慎操作！！
@@ -13,22 +13,23 @@
 				上传学生名单
 			</button>
 		</div>
-		<div class="nav-tabs-alt">
-			<button class = "btn btn-sm btn-primary db-btn-primary">添加学生</button>
-			<button class="btn btn-sm btn-danger db-btn-danger">移除所选</button>
-			<form class = "form-horizontal pull-right">
-				<div class="form-group">
-			      <div class="col-sm-6">
-			        <input type="text" class="form-control" id="name" ng-model = "resource.name">
-			      </div>
-			      <button class="btn btn-default db-btn-default">搜索</button>
-			    </div>
+		<div class="db-m-b-10">
+			<button class = "btn btn-primary db-btn-primary db-m-r-15">添加学生</button>
+			<button class="btn btn-danger db-btn-danger">移除所选</button>
+			<form class = "pull-right db-search-form">
+			    <input type="text" placeholder = "输入学号或姓名">
+			   	<button class="search-btn">搜索</button>
 			</form>
 		</div>
-		<table class="table table-bordered task-table">
+		<table class="table table-bordered db-student-table">
 			<thead>
 				<tr>
-					<th style = "width: 4.5%"><input type = "radio"/></th>
+					<th style = "width: 4.5%" class = "db-t-c">
+						<label class="i-checks i-checks-sm db-check db-m-b-0">
+	                        <input type="checkbox">
+	                        <i></i>
+	                    </label>
+					</th>
 					<th style = "width: 15.5%">学号</th>
 					<th style = "width: 23%">姓名</th>
 					<th style = "width: 23%">专业</th>
@@ -38,7 +39,12 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><input type = "radio"/></td>
+					<td class = "db-t-c">
+						<label class="i-checks i-checks-sm db-check db-m-b-0">
+	                        <input type="checkbox">
+	                        <i></i>
+	                    </label>
+					</td>
 					<td>091114</td>
 					<td>
 						攀岩
@@ -46,31 +52,8 @@
 					<td>软件工程</td>
 					<td>男</td>
 					<td>
-						<button class="btn btn-sm btn-primary db-btn-primary">查看报告</button>
-					</td>
-				</tr>
-				<tr>
-					<td><input type = "radio"/></td>
-					<td>091114</td>
-					<td>
-						攀岩
-					</td>
-					<td>软件工程</td>
-					<td>男</td>
-					<td>
-						<button class="btn btn-sm btn-primary db-btn-primary">查看报告</button>
-					</td>
-				</tr>
-				<tr>
-					<td><input type = "radio"/></td>
-					<td>091114</td>
-					<td>
-						攀岩
-					</td>
-					<td>软件工程</td>
-					<td>男</td>
-					<td>
-						<button class="btn btn-sm btn-primary db-btn-primary">查看报告</button>
+						<img class = "db-icon db-m-r-30" src="images/app/look.png" alt="查看"/>
+						<img class = "db-icon" src="images/app/delete.png" alt = "删除">
 					</td>
 				</tr>
 			</tbody>
