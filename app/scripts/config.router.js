@@ -342,6 +342,18 @@ angular.module('nevermore')
               }],
             },
           })
+          .state("app.student.class-selection.all-class", {
+            url: "^/app/student/class-selection/all-class",
+            templateUrl: "tpl/app/student/all-class.html",
+            controller: "StudentAllClassController",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/student/all-class.controller.js",
+                ])
+              }]
+            }
+          })
           .state("app.student.class", {
             url: "/class/:classID",
             templateUrl: "tpl/app/student/class.html",

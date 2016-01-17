@@ -2,9 +2,9 @@
 	angular.module("nevermore")
 			.controller("TeacherReservationController", TeacherReservationController)
 
-	TeacherReservationController.$inject = ["$scope"]
+	TeacherReservationController.$inject = ["$scope", "ngDialog", "Exp"]
 
-	function TeacherReservationController($scope){
+	function TeacherReservationController($scope, ngDialog, Exp){
 		
 	}
 

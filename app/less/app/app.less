@@ -168,6 +168,10 @@ li.disabled > a:focus {
   margin-bottom: 20px;
 }
 
+.db-m-b-25{
+  margin-bottom: 25px;
+}
+
 .db-m-b-40{
   margin-bottom: 40px;
 }
@@ -206,6 +210,10 @@ li.disabled > a:focus {
 
 .db-text-danger{
   color: #FF5F57;
+}
+
+.db-text-gray{
+  color: #4A4A4A !important;
 }
 
 .db-text-success{
@@ -271,6 +279,10 @@ li.disabled > a:focus {
 
 .db-p-t-20{
   padding-top: 20px;
+}
+
+.db-p-t-25{
+  padding-top: 25px;
 }
 
 .db-title-wrapper{
@@ -498,8 +510,14 @@ li.disabled > a:focus {
 
 .db-table-row-narrow{
   &>tbody>tr>td{
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding-top: 13px;
+    padding-bottom: 0px;
+    .db-text-gray;
+    height: 20px;
+    line-height: 20px;
+  }
+  td:first-child{
+    padding-left: 0px;
   }
 }
 
