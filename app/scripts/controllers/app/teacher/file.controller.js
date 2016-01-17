@@ -1,11 +1,14 @@
+/**
+ * 实验文件管理类
+ */
 ;void function(){
 	angular.module("nevermore")
 			.controller("TeacherFileController", TeacherFileController)
 
-	TeacherFileController.$inject = ["$scope", "clazzFactory", "httpResponseFactory", 
+	TeacherFileController.$inject = ["$scope", "ClazzFactory", "httpResponseFactory",
 		"ToasterTool"]
 
-	function TeacherFileController($scope, clazzFactory, httpResponseFactory, 
+	function TeacherFileController($scope, ClazzFactory, httpResponseFactory,
 		ToasterTool){
 
 		$scope.publicFileList = []
@@ -14,6 +17,7 @@
 		getPublicFiles()
 		getPrivateFiles()
 
+		//获取共有文件
 		function getPublicFiles(){
 			var fileType = "CLAZZ_PUBLIC"
 
@@ -29,6 +33,7 @@
 			.catch(errorHandler)
 		}
 
+		//获取私有文件
 		function getPrivateFiles(){
 			var fileType = "CLAZZ_PRIVATE"
 			getFiles(fileType)
@@ -43,8 +48,9 @@
 			.catch(errorHandler)
 		}
 
+		//访问文件列表接口
 		function getFiles(fileType){
-			return clazzFactory.files().get({
+			return ClazzFactory.files().get({
 				id: $scope.classID,
 				type: fileType
 			}).$promise
