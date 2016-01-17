@@ -116,6 +116,9 @@
 .text-2x {
   font-size: 2em;
 }
+.text-xl {
+  font-size: 20px;
+}
 .text-lg {
   font-size: 18px;
 }
@@ -2295,6 +2298,12 @@ input::-webkit-inner-spin-button {
 .db-t-c {
   text-align: center;
 }
+.db-t-r {
+  text-align: right;
+}
+.db-t-l {
+  text-align: left;
+}
 .btn_step_undo {
   background-color: #cccccc;
 }
@@ -2369,6 +2378,12 @@ li.disabled > a:focus {
 .db-m-t-10 {
   margin-top: 10px;
 }
+.db-m-t-30 {
+  margin-top: 30px;
+}
+.db-m-t-40 {
+  margin-top: 40px;
+}
 .db-m-b-0 {
   margin-bottom: 0px;
 }
@@ -2380,6 +2395,9 @@ li.disabled > a:focus {
 }
 .db-m-b-20 {
   margin-bottom: 20px;
+}
+.db-m-b-25 {
+  margin-bottom: 25px;
 }
 .db-m-b-40 {
   margin-bottom: 40px;
@@ -2410,6 +2428,9 @@ li.disabled > a:focus {
 }
 .db-text-danger {
   color: #FF5F57;
+}
+.db-text-gray {
+  color: #4A4A4A !important;
 }
 .db-text-success {
   color: #32BE77;
@@ -2459,6 +2480,9 @@ li.disabled > a:focus {
 }
 .db-p-t-20 {
   padding-top: 20px;
+}
+.db-p-t-25 {
+  padding-top: 25px;
 }
 .db-title-wrapper {
   height: 65px;
@@ -2659,8 +2683,14 @@ li.disabled > a:focus {
   border: none;
 }
 .db-table-row-narrow > tbody > tr > td {
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-top: 13px;
+  padding-bottom: 0px;
+  color: #4A4A4A !important;
+  height: 20px;
+  line-height: 20px;
+}
+.db-table-row-narrow td:first-child {
+  padding-left: 0px;
 }
 .db-list {
   list-style: none;
@@ -2828,68 +2858,9 @@ li.disabled > a:focus {
 .db-upload-wrapper .content {
   font-size: 13px;
 }
-.db-search-form {
-  width: 273px;
-  height: 30px;
-  box-sizing: content-box;
-  background-color: white;
-  border: solid 1px #CFCFCF;
-  border-radius: 5px;
-  overflow: hidden;
+.db-big-text-table > thead > tr > td {
+  font-size: 18px;
 }
-.db-search-form input {
-  width: 200px;
-  height: 30px;
-  padding: 5px 10px;
-  padding-right: 0px;
-  line-height: 20px;
-  font-size: 14px;
-  box-sizing: border-box;
-  border: none;
-  border-right: solid 1px #CFCFCF;
-}
-.db-search-form .search-btn {
-  width: 70px;
-  height: 30px;
-  box-sizing: border-box;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 20px;
-  padding: 5px 20px;
-  color: #4A4A4A;
-  background-color: white;
-  border: none;
-}
-.db-icon {
-  width: 20px;
-  height: 20px;
-}
-.db-check {
-  margin: 0px;
-  padding: 0px;
-}
-.db-check > i {
-  width: 20px;
-  height: 20px;
-  margin: 0px;
-  padding: 0px;
-  border: solid 1px #979797;
-}
-.db-upload-wrapper {
-  border: solid 1px #CFCFCF;
-  border-radius: 5px;
-  color: #9B9B9B;
-  height: 200px;
-  padding: 80px 0px;
-  text-align: center;
-}
-.db-upload-wrapper .db-upload-area {
-  height: 40px;
-  line-height: 20px;
-}
-.db-upload-wrapper .title {
-  font-size: 16px;
-}
-.db-upload-wrapper .content {
-  font-size: 13px;
+.db-big-text-table > tbody > tr > td {
+  font-size: 18px;
 }

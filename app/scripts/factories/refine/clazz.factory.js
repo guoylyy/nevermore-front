@@ -8,6 +8,7 @@
 
     return {
       teacherClazzList: teacherClazzList,
+      experiments: experiments,
       mainPage: mainPage,
       files: files,
       file: file,
@@ -15,6 +16,17 @@
       student: student,
       removeFile: removeFile
     }
+
+    //获取实验记录
+    function experiments(){
+      return $resource(apiUrl + "/:id/experiments", null, {
+        get: {
+          method: "GET",
+          headers: sessionService.headers()
+        }
+      })
+    }
+
     //教师班级列表
     function teacherClazzList(){
       return $resource(apiUrl + "/teacherClazzList", null, {
