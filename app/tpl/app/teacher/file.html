@@ -21,52 +21,51 @@
 		</div>
 		<div class="db-line db-m-0 db-m-b-10"></div>
 		<div class="tab-content">
+      <!-- 共有文件夹-->
 			<div class="tab-pane active" id = "publicFiles">
 				<table class = "table db-file-table">
-					<tr>
+					<tr ng-repeat="file in publicFileList">
 						<td style = "width: 6%;">
 							<div class="file-icon">
-								shi
-								<!-- {{file.name | limitTo: 2}} -->
+									{{file.name | limitTo: 2}}
 							</div>
 						</td>
 						<td class = "file-name" style = "width: 50%;">
-							name
-							<!-- {{file.name}} -->
-						</td>
-						<td style = "width: 10%;">
-							303kb
-							<!-- {{file.size}}kb -->
-						</td>
-						<td style = "width: 15%;">
-							2015-10-14
-						</td>
-						<td style = "width: 30%; text-align: right;">
-							<img class = "db-icon db-m-r-20" style = "height: auto;" src="images/app/download.png" alt="下载"/>
-							<img class = "db-icon db-m-r-20" src="images/app/delete.png" alt = "删除">
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="tab-pane" id = "privateFiles">
-				<table class = "table db-file-table">
-					<tr ng-repeat = "file in privateFileList">
-						<td style = "width: 6%;">
-							<div class="file-icon">
-								{{file.name | limitTo: 2}}
-							</div>
-						</td>
-						<td style = "width: 50%;">
 							{{file.name}}
 						</td>
 						<td style = "width: 10%;">
 							{{file.size}}kb
 						</td>
 						<td style = "width: 15%;">
-							2015-10-04
+							2015-10-14
 						</td>
-						<td style = "width: 30%;">
-							<i class="fa fa-github db-m-r-10"></i>
+						<td style = "width: 30%; text-align: right;">
+							<a href="{{file.url}}" target="_blank"><img class = "db-icon db-m-r-20" style = "height: auto;" src="images/app/download.png" alt="下载"/></a>
+							<a ng-click="remove(file)"><img class = "db-icon db-m-r-20" src="images/app/delete.png" alt = "删除"></a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="tab-pane" id = "privateFiles">
+				<table class = "table db-file-table">
+          <tr ng-repeat="file in privateFileList">
+						<td style = "width: 6%;">
+							<div class="file-icon">
+									{{file.name | limitTo: 2}}
+							</div>
+						</td>
+						<td class = "file-name" style = "width: 50%;">
+							{{file.name}}
+						</td>
+						<td style = "width: 10%;">
+							{{file.size}}kb
+						</td>
+						<td style = "width: 15%;">
+							2015-10-14
+						</td>
+						<td style = "width: 30%; text-align: right;">
+							<a href="{{file.url}}" target="_blank"><img class = "db-icon db-m-r-20" style = "height: auto;" src="images/app/download.png" alt="下载"/></a>
+							<a ng-click="remove(file)"><img class = "db-icon db-m-r-20" src="images/app/delete.png" alt = "删除"></a>
 						</td>
 					</tr>
 				</table>

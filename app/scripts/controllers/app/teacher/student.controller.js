@@ -42,6 +42,8 @@
 			});
 		};
 
+		// ~ private methods
+
 		//获取学生列表
 		function loadClazzStudents(){
 			ClazzFactory.students().get({

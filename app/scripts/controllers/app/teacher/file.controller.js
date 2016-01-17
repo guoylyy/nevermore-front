@@ -1,11 +1,14 @@
+/**
+ * 实验文件管理类
+ */
 ;void function(){
 	angular.module("nevermore")
 			.controller("TeacherFileController", TeacherFileController)
 
-	TeacherFileController.$inject = ["$scope", "clazzFactory", "httpResponseFactory", 
+	TeacherFileController.$inject = ["$scope", "ClazzFactory", "httpResponseFactory",
 		"ToasterTool"]
 
-	function TeacherFileController($scope, clazzFactory, httpResponseFactory, 
+	function TeacherFileController($scope, ClazzFactory, httpResponseFactory,
 		ToasterTool){
 
 		$scope.publicFileList = []
@@ -44,7 +47,7 @@
 		}
 
 		function getFiles(fileType){
-			return clazzFactory.files().get({
+			return ClazzFactory.files().get({
 				id: $scope.classID,
 				type: fileType
 			}).$promise
