@@ -5,17 +5,20 @@
     <div class="db-line"></div>
     <div class = "wrapper-md db-m-t-5">
 		<ul class = "db-list">
-			<li class = "db-p-l-20 db-p-r-20">
+			<li class = "db-p-l-20 db-p-r-20" ng-repeat="experiment in experimentList">
 				<div>
 					<span class="db-title db-exp-title">
-						拉伸实验
+						{{experiment.name}}
 					</span>
-					<span class="db-title db-exp-info-success">
-						已预约2时间段
-					</span>	
-					<button class="btn btn-default db-btn-default pull-right db-m-r-15">
+          <span ng-if = "experiment.reservations.length > 0" class="text-success">
+						已预约{{experiment.reservations.length}}时间段
+					</span>
+					<span ng-if = "experiment.reservations.length === 0" class="text-danger">
+						还没有预约任何时间段
+					</span>
+					<!-- <button class="btn btn-default db-btn-default pull-right db-m-r-15">
 						预约情况
-					</button>
+					</button> -->
 				</div>
 				<div class="db-line db-m-0 db-m-t-10"></div>
 				<table class = "table db-task-table db-table-row-b db-m-b-40">
@@ -39,40 +42,7 @@
 					</tr>
 				</table>
 			</li>
-			<li class = "db-p-l-20 db-p-r-20">
-				<div>
-					<span class="db-title db-exp-title">
-						拉伸实验
-					</span>
-					<span class="db-title db-exp-info-danger">
-						还没有任何预约
-					</span>	
-					<button class="btn btn-default db-btn-default pull-right db-m-r-15">
-						预约情况
-					</button>
-				</div>
-				<div class="db-line db-m-0 db-m-t-10"></div>
-				<table class = "table db-task-table db-table-row-b db-m-b-40">
-					<tr>
-						<td style = "width: 20%">
-							<span class = "db-task-info">实验完成率:</span>
-						</td>
-						<td style = "width: 30%">
-							<a href="#" class = "db-big-data-danger">
-								0/0>
-							</a>
-						</td>
-						<td style = "width: 20%">
-							<span class="db-task-info">实验报告提交率:</span>
-						</td>
-						<td style = "width: 30%">
-							<a href="#" class = "db-big-data-danger">
-								0/0>
-							</a>
-						</td>
-					</tr>
-				</table>
-			</li>
+
 		</ul>
     </div>
 </div>
