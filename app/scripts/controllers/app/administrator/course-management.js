@@ -6,6 +6,7 @@ function($scope, CourseManage, generalService, ToasterTool, ManagementService, A
 	$scope.pageChanged = loadResources
 	$scope.addResource = addResource
 	$scope.modifyResource = modifyResource
+	$scope.richModifyResource = richModifyResource
 
 	loadResources();
 
@@ -33,7 +34,7 @@ function($scope, CourseManage, generalService, ToasterTool, ManagementService, A
 	}
 	function onAdd(){
 			loadResources()
-			ToasterTool.success("添加实验室成功！")
+			ToasterTool.success("添加实验课程成功！")
 	}
 
 	// ~ 修改信息
@@ -44,13 +45,25 @@ function($scope, CourseManage, generalService, ToasterTool, ManagementService, A
 		modifyDialog.setCloseListener(onModify, onDelete)
 		modifyDialog.open(resource, templateUrl, controller, {})
 	}
+	// ~ 修改主页信息
+	function richModifyResource(resource){
+		var templateUrl = "tpl/app/admin/modal/rich-modify-experiment-course.html"
+		var controller = "RichModifyCourseCtrl"
+		var richModifyDialog = new ManagementService.RichModifyDialog()
+		richModifyDialog.setCloseListener(onRichModify)
+		richModifyDialog.open(resource, templateUrl, controller, {})
+	}
+
 	function onModify(){
 			loadResources()
-			ToasterTool.success("修改实验室成功！")
+			ToasterTool.success("修改实验课程成功！")
+	}
+	function onRichModify(){
+			ToasterTool.success("修改实验课程主页成功！")
 	}
 	function onDelete(){
 		loadResources()
-		ToasterTool.success("删除实验室成功！")
+		ToasterTool.success("删除实验课程成功！")
 	}
 
 }]);

@@ -700,6 +700,7 @@ angular.module('nevermore')
                   "scripts/controllers/app/administrator/course-management.js",
                   "scripts/controllers/app/administrator/modal/course-add.js",
                   "scripts/controllers/app/administrator/modal/course-modify.js",
+                  "scripts/controllers/app/administrator/modal/course-rich-modify.js"
                 ])
               }]
             }

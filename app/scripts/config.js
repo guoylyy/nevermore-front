@@ -15,6 +15,18 @@ var app =
         app.value = $provide.value;
       }
     ])
+    .config(['$provide', function ($provide) {
+      $provide.decorator('taOptions', ['$delegate', function (taOptions) {
+        taOptions.toolbar = [
+          ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
+          ['bold', 'italics', 'underline', 'ul', 'ol', 'redo', 'undo', 'clear'],
+          ['justifyLeft','justifyCenter','justifyRight', 'justifyFull'],
+          ['insertImage', 'insertLink']
+        ];
+
+        return taOptions;
+      }]);
+    }])
     .config(function ($httpProvider){
       // $httpProvider.interceptors.push('loadingInterceptor');
       // $httpProvider.interceptors.push('authInterceptor');
