@@ -6,16 +6,78 @@
 			.controller("TeacherFileController", TeacherFileController)
 
 	TeacherFileController.$inject = ["$scope", "ClazzFactory", "httpResponseFactory",
-		"ToasterTool"]
+		"ToasterTool", "Upload", "sessionService"]
 
 	function TeacherFileController($scope, ClazzFactory, httpResponseFactory,
-		ToasterTool){
+		ToasterTool, Upload, sessionService){
 
 		$scope.publicFileList = []
 		$scope.privateFileList = []
 
+		$scope.selectedTab = 'CLAZZ_PUBLIC'
+		$scope.remove = removeFileFromClazz
+
 		getPublicFiles()
 		getPrivateFiles()
+
+		$scope.$watch('file', function () {
+			$scope.uploadFile($scope.file);
+		});
+
+		$scope.table = [];
+		$scope.changeTab = function(tab){
+			$scope.selectedTab = tab;
+		}
+
+		$scope.uploadFile = function (file) {
+			if(file) {
+				Upload.upload({
+						url: base_Url+'/file/upload',
+						method: 'POST',
+						headers: sessionService.headers(),
+						data: {},
+						file: file
+				}).then (function (response) {
+					console.log(response);
+						if (response.data.success){
+							relateFileAndClazz(response.data.data, $scope.classID);
+						}
+				}, function (response) {
+					ToasterTool.warning("文件上传失败!");
+				});
+			}
+		};
+
+		//关联文件
+		function relateFileAndClazz(file, clazzId){
+			ClazzFactory.file().post({id:clazzId}, {
+				attachId: file.id,
+				type: $scope.selectedTab
+			}).$promise
+			.then(function(response){
+				if(response.success){
+					ToasterTool.success("文件上传成功!");
+					refreshList()
+				}else{
+					ToasterTool.warning("文件上传失败!");
+				}
+			});
+		}
+
+		function removeFileFromClazz(file){
+			ClazzFactory.removeFile().delete({
+				id : $scope.classID,
+				fileId : file.id,
+				type: $scope.selectedTab
+			},{})
+			.$promise
+			.then(function(response){
+				if(response.success){
+					ToasterTool.success("移除文件成功!");
+					refreshList()
+				}
+			});
+		}
 
 		//获取共有文件
 		function getPublicFiles(){
@@ -54,6 +116,15 @@
 				id: $scope.classID,
 				type: fileType
 			}).$promise
+		}
+
+		//刷新当前列表
+		function refreshList(){
+			if($scope.selectedTab === 'CLAZZ_PUBLIC'){
+					getPublicFiles();
+			}else{
+					getPrivateFiles();
+			}
 		}
 
 		function errorHandler(error){
