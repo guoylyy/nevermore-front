@@ -2824,3 +2824,68 @@ li.disabled > a:focus {
 .db-upload-wrapper .content {
   font-size: 13px;
 }
+.db-search-form {
+  width: 273px;
+  height: 30px;
+  box-sizing: content-box;
+  background-color: white;
+  border: solid 1px #CFCFCF;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.db-search-form input {
+  width: 200px;
+  height: 30px;
+  padding: 5px 10px;
+  padding-right: 0px;
+  line-height: 20px;
+  font-size: 14px;
+  box-sizing: border-box;
+  border: none;
+  border-right: solid 1px #CFCFCF;
+}
+.db-search-form .search-btn {
+  width: 70px;
+  height: 30px;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 5px 20px;
+  color: #4A4A4A;
+  background-color: white;
+  border: none;
+}
+.db-icon {
+  width: 20px;
+  height: 20px;
+}
+.db-check {
+  margin: 0px;
+  padding: 0px;
+}
+.db-check > i {
+  width: 20px;
+  height: 20px;
+  margin: 0px;
+  padding: 0px;
+  border: solid 1px #979797;
+}
+.db-upload-wrapper {
+  border: solid 1px #CFCFCF;
+  border-radius: 5px;
+  color: #9B9B9B;
+  height: 200px;
+  padding: 80px 0px;
+  text-align: center;
+}
+.db-upload-wrapper .db-upload-area {
+  height: 40px;
+  line-height: 20px;
+}
+.db-upload-wrapper .title {
+  font-size: 16px;
+}
+.db-upload-wrapper .content {
+  font-size: 13px;
+}
