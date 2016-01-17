@@ -667,6 +667,9 @@ angular.module('nevermore')
                   "scripts/controllers/app/administrator/experiment-management.js",
                   "scripts/controllers/app/administrator/modal/experiment-add.js",
                   "scripts/controllers/app/administrator/modal/experiment-modify.js",
+                  "scripts/controllers/app/administrator/modal/experiment-lab-add.js",
+                  "angularBootstrapNavTree",
+                  'scripts/directives/app/nm-configure-list.js'
                 ])
               }]
             }
