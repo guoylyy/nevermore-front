@@ -11,7 +11,7 @@
 	    	</div>
 	    	<div class="db-p-l-40">
 				<table class = "table db-file-table db-table-row-b">
-					<tr>
+					<tr class="cursor-pointer">
 						<td style = "width: 25%">
 							<span class = "db-exp-time">2015-10-10(周三)</span>
 						</td>
@@ -28,36 +28,15 @@
 							审核中
 						</td>
 						<td style = "width: 20%;">
-							<button class="btn btn-danger db-btn-danger pull-right">
+							<button class="btn btn-danger db-btn-danger pull-right m-t-sm">
 								取消预约
-							</button>							
+							</button>
 						</td>
 					</tr>
-					<tr>
-						<td style = "width: 25%">
-							<span class = "db-exp-time">2015-10-10(周三)</span>
-						</td>
-						<td style = "width: 25%;">
-							<span class="db-exp-time">嘉定H317弯扭组合压杆稳定</span>
-						</td>
-						<td style = "width: 10%;">
-							5,6节课
-						</td>
-						<td style = "width: 10%;">
-							61人
-						</td>
-						<td style = "width: 10%;">
-							审核中
-						</td>
-						<td style = "width: 20%;">
-							<button class="btn btn-danger db-btn-danger pull-right">
-								取消预约
-							</button>							
-						</td>
-					</tr>
+
 				</table>
 	    	</div>
-	    	<div class = "db-m-b-20">
+	    	<div class = "db-m-b-20 m-t-xxl">
 	    		<span class="db-title">其他预约</span>
 	    	</div>
 	    	<div class="db-p-l-40">
@@ -79,37 +58,16 @@
 							审核中
 						</td>
 						<td style = "width: 20%;">
-							<button class="btn btn-danger db-btn-danger pull-right">
+							<button class="btn btn-danger db-btn-danger pull-right m-t-sm">
 								取消预约
-							</button>							
+							</button>
 						</td>
 					</tr>
-					<tr>
-						<td style = "width: 25%">
-							<span class = "db-exp-time">2015-10-10(周三)</span>
-						</td>
-						<td style = "width: 25%;">
-							<span class="db-exp-time">嘉定H317弯扭组合压杆稳定</span>
-						</td>
-						<td style = "width: 10%;">
-							5,6节课
-						</td>
-						<td style = "width: 10%;">
-							61人
-						</td>
-						<td style = "width: 10%;">
-							审核中
-						</td>
-						<td style = "width: 20%;">
-							<button class="btn btn-danger db-btn-danger pull-right">
-								取消预约
-							</button>							
-						</td>
-					</tr>
+
 				</table>
 				<div class="row clearfix" style="width: 100%;" >
 	            	<div class="pull-left col-sm-4 m-t-sm">
-	              		<span class="db-title">共&nbsp;{{accounts.totalItemNum}}&nbsp;个预约</span>
+	              		<span class="db-title">共&nbsp;{{list.totalItemNum}}&nbsp;个非本周预约</span>
 	            	</div>
 	              	<div class="pull-right">
 	            		<uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="accounts.totalItemNum"

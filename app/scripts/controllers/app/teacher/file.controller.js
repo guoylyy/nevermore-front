@@ -17,6 +17,7 @@
 		getPublicFiles()
 		getPrivateFiles()
 
+		//获取共有文件
 		function getPublicFiles(){
 			var fileType = "CLAZZ_PUBLIC"
 
@@ -32,6 +33,7 @@
 			.catch(errorHandler)
 		}
 
+		//获取私有文件
 		function getPrivateFiles(){
 			var fileType = "CLAZZ_PRIVATE"
 			getFiles(fileType)
@@ -46,6 +48,7 @@
 			.catch(errorHandler)
 		}
 
+		//访问文件列表接口
 		function getFiles(fileType){
 			return ClazzFactory.files().get({
 				id: $scope.classID,
