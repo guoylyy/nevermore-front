@@ -1,0 +1,24 @@
+<div class = "vbox">
+	<div class="hbox hbox-auto-xs hbox-auto-sm ng-scope">
+		<div class = "wrapper lter no_border" style = "overflow: hidden;">
+	        <span class = "subview3_title db-title">所有课程</span>
+	    </div>
+	    <div class="db-line"></div>
+	    <div class="wrapper-md">
+			<ul class = "db-list course-list">
+		    	<!-- <li ng-repeat = "class in classList">
+		    		<div ui-sref = "app.teacher.class.main-page({classID: '{{class.id}}'})">
+		    			<img src="images/app/course1.jpg" class = "course-img">
+		    			<a class="text-link text-md">{{class.number}}-{{clazz.course.name}}</a>
+		    		</div>
+		    	</li> -->
+		    	<li>
+		    		<div ui-sref = "app.student.class.main-page({classID: '{{class.id}}'})">
+		    			<img src="images/app/course1.jpg" class = "course-img">
+		    			<a class="text-link text-md">{{class.number}}-{{clazz.course.name}}</a>
+		    		</div>
+		    	</li>
+		    </ul>
+	    </div>
+	</div>
+</div>
