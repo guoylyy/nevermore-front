@@ -2,19 +2,19 @@
 	angular.module("nevermore")
 			.controller("TeacherMainPageController", TeacherMainPageController)
 
-	TeacherMainPageController.$inject = ["$scope", "clazzFactory", 
+	TeacherMainPageController.$inject = ["$scope", "ClazzFactory",
 		"httpResponseFactory", "ToasterTool"]
 
-	function TeacherMainPageController($scope, clazzFactory, httpResponseFactory, 
+	function TeacherMainPageController($scope, ClazzFactory, httpResponseFactory,
 		ToasterTool){
 
 		$scope.mainPageContent = null
-		
+
 		getMainPage()
 
 
 		function getMainPage(){
-			clazzFactory.mainPage().get({
+			ClazzFactory.mainPage().get({
 				id: $scope.classID,
 			})
 			.$promise
@@ -27,7 +27,7 @@
 				}
 			})
 			.catch(errorHandler)
-		}	
+		}
 
 		function errorHandler(error){
 			var message = httpResponseFactory.getResponseMessage(error)
@@ -39,4 +39,4 @@
 			}
 		}
 	}
-}()	
+}()
