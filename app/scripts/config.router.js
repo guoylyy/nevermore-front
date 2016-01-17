@@ -213,6 +213,7 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/teacher/file.controller.js",
+                  "ngFileUpload"
                 ])
               }]
             },

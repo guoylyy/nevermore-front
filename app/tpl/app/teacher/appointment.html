@@ -12,10 +12,10 @@
 					</span>
 					<span ng-if = "experiment.reservations.length > 0" class="db-title db-exp-info-success">
 						已预约{{experiment.reservations.length}}时间段，共{{getTotalReservationPersonCount(experiment)}}人
-					</span>	
+					</span>
 					<span ng-if = "experiment.reservations.length === 0" class="db-title db-exp-info-danger">
 						还没有预约任何时间段
-					</span>	
+					</span>
 					<button ng-click = "openReserveDialog($index)" class="btn btn-default db-btn-default pull-right db-m-r-15">
 						立即预约
 					</button>
@@ -41,7 +41,7 @@
 						<td style = "width: 20%;">
 							<button class="btn btn-danger db-btn-danger pull-right">
 								取消预约
-							</button>							
+							</button>
 						</td>
 					</tr>
 				</table>
