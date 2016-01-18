@@ -33,6 +33,9 @@
                             <button class="btn btn-sm btn-primary" ng-click="modifyResource(resource)">
                                 编辑
                             </button>
+                            <button class="btn btn-sm" ng-click="addExperiment(resource)" ng-disabled="!resource.active" ng-class="{'btn-primary':resource.active, 'btn-light':!resource.active}">
+                                实验
+                            </button>
                         </td>
                     </tr>
                 </tbody>

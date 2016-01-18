@@ -6,6 +6,7 @@ function($scope, CourseManage, generalService, ToasterTool, ManagementService, A
 	$scope.pageChanged = loadResources
 	$scope.addResource = addResource
 	$scope.modifyResource = modifyResource
+	$scope.addExperiment = addExperiment
 
 	loadResources();
 
@@ -51,6 +52,21 @@ function($scope, CourseManage, generalService, ToasterTool, ManagementService, A
 	function onDelete(){
 		loadResources()
 		ToasterTool.success("删除实验室成功！")
+	}
+
+	// ~ 添加实验
+	function addExperiment(resource){
+		var templateUrl = "tpl/app/admin/modal/add-course-experiment.html"
+		var controller = "AddExperimentCtrl"
+		var modifyDialog = new ManagementService.ModifyDialog()
+		modifyDialog.setCloseListener(onModify, onCancel)
+		modifyDialog.open(resource, templateUrl, controller, {})
+	}
+
+	function onModify(){
+			ToasterTool.success("配置实验成功！")
+	}
+	function onCancel(){
 	}
 
 }]);
