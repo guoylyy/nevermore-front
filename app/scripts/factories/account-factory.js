@@ -50,7 +50,6 @@ angular.module('nevermore')
           });
       },
       accountIcon: function() {
-        var headers = sessionService.headers();
         return $resource(baseUrl + '/icon/:attachId',
           {
             attachId: "@attachId"
@@ -58,6 +57,16 @@ angular.module('nevermore')
           {
             'put': {
               method: 'PUT',
+              headers: sessionService.headers()
+            }
+          })
+      },
+      uploadIcon: function() {
+        return $resource(baseUrl + '/icon',
+          {},
+          {
+            'post': {
+              method: 'POST',
               headers: sessionService.headers()
             }
           })
