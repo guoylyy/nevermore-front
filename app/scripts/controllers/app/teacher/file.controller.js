@@ -5,10 +5,10 @@
 	angular.module("nevermore")
 			.controller("TeacherFileController", TeacherFileController)
 
-	TeacherFileController.$inject = ["$scope", "ClazzFactory", "httpResponseFactory",
+	TeacherFileController.$inject = ["$scope", "clazzFactory", "httpResponseFactory",
 		"ToasterTool"]
 
-	function TeacherFileController($scope, ClazzFactory, httpResponseFactory,
+	function TeacherFileController($scope, clazzFactory, httpResponseFactory,
 		ToasterTool){
 
 		$scope.publicFileList = []
@@ -50,7 +50,7 @@
 
 		//访问文件列表接口
 		function getFiles(fileType){
-			return ClazzFactory.files().get({
+			return clazzFactory.files().get({
 				id: $scope.classID,
 				type: fileType
 			}).$promise

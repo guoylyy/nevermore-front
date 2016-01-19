@@ -4,6 +4,7 @@
       <span >实验详情</span>
     </h1>
   </div>
+	<div class = "nm-dialog-line"></div>
 
   <form class="form-validation" name="customerForm" novalidate>
     <table class="table  customer-table">
@@ -142,7 +143,7 @@
       </tbody>
     </table>
 
-    <div class="clearfix m-t" ng-if="currentUser.show_role!='STUDENT'">
+    <div class="clearfix p-t db-b-t-gray" ng-if="currentUser.show_role!='STUDENT'">
       <div class="pull-right">
         <button class="btn btn-primary w-sm m-r-sm" ng-click="cancelReservation(data.id)">取消预约</button>
       </div>
