@@ -200,6 +200,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
+                  "scripts/factories/refine/clazz.factory.js",
                   "scripts/controllers/app/teacher/main-page.controller.js",
                 ])
               }]

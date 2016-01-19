@@ -4,12 +4,14 @@
       <span>账户详情</span>
     </h1>
   </div>
+	<div class = "nm-dialog-line"></div>
 
   <form class="form-horizontal" name="ModifyForm" novalidate>
     <div class = "ng-hide pull-right error-message" ng-show = "!!ModifyForm.number.$error.validator">
       账号不能为空
     </div>
-    <div class="clearfix"></div>
+    
+	<div class = "clearfix"></div>
     <div class="form-group">
       <label for="number" class="col-sm-3 control-label">账号<span class="text-danger">*</span></label>
       <div class="col-sm-9">
@@ -52,7 +54,9 @@
         </select>
       </div>
     </div>
-    <div class="clearfix m-t">
+    
+	<div class = "nm-dialog-line"></div>
+	<div class = "clearfix m-t">
       <p ng-bind = "errorTip" ng-show = "!!errorMessage" class = "alert alert-danger">
       </p>
       <button class = "btn btn-primary pull-right" ng-disabled = "!!ModifyForm.number.$error.validator || !!ModifyForm.name.$error.validator || pending" ng-click = "modifyResource()">保存修改</button>

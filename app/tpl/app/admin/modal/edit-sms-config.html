@@ -4,6 +4,7 @@
       <span>{{sms.action}}短信发送配置</span>
     </h1>
   </div>
+	<div class = "nm-dialog-line"></div>
 
   <form class="form-horizontal form-validation" name="smsConfigForm" novalidate>
     <div class="form-group">
@@ -27,7 +28,9 @@
         <!-- <input type="text" class="form-control" id="isActive" ng-model = "smsConfig.isActive"> -->
       </div>
     </div>
-    <div class="clearfix m-t">
+    
+	<div class = "nm-dialog-line"></div>
+	<div class = "clearfix m-t">
       <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
       <button class = "btn btn-success pull-right" ng-click = "updateSmsConfig()" ng-disabled = "isInvalid()" ng-if="!sms.isCreate">确认</button>
       <button class = "btn btn-success pull-right" ng-click = "createSmsConfig()" ng-disabled = "isInvalid()" ng-if="sms.isCreate">创建</button>

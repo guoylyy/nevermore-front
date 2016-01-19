@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('nevermore')
-    .factory('ClazzFactory', function($resource, sessionService, $rootScope) {
+    .factory('clazzFactory', function($resource, sessionService, $rootScope) {
     var apiUrl = base_Url+'/clazz'
 
     return {
@@ -12,7 +12,7 @@
       files: files,
       file: file,
       students: students,
-      student: student
+      student: student,
     }
     //教师班级列表
     function teacherClazzList(){
