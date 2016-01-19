@@ -53,6 +53,13 @@ angular.module('nevermore')
         {
           name: 'nmDatepickerRange',
           files: ['../scripts/directives/app/nm-datepicker-range.js']
+        },
+        {
+          name: 'angularBootstrapNavTree',
+          files: [
+            '../bower_components/angular-bootstrap-nav-tree/dist/abn_tree_directive.js',
+            '../bower_components/angular-bootstrap-nav-tree/dist/abn_tree.css'
+          ]
         }
       ]
     });
