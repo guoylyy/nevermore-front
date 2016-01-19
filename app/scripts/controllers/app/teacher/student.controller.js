@@ -2,10 +2,10 @@
 	angular.module("nevermore")
 			.controller("TeacherStudentController", TeacherStudentController)
 
-	TeacherStudentController.$inject = ["$scope", "ClazzFactory", "ToasterTool",
+	TeacherStudentController.$inject = ["$scope", "clazzFactory", "ToasterTool",
 	"httpResponseFactory", "AlertTool", "ngDialog"]
 
-	function TeacherStudentController($scope, ClazzFactory, ToasterTool,
+	function TeacherStudentController($scope, clazzFactory, ToasterTool,
 	httpResponseFactory, AlertTool, ngDialog){
 
 		$scope.studentList = [];
@@ -24,7 +24,7 @@
 			AlertTool.deleteConfirm({title:'是否要移除学生?'}).then(function(isConfirm) {
 			  if(isConfirm) {
 			    AlertTool.close();
-					removeSelected([student.id]);
+				removeSelected([student.id]);
 			  }
 			});
 		}
@@ -37,7 +37,7 @@
 			AlertTool.deleteConfirm({title:'是否要移除选中的学生?'}).then(function(isConfirm) {
 			  if(isConfirm) {
 			    AlertTool.close();
-					removeSelected(ids);
+				removeSelected(ids);
 			  }
 			});
 		};
@@ -46,7 +46,7 @@
 
 		//获取学生列表
 		function loadClazzStudents(){
-			ClazzFactory.students().get({
+			clazzFactory.students().get({
 				id:$scope.classID,
 				scope:'all'
 			}).$promise
@@ -56,7 +56,7 @@
 					angular.copy(data, $scope.studentList)
 					tagSelectStatus($scope.studentList, false);
 				}else{
-					throw new Error(response)
+					errorHandler(response)
 				}
 			})
 			.catch(errorHandler)
@@ -64,7 +64,7 @@
 
 		//移除所选学生
 		function removeSelected(studentIds){
-			ClazzFactory.students().delete({
+			clazzFactory.students().delete({
 				id: $scope.classID,
 				stuIds: studentIds
 			}).$promise
@@ -73,7 +73,7 @@
 					ToasterTool.success('移除学生成功');
 					loadClazzStudents();
 				}else{
-					throw new Error(response)
+					errorHandler(response)
 				}
 			})
 			.catch(errorHandler)
@@ -152,10 +152,11 @@
 
 		//错误处理
 		function errorHandler(error){
-			var message = httpResponseFactory.getResponseMessage(error)
-			if(!!message){
+			if(httpResponseFactory.isServerResponse(error)){
+				var message = httpResponseFactory.getResponseMessage(error)
 				ToasterTool.error(message)
 			}else{
+				console.log(error)
 				ToasterTool.error("网络连接错误，请重试")
 			}
 		}

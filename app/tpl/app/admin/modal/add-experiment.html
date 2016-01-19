@@ -4,6 +4,7 @@
       <span>实验详情</span>
     </h1>
   </div>
+	<div class = "nm-dialog-line"></div>
 
   <form class="form-horizontal" name="resourceForm" novalidate>
     <div class="form-group">
@@ -42,7 +43,9 @@
         <select class="form-control" id = "active" ng-model="resource.active" ng-options="active.code as active.value for active in activeList" required></select>
       </div>
     </div>
-    <div class="clearfix m-t">
+    
+	<div class = "nm-dialog-line"></div>
+	<div class = "clearfix m-t">
       <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
       <button class = "btn btn-primary pull-right" ng-click = "addExperiment()" ng-disabled = "adding || !resourceForm.$valid">创建</button>
     </div>

@@ -9,11 +9,10 @@
  */
 angular.module('nevermore')
   .factory('CourseManage', function ($resource, sessionService, $rootScope) {
-    var baseUrl = base_Url+'/manage/course';
-    //var baseUrl ="http://localhost:8080/manage/course";
+    var apiUrl = base_Url + "/manage/course"
     return {
       create: function(){
-        return $resource(baseUrl, {}, {
+        return $resource(apiUrl, {}, {
           'post': {
             method: 'POST',
             headers: sessionService.headers()
@@ -21,7 +20,7 @@ angular.module('nevermore')
         });
       },
       course: function(){
-        return $resource(baseUrl + '/:id', {id:"@id"}, {
+        return $resource(apiUrl + '/:id', {id:"@id"}, {
           'get': {
             method: 'GET',
             headers: sessionService.headers()
@@ -37,7 +36,7 @@ angular.module('nevermore')
         });
       },
       page: function() { //分页获取课程
-        return $resource(baseUrl + '/courses?scope=list', {
+        return $resource(apiUrl + '/courses?scope=list', {
         }, {
           'get': {
             method: 'GET',
@@ -46,7 +45,7 @@ angular.module('nevermore')
         });
       },
       all: function(){ //获取系统中所有可用课程
-        return $resource(baseUrl + '/courses?scope=all', {
+        return $resource(apiUrl + '/courses?scope=all', {
         }, {
           'get': {
             method: 'GET',

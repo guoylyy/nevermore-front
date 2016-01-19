@@ -2,7 +2,7 @@
 <ul class="nav">
 
   <!-- student items-->
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-if="isStudent()">
     <span translate="aside.nav.HEADER">学生功能</span>
   </li>
  <li ui-sref-active="active" ng-if="isStudent()">
@@ -28,7 +28,7 @@
      </a>
    </li>
 
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-if="isTeacher()">
     <span translate="aside.nav.HEADER">教师功能</span>
   </li>
   <li ui-sref-active="active" ng-if="isTeacher()">
