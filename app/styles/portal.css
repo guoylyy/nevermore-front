@@ -116,6 +116,9 @@
 .text-2x {
   font-size: 2em;
 }
+.text-xl {
+  font-size: 20px;
+}
 .text-lg {
   font-size: 18px;
 }
@@ -2020,6 +2023,20 @@ fieldset[disabled] .btn-black.active {
 .table .nm-head-tr th {
   line-height: 40px;
   font-size: 16px;
+}
+.ta-toolbar .btn-group {
+  margin-bottom: 10px;
+}
+.ta-editor {
+  min-height: 300px;
+  height: auto;
+  overflow: auto;
+  font-family: inherit;
+  font-size: 100%;
+  margin: 10px 0;
+}
+.ta-editor.ta-html {
+  display: none;
 }
 .nm-tab-btn-group .nav-tabs {
   border-bottom: none;

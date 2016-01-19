@@ -8,12 +8,25 @@
 
     return {
       teacherClazzList: teacherClazzList,
+      experiments: experiments,
       mainPage: mainPage,
       files: files,
       file: file,
       students: students,
       student: student,
+      removeFile: removeFile
     }
+
+    //获取实验记录
+    function experiments(){
+      return $resource(apiUrl + "/:id/experiments", null, {
+        get: {
+          method: "GET",
+          headers: sessionService.headers()
+        }
+      })
+    }
+
     //教师班级列表
     function teacherClazzList(){
       return $resource(apiUrl + "/teacherClazzList", null, {
@@ -37,10 +50,22 @@
     //上传文件
     function file(){
       return $resource(apiUrl + "/:id/file", {
-        id: "@classID",
+        id: "@id",
       }, {
         post: {
           method: "POST",
+          headers: sessionService.headers(),
+        }
+      })
+    }
+    //移除文件
+    function removeFile(){
+      return $resource(apiUrl + "/:id/file/:fileId", {
+        id: "@id",
+        fileId: "@fileId"
+      }, {
+        delete: {
+          method: "DELETE",
           headers: sessionService.headers(),
         }
       })

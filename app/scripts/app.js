@@ -17,4 +17,5 @@ angular
         '720kb.tooltips',
         'mgcrea.ngStrap',
         'ct.ui.router.extras',
+        'textAngular'
     ]);

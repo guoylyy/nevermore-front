@@ -9,29 +9,28 @@
     <div class="alert alert-warning">
       选择预约日期
     </div>
-    <div class="alert alert-warning">
-      选择实验室
+    <div class="p-t-md p-b-xs text-center text-link">
+      第二部: 选择实验室
     </div>
-    <div class="alert alert-warning">
-      选择实验时间段
+    <div class="p-t-md p-b-xs text-right text-link">
+      第三步: 选择实验时间段
     </div>
   </stage-view-directive>
 
   <form class="form-horizontal" name = "ReservationForm1" ng-show = "stage === 1" novalidate>
-    <div class = "ng-hide pull-right error-message" ng-show = "ReservationForm1.date.$invalid">
-      预约日期不能是今天之前的日期
-    </div>
-    
-	<div class = "clearfix"></div>
     <div class="form-group">
       <label for="date" class="col-sm-3 control-label">预约日期<span class="text-danger">*</span>：</label>
       <div class="col-sm-9">
-        <nm-datepicker name = "date" class="form-control" ng-change = "dateChanged()" ng-model="date" ui-validate = "'$value > currentDate'"></nm-datepicker>
+        <nm-datepicker name = "date" class="" ng-change = "dateChanged()" ng-model="date" ui-validate = "'$value > currentDate'">
+        </nm-datepicker>
       </div>
     </div>
-    
-	<div class = "nm-dialog-line"></div>
-	<div class = "clearfix m-t">
+    <div class = "clearfix m-t">
+    <div class = "ng-hide pull-right error-message" ng-show = "ReservationForm1.date.$invalid">
+      预约日期不能是今天之前的日期
+    </div>
+    <div class = "nm-dialog-line"></div>
+    <div class="clearfix m-t-xxl">
       <div class="pull-right">
         <button class="btn btn-primary" ng-disabled = "ReservationForm1.$invalid" ng-click="next()">下一步</button>
       </div>
@@ -61,6 +60,28 @@
   </form>
 
   <form class="form-horizontal" name = "ReservationForm3" ng-show = "stage === 3" novalidate>
+
+    <div class="form-group">
+      <label for="time" class="col-sm-3 control-label">实验: </label>
+      <div class="col-sm-9">
+         <span class="form-control">{{experimentName}}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="time" class="col-sm-3 control-label">已选实验室: </label>
+      <div class="col-sm-9">
+         <span class="form-control">{{lab.name}}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="time" class="col-sm-3 control-label">已选日期: </label>
+      <div class="col-sm-9">
+         <span class="form-control">{{date | date:'yyyy-MM-dd'}}</span>
+      </div>
+    </div>
+
     <div class="form-group" ng-show = "slotList.length > 0">
       <label for="time" class="col-sm-3 control-label">时间段：</label>
       <div class="col-sm-9">
@@ -69,14 +90,15 @@
           </select>
       </div>
     </div>
+
     <div class = "alert alert-danger" ng-show = "slotList.length === 0">
-      该实验室没有可用的时间段
+      该实验室没有可用的时间段，请返回上一步预约其他实验室吧！
     </div>
     <div class="form-group">
       <label class="col-sm-3 control-label"><span class="text-danger">注意：</span></label>
-      <div class="col-sm-9">
+      <div class="col-sm-9 m-t-xs">
         <label>
-          实验室可容纳最大人数为
+          该实验室可容纳最大人数为
           <span class = "text-danger">
             {{lab.capacity}}
           </span>
@@ -101,7 +123,8 @@
     <div class="clearfix m-t">
       <div class="pull-right">
         <button class="btn btn-primary" ng-click="prev()">上一步</button>
-        <button class="btn btn-primary" ng-disabled = "ReservationForm3.$invalid || slotList.length === 0" ng-click="reserve()">预约</button>
+        <button class="btn btn-primary" ng-disabled = "ReservationForm3.$invalid || slotList.length === 0" ng-click="reserve()">
+          提交预约预约</button>
       </div>
     </div>
   </form>
