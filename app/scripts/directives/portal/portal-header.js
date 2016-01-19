@@ -22,7 +22,7 @@ angular.module('nevermore')
             }else if ($localStorage.currentUser.show_role == 'TEACHER') {
               $state.go('app.index.teacher-reservations',{title:'APPROVED'});
             }else if ($localStorage.currentUser.show_role == 'ADMINISTRATOR') {
-              $state.go('app.account-admin.admin-account');
+              $state.go('app.admin-account.teacher');
             }
             return;
           }

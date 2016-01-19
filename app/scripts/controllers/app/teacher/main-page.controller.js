@@ -2,16 +2,36 @@
 	angular.module("nevermore")
 			.controller("TeacherMainPageController", TeacherMainPageController)
 
-	TeacherMainPageController.$inject = ["$scope", "clazzFactory", 
-		"httpResponseFactory", "ToasterTool"]
+	TeacherMainPageController.$inject = ["$scope", "clazzFactory",
+		"httpResponseFactory", "ToasterTool", "ManagementService"]
 
-	function TeacherMainPageController($scope, clazzFactory, httpResponseFactory, 
-		ToasterTool){
+	function TeacherMainPageController($scope, clazzFactory, httpResponseFactory,
+		ToasterTool, ManagementService){
 
-		$scope.mainPageContent = null
-		
+		$scope.mainPage = {}
+		$scope.class = {}
+
+		$scope.modifyMainPage = modifyMainPage
+
+
+		getClass()
 		getMainPage()
 
+		function getClass(){
+			clazzFactory.clazz().get({
+				id: $scope.classID,
+			})
+			.$promise
+			.then(function(response){
+				if(httpResponseFactory.isResponseSuccess(response)){
+					var data = httpResponseFactory.getResponseData(response)
+					angular.copy(data, $scope.class)
+				}else{
+					errorHandler(response)
+				}
+			})
+			.catch(errorHandler)
+		}
 
 		function getMainPage(){
 			clazzFactory.mainPage().get({
@@ -21,22 +41,39 @@
 			.then(function(response){
 				if(httpResponseFactory.isResponseSuccess(response)){
 					var data = httpResponseFactory.getResponseData(response)
-					$scope.mainPageContent = data.content
+					angular.copy(data, $scope.mainPage)
 				}else{
-					throw new Error(response)
+					errorHandler(response)
 				}
 			})
 			.catch(errorHandler)
-		}	
+		}
 
 		function errorHandler(error){
-			var message = httpResponseFactory.getResponseMessage(error)
-
-			if(!!message){
+			if(httpResponseFactory.isServerResponse(error)){
+				var message = httpResponseFactory.getResponseMessage(error)
 				ToasterTool.error(message)
 			}else{
 				ToasterTool.error("网络连接错误，请重试")
 			}
 		}
+
+		function modifyMainPage(){
+			return
+			var templateUrl = "tpl/app/admin/modal/rich-modify-experiment-course.html"
+			var controller = "RichModifyCourseCtrl"
+			var richModifyDialog = new ManagementService.RichModifyDialog()
+			richModifyDialog.setCloseListener(updateMainPage)
+			richModifyDialog.open($scope.mainPage.content, templateUrl, controller, {})
+		}
+
+		function updateMainPage(data){
+			if(data.status !== "modify"){
+				return
+			}
+
+			var content = data.content
+
+		}
 	}
-}()	
+}()

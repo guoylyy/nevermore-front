@@ -5,10 +5,10 @@
  */
 angular.module('nevermore')
   .factory('ExperimentManage', function($resource, sessionService, $rootScope) {
-    var baseUrl ="http://localhost:8080/manage/experiment";
+    var apiUrl = base_Url + "/manage/experiment"
     return {
       create: function(){
-        return $resource(baseUrl, {}, {
+        return $resource(apiUrl, {}, {
           'post': {
             method: 'POST',
             headers: sessionService.headers()
@@ -16,7 +16,7 @@ angular.module('nevermore')
         });
       },
       experiment: function(){
-        return $resource(baseUrl + '/:id', {id:"@id"}, {
+        return $resource(apiUrl + '/:id', {id:"@id"}, {
           'get': {
             method: 'GET',
             headers: sessionService.headers()
@@ -32,7 +32,7 @@ angular.module('nevermore')
         });
       },
       page: function() {
-        return $resource(baseUrl + '/experiments?scope=list', {
+        return $resource(apiUrl + '/experiments?scope=list', {
           pageSize:"@pageSize",
           pageNum:"@pageNum"
         }, {
@@ -43,7 +43,7 @@ angular.module('nevermore')
         });
       },
       all: function(){
-        return $resource(baseUrl + '/experiments?scope=all', {
+        return $resource(apiUrl + '/experiments?scope=all', {
         }, {
           'get': {
             method: 'GET',

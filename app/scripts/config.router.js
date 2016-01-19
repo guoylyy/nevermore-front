@@ -133,6 +133,10 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/teacher/reservation.controller.js',
+                  "scripts/factories/refine/reservation.factory.js",
+                  "scripts/factories/refine/http-response.factory.js",
+                  "scripts/services/toaster-tool.js",
+                  "scripts/services/general-service.js",
                 ]);
               }]
             },
@@ -140,7 +144,12 @@ angular.module('nevermore')
           .state("app.teacher.class-selection", {
             url: "^/app/teacher/class-selection",
             templateUrl: "tpl/app/teacher/class-selection.html",
-            controller: "TeacherClassSelectionController",
+            controller: ['$state', function($state){
+              var currState = $state.current.name;
+              if(currState === "app.teacher.class-selection"){
+                  $state.go('app.teacher.class-selection.all-class');
+              }
+            }],
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
@@ -195,7 +204,10 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
+                  "scripts/factories/refine/clazz.factory.js",
                   "scripts/controllers/app/teacher/main-page.controller.js",
+                  "scripts/factories/refine/http-response.factory.js",
+                  "scripts/services/toaster-tool.js",
                 ])
               }]
             },
@@ -208,6 +220,7 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/teacher/file.controller.js",
+                  "ngFileUpload"
                 ])
               }]
             },
@@ -228,6 +241,8 @@ angular.module('nevermore')
                   "ngDialog",
                   "scripts/controllers/app/teacher/modal/reserve.controller.js",
                   "scripts/directives/app/stage-view.directive.js",
+                  "scripts/factories/refine/reservation.factory.js",
+                  "scripts/factories/refine/http-response.factory.js",
                 ])
               }],
             },
@@ -292,6 +307,7 @@ angular.module('nevermore')
                   'NmDatepicker',
                   "scripts/factories/InputValidator.factory.js",
                   "scripts/controllers/app/teacher/student.controller.js",
+                  "scripts/controllers/app/teacher/modal/student.add.controller.js",
                 ])
               }],
             },
@@ -335,6 +351,18 @@ angular.module('nevermore')
                 ])
               }],
             },
+          })
+          .state("app.student.class-selection.all-class", {
+            url: "^/app/student/class-selection/all-class",
+            templateUrl: "tpl/app/student/all-class.html",
+            controller: "StudentAllClassController",
+            resolve: {
+              controller: ["$ocLazyLoad", function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/student/all-class.controller.js",
+                ])
+              }]
+            }
           })
           .state("app.student.class", {
             url: "/class/:classID",
@@ -686,7 +714,8 @@ angular.module('nevermore')
                   "scripts/controllers/app/administrator/modal/course-modify.js",
                   "scripts/controllers/app/administrator/modal/course-experiment-add.js",
                   "angularBootstrapNavTree",
-                  'scripts/directives/app/nm-configure-list.js'
+                  'scripts/directives/app/nm-configure-list.js',
+                  "scripts/controllers/app/administrator/modal/course-rich-modify.js"
                 ])
               }]
             }
@@ -806,132 +835,6 @@ angular.module('nevermore')
                   'ngDialog',
                   'nmDatepickerRange'
                 ]);
-              }]
-            }
-          })
-
-          /***
-            强大的分隔符：：路障路障
-            下面是姚神写得管理员路径-切换到上面的路径
-            强大的分隔符：：下面不要加代码了，往上面加
-          ***/
-          .state('app.account-admin', {
-            abstract: true,
-            url: '^/app/account/admin',
-            templateUrl: 'tpl/app/admin/account-index.html',
-            resolve: {
-              controller: ["$ocLazyLoad", function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                  "scripts/services/general-service.js",
-                  "scripts/services/toaster-tool.js",
-                  "scripts/directives/app/search-action-bar.js",
-                  "ngDialog",
-                  "scripts/controllers/app/admin/modify-resource.js",
-                  "scripts/factories/InputValidator.factory.js",
-                  "scripts/factories/error-handler.factory.js",
-                ])
-              }]
-            }
-          })
-          .state('app.account-admin.admin-account', {
-            url: '^/app/account/admin/admin/account',
-            templateUrl: 'tpl/app/admin/admin-account.html',
-            controller: 'AdminAccountCtrl',
-            resolve: {
-              controller: ["$ocLazyLoad", function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/admin-account.js",
-                  "scripts/controllers/app/admin/add-admin-account.js",
-                  "scripts/controllers/app/admin/modify-admin-password.js",
-                ])
-              }]
-            },
-          })
-          .state('app.account-admin.teacher-account', {
-            url: '^/app/account/admin/teacher/account',
-            templateUrl: 'tpl/app/admin/teacher-account.html',
-            controller: 'TeacherAccountCtrl',
-            resolve: {
-              controller: ["$ocLazyLoad", function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/teacher-account.js",
-                  "scripts/controllers/app/admin/modify-teacher-account.js",
-                  "scripts/controllers/app/admin/add-teacher-account.js",
-                  "scripts/controllers/app/admin/modify-teacher-password.js",
-                ])
-              }]
-            },
-          })
-          .state('app.account-admin.student-account', {
-            url: '^/app/account/admin/student/account',
-            templateUrl: 'tpl/app/admin/student-account.html',
-            controller: 'StudentAccountCtrl',
-            resolve: {
-              controller: ["$ocLazyLoad", function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/student-account.js",
-                  "scripts/controllers/app/admin/modify-student-account.js",
-                  "scripts/controllers/app/admin/add-student-account.js",
-                  "scripts/controllers/app/admin/modify-student-password.js",
-                ])
-              }]
-            },
-          })
-          .state('app.experiment-resource', {
-            abstract: true,
-            url: '^/app/experiment/resource',
-            templateUrl: 'tpl/app/admin/experiment-index.html',
-            controller: 'ExperimentIndexCtrl',
-            resolve: {
-              controller: ["$ocLazyLoad", function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                  "scripts/services/general-service.js",
-                  "scripts/services/toaster-tool.js",
-                  "scripts/controllers/app/admin/experiment-index.js",
-                  "ngDialog",
-                ])
-              }]
-            }
-          })
-          .state('app.experiment-resource.experiment-lab', {
-            url: '^/app/experiment/resource/experiment/lab',
-            templateUrl: 'tpl/app/admin/experiment-lab.html',
-            controller: 'ExperimentLabCtrl',
-            resolve: {
-              controller: ["$ocLazyLoad", function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/experiment-lab.js",
-                  "scripts/controllers/app/admin/add-experiment-lab.js",
-                  "scripts/controllers/app/admin/modify-experiment-lab.js",
-                ])
-              }]
-            },
-          })
-          .state("app.experiment-resource.experiment", {
-            url: "^/app/experiment/resource/experiment-content",
-            templateUrl: "tpl/app/admin/experiment.html",
-            controller: "ExperimentCtrl",
-            resolve: {
-              controller: ["$ocLazyLoad", function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/experiment.js",
-                  "scripts/controllers/app/admin/add-experiment.js",
-                  "scripts/controllers/app/admin/modify-experiment.js",
-                ])
-              }]
-            }
-          })
-          .state("app.experiment-resource.experiment-course", {
-            url: "^/app/experiment/resource/experiment-resource",
-            templateUrl: "tpl/app/admin/experiment-course.html",
-            controller: "ExperimentCourseCtrl",
-            resolve: {
-              controller: ["$ocLazyLoad", function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/experiment-course.js",
-                  "scripts/controllers/app/admin/add-experiment-course.js",
-                  "scripts/controllers/app/admin/modify-experiment-course.js",
-                ])
               }]
             }
           });

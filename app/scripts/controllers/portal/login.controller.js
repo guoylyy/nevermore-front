@@ -54,7 +54,7 @@
 
     function transitStateByRole(role){
         if(RoleFactory.isAdmin(role)){
-            $state.go('app.account-admin.admin-account');
+            $state.go('app.admin-account.teacher');
         }else if(RoleFactory.isTeacher(role)){
             $state.go('app.index.teacher-reservations',{title:'APPROVED'});
         }else if(RoleFactory.isStudent(role)){

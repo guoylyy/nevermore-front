@@ -11,6 +11,7 @@
 @import "./admin/admin-account.less";
 @import "message";
 @import "report";
+@import "clazz";
 
 @info_color: #23b7e5;
 
@@ -39,8 +40,20 @@
   padding-left: 5px;
 }
 
+.db-b-t-gray{
+  border-top: solid 1px #CACACA;
+}
+
 .db-t-c{
   text-align: center;
+}
+
+.db-t-r{
+  text-align: right;
+}
+
+.db-t-l{
+  text-align: left;
 }
 
 .btn_step_undo{
@@ -135,6 +148,14 @@ li.disabled > a:focus {
   margin-top: 10px;
 }
 
+.db-m-t-30{
+  margin-top: 30px;
+}
+
+.db-m-t-40{
+  margin-top: 40px;
+}
+
 .db-m-b-0{
   margin-bottom: 0px;
 }
@@ -149,6 +170,10 @@ li.disabled > a:focus {
 
 .db-m-b-20{
   margin-bottom: 20px;
+}
+
+.db-m-b-25{
+  margin-bottom: 25px;
 }
 
 .db-m-b-40{
@@ -189,6 +214,10 @@ li.disabled > a:focus {
 
 .db-text-danger{
   color: #FF5F57;
+}
+
+.db-text-gray{
+  color: #4A4A4A !important;
 }
 
 .db-text-success{
@@ -254,6 +283,10 @@ li.disabled > a:focus {
 
 .db-p-t-20{
   padding-top: 20px;
+}
+
+.db-p-t-25{
+  padding-top: 25px;
 }
 
 .db-title-wrapper{
@@ -481,8 +514,14 @@ li.disabled > a:focus {
 
 .db-table-row-narrow{
   &>tbody>tr>td{
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding-top: 13px;
+    padding-bottom: 0px;
+    .db-text-gray;
+    height: 20px;
+    line-height: 20px;
+  }
+  td:first-child{
+    padding-left: 0px;
   }
 }
 
@@ -599,25 +638,6 @@ li.disabled > a:focus {
   font-size: 18px;
 }
 
-.course-list{
-  overflow: hidden;
-  &>li{
-    width: 200px;
-    text-align: center;
-    padding: 10px;
-    float: left;
-    margin-right: 20px;
-  }  
-  &>li:hover{
-    background-color: #E9E5EA;
-  }
-}
-
-.course-img{
-  width: 100%;
-  margin-bottom: 10px;
-  border-radius: 5px;
-}
 
 .db-search-form{
   width: 273px;
@@ -688,5 +708,14 @@ li.disabled > a:focus {
 
   & .content{
     font-size: 13px;
+  }
+}
+
+.db-big-text-table{
+  &>thead>tr>td{
+    font-size: 18px;
+  }
+  &>tbody>tr>td{
+    font-size: 18px;
   }
 }

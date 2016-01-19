@@ -4,6 +4,7 @@
       <span >新建xxx</span>
     </h1>
   </div>
+	<div class = "nm-dialog-line"></div>
 
   <form class="form-validation" name="customerForm" novalidate>
     <table class="table  customer-table">
@@ -92,7 +93,9 @@
       </tbody>
     </table>
 
-    <div class="clearfix m-t">
+    
+	<div class = "nm-dialog-line"></div>
+	<div class = "clearfix m-t">
       <div class="pull-right">
         <button class="btn btn-primary w-sm m-r-sm" ng-disabled="customerForm.$invalid" ng-click="save()">保存</button>
         <button class="btn btn-default w-sm" ng-click="closeThisDialog(null)">取消</button>

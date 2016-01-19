@@ -4,6 +4,7 @@
       <span >添加预约</span>
     </h1>
   </div>
+	<div class = "nm-dialog-line"></div>
 
   <form class="form-horizontal" name="ReservationForm" novalidate>
     <div class="alert alert-warning ng-hide" ng-show = "!!ReservationForm.class.$error.validator">
@@ -24,7 +25,8 @@
     <div class = "ng-hide pull-right error-message" ng-show = "!!ReservationForm.applyDate.$error.validator">
       预约日期不能是今天之前的日期
     </div>
-    <div class="clearfix"></div>
+    
+	<div class = "clearfix"></div>
     <div class="form-group">
       <label for="applyDate" class="col-sm-3 control-label">预约日期<span class="text-danger">*</span>：</label>
       <div class="col-sm-9">
@@ -87,7 +89,9 @@
         <textarea name = "remark" class="form-control" ng-model="data.remark" placeholder="" rows="2" aria-multiline="true" aria-invalid="false"></textarea>
       </div>
     </div>
-    <div class="clearfix m-t">
+    
+	<div class = "nm-dialog-line"></div>
+	<div class = "clearfix m-t">
       <div class="pull-right">
         <button class="btn btn-primary" ng-disabled="ReservationForm.$invalid" ng-click="save()">保存</button>
       </div>

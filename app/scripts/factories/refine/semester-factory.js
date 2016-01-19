@@ -5,11 +5,10 @@
  */
 angular.module('nevermore')
   .factory('Semester', function ($resource, sessionService, $rootScope) {
-    // var baseUrl = "http://localhost:8080/manage/semester";
-    var baseUrl = base_Url+'/manage/semester';
+    var apiUrl = base_Url + "/manage/semester"
     return {
       create: function(){
-        return $resource(baseUrl,{},{
+        return $resource(apiUrl,{},{
           'post':{
             method: 'POST',
             headers:sessionService.headers()
@@ -17,7 +16,7 @@ angular.module('nevermore')
         });
       },
       current: function(){
-        return $resource(baseUrl + '/currentSemester',{},{
+        return $resource(apiUrl + '/currentSemester',{},{
           'get': {
             method: 'GET',
             headers:sessionService.headers()
@@ -25,7 +24,7 @@ angular.module('nevermore')
         });
       },
       semester:function(){
-        return $resource(baseUrl + '/:id', {id:"@id"},{
+        return $resource(apiUrl + '/:id', {id:"@id"},{
           'put': {
             method: 'PUT',
             headers:sessionService.headers()
@@ -37,7 +36,7 @@ angular.module('nevermore')
         })
       },
       page: function() {//分页获取用户
-        return $resource(baseUrl + '/semesters?scope=list', {
+        return $resource(apiUrl + '/semesters?scope=list', {
           pageSize: "@pageSize",
           pageNumber: "@pageNumber"
         }, {

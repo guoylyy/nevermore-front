@@ -3,7 +3,40 @@
         <span class = "subview3_title db-title">课程主页</span>
     </div>
     <div class="db-line"></div>
-    <div class = "wrapper-md" ng-bind-html = "mainPageContent"></div>
+    <div class="wrapper clazz-main-page">
+      <div class="main-page-content">
+        <div class="header-panel wrapper">
+          <div>
+            <h3 class="text-2x m-t-xs">
+              {{class.course.name}}
+              <span class="pull-right text-success text-lg">课程正在进行</span>
+            </h3>
+          </div>
+          <div class="clearfix">
+            <span class="text-muted">
+              {{class.description}}
+            </span>
+          </div>
+          <div class="m-t-lg">
+              <div>
+                <span>上课时间:&nbsp;</span>
+                <span class="p-r-md font-bold">{{class.clazzHour}}</span>
+                <span>任课教师:&nbsp;</span>
+                <span class="p-r-md font-bold">{{class.teacher.name}}</span>
+                <span>上课地点:&nbsp;</span>
+                <span class="p-r-md font-bold">{{class.clazzroom}}</span>
+                <a  class="btn btn-primary pull-right m-t-n-sm btn-sm btn-rounded">本课程实验</a>
+                <a  class="btn btn-primary pull-right m-t-n-sm btn-sm btn-rounded m-r-xs" ng-click = "modifyMainPage()">编辑</a>
+              </div>
+          </div>
+        </div>
+        <div class="db-line"></div>
+
+        <!-- start of html -->
+        <div class="content m-t-xs wrapper" ng-bind-html = "mainPage.content">
+        </div>
+      </div>
+    </div>
 </div>
 
 <lab-footer></lab-footer>

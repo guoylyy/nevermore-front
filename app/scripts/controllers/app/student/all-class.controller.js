@@ -1,13 +1,13 @@
 ;void function(){
+	angular.module("nevermore")
+			.controller("StudentAllClassController", StudentAllClassController)
 
-	app.controller("TeacherAllClassController", TeacherAllClassController)
-
-	TeacherAllClassController.$inject = ["$scope", "clazzFactory", "ToasterTool",
+	StudentAllClassController.$inject = ["$scope", "clazzFactory", "ToasterTool",
 	"httpResponseFactory"]
 
-	function TeacherAllClassController($scope, clazzFactory, ToasterTool,
+	function StudentAllClassController($scope, clazzFactory, ToasterTool,
 		httpResponseFactory){
-
+		
 		$scope.classList = []
 
 		getAllClass()
