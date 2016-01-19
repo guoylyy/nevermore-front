@@ -82,21 +82,8 @@ function($scope, $rootScope, Account, sessionService, ToasterTool, ngDialog, Fil
         && data.value != '$escape'
         && data.value != '$closeButton'
         && data.value != '$document') {
-          if(data.value) {
-            Account.accountIcon().put({attachId: data.value}).$promise
-            .then(
-              function success(data) {
-                // 更新用户头像的后续操作
-                // if (data.success) {
-                //   ToasterTool.success("更新头像成功。");
-                // } else {
-                //   ToasterTool.error("更新头像失败。");
-                // }
-              },
-              function error(error) {
-                console.log(error);
-              }
-            )
+          if(data.value === 'success') {
+            getProfileDate();
           } else {
             // ToasterTool.error("头像更新失败");
           }
