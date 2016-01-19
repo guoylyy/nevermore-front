@@ -2,26 +2,31 @@
 	angular.module("nevermore")
 			.controller("TeacherReserveController", TeacherReserveController)
 
-	TeacherReserveController.$inject = ["$scope", "experimentID", "experimentName", "experiment",
-	"InputValidator", "lab", "StateChainFactory"]
+	TeacherReserveController.$inject = ["$scope", "experimentID", "experimentName", 
+	"classID", "experiment", "InputValidator", "lab", "StateChainFactory", 
+	"reservationFactory", "httpResponseFactory", "ToasterTool"]
 
-	function TeacherReserveController($scope, experimentID, experimentName, experiment,
-		InputValidator, lab, StateChainFactory){
+	function TeacherReserveController($scope, experimentID, experimentName, 
+		classID, experiment, InputValidator, lab, StateChainFactory, 
+		reservationFactory, httpResponseFactory, ToasterTool){
 		$scope.date = new Date()
-		var stateChain = StateChainFactory.getStateChain()
-		stateChain.pushState("initState")
 
+		var stateChain = StateChainFactory.getStateChain()
+
+		stateChain
+		.pushState("initState")
 		.pushState("date", function(){
 			$scope.date = new Date()
-		}).pushState("lab", function(){
-			if(!$scope.lab){
-				$scope.lab = undefined
-				$scope.labList = []
-			}
-		}).pushState("slot", function(){
+		})
+		.pushState("lab", function(){
+			$scope.lab = undefined
+			$scope.labList = []
+		})
+		.pushState("slot", function(){
 			$scope.slot = undefined
 			$scope.slotList = []
 		})
+
 		$scope.experimentName = experimentName
 
 		$scope.labList = []
@@ -52,24 +57,8 @@
 
 			if(lastStage === 1){
 				getLabs()
-				.then(function(data){
-					if(data.success === true){
-						angular.copy(data.data, $scope.labList)
-					}
-				})
-				.catch(function(error){
-					alert(error)
-				})
 			}else if(lastStage === 2){
 				getSlots($scope.lab.id)
-				.then(function(data){
-					if(data.success === true){
-						angular.copy(data.data, $scope.slotList)
-					}
-				})
-				.catch(function(error){
-					alert(error)
-				})
 			}
 		}
 
@@ -85,7 +74,17 @@
 		function getLabs(){
 			return experiment.labs().get({
 				id: experimentID
-			}).$promise
+			})
+			.$promise
+			.then(function(response){
+				if(httpResponseFactory.isResponseSuccess(response)){
+					var data = httpResponseFactory.getResponseData(response)
+					angular.copy(data, $scope.labList)
+				}else{
+					errorHandler(response)
+				}
+			})
+			.catch(errorHandler)
 		}
 
 		function labChanged(){
@@ -96,7 +95,17 @@
 			return lab.slots().get({
 				id: labID,
 				date: formatDate($scope.date)
-			}).$promise
+			})
+			.$promise
+			.then(function(response){
+				if(httpResponseFactory.isResponseSuccess(response)){
+					var data = httpResponseFactory.getResponseData(response)
+					angular.copy(data, $scope.slotList)
+				}else{
+					errorHandler(response)
+				}
+			})
+			.catch(errorHandler)
 		}
 
 		function formatDate(date){
@@ -119,7 +128,34 @@
 		}
 
 		function reserve(){
-			console.log()
+			reservationFactory.reservation().post({
+				personCount: $scope.personCount,
+				experimentId: experimentID,
+				labId: $scope.lab.id,
+				clazzId: classID,
+				slotId: $scope.slot.id,
+				applyDate: formatDate($scope.date),
+				remark: $scope.remark,
+			})
+			.$promise
+			.then(function(response){
+				if(httpResponseFactory.isResponseSuccess(response)){
+					ToasterTool.success("预约成功")
+					$scope.closeThisDialog()
+				}else{
+					errorHandler(response)
+				}
+			})
+			.catch(errorHandler)
+		}
+
+		function errorHandler(error){
+			if(httpResponseFactory.isServerResponse(error)){
+				var message = httpResponseFactory.getResponseMessage(error)
+				ToasterTool.error(message)
+			}else{
+				ToasterTool.error("网络连接错误，请重试")
+			}
 		}
 	}
 }()

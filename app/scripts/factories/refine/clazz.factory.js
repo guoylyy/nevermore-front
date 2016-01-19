@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('nevermore')
-    .factory('ClazzFactory', function($resource, sessionService, $rootScope) {
+    .factory('clazzFactory', function($resource, sessionService, $rootScope) {
     var apiUrl = base_Url+'/clazz'
 
     return {
@@ -14,7 +14,8 @@
       file: file,
       students: students,
       student: student,
-      removeFile: removeFile
+      removeFile: removeFile,
+      clazz: clazz,
     }
 
     //获取实验记录
@@ -107,6 +108,15 @@
       }, {
         post: {
           method: "POST",
+          headers: sessionService.headers(),
+        }
+      })
+    }
+
+    function clazz(){
+      return $resource(apiUrl + "/:id", null, {
+        get: {
+          method: "GET",
           headers: sessionService.headers(),
         }
       })

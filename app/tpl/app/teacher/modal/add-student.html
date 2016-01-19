@@ -4,6 +4,7 @@
       <span>为班级添加学生</span>
     </h1>
   </div>
+	<div class = "nm-dialog-line"></div>
   <form class="form-horizontal" name="customerForm" novalidate>
     <div class="alert ng-isolate-scope alert-warning">
       <span>您可以为班级添加学生，添加后的默认密码为:222222</span>
@@ -34,7 +35,9 @@
       </div>
     </div>
 
-    <div class="clearfix m-t">
+    
+	<div class = "nm-dialog-line"></div>
+	<div class = "clearfix m-t">
       <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
       <button class = "btn btn-primary pull-right" ng-click = "submit()" ng-disabled = "adding || !customerForm.$valid">创建并添加</button>
     </div>

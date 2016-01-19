@@ -5,10 +5,10 @@
  */
 angular.module('nevermore')
   .factory('LabManage', function($resource, sessionService, $rootScope) {
-    var baseUrl ="http://localhost:8080/manage/lab";
+    var apiUrl = base_Url + "/manage/lab"
     return {
       create: function(){
-        return $resource(baseUrl, {}, {
+        return $resource(apiUrl, {}, {
           'post': {
             method: 'POST',
             headers: sessionService.headers()
@@ -16,7 +16,7 @@ angular.module('nevermore')
         });
       },
       lab: function(){
-        return $resource(baseUrl + '/:id', {id:"@id"}, {
+        return $resource(apiUrl + '/:id', {id:"@id"}, {
           'get': {
             method: 'GET',
             headers: sessionService.headers()
@@ -32,7 +32,7 @@ angular.module('nevermore')
         });
       },
       page: function() {
-        return $resource(baseUrl + '/labs?scope=list', {
+        return $resource(apiUrl + '/labs?scope=list', {
           pageSize:"@pageSize",
           pageNum:"@pageNum"
         }, {
@@ -43,7 +43,7 @@ angular.module('nevermore')
         });
       },
       all: function(){
-        return $resource(baseUrl + '/labs?scope=all', {
+        return $resource(apiUrl + '/labs?scope=all', {
         }, {
           'get': {
             method: 'GET',

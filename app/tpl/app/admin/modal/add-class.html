@@ -4,6 +4,7 @@
       <span>班级详情</span>
     </h1>
   </div>
+	<div class = "nm-dialog-line"></div>
   <form class="form-horizontal" name="customerForm" novalidate>
     <div class="form-group">
       <label for="semester" class="col-sm-3 control-label">学期</label>
@@ -47,6 +48,7 @@
         <input type="text" class="form-control" id="description" ng-model = "resource.description">
       </div>
     </div>
+    <div class = "nm-dialog-line"></div>
     <div class="clearfix m-t">
       <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
       <button class = "btn btn-primary pull-right" ng-click = "addResource()" ng-disabled = "adding">创建</button>
