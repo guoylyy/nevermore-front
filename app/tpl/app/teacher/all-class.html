@@ -8,8 +8,8 @@
 			<ul class = "db-list course-list">
 		    	<li ng-repeat = "class in classList">
 		    		<div ui-sref = "app.teacher.class.main-page({classID: '{{class.id}}'})">
-		    			<img src="images/app/course1.jpg" class = "course-img">
-		    			<a>{{class.number}}</a>
+		    			<img src="images/app/course{{class.id % 5 + 1}}.jpg" class = "course-img">
+		    			<a class="text-link text-md">{{class.number}}-{{clazz.course.name}}</a>
 		    		</div>
 		    	</li>
 		    </ul>

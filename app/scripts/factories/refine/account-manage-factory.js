@@ -5,11 +5,10 @@
  */
 angular.module('nevermore')
   .factory('AccountManage', function($resource, sessionService, $rootScope) {
-    //var baseUrl = base_Url + '/manage/account';
-    var baseUrl = 'http://localhost:8080/manage/account';
+    var apiUrl = base_Url + "/manage/account"
     return {
       create: function(){
-        return $resource(baseUrl, {}, {
+        return $resource(apiUrl, {}, {
           'post': {
             method: 'POST',
             headers: sessionService.headers()
@@ -17,7 +16,7 @@ angular.module('nevermore')
         });
       },
       account: function(){
-        return $resource(baseUrl + '/:id', {id:"@id"}, {
+        return $resource(apiUrl + '/:id', {id:"@id"}, {
           'get': {
             method: 'GET',
             headers: sessionService.headers()
@@ -33,7 +32,7 @@ angular.module('nevermore')
         });
       },
       page: function() { //分页获取用户 ~ students | teachers
-        return $resource(baseUrl + '/:role?scope=list', {
+        return $resource(apiUrl + '/:role?scope=list', {
           role: "@role",
           pageSize:"@pageSize",
           pageNum:"@pageNum"
@@ -45,7 +44,7 @@ angular.module('nevermore')
         });
       },
       all: function(){//获取所有用户 ~ students | teachers
-        return $resource(baseUrl + '/:role?scope=all', {
+        return $resource(apiUrl + '/:role?scope=all', {
           role: "@role"
         }, {
           'get': {
@@ -55,7 +54,7 @@ angular.module('nevermore')
         });
       },
       search: function(){//获取所有用户 ~ students | teachers
-        return $resource(baseUrl + '/search', {
+        return $resource(apiUrl + '/search', {
           keyword:"@keyword",
           role:"@role"
         }, {

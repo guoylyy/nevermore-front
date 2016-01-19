@@ -7,15 +7,15 @@
 		<ul class = "db-list">
 			<li class = "db-p-15" ng-repeat = "experiment in experimentList">
 				<div>
-					<span class="db-title db-exp-title">
-						{{name}}拉伸试验
+					<span class="text-xl p-r">
+						{{experiment.name}}
 					</span>
-					<span ng-if = "experiment.reservations.length > 0" class="db-title db-exp-info-success">
-						已预约{{experiment.reservations.length}}时间段，共{{getTotalReservationPersonCount(experiment)}}人
-					</span>	
-					<span ng-if = "experiment.reservations.length === 0" class="db-title db-exp-info-danger">
+					<span ng-if = "experiment.reservations.length > 0" class="text-success">
+						已预约 {{experiment.reservations.length}} 个时间段，共{{getTotalReservationPersonCount(experiment)}}人
+					</span>
+					<span ng-if = "experiment.reservations.length === 0" class="text-danger">
 						还没有预约任何时间段
-					</span>	
+					</span>
 					<button ng-click = "openReserveDialog($index)" class="btn btn-default db-btn-default pull-right db-m-r-15">
 						立即预约
 					</button>
@@ -27,21 +27,21 @@
 							<span class = "db-exp-time">{{reservation.applyDate}}2015-10-14</span>
 						</td>
 						<td style = "width: 25%;">
-							{{reservation.lab}}实验室
+							{{reservation.lab}}
 						</td>
 						<td style = "width: 10%;">
-							{{reservation.slot}}时间段
+							{{reservation.slot}}
 						</td>
 						<td style = "width: 10%;">
-							{{reservation.personCount}}人数
+							{{reservation.personCount}}
 						</td>
 						<td style = "width: 10%;">
-							{{reservation.status}}状态
+							{{reservation.status}}
 						</td>
 						<td style = "width: 20%;">
 							<button class="btn btn-danger db-btn-danger pull-right">
 								取消预约
-							</button>							
+							</button>
 						</td>
 					</tr>
 				</table>

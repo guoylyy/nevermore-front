@@ -6,67 +6,68 @@
     <div class = "wrapper">
 		<div style = "overflow: hidden">
 			<ul class="db-tab db-m-0 pull-left" style = "padding: 0px;">
-				<li class="active">
+				<li class="active" ng-click="changeTab('CLAZZ_PUBLIC')">
 					<a data-target = "#publicFiles" role = "tab" data-toggle = "tab" aria-expanded = "true" class = "db-underline">
 						公共文件夹
 					</a>
 				</li>
-				<li>
+				<li ng-click="changeTab('CLAZZ_PRIVATE')">
 					<a data-target = "#privateFiles" role = "tab" data-toggle = "tab" aria-expanded = "false" class = "db-underline">
 						私有文件夹
 					</a>
 				</li>
 			</ul>
-        	<button class="btn btn-primary db-btn-primary pull-right db-m-r-20">上传文件</button>
+        	<button class="btn btn-primary db-btn-primary pull-right db-m-r-20"  ngf-select ng-model="file" ngf-max-size="20MB">上传文件</button>
 		</div>
 		<div class="db-line db-m-0 db-m-b-10"></div>
 		<div class="tab-content">
+      <!-- 共有文件夹-->
 			<div class="tab-pane active" id = "publicFiles">
+        <div class="alert ng-isolate-scope alert-info alert-dismissable">公有文件夹是教师上传的实验相关文件!!</div>
 				<table class = "table db-file-table">
-					<tr>
+					<tr ng-repeat="file in publicFileList">
 						<td style = "width: 6%;">
 							<div class="file-icon">
-								shi
-								<!-- {{file.name | limitTo: 2}} -->
+									{{file.name | limitTo: 2}}
 							</div>
 						</td>
 						<td class = "file-name" style = "width: 50%;">
-							name
-							<!-- {{file.name}} -->
-						</td>
-						<td style = "width: 10%;">
-							303kb
-							<!-- {{file.size}}kb -->
-						</td>
-						<td style = "width: 15%;">
-							2015-10-14
-						</td>
-						<td style = "width: 30%; text-align: right;">
-							<img class = "db-icon db-m-r-20" style = "height: auto;" src="images/app/download.png" alt="下载"/>
-							<img class = "db-icon db-m-r-20" src="images/app/delete.png" alt = "删除">
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="tab-pane" id = "privateFiles">
-				<table class = "table db-file-table">
-					<tr ng-repeat = "file in privateFileList">
-						<td style = "width: 6%;">
-							<div class="file-icon">
-								{{file.name | limitTo: 2}}
-							</div>
-						</td>
-						<td style = "width: 50%;">
 							{{file.name}}
 						</td>
 						<td style = "width: 10%;">
 							{{file.size}}kb
 						</td>
 						<td style = "width: 15%;">
-							2015-10-04
+							2015-10-14
 						</td>
-						<td style = "width: 30%;">
-							<i class="fa fa-github db-m-r-10"></i>
+						<td style = "width: 30%; text-align: right;">
+							<a href="{{file.url}}" target="_blank"><img class = "db-icon db-m-r-20" style = "height: auto;" src="images/app/download.png" alt="下载"/></a>
+							<a ng-click="remove(file)"><img class = "db-icon db-m-r-20" src="images/app/delete.png" alt = "删除"></a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="tab-pane" id = "privateFiles">
+        <div class="alert ng-isolate-scope alert-info alert-dismissable">私有文件夹只有您自己可以看到,存储了您的实验相关文件!!</div>
+				<table class = "table db-file-table">
+          <tr ng-repeat="file in privateFileList">
+						<td style = "width: 6%;">
+							<div class="file-icon">
+									{{file.name | limitTo: 2}}
+							</div>
+						</td>
+						<td class = "file-name" style = "width: 50%;">
+							{{file.name}}
+						</td>
+						<td style = "width: 10%;">
+							{{file.size}}kb
+						</td>
+						<td style = "width: 15%;">
+							2015-10-14
+						</td>
+						<td style = "width: 30%; text-align: right;">
+							<a href="{{file.url}}" target="_blank"><img class = "db-icon db-m-r-20" style = "height: auto;" src="images/app/download.png" alt="下载"/></a>
+							<a ng-click="remove(file)"><img class = "db-icon db-m-r-20" src="images/app/delete.png" alt = "删除"></a>
 						</td>
 					</tr>
 				</table>
@@ -74,10 +75,10 @@
 		</div>
     </div>
     <div class="wrapper db-m-t-10">
-    	<div class = "db-upload-wrapper">
-    		<div class="db-upload-area">
+    	<div class = "db-upload-wrapper cursor-pointer">
+    		<div class="db-upload-area" class="tiger-upload-container"  ngf-drop ngf-select ng-model="file" ngf-max-size="20MB">
     			<img src="images/app/upload.png" class = "db-icon" style = "height: auto">
-    			<span class = "title">点击或者拖拽文件至此上传</span>
+    			<span class = "title">点击此处上传文件</span>
     			</br>
     			<span class="content">支持所有文件格式，单个文件不超过20M。</span>
     		</div>

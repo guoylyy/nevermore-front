@@ -13,6 +13,8 @@
 			$scope.validateSelect = validateSelect
 			$scope.validateString = validateString
 			$scope.validateNonEmptyString = validateNonEmptyString
+			$scope.validateRangeNumber = validateRangeNumber
+			$scope.validateRangeNumberInclusive = validateRangeNumberInclusive
 		}
 	}
 
@@ -45,5 +47,55 @@
 			return false
 		}
 		return true
+	}
+
+	function validateRangeNumber(number, min, max){
+		if(validateNumber(number) === false){
+			return false
+		}
+
+		if(typeof min !== "number"){
+			min = Infinity * -1
+		}
+
+		if(typeof max !== "number"){
+			max = Infinity
+		}
+
+		if(min < number && number < max){
+			return true
+		}else{
+			return false
+		}
+	}
+
+	function validateRangeNumberInclusive(number, min, max){
+		if(validateNumber(number) === false){
+			return false
+		}
+
+		if(typeof min !== "number"){
+			min = Infinity * -1
+		}
+
+		if(typeof max !== "number"){
+			max = Infinity
+		}
+
+		if(min <= number && number <= max){
+			return true
+		}else{
+			return false
+		}
+	}
+
+	function validateNumber(number){
+		var validator = new RegExp("^\\d+$")
+
+		if(validator.test(number) === true){
+			return true
+		}else{
+			return false
+		}
 	}
 }()

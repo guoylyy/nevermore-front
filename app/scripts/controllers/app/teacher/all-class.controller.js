@@ -2,7 +2,7 @@
 
 	app.controller("TeacherAllClassController", TeacherAllClassController)
 
-	TeacherAllClassController.$inject = ["$scope", "clazzFactory", "ToasterTool", 
+	TeacherAllClassController.$inject = ["$scope", "clazzFactory", "ToasterTool",
 	"httpResponseFactory"]
 
 	function TeacherAllClassController($scope, clazzFactory, ToasterTool,

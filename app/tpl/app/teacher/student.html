@@ -7,15 +7,15 @@
     <div class = "wrapper">
     	<div style = "overflow: hidden; margin-bottom: 20px;">
 			<span>
-				以下是该参加该课程的学生列表，请教师谨慎操作！！
+				以下是该参加该课程的学生列表，请教师谨慎操作！
 			</span>
-			<button class="btn btn-primary db-btn-primary pull-right">
+			<button class="btn btn-primary db-btn-primary pull-right" ng-click="toUploadStudents()">
 				上传学生名单
 			</button>
 		</div>
 		<div class="db-m-b-10">
-			<button class = "btn btn-primary db-btn-primary db-m-r-15">添加学生</button>
-			<button class="btn btn-danger db-btn-danger">移除所选</button>
+			<button class = "btn btn-primary db-btn-primary db-m-r-15" ng-click="toAddStudent()">添加学生</button>
+			<button class="btn btn-danger db-btn-danger" ng-click="removeSelectedStudents()">移除所选</button>
 			<form class = "pull-right db-search-form">
 			    <input type="text" placeholder = "输入学号或姓名">
 			   	<button class="search-btn">搜索</button>
@@ -26,7 +26,7 @@
 				<tr>
 					<th style = "width: 4.5%" class = "db-t-c">
 						<label class="i-checks i-checks-sm db-check db-m-b-0">
-	                        <input type="checkbox">
+	                        <input type="checkbox" ng-model="selectAll" ng-change="selectAllItems()">
 	                        <i></i>
 	                    </label>
 					</th>
@@ -38,22 +38,22 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
+				<tr ng-repeat="item in studentList">
 					<td class = "db-t-c">
 						<label class="i-checks i-checks-sm db-check db-m-b-0">
-	                        <input type="checkbox">
+	                        <input type="checkbox" ng-model="item.selected">
 	                        <i></i>
 	                    </label>
 					</td>
-					<td>091114</td>
+					<td class="text-link">{{item.account}}</td>
 					<td>
-						攀岩
+						{{item.name}}
 					</td>
-					<td>软件工程</td>
-					<td>男</td>
+					<td>{{item.extParams.major}}</td>
+					<td>{{item.gender.value}}</td>
 					<td>
-						<img class = "db-icon db-m-r-30" src="images/app/look.png" alt="查看"/>
-						<img class = "db-icon" src="images/app/delete.png" alt = "删除">
+						<!-- <img class = "db-icon db-m-r-30" src="images/app/look.png" alt="查看"/> -->
+						<a ng-click="removeOneStudent(item)"><img class = "db-icon" src="images/app/delete.png" alt = "删除" ></a>
 					</td>
 				</tr>
 			</tbody>

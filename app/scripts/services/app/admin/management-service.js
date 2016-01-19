@@ -18,6 +18,7 @@ angular.module('nevermore')
       }
 
       this.ModifyDialog = ModifyDialog;
+      this.RichModifyDialog = RichModifyDialog;
       this.AddDialog = AddDialog;
       this.errorHandler = errorHandler;
 
@@ -46,6 +47,36 @@ angular.module('nevermore')
         this.setCloseListener = function(modify, del){
           onModify = typeof modify === "function" ? modify : undefined
           onDelete = typeof del === "function" ? del : undefined
+          return self
+        }
+      }
+
+      function RichModifyDialog(){
+        var dialog = undefined
+        var onModify = undefined
+        var dialogConfig = undefined
+        var self = this
+
+        this.open = function(resource, templateUrl, controller, other){
+          dialogConfig = getDialogConfig(resource, templateUrl, controller, other)
+          dialogConfig.className = 'nm-dialog nm-dialog-lg'
+          dialogConfig.closeByDocument = false
+          dialogConfig.closeByEscape = false
+
+          dialog = ngDialog.open(dialogConfig)
+          dialog.closePromise.then(processReturnValue)
+          return self
+        }
+
+        function processReturnValue(data){
+          var MODIFY_ACTION = "modify"
+          if(data.value === MODIFY_ACTION){
+            typeof onModify === "function" && onModify()
+          }
+        }
+
+        this.setCloseListener = function(modify){
+          onModify = typeof modify === "function" ? modify : undefined
           return self
         }
       }

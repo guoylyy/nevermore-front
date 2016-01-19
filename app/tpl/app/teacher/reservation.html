@@ -6,114 +6,69 @@
 	    </div>
 	    <div class="db-line"></div>
 	    <div class = "wrapper-md">
-	    	<div class = "db-m-b-20">
+	    	<div>
 	    		<span class="db-title">本周预约</span>
 	    	</div>
 	    	<div class="db-p-l-40">
-				<table class = "table db-file-table db-table-row-b">
-					<tr>
-						<td style = "width: 25%">
-							<span class = "db-exp-time">2015-10-10(周三)</span>
+				<table class = "table db-appointment-table db-table-row-b db-m-b-0">
+					<tr class="cursor-pointer" ng-repeat = "reservation in reservationInWeekList">
+						<td style = "width: 15%; text-align: left;">
+							<span class = "db-exp-time">{{reservation.applyDate | date: 'yyyy-MM-dd (EEE)'}}</span>
+						</td>
+						<td style = "width: 20%; text-align: left;">
+							<span class="db-exp-time">{{reservation.lab.name}}</span>
+						</td>
+						<td style = "width: 15%; text-align: right;">
+							{{reservation.slot.title}}
+						</td>
+						<td style = "width: 14%;">
+							{{reservation.personCount}}
+						</td>
+						<td style = "width: 11%;">
+							{{reservation.status.value}}
 						</td>
 						<td style = "width: 25%;">
-							<span class="db-exp-time">嘉定H317弯扭组合压杆稳定</span>
-						</td>
-						<td style = "width: 10%;">
-							5,6节课
-						</td>
-						<td style = "width: 10%;">
-							61人
-						</td>
-						<td style = "width: 10%;">
-							审核中
-						</td>
-						<td style = "width: 20%;">
-							<button class="btn btn-danger db-btn-danger pull-right">
+							<button class="btn btn-danger db-btn-danger pull-right m-t-sm" ng-click = "cancelReservation(reservation.id)">
 								取消预约
-							</button>							
-						</td>
-					</tr>
-					<tr>
-						<td style = "width: 25%">
-							<span class = "db-exp-time">2015-10-10(周三)</span>
-						</td>
-						<td style = "width: 25%;">
-							<span class="db-exp-time">嘉定H317弯扭组合压杆稳定</span>
-						</td>
-						<td style = "width: 10%;">
-							5,6节课
-						</td>
-						<td style = "width: 10%;">
-							61人
-						</td>
-						<td style = "width: 10%;">
-							审核中
-						</td>
-						<td style = "width: 20%;">
-							<button class="btn btn-danger db-btn-danger pull-right">
-								取消预约
-							</button>							
+							</button>
 						</td>
 					</tr>
 				</table>
 	    	</div>
-	    	<div class = "db-m-b-20">
+	    	<div class = "db-m-t-40">
 	    		<span class="db-title">其他预约</span>
 	    	</div>
 	    	<div class="db-p-l-40">
-				<table class = "table db-file-table db-table-row-b">
-					<tr>
-						<td style = "width: 25%">
-							<span class = "db-exp-time">2015-10-10(周三)</span>
+				<table class = "table db-appointment-table db-table-row-b db-m-b-0">
+					<tr class="cursor-pointer" ng-repeat = "reservation in reservationOutWeekList">
+						<td style = "width: 15%; text-align: left;">
+							<span class = "db-exp-time">{{reservation.applyDate | date: 'yyyy-MM-dd (EEE)'}}</span>
+						</td>
+						<td style = "width: 20%; text-align: left;">
+							<span class="db-exp-time">{{reservation.lab.name}}</span>
+						</td>
+						<td style = "width: 15%; text-align: right;">
+							{{reservation.slot.title}}
+						</td>
+						<td style = "width: 14%;">
+							{{reservation.personCount}}
+						</td>
+						<td style = "width: 11%;">
+							{{reservation.status.value}}
 						</td>
 						<td style = "width: 25%;">
-							<span class="db-exp-time">嘉定H317弯扭组合压杆稳定</span>
-						</td>
-						<td style = "width: 10%;">
-							5,6节课
-						</td>
-						<td style = "width: 10%;">
-							61人
-						</td>
-						<td style = "width: 10%;">
-							审核中
-						</td>
-						<td style = "width: 20%;">
-							<button class="btn btn-danger db-btn-danger pull-right">
+							<button class="btn btn-danger db-btn-danger pull-right m-t-sm" ng-click = "cancelReservation(reservation.id)">
 								取消预约
-							</button>							
-						</td>
-					</tr>
-					<tr>
-						<td style = "width: 25%">
-							<span class = "db-exp-time">2015-10-10(周三)</span>
-						</td>
-						<td style = "width: 25%;">
-							<span class="db-exp-time">嘉定H317弯扭组合压杆稳定</span>
-						</td>
-						<td style = "width: 10%;">
-							5,6节课
-						</td>
-						<td style = "width: 10%;">
-							61人
-						</td>
-						<td style = "width: 10%;">
-							审核中
-						</td>
-						<td style = "width: 20%;">
-							<button class="btn btn-danger db-btn-danger pull-right">
-								取消预约
-							</button>							
+							</button>
 						</td>
 					</tr>
 				</table>
-				<div class="row clearfix" style="width: 100%;" >
-	            	<div class="pull-left col-sm-4 m-t-sm">
-	              		<span class="db-title">共&nbsp;{{accounts.totalItemNum}}&nbsp;个预约</span>
+				<div class="row clearfix db-m-t-30" style="width: 100%;" >
+	            	<div class="pull-left col-sm-4">
+	              		<span class="db-title">共&nbsp;{{paginator.items}}&nbsp;个非本周预约</span>
 	            	</div>
 	              	<div class="pull-right">
-	            		<uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="accounts.totalItemNum"
-	              ng-model="accounts.curPageNum" ng-change="pageChanged()"></uib-pagination>
+	            		<uib-pagination max-size="7" previous-text="上一页" next-text="下一页" ng-model="paginator.page" total-items="paginator.items" ng-change="pageChanged()"></uib-pagination>
 	            	</div>
 	          	</div>
 	    	</div>
