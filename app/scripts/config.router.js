@@ -214,6 +214,7 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/teacher/file.controller.js",
+                  "ngFileUpload"
                 ])
               }]
             },
@@ -700,6 +701,7 @@ angular.module('nevermore')
                   "scripts/controllers/app/administrator/course-management.js",
                   "scripts/controllers/app/administrator/modal/course-add.js",
                   "scripts/controllers/app/administrator/modal/course-modify.js",
+                  "scripts/controllers/app/administrator/modal/course-rich-modify.js"
                 ])
               }]
             }

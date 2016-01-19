@@ -116,6 +116,9 @@
 .text-2x {
   font-size: 2em;
 }
+.text-xl {
+  font-size: 20px;
+}
 .text-lg {
   font-size: 18px;
 }
@@ -2021,6 +2024,20 @@ fieldset[disabled] .btn-black.active {
   line-height: 40px;
   font-size: 16px;
 }
+.ta-toolbar .btn-group {
+  margin-bottom: 10px;
+}
+.ta-editor {
+  min-height: 300px;
+  height: auto;
+  overflow: auto;
+  font-family: inherit;
+  font-size: 100%;
+  margin: 10px 0;
+}
+.ta-editor.ta-html {
+  display: none;
+}
 .nm-tab-btn-group .nav-tabs {
   border-bottom: none;
 }
@@ -2274,6 +2291,10 @@ input::-webkit-inner-spin-button {
   height: 180px;
   margin-bottom: 10px;
   border-radius: 5px;
+}
+.clazz-main-page .main-page-content {
+  min-height: 500px;
+  background-color: #fff;
 }
 .app:before {
   content: "";

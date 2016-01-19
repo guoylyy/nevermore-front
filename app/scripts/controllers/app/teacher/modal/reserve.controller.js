@@ -2,23 +2,27 @@
 	angular.module("nevermore")
 			.controller("TeacherReserveController", TeacherReserveController)
 
-	TeacherReserveController.$inject = ["$scope", "experimentID", "experiment", 
+	TeacherReserveController.$inject = ["$scope", "experimentID", "experimentName", "experiment",
 	"InputValidator", "lab", "StateChainFactory"]
 
-	function TeacherReserveController($scope, experimentID, experiment, 
+	function TeacherReserveController($scope, experimentID, experimentName, experiment,
 		InputValidator, lab, StateChainFactory){
-
+		$scope.date = new Date()
 		var stateChain = StateChainFactory.getStateChain()
 		stateChain.pushState("initState")
+
 		.pushState("date", function(){
-			$scope.date = undefined
+			$scope.date = new Date()
 		}).pushState("lab", function(){
-			$scope.lab = undefined
-			$scope.labList = []
+			if(!$scope.lab){
+				$scope.lab = undefined
+				$scope.labList = []
+			}
 		}).pushState("slot", function(){
 			$scope.slot = undefined
 			$scope.slotList = []
 		})
+		$scope.experimentName = experimentName
 
 		$scope.labList = []
 		$scope.lab = undefined
