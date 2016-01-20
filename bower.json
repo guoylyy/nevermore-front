@@ -34,15 +34,14 @@
     "simple-line-icons": "~2.2.3",
     "textAngular": "~1.5.0",
     "ui-router-extras": "~0.1.0",
-    "angular-strap": "~2.3.6",
-    "ngstorage": "~0.3.10",
-    "oclazyload": "ocLazyLoad#~1.0.9",
-    "ng-dialog": "~0.5.6",
-    "ng-file-upload": "~10.1.9",
     "angular-bootstrap-nav-tree": "https://github.com/nickperkinslondon/angular-bootstrap-nav-tree.git",
-    "underscore": "~1.8.3"
+    "underscore": "~1.8.3",
+    "ngGallery": "*"
   },
   "resolutions": {
     "angular": "1.4.8"
+  },
+  "devDependencies": {
+    "ngGallery": "*"
   }
 }
