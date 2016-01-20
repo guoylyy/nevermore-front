@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('nevermore')
-    .factory('clazzFactory', function($resource, sessionService, $rootScope) {
+    .factory('ClazzFactory', function($resource, sessionService, $rootScope) {
     var apiUrl = base_Url+'/clazz'
 
     return {

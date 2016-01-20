@@ -208,6 +208,7 @@ angular.module('nevermore')
                   "scripts/controllers/app/teacher/main-page.controller.js",
                   "scripts/factories/refine/http-response.factory.js",
                   "scripts/services/toaster-tool.js",
+                  "scripts/services/app/admin/management-service.js"
                 ])
               }]
             },

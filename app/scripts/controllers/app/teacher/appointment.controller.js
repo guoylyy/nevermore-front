@@ -3,10 +3,10 @@
 			.controller("TeacherAppointmentController", TeacherAppointmentController)
 
 	TeacherAppointmentController.$inject = ["$scope", "Exp",
-		"ToasterTool", "Lab", "Reservation", "ngDialog", "clazzFactory"]
+		"ToasterTool", "Lab", "Reservation", "ngDialog", "ClazzFactory"]
 
 	function TeacherAppointmentController($scope, Exp,
-		ToasterTool, Lab, Reservation, ngDialog, clazzFactory){
+		ToasterTool, Lab, Reservation, ngDialog, ClazzFactory){
 
 
 		$scope.experimentList = []
@@ -20,7 +20,7 @@
 
 		//获取实验预约列表
 		function loadExperimentReservations(){
-		 clazzFactory.experiments().get({
+		 ClazzFactory.experiments().get({
 			 id:$scope.classID,
 			 type: 'reservations'
 		 }).$promise

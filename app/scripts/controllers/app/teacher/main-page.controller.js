@@ -2,10 +2,10 @@
 	angular.module("nevermore")
 			.controller("TeacherMainPageController", TeacherMainPageController)
 
-	TeacherMainPageController.$inject = ["$scope", "clazzFactory",
+	TeacherMainPageController.$inject = ["$scope", "ClazzFactory",
 		"httpResponseFactory", "ToasterTool", "ManagementService"]
 
-	function TeacherMainPageController($scope, clazzFactory, httpResponseFactory,
+	function TeacherMainPageController($scope, ClazzFactory, httpResponseFactory,
 		ToasterTool, ManagementService){
 
 		$scope.mainPage = {}
@@ -18,7 +18,7 @@
 		getMainPage()
 
 		function getClass(){
-			clazzFactory.clazz().get({
+			ClazzFactory.clazz().get({
 				id: $scope.classID,
 			})
 			.$promise
@@ -34,7 +34,7 @@
 		}
 
 		function getMainPage(){
-			clazzFactory.mainPage().get({
+			ClazzFactory.mainPage().get({
 				id: $scope.classID,
 			})
 			.$promise

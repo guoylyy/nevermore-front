@@ -112,7 +112,7 @@
 
 		//访问文件列表接口
 		function getFiles(fileType){
-			return clazzFactory.files().get({
+			return ClazzFactory.files().get({
 				id: $scope.classID,
 				type: fileType
 			}).$promise
