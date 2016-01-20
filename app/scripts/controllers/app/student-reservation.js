@@ -5,7 +5,7 @@ app.controller('StudentReservationCtrl', function($rootScope,$scope, $stateParam
   $scope.title = $stateParams.title;
   $scope.tab = 'reservation';//reservation显示预约列表。openlab表示开放可预约的实验室
 
-  var semester = sessionService.getCurrSemeter();
+  var semester = sessionService.getCurrentSemester();
 
   $scope.map = {
     'Reservations':{

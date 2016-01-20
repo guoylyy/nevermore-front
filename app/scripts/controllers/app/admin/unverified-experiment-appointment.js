@@ -22,7 +22,7 @@ function($scope, Reservation, sessionService, generalService, ToasterTool, ngDia
 
 	function commitLoad(resourceFactory){
 		return resourceFactory.allByStatusPage().get({
-			semesterId: sessionService.getCurrSemeter().id,
+			semesterId: sessionService.getCurrentSemester().id,
 			pageSize: generalService.pageSize(),
 			pageNumber: $scope.resources.curPageNum,
 			status: "PENDING",

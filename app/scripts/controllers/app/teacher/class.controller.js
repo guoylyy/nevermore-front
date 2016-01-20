@@ -2,10 +2,9 @@
 	angular.module("nevermore")
 			.controller("TeacherClassController", TeacherClassController)
 
-	TeacherClassController.$inject = ["$scope", "$stateParams"]
+	TeacherClassController.$inject = ["$scope", "clazz"]
 
-	function TeacherClassController($scope, $stateParams){
-
-		$scope.classID = $stateParams.classID
+	function TeacherClassController($scope, clazz){
+		$scope.class = clazz
 	}
 }()

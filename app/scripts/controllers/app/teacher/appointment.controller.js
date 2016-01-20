@@ -2,38 +2,40 @@
 	angular.module("nevermore")
 			.controller("TeacherAppointmentController", TeacherAppointmentController)
 
-	TeacherAppointmentController.$inject = ["$scope", "Exp",
-		"ToasterTool", "Lab", "Reservation", "ngDialog", "ClazzFactory"]
+	TeacherAppointmentController.$inject = ["$scope", "ToasterTool", "ngDialog",
+		"ClazzFactory", "errorHandlerFactory", "httpResponseFactory", "reservationFactory"]
 
-	function TeacherAppointmentController($scope, Exp,
-		ToasterTool, Lab, Reservation, ngDialog, ClazzFactory){
+	function TeacherAppointmentController($scope, ToasterTool, ngDialog,
+		ClazzFactory, errorHandlerFactory, httpResponseFactory, reservationFactory){
 
+		var errorHandler = errorHandlerFactory.handle
 
 		$scope.experimentList = []
-
 		$scope.getTotalReservationPersonCount = getTotalReservationPersonCount
-
 		$scope.openReserveDialog = openReserveDialog
+		$scope.cancelReservation = cancelReservation
 
 
 		loadExperimentReservations();
 
 		//获取实验预约列表
 		function loadExperimentReservations(){
-		 ClazzFactory.experiments().get({
-			 id:$scope.classID,
-			 type: 'reservations'
-		 }).$promise
-		   .then(function(response){
-				 	if(response.success){
-						angular.copy(response.data, $scope.experimentList);
-					}else{
-						console.log('error');
-					}
-			 });
+		 	ClazzFactory.experiments().get({
+				id:$scope.class.id,
+			 	type: 'reservations'
+		 	})
+		 	.$promise
+		   	.then(function(response){
+		   		if(httpResponseFactory.isResponseSuccess(response)){
+		   			var data = httpResponseFactory.getResponseData(response)
+		   			angular.copy(data, $scope.experimentList)
+		   		}else{
+		   			errorHandler(response)
+		   		}
+		 	})
+		 	.catch(errorHandler)
 		}
 
-		//
 		function openReserveDialog(experimentIndex){
 			var experiment = $scope.experimentList[experimentIndex]
 
@@ -51,7 +53,7 @@
 						return experiment.name
 					},
 					classID: function(){
-						return $scope.classID
+						return $scope.class.id
 					}
 				}
 			})
@@ -70,6 +72,21 @@
 			})
 
 			return totalPersonCount
+		}
+
+		function cancelReservation(reservationID){
+			reservationFactory.reservation().delete({
+				id: reservationID,
+			})
+			.$promise
+			.then(function(response){
+				if(httpResponseFactory.isResponseSuccess(response)){
+					ToasterTool.success("取消预约成功")
+				}else{
+					errorHandler(response)
+				}
+			})
+			.catch(errorHandler)
 		}
 	}
 

@@ -10,8 +10,8 @@ app.controller('AppIndexController', ['$scope', '$state', '$rootScope', function
   return
 
   if($rootScope.currentUser.show_role == 'TEACHER'){
-    $state.go('app.teacher.reservation');
+    $state.go('app.reservation');
   }else if($rootScope.currentUser.show_role == 'STUDENT'){
-    $state.go('app.index.student-reservations', {title: studentResList[0]});
+    $state.go('app.reservations', {title: studentResList[0]});
   }
 }]);
