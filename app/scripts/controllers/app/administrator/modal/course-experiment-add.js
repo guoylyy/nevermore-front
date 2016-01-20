@@ -65,7 +65,7 @@ app.controller('AddExperimentCtrl', ['$scope','CourseManage','ExperimentManage',
     var params = {
       "experiments":expList
     };
-    CourseManage.course().put({
+    CourseManage.experiments().put({
       "id":data.id
     }, params).$promise.then(function(data){
       if (data.code == "200") {

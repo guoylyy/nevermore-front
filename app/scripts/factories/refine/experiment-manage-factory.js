@@ -50,6 +50,14 @@ angular.module('nevermore')
             headers: sessionService.headers()
           }
         });
+      },
+      labs: function() {
+        return $resource(baseUrl + '/:id/labs', {id: "@id"}, {
+          'put': {
+            method: 'PUT',
+            headers: sessionService.headers()
+          }
+        });
       }
     };
   });
