@@ -2,12 +2,12 @@
 	angular.module("nevermore")
 			.controller("TeacherReserveController", TeacherReserveController)
 
-	TeacherReserveController.$inject = ["$scope", "experimentID", "experimentName", 
-	"classID", "experiment", "InputValidator", "lab", "StateChainFactory", 
+	TeacherReserveController.$inject = ["$scope", "experimentID", "experimentName",
+	"classID", "experiment", "InputValidator", "lab", "StateChainFactory",
 	"reservationFactory", "httpResponseFactory", "ToasterTool"]
 
-	function TeacherReserveController($scope, experimentID, experimentName, 
-		classID, experiment, InputValidator, lab, StateChainFactory, 
+	function TeacherReserveController($scope, experimentID, experimentName,
+		classID, experiment, InputValidator, lab, StateChainFactory,
 		reservationFactory, httpResponseFactory, ToasterTool){
 		$scope.date = new Date()
 
@@ -141,7 +141,7 @@
 			.then(function(response){
 				if(httpResponseFactory.isResponseSuccess(response)){
 					ToasterTool.success("预约成功")
-					$scope.closeThisDialog()
+					$scope.closeThisDialog('success')
 				}else{
 					errorHandler(response)
 				}

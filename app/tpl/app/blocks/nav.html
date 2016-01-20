@@ -1,36 +1,31 @@
 <!-- list -->
 <ul class="nav">
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-if = "isStudent() || isTeacher()">
+    <span translate="aside.nav.HEADER">功能</span>
+  </li>
 
+  <li ui-sref-active="active" ng-if="isStudent() || isTeacher()">
+    <a ui-sref="app.reservation"  data-ui-sref-opts="{reload: true}" class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon  glyphicon-calendar icon text-info-dker"></i>
+      <span class="font-bold">我的预约</span>
+    </a>
+  </li>
   <!-- student items-->
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-if="isStudent()">
-    <span translate="aside.nav.HEADER">学生功能</span>
+  <li ui-sref-active="active" ng-if="isStudent()">
+    <a ui-sref="app.student.class-selection.all-class" data-ui-sref-opts="{reload: true}" class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-list-alt icon text-info-dker"></i>
+      <span class="font-bold" translate="aside.nav.DASHBOARD">我的班级</span>
+    </a>
   </li>
- <li ui-sref-active="active" ng-if="isStudent()">
-   <a ui-sref="app.teacher.reservation"  data-ui-sref-opts="{reload: true}" class="auto">
-     <span class="pull-right text-muted">
-       <i class="fa fa-fw fa-angle-right text"></i>
-       <i class="fa fa-fw fa-angle-down text-active"></i>
-     </span>
-     <i class="glyphicon  glyphicon-calendar icon text-info-dker"></i>
-     <span class="font-bold">我的预约</span>
-   </a>
- </li>
 
-
-   <li ui-sref-active="active" ng-if="isStudent()">
-     <a ui-sref="app.student.class-selection" data-ui-sref-opts="{reload: true}" class="auto">
-       <span class="pull-right text-muted">
-         <i class="fa fa-fw fa-angle-right text"></i>
-         <i class="fa fa-fw fa-angle-down text-active"></i>
-       </span>
-       <i class="glyphicon glyphicon-list-alt icon text-info-dker"></i>
-       <span class="font-bold" translate="aside.nav.DASHBOARD">我的班级</span>
-     </a>
-   </li>
-
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-if="isTeacher()">
-    <span translate="aside.nav.HEADER">教师功能</span>
-  </li>
   <li ui-sref-active="active" ng-if="isTeacher()">
     <a ui-sref="app.teacher.class-selection.all-class" data-ui-sref-opts="{reload: true}" class="auto">
       <span class="pull-right text-muted">
@@ -42,8 +37,8 @@
     </a>
   </li>
 
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-if="isAdmin()">
-    <span translate="aside.nav.HEADER">网站管理</span>
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-if = "isAdmin()">
+    <span translate="aside.nav.HEADER">网络管理</span>
   </li>
 
   <li ui-sref-active="active" ng-if="isAdmin()">

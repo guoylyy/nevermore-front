@@ -2,41 +2,44 @@
 	angular.module("nevermore")
 			.controller("TeacherAppointmentController", TeacherAppointmentController)
 
-	TeacherAppointmentController.$inject = ["$scope", "Exp",
-		"ToasterTool", "Lab", "Reservation", "ngDialog", "ClazzFactory"]
+	TeacherAppointmentController.$inject = ["$scope", "ToasterTool", "ngDialog", "AlertTool",
+		"ClazzFactory", "errorHandlerFactory", "httpResponseFactory", "reservationFactory"]
 
-	function TeacherAppointmentController($scope, Exp,
-		ToasterTool, Lab, Reservation, ngDialog, ClazzFactory){
+	function TeacherAppointmentController($scope, ToasterTool, ngDialog, AlertTool,
+		ClazzFactory, errorHandlerFactory, httpResponseFactory, reservationFactory){
 
+		var errorHandler = errorHandlerFactory.handle
 
 		$scope.experimentList = []
-
 		$scope.getTotalReservationPersonCount = getTotalReservationPersonCount
-
 		$scope.openReserveDialog = openReserveDialog
+		$scope.cancelReservation = cancelReservation
+
+		$scope.cancelReservation = cancelReservation
 
 
 		loadExperimentReservations();
 
 		//获取实验预约列表
 		function loadExperimentReservations(){
-		 ClazzFactory.experiments().get({
-			 id:$scope.classID,
-			 type: 'reservations'
-		 }).$promise
-		   .then(function(response){
-				 	if(response.success){
-						angular.copy(response.data, $scope.experimentList);
-					}else{
-						console.log('error');
-					}
-			 });
+		 	ClazzFactory.experiments().get({
+				id:$scope.class.id,
+			 	type: 'reservations'
+		 	})
+		 	.$promise
+		   	.then(function(response){
+		   		if(httpResponseFactory.isResponseSuccess(response)){
+		   			var data = httpResponseFactory.getResponseData(response)
+		   			angular.copy(data, $scope.experimentList)
+		   		}else{
+		   			errorHandler(response)
+		   		}
+		 	})
+		 	.catch(errorHandler)
 		}
 
-		//
-		function openReserveDialog(experimentIndex){
-			var experiment = $scope.experimentList[experimentIndex]
-
+		//打开预约面板
+		function openReserveDialog(experiment){
 			var reserveDialog = ngDialog.open({
 				template: "/tpl/app/teacher/modal/add-reservation.html",
 				controller: "TeacherReserveController",
@@ -51,8 +54,14 @@
 						return experiment.name
 					},
 					classID: function(){
-						return $scope.classID
+						return $scope.class.id
 					}
+				}
+			})
+
+			reserveDialog.closePromise.then(function(data){
+				if(data.value === 'success'){
+					loadExperimentReservations()
 				}
 			})
 		}
@@ -70,6 +79,25 @@
 			})
 
 			return totalPersonCount
+		}
+
+		function cancelReservation(reservation){
+			AlertTool.confirm({title:'您确定要取消这个预约?'}).then(function(isConfirm) {
+			  if(isConfirm) {
+					reservationFactory.reservation().
+						delete({id:reservation.id})
+						.$promise
+						.then(function(response){
+							if(response.success){
+								ToasterTool.success('取消预约成功!');
+								loadExperimentReservations()
+							}else{
+								ToasterTool.error('错误',response.message);
+							}
+						});
+			    AlertTool.close();
+			  }
+			});
 		}
 	}
 

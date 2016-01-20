@@ -47,7 +47,7 @@
 		//获取学生列表
 		function loadClazzStudents(){
 			ClazzFactory.students().get({
-				id:$scope.classID,
+				id:$scope.class.id,
 				scope:'all'
 			}).$promise
 			.then(function(response){
@@ -65,7 +65,7 @@
 		//移除所选学生
 		function removeSelected(studentIds){
 			ClazzFactory.students().delete({
-				id: $scope.classID,
+				id: $scope.class.id,
 				stuIds: studentIds
 			}).$promise
 			.then(function(response){
@@ -82,20 +82,28 @@
 		//去上传学生名单
 		function toUploadStudents(){
 			var dialog = ngDialog.open({
-				"template": "tpl/app/teacher/modal/add-student.html",
-				"closeByDocument": true,
-				"closeByEscape": true,
-				"resolve": {
-					"data": function(){
-						return null;
-					},
-				},
-			})
+	      template: 'tpl/app/teacher/modal/upload-student.html',
+	      controller: 'UploadStudentCtrl',
+	      className: 'nm-dialog nm-dialog-md',
+	      closeByDocument: false,
+	      closeByEscape: true,
+	      resolve: {
+	          classId: function() {
+	            return $scope.class.id;
+	          }
+	        }
+	    });
+			dialog.closePromise.then(function(data){
+				if(data.value === 'success'){
+					ToasterTool.success("上传学生成功");
+					loadClazzStudents();
+				}
+			});
 		}
 
 		//去添加一个学生
 		function toAddStudent(){
-			console.log($scope.classID);
+			console.log($scope.class.id);
 			var dialog = ngDialog.open({
 				"template": "tpl/app/teacher/modal/add-student.html",
 				"controller": "TeacherAddStudentController",
@@ -103,7 +111,7 @@
 				"closeByEscape": true,
 				"resolve": {
 					"clazzId": function(){
-						return $scope.classID
+						return $scope.class.id
 					}
 				},
 			})
