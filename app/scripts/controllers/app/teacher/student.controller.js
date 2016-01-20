@@ -2,10 +2,10 @@
 	angular.module("nevermore")
 			.controller("TeacherStudentController", TeacherStudentController)
 
-	TeacherStudentController.$inject = ["$scope", "clazzFactory", "ToasterTool",
+	TeacherStudentController.$inject = ["$scope", "ClazzFactory", "ToasterTool",
 	"httpResponseFactory", "AlertTool", "ngDialog"]
 
-	function TeacherStudentController($scope, clazzFactory, ToasterTool,
+	function TeacherStudentController($scope, ClazzFactory, ToasterTool,
 	httpResponseFactory, AlertTool, ngDialog){
 
 		$scope.studentList = [];
@@ -46,7 +46,7 @@
 
 		//获取学生列表
 		function loadClazzStudents(){
-			clazzFactory.students().get({
+			ClazzFactory.students().get({
 				id:$scope.classID,
 				scope:'all'
 			}).$promise
@@ -64,7 +64,7 @@
 
 		//移除所选学生
 		function removeSelected(studentIds){
-			clazzFactory.students().delete({
+			ClazzFactory.students().delete({
 				id: $scope.classID,
 				stuIds: studentIds
 			}).$promise
