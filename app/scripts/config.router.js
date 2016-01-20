@@ -309,6 +309,7 @@ angular.module('nevermore')
                   "scripts/factories/InputValidator.factory.js",
                   "scripts/controllers/app/teacher/student.controller.js",
                   "scripts/controllers/app/teacher/modal/student.add.controller.js",
+                  "scripts/controllers/app/teacher/modal/student.upload.controller.js"
                 ])
               }],
             },

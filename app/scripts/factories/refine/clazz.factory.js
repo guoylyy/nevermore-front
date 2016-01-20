@@ -16,6 +16,8 @@
       student: student,
       removeFile: removeFile,
       clazz: clazz,
+      studentList: studentList,
+      uploadStudentList: uploadStudentList
     }
 
     //获取实验记录
@@ -120,6 +122,36 @@
           headers: sessionService.headers(),
         }
       })
+    }
+
+    //关联公有附件
+    function attach() {
+      return $resource(apiUrl + "/:id/file", {id: "@id"},{
+        post: {
+          method: "POST",
+          headers: sessionService.headers()
+        }
+      });
+    }
+
+    //从附件读取学生列表
+    function studentList() {
+      return $resource(apiUrl + "/:id/students", {id: "@id"}, {
+        get: {
+          method: "GET",
+          headers: sessionService.headers()
+        }
+      });
+    }
+
+    //上传学生列表
+    function uploadStudentList(){
+      return $resource(apiUrl + "/:id/students",{id: "@id"}, {
+        post:{
+          method: "POST",
+          headers: sessionService.headers()
+        }
+      });
     }
 
   })
