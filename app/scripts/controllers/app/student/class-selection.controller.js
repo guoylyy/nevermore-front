@@ -5,6 +5,6 @@
 	StudentClassSelectionController.$inject= ["$scope"]
 
 	function StudentClassSelectionController($scope){
-		
+
 	}
 }()
