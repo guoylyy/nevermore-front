@@ -17,7 +17,7 @@
       removeFile: removeFile,
       clazz: clazz,
       studentList: studentList,
-      uploadStudentList: uploadStudentList
+      uploadStudentList: uploadStudentList,
       experimentRecords: experimentRecords,
       experimentReports: experimentReports
     }
