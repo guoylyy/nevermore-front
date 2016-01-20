@@ -15,6 +15,8 @@
 		$scope.openReserveDialog = openReserveDialog
 		$scope.cancelReservation = cancelReservation
 
+		$scope.cancelReservatin = cancelReservatin
+
 
 		loadExperimentReservations();
 
@@ -36,9 +38,8 @@
 		 	.catch(errorHandler)
 		}
 
-		function openReserveDialog(experimentIndex){
-			var experiment = $scope.experimentList[experimentIndex]
-
+		//打开预约面板
+		function openReserveDialog(experiment){
 			var reserveDialog = ngDialog.open({
 				template: "/tpl/app/teacher/modal/add-reservation.html",
 				controller: "TeacherReserveController",
@@ -55,6 +56,12 @@
 					classID: function(){
 						return $scope.class.id
 					}
+				}
+			})
+
+			reserveDialog.closePromise.then(function(data){
+				if(data.value === 'success'){
+					loadExperimentReservations()
 				}
 			})
 		}
@@ -74,19 +81,23 @@
 			return totalPersonCount
 		}
 
-		function cancelReservation(reservationID){
-			reservationFactory.reservation().delete({
-				id: reservationID,
-			})
-			.$promise
-			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
-					ToasterTool.success("取消预约成功")
-				}else{
-					errorHandler(response)
-				}
-			})
-			.catch(errorHandler)
+		function cancelReservatin(reservation){
+			AlertTool.confirm({title:'您确定要取消这个预约?'}).then(function(isConfirm) {
+			  if(isConfirm) {
+					reservationFactory.reservation().
+						delete({id:reservation.id})
+						.$promise
+						.then(function(response){
+							if(response.success){
+								ToasterTool.success('取消预约成功!');
+								loadExperimentReservations()
+							}else{
+								ToasterTool.error('错误',response.message);
+							}
+						});
+			    AlertTool.close();
+			  }
+			});
 		}
 	}
 

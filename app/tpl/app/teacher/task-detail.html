@@ -21,8 +21,8 @@
 			</span>
 			<span class="db-title db-exp-info-primary">
 				100/200
-			</span>	
-			<button class="btn btn-primary db-btn-primary pull-right">
+			</span>
+			<button class="btn btn-primary db-btn-primary pull-right" ui-sref="app.teacher.class.task">
 				返回
 			</button>
 		</div>
@@ -30,12 +30,12 @@
 		<div>
 			<ul class="db-tab-table pull-left">
 				<li class="active">
-					<a data-target = "#finishTask" role = "tab" data-toggle = "tab" aria-expanded = "true">
+					<a role = "tab" data-toggle = "tab" aria-expanded = "true" ng-click="changeStatus('FINISH')">
 						已完成
 					</a>
 				</li>
 				<li>
-					<a data-target = "#unfinishTask" role = "tab" data-toggle = "tab" aria-expanded = "false">
+					<a role = "tab" data-toggle = "tab" aria-expanded = "false" ng-click="changeStatus('UNFINISH')">
 						未完成
 					</a>
 				</li>
@@ -56,15 +56,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>09114</td>
-					<td>攀岩</td>
+				<tr ng-repeat="record in recordList">
+					<td>{{record.studentId}}</td>
+					<td>{{record.studentName}}</td>
 					<td>
-						<span class="db-text-success">已完成</span>
+						<span class="db-text-success">{{record.status.value}}</span>
 					</td>
-					<td>2015-10-10</td>
+					<td>{{record.record.occurDate | date:'yyyy-MM-dd'}}</td>
 					<td>
-						<button ui-sref = "app.teacher.class.task-report" class="btn btn-sm btn-primary db-btn-primary">查看详情</button>
+						<button ng-click="viewRecordDetails(record)" class="btn btn-sm btn-primary db-btn-primary">查看详情</button>
 					</td>
 				</tr>
 			</tbody>
