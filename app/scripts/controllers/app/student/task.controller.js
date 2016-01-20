@@ -5,7 +5,7 @@
 	StudentTaskController.$inject = ["$scope"]
 
 	function StudentTaskController($scope){
-		
+
 	}
-	
+
 }()
