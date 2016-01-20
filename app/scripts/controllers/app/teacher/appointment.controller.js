@@ -2,18 +2,18 @@
 	angular.module("nevermore")
 			.controller("TeacherAppointmentController", TeacherAppointmentController)
 
-	TeacherAppointmentController.$inject = ["$scope", "Exp", "AlertTool",
-		"ToasterTool", "Lab", "reservationFactory", "ngDialog", "ClazzFactory"]
+	TeacherAppointmentController.$inject = ["$scope", "ToasterTool", "ngDialog",
+		"ClazzFactory", "errorHandlerFactory", "httpResponseFactory", "reservationFactory"]
 
-	function TeacherAppointmentController($scope, Exp, AlertTool,
-		ToasterTool, Lab, reservationFactory, ngDialog, ClazzFactory){
+	function TeacherAppointmentController($scope, ToasterTool, ngDialog,
+		ClazzFactory, errorHandlerFactory, httpResponseFactory, reservationFactory){
 
+		var errorHandler = errorHandlerFactory.handle
 
 		$scope.experimentList = []
-
 		$scope.getTotalReservationPersonCount = getTotalReservationPersonCount
-
 		$scope.openReserveDialog = openReserveDialog
+		$scope.cancelReservation = cancelReservation
 
 		$scope.cancelReservatin = cancelReservatin
 
@@ -22,17 +22,20 @@
 
 		//获取实验预约列表
 		function loadExperimentReservations(){
-		 ClazzFactory.experiments().get({
-			 id:$scope.classID,
-			 type: 'reservations'
-		 }).$promise
-		   .then(function(response){
-				 	if(response.success){
-						angular.copy(response.data, $scope.experimentList);
-					}else{
-						console.log('error');
-					}
-			 });
+		 	ClazzFactory.experiments().get({
+				id:$scope.class.id,
+			 	type: 'reservations'
+		 	})
+		 	.$promise
+		   	.then(function(response){
+		   		if(httpResponseFactory.isResponseSuccess(response)){
+		   			var data = httpResponseFactory.getResponseData(response)
+		   			angular.copy(data, $scope.experimentList)
+		   		}else{
+		   			errorHandler(response)
+		   		}
+		 	})
+		 	.catch(errorHandler)
 		}
 
 		//打开预约面板
@@ -51,7 +54,7 @@
 						return experiment.name
 					},
 					classID: function(){
-						return $scope.classID
+						return $scope.class.id
 					}
 				}
 			})

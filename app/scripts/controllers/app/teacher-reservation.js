@@ -4,7 +4,7 @@ app.controller('TeacherReservationCtrl', function($scope, ngDialog,
    $rootScope, $stateParams, Reservation, generalService, qService, sessionService) {
 
   $scope.title = $stateParams.title;
-  var semester = sessionService.getCurrSemeter();
+  var semester = sessionService.getCurrentSemester();
 
   $scope.map = {
     Reservations: {
@@ -74,11 +74,11 @@ app.controller('TeacherReservationCtrl', function($scope, ngDialog,
           clazzs: function(qService, Clazz) {
             return qService.tokenHttpGet(Clazz.teacherClazzs, {
               'teacherId':$rootScope.currentUser.id,
-              'semesterId':sessionService.getCurrSemeter().id
+              'semesterId':sessionService.getCurrentSemester().id
             }); //获取教师本人的clazz
           },
           semester: function(sessionService) {
-            return sessionService.getCurrSemeter();
+            return sessionService.getCurrentSemester();
           },
           slots: function(qService, Semester) {
             return qService.tokenHttpGet(Semester.slots, {});
