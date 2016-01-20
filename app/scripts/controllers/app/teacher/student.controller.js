@@ -82,15 +82,23 @@
 		//去上传学生名单
 		function toUploadStudents(){
 			var dialog = ngDialog.open({
-				"template": "tpl/app/teacher/modal/add-student.html",
-				"closeByDocument": true,
-				"closeByEscape": true,
-				"resolve": {
-					"data": function(){
-						return null;
-					},
-				},
-			})
+	      template: 'tpl/app/teacher/modal/upload-student.html',
+	      controller: 'UploadStudentCtrl',
+	      className: 'nm-dialog nm-dialog-md',
+	      closeByDocument: false,
+	      closeByEscape: true,
+	      resolve: {
+	          classId: function() {
+	            return $scope.classID;
+	          }
+	        }
+	    });
+			dialog.closePromise.then(function(data){
+				if(data.value === 'success'){
+					ToasterTool.success("上传学生成功");
+					loadClazzStudents();
+				}
+			});
 		}
 
 		//去添加一个学生

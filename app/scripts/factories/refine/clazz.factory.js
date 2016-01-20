@@ -17,11 +17,41 @@
       student: student,
       removeFile: removeFile,
       clazz: clazz,
+      studentList: studentList,
+      uploadStudentList: uploadStudentList
+      experimentRecords: experimentRecords,
+      experimentReports: experimentReports
     }
 
-    //获取实验记录
+    //获取班级下的实验
     function experiments(){
       return $resource(apiUrl + "/:id/experiments", null, {
+        get: {
+          method: "GET",
+          headers: sessionService.headers()
+        }
+      })
+    }
+
+    //获取班级下实验完成记录列表
+    function experimentRecords(){
+      return $resource(apiUrl + "/:id/experiment/:expId/records", {
+        id: '@id',
+        expId: '@expId'
+      }, {
+        get: {
+          method: "GET",
+          headers: sessionService.headers()
+        }
+      })
+    }
+
+    //获取班级下实验报告列表
+    function experimentReports(){
+      return $resource(apiUrl + "/:id/experiment/:expId/reports", {
+        id: '@id',
+        expId: '@expId'
+      }, {
         get: {
           method: "GET",
           headers: sessionService.headers()
@@ -131,6 +161,36 @@
           headers: sessionService.headers(),
         }
       })
+    }
+
+    //关联公有附件
+    function attach() {
+      return $resource(apiUrl + "/:id/file", {id: "@id"},{
+        post: {
+          method: "POST",
+          headers: sessionService.headers()
+        }
+      });
+    }
+
+    //从附件读取学生列表
+    function studentList() {
+      return $resource(apiUrl + "/:id/students", {id: "@id"}, {
+        get: {
+          method: "GET",
+          headers: sessionService.headers()
+        }
+      });
+    }
+
+    //上传学生列表
+    function uploadStudentList(){
+      return $resource(apiUrl + "/:id/students",{id: "@id"}, {
+        post:{
+          method: "POST",
+          headers: sessionService.headers()
+        }
+      });
     }
 
   })

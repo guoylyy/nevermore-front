@@ -52,7 +52,7 @@ angular.module('nevermore')
         });
       },
       labs: function() {
-        return $resource(baseUrl + '/:id/labs', {id: "@id"}, {
+        return $resource(apiUrl + '/:id/labs', {id: "@id"}, {
           'put': {
             method: 'PUT',
             headers: sessionService.headers()
