@@ -3,12 +3,12 @@
 
   app.controller('LoginController', LoginController);
 
-  LoginController.$inject = ["$scope", "$rootScope", "$state", "sessionService", 
+  LoginController.$inject = ["$scope", "$rootScope", "$state", "sessionService",
   "tokenFactory", "Semester", "ToasterTool", "$localStorage", "InputValidator",
   "RoleFactory", "errorHandlerFactory", "httpResponseFactory"]
 
-  function LoginController($scope, $rootScope, $state, sessionService, 
-    tokenFactory, Semester, ToasterTool, $localStorage, InputValidator, 
+  function LoginController($scope, $rootScope, $state, sessionService,
+    tokenFactory, Semester, ToasterTool, $localStorage, InputValidator,
     RoleFactory, errorHandlerFactory, httpResponseFactory){
     var currentUser = sessionService.getCurrentUser()
     var token = $localStorage.token
@@ -58,9 +58,9 @@
         if(RoleFactory.isAdmin(role)){
             $state.go('app.admin-account');
         }else if(RoleFactory.isTeacher(role)){
-            $state.go('app.index.teacher-reservations',{title:'APPROVED'});
+            $state.go('app.reservation');
         }else if(RoleFactory.isStudent(role)){
-            $state.go('app.index.student-reservations',{title:'clazz'});
+            $state.go('app.reservation');
         }else{
             ToasterTool.error('未知错误发生!');
         }
@@ -128,4 +128,3 @@
     }
   }
 })()
-
