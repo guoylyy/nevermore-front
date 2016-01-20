@@ -65,7 +65,7 @@ app.controller('AddLabCtrl', ['$scope','LabManage','ExperimentManage','data', fu
     var params = {
       "labs":labList
     };
-    ExperimentManage.experiment().put({
+    ExperimentManage.labs().put({
       "id":data.id
     }, params).$promise.then(function(data){
       if (data.code == "200") {
