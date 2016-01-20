@@ -89,7 +89,7 @@
 	      closeByEscape: true,
 	      resolve: {
 	          classId: function() {
-	            return $scope.classID;
+	            return $scope.class.id;
 	          }
 	        }
 	    });
