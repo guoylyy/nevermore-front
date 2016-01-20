@@ -16,7 +16,7 @@
 					<span ng-if = "experiment.reservations.length === 0" class="text-danger">
 						还没有预约任何时间段
 					</span>
-					<button ng-click = "openReserveDialog($index)" class="btn btn-default db-btn-default pull-right db-m-r-15">
+					<button ng-click = "openReserveDialog(experiment)" class="btn btn-default db-btn-default pull-right db-m-r-15">
 						立即预约
 					</button>
 				</div>
@@ -24,22 +24,22 @@
 				<table class = "table db-appointment-table db-m-b-0" ng-if = "experiment.reservations.length > 0">
 					<tr ng-repeat = "reservation in experiment.reservations">
 						<td style = "width: 25%">
-							<span class = "db-exp-time">{{reservation.applyDate}}2015-10-14</span>
+							<span class = "db-exp-time">{{reservation.applyDate | date: 'yyyy-MM-dd'}}</span>
 						</td>
 						<td style = "width: 25%;">
-							{{reservation.lab}}
+							{{reservation.lab.name}}
 						</td>
 						<td style = "width: 10%;">
-							{{reservation.slot}}
+							{{reservation.slot.title}}
 						</td>
 						<td style = "width: 10%;">
-							{{reservation.personCount}}
+							{{reservation.personCount}} 人
 						</td>
 						<td style = "width: 10%;">
-							{{reservation.status}}
+							{{reservation.status.value}}
 						</td>
 						<td style = "width: 20%;">
-							<button class="btn btn-danger db-btn-danger pull-right">
+							<button class="btn btn-danger db-btn-danger pull-right" ng-click="cancelReservatin(reservation)">
 								取消预约
 							</button>
 						</td>
