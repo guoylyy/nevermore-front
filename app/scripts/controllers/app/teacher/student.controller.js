@@ -47,7 +47,7 @@
 		//获取学生列表
 		function loadClazzStudents(){
 			ClazzFactory.students().get({
-				id:$scope.classID,
+				id:$scope.class.id,
 				scope:'all'
 			}).$promise
 			.then(function(response){
@@ -65,7 +65,7 @@
 		//移除所选学生
 		function removeSelected(studentIds){
 			ClazzFactory.students().delete({
-				id: $scope.classID,
+				id: $scope.class.id,
 				stuIds: studentIds
 			}).$promise
 			.then(function(response){
@@ -103,7 +103,7 @@
 
 		//去添加一个学生
 		function toAddStudent(){
-			console.log($scope.classID);
+			console.log($scope.class.id);
 			var dialog = ngDialog.open({
 				"template": "tpl/app/teacher/modal/add-student.html",
 				"controller": "TeacherAddStudentController",
@@ -111,7 +111,7 @@
 				"closeByEscape": true,
 				"resolve": {
 					"clazzId": function(){
-						return $scope.classID
+						return $scope.class.id
 					}
 				},
 			})

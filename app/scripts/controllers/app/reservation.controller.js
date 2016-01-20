@@ -1,17 +1,14 @@
-/**
- * 教师的实验和预约控制器
- */
-
 ;void function(){
 	angular.module("nevermore")
-			.controller("TeacherReservationController", TeacherReservationController)
+			.controller("ReservationController", ReservationController)
 
-	TeacherReservationController.$inject = ["$scope", "reservationFactory", 
-		"httpResponseFactory", "ToasterTool", "generalService"]
+	ReservationController.$inject = ["$scope", "reservationFactory", 
+		"httpResponseFactory", "ToasterTool", "generalService", "errorHandlerFactory"]
 
-	function TeacherReservationController($scope, reservationFactory, 
-		httpResponseFactory, ToasterTool, generalService){
+	function ReservationController($scope, reservationFactory, 
+		httpResponseFactory, ToasterTool, generalService, errorHandlerFactory){
 
+		var errorHandler = errorHandlerFactory.handle
 
 		$scope.reservationInWeekList = []
 		$scope.reservationOutWeekList = []
@@ -26,9 +23,6 @@
 
 		getReservationsInWeek()
 		getReservationOutWeek()
-
-
-
 
 		function getReservationsInWeek(){
 			reservationFactory.myReservationsInWeek().get()
@@ -61,15 +55,6 @@
 				}
 			})
 			.catch(errorHandler)
-		}
-
-		function errorHandler(error){
-			if(httpResponseFactory.isServerResponse(error)){
-				var message = httpResponseFactory.getResponseMessage(error)
-				ToasterTool.error(message)
-			}else{
-				ToasterTool.error("网络连接错误，请重试")
-			}
 		}
 
 		function cancelReservation(reservationID){

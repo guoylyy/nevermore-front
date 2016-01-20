@@ -8,7 +8,7 @@ angular.module('nevermore').service('sessionService',
 			return checkLocalToken();
 		};
 
-		this.getCurrSemeter = function(){
+		this.getCurrentSemester = function(){
 			return gCurrSemester();
 		};
 
@@ -34,7 +34,7 @@ angular.module('nevermore').service('sessionService',
 			checkLocalToken();
 		};
 
-		this.saveCurrSemeter = function(semester){
+		this.saveCurrentSemester = function(semester){
 			$localStorage.semester = semester;
 			$rootScope.semester = semester;
 		};

@@ -2,18 +2,20 @@
 	angular.module("nevermore")
 			.controller("StudentAllClassController", StudentAllClassController)
 
-	StudentAllClassController.$inject = ["$scope", "ClazzFactory", "ToasterTool",
-	"httpResponseFactory"]
+	StudentAllClassController.$inject = ["$scope", "$rootScope", "ClazzFactory", "ToasterTool",
+	"httpResponseFactory", "errorHandlerFactory", "$state"]
 
-	function StudentAllClassController($scope, ClazzFactory, ToasterTool,
-		httpResponseFactory){
+	function StudentAllClassController($scope, $rootScope, ClazzFactory, ToasterTool,
+		httpResponseFactory, errorHandlerFactory, $state){
+
+		var errorHandler = errorHandlerFactory.handle
 
 		$scope.classList = []
 
 		getAllClass()
 
 		function getAllClass(){
-			ClazzFactory.teacherClazzList().get({
+			ClazzFactory.studentClazzList().get({
 				scope: "all",
 			})
 			.$promise
@@ -22,19 +24,10 @@
 					var data = httpResponseFactory.getResponseData(response)
 					angular.copy(data, $scope.classList)
 				}else{
-					throw new Error(response)
+					errorHandler(response)
 				}
 			})
 			.catch(errorHandler)
-		}
-
-		function errorHandler(error){
-			var message = httpResponseFactory.getResponseMessage(error)
-			if(!!message){
-				ToasterTool.error(message)
-			}else{
-				ToasterTool.error("网络连接错误，请重试")
-			}
 		}
 	}
 }()

@@ -30,7 +30,7 @@ function($scope, Clazz, generalService, Account, Course, sessionService, Toaster
 		modifyDialog.setCloseListener(onModify, onDelete)
 		modifyDialog.open(resource, templateUrl, controller, {
 			semester: function(){
-				return sessionService.getCurrSemeter()
+				return sessionService.getCurrentSemester()
 			},
 			teacherResource: function(){
 				return Account.all().get({
@@ -59,7 +59,7 @@ function($scope, Clazz, generalService, Account, Course, sessionService, Toaster
 		addDialog.setCloseListener(onAdd)
 		addDialog.open(templateUrl, controller, {
 			semester: function(){
-				return sessionService.getCurrSemeter()
+				return sessionService.getCurrentSemester()
 			},
 			teacherResource: function(){
 				return Account.all().get({
