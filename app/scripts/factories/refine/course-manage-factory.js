@@ -54,7 +54,7 @@ angular.module('nevermore')
         });
       },
       experiments: function(){ //配置课程中所有实验
-        return $resource(baseUrl + '/:id/experiments', {id: '@id'}, {
+        return $resource(apiUrl + '/:id/experiments', {id: '@id'}, {
           'put': {
             method: 'PUT',
             headers: sessionService.headers()
