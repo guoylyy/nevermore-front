@@ -24,7 +24,7 @@
 				<table class = "table db-appointment-table db-m-b-0" ng-if = "experiment.reservations.length > 0">
 					<tr ng-repeat = "reservation in experiment.reservations">
 						<td style = "width: 25%">
-							<span class = "db-exp-time">{{reservation.applyDate}}2015-10-14</span>
+							<span class = "db-exp-time">{{reservation.applyDate}}</span>
 						</td>
 						<td style = "width: 25%;">
 							{{reservation.lab}}
@@ -39,7 +39,7 @@
 							{{reservation.status}}
 						</td>
 						<td style = "width: 20%;">
-							<button class="btn btn-danger db-btn-danger pull-right">
+							<button ng-click = "cancelReservation(reservation.id)" class="btn btn-danger db-btn-danger pull-right">
 								取消预约
 							</button>
 						</td>

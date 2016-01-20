@@ -8,7 +8,7 @@ app.controller('ReportResultCtrl',  function($scope, $rootScope, $stateParams, C
 
   $scope.student_id = $stateParams.stuId;
 
-  $scope.semester = sessionService.getCurrSemeter();
+  $scope.semester = sessionService.getCurrentSemester();
 
   $scope.correct_answer_view = {
     'init_data':false,

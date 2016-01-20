@@ -11,8 +11,9 @@ angular.module('nevermore')
     return {
       templateUrl: 'tpl/portal/block/header.html',
       restrict: 'E',
-      controller: function ($scope, sessionService, $rootScope, $localStorage, $state) {
+      controller: function ($scope, sessionService, $rootScope, $localStorage, $state, RoleFactory) {
         $scope.currentUser = sessionService.getCurrentUser();
+        $scope.isAutoLogin = $localStorage.isAutoLogin
         $scope.showLoginButton = showLoginButton
       	
         $scope.head_click = function(){
@@ -22,7 +23,7 @@ angular.module('nevermore')
             }else if ($localStorage.currentUser.show_role == 'TEACHER') {
               $state.go('app.index.teacher-reservations',{title:'APPROVED'});
             }else if ($localStorage.currentUser.show_role == 'ADMINISTRATOR') {
-              $state.go('app.admin-account.teacher');
+              $state.go('app.admin-account');
             }
             return;
           }

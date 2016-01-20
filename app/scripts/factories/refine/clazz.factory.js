@@ -8,6 +8,7 @@
 
     return {
       teacherClazzList: teacherClazzList,
+      studentClazzList: studentClazzList,
       experiments: experiments,
       mainPage: mainPage,
       files: files,
@@ -37,6 +38,16 @@
         }
       })
     }
+
+    function studentClazzList(){
+      return $resource(apiUrl + "/studentClazzList", null, {
+        get: {
+          method: "GET",
+          headers: sessionService.headers(),
+        }
+      })
+    }
+
     //课程主页
     function mainPage(){
       return $resource(apiUrl + "/:id/mainPage", {

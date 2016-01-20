@@ -11,7 +11,10 @@ app.controller("RichModifyCourseCtrl", ["$scope", "data", "CourseManage", "Manag
 
 		function richModifyCourse () {
 			// TODO: 通过course info api更新course主页信息
-			$scope.closeThisDialog("modify")
+			$scope.closeThisDialog({
+				status: "modify",
+				content: $scope.richContent,
+			})
 		}
 	}
 ]);

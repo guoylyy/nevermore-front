@@ -40,7 +40,7 @@
 				}).then (function (response) {
 					console.log(response);
 						if (response.data.success){
-							relateFileAndClazz(response.data.data, $scope.classID);
+							relateFileAndClazz(response.data.data, $scope.class.id);
 						}
 				}, function (response) {
 					ToasterTool.warning("文件上传失败!");
@@ -66,7 +66,7 @@
 
 		function removeFileFromClazz(file){
 			ClazzFactory.removeFile().delete({
-				id : $scope.classID,
+				id : $scope.class.id,
 				fileId : file.id,
 				type: $scope.selectedTab
 			},{})
@@ -113,7 +113,7 @@
 		//访问文件列表接口
 		function getFiles(fileType){
 			return ClazzFactory.files().get({
-				id: $scope.classID,
+				id: $scope.class.id,
 				type: fileType
 			}).$promise
 		}

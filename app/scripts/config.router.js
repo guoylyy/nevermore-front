@@ -28,6 +28,9 @@ angular.module('nevermore')
                   'scripts/controllers/portal/portal.js',
                   "scripts/factories/token-factory.js",
                   "scripts/factories/InputValidator.factory.js",
+                  "scripts/services/toaster-tool.js",
+                  "scripts/factories/refine/http-response.factory.js",
+                  "scripts/factories/error-handler.factory.js",
                   "scripts/factories/role.factory.js",
                 ]);
               }]
@@ -57,6 +60,9 @@ angular.module('nevermore')
                   'scripts/controllers/portal/login.controller.js',
                   'scripts/directives/portal/portal-footer.js',
                   'scripts/directives/portal/portal-header.js',
+                  "scripts/services/session-service.js",
+                  "scripts/factories/refine/semester-factory.js",
+                  "scripts/factories/role.factory.js",
                 ]);
               }]
             }
@@ -97,6 +103,9 @@ angular.module('nevermore')
                   'styles/app.css',
                   'scripts/directives/app/nevermore-empty-panel.js',
                   "scripts/factories/role.factory.js",
+                  "scripts/services/toaster-tool.js",
+                  "scripts/factories/refine/http-response.factory.js",
+                  "scripts/factories/error-handler.factory.js",
                 ]);
               }]
             }
@@ -125,14 +134,14 @@ angular.module('nevermore')
               }]
             },
           })
-          .state("app.teacher.reservation", {
-            url: "^/app/teacher/reservation",
-            templateUrl: "tpl/app/teacher/reservation.html",
-            controller: "TeacherReservationController",
+          .state("app.reservation", {
+            url: "^/app/reservation",
+            templateUrl: "tpl/app/reservation.html",
+            controller: "ReservationController",
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/teacher/reservation.controller.js',
+                  'scripts/controllers/app/reservation.controller.js',
                   "scripts/factories/refine/reservation.factory.js",
                   "scripts/factories/refine/http-response.factory.js",
                   "scripts/services/toaster-tool.js",
@@ -194,7 +203,29 @@ angular.module('nevermore')
                   "scripts/factories/refine/http-response.factory.js",
                   "scripts/services/toaster-tool.js",
                 ])
-              }]
+              }],
+              clazz: function($resource, $stateParams, $localStorage){
+                var apiUrl = base_Url+'/clazz'
+                var classID = $stateParams.classID
+
+                return $resource(apiUrl + "/:id", null, {
+                  get: {
+                    method: "GET",
+                    headers: {
+                      'x-auth-token': $localStorage.token
+                    },
+                  }
+                }).get({
+                  id: classID,
+                })
+                .$promise
+                .then(function(response){
+                  return response.data
+                })
+                .catch(function(error){
+                  throw new Error(error.message)
+                })
+              }
             },
           })
           .state("app.teacher.class.main-page", {
@@ -375,6 +406,28 @@ angular.module('nevermore')
                   "scripts/controllers/app/student/class.controller.js",
                 ])
               }],
+              clazz: function($resource, $stateParams, $localStorage){
+                var apiUrl = base_Url+'/clazz'
+                var classID = $stateParams.classID
+
+                return $resource(apiUrl + "/:id", null, {
+                  get: {
+                    method: "GET",
+                    headers: {
+                      'x-auth-token': $localStorage.token
+                    },
+                  }
+                }).get({
+                  id: classID,
+                })
+                .$promise
+                .then(function(response){
+                  return response.data
+                })
+                .catch(function(error){
+                  throw new Error(error.message)
+                })
+              }
             },
           })
           .state("app.student.class.main-page", {
@@ -385,6 +438,7 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/student/main-page.controller.js",
+                  "scripts/services/app/admin/management-service.js",
                 ])
               }],
             },
@@ -409,6 +463,7 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/student/file.controller.js",
+                  "ngFileUpload",
                 ])
               }],
             },

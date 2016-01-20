@@ -2,10 +2,10 @@
 	angular.module("nevermore")
 			.controller("StudentClassController", StudentClassController)
 
-	StudentClassController.$inject = ["$scope"]
+	StudentClassController.$inject = ["$scope", "clazz"]
 
-	function StudentClassController($scope){
-
+	function StudentClassController($scope, clazz){
+		$scope.class = clazz
 	}
 	
 }()

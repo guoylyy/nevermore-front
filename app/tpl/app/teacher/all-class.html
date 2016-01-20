@@ -5,7 +5,7 @@
 	    </div>
 	    <div class="db-line"></div>
 	    <div class="wrapper-md">
-			<ul class = "db-list course-list">
+			<ul class = "db-list course-list" ng-if = "classList.length > 0">
 		    	<li ng-repeat = "class in classList">
 		    		<div ui-sref = "app.teacher.class.main-page({classID: '{{class.id}}'})">
 		    			<img src="images/app/course{{class.id % 5 + 1}}.jpg" class = "course-img">
