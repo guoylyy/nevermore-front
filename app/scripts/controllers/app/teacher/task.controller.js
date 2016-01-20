@@ -13,7 +13,7 @@
 		//获取实验预约列表
 		function loadExperimentReservations(){
 		 ClazzFactory.experiments().get({
-			 id:$scope.classID,
+			 id:$scope.class.id,
 			 type: 'reservations'
 		 }).$promise
 			 .then(function(response){

@@ -3,14 +3,16 @@
 
   app.controller('LoginController', LoginController);
 
-  LoginController.$inject = ["$scope", "$rootScope", "$state", "sessionService", 
+  LoginController.$inject = ["$scope", "$rootScope", "$state", "sessionService",
   "tokenFactory", "Semester", "ToasterTool", "$localStorage", "InputValidator",
-  "RoleFactory"]
+  "RoleFactory", "errorHandlerFactory", "httpResponseFactory"]
 
-  function LoginController($scope, $rootScope, $state, sessionService, 
-    tokenFactory, Semester, ToasterTool, $localStorage, InputValidator, RoleFactory){
+  function LoginController($scope, $rootScope, $state, sessionService,
+    tokenFactory, Semester, ToasterTool, $localStorage, InputValidator,
+    RoleFactory, errorHandlerFactory, httpResponseFactory){
     var currentUser = sessionService.getCurrentUser()
     var token = $localStorage.token
+    var errorHandler = errorHandlerFactory.handle
     initEnvironment()
 
     function initEnvironment(){
@@ -54,11 +56,11 @@
 
     function transitStateByRole(role){
         if(RoleFactory.isAdmin(role)){
-            $state.go('app.admin-account.teacher');
+            $state.go('app.admin-account');
         }else if(RoleFactory.isTeacher(role)){
-            $state.go('app.index.teacher-reservations',{title:'APPROVED'});
+            $state.go('app.reservation');
         }else if(RoleFactory.isStudent(role)){
-            $state.go('app.index.student-reservations',{title:'clazz'});
+            $state.go('app.reservation');
         }else{
             ToasterTool.error('未知错误发生!');
         }
@@ -79,14 +81,15 @@
                 return
             }
 
+            getSemester()
+
             var currentUser = data.data
             var token = headers()['x-auth-token']
 
-            if($scope.isAutoLogin){
-                saveAutoLoginInfo(currentUser, token)
-            }else{
-                sessionService.saveCurrentUser(currentUser)
-                sessionService.saveToken(token)
+            sessionService.saveCurrentUser(currentUser)
+            sessionService.saveToken(token)
+            if(!!$scope.isAutoLogin){
+                $localStorage.isAutoLogin = true
             }
 
             transitStateByRole(currentUser.roles)
@@ -98,10 +101,18 @@
         }
     }
 
-    function saveAutoLoginInfo(currentUser, token){
-        sessionService.saveCurrentUser(currentUser)
-        sessionService.saveToken(token)
-        $localStorage.isAutoLogin = true
+    function getSemester(){
+        Semester.current().get()
+        .$promise
+        .then(function(response){
+            if(httpResponseFactory.isResponseSuccess(response)){
+                var data = httpResponseFactory.getResponseData(response)
+                sessionService.saveCurrentSemester(data)
+            }else{
+                errorHandler(response)
+            }
+        })
+        .catch(errorHandler)
     }
 
     function forgotPassword(){
@@ -117,4 +128,3 @@
     }
   }
 })()
-

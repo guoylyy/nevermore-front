@@ -12,7 +12,7 @@ app.controller('FullcalendarCtrl', ['$scope','$rootScope', 'qService', 'Reservat
     var m = date.getMonth();
     var y = date.getFullYear();
 
-    var semester = sessionService.getCurrSemeter();
+    var semester = sessionService.getCurrentSemester();
 
     //学生、老师和管理员会load不一样的实验列表
     $scope.loadReservations = function() {
@@ -163,11 +163,11 @@ app.controller('FullcalendarCtrl', ['$scope','$rootScope', 'qService', 'Reservat
             clazzs: function(qService, Clazz) {
               return qService.tokenHttpGet(Clazz.teacherClazzs, {
                 'teacherId':$rootScope.currentUser.id,
-                'semesterId':sessionService.getCurrSemeter().id
+                'semesterId':sessionService.getCurrentSemester().id
               }); //获取教师本人的clazz
             },
             semester: function(sessionService) {
-              return sessionService.getCurrSemeter();
+              return sessionService.getCurrentSemester();
             },
             slots: function(qService, Semester) {
               return qService.tokenHttpGet(Semester.slots, {});

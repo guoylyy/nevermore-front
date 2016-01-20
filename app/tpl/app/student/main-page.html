@@ -7,33 +7,35 @@
       <div class="main-page-content">
         <div class="header-panel wrapper">
           <div>
-            <h3 class="text-2x m-t-xs">力学实验-本部
-              <span class="pull-right text-success text-lg">正常实验</span>
+            <h3 class="text-2x m-t-xs">
+              {{class.course.name}}
+              <span class="pull-right text-success text-lg">课程正在进行</span>
             </h3>
           </div>
           <div class="clearfix">
             <span class="text-muted">
-              本项目对实验室的富士康来激发离开家考虑.
+              {{class.description}}
             </span>
           </div>
           <div class="m-t-lg">
               <div>
                 <span>上课时间:&nbsp;</span>
-                <span class="p-r-md font-bold">周五下午</span>
+                <span class="p-r-md font-bold">{{class.clazzHour}}</span>
                 <span>任课教师:&nbsp;</span>
-                <span class="p-r-md font-bold">刘大根</span>
+                <span class="p-r-md font-bold">{{class.teacher.name}}</span>
                 <span>上课地点:&nbsp;</span>
-                <span class="p-r-md font-bold">北楼114</span>
-                <a  class="btn btn-primary pull-right m-t-n-sm btn-rounded">本课程实验</a>
+                <span class="p-r-md font-bold">{{class.clazzroom}}</span>
+                <a  class="btn btn-primary pull-right m-t-n-sm btn-sm btn-rounded">本课程实验</a>
               </div>
           </div>
         </div>
         <div class="db-line"></div>
 
         <!-- start of html -->
-        <div class="content m-t-xs wrapper">
+        <div class="content m-t-xs wrapper" ng-bind-html = "mainPage.content">
         </div>
       </div>
+    </div>
 </div>
 
 <lab-footer></lab-footer>

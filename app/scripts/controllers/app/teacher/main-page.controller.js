@@ -9,33 +9,14 @@
 		ToasterTool, ManagementService){
 
 		$scope.mainPage = {}
-		$scope.class = {}
 
 		$scope.modifyMainPage = modifyMainPage
-
-
-		getClass()
 		getMainPage()
 
-		function getClass(){
-			ClazzFactory.clazz().get({
-				id: $scope.classID,
-			})
-			.$promise
-			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
-					var data = httpResponseFactory.getResponseData(response)
-					angular.copy(data, $scope.class)
-				}else{
-					errorHandler(response)
-				}
-			})
-			.catch(errorHandler)
-		}
 
 		function getMainPage(){
 			ClazzFactory.mainPage().get({
-				id: $scope.classID,
+				id: $scope.class.id,
 			})
 			.$promise
 			.then(function(response){
