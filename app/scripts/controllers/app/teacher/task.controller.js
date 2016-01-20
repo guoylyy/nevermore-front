@@ -2,9 +2,9 @@
 	angular.module("nevermore")
 			.controller("TeacherTaskController", TeacherTaskController)
 
-	TeacherTaskController.$inject = ["$scope", "clazzFactory"]
+	TeacherTaskController.$inject = ["$scope", "ClazzFactory"]
 
-	function TeacherTaskController($scope, clazzFactory){
+	function TeacherTaskController($scope, ClazzFactory){
 
 		$scope.experimentList = []
 
@@ -12,7 +12,7 @@
 
 		//获取实验预约列表
 		function loadExperimentReservations(){
-		 clazzFactory.experiments().get({
+		 ClazzFactory.experiments().get({
 			 id:$scope.classID,
 			 type: 'reservations'
 		 }).$promise

@@ -2,10 +2,10 @@
 
 	app.controller("TeacherAllClassController", TeacherAllClassController)
 
-	TeacherAllClassController.$inject = ["$scope", "clazzFactory", "ToasterTool",
+	TeacherAllClassController.$inject = ["$scope", "ClazzFactory", "ToasterTool",
 	"httpResponseFactory"]
 
-	function TeacherAllClassController($scope, clazzFactory, ToasterTool,
+	function TeacherAllClassController($scope, ClazzFactory, ToasterTool,
 		httpResponseFactory){
 
 		$scope.classList = []
@@ -13,7 +13,7 @@
 		getAllClass()
 
 		function getAllClass(){
-			clazzFactory.teacherClazzList().get({
+			ClazzFactory.teacherClazzList().get({
 				scope: "all",
 			})
 			.$promise

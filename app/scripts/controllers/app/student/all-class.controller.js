@@ -2,18 +2,18 @@
 	angular.module("nevermore")
 			.controller("StudentAllClassController", StudentAllClassController)
 
-	StudentAllClassController.$inject = ["$scope", "clazzFactory", "ToasterTool",
+	StudentAllClassController.$inject = ["$scope", "ClazzFactory", "ToasterTool",
 	"httpResponseFactory"]
 
-	function StudentAllClassController($scope, clazzFactory, ToasterTool,
+	function StudentAllClassController($scope, ClazzFactory, ToasterTool,
 		httpResponseFactory){
-		
+
 		$scope.classList = []
 
 		getAllClass()
 
 		function getAllClass(){
-			clazzFactory.teacherClazzList().get({
+			ClazzFactory.teacherClazzList().get({
 				scope: "all",
 			})
 			.$promise
