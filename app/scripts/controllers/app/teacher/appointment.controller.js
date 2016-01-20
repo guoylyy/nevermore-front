@@ -2,11 +2,11 @@
 	angular.module("nevermore")
 			.controller("TeacherAppointmentController", TeacherAppointmentController)
 
-	TeacherAppointmentController.$inject = ["$scope", "Exp",
-		"ToasterTool", "Lab", "Reservation", "ngDialog", "ClazzFactory"]
+	TeacherAppointmentController.$inject = ["$scope", "Exp", "AlertTool",
+		"ToasterTool", "Lab", "reservationFactory", "ngDialog", "ClazzFactory"]
 
-	function TeacherAppointmentController($scope, Exp,
-		ToasterTool, Lab, Reservation, ngDialog, ClazzFactory){
+	function TeacherAppointmentController($scope, Exp, AlertTool,
+		ToasterTool, Lab, reservationFactory, ngDialog, ClazzFactory){
 
 
 		$scope.experimentList = []
@@ -14,6 +14,8 @@
 		$scope.getTotalReservationPersonCount = getTotalReservationPersonCount
 
 		$scope.openReserveDialog = openReserveDialog
+
+		$scope.cancelReservatin = cancelReservatin
 
 
 		loadExperimentReservations();
@@ -33,10 +35,8 @@
 			 });
 		}
 
-		//
-		function openReserveDialog(experimentIndex){
-			var experiment = $scope.experimentList[experimentIndex]
-
+		//打开预约面板
+		function openReserveDialog(experiment){
 			var reserveDialog = ngDialog.open({
 				template: "/tpl/app/teacher/modal/add-reservation.html",
 				controller: "TeacherReserveController",
@@ -55,6 +55,12 @@
 					}
 				}
 			})
+
+			reserveDialog.closePromise.then(function(data){
+				if(data.value === 'success'){
+					loadExperimentReservations()
+				}
+			})
 		}
 
 		function getTotalReservationPersonCount(experiment){
@@ -70,6 +76,25 @@
 			})
 
 			return totalPersonCount
+		}
+
+		function cancelReservatin(reservation){
+			AlertTool.confirm({title:'您确定要取消这个预约?'}).then(function(isConfirm) {
+			  if(isConfirm) {
+					reservationFactory.reservation().
+						delete({id:reservation.id})
+						.$promise
+						.then(function(response){
+							if(response.success){
+								ToasterTool.success('取消预约成功!');
+								loadExperimentReservations()
+							}else{
+								ToasterTool.error('错误',response.message);
+							}
+						});
+			    AlertTool.close();
+			  }
+			});
 		}
 	}
 

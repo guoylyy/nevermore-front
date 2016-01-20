@@ -265,7 +265,7 @@ angular.module('nevermore')
             },
           })
           .state("app.teacher.class.task-detail", {
-            url: "/task-detail",
+            url: "/task-detail/:expId",
             templateUrl: "tpl/app/teacher/task-detail.html",
             controller: "TeacherTaskDetailController",
             resolve: {
@@ -281,7 +281,7 @@ angular.module('nevermore')
             },
           })
           .state("app.teacher.class.task-report", {
-            url: "/task-report",
+            url: "/task-report/:expId",
             templateUrl: "tpl/app/teacher/task-report.html",
             controller: "TeacherTaskReportController",
             resolve: {
