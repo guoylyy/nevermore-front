@@ -2,9 +2,9 @@
 	angular.module("nevermore")
 			.controller("TeacherAddStudentController", TeacherAddStudentController)
 
-	TeacherAddStudentController.$inject = ["$scope", "clazzFactory", "ToasterTool", "clazzId"]
+	TeacherAddStudentController.$inject = ["$scope", "ClazzFactory", "ToasterTool", "clazzId"]
 
-	function TeacherAddStudentController($scope, clazzFactory, ToasterTool, clazzId){
+	function TeacherAddStudentController($scope, ClazzFactory, ToasterTool, clazzId){
 
     $scope.classID = clazzId;
 
@@ -34,7 +34,7 @@
       var submitData = angular.copy($scope.item);
       submitData.gender = submitData.gender.code;
 
-      clazzFactory.student().
+      ClazzFactory.student().
         post({
           id: $scope.classID
         }, submitData)
