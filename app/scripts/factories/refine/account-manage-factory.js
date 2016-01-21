@@ -53,7 +53,7 @@ angular.module('nevermore')
           }
         });
       },
-      search: function(){//获取所有用户 ~ students | teachers
+      search: function(){//搜索用户 ~ students | teachers
         return $resource(apiUrl + '/search', {
           keyword:"@keyword",
           role:"@role"

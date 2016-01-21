@@ -738,6 +738,7 @@ angular.module('nevermore')
                   "scripts/controllers/app/administrator/lab-management.js",
                   "scripts/controllers/app/administrator/modal/lab-add.js",
                   "scripts/controllers/app/administrator/modal/lab-modify.js",
+                  "scripts/directives/app/search-action-bar.js"
                 ])
               }]
             }
@@ -754,7 +755,8 @@ angular.module('nevermore')
                   "scripts/controllers/app/administrator/modal/experiment-modify.js",
                   "scripts/controllers/app/administrator/modal/experiment-lab-add.js",
                   "angularBootstrapNavTree",
-                  'scripts/directives/app/nm-configure-list.js'
+                  'scripts/directives/app/nm-configure-list.js',
+                  "scripts/directives/app/search-action-bar.js"
                 ])
               }]
             }
@@ -772,7 +774,8 @@ angular.module('nevermore')
                   "scripts/controllers/app/administrator/modal/course-experiment-add.js",
                   "angularBootstrapNavTree",
                   'scripts/directives/app/nm-configure-list.js',
-                  "scripts/controllers/app/administrator/modal/course-rich-modify.js"
+                  "scripts/controllers/app/administrator/modal/course-rich-modify.js",
+                  "scripts/directives/app/search-action-bar.js"
                 ])
               }]
             }
