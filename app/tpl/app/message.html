@@ -13,6 +13,7 @@
             </li>
             <li ui-sref-active="active" ui-sref="app.message.list({isRead: false})" class="list-group-item cusor-pointer second_nav_body">
               <a>未读消息</a>
+              <nm-msg-number ng-show="msgNumber > 0"></nm-msg-number>
             </li>
             <li ui-sref-active="active" ui-sref="app.message.list({isRead: true})" class="list-group-item cusor-pointer second_nav_body">
               <a>已读消息</a>
