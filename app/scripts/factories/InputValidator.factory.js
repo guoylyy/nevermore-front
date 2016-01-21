@@ -15,6 +15,8 @@
 			$scope.validateNonEmptyString = validateNonEmptyString
 			$scope.validateRangeNumber = validateRangeNumber
 			$scope.validateRangeNumberInclusive = validateRangeNumberInclusive
+			$scope.validatePositiveNumber = validatePositiveNumber
+			$scope.validateNegativeNumber = validateNegativeNumber
 		}
 	}
 
@@ -24,7 +26,7 @@
 	}
 
 	function validateSelect(selectValue){
-		if(selectValue === "" || selectValue === null){
+		if(selectValue === "" || selectValue === null || selectValue === undefined){
 			return false
 		}else{
 			return true
@@ -89,13 +91,39 @@
 		}
 	}
 
-	function validateNumber(number){
-		var validator = new RegExp("^\\d+$")
+	function validatePositiveNumber(number){
+		if(validateNumber(number) === false){
+			return false
+		}
 
-		if(validator.test(number) === true){
+		number = Number(number)
+		if(number > 0){
 			return true
 		}else{
 			return false
+		}
+	}
+
+	function validateNegativeNumber(number){
+		if(validateNumber(number) === false){
+			return false
+		}
+
+		number = Number(number)
+		if(number < 0){
+			return true
+		}else{
+			return false
+		}
+	}
+
+	function validateNumber(number){
+		number = Number(number)
+
+		if(isNaN(number) === true){
+			return false
+		}else{
+			return true
 		}
 	}
 }()
