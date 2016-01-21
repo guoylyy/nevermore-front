@@ -239,7 +239,8 @@ angular.module('nevermore')
                   "scripts/controllers/app/teacher/main-page.controller.js",
                   "scripts/factories/refine/http-response.factory.js",
                   "scripts/services/toaster-tool.js",
-                  "scripts/services/app/admin/management-service.js"
+                  "scripts/services/app/admin/management-service.js",
+                  "scripts/controllers/app/teacher/modal/modify-main-page.controller.js",
                 ])
               }]
             },
@@ -452,6 +453,9 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/student/task.controller.js",
+                  "scripts/factories/refine/clazz.factory.js",
+                  "scripts/controllers/app/modal/experiment-detail.controller.js",
+                  "ngDialog",
                 ])
               }],
             },
