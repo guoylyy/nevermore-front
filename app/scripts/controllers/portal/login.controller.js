@@ -58,9 +58,9 @@
         if(RoleFactory.isAdmin(role)){
             $state.go('app.admin-account');
         }else if(RoleFactory.isTeacher(role)){
-            $state.go('app.index.teacher-reservations',{title:'APPROVED'});
+            $state.go('app.reservations',{title:'APPROVED'});
         }else if(RoleFactory.isStudent(role)){
-            $state.go('app.index.student-reservations',{title:'clazz'});
+            $state.go('app.reservations',{title:'clazz'});
         }else{
             ToasterTool.error('未知错误发生!');
         }

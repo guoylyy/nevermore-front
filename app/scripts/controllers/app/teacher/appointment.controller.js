@@ -3,10 +3,12 @@
 			.controller("TeacherAppointmentController", TeacherAppointmentController)
 
 	TeacherAppointmentController.$inject = ["$scope", "ToasterTool", "ngDialog",
-		"ClazzFactory", "errorHandlerFactory", "httpResponseFactory", "reservationFactory"]
+		"ClazzFactory", "errorHandlerFactory", "httpResponseFactory", "reservationFactory", 
+		"AlertTool"]
 
 	function TeacherAppointmentController($scope, ToasterTool, ngDialog,
-		ClazzFactory, errorHandlerFactory, httpResponseFactory, reservationFactory){
+		ClazzFactory, errorHandlerFactory, httpResponseFactory, reservationFactory, 
+		AlertTool){
 
 		var errorHandler = errorHandlerFactory.handle
 
@@ -15,7 +17,7 @@
 		$scope.openReserveDialog = openReserveDialog
 		$scope.cancelReservation = cancelReservation
 
-		$scope.cancelReservatin = cancelReservatin
+		$scope.cancelReservation = cancelReservation
 
 
 		loadExperimentReservations();
@@ -81,7 +83,7 @@
 			return totalPersonCount
 		}
 
-		function cancelReservatin(reservation){
+		function cancelReservation(reservation){
 			AlertTool.confirm({title:'您确定要取消这个预约?'}).then(function(isConfirm) {
 			  if(isConfirm) {
 					reservationFactory.reservation().

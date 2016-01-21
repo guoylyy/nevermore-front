@@ -1,10 +1,10 @@
-app.controller("AddClassCtrl", ["$scope", "Clazz", "semester", "teacherResource", "courseResource",
-function($scope, Clazz, semester, teacherResource, courseResource){
+app.controller("AddClassCtrl", ["$scope", "Clazz", "semester", "teacherResource", "courseResource", "sessionService",
+function($scope, Clazz, semester, teacherResource, courseResource, sessionService){
 	var DEFAULT_RESOURCE = {
 		number: "",
 		teacher: undefined,
 		course: undefined,
-		semester: undefined,
+		semester: sessionService.getCurrentSemester(),
 		clazzHour: "",
 		clazzroom: "",
 		description: "",

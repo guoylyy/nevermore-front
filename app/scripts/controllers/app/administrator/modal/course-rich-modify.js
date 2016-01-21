@@ -1,5 +1,5 @@
-app.controller("RichModifyCourseCtrl", ["$scope", "data", "CourseManage", "ManagementService", "AlertTool",
-	function($scope, data, CourseManage, ManagementService, AlertTool) {
+app.controller("RichModifyCourseCtrl", ["$scope", "data", "CourseManage", "AlertTool",
+	function($scope, data, CourseManage, AlertTool) {
 		
 		var originResource = data,
 			copiedResource = angular.copy(originResource);
@@ -11,10 +11,14 @@ app.controller("RichModifyCourseCtrl", ["$scope", "data", "CourseManage", "Manag
 
 		function richModifyCourse () {
 			// TODO: 通过course info api更新course主页信息
-			$scope.closeThisDialog({
-				status: "modify",
-				content: $scope.richContent,
-			})
+
+			commitContent(content)
+			$scope.closeThisDialog("modify")
+		}
+
+		function commitContent(content){
+			content = content || ""
+			return
 		}
 	}
 ]);
