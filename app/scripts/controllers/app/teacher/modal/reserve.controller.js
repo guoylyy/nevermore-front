@@ -35,7 +35,7 @@
 		$scope.slotList = []
 		$scope.slot = undefined
 
-		$scope.currentDate = Date.now()
+		$scope.currentDate = getStartTimeOfToday()
 		$scope.date = undefined
 
 		$scope.stage = 1
@@ -49,6 +49,17 @@
 		$scope.prev = prev
 
 		InputValidator.injectToScope($scope)
+
+		function getStartTimeOfToday(){
+			var today = new Date()
+			,	year = today.getFullYear()
+			,	month = today.getMonth()
+			,	date = today.getDate()
+
+			//Date在接受3个参数时，会以0作为默认值填补时分秒的值。
+			return (new Date(year, month, date)).valueOf()
+
+		}
 
 		function next(){
 			var lastStage = $scope.stage

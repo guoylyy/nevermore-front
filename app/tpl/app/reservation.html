@@ -28,7 +28,7 @@
 							{{reservation.status.value}}
 						</td>
 						<td style = "width: 25%;">
-							<button class="btn btn-danger db-btn-danger pull-right m-t-sm" ng-click = "cancelReservation(reservation.id)">
+							<button ng-if = "reservation.clazz.teacher.id === currentUser.id" class="btn btn-danger db-btn-danger pull-right m-t-sm" ng-click = "cancelReservation(reservation.id)">
 								取消预约
 							</button>
 						</td>
@@ -57,7 +57,7 @@
 							{{reservation.status.value}}
 						</td>
 						<td style = "width: 25%;">
-							<button class="btn btn-danger db-btn-danger pull-right m-t-sm" ng-click = "cancelReservation(reservation.id)">
+							<button ng-if = "reservation.clazz.teacher.id === currentUser.id" class="btn btn-danger db-btn-danger pull-right m-t-sm" ng-click = "cancelReservation(reservation.id)">
 								取消预约
 							</button>
 						</td>
