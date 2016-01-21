@@ -40,9 +40,8 @@
 					</a>
 				</li>
 			</ul>
-			<form class = "pull-right db-search-form">
-			    <input type="text" placeholder = "输入学号或姓名">
-			   	<button class="search-btn">搜索</button>
+			<form class = "pull-right">
+			    <input type="text" class="form-control" placeholder = "输入学号或姓名" ng-model="query">
 			</form>
 		</div>
 		<table class="table table-bordered db-task-detail-table">
@@ -57,7 +56,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="report in reportList">
+				<tr ng-repeat="report in reportList | filter: query">
 					<td>{{report.studentId}}</td>
 					<td>{{report.studentName}}</td>
 					<td>
