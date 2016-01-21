@@ -17,7 +17,6 @@ function($scope, $stateParams, $sce, messageFactory, nmMsgNumberService) {
     queryObject: {
       operation: "list",
       pageNum: 1,
-      pageSize: 1,
       isRead: null,
       isArchived: false,
       bizType: null
