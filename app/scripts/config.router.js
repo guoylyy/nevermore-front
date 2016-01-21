@@ -106,6 +106,7 @@ angular.module('nevermore')
                   "scripts/services/toaster-tool.js",
                   "scripts/factories/refine/http-response.factory.js",
                   "scripts/factories/error-handler.factory.js",
+                  'NMMsgNumber'
                 ]);
               }]
             }
@@ -627,11 +628,11 @@ angular.module('nevermore')
           .state('app.message.list', {
             url: '^/app/message/list?isRead',
             templateUrl: 'tpl/app/message-list.html',
-            controller: 'MessageListCtrl',
+            controller: 'MessageListController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/message-list.js'
+                  'scripts/controllers/app/message.list.js'
                 ]);
               }]
             }
