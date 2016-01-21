@@ -29,6 +29,8 @@ app.controller('AddExperimentCtrl', ['$scope','CourseManage','ExperimentManage',
   }
 
   function loadResource(){
+    var all_exp = [];
+    var select_exp = [];
     getAllExperiment().$promise
       .then(function(data){
         for (var i = 0; i < data.data.length; i++) {
@@ -43,12 +45,14 @@ app.controller('AddExperimentCtrl', ['$scope','CourseManage','ExperimentManage',
             id: data.data[i].id
           }
           if (!isExist) {
-            $scope.all_exp.push(exp);
+            all_exp.push(exp);
           }else {
-            $scope.select_exp.push(exp);
+            select_exp.push(exp);
           }
 
         }
+        angular.copy(all_exp, $scope.all_exp);
+        angular.copy(select_exp, $scope.select_exp);
       });
   }
 
