@@ -2267,6 +2267,16 @@ fieldset[disabled] .btn-black.active {
 .nevermore-message-page .table .title-column {
   width: 60%;
 }
+.nevermore-message-page .msg-title .msg-title-button {
+  position: absolute;
+  top: 6px;
+}
+.nevermore-message-page .msg-title .msg-title-date {
+  position: absolute;
+  top: 15px;
+  right: 0;
+  color: #999;
+}
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none !important;
