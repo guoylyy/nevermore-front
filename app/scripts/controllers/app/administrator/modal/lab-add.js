@@ -1,4 +1,4 @@
-app.controller("AddLabCtrl", ["$scope", "LabManage", "ManagementService",
+;app.controller("AddLabCtrl", ["$scope", "LabManage", "ManagementService",
     function($scope, LabManage, ManagementService) {
         $scope.activeList = [{
             "value": "开放",
@@ -69,4 +69,4 @@ app.controller("AddLabCtrl", ["$scope", "LabManage", "ManagementService",
             $scope.errorTip = error
         }
     }
-])
+]);

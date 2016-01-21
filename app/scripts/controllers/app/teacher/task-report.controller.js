@@ -5,7 +5,7 @@
 	TeacherTaskReportController.$inject = ["$scope", "$stateParams", "ClazzFactory"]
 
 	function TeacherTaskReportController($scope, $stateParams, ClazzFactory){
-		var clazzId = $scope.classID
+		var clazzId = $scope.class.id
 		var expId = $stateParams.expId;
 
 		$scope.reportList = []

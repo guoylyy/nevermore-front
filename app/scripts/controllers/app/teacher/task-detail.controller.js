@@ -9,8 +9,8 @@
 	TeacherTaskDetailController.$inject = ["$scope", "$stateParams", "ClazzFactory"]
 
 	function TeacherTaskDetailController($scope, $stateParams, ClazzFactory){
-			var clazzId = $scope.classID
-			var expId = $stateParams.expId;
+			var clazzId = $scope.class.id
+			var expId = $stateParams.expId;  //TODO: 发送请求拿到实验信息
 
 			$scope.recordList = []
 
@@ -65,5 +65,6 @@
 			function viewRecordDetails(record){
 				alert('还没有完成')
 			}
+
 	}
 }()

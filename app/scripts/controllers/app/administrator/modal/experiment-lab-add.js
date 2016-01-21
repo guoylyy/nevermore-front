@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('AddLabCtrl', ['$scope','LabManage','ExperimentManage','data', function($scope, LabManage, ExperimentManage, data) {
+app.controller('ExperimentAddLabCtrl', ['$scope','LabManage','ExperimentManage','data', function($scope, LabManage, ExperimentManage, data) {
   $scope.all_exp = [
 
   ];

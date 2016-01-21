@@ -62,7 +62,7 @@ app.controller("ExperimentManageCtrl", ["$scope", "ExperimentManage", "generalSe
         // ~添加实验室
         function addLab(resource){
       		var templateUrl = "tpl/app/admin/modal/add-lab-experiment.html"
-      		var controller = "AddLabCtrl"
+      		var controller = "ExperimentAddLabCtrl"
       		var modifyDialog = new ManagementService.ModifyDialog()
       		modifyDialog.setCloseListener(onModify, onCancel)
       		modifyDialog.open(resource, templateUrl, controller, {})
