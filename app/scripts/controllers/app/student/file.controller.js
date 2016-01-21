@@ -7,6 +7,7 @@
 
 	function StudentFileController($scope, ClazzFactory, httpResponseFactory,
 		ToasterTool, Upload, sessionService, errorHandlerFactory){
+		
 		var errorHandler = errorHandlerFactory.handle
 
 		$scope.publicFileList = []
@@ -28,13 +29,16 @@
 		}
 
 		$scope.uploadFile = function (file) {
+			if($scope.selectedTab === "CLAZZ_PUBLIC"){
+				return
+			}
 			if(file) {
 				Upload.upload({
-						url: base_Url+'/file/upload',
-						method: 'POST',
-						headers: sessionService.headers(),
-						data: {},
-						file: file
+					url: base_Url+'/file/upload',
+					method: 'POST',
+					headers: sessionService.headers(),
+					data: {},
+					file: file
 				}).then (function (response) {
 					if (response.data.success){
 						relateFileAndClazz(response.data.data, $scope.class.id);

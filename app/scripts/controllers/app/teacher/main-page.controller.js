@@ -40,21 +40,19 @@
 		}
 
 		function modifyMainPage(){
-			return
-			var templateUrl = "tpl/app/admin/modal/rich-modify-experiment-course.html"
-			var controller = "RichModifyCourseCtrl"
+			var templateUrl = "tpl/app/teacher/modal/modify-main-page.html"
+			var controller = "ModifyMainPageController"
 			var richModifyDialog = new ManagementService.RichModifyDialog()
 			richModifyDialog.setCloseListener(updateMainPage)
 			richModifyDialog.open($scope.mainPage.content, templateUrl, controller, {})
 		}
 
-		function updateMainPage(data){
-			if(data.status !== "modify"){
-				return
-			}
+		function updateMainPage(){
+			ToasterTool.success("修改实验课程主页成功！")
+		}
 
-			var content = data.content
-
+		function commitMainPage(content){
+			return new Promise()
 		}
 	}
 }()
