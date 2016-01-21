@@ -72,6 +72,16 @@ angular.module('nevermore')
             headers: sessionService.headers()
           }
         });
+      },
+      search: function(){//搜索课程
+        return $resource(apiUrl + '/search', {
+          keyword:"@keyword"
+        }, {
+          'get': {
+            method: 'GET',
+            headers: sessionService.headers()
+          }
+        });
       }
     };
   });

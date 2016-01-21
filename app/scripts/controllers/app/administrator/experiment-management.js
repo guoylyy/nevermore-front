@@ -10,6 +10,38 @@ app.controller("ExperimentManageCtrl", ["$scope", "ExperimentManage", "generalSe
 
         loadResources();
 
+        // ~ 搜索
+      	$scope.onTransit = function(lastAction, nowAction, searchWord) {
+      			if (lastAction === "searching" && nowAction === "searched") {
+      					searchAccount(searchWord)
+      			} else if (lastAction === "searched" && nowAction === "searched") {
+      					searchAccount(searchWord)
+      			} else if (lastAction === "searched" && nowAction === "listing") {
+      					$scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
+      					loadResources();
+      			}
+      	}
+
+      	function searchAccount(searchWord) {
+      			commitSearch(searchWord).$promise
+      					.then(updateAccountsAfterSearch)
+      					.catch(errorHandler)
+      	}
+
+      	function commitSearch(searchWord) {
+      			return ExperimentManage.search().get({
+      					"keyword": searchWord
+      			})
+      	}
+
+      	function updateAccountsAfterSearch(data) {
+      			angular.copy(data, $scope.resources)
+      	}
+
+      	function errorHandler(error) {
+      			console.log(error)
+      	}
+
         // ~ 列表
         function loadResources() {
             ManagementService.loadResources(ExperimentManage, {
