@@ -16,10 +16,10 @@
 		<div class="db-m-b-10">
 			<button class = "btn btn-primary db-btn-primary db-m-r-15" ng-click="toAddStudent()">添加学生</button>
 			<button class="btn btn-danger db-btn-danger" ng-click="removeSelectedStudents()">移除所选</button>
-			<form class = "pull-right db-search-form">
-			    <input type="text" placeholder = "输入学号或姓名" ng-model="query">
-			   	<button class="search-btn">搜索</button>
-			</form>
+			<div class = "pull-right">
+			    <input type="text" class="form-control" placeholder = "输入学号或姓名" ng-model="query">
+			   	<!-- <button class="search-btn">搜索</button> -->
+			</div>
 		</div>
 		<table class="table table-bordered db-student-table">
 			<thead>

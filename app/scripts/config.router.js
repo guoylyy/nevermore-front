@@ -308,6 +308,7 @@ angular.module('nevermore')
                   'ngDialog',
                   'NmDatepicker',
                   "scripts/factories/InputValidator.factory.js",
+                  "scripts/controllers/app/modal/experiment-detail.controller.js",
                   "scripts/controllers/app/teacher/task-detail.controller.js",
                 ])
               }],

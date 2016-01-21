@@ -20,6 +20,7 @@
       studentList: studentList,
       uploadStudentList: uploadStudentList,
       experimentRecords: experimentRecords,
+      experimentRecord: experimentRecord,
       experimentReports: experimentReports
     }
 
@@ -38,6 +39,19 @@
       return $resource(apiUrl + "/:id/experiment/:expId/records", {
         id: '@id',
         expId: '@expId'
+      }, {
+        get: {
+          method: "GET",
+          headers: sessionService.headers()
+        }
+      })
+    }
+
+    function experimentRecord(){
+      return $resource(apiUrl + "/:id/experiment/:expId/record/:recordId", {
+        id: '@id',
+        expId: '@expId',
+        recordId: '@recordId'
       }, {
         get: {
           method: "GET",
