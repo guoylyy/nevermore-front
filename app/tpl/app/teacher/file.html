@@ -17,18 +17,22 @@
 					</a>
 				</li>
 			</ul>
-        	<button class="btn btn-primary db-btn-primary pull-right db-m-r-20"  ngf-select ng-model="file" ngf-max-size="20MB">上传文件</button>
+        	<button class="btn btn-primary db-btn-primary pull-right db-m-r-20" ngf-select ng-model="file" ngf-max-size="20MB">
+        		上传文件
+        	</button>
 		</div>
 		<div class="db-line db-m-0 db-m-b-10"></div>
 		<div class="tab-content">
       <!-- 共有文件夹-->
 			<div class="tab-pane active" id = "publicFiles">
-        <div class="alert ng-isolate-scope alert-info alert-dismissable">公有文件夹是教师上传的实验相关文件!!</div>
+        		<div class="alert ng-isolate-scope alert-info alert-dismissable">
+        			公有文件夹是教师上传的实验相关文件!!
+        		</div>
 				<table class = "table db-file-table">
 					<tr ng-repeat="file in publicFileList">
 						<td style = "width: 6%;">
 							<div class="file-icon">
-									{{file.name | limitTo: 2}}
+								{{file.name | limitTo: 2}}
 							</div>
 						</td>
 						<td class = "file-name" style = "width: 50%;">
@@ -48,12 +52,14 @@
 				</table>
 			</div>
 			<div class="tab-pane" id = "privateFiles">
-        <div class="alert ng-isolate-scope alert-info alert-dismissable">私有文件夹只有您自己可以看到,存储了您的实验相关文件!!</div>
+        		<div class="alert ng-isolate-scope alert-info alert-dismissable">	
+        			私有文件夹只有您自己可以看到,存储了您的实验相关文件!!
+        		</div>
 				<table class = "table db-file-table">
-          <tr ng-repeat="file in privateFileList">
+          			<tr ng-repeat="file in privateFileList">
 						<td style = "width: 6%;">
 							<div class="file-icon">
-									{{file.name | limitTo: 2}}
+								{{file.name | limitTo: 2}}
 							</div>
 						</td>
 						<td class = "file-name" style = "width: 50%;">

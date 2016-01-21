@@ -6,10 +6,12 @@
 			.controller("TeacherFileController", TeacherFileController)
 
 	TeacherFileController.$inject = ["$scope", "ClazzFactory", "httpResponseFactory",
-		"ToasterTool", "Upload", "sessionService"]
+		"ToasterTool", "Upload", "sessionService", "errorHandlerFactory"]
 
 	function TeacherFileController($scope, ClazzFactory, httpResponseFactory,
-		ToasterTool, Upload, sessionService){
+		ToasterTool, Upload, sessionService, errorHandlerFactory){
+
+		var errorHandler = errorHandlerFactory.handle
 
 		$scope.publicFileList = []
 		$scope.privateFileList = []
@@ -32,16 +34,15 @@
 		$scope.uploadFile = function (file) {
 			if(file) {
 				Upload.upload({
-						url: base_Url+'/file/upload',
-						method: 'POST',
-						headers: sessionService.headers(),
-						data: {},
-						file: file
+					url: base_Url+'/file/upload',
+					method: 'POST',
+					headers: sessionService.headers(),
+					data: {},
+					file: file
 				}).then (function (response) {
-					console.log(response);
-						if (response.data.success){
-							relateFileAndClazz(response.data.data, $scope.class.id);
-						}
+					if (response.data.success){
+						relateFileAndClazz(response.data.data, $scope.class.id);
+					}
 				}, function (response) {
 					ToasterTool.warning("文件上传失败!");
 				});
@@ -124,15 +125,6 @@
 					getPublicFiles();
 			}else{
 					getPrivateFiles();
-			}
-		}
-
-		function errorHandler(error){
-			if(httpResponseFactory.isServerResponse(error)){
-				var message = httpResponseFactory.getResponseMessage(error)
-				ToasterTool.error(message)
-			}else{
-				ToasterTool.error("网络连接错误，请重试")
 			}
 		}
 	}
