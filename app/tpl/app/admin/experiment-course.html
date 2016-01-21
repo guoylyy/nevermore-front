@@ -31,15 +31,28 @@
                             <span>{{resource.department}}</span>
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-primary" ng-click="modifyResource(resource)">
-                                编辑
-                            </button>
-                            <button class="btn btn-sm" ng-click="addExperiment(resource)" ng-disabled="!resource.active" ng-class="{'btn-primary':resource.active, 'btn-light':!resource.active}">
-                                实验
-                            </button>
-                            <button class="btn btn-sm btn-primary" ng-click="richModifyResource(resource)">
-                                主页
-                            </button>
+                            <div class="btn-group">
+                                <a class="dropdown-toggle" data-toggle = "dropdown" aria-haspopup = "true" aria-expanded = "false">
+                                    操作<span class = "caret"></span>
+                                </a>
+                                <ul class="dropdown-menu db-dropdown-menu-lt">
+                                    <li>
+                                        <a ng-click="modifyResource(resource)">
+                                            编辑
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-class = "{'db-dropdown-menuitem-disabled': !resource.active}" ng-click="addExperiment(resource)">
+                                            实验
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="richModifyResource(resource)">
+                                            主页
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

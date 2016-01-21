@@ -26,6 +26,7 @@ app.controller("RichModifyCourseCtrl", ["$scope", "data", "CourseManage", "Manag
 
 		//修改课程主页
 		function richModifyCourse () {
+
 			if (resourceComplete()) {
 					commitModify().$promise
 							.then(removeErrorTip)

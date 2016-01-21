@@ -2,11 +2,13 @@
 	angular.module("nevermore")
 			.controller("TeacherAppointmentController", TeacherAppointmentController)
 
-	TeacherAppointmentController.$inject = ["$scope", "ToasterTool", "ngDialog", "AlertTool",
-		"ClazzFactory", "errorHandlerFactory", "httpResponseFactory", "reservationFactory"]
+	TeacherAppointmentController.$inject = ["$scope", "ToasterTool", "ngDialog",
+		"ClazzFactory", "errorHandlerFactory", "httpResponseFactory", "reservationFactory", 
+		"AlertTool"]
 
-	function TeacherAppointmentController($scope, ToasterTool, ngDialog, AlertTool,
-		ClazzFactory, errorHandlerFactory, httpResponseFactory, reservationFactory){
+	function TeacherAppointmentController($scope, ToasterTool, ngDialog,
+		ClazzFactory, errorHandlerFactory, httpResponseFactory, reservationFactory, 
+		AlertTool){
 
 		var errorHandler = errorHandlerFactory.handle
 

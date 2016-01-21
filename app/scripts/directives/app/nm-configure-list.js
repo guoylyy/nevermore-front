@@ -9,7 +9,8 @@ angular.module('nevermore')
       },
       replace: true,
       link:function(scope, element, attrs) {
-
+        scope.ltitle = attrs.ltitle;
+        scope.rtitle = attrs.rtitle;
       },
       controller: function ($scope) {
 

@@ -2267,6 +2267,16 @@ fieldset[disabled] .btn-black.active {
 .nevermore-message-page .table .title-column {
   width: 60%;
 }
+.nevermore-message-page .msg-title .msg-title-button {
+  position: absolute;
+  top: 6px;
+}
+.nevermore-message-page .msg-title .msg-title-date {
+  position: absolute;
+  top: 15px;
+  right: 0;
+  color: #999;
+}
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none !important;
@@ -2376,6 +2386,9 @@ input::-webkit-inner-spin-button {
 }
 li.disabled > a:hover,
 li.disabled > a:focus {
+  cursor: pointer;
+}
+.db-c-p {
   cursor: pointer;
 }
 .db-bg {
@@ -2884,4 +2897,41 @@ li.disabled > a:focus {
 }
 .db-big-text-table > tbody > tr > td {
   font-size: 18px;
+}
+.db-dropdown-menu {
+  background-color: transparent;
+}
+.db-dropdown-menu-lt {
+  min-width: 60px;
+}
+.dropdown-menu > li > a.db-dropdown-menuitem-disabled {
+  background-color: #EAEAEA !important;
+  border: solid 1px #C0C0C0;
+  color: #C0C0C0;
+  cursor: default;
+}
+.dropdown-menu > li > a.db-dropdown-menuitem-disabled:hover {
+  background-color: #EAEAEA !important;
+  border: solid 1px #C0C0C0;
+  color: #C0C0C0;
+  cursor: default;
+}
+.db-btn-anchor {
+  padding: 5px 15px;
+  white-space: nowrap;
+}
+.db-exp-detail-info {
+  color: #00A1CC;
+  font-size: 17px;
+}
+.db-exp-detail-table {
+  margin-bottom: 0px;
+}
+.db-exp-detail-table > tbody > tr > td {
+  padding: 0px;
+  line-height: 50px;
+  height: 50px;
+  font-size: 13px;
+  color: #4A4A4A;
+  border: none;
 }

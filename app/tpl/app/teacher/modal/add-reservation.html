@@ -21,7 +21,7 @@
     <div class="form-group">
       <label for="date" class="col-sm-3 control-label">预约日期<span class="text-danger">*</span>：</label>
       <div class="col-sm-9">
-        <nm-datepicker name = "date" ng-change =
+        <nm-datepicker name = "date" ng-change = 
         "dateChanged()" ng-model="date" ui-validate = "'$value >= currentDate'"></nm-datepicker>
       </div>
     </div>
@@ -108,7 +108,7 @@
     <div class="form-group">
       <label for="capacity" class="col-sm-3 control-label">预约人数<span class="text-danger">*</span>：</label>
       <div class="col-sm-9">
-        <input name = "capacity"  type="text" class="form-control" ng-model="personCount">
+        <input name = "capacity" ui-validate ="'validatePositiveNumber($value)'" type="text" class="form-control" ng-model="personCount">
       </div>
     </div>
     <div class="form-group">

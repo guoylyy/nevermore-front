@@ -88,12 +88,13 @@ function($scope, CourseManage, generalService, ToasterTool, ManagementService, A
 	}
 
 	function onModify(){
-			loadResources()
-			ToasterTool.success("修改实验课程成功！")
+		loadResources()
+		ToasterTool.success("修改实验课程成功！")
 	}
 	function onRichModify(){
-			ToasterTool.success("修改实验课程主页成功！")
+		ToasterTool.success("修改实验课程主页成功！")
 	}
+
 	function onDelete(){
 		loadResources()
 		ToasterTool.success("删除实验课程成功！")
@@ -101,6 +102,9 @@ function($scope, CourseManage, generalService, ToasterTool, ManagementService, A
 
 	// ~ 添加实验
 	function addExperiment(resource){
+		if(resource.active === false){
+			return
+		}
 		var templateUrl = "tpl/app/admin/modal/add-course-experiment.html"
 		var controller = "AddExperimentCtrl"
 		var modifyDialog = new ManagementService.ModifyDialog()

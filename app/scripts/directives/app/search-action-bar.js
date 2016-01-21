@@ -11,7 +11,9 @@ angular.module('nevermore')
         "initAction": "=",
         "onTransit": "&",
       },
-      link: function(scope){
+      link: function(scope, element){
+        var inputElement = getInputElement(element)
+
         var ACTIONS_MAP = {
           "listing": 0,
           "searching": 1,
@@ -33,15 +35,41 @@ angular.module('nevermore')
           return nowAction === "searched"
         }
 
+        scope.exitSearch = function(){
+          scope.searchWord = ""
+          scope.listing()
+        }
+
+        scope.search = function(){
+          scope.searched()
+        }
+
+        inputElement.on("keydown", function(e){
+          var ENTER_KEY_CODE = 13
+          var keyCode = e.which
+
+          if(keyCode === ENTER_KEY_CODE){
+            scope.search()
+          }
+        })
+
+        scope.enterInput = function(){
+          scope.searching('listing')
+        }
+
+        scope.leaveInput = function(){
+          scope.listing('searching')
+        }
+
         scope.listing = function(expectedNowAction){
           var newAction = "listing"
           actionTransitTo(newAction, expectedNowAction)
         }
-       scope.searching = function(expectedNowAction){
+        scope.searching = function(expectedNowAction){
           var newAction = "searching"
           actionTransitTo(newAction, expectedNowAction)
         }
-       scope.searched = function(expectedNowAction){
+        scope.searched = function(expectedNowAction){
           var newAction = "searched"
           actionTransitTo(newAction, expectedNowAction)
         }
@@ -67,6 +95,13 @@ angular.module('nevermore')
             "nowAction": nowAction,
             "searchWord": scope.searchWord,
           })
+        }
+
+        function getInputElement(rootElement){
+          var formElement = angular.element(angular.element(rootElement).children()[0])
+          var inputElement = angular.element(formElement.children()[0])
+
+          return inputElement
         }
       },
     }
