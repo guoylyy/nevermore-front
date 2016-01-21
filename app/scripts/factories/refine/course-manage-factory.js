@@ -60,6 +60,18 @@ angular.module('nevermore')
             headers: sessionService.headers()
           }
         });
+      },
+      info: function(){
+        return $resource(apiUrl + '/:id/info', {id:"@id"}, {
+          'get': {
+            method: 'GET',
+            headers: sessionService.headers()
+          },
+          'put': {
+            method: 'PUT',
+            headers: sessionService.headers()
+          }
+        });
       }
     };
   });
