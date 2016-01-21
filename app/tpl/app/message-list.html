@@ -71,7 +71,7 @@
                       </div>
                       <div class="pull-right">
                         <uib-pagination class="m-t-none m-b-none" max-size="5" previous-text="上一页" next-text="下一页"
-                          total-items="pageData.paginator.items" items-per-page="1" ng-model="pageData.paginator.page" ng-change="changePageNum()">
+                          total-items="pageData.paginator.items" items-per-page="pageData.paginator.itemsPerPage" ng-model="pageData.paginator.page" ng-change="changePageNum()">
                         </uib-pagination>
                       </div>
                     </td>
