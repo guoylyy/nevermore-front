@@ -20,6 +20,15 @@
         }
       })
     }
+
+    function userReport(){
+      return $resource(apiUrl + "/:id/userReport", {id: "@id"}, {
+        post: {
+          method: "POST"
+          headers : headers
+        }
+      })
+    }
   }
 
 }()

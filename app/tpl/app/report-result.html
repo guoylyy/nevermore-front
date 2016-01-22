@@ -1,7 +1,7 @@
 <div class="vbox">
     <div class="wrapper lter b-b bg-white">
       <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ui-sref="app.course.teacher-class({id:class_id,expId:exp_id})" ng-if="currentUser.show_role=='TEACHER'">返回班级</a>
-      <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ui-sref="app.course.student-class({id:class_id})" ng-if="currentUser.show_role=='STUDENT'">返回实验</a>
+      <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ui-sref="app.student.class.task" ng-if="currentUser.show_role=='STUDENT'">返回实验</a>
       <div class="subview3_title">扭转实验-实验报告详情和评分结果</div>
     </div>
     <div class="wrapper bg-white padder-lg report">
@@ -18,7 +18,7 @@
       </div>
 
       <div class="col-sm-4">
-      <label class="text-black" style="">实验学期：{{semester.name}}</label>
+      <label class="text-black" style="">实验学期：{{semester.title}}</label>
       </div>
 
       <div class="col-sm-4">
@@ -26,7 +26,7 @@
       </div>
 
       <div class="col-sm-4">
-        <label class="text-black">学号:</label> <label class="text-black m-l-sm text-u-l">{{student.number}}</label>
+        <label class="text-black">学号:</label> <label class="text-black m-l-sm text-u-l">{{student.account}}</label>
       </div>
 
       <div class="col-sm-4">
