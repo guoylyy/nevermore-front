@@ -2198,7 +2198,7 @@ fieldset[disabled] .btn-black.active {
 }
 .form-inline .searchInputScale {
   -webkit-transition: all 0.3s ease-in-out;
-  width: 200px;
+  width: 300px;
 }
 .form-inline .searchInputExtend {
   width: 350px;
