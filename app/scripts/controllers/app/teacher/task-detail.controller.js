@@ -65,7 +65,6 @@
 			}
 
 			function viewRecordDetails(record){
-				console.log(record);
 				var dialog = ngDialog.open({
 					template: 'tpl/app/modal/experiment-detail.html',
 					controller: 'ExperimentDetailController',
@@ -77,7 +76,7 @@
 							return ClazzFactory.experimentRecord().get({
 								id: clazzId,
 								expId: expId,
-								recordId: record.record.id
+								recordId: record.records[0].id
 							}).$promise
 						}
 					}
