@@ -23,11 +23,11 @@
 				<div class="db-line db-m-0 db-m-t-10"></div>
 				<table class = "table db-appointment-table db-m-b-0" ng-if = "experiment.reservations.length > 0">
 					<tr ng-repeat = "reservation in experiment.reservations">
-						<td style = "width: 25%">
-							<span class = "db-exp-time">{{reservation.applyDate | date: 'yyyy-MM-dd'}}</span>
+						<td style = "width: 15%">
+							<span class = "db-exp-time cursor-pointer" ng-click="viewReservation(reservation)">{{reservation.applyDate | date: 'yyyy-MM-dd'}}</span>
 						</td>
 						<td style = "width: 25%;">
-							{{reservation.lab.name}}
+							<span class = "db-exp-time cursor-pointer" ng-click="viewReservation(reservation)">{{reservation.lab.name}}</span>
 						</td>
 						<td style = "width: 10%;">
 							{{reservation.slot.title}}
