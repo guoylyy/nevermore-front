@@ -17,9 +17,10 @@
 						{{experiment.status.value}}实验
 					</span>
 
-					<button class="btn btn-primary db-btn-primary pull-right" ng-if="experiment.experiment.virtualExpLink!=''">
-						<a href="{{experiment.experiment.virtualExpLink}}" target="_blank">虚拟实验 </a>
-					</button>
+					<a class="btn btn-primary db-btn-primary pull-right" href="{{experiment.experiment.virtualExpLink}}" target="_blank"
+           ng-if="experiment.experiment.virtualExpLink!=''">
+						虚拟实验 
+					</a>
 					<button class="btn btn-danger db-btn-danger pull-right db-m-r-20" ng-if="experiment.reports.length == 0">
 						填写实验报告
 					</button>

@@ -66,6 +66,8 @@
 			.then(function(response){
 				if(httpResponseFactory.isResponseSuccess(response)){
 					ToasterTool.success("取消预约成功")
+					getReservationsInWeek()
+					getReservationOutWeek()
 				}else{
 					errorHandler(response)
 				}
