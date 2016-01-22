@@ -51,20 +51,18 @@
 					<th style = "width: 15%">学号</th>
 					<th style = "width: 15%">姓名</th>
 					<th style = "width: 25%">实验状态</th>
-					<th style = "width: 15%" >完成时间</th>
 					<th style = "width: 30%">操作</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="record in recordList | filter: query">
-					<td>{{record.studentId}}</td>
-					<td>{{record.studentName}}</td>
+					<td>{{record.student.account}}</td>
+					<td>{{record.student.name}}</td>
 					<td>
 						<span class="db-text-success">{{record.status.value}}</span>
 					</td>
-					<td>{{record.record.occurDate | date:'yyyy-MM-dd'}}</td>
 					<td>
-						<button ng-if="record.record" ng-click="viewRecordDetails(record)" class="btn btn-sm btn-primary db-btn-primary">查看详情</button>
+						<button ng-if="record.records.length> 0" ng-click="viewRecordDetails(record)" class="btn btn-sm btn-primary db-btn-primary">查看详情</button>
 					</td>
 				</tr>
 			</tbody>

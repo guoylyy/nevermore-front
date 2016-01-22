@@ -57,13 +57,13 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="report in reportList | filter: query">
-					<td>{{report.studentId}}</td>
-					<td>{{report.studentName}}</td>
+					<td>{{report.student.account}}</td>
+					<td>{{report.student.name}}</td>
 					<td>
 						<span class="db-text-success">{{report.status.value}}</span>
 					</td>
-					<td>{{report.report.occurDate | date: 'yyyy-MM-dd'}}</td>
-					<td>{{report.report.score}}</td>
+					<td>{{report.reports[0].occurDate | date: 'yyyy-MM-dd'}}</td>
+					<td>{{report.reports[0].score}}</td>
 					<td>
 						<button class="btn btn-sm btn-primary db-btn-primary" ng-click="viewReportDetails(report)" >查看报告</button>
 					</td>
