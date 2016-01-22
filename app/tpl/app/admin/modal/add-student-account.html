@@ -28,7 +28,7 @@
     <div class="form-group">
       <label for="grade" class="col-sm-3 control-label">年级</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="grade" ng-model = "resource.grade" required>
+        <input type="text" class="form-control" id="grade" ng-model = "resource.grade">
       </div>
     </div>
     <div class="form-group">
@@ -55,7 +55,7 @@
         <input type="email" class="form-control" id="email" ng-model = "resource.mail">
       </div>
     </div>
-    
+
 	<div class = "nm-dialog-line"></div>
 	<div class = "clearfix m-t">
       <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
