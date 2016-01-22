@@ -2,10 +2,10 @@
 	angular.module("nevermore")
 			.controller("StudentTaskController", StudentTaskController)
 
-	StudentTaskController.$inject = ["$scope", "ClazzFactory", "httpResponseFactory", 
+	StudentTaskController.$inject = ["$scope", "ClazzFactory", "httpResponseFactory",
 		"errorHandlerFactory", "ngDialog"]
 
-	function StudentTaskController($scope, ClazzFactory, httpResponseFactory, 
+	function StudentTaskController($scope, ClazzFactory, httpResponseFactory,
 		errorHandlerFactory, ngDialog){
 
 		var errorHandler = errorHandlerFactory.handle
@@ -19,7 +19,7 @@
 		function loadExperimentReservations(){
 			ClazzFactory.experiments().get({
 			 	id:$scope.class.id,
-			 	type: 'reservations',
+			 	type: 'student',
 		 	})
 		 	.$promise
 			.then(function(response){
