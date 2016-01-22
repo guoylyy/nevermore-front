@@ -6,9 +6,11 @@
 	angular.module("nevermore")
 			.controller("TeacherTaskDetailController", TeacherTaskDetailController)
 
-	TeacherTaskDetailController.$inject = ["$scope", "$stateParams", "ClazzFactory"]
+	TeacherTaskDetailController.$inject = ["$scope", "$stateParams", "ClazzFactory",
+			"ngDialog"]
 
-	function TeacherTaskDetailController($scope, $stateParams, ClazzFactory){
+	function TeacherTaskDetailController($scope, $stateParams, ClazzFactory,
+			ngDialog){
 			var clazzId = $scope.class.id
 			var expId = $stateParams.expId;  //TODO: 发送请求拿到实验信息
 
@@ -63,7 +65,22 @@
 			}
 
 			function viewRecordDetails(record){
-				alert('还没有完成')
+				var dialog = ngDialog.open({
+					template: 'tpl/app/modal/experiment-detail.html',
+					controller: 'ExperimentDetailController',
+					className: 'nm-dialog nm-dialog-md',
+					closeByDocument: false,
+					closeByEscape: true,
+					resolve: {
+						record: function(){
+							return ClazzFactory.experimentRecord().get({
+								id: clazzId,
+								expId: expId,
+								recordId: record.records[0].id
+							}).$promise
+						}
+					}
+				});
 			}
 
 	}

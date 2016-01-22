@@ -40,9 +40,8 @@
 					</a>
 				</li>
 			</ul>
-			<form class = "pull-right db-search-form">
-			    <input type="text" placeholder = "输入学号或姓名">
-			   	<button class="search-btn">搜索</button>
+			<form class = "pull-right">
+			    <input type="text" class="form-control" placeholder = "输入学号或姓名" ng-model="query">
 			</form>
 		</div>
 		<table class="table table-bordered db-task-detail-table">
@@ -57,16 +56,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="report in reportList">
-					<td>{{report.studentId}}</td>
-					<td>{{report.studentName}}</td>
+				<tr ng-repeat="report in reportList | filter: query">
+					<td>{{report.student.account}}</td>
+					<td>{{report.student.name}}</td>
 					<td>
 						<span class="db-text-success">{{report.status.value}}</span>
 					</td>
-					<td>{{report.report.occurDate | date: 'yyyy-MM-dd'}}</td>
-					<td>{{report.report.score}}</td>
+					<td>{{report.reports[0].occurDate | date: 'yyyy-MM-dd'}}</td>
+					<td>{{report.reports[0].score}}</td>
 					<td>
-						<button class="btn btn-sm btn-primary db-btn-primary" ui-sref="app.teacher.class.report-result({expId:expId,classId:class.id,stuId:report.studentId})">查看报告</button>
+						<button class="btn btn-sm btn-primary db-btn-primary" ng-if="report.status.code=='FINISH'" ui-sref="app.teacher.class.report-result({expId:expId,classId:class.id,stuId:report.student.id})">查看报告</button>
 					</td>
 				</tr>
 			</tbody>

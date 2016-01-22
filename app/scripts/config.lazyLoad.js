@@ -60,6 +60,13 @@ angular.module('nevermore')
             '../bower_components/angular-bootstrap-nav-tree/dist/abn_tree_directive.js',
             '../bower_components/angular-bootstrap-nav-tree/dist/abn_tree.css'
           ]
+        },
+        {
+          name: 'NMMsgNumber',
+          files: [
+            '../scripts/factories/refine/message.factory.js',
+            '../scripts/directives/app/nm-msg-number.js'
+          ]
         }
       ]
     });

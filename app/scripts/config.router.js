@@ -106,6 +106,7 @@ angular.module('nevermore')
                   "scripts/services/toaster-tool.js",
                   "scripts/factories/refine/http-response.factory.js",
                   "scripts/factories/error-handler.factory.js",
+                  'NMMsgNumber'
                 ]);
               }]
             }
@@ -142,10 +143,12 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/reservation.controller.js',
+                  'scripts/controllers/app/administrator/modal/reservation-view.js',
                   "scripts/factories/refine/reservation.factory.js",
                   "scripts/factories/refine/http-response.factory.js",
                   "scripts/services/toaster-tool.js",
                   "scripts/services/general-service.js",
+                  "ngDialog",
                 ]);
               }]
             },
@@ -265,6 +268,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
+                  "scripts/controllers/app/administrator/modal/reservation-view.js",
                   "scripts/controllers/app/teacher/appointment.controller.js",
                   "scripts/factories/exp-factory.js",
                   "scripts/factories/lab-factory.js",
@@ -307,6 +311,7 @@ angular.module('nevermore')
                   'ngDialog',
                   'NmDatepicker',
                   "scripts/factories/InputValidator.factory.js",
+                  "scripts/controllers/app/modal/experiment-detail.controller.js",
                   "scripts/controllers/app/teacher/task-detail.controller.js",
                 ])
               }],
@@ -694,11 +699,11 @@ angular.module('nevermore')
           .state('app.message.list', {
             url: '^/app/message/list?isRead',
             templateUrl: 'tpl/app/message-list.html',
-            controller: 'MessageListCtrl',
+            controller: 'MessageListController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/message-list.js'
+                  'scripts/controllers/app/message.list.js'
                 ]);
               }]
             }
@@ -805,6 +810,7 @@ angular.module('nevermore')
                   "scripts/controllers/app/administrator/lab-management.js",
                   "scripts/controllers/app/administrator/modal/lab-add.js",
                   "scripts/controllers/app/administrator/modal/lab-modify.js",
+                  "scripts/directives/app/search-action-bar.js"
                 ])
               }]
             }
@@ -821,7 +827,8 @@ angular.module('nevermore')
                   "scripts/controllers/app/administrator/modal/experiment-modify.js",
                   "scripts/controllers/app/administrator/modal/experiment-lab-add.js",
                   "angularBootstrapNavTree",
-                  'scripts/directives/app/nm-configure-list.js'
+                  'scripts/directives/app/nm-configure-list.js',
+                  "scripts/directives/app/search-action-bar.js"
                 ])
               }]
             }
@@ -839,7 +846,8 @@ angular.module('nevermore')
                   "scripts/controllers/app/administrator/modal/course-experiment-add.js",
                   "angularBootstrapNavTree",
                   'scripts/directives/app/nm-configure-list.js',
-                  "scripts/controllers/app/administrator/modal/course-rich-modify.js"
+                  "scripts/controllers/app/administrator/modal/course-rich-modify.js",
+                  "scripts/directives/app/search-action-bar.js"
                 ])
               }]
             }

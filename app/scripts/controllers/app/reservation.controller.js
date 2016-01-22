@@ -2,10 +2,10 @@
 	angular.module("nevermore")
 			.controller("ReservationController", ReservationController)
 
-	ReservationController.$inject = ["$scope", "reservationFactory", 
+	ReservationController.$inject = ["$scope", "reservationFactory", "ngDialog",
 		"httpResponseFactory", "ToasterTool", "generalService", "errorHandlerFactory"]
 
-	function ReservationController($scope, reservationFactory, 
+	function ReservationController($scope, reservationFactory, ngDialog,
 		httpResponseFactory, ToasterTool, generalService, errorHandlerFactory){
 
 		var errorHandler = errorHandlerFactory.handle
@@ -20,6 +20,7 @@
 
 		$scope.pageChanged = pageChanged
 		$scope.cancelReservation = cancelReservation
+		$scope.viewReservation = viewReservation
 
 		getReservationsInWeek()
 		getReservationOutWeek()
@@ -65,11 +66,29 @@
 			.then(function(response){
 				if(httpResponseFactory.isResponseSuccess(response)){
 					ToasterTool.success("取消预约成功")
+					getReservationsInWeek()
+					getReservationOutWeek()
 				}else{
 					errorHandler(response)
 				}
 			})
 			.catch(errorHandler)
+		}
+
+		function viewReservation(reservation){
+			var dialog = ngDialog.open({
+				"template": "tpl/app/admin/modal/view-experiment-appointment.html",
+				"controller": "ViewExperimentAppointmentCtrl",
+				"closeByDocument": true,
+				"closeByEscape": true,
+				"resolve": {
+					data: function(){
+						return reservationFactory.reservation().get({
+							id: reservation.id
+						}).$promise;
+					}
+				},
+			})
 		}
 
 		function pageChanged(){

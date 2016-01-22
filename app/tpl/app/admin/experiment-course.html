@@ -1,7 +1,8 @@
 <div>
     <div class = "wrapper lter b-b" style = "overflow: hidden;">
-        <span>实验课程资源</span>
-        <button class="btn btn-info pull-right" ng-click="addResource()">添加实验课程</button>
+      <searchactionbar placeholder = "'搜索：输入编号、名字或开课单位'" init-action = "'listing'" on-transit = "onTransit(lastAction, nowAction, searchWord)">
+          <button class="btn btn-info pull-right" ng-click="addResource()">添加课程</button>
+      </searchactionbar>
     </div>
     <div class = "wrapper-md">
         <div class="panel panel-default">

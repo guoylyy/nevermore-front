@@ -3,11 +3,11 @@
 			.controller("TeacherAppointmentController", TeacherAppointmentController)
 
 	TeacherAppointmentController.$inject = ["$scope", "ToasterTool", "ngDialog",
-		"ClazzFactory", "errorHandlerFactory", "httpResponseFactory", "reservationFactory", 
+		"ClazzFactory", "errorHandlerFactory", "httpResponseFactory", "reservationFactory",
 		"AlertTool"]
 
 	function TeacherAppointmentController($scope, ToasterTool, ngDialog,
-		ClazzFactory, errorHandlerFactory, httpResponseFactory, reservationFactory, 
+		ClazzFactory, errorHandlerFactory, httpResponseFactory, reservationFactory,
 		AlertTool){
 
 		var errorHandler = errorHandlerFactory.handle
@@ -18,6 +18,7 @@
 		$scope.cancelReservation = cancelReservation
 
 		$scope.cancelReservation = cancelReservation
+		$scope.viewReservation = viewReservation
 
 
 		loadExperimentReservations();
@@ -81,6 +82,22 @@
 			})
 
 			return totalPersonCount
+		}
+
+		function viewReservation(reservation){
+			var dialog = ngDialog.open({
+				"template": "tpl/app/admin/modal/view-experiment-appointment.html",
+				"controller": "ViewExperimentAppointmentCtrl",
+				"closeByDocument": true,
+				"closeByEscape": true,
+				"resolve": {
+					data: function(){
+						return reservationFactory.reservation().get({
+							id: reservation.id
+						}).$promise;
+					}
+				},
+			})
 		}
 
 		function cancelReservation(reservation){

@@ -1,6 +1,6 @@
 'use strict';
 //
-app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', 'experiment', 'ReportFactory', 'ToasterTool', 'ClazzFactory', function($scope, $state, AlertTool, $stateParams, experiment, ReportFactory, ToasterTool, ClazzFactory) {
+app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', 'experimentFactory', 'ReportFactory', 'ToasterTool', 'ClazzFactory', function($scope, $state, AlertTool, $stateParams, experimentFactory, ReportFactory, ToasterTool, ClazzFactory) {
 
   $scope.report_step = 1;
 
@@ -108,7 +108,7 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
             "studentId": $scope.currentUser.id,
             "occurDate": new Date()
           };
-          experiment.userReport().post({id: $scope.exp_id}, record).$promise.then(function(response){
+          experimentFactory.userReport().post({id: $scope.exp_id}, record).$promise.then(function(response){
             if (response.code == "200") {
               AlertTool.success({title:'提交成功！',text:''}).then(function() {});
             }else {
