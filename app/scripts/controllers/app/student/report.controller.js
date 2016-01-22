@@ -117,10 +117,10 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
             }
           });
       }else if (response.code == 110) {
-        AlertTool.error({title:'提交失败！',text:response.data}).then(function() {
+        AlertTool.error({title:'批改失败！',text:response.data}).then(function() {
         });
       }else{
-        AlertTool.error({title:'提交失败！',text:response.data}).then(function() {
+        AlertTool.error({title:'批改失败！',text:response.data}).then(function() {
         });
       }
     });

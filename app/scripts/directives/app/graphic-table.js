@@ -29,7 +29,7 @@ angular.module('nevermore')
           var dialog = ngDialog.open({
             template: 'tpl/app/modal/choose-chart.html',
             controller:'ChooseChartModalCtrl',
-            className: 'nm-dialog nm-dialog-sm',
+            className: 'nm-dialog nm-dialog-md',
             closeByDocument: true,
             closeByEscape: true,
             resolve: {
