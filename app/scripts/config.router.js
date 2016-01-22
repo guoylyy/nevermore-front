@@ -328,6 +328,27 @@ angular.module('nevermore')
               }],
             },
           })
+          .state("app.teacher.class.report-result", {
+            url: "/report/result/:expId/:classId/:stuId",
+            templateUrl: "tpl/app/report-result.html",
+            controller: "ReportResultCtrl",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/report-result.js',
+                  'scripts/directives/app/graphic-table.js',
+                  'scripts/directives/app/lashen-report.js',
+                  'scripts/directives/app/yasuo-report.js',
+                  'scripts/directives/app/lashen-experiment.js',
+                  'scripts/directives/app/yasuo-experiment.js',
+                  'NmDatepicker',
+                  'ngDialog',
+                  'scripts/controllers/app/modal/choose-chart.js',
+                  "scripts/factories/refine/clazz.factory.js",
+                ])
+              }],
+            },
+          })
           .state("app.teacher.class.student", {
             url: "/student",
             templateUrl: "tpl/app/teacher/student.html",
@@ -469,6 +490,48 @@ angular.module('nevermore')
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/student/file.controller.js",
                   "ngFileUpload",
+                ])
+              }],
+            },
+          })
+          .state("app.student.class.report", {
+            url: "/report/:expId/:classId",
+            templateUrl: "tpl/app/report.html",
+            controller: "ReportCtrl",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  "scripts/controllers/app/student/report.controller.js",
+                  "scripts/factories/refine/clazz.factory.js",
+                  'scripts/directives/app/graphic-table.js',
+                  'scripts/directives/app/lashen-report.js',
+                  'scripts/directives/app/yasuo-report.js',
+                  'scripts/directives/app/lashen-experiment.js',
+                  'scripts/directives/app/yasuo-experiment.js',
+                  'NmDatepicker',
+                  'ngDialog',
+                  'scripts/controllers/app/modal/choose-chart.js'
+                ])
+              }],
+            },
+          })
+          .state("app.student.class.report-result", {
+            url: "/report/result/:expId/:classId/:stuId",
+            templateUrl: "tpl/app/report-result.html",
+            controller: "ReportResultCtrl",
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/report-result.js',
+                  'scripts/directives/app/graphic-table.js',
+                  'scripts/directives/app/lashen-report.js',
+                  'scripts/directives/app/yasuo-report.js',
+                  'scripts/directives/app/lashen-experiment.js',
+                  'scripts/directives/app/yasuo-experiment.js',
+                  'NmDatepicker',
+                  'ngDialog',
+                  'scripts/controllers/app/modal/choose-chart.js',
+                  "scripts/factories/refine/clazz.factory.js",
                 ])
               }],
             },

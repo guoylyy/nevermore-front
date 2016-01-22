@@ -7,6 +7,7 @@
 	function TeacherTaskReportController($scope, $stateParams, ClazzFactory){
 		var clazzId = $scope.class.id
 		var expId = $stateParams.expId;
+		$scope.expId = expId;
 
 		$scope.reportList = []
 

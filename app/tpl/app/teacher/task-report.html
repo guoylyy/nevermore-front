@@ -66,7 +66,7 @@
 					<td>{{report.report.occurDate | date: 'yyyy-MM-dd'}}</td>
 					<td>{{report.report.score}}</td>
 					<td>
-						<button class="btn btn-sm btn-primary db-btn-primary" ng-click="viewReportDetails(report)" >查看报告</button>
+						<button class="btn btn-sm btn-primary db-btn-primary" ui-sref="app.teacher.class.report-result({expId:expId,classId:class.id,stuId:report.studentId})">查看报告</button>
 					</td>
 				</tr>
 			</tbody>

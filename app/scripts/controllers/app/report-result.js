@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ReportResultCtrl',  function($scope, $rootScope, $stateParams, Clazz, Exp, qService, Report, sessionService, Account, ToasterTool) {
+app.controller('ReportResultCtrl', ['$scope', '$stateParams', 'ClazzFactory', 'ExperimentManage', 'ReportFactory', 'AccountManage', 'sessionService', 'ToasterTool', function($scope, $stateParams, ClazzFactory, ExperimentManage, ReportFactory, AccountManage, sessionService, ToasterTool) {
 
   $scope.exp_id = $stateParams.expId;
 
@@ -16,34 +16,40 @@ app.controller('ReportResultCtrl',  function($scope, $rootScope, $stateParams, C
     'experiment_data':false
   }
 
-  qService.tokenHttpGet(Clazz.clazz, {
+  ClazzFactory.clazz().get({
     id: $scope.class_id
-  }).then(function(rc){
-    $scope.clazz = rc.data;
+  }).$promise.then(function(response){
+    if (response.code == "200") {
+      $scope.clazz = response.data;
+    }
   });
 
-  qService.tokenHttpGet(Exp.fid, {
+  ExperimentManage.experiment().get({
     id: $scope.exp_id
-  }).then(function(rc){
-    $scope.exp = rc.data;
+  }).$promise.then(function(response){
+    if (response.code == "200") {
+      $scope.exp = response.data;
+    }
   });
 
-  qService.tokenHttpGet(Account.account, {
+  AccountManage.account().get({
     id: $scope.student_id
-  }).then(function(rc){
-    $scope.student = rc.data;
+  }).$promise.then(function(response){
+    if (response.code == "200") {
+      $scope.student = response.data;
+    }
   });
 
-  qService.tokenHttpGet(Report.report, {
+  ReportFactory.report().get({
     stuId: $scope.student_id,
     classId: $scope.class_id,
     expId: $scope.exp_id
-  }).then(function(rc){
-    if (rc.code == 200) {
-      $scope.data = rc.data.report;
+  }).$promise.then(function(response){
+    if (response.code == 200) {
+      $scope.data = response.data.report;
 
-      Report.answer({
-        'token': rc.data.token
+      ReportFactory.answer({
+        'token': response.data.token
       }).get({
           expId: $scope.exp_id
         },
@@ -67,4 +73,4 @@ app.controller('ReportResultCtrl',  function($scope, $rootScope, $stateParams, C
     $scope.correct_answer_view[view]=false;
   }
 
-});
+}]);
