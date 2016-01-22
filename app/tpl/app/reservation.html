@@ -42,10 +42,10 @@
 				<table class = "table db-appointment-table db-table-row-b db-m-b-0">
 					<tr class="cursor-pointer" ng-repeat = "reservation in reservationOutWeekList">
 						<td style = "width: 15%; text-align: left;">
-							<span class = "db-exp-time">{{reservation.applyDate | date: 'yyyy-MM-dd (EEE)'}}</span>
+							<span class = "db-exp-time" ng-click="viewReservation(reservation)">{{reservation.applyDate | date: 'yyyy-MM-dd (EEE)'}}</span>
 						</td>
 						<td style = "width: 20%; text-align: left;">
-							<span class="db-exp-time">{{reservation.lab.name}}</span>
+							<span class="db-exp-time" ng-click="viewReservation(reservation)">{{reservation.lab.name}}</span>
 						</td>
 						<td style = "width: 15%; text-align: right;">
 							{{reservation.slot.title}}

@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('MessageListController', ['$scope', '$stateParams', '$sce', 'messageFactory', 'nmMsgNumberService',
-function($scope, $stateParams, $sce, messageFactory, nmMsgNumberService) {
+app.controller('MessageListController', ['$scope', '$stateParams', '$sce', 'messageFactory', 'nmMsgNumberService', 'ToasterTool',
+function($scope, $stateParams, $sce, messageFactory, nmMsgNumberService, ToasterTool) {
   var areas = [{
       name: "消息列表",
       code: "list"
