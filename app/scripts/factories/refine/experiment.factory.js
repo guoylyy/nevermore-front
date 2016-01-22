@@ -1,6 +1,6 @@
 ;void function(){
   angular.module("nevermore")
-          .factory("experiment", experiment)
+          .factory("experimentFactory", experiment)
 
   experiment.$inject = ["$resource", "sessionService", "$rootScope"]
 
@@ -10,6 +10,7 @@
 
     return {
       labs: labs,
+      userReport: userReport
     };
 
     function labs(){
@@ -24,7 +25,7 @@
     function userReport(){
       return $resource(apiUrl + "/:id/userReport", {id: "@id"}, {
         post: {
-          method: "POST"
+          method: "POST",
           headers : headers
         }
       })

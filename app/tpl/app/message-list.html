@@ -5,82 +5,102 @@
     </div>
     <div class="wrapper bg-app">
       <div class="panel panel-default bg-app">
-        <!-- <div class="panel-heading">
-          <span class="h4">个人资料</span>
-        </div> -->
-
         <div class="panel-body">
-          <div class="m-b-sm nav">
-            <button class="btn btn-default m-r-xs" ng-repeat="paramItem in pageData.paramItems"
-              ng-class="paramItem == pageData.currentParam ? 'active' : ''" ng-click="getList(paramItem)">{{paramItem.show_title}}</button>
-          </div>
+          <!-- 消息列表 -->
+          <div  ng-if="pageData.currentModel == pageData.models[0]">
+            <div class="m-b-sm nav">
+              <button class="btn btn-default m-r-xs" ng-repeat="messageType in pageData.messageTypes"
+                ng-class="messageType == pageData.currentMessageType ? 'active' : ''" ng-click="changeMessageType(messageType)">{{messageType.value}}</button>
+            </div>
 
-
-          <table class="table text-l" style="width: 100%;" ng-if="pageData.list.length > 0">
-            <thead>
-              <tr>
-                <th>
-                  <label class="i-checks">
-                    <input type="checkbox" ng-model="pageData.checkAll" ng-click="checkAll()">
-                    <i></i>
-                  </label>
-                </th>
-                <th class="state-column"></th>
-                <th class="title-column">标题内容</th>
-                <th>提交时间</th>
-                <th>类型</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="message in pageData.list">
-                <td class="w-2x m-t-none m-b-none">
-                  <label class="i-checks">
-                    <input type="checkbox" ng-model="message.isCheck" ng-click="addCheck(message.id)">
-                    <i></i>
-                  </label>
-                </td>
-                <td style="width:10px; height:10px; padding:0px;">
-                  <span ng-if="message.isRead" class="readTip"></span>
-                  <span ng-if="!message.isRead" class="unreadTip"></span>
-                </td>
-                <td>
-                  <a href="javascript:void(0);" ng-click="viewMessageDetail(message)">{{message.title}}</a>
-                </td>
-                <td>
-                  {{message.createTime | date}}
-                </td>
-                <td>
-                  {{message.type}}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <nevermore-empty-panel ng-if="pageData.list.length == 0" text="暂时没有任何消息"></nevermore-empty-panel>
-
-          <div style="width: 100%;" class="clearfix" ng-if="pageData.list.length > 0">
-            <table class="table" style="width: 100%;">
-              <tbody>
+            <table class="table text-l" style="width: 100%;" ng-if="pageData.list.length > 0">
+              <thead>
                 <tr>
-                  <td width="10" style="width: 29px;">
-                    <label class="i-checks m-t-xs">
+                  <th>
+                    <!-- <label class="i-checks">
                       <input type="checkbox" ng-model="pageData.checkAll" ng-click="checkAll()">
                       <i></i>
-                    </label>
+                    </label> -->
+                  </th>
+                  <th class="state-column"></th>
+                  <th class="title-column">标题内容</th>
+                  <th>提交时间</th>
+                  <th>类型</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="message in pageData.list">
+                  <td class="w-2x m-t-none m-b-none">
+                    <!-- <label class="i-checks">
+                      <input type="checkbox" ng-model="message.isCheck" ng-click="addCheck(message.id)">
+                      <i></i>
+                    </label> -->
                   </td>
-                  <td colspan="4">
-                    <div class="btn-group uib-dropdown">
-                      <button class="btn btn-default m-r-sm" ng-click="deleteMessages()">删除</button>
-                      <button class="btn btn-default" ng-click="markAsRead()">标记已读</button>
-                    </div>
-                    <div class="pull-right" ng-if="pageData.list.length > 0">
-                      <uib-pagination class="m-t-none m-b-none" max-size="5" previous-text="上一页" next-text="下一页"
-                        total-items="pageData.paginator.items" items-per-page="10" ng-model="pageData.paginator.page" ng-change="pageChanged()">
-                      </uib-pagination>
-                    </div>
+                  <td style="width:10px; height:10px; padding:0px;">
+                    <span ng-if="message.isRead" class="readTip"></span>
+                    <span ng-if="!message.isRead" class="unreadTip"></span>
+                  </td>
+                  <td>
+                    <a href="javascript:void(0);" ng-click="viewMessageDetail(message)">{{message.title}}</a>
+                  </td>
+                  <td>
+                    {{message.createTime | date}}
+                  </td>
+                  <td>
+                    {{message.bizType.value}}
                   </td>
                 </tr>
               </tbody>
             </table>
+            <nevermore-empty-panel ng-if="pageData.list.length == 0" text="暂时没有任何消息"></nevermore-empty-panel>
+
+            <div style="width: 100%;" class="clearfix" ng-if="pageData.list.length > 0">
+              <table class="table" style="width: 100%;">
+                <tbody>
+                  <tr>
+                    <td width="10" style="width: 29px;">
+                      <!-- <label class="i-checks m-t-xs">
+                        <input type="checkbox" ng-model="pageData.checkAll" ng-click="checkAll()">
+                        <i></i>
+                      </label> -->
+                    </td>
+                    <td colspan="4">
+                      <div class="btn-group uib-dropdown">
+                        <!-- <button class="btn btn-default m-r-sm" ng-click="deleteMessages()">删除</button>
+                        <button class="btn btn-default" ng-click="markAsRead()">标记已读</button> -->
+                      </div>
+                      <div class="pull-right">
+                        <uib-pagination class="m-t-none m-b-none" max-size="5" previous-text="上一页" next-text="下一页"
+                          total-items="pageData.paginator.items" items-per-page="pageData.paginator.itemsPerPage" ng-model="pageData.paginator.page" ng-change="changePageNum()">
+                        </uib-pagination>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- 消息详情 -->
+          <div ng-if="pageData.currentModel == pageData.models[1]" class="pos-rlt">
+            <div style="display: block;">
+              <div class="text-c m-t-sm m-b-lg p-t-sm p-b-sm no-line b-b b-dashed msg-title">
+                <div class="pull-left msg-title-button"><button class="btn btn-success" ng-click="returnList()">返回消息列表</button></div>
+                <span class="text-lg font-bold" ng-bind="pageData.currentMessage.title"></span>
+                <div class="pull-right msg-title-date"><p>{{pageData.currentMessage.createTime | date:'yyyy-MM-dd'}}</p></div>
+              </div>
+              <div class="l-h-1x text-c">
+                <p ng-bind-html="trustDangerousContent(pageData.currentMessage.content)"></p>
+                <!-- <br>
+                <div class="text-c m-b-sm no-line" ng-if="pageData.currentMessage.bizType.code == 'LOAN_NOTIFICATION'">
+                  <a class="btn btn-primary btn-addon"
+                    ng-href="#/app/loan/detail/{{pageData.currentMessage.bizId}}"
+                    ng-click="pageData.currentModel = pageData.models[0]"
+                  >
+                    查看合同详情
+                  </a>
+                </div> -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
