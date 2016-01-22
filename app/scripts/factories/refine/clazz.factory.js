@@ -21,7 +21,7 @@
       uploadStudentList: uploadStudentList,
       experimentRecords: experimentRecords,
       experimentReports: experimentReports
-    }
+    } 
 
     //获取班级下的实验
     function experiments(){
@@ -85,6 +85,10 @@
       }, {
         get: {
           method: "GET",
+          headers: sessionService.headers(),
+        },
+        put: {
+          method: "PUT",
           headers: sessionService.headers(),
         }
       })

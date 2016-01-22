@@ -2,11 +2,13 @@
 	angular.module("nevermore")
 			.controller("TeacherMainPageController", TeacherMainPageController)
 
-	TeacherMainPageController.$inject = ["$scope", "ClazzFactory",
-		"httpResponseFactory", "ToasterTool", "ManagementService"]
+	TeacherMainPageController.$inject = ["$scope", "ClazzFactory", "httpResponseFactory", 
+		"ToasterTool", "ManagementService", "errorHandlerFactory"]
 
 	function TeacherMainPageController($scope, ClazzFactory, httpResponseFactory,
-		ToasterTool, ManagementService){
+		ToasterTool, ManagementService, errorHandlerFactory){
+
+		var errorHandler = errorHandlerFactory.handle
 
 		$scope.mainPage = {}
 
@@ -30,29 +32,20 @@
 			.catch(errorHandler)
 		}
 
-		function errorHandler(error){
-			if(httpResponseFactory.isServerResponse(error)){
-				var message = httpResponseFactory.getResponseMessage(error)
-				ToasterTool.error(message)
-			}else{
-				ToasterTool.error("网络连接错误，请重试")
-			}
-		}
-
-		function modifyMainPage(){
+		function modifyMainPage(){	
 			var templateUrl = "tpl/app/teacher/modal/modify-main-page.html"
 			var controller = "ModifyMainPageController"
 			var richModifyDialog = new ManagementService.RichModifyDialog()
 			richModifyDialog.setCloseListener(updateMainPage)
-			richModifyDialog.open($scope.mainPage.content, templateUrl, controller, {})
+			richModifyDialog.open({
+				classID: $scope.class.id,
+				content: $scope.mainPage.content
+			}, templateUrl, controller, {})
 		}
 
 		function updateMainPage(){
+			getMainPage()
 			ToasterTool.success("修改实验课程主页成功！")
-		}
-
-		function commitMainPage(content){
-			return new Promise()
 		}
 	}
 }()
