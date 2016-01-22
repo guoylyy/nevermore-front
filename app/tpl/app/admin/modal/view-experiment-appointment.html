@@ -1,9 +1,9 @@
 <div class="tab-container ng-isolate-scope">
   <ul class="nav nav-tabs">
-    <li ng-class="{active: step === 1, disabled: step !== 1}" class="ng-isolate-scope" style="">
+    <li ng-class="{active: step === 1, disabled: step !== 1}" class="ng-isolate-scope cursor-pointer" ng-click="viewExperiment()">
       <a href="" class="ng-binding">1. 实验信息</a>
     </li>
-    <li ng-class="{active: step === 2, disabled: step != 2}" class="ng-isolate-scope">
+    <li ng-class="{active: step === 2, disabled: step != 2}" class="ng-isolate-scope cursor-pointer" ng-click="viewTeacher()">
       <a href="" class="ng-binding">2. 实验教师</a>
     </li>
   </ul>
@@ -73,9 +73,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="teacher in teacherList">
+          <tr ng-repeat="teacher in resource.teachers">
             <td>
-              <span>{{teacher.number}}</span>
+              <span>{{teacher.account}}</span>
             </td>
             <td>
               <span>{{teacher.name}}</span>

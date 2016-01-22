@@ -143,10 +143,12 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/reservation.controller.js',
+                  'scripts/controllers/app/administrator/modal/reservation-view.js',
                   "scripts/factories/refine/reservation.factory.js",
                   "scripts/factories/refine/http-response.factory.js",
                   "scripts/services/toaster-tool.js",
                   "scripts/services/general-service.js",
+                  "ngDialog",
                 ]);
               }]
             },
@@ -266,6 +268,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
+                  "scripts/controllers/app/administrator/modal/reservation-view.js",
                   "scripts/controllers/app/teacher/appointment.controller.js",
                   "scripts/factories/exp-factory.js",
                   "scripts/factories/lab-factory.js",

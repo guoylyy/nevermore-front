@@ -7,7 +7,7 @@ function($scope, LabManage, generalService, ToasterTool, ManagementService, Aler
 	$scope.addResource = addResource
 	$scope.modifyResource = modifyResource
 
-	loadResources();
+	loadResources()
 
 	// ~ 搜索
 	$scope.onTransit = function(lastAction, nowAction, searchWord) {
@@ -17,7 +17,7 @@ function($scope, LabManage, generalService, ToasterTool, ManagementService, Aler
 					searchAccount(searchWord)
 			} else if (lastAction === "searched" && nowAction === "listing") {
 					$scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
-					loadResources();
+					loadResources()
 			}
 	}
 

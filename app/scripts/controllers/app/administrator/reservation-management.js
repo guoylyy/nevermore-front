@@ -92,10 +92,9 @@ function($scope, $stateParams, ReservationManage, sessionService, generalService
 			"closeByEscape": true,
 			"resolve": {
 				data: function(){
-					return resource
-				},
-				labTeachers: function(){
-					return []
+					return ReservationManage.reservation().get({
+						id: resource.id
+					}).$promise;
 				}
 			},
 		})
