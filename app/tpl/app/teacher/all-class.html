@@ -9,7 +9,9 @@
 		    	<li ng-repeat = "class in classList">
 		    		<div ui-sref = "app.teacher.class.main-page({classID: '{{class.id}}'})">
 		    			<img src="images/app/course{{class.id % 5 + 1}}.jpg" class = "course-img">
-		    			<a class="text-link text-md">{{class.number}}-{{clazz.course.name}}</a>
+		    			<a class="text-link text-md">{{class.course.name}}</a>
+							<br>
+							<a class="text-md text-muted">{{class.number}}</a>
 		    		</div>
 		    	</li>
 		    </ul>
