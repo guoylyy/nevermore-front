@@ -92,37 +92,39 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
   }
 
   $scope.submit = function (){
-    ReportFactory.report().post({
-        stuId: $scope.currentUser.id+"",
-        classId: $scope.class_id,
-        expId: $scope.exp_id
-    }).$promise.then(function(response){
-      if (response.code == "200") {
-          $scope.status = 'committed';
-          $state.go('app.student.class.report-result',{expId:$scope.exp_id,classId:$scope.class_id,stuId:$scope.currentUser.id});
-          var record = {
-            "experimentRecord": response.data.report.final_score,
-            "experimentComment": "",
-            "clazzId": $scope.class_id,
-            "experimentId": $scope.exp_id,
-            "studentId": $scope.currentUser.id,
-            "occurDate": new Date()
-          };
-          experiment.userReport().post({id: $scope.exp_id}, record).$promise.then(function(response){
-            if (response.code == "200") {
-              AlertTool.success({title:'提交成功！',text:''}).then(function() {});
-            }else {
-              AlertTool.error({title:'提交失败！',text:response.message}).then(function() {
-              });
-            }
+    AlertTool.confirm({title:'确认提交?'}).then(function(isConfirm) {
+      ReportFactory.report().post({
+          stuId: $scope.currentUser.id+"",
+          classId: $scope.class_id,
+          expId: $scope.exp_id
+      }).$promise.then(function(response){
+        if (response.code == "200") {
+            $scope.status = 'committed';
+            $state.go('app.student.class.report-result',{expId:$scope.exp_id,classId:$scope.class_id,stuId:$scope.currentUser.id});
+            var record = {
+              "experimentRecord": response.data.report.final_score,
+              "experimentComment": "",
+              "clazzId": $scope.class_id,
+              "experimentId": $scope.exp_id,
+              "studentId": $scope.currentUser.id,
+              "occurDate": new Date()
+            };
+            experiment.userReport().post({id: $scope.exp_id}, record).$promise.then(function(response){
+              if (response.code == "200") {
+                AlertTool.success({title:'提交成功！',text:''}).then(function() {});
+              }else {
+                AlertTool.error({title:'提交失败！',text:response.message}).then(function() {
+                });
+              }
+            });
+        }else if (response.code == 110) {
+          AlertTool.error({title:'批改失败！',text:response.data}).then(function() {
           });
-      }else if (response.code == 110) {
-        AlertTool.error({title:'批改失败！',text:response.data}).then(function() {
-        });
-      }else{
-        AlertTool.error({title:'批改失败！',text:response.data}).then(function() {
-        });
-      }
+        }else{
+          AlertTool.error({title:'批改失败！',text:response.data}).then(function() {
+          });
+        }
+      });
     });
   }
 

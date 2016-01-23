@@ -10,6 +10,15 @@ app.controller('ReportResultCtrl', ['$scope', '$stateParams', 'ClazzFactory', 'E
 
   $scope.semester = sessionService.getCurrentSemester();
 
+  $scope.isRole = function(role) {
+    for (var i = 0; i < $scope.currentUser.roles.length; i++) {
+      if ($scope.currentUser.roles[i].name.code == role) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   $scope.correct_answer_view = {
     'init_data':false,
     'graphic':false,
