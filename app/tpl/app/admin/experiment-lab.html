@@ -44,9 +44,9 @@
             </table>
         </div>
         <footer class="panel-footer">
-          <div class="row clearfix" style="width: 100%;" >
+          <div ng-if = "resources.paginator!=null" class="row clearfix" style="width: 100%;" >
             <div class="pull-left col-sm-4 m-t-sm">
-              <span class="text-muted inline m-t-sm">{{resources.paginator.page}}/{{resources.paginator.pages}}&nbsp;&nbsp;&nbsp;共&nbsp;{{resources.paginator.items}}&nbsp;个教师</span>
+              <span class="text-muted inline m-t-sm">{{resources.paginator.page}}/{{resources.paginator.pages}}&nbsp;&nbsp;&nbsp;共&nbsp;{{resources.paginator.items}}&nbsp;个实验室</span>
             </div>
               <div class="pull-right">
               <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="resources.paginator.items"
