@@ -101,8 +101,8 @@
                       <td>
                         {{smsRecord.status.value}}
                       </td>
-                      <td>
-                        {{smsRecord.content}}
+                      <td class="text-l" uib-tooltip="{{smsRecord.content}}"  tooltip-class="customClass">
+                        {{smsRecord.content | messagePreview}}
                       </td>
                     </tr>
                   </tbody>
