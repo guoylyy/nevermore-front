@@ -29,7 +29,7 @@
             <tr ng-repeat="data in studentList">
               <td style="width:10%">
                 <label class="i-checks i-checks-sm db-check db-m-b-0">
-    	                        <input type="checkbox" ng-model="data.selected">
+    	                        <input type="checkbox" ng-model="data.selected" ng-click="addStudentNum(data.selected)">
     	                        <i></i>
     	                    </label>
               </td>
@@ -44,6 +44,9 @@
   </div>
   <div class = "nm-dialog-line"></div>
   <div class="m-t-sm clearfix">
+    <div class="pull-left col-sm-4">
+      <span class="text-muted inline m-t-sm">已选择{{selectedNum}}个 共{{studentList.length}}个</span>
+    </div>
     <div class="pull-right">
       <button class="btn btn-primary w-sm" ng-click="confirm()" >确定</button>
       <!-- <button class="btn btn-default w-sm" ng-click="closeThisDialog(null)">取消</button> -->

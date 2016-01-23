@@ -14,7 +14,11 @@ app.controller('UploadStudentCtrl', ['$scope', 'Upload', 'ResTool', 'ToasterTool
 
     $scope.studentList = [];
 
+    $scope.selectedNum = 0;
+
     $scope.selectAllItems = selectAllItems;
+
+    $scope.addStudentNum = addStudentNum;
 
     $scope.uploadFile = function (file) {
       if(file) {
@@ -41,12 +45,12 @@ app.controller('UploadStudentCtrl', ['$scope', 'Upload', 'ResTool', 'ToasterTool
                       $scope.studentList.push(student);
                     }
                   }else {
-                    ToasterTool.error(response.data.message);
+                    ToasterTool.error(response.message);
                   }
                 });
             }
         }, function (response) {
-          ToasterTool.error(response.data.message);
+          ToasterTool.error(response.message);
         });
       }
     };
@@ -55,11 +59,21 @@ app.controller('UploadStudentCtrl', ['$scope', 'Upload', 'ResTool', 'ToasterTool
 		function selectAllItems(){
 			if($scope.selectAll){
 				tagSelectStatus($scope.studentList, true)
+        $scope.selectedNum = $scope.studentList.length
 			}else{
 				//不选中
 				tagSelectStatus($scope.studentList, false)
+        $scope.selectedNum = 0
 			}
 		}
+
+    function addStudentNum(status){
+      if (status) {
+        $scope.selectedNum ++;
+      }else {
+        $scope.selectedNum --;
+      }
+    }
 
 		function tagSelectStatus(list, status){
 			for(var i=0; i<list.length; i++){
@@ -101,7 +115,7 @@ app.controller('UploadStudentCtrl', ['$scope', 'Upload', 'ResTool', 'ToasterTool
             $scope.closeThisDialog('success');
           }
           else {
-            ToasterTool.error(response.data.message);
+            ToasterTool.error(response.message);
           }
         });
     };

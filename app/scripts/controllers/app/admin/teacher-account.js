@@ -1,14 +1,15 @@
 'use strict'
 
 app.controller("TeacherAccountCtrl", ['$scope', 'Account', 'ngDialog',
-				'generalService', 'ToasterTool',
-function($scope, Account, ngDialog, generalService, ToasterTool){
+				'generalService', 'ToasterTool', "errorHandlerFactory"
+function($scope, Account, ngDialog, generalService, ToasterTool, errorHandlerFactory){
 	var DEFAULT_ACCOUNTS = {
 		"data": [],
 		"totalPageNum": 0,
 		"curPageNum": 1,
 		"totalItemNum": 0,
 	}
+	var errorHandler = errorHandlerFactory.handle
 
 
 	$scope.accounts = angular.copy(DEFAULT_ACCOUNTS)
@@ -118,9 +119,5 @@ function($scope, Account, ngDialog, generalService, ToasterTool){
 
 	function updateAccountsAfterSearch(data){
 		angular.copy(data, $scope.accounts)
-	}
-
-	function errorHandler(error){
-		console.log(error)
 	}
 }])
