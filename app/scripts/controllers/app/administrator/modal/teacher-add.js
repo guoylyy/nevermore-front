@@ -48,7 +48,7 @@ app.controller("AddTeacherAccountCtrl", ["$scope", "AccountManage", "ManagementS
             if (data.success) {
                 return data
             } else {
-                throw new Error(data)
+                throw data
             }
         }
 
@@ -60,10 +60,9 @@ app.controller("AddTeacherAccountCtrl", ["$scope", "AccountManage", "ManagementS
 
         function getErrorMessage(error) {
             if (typeof error === "object") {
-                return error.errorCode || error.toString()
-            } else {
-                return error.toString()
+                return error.message;
             }
+            return error;
         }
 
         function showErrorTip(error) {
