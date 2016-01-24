@@ -11,7 +11,7 @@
 		var errorHandler = errorHandlerFactory.handle
 
 		$scope.experimentList = []
-		$scope.openExperimentDetailDialog = openExperimentDetailDialog
+		$scope.viewRecordDetails = viewRecordDetails
 
 		loadExperimentReservations()
 
@@ -33,26 +33,25 @@
 			.catch(errorHandler)
 		}
 
-		function openExperimentDetailDialog(experiment){
-			var dialog = ngDialog.open({
-				"template": "tpl/app/modal/experiment-detail.html",
-				"controller": "ExperimentDetailController",
-				"className": 'nm-dialog nm-dialog-md',
-				"closeByDocument": true,
-				"closeByEscape": true,
-				"resolve": {
-					"experiment": function(){
-						return experiment
-					},
-					"clazz": function(){
-						return $scope.class
-					},
-					"currentUser": function(){
-						return $scope.currentUser
+
+		function viewRecordDetails(record, experiment){
+				var dialog = ngDialog.open({
+					template: 'tpl/app/modal/experiment-detail.html',
+					controller: 'ExperimentDetailController',
+					className: 'nm-dialog nm-dialog-md',
+					closeByDocument: false,
+					closeByEscape: true,
+					resolve: {
+						record: function(){
+							return ClazzFactory.experimentRecord().get({
+								id: $scope.class.id,
+								expId: experiment.id,
+								recordId: record.id
+							}).$promise
+						}
 					}
-				},
-			})
-		}
+				});
+			}
 	}
 
 }()

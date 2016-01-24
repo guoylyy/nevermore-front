@@ -7,11 +7,13 @@
 
 	function ExperimentDetailController($scope, record){
 
-			$scope.record = record;
-
-			console.log(record);
-
-
+			$scope.record = record.data;
+			var imageList = [];
+			for(var i = 0; i < record.data.recordImages.length; i++){
+					var image = record.data.recordImages[i];
+					imageList.push({thumb: image.url, img: image.url});
+			}
+			$scope.images = imageList;
 	}
 
 }()
