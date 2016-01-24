@@ -41,6 +41,7 @@
                     </tr>
                 </tbody>
             </table>
+            <nevermore-empty-panel ng-if="resources.paginator.items == 0" text="还没有任何学生用户"></nevermore-empty-panel>
         </div>
         <footer class="panel-footer">
           <div ng-if = "resources.paginator!=null" class="row clearfix" style="width: 100%;" >
