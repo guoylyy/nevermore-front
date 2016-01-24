@@ -34,15 +34,20 @@ app.controller('UploadStudentCtrl', ['$scope', 'Upload', 'ResTool', 'ToasterTool
                 .$promise
                 .then(function(response){
                   if (response.success) {
-                    for (var i = 0; i < response.data.length; i++) {
-                      var student = {
-                        number : response.data[i].account,
-                        name : response.data[i].name,
-                        gender : response.data[i].gender.code,
-                        gender_show : response.data[i].gender.value,
-                        selected : false
-                      };
-                      $scope.studentList.push(student);
+                    if (response.data.length == 0) {
+                      ToasterTool.error("该文件没检测到任何学生");
+                      $scope.file = null;
+                    }else {
+                      for (var i = 0; i < response.data.length; i++) {
+                        var student = {
+                          number : response.data[i].account,
+                          name : response.data[i].name,
+                          gender : response.data[i].gender.code,
+                          gender_show : response.data[i].gender.value,
+                          selected : false
+                        };
+                        $scope.studentList.push(student);
+                      }
                     }
                   }else {
                     ToasterTool.error(response.message);
