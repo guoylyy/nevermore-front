@@ -14,6 +14,7 @@ function($scope, ClazzManage, data, semester, teacherResource, courseResource){
 	var originResource = data
 	,	copiedResource = angular.copy(originResource)
 
+	$scope.semester = semester
 	$scope.resource = copiedResource
 	$scope.pending = false
 	$scope.modifyResource = modifyResource
