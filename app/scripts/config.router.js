@@ -106,6 +106,7 @@ angular.module('nevermore')
                   "scripts/services/toaster-tool.js",
                   "scripts/factories/refine/http-response.factory.js",
                   "scripts/factories/error-handler.factory.js",
+                  "scripts/controllers/app/modal/view-picture.js",
                   'NMMsgNumber'
                 ]);
               }]

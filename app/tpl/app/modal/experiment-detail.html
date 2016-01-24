@@ -48,17 +48,15 @@
           {{file.name | limitTo: 2}}
         </div>
       </td>
-      <td class = "file-name" style = "width: 50%;">
+      <td class = "file-name" style = "width: 40%;">
         {{file.name}}
       </td>
-      <td style = "width: 10%;">
-        {{file.size}}kb
+      <td style = "width: 20%;">
+        {{file.size | bytes}}
       </td>
-      <td style = "width: 35%;">
-        2015-10-14
-      </td>
-      <td style = "width: 10%; text-align: right;">
-        <a href="{{file.url}}" target="_blank"><img class = "db-icon db-m-r-20" style = "height: auto;" src="images/app/download.png" alt="下载"/></a>
+      <td style = "width: 20%; text-align: right;">
+        <a ng-click="viewScriptPicture(file)" bs-tooltip data-trigger="hover"  data-title="查看图表"><i class="fa fa-bar-chart-o m-r-xs"></i></a>
+        <a href="{{file.url}}" target="_blank"  bs-tooltip data-trigger="hover"  data-title="下载"><i class="fa fa-download"></i></a>
       </td>
     </tr>
   </table>

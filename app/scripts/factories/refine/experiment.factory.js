@@ -10,11 +10,24 @@
 
     return {
       labs: labs,
-      userReport: userReport
+      userReport: userReport,
+      extractPicture: extractPicture
     };
 
     function labs(){
       return $resource(apiUrl + "/:id/labs", null, {
+        get: {
+          method: "GET",
+          headers: headers
+        }
+      })
+    }
+
+    //根据 txt 文件获取图片
+    function extractPicture(){
+      return $resource(apiUrl + "/extractPicture/:attachId", {
+        attachId : '@attachId'
+      }, {
         get: {
           method: "GET",
           headers: headers
