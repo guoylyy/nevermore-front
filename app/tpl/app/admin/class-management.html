@@ -11,7 +11,7 @@
                         <th style="width: 15%; min-width: 123px;">编号</th>
                         <th style="width: 15%; min-width: 150px;">名字</th>
                         <th style="width: 15%; min-width: 100px;">任课老师</th>
-                        <th style="width: 15%; min-width: 100px;">授课时间</th>
+                        <th style="width: 15%; min-width: 100px;">学生数目</th>
                         <th style="width: 20%; min-width: 164px;">操作</th>
                     </tr>
                 </thead>
@@ -27,7 +27,8 @@
                             <span>{{resource.teacher.name}}</span>
                         </td>
                         <td>
-                            <span>{{resource.clazzHour}}</span>
+                            <span ng-if="resource.studentCount == 0 || resource.studentCount == 'null'" class="text-danger">0</span>
+                            <span ng-if="resource.studentCount > 0">{{resource.studentCount}}</span>
                         </td>
 
                         <td>
