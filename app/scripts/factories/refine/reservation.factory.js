@@ -13,6 +13,7 @@
 			reservation: reservation,
 			myReservationsInWeek: myReservationsInWeek,
 			myReservationsOutWeek: myReservationsOutWeek,
+			reservations: reservations
 		}
 
 		function reservation(){
@@ -29,6 +30,15 @@
 				},
 				delete: {
 					method: "DELETE",
+					headers: headers,
+				}
+			})
+		}
+
+		function reservations(){
+			return $resource(apiUrl + "/reservations?scope=all", null, {
+				get: {
+					method: "GET",
 					headers: headers,
 				}
 			})

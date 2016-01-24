@@ -1,9 +1,9 @@
 'use strict';
 
 app.controller('CalendarController', ['$scope', 'ResTool', 'qService', 'ToasterTool','AlertTool',
-  'sessionService', 'generalService', 'Reservation', 'uiCalendarConfig',
+  'sessionService', 'generalService', 'reservationFactory', 'uiCalendarConfig', 'DateTool',
   function($scope, ResTool, qService, ToasterTool, AlertTool, sessionService, generalService,
-     Reservation, uiCalendarConfig) {
+     reservationFactory, uiCalendarConfig, DateTool) {
         var date = new Date();
         var d = date.getDate();
         var m = date.getMonth();
@@ -14,11 +14,11 @@ app.controller('CalendarController', ['$scope', 'ResTool', 'qService', 'ToasterT
         ];
 
         $scope.loadReservations = function(start, end){
-          ResTool.httpGet(Reservation.allWithoutToekn,{
+          ResTool.httpGet(reservationFactory.reservations,{
             'startDate': start,
             'endDate': end
           }, null).then(function(data){
-            if(data.errorCode === 'NO_ERROR'){
+            if(data.success){
               var rList = handleReservations(data.data);
               $scope.eventSources.splice(0, $scope.eventSources.length);
               $scope.addRemoveEventSource($scope.eventSources, rList);
@@ -49,24 +49,20 @@ app.controller('CalendarController', ['$scope', 'ResTool', 'qService', 'ToasterT
         function handleReservations(reservations){
           var rcList = [];
           for (var i = 0; i < reservations.length; i++) {
-            var res = reservations[i];
-            var type = "";
-            if (res.clazz == undefined) {
-              type = 'student';
-            } else {
-              type = 'clazz';
-            }
+            var res = reservations[i]
+            var start = DateTool.format(new Date(res.applyDate)) + ' ' + res.slot.startTime
+            var end = DateTool.format(new Date(res.applyDate)) + ' ' + res.slot.endTime
             var map = {
               'id': res.id,
-              'title': res.lab.name + '-' + res.experiment.name,
-              'start': new Date(res.applyDate + ' ' + res.slot.startTime),
-              'end': new Date(res.applyDate + ' ' + res.slot.endTime),
+              'title': res.experiment.name,
+              'start': start,
+              'end': end,
               'color': generalService.getReservationColor(res),
               'status': res.status,
-              'type': type,
-              'data': res
+              'data': res,
+              'location': res.lab.name
             };
-            if(res.status === 'APPROVED'){
+            if(res.status.code === 'APPROVED'){
               rcList.push(map);
             }
           };
@@ -140,7 +136,6 @@ app.controller('CalendarController', ['$scope', 'ResTool', 'qService', 'ToasterT
               var start = view.start.subtract(8, 'hours').toDate();
               var end = view.end.subtract(8, 'hours').subtract(10, 'seconds').toDate();
               $scope.loadReservations(start, end);
-
             }
           }
         };
