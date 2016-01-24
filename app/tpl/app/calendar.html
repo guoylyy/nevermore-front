@@ -1,23 +1,18 @@
 <div>
-  <!--   <div class="wrapper-md bg-light b-b">
-  <button type="button" class="btn btn-default btn-addon pull-right m-t-n-xs" ui-toggle-class="show" target="#aside">
-      <i class="fa fa-bars"></i> 列表
-    </button>
-    <h1 class="m-n font-thin h3">我的实验预约日历</h1>
-  </div>-->
+
   <div class="hbox hbox-auto-xs hbox-auto-sm">
     <div class="col wrapper-md">
       <div class="clearfix m-b">
-        <button  type="button" tooltip="Double click on calendar day to create event" class="btn btn-sm btn-primary btn-addon"
+        <!-- <button  type="button" tooltip="Double click on calendar day to create event" class="btn btn-sm btn-primary btn-addon"
         ng-click="addEvent()" ng-if="currentUser.role != 'STUDENT'">
           <i class="fa fa-plus"></i>添加预约
-        </button>
+        </button> -->
         <div class="pull-right">
           <button type="button" class="btn btn-sm btn-default" ng-click="today()">今天</button>
           <div class="btn-group m-l-xs">
-            <button class="btn btn-sm btn-default" ng-click="changeView('agendaDay')">天</button>
-            <button class="btn btn-sm btn-default" ng-click="changeView('agendaWeek')">周</button>
-            <button class="btn btn-sm btn-default" ng-click="changeView('month')">月</button>
+            <button class="btn btn-sm btn-default" ng-click="changeView('agendaDay')">日报</button>
+            <button class="btn btn-sm btn-default" ng-click="changeView('agendaWeek')">周报</button>
+            <button class="btn btn-sm btn-default" ng-click="changeView('month')">月报</button>
           </div>
         </div>
       </div>
@@ -27,11 +22,11 @@
             <span class="arrow"></span>
             <div class="h4 font-thin m-b-sm">{{event.title}}</div>
             <div class="line b-b b-light"></div>
-            <div><i class="icon-calendar text-muted m-r-xs"></i> {{event.start | date:'medium'}}</div>
-            <div class="ng-hide" ng-show='event.end'><i class="icon-clock text-muted m-r-xs"></i> {{event.end | date:'medium'}}</div>
+            <div><i class="icon-calendar text-muted m-r-xs"></i> {{event.start}}</div>
+            <div class="ng-hide" ng-show='event.end'><i class="icon-clock text-muted m-r-xs"></i> {{event.end }}</div>
             <div class="ng-hide" ng-show='event.location'><i class="icon-pointer text-muted m-r-xs"></i> {{event.location}}</div>
-            <div class="m-t-sm">{{event.info}}</div>
-            <div class="m-t-sm">{{event.url}}</div>
+            <div class="ng-hide" ng-show='event.courseName'><i class="icon-pointer text-muted m-r-xs"></i> {{event.courseName}}</div>
+            <div class="ng-hide" ng-show='event.teacherName'><i class="icon-user-female text-muted m-r-xs"></i> {{event.teacherName}}</div>
           </div>
         </div>
         <div class="calendar" ng-model="eventSources" config="uiConfig.calendar" ui-calendar="uiConfig.calendar"></div>

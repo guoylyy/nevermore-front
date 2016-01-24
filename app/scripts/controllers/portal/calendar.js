@@ -60,7 +60,10 @@ app.controller('CalendarController', ['$scope', 'ResTool', 'qService', 'ToasterT
               'color': generalService.getReservationColor(res),
               'status': res.status,
               'data': res,
-              'location': res.lab.name
+              'location': res.lab.name,
+              'courseName': res.clazz.course.name,
+              'slot': res.slot,
+              'teacherName': res.clazz.teacher.name
             };
             if(res.status.code === 'APPROVED'){
               rcList.push(map);
@@ -133,8 +136,8 @@ app.controller('CalendarController', ['$scope', 'ResTool', 'qService', 'ToasterT
             eventMouseover: $scope.alertOnMouseOver,
             viewRender: function(view, element) {
               //获取当前日历的日期，刷新出对应的预约
-              var start = view.start.subtract(8, 'hours').toDate();
-              var end = view.end.subtract(8, 'hours').subtract(10, 'seconds').toDate();
+              var start = view.start.toDate();
+              var end = view.end.toDate();
               $scope.loadReservations(start, end);
             }
           }
