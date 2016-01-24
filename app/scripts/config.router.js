@@ -113,7 +113,6 @@ angular.module('nevermore')
           })
           .state('app.index', {
             url: '^/app/index',
-            templateUrl: 'tpl/app/index.html',
             controller: 'AppIndexController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -711,7 +710,7 @@ angular.module('nevermore')
           .state('app.calendar', {
             url: '^/app/calendar',
             templateUrl: 'tpl/app/calendar.html',
-            controller:'FullcalendarCtrl',
+            controller:'CalendarController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
@@ -723,7 +722,7 @@ angular.module('nevermore')
                   'ui.calendar',
                   'ngDialog',
                   'NmDatepicker',
-                  'scripts/controllers/app/app-calendar.js',
+                  'scripts/controllers/portal/calendar.js',
                   'scripts/controllers/app/modal/teacher-reservation-modal.js',
                 ]);
               }]

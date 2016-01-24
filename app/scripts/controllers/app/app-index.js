@@ -1,17 +1,20 @@
 'use strict';
 
-app.controller('AppIndexController', ['$scope', '$state', '$rootScope', function($scope,
-    $state, $rootScope) {
-  var statusList = ['APPROVED', 'PENDING', 'REJECTED'];
-  var studentResList = ['clazz', 'student'];
-  alert(123)
+app.controller('AppIndexController', ['$scope', '$state', '$rootScope', 'RoleFactory', function($scope,
+    $state, $rootScope,RoleFactory) {
 
-  $state.go('app.teacher.class');
-  return
+  transitStateByRole($scope.currentUser.roles);
 
-  if($rootScope.currentUser.show_role == 'TEACHER'){
-    $state.go('app.reservation');
-  }else if($rootScope.currentUser.show_role == 'STUDENT'){
-    $state.go('app.reservations', {title: studentResList[0]});
+  function transitStateByRole(role){
+    if(RoleFactory.isAdmin(role)){
+        $state.go('app.admin-account');
+    }else if(RoleFactory.isTeacher(role)){
+        $state.go('app.reservation');
+    }else if(RoleFactory.isStudent(role)){
+        $state.go('app.reservation');
+    }else{
+        $state.go('portal.login');
+    }
   }
+
 }]);
