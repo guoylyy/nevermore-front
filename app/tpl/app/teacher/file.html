@@ -39,10 +39,10 @@
 							{{file.name}}
 						</td>
 						<td style = "width: 10%;">
-							{{file.size}}kb
+							{{file.size | bytes}}
 						</td>
 						<td style = "width: 15%;">
-							2015-10-14
+							<!-- 2015-10-14 -->
 						</td>
 						<td style = "width: 30%; text-align: right;">
 							<a href="{{file.url}}" target="_blank"><img class = "db-icon db-m-r-20" style = "height: auto;" src="images/app/download.png" alt="下载"/></a>
@@ -52,7 +52,7 @@
 				</table>
 			</div>
 			<div class="tab-pane" id = "privateFiles">
-        		<div class="alert ng-isolate-scope alert-info alert-dismissable">	
+        		<div class="alert ng-isolate-scope alert-info alert-dismissable">
         			私有文件夹只有您自己可以看到,存储了您的实验相关文件!!
         		</div>
 				<table class = "table db-file-table">
@@ -66,10 +66,10 @@
 							{{file.name}}
 						</td>
 						<td style = "width: 10%;">
-							{{file.size}}kb
+							{{file.size | bytes}}
 						</td>
 						<td style = "width: 15%;">
-							2015-10-14
+							<!-- 2015-10-14 -->
 						</td>
 						<td style = "width: 30%; text-align: right;">
 							<a href="{{file.url}}" target="_blank"><img class = "db-icon db-m-r-20" style = "height: auto;" src="images/app/download.png" alt="下载"/></a>
