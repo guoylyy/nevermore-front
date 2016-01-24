@@ -46,11 +46,13 @@ app.controller('UploadStudentCtrl', ['$scope', 'Upload', 'ResTool', 'ToasterTool
                     }
                   }else {
                     ToasterTool.error(response.message);
+                    $scope.file = null;
                   }
                 });
             }
         }, function (response) {
           ToasterTool.error(response.message);
+          $scope.file = null;
         });
       }
     };
