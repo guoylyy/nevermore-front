@@ -2,7 +2,7 @@
 	<div class="hbox hbox-auto-xs hbox-auto-sm ng-scope">
 		<div class = "wrapper lter no_border" style = "overflow: hidden;">
 	        <span class = "subview3_title db-title">我的预约</span>
-	        <a href="#" class = "pull-right db-title-anchor db-m-r-10">预约日历</a>
+	        <!-- <a href="#" class = "pull-right db-title-anchor db-m-r-10">预约日历</a> -->
 	    </div>
 	    <div class="db-line"></div>
 	    <div class = "wrapper-md">
@@ -34,6 +34,7 @@
 						</td>
 					</tr>
 				</table>
+				<nevermore-empty-panel ng-if="reservationInWeekList.length == 0" text="本周没有任何预约"></nevermore-empty-panel>
 	    	</div>
 	    	<div class = "db-m-t-40">
 	    		<span class="db-title">其他预约</span>
@@ -63,6 +64,7 @@
 						</td>
 					</tr>
 				</table>
+				<nevermore-empty-panel ng-if="reservationOutWeekList.length == 0" text="没有任何预约"></nevermore-empty-panel>
 				<div class="row clearfix db-m-t-30" style="width: 100%;" >
 	            	<div class="pull-left col-sm-4">
 	              		<span class="db-title">共&nbsp;{{paginator.items}}&nbsp;个非本周预约</span>
