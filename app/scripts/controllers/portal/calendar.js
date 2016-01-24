@@ -115,7 +115,7 @@ app.controller('CalendarController', ['$scope', 'ResTool', 'qService', 'ToasterT
           calendar:{
             height: 800,
             editable: false,
-            // defaultView: 'agendaWeek',
+            defaultView: 'agendaWeek',
             header:{
               left: 'prev',
               center: 'title',
