@@ -22,15 +22,15 @@
 			}, {
 				post: {
 					method: "POST",
-					headers: headers,
+					headers:  sessionService.headers(),
 				},
 				get: {
 					method: "GET",
-					headers: headers,
+					headers:  sessionService.headers(),
 				},
 				delete: {
 					method: "DELETE",
-					headers: headers,
+					headers:  sessionService.headers(),
 				}
 			})
 		}
@@ -39,7 +39,7 @@
 			return $resource(apiUrl + "/reservations?scope=all", null, {
 				get: {
 					method: "GET",
-					headers: headers,
+					headers:  sessionService.headers(),
 				}
 			})
 		}
@@ -48,7 +48,7 @@
 			return $resource(apiUrl + "/myReservationsInWeek", null, {
 				get: {
 					method: "GET",
-					headers: headers,
+					headers:  sessionService.headers(),
 				}
 			})
 		}
@@ -57,7 +57,7 @@
 			return $resource(apiUrl + "/myReservationsOutWeek", null, {
 				get: {
 					method: "GET",
-					headers: headers,
+					headers:  sessionService.headers(),
 				}
 			})
 		}

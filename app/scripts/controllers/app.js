@@ -91,7 +91,5 @@
         return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
     }
   }
-  
+
 }()
-
-

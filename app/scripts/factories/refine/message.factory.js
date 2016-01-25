@@ -18,7 +18,7 @@
 			return $resource(apiUrl + "/messages", {}, {
 				get: {
 					method: "GET",
-					headers: headers
+					headers: sessionService.headers()
 				}
 			})
 		}
@@ -29,15 +29,15 @@
 			}, {
 				get: {
 					method: "GET",
-					headers: headers
+					headers: sessionService.headers()
 				},
 				put: {
 					method: "PUT",
-					headers: headers
+					headers: sessionService.headers()
 				},
 				delete: {
 					method: "DELETE",
-					headers: headers
+					headers: sessionService.headers()
 				}
 			})
 		}

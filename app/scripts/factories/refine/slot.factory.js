@@ -16,7 +16,7 @@
       return $resource(apiUrl + "/:id/labs", null, {
         get: {
           method: "GET",
-          headers: headers
+          headers: sessionService.headers()
         }
       })
     }
