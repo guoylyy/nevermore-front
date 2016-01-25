@@ -2,15 +2,21 @@
   angular.module('nevermore').controller('AppCtrl', AppCtrl)
 
   AppCtrl.$inject = ['$scope', '$localStorage', '$window', "sessionService",
-  "RoleFactory"]
+  "RoleFactory" ,"$state", "ToasterTool"]
 
-  function AppCtrl($scope, $localStorage, $window, sessionService, RoleFactory) {
+  function AppCtrl($scope, $localStorage, $window, sessionService, RoleFactory, $state,
+    ToasterTool) {
     // add 'ie' classes to html
     var isIE = !!navigator.userAgent.match(/MSIE/i);
     isIE && angular.element($window.document.body).addClass('ie');
     isSmartDevice( $window ) && angular.element($window.document.body).addClass('smart');
 
     var currentUser = sessionService.getCurrentUser()
+
+    if(currentUser == null || currentUser == undefined){
+        ToasterTool.info("请重新登录!");
+        $state.go("portal.login");
+    }
 
     $scope.isStudent = isStudent
     $scope.isTeacher = isTeacher
