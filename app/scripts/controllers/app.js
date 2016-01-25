@@ -15,7 +15,7 @@
 
     if(currentUser == null || currentUser == undefined){
         ToasterTool.info("请重新登录!");
-        $state.go("portal.login");
+        sessionService.delToken();
     }
 
     $scope.isStudent = isStudent
