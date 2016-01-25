@@ -18,7 +18,7 @@
       return $resource(apiUrl + "/:id/labs", null, {
         get: {
           method: "GET",
-          headers: headers
+          headers: sessionService.headers()
         }
       })
     }
@@ -30,7 +30,7 @@
       }, {
         get: {
           method: "GET",
-          headers: headers
+          headers: sessionService.headers()
         }
       })
     }
@@ -39,7 +39,7 @@
       return $resource(apiUrl + "/:id/userReport", {id: "@id"}, {
         post: {
           method: "POST",
-          headers : headers
+          headers : sessionService.headers()
         }
       })
     }

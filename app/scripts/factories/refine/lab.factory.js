@@ -10,13 +10,13 @@
 
     return {
       slots: slots,
-    }    
+    }
 
     function slots(){
       return $resource(apiUrl + "/:id/slots", null, {
         get: {
           method: "GET",
-          headers: headers,
+          headers: sessionService.headers(),
         }
       })
     }
