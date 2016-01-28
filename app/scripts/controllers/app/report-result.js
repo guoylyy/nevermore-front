@@ -1,6 +1,9 @@
 'use strict';
 
-app.controller('ReportResultCtrl', ['$scope', '$stateParams', 'ClazzFactory', 'ExperimentManage', 'ReportFactory', 'AccountManage', 'sessionService', 'ToasterTool', function($scope, $stateParams, ClazzFactory, ExperimentManage, ReportFactory, AccountManage, sessionService, ToasterTool) {
+app.controller('ReportResultCtrl', ['$scope', '$stateParams', 'ClazzFactory',
+  'ExperimentManage', 'ReportFactory', 'AccountManage', 'sessionService', 'ToasterTool',
+   function($scope, $stateParams, ClazzFactory, ExperimentManage, ReportFactory,
+      AccountManage, sessionService, ToasterTool) {
 
   $scope.exp_id = $stateParams.expId;
 
