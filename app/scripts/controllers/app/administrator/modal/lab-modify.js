@@ -1,5 +1,6 @@
-app.controller("ModifyLabCtrl", ["$scope", "data", "LabManage", "ManagementService", "AlertTool",
-    function($scope, data, LabManage, ManagementService, AlertTool) {
+app.controller("ModifyLabCtrl", ["$scope", "data", "LabManage", "ManagementService",
+  "AlertTool", "ToasterTool",
+    function($scope, data, LabManage, ManagementService, AlertTool, ToasterTool) {
         $scope.activeList = [{
             "value": "开放",
             "code": true,
@@ -56,8 +57,12 @@ app.controller("ModifyLabCtrl", ["$scope", "data", "LabManage", "ManagementServi
                 if (isConfirm) {
                     AlertTool.close();
                     commitDelete(resource)
-                        .then(function() {
+                        .then(function(data) {
+                          if(data.success){
                             $scope.closeThisDialog("delete")
+                          }else{
+                            ToasterTool.error(data.message);
+                          }
                         })
                         .catch($scope.errorHandler)
                 }

@@ -87,12 +87,8 @@ app.controller("ExperimentManageCtrl", ["$scope", "ExperimentManage", "generalSe
         }
 
         function onDelete(data) {
-          if(data.success){
           		loadResources()
           		ToasterTool.success("删除实验", "删除实验成功！")
-          }else{
-          		ToasterTool.error(data.message);
-          }
         }
 
         // ~添加实验室
