@@ -864,7 +864,7 @@ angular.module('nevermore')
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/semester-class.js",
+                  "scripts/controllers/app/administrator/semester-class.js",
                   "scripts/services/general-service.js",
                   "scripts/services/toaster-tool.js",
                   "scripts/services/session-service.js",
@@ -945,7 +945,6 @@ angular.module('nevermore')
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/appointment-verification.js",
                   "scripts/services/general-service.js",
                   "scripts/services/toaster-tool.js",
                   "scripts/services/session-service.js",
@@ -961,7 +960,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/sms-controller.js",
+                  "scripts/controllers/app/administrator/sms-controller.js",
                   'scripts/factories/manage-sms-factory.js',
                   'scripts/controllers/app/modal/sms-config-edit-modal.js',
                   'ngDialog',

@@ -1,6 +1,7 @@
 app.controller("StudentAccountCtrl", ["$scope", "AccountManage", "generalService",
 	"ToasterTool", "ManagementService", "AlertTool",
-function($scope, AccountManage, generalService, ToasterTool, ManagementService, AlertTool){
+function($scope, AccountManage, generalService, ToasterTool,
+	 ManagementService, AlertTool){
 
 	$scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
 	$scope.pageChanged = loadResources

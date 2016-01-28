@@ -1,8 +1,8 @@
 'use strict';
 
-app.controller('CalendarController', ['$scope', 'ResTool', 'qService', 'ToasterTool','AlertTool',
+app.controller('CalendarController', ['$scope', 'ResTool',  'ToasterTool','AlertTool',
   'sessionService', 'generalService', 'reservationFactory', 'uiCalendarConfig', 'DateTool',
-  function($scope, ResTool, qService, ToasterTool, AlertTool, sessionService, generalService,
+  function($scope, ResTool,  ToasterTool, AlertTool, sessionService, generalService,
      reservationFactory, uiCalendarConfig, DateTool) {
         var date = new Date();
         var d = date.getDate();

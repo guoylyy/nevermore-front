@@ -1,7 +1,8 @@
 'use strict';
 
 app.controller('ReportResultCtrl', ['$scope', '$stateParams', 'ClazzFactory',
-  'ExperimentManage', 'ReportFactory', 'AccountManage', 'sessionService', 'ToasterTool',
+  'ExperimentManage', 'ReportFactory', 'AccountManage', 'sessionService',
+  'ToasterTool', 
    function($scope, $stateParams, ClazzFactory, ExperimentManage, ReportFactory,
       AccountManage, sessionService, ToasterTool) {
 
