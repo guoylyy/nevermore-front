@@ -96,12 +96,8 @@ function($scope, CourseManage, generalService, ToasterTool, ManagementService, A
 	}
 
 	function onDelete(data){
-		if(data.success){
 			loadResources()
 			ToasterTool.success("删除课程", "删除课程成功！")
-		}else{
-			ToasterTool.error(data.message);
-		}
 	}
 
 	// ~ 添加实验

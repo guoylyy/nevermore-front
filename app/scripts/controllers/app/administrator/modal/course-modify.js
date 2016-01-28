@@ -1,5 +1,6 @@
 app.controller("ModifyCourseCtrl", ["$scope", "data", "CourseManage", "ManagementService", "AlertTool",
-    function($scope, data, CourseManage, ManagementService, AlertTool) {
+    "ToasterTool",
+    function($scope, data, CourseManage, ManagementService, AlertTool,ToasterTool) {
         $scope.activeList = [{
             "value": "开放",
             "code": true,
@@ -56,8 +57,12 @@ app.controller("ModifyCourseCtrl", ["$scope", "data", "CourseManage", "Managemen
                 if (isConfirm) {
                     AlertTool.close();
                     commitDelete(resource)
-                        .then(function() {
-                            $scope.closeThisDialog("delete")
+                        .then(function(data) {
+                            if(data.success){
+                              $scope.closeThisDialog("delete")
+                            }else{
+                              ToasterTool.error(data.message);
+                            }
                         })
                         .catch($scope.errorHandler)
                 }

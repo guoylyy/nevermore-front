@@ -1,5 +1,6 @@
-app.controller("ModifyExperimentCtrl", ["$scope", "data", "ExperimentManage", "ManagementService", "AlertTool",
-    function($scope, data, ExperimentManage, ManagementService, AlertTool) {
+app.controller("ModifyExperimentCtrl", ["$scope", "data", "ExperimentManage",
+    "ManagementService", "AlertTool","ToasterTool",
+    function($scope, data, ExperimentManage, ManagementService, AlertTool, ToasterTool) {
         $scope.activeList = [{
             "value": "开放",
             "code": true,
@@ -56,8 +57,12 @@ app.controller("ModifyExperimentCtrl", ["$scope", "data", "ExperimentManage", "M
                 if (isConfirm) {
                     AlertTool.close();
                     commitDelete(resource)
-                        .then(function() {
-                            $scope.closeThisDialog("delete")
+                        .then(function(data) {
+                            if(data.success){
+                                $scope.closeThisDialog("delete")
+                            }else{
+                                ToasterTool.error(data.message);
+                            }
                         })
                         .catch($scope.errorHandler)
                 }
