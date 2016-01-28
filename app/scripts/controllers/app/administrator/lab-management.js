@@ -80,9 +80,13 @@ function($scope, LabManage, generalService, ToasterTool, ManagementService, Aler
 			loadResources()
 			ToasterTool.success("修改实验室成功！")
 	}
-	function onDelete(){
-		loadResources()
-		ToasterTool.success("删除实验室成功！")
+	function onDelete(data){
+		if(data.success){
+			loadResources()
+			ToasterTool.success("实验室", "删除实验室成功！")
+		}else{
+			ToasterTool.error(data.message);
+		}
 	}
 
 }]);

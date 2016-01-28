@@ -1,5 +1,6 @@
-app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManage", "ManagementService", "AlertTool",
-    function($scope, data, AccountManage, ManagementService, AlertTool) {
+app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManage",
+    "ManagementService", "AlertTool", "ToasterTool",
+    function($scope, data, AccountManage, ManagementService, AlertTool, ToasterTool) {
         $scope.genderList = [{
             "value": "男",
             "code": "MALE",
@@ -25,7 +26,7 @@ app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManage", "
                     .then(removeErrorTip)
                     .then(updateLocalResource)
                     .then(function() {
-                        $scope.closeThisDialog("modify")
+                          $scope.closeThisDialog("modify")
                     })
                     .catch(errorHandler)
             } else {
@@ -55,8 +56,12 @@ app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManage", "
                 if (isConfirm) {
                     AlertTool.close();
                     commitDelete(resource)
-                        .then(function() {
-                            $scope.closeThisDialog("delete")
+                        .then(function(data) {
+                            if(data.success){
+                              $scope.closeThisDialog("delete")
+                            }else{
+                              ToasterTool.error(data.message)
+                            }
                         })
                         .catch($scope.errorHandler)
                 }
@@ -74,8 +79,12 @@ app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManage", "
                 commitModifyPassword().$promise
                     .then(removeErrorTip)
                     .then(updateLocalResource)
-                    .then(function() {
-                        $scope.closeThisDialog("modify")
+                    .then(function(data) {
+                        if(data.success){
+                          $scope.closeThisDialog("modify")
+                        }else{
+                          ToasterTool.error(data.message)
+                        }
                     })
                     .catch(errorHandler)
             } else {
