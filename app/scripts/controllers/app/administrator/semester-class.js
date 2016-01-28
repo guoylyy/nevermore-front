@@ -1,4 +1,5 @@
-app.controller("SemesterClassCtrl", ["$scope", "ToasterTool", "ngDialog", "sessionService",
+app.controller("SemesterClassCtrl", ["$scope", "ToasterTool", "ngDialog",
+"sessionService",
 function($scope, ToasterTool, ngDialog, sessionService){
 	$scope.DEFAULT_RESOURCE_TEMPLATE = {
 		"data": [],
