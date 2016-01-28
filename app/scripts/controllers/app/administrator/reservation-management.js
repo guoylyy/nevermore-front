@@ -41,7 +41,6 @@ function($scope, $stateParams, ReservationManage, sessionService, generalService
 		errorHandler(error)
 	}
 
-
 	$scope.cancelAppointment = function(resource){
 		AlertTool.deleteConfirm({title:'是否确定取消该预约',subtitle:'取消后将不可恢复'}).then(function(isConfirm) {
 		  if(isConfirm) {
@@ -49,8 +48,12 @@ function($scope, $stateParams, ReservationManage, sessionService, generalService
 					id: resource.id,
 				}).$promise
 				.then(function(data){
-					loadResources()
-					ToasterTool.success("取消预约", "取消预约成功")
+					if(data.success){
+						loadResources()
+						ToasterTool.success("取消预约", "取消预约成功")
+					}else{
+						ToasterTool.error(data.message);
+					}
 				})
 				.catch(function(error){
 					ToasterTool.error("取消预约", error.toString())

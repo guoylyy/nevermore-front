@@ -42,7 +42,7 @@ app.controller("TeacherAccountCtrl", ["$scope", "AccountManage", "generalService
         function errorHandler(error) {
             console.log(error)
         }
-				
+
         // ~ 列表
         function loadResources() {
             ManagementService.loadResources(AccountManage, {

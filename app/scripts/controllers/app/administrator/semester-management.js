@@ -57,14 +57,22 @@ function($scope, Semester, generalService, ToasterTool, ManagementService, Alert
 		}).$promise
 	}
 
-	function onSetCurrent(){
-		loadResources()
-		ToasterTool.success("设置当前学期成功！")
+	function onSetCurrent(data){
+		if(data.success){
+			loadResources()
+			ToasterTool.success("设置当前学期成功！")
+		}else{
+			ToasterTool.error(data.message);
+		}
 	}
 
-	function onDelete(){
-		loadResources()
-		ToasterTool.success("删除学期成功！")
+	function onDelete(data){
+		if(data.success){
+			loadResources()
+			ToasterTool.success("删除学期成功！")
+		}else{
+			ToasterTool.error(data.message);
+		}
 	}
 
 	function addResource(){

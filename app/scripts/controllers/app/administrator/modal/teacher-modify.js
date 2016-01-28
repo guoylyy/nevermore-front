@@ -1,5 +1,6 @@
-app.controller("ModifyTeacherAccountCtrl", ["$scope", "data", "AccountManage", "ManagementService", "AlertTool",
-    function($scope, data, AccountManage, ManagementService, AlertTool) {
+app.controller("ModifyTeacherAccountCtrl", ["$scope", "data", "AccountManage",
+    "ManagementService", "AlertTool", "ToasterTool",
+    function($scope, data, AccountManage, ManagementService, AlertTool, ToasterTool) {
         $scope.genderList = [{
             "value": "男",
             "code": "MALE",
@@ -55,8 +56,12 @@ app.controller("ModifyTeacherAccountCtrl", ["$scope", "data", "AccountManage", "
                 if (isConfirm) {
                     AlertTool.close();
                     commitDelete(resource)
-                        .then(function() {
-                            $scope.closeThisDialog("delete")
+                        .then(function(data) {
+                            if(data.success){
+                              $scope.closeThisDialog("delete")
+                            }else{
+                              ToasterTool.error(data.message)
+                            }
                         })
                         .catch($scope.errorHandler)
                 }

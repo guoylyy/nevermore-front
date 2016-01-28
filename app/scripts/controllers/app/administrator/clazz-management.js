@@ -67,9 +67,13 @@ function($scope, ClazzManage, generalService, AccountManage, CourseManage, sessi
 		ToasterTool.success("编辑班级", "编辑班级成功！")
 	}
 
-	function onDelete(){
-		loadResources()
-		ToasterTool.success("删除班级", "删除班级成功！")
+	function onDelete(data){
+		if(data.success){
+			loadResources()
+			ToasterTool.success("删除班级", "删除班级成功！")
+		}else{
+			ToasterTool.error(data.message);
+		}
 	}
 
 	function addResource(){
