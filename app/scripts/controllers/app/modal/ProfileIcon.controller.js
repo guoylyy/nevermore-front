@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ProfileIconCtrl', ['$scope', 'Upload', 'ResTool', 'ToasterTool', 'sessionService',
+app.controller('ProfileIconController', ['$scope', 'Upload', 'ResTool', 'ToasterTool', 'sessionService',
 function ($scope, Upload, ResTool, ToasterTool, sessionService) {
   // 这里上传头像
   $scope.upload = function (dataUrl) {

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('UploadStudentCtrl', ['$scope', 'Upload', 'ResTool', 'ToasterTool', 'AlertTool','sessionService', 'ClazzFactory', 'classId',
+app.controller('UploadStudentController', ['$scope', 'Upload', 'ResTool', 'ToasterTool', 'AlertTool','sessionService', 'ClazzFactory', 'classId',
   function ($scope, Upload, ResTool, ToasterTool, AlertTool, sessionService, ClazzFactory, classId) {
     var URLS = [
       'http://up.qiniu.com',

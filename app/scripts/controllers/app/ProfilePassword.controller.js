@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ProfilePasswordCtrl', ['$scope', '$rootScope','AccountFactory', 'ToasterTool', 'sessionService',
+app.controller('ProfilePasswordController', ['$scope', '$rootScope','AccountFactory', 'ToasterTool', 'sessionService',
 function($scope, $rootScope, AccountFactory, ToasterTool, sessionService) {
   $scope.password = {
     passwordEdit: {

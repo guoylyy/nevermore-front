@@ -83,7 +83,7 @@
 		function toUploadStudents(){
 			var dialog = ngDialog.open({
 	      template: 'tpl/app/teacher/modal/upload-student.html',
-	      controller: 'UploadStudentCtrl',
+	      controller: 'UploadStudentController',
 	      className: 'nm-dialog nm-dialog-md',
 	      closeByDocument: false,
 	      closeByEscape: true,
