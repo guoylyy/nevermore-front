@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ProfilePersonCtrl', ['$scope', '$rootScope','AccountFactory', 'sessionService', 'ToasterTool', 'ngDialog', 'FileUploadFactory',
+app.controller('ProfilePersonController', ['$scope', '$rootScope','AccountFactory', 'sessionService', 'ToasterTool', 'ngDialog', 'FileUploadFactory',
 function($scope, $rootScope, AccountFactory, sessionService, ToasterTool, ngDialog, FileUploadFactory) {
   $scope.personData = {
     currentUser: null,

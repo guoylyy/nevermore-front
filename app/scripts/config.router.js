@@ -25,7 +25,7 @@ angular.module('nevermore')
               css: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'styles/portal.css',
-                  'scripts/controllers/portal/portal.js',
+                  'scripts/controllers/portal/Portal.controller.js',
                   "scripts/factories/Token.factory.js",
                   'scripts/directives/portal/nmPortalHeader.directive.js',
                   'scripts/directives/portal/nmPortalFooter.directive.js',
@@ -44,7 +44,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/portal/index.controller.js',
+                  'scripts/controllers/portal/Index.controller.js',
                 ]);
               }]
             }
@@ -56,7 +56,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/portal/login.controller.js',
+                  'scripts/controllers/portal/Login.controller.js',
                   "scripts/factories/refine/Semester.factory.js",
                   "scripts/factories/Role.factory.js",
                 ]);
@@ -66,11 +66,11 @@ angular.module('nevermore')
           .state('portal.calendar', {
             url: '^/calendar',
             templateUrl: 'tpl/portal/calendar.html',
-            controller: 'CalendarController',
+            controller: 'PortalCalendarController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/portal/calendar.js',
+                  'scripts/controllers/portal/PortalCalendar.controller.js',
                   'lib/jquery/fullcalendar/fullcalendar.css',
                   'lib/jquery/fullcalendar/theme.css',
                   'lib/jquery/jquery-ui-1.10.3.custom.min.js',
@@ -110,7 +110,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/app-index.js',
+                  'scripts/controllers/app/AppIndex.controller.js',
                 ]);
               }]
             }
@@ -134,7 +134,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/reservation.controller.js',
+                  'scripts/controllers/app/Reservation.controller.js',
                   'scripts/controllers/app/admin/modal/reservation-view.js',
                   "scripts/factories/refine/Reservation.factory.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
@@ -650,13 +650,13 @@ angular.module('nevermore')
           .state('app.profile.person', {
             url: '^/app/profile/person',
             templateUrl: 'tpl/app/profile-person.html',
-            controller: 'ProfilePersonCtrl',
+            controller: 'ProfilePersonController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'ngDialog',
                   'ngImgCrop',
-                  'scripts/controllers/app/profile-person.js',
+                  'scripts/controllers/app/ProfilePerson.controller.js',
                   'scripts/controllers/app/modal/profile-icon.js',
                   'scripts/factories/FileUpload.factory.js'
                 ]);
@@ -666,11 +666,11 @@ angular.module('nevermore')
           .state('app.profile.password', {
             url: '^/app/profile/password',
             templateUrl: 'tpl/app/profile-password.html',
-            controller: 'ProfilePasswordCtrl',
+            controller: 'ProfilePasswordController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/profile-password.js'
+                  'scripts/controllers/app/ProfilePassword.controller.js'
                 ]);
               }]
             }
@@ -688,7 +688,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/message.list.js'
+                  'scripts/controllers/app/MessageList.controller.js'
                 ]);
               }]
             }
@@ -696,7 +696,7 @@ angular.module('nevermore')
           .state('app.calendar', {
             url: '^/app/calendar',
             templateUrl: 'tpl/app/calendar.html',
-            controller:'CalendarController',
+            controller:'PortalCalendarController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
@@ -708,7 +708,7 @@ angular.module('nevermore')
                   'ui.calendar',
                   'ngDialog',
                   'NmDatepicker',
-                  'scripts/controllers/portal/calendar.js',
+                  'scripts/controllers/portal/PortalCalendar.controller.js',
                   'scripts/controllers/app/modal/teacher-reservation-modal.js',
                 ]);
               }]
