@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs,
+app.controller('TeacherReservationModalController', function($scope, data, clazzs,
  semester, slots, qService, ToasterTool, Course, Exp, Reservation,
   StateChainFactory, InputValidatorFactory) {
     var stateChain = StateChainFactory.getStateChain()

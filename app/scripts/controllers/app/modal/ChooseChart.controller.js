@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ChooseChartModalCtrl', function($scope, type, material, expId, table) {
+app.controller('ChooseChartController', function($scope, type, material, expId, table) {
     $scope.data = {};
     table[type].forEach(function(data){
       if (data['material']==material) {

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ReservationDetailModalCtrl', function($scope, data, qService, Reservation, AlertTool) {
+app.controller('ReservationDetailModalController', function($scope, data, qService, Reservation, AlertTool) {
     $scope.data = data;
     if($scope.data.status == 'APPROVED'){
       //load 教师
