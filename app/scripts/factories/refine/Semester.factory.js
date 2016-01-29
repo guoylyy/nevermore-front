@@ -4,7 +4,7 @@
  * 学期相关api
  */
 angular.module('nevermore')
-  .factory('Semester', function ($resource, sessionService, $rootScope) {
+  .factory('SemesterFactory', function ($resource, sessionService, $rootScope) {
     var apiUrl = base_Url + "/manage/semester"
     return {
       create: function(){

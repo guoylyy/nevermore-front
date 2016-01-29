@@ -4,7 +4,7 @@
  * 学期相关api
  */
 angular.module('nevermore')
-  .factory('ReservationManage', function ($resource, sessionService, $rootScope) {
+  .factory('ReservationManageFactory', function ($resource, sessionService, $rootScope) {
     var baseUrl = base_Url + "/reservation";
     return {
       reservation: function(){

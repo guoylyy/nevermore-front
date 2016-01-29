@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('ProfilePasswordCtrl', ['$scope', '$rootScope','Account', 'ToasterTool', 'sessionService',
-function($scope, $rootScope, Account, ToasterTool, sessionService) {
+app.controller('ProfilePasswordCtrl', ['$scope', '$rootScope','AccountFactory', 'ToasterTool', 'sessionService',
+function($scope, $rootScope, AccountFactory, ToasterTool, sessionService) {
   $scope.password = {
     passwordEdit: {
       oldPassword: null,
@@ -17,7 +17,7 @@ function($scope, $rootScope, Account, ToasterTool, sessionService) {
       obj[key] = md5(value);
     })
 
-    Account.password().put($scope.password.passwordEdit).$promise.
+    AccountFactory.password().put($scope.password.passwordEdit).$promise.
     then(
       function success(data) {
         if (data.success) {

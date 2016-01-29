@@ -1,5 +1,5 @@
-app.controller("AddSemesterCtrl", ["$scope", "Semester", "DateTool",
-function($scope, Semester, DateTool){
+app.controller("AddSemesterCtrl", ["$scope", "SemesterFactory", "DateTool",
+function($scope, SemesterFactory, DateTool){
 	var DEFAULT_ACCOUNT = {
 		title: "",
 		startDate: new Date(),
@@ -42,7 +42,7 @@ function($scope, Semester, DateTool){
 		var postResouce = angular.copy($scope.resource);
 		postResouce.startDate = DateTool.format(postResouce.startDate);
 		postResouce.endDate = DateTool.format(postResouce.endDate);
-		return Semester.create().post(postResouce)
+		return SemesterFactory.create().post(postResouce)
 	}
 
 	function removeErrorTip(data){

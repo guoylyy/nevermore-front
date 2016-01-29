@@ -2,7 +2,7 @@
 
 angular.module('nevermore').service('sessionService',
 	function categoryService ($localStorage, $location,
-		$rootScope, tokenFactory, $state) {
+		$rootScope, TokenFactory, $state) {
 
 		this.checkToken = function() {
 			return checkLocalToken();

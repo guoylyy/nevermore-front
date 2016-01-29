@@ -3,12 +3,12 @@
 			.controller("StudentMainPageController", StudentMainPageController)
 
 	StudentMainPageController.$inject = ["$scope", "ClazzFactory",
-		"httpResponseFactory", "ToasterTool", "ManagementService", "errorHandlerFactory"]
+		"HttpResponseFactory", "ToasterTool", "ManagementService", "ErrorHandlerFactory"]
 
-	function StudentMainPageController($scope, ClazzFactory, httpResponseFactory,
-		ToasterTool, ManagementService, errorHandlerFactory){
+	function StudentMainPageController($scope, ClazzFactory, HttpResponseFactory,
+		ToasterTool, ManagementService, ErrorHandlerFactory){
 
-		var errorHandler = errorHandlerFactory.handle
+		var errorHandler = ErrorHandlerFactory.handle
 		
 		$scope.mainPage = {}
 
@@ -20,8 +20,8 @@
 			})
 			.$promise
 			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
-					var data = httpResponseFactory.getResponseData(response)
+				if(HttpResponseFactory.isResponseSuccess(response)){
+					var data = HttpResponseFactory.getResponseData(response)
 					angular.copy(data, $scope.mainPage)
 				}else{
 					errorHandler(response)

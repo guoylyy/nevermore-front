@@ -1,9 +1,9 @@
 'use strict';
 
 app.controller('CalendarController', ['$scope', 'ResTool',  'ToasterTool','AlertTool',
-  'sessionService', 'generalService', 'reservationFactory', 'uiCalendarConfig', 'DateTool',
+  'sessionService', 'generalService', 'ReservationFactory', 'uiCalendarConfig', 'DateTool',
   function($scope, ResTool,  ToasterTool, AlertTool, sessionService, generalService,
-     reservationFactory, uiCalendarConfig, DateTool) {
+     ReservationFactory, uiCalendarConfig, DateTool) {
         var date = new Date();
         var d = date.getDate();
         var m = date.getMonth();
@@ -14,7 +14,7 @@ app.controller('CalendarController', ['$scope', 'ResTool',  'ToasterTool','Alert
         ];
 
         $scope.loadReservations = function(start, end){
-          ResTool.httpGet(reservationFactory.reservations,{
+          ResTool.httpGet(ReservationFactory.reservations,{
             'startDate': start,
             'endDate': end
           }, null).then(function(data){

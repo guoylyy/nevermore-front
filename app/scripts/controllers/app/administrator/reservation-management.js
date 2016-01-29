@@ -1,6 +1,6 @@
-app.controller("RservationAppointmentCtrl", ["$scope", "$stateParams", "ReservationManage",
+app.controller("RservationAppointmentCtrl", ["$scope", "$stateParams", "ReservationManageFactory",
 	"sessionService", "generalService", "ToasterTool", "ngDialog", "ManagementService", "AlertTool",
-function($scope, $stateParams, ReservationManage, sessionService, generalService,
+function($scope, $stateParams, ReservationManageFactory, sessionService, generalService,
 	ToasterTool, ngDialog, ManagementService, AlertTool){
   var status = $stateParams.status;
 	if(status === 'verified'){
@@ -17,7 +17,7 @@ function($scope, $stateParams, ReservationManage, sessionService, generalService
 	loadResources()
 
 	function loadResources(){
-		commitLoad(ReservationManage)
+		commitLoad(ReservationManageFactory)
 		.then(loadSuccess)
 		.then(loadFail)
 	}
@@ -44,7 +44,7 @@ function($scope, $stateParams, ReservationManage, sessionService, generalService
 	$scope.cancelAppointment = function(resource){
 		AlertTool.deleteConfirm({title:'是否确定取消该预约',subtitle:'取消后将不可恢复'}).then(function(isConfirm) {
 		  if(isConfirm) {
-				ReservationManage.reservation().delete({
+				ReservationManageFactory.reservation().delete({
 					id: resource.id,
 				}).$promise
 				.then(function(data){
@@ -95,7 +95,7 @@ function($scope, $stateParams, ReservationManage, sessionService, generalService
 			"closeByEscape": true,
 			"resolve": {
 				data: function(){
-					return ReservationManage.reservation().get({
+					return ReservationManageFactory.reservation().get({
 						id: resource.id
 					}).$promise;
 				}

@@ -1,6 +1,6 @@
-app.controller("ClassManagementCtrl", ["$scope", "ClazzManage", "generalService", "AccountManage",
-	"CourseManage", "sessionService", "ToasterTool", "ManagementService", "AlertTool",
-function($scope, ClazzManage, generalService, AccountManage, CourseManage, sessionService,
+app.controller("ClassManagementCtrl", ["$scope", "ClazzManageFactory", "generalService", "AccountManageFactory",
+	"CourseManageFactory", "sessionService", "ToasterTool", "ManagementService", "AlertTool",
+function($scope, ClazzManageFactory, generalService, AccountManageFactory, CourseManageFactory, sessionService,
 	 ToasterTool, ManagementService, AlertTool){
 	$scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
 	$scope.modifyResource = modifyResource
@@ -11,7 +11,7 @@ function($scope, ClazzManage, generalService, AccountManage, CourseManage, sessi
 	loadResources()
 
 	function loadResources(){
-		ManagementService.loadResources(ClazzManage, {
+		ManagementService.loadResources(ClazzManageFactory, {
 			pageSize: $scope.resources.paginator.itemsPerPage,
 			pageNum: $scope.resources.paginator.page
 		}).then(loadSuccess, loadFail)
@@ -35,12 +35,12 @@ function($scope, ClazzManage, generalService, AccountManage, CourseManage, sessi
 				return sessionService.getCurrentSemester()
 			},
 			teacherResource: function(){
-				return AccountManage.all().get({
+				return AccountManageFactory.all().get({
 					role: "teachers",
 				}).$promise
 			},
 			courseResource: function(){
-				return CourseManage.all().get().$promise
+				return CourseManageFactory.all().get().$promise
 			},
 		})
 	}
@@ -58,7 +58,7 @@ function($scope, ClazzManage, generalService, AccountManage, CourseManage, sessi
 	}
 
 	function commitDelete(resource){
-		return ClazzManage.clazz().delete({
+		return ClazzManageFactory.clazz().delete({
 			id: resource.id
 		}).$promise
 	}
@@ -86,12 +86,12 @@ function($scope, ClazzManage, generalService, AccountManage, CourseManage, sessi
 				return sessionService.getCurrentSemester()
 			},
 			teacherResource: function(){
-				return AccountManage.all().get({
+				return AccountManageFactory.all().get({
 					role: "teachers",
 				}).$promise
 			},
 			courseResource: function(){
-				return CourseManage.all().get().$promise
+				return CourseManageFactory.all().get().$promise
 			},
 		})
 	}

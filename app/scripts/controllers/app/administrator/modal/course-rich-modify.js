@@ -1,5 +1,5 @@
-app.controller("RichModifyCourseCtrl", ["$scope", "data", "CourseManage", "ManagementService", "AlertTool",
-	function($scope, data, CourseManage, ManagementService, AlertTool) {
+app.controller("RichModifyCourseCtrl", ["$scope", "data", "CourseManageFactory", "ManagementService", "AlertTool",
+	function($scope, data, CourseManageFactory, ManagementService, AlertTool) {
 
 		var originResource = data,
 			copiedResource = angular.copy(originResource);
@@ -12,7 +12,7 @@ app.controller("RichModifyCourseCtrl", ["$scope", "data", "CourseManage", "Manag
 
 		//获取课程主页
 		function loadInfo(){
-			CourseManage.info().get({
+			CourseManageFactory.info().get({
 				"id": originResource.id
 			}).$promise.then(function(data){
 				if (data.code == "200") {
@@ -47,7 +47,7 @@ app.controller("RichModifyCourseCtrl", ["$scope", "data", "CourseManage", "Manag
 				var submitResource = angular.copy(copiedResource);
 				copiedResource.info = $scope.richContent
 				submitResource.info = $scope.richContent
-				return CourseManage.info().put({
+				return CourseManageFactory.info().put({
 						"id": copiedResource.id,
 				}, submitResource)
 		}

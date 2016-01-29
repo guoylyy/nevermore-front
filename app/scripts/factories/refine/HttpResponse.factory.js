@@ -1,8 +1,8 @@
 ;void function(){
 
-	app.factory("httpResponseFactory", httpResponseFactory)
+	app.factory("HttpResponseFactory", HttpResponseFactory)
 
-	function httpResponseFactory(){
+	function HttpResponseFactory(){
 		return {
 			isResponseSuccess: isResponseSuccess,
 			isServerResponse: isServerResponse,

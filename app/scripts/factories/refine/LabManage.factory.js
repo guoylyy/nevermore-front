@@ -1,11 +1,11 @@
 'use strict';
 
 /**
- * 实验相关 api
+ * 实验室相关 api
  */
 angular.module('nevermore')
-  .factory('ExperimentManage', function($resource, sessionService, $rootScope) {
-    var apiUrl = base_Url + "/manage/experiment"
+  .factory('LabManageFactory', function($resource, sessionService, $rootScope) {
+    var apiUrl = base_Url + "/manage/lab"
     return {
       create: function(){
         return $resource(apiUrl, {}, {
@@ -15,7 +15,7 @@ angular.module('nevermore')
           }
         });
       },
-      experiment: function(){
+      lab: function(){
         return $resource(apiUrl + '/:id', {id:"@id"}, {
           'get': {
             method: 'GET',
@@ -32,7 +32,7 @@ angular.module('nevermore')
         });
       },
       page: function() {
-        return $resource(apiUrl + '/experiments?scope=list', {
+        return $resource(apiUrl + '/labs?scope=list', {
           pageSize:"@pageSize",
           pageNum:"@pageNum"
         }, {
@@ -43,7 +43,7 @@ angular.module('nevermore')
         });
       },
       all: function(){
-        return $resource(apiUrl + '/experiments?scope=all', {
+        return $resource(apiUrl + '/labs?scope=all', {
         }, {
           'get': {
             method: 'GET',
@@ -51,15 +51,7 @@ angular.module('nevermore')
           }
         });
       },
-      labs: function() {
-        return $resource(apiUrl + '/:id/labs', {id: "@id"}, {
-          'put': {
-            method: 'PUT',
-            headers: sessionService.headers()
-          }
-        });
-      },
-      search: function(){//搜索实验
+      search: function(){//搜索实验室
         return $resource(apiUrl + '/search', {
           keyword:"@keyword"
         }, {

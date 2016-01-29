@@ -8,7 +8,7 @@
  * Factory in the labcloud.
  */
 angular.module('nevermore')
-  .factory('CourseManage', function ($resource, sessionService, $rootScope) {
+  .factory('CourseManageFactory, function ($resource, sessionService, $rootScope) {
     var apiUrl = base_Url + "/manage/course"
     return {
       create: function(){

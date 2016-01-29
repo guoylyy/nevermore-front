@@ -1,6 +1,6 @@
-app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManage",
+app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManageFactory",
     "ManagementService", "AlertTool", "ToasterTool",
-    function($scope, data, AccountManage, ManagementService, AlertTool, ToasterTool) {
+    function($scope, data, AccountManageFactory, ManagementService, AlertTool, ToasterTool) {
         $scope.genderList = [{
             "value": "男",
             "code": "MALE",
@@ -40,7 +40,7 @@ app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManage",
             $scope.pending = true
             var submitResource = angular.copy(copiedResource);
             submitResource.gender = copiedResource.gender.code
-            return AccountManage.account().put({
+            return AccountManageFactory.account().put({
                 "id": copiedResource.id,
             }, submitResource)
         }
@@ -68,7 +68,7 @@ app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManage",
             })
         }
         function commitDelete(resource) {
-            return AccountManage.account().delete({
+            return AccountManageFactory.account().delete({
                 id: copiedResource.id
             }).$promise
         }
@@ -101,7 +101,7 @@ app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManage",
             var submitResource = angular.copy(copiedResource);
             submitResource.gender = copiedResource.gender.code
             submitResource.password = md5($scope.resource.newPassword)
-            return AccountManage.account().put({
+            return AccountManageFactory.account().put({
                 "id": copiedResource.id,
             }, submitResource)
         }

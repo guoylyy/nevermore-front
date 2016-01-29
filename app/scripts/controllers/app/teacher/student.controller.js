@@ -3,10 +3,10 @@
 			.controller("TeacherStudentController", TeacherStudentController)
 
 	TeacherStudentController.$inject = ["$scope", "ClazzFactory", "ToasterTool",
-	"httpResponseFactory", "AlertTool", "ngDialog"]
+	"HttpResponseFactory", "AlertTool", "ngDialog"]
 
 	function TeacherStudentController($scope, ClazzFactory, ToasterTool,
-	httpResponseFactory, AlertTool, ngDialog){
+	HttpResponseFactory, AlertTool, ngDialog){
 
 		$scope.studentList = [];
 		$scope.selectAll = false;
@@ -51,8 +51,8 @@
 				scope:'all'
 			}).$promise
 			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
-					var data = httpResponseFactory.getResponseData(response)
+				if(HttpResponseFactory.isResponseSuccess(response)){
+					var data = HttpResponseFactory.getResponseData(response)
 					angular.copy(data, $scope.studentList)
 					tagSelectStatus($scope.studentList, false);
 				}else{
@@ -160,8 +160,8 @@
 
 		//错误处理
 		function errorHandler(error){
-			if(httpResponseFactory.isServerResponse(error)){
-				var message = httpResponseFactory.getResponseMessage(error)
+			if(HttpResponseFactory.isServerResponse(error)){
+				var message = HttpResponseFactory.getResponseMessage(error)
 				ToasterTool.error(message)
 			}else{
 				console.log(error)

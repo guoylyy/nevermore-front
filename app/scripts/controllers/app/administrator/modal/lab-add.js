@@ -1,5 +1,5 @@
-;app.controller("AddLabCtrl", ["$scope", "LabManage", "ManagementService",
-    function($scope, LabManage, ManagementService) {
+;app.controller("AddLabCtrl", ["$scope", "LabManageFactory", "ManagementService",
+    function($scope, LabManageFactory, ManagementService) {
         $scope.activeList = [{
             "value": "开放",
             "code": true,
@@ -35,7 +35,7 @@
         function commitLab() {
             $scope.adding = true
             var postResource = angular.copy($scope.resource)
-            return LabManage.create().post(postResource)
+            return LabManageFactory.create().post(postResource)
         }
 
         function removeErrorTip(data) {

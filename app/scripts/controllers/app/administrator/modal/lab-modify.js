@@ -1,6 +1,6 @@
-app.controller("ModifyLabCtrl", ["$scope", "data", "LabManage", "ManagementService",
+app.controller("ModifyLabCtrl", ["$scope", "data", "LabManageFactory", "ManagementService",
   "AlertTool", "ToasterTool",
-    function($scope, data, LabManage, ManagementService, AlertTool, ToasterTool) {
+    function($scope, data, LabManageFactory, ManagementService, AlertTool, ToasterTool) {
         $scope.activeList = [{
             "value": "开放",
             "code": true,
@@ -40,7 +40,7 @@ app.controller("ModifyLabCtrl", ["$scope", "data", "LabManage", "ManagementServi
         function commitModify() {
             $scope.pending = true
             var submitResource = angular.copy(copiedResource);
-            return LabManage.lab().put({
+            return LabManageFactory.lab().put({
                 "id": copiedResource.id,
             }, submitResource)
         }
@@ -70,7 +70,7 @@ app.controller("ModifyLabCtrl", ["$scope", "data", "LabManage", "ManagementServi
         }
 
         function commitDelete(resource) {
-            return LabManage.lab().delete({
+            return LabManageFactory.lab().delete({
                 id: copiedResource.id
             }).$promise
         }
