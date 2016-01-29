@@ -25,7 +25,7 @@ angular.module('nevermore')
               css: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'styles/portal.css',
-                  'scripts/controllers/portal/portal.js',
+                  'scripts/controllers/portal/Portal.controller.js',
                   "scripts/factories/Token.factory.js",
                   "scripts/factories/InputValidator.factory.js",
                   "scripts/services/toaster-tool.js",
@@ -43,7 +43,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/portal/index.controller.js',
+                  'scripts/controllers/portal/Index.controller.js',
                   'scripts/directives/portal/portal-header.js',
                   'scripts/directives/portal/portal-footer.js'
                 ]);
@@ -57,7 +57,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/portal/login.controller.js',
+                  'scripts/controllers/portal/Login.controller.js',
                   'scripts/directives/portal/portal-footer.js',
                   'scripts/directives/portal/portal-header.js',
                   "scripts/services/session-service.js",
@@ -74,7 +74,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/portal/calendar.js',
+                  'scripts/controllers/portal/Calendar.controller.js',
                   'scripts/directives/portal/portal-footer.js',
                   'scripts/directives/portal/portal-header.js',
                   'lib/jquery/fullcalendar/fullcalendar.css',
@@ -106,7 +106,7 @@ angular.module('nevermore')
                   "scripts/services/toaster-tool.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
                   "scripts/factories/ErrorHandler.factory.js",
-                  "scripts/controllers/app/modal/view-picture.js",
+                  "scripts/controllers/app/modal/ViewPicture.controller.js",
                   'NMMsgNumber'
                 ]);
               }]
@@ -118,7 +118,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/app-index.js',
+                  'scripts/controllers/app/AppIndex.controller.js',
                 ]);
               }]
             }
@@ -130,7 +130,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/teacher/index.js',
+                  'scripts/controllers/app/teacher/TeacherIndex.controller.js',
                 ]);
               }]
             },
@@ -142,7 +142,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/reservation.controller.js',
+                  'scripts/controllers/app/Reservation.controller.js',
                   'scripts/controllers/app/admin/modal/reservation-view.js',
                   "scripts/factories/refine/Reservation.factory.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
@@ -169,7 +169,7 @@ angular.module('nevermore')
                   'ngDialog',
                   'NmDatepicker',
                   "scripts/factories/InputValidator.factory.js",
-                  "scripts/controllers/app/teacher/class-selection.controller.js",
+                  "scripts/controllers/app/teacher/TeacherClassSelection.controller.js",
                 ])
               }]
             },
@@ -181,7 +181,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/teacher/all-class.controller.js",
+                  "scripts/controllers/app/teacher/TeacherAllClass.controller.js",
                   "scripts/factories/refine/Clazz.factory.js",
                   "scripts/services/toaster-tool.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
@@ -200,7 +200,7 @@ angular.module('nevermore')
                   'ngDialog',
                   'NmDatepicker',
                   "scripts/factories/InputValidator.factory.js",
-                  "scripts/controllers/app/teacher/class.controller.js",
+                  "scripts/controllers/app/teacher/TeacherClass.controller.js",
                   "scripts/factories/ErrorHandler.factory.js",
                   "scripts/factories/refine/Clazz.factory.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
@@ -239,11 +239,11 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   "scripts/factories/refine/Clazz.factory.js",
-                  "scripts/controllers/app/teacher/main-page.controller.js",
+                  "scripts/controllers/app/teacher/TeacherMainPage.controller.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
                   "scripts/services/toaster-tool.js",
                   "scripts/services/app/admin/management-service.js",
-                  "scripts/controllers/app/teacher/modal/modify-main-page.controller.js",
+                  "scripts/controllers/app/teacher/modal/ModifyMainPage.controller.js",
                 ])
               }]
             },
@@ -255,7 +255,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/teacher/file.controller.js",
+                  "scripts/controllers/app/teacher/TeacherFile.controller.js",
                   "ngFileUpload"
                 ])
               }]
@@ -269,12 +269,12 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/admin/modal/reservation-view.js",
-                  "scripts/controllers/app/teacher/appointment.controller.js",
+                  "scripts/controllers/app/teacher/TeacherAppointment.controller.js",
                   "scripts/factories/exp-factory.js",
                   "scripts/factories/refine/Experiment.factory.js",
                   "scripts/factories/refine/Lab.factory.js",
                   "ngDialog",
-                  "scripts/controllers/app/teacher/modal/reserve.controller.js",
+                  "scripts/controllers/app/teacher/modal/TeacherReserve.controller.js",
                   "scripts/directives/app/stage-view.directive.js",
                   "scripts/factories/refine/Reservation.factory.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
@@ -293,7 +293,7 @@ angular.module('nevermore')
                   'ngDialog',
                   'NmDatepicker',
                   "scripts/factories/InputValidator.factory.js",
-                  "scripts/controllers/app/teacher/task.controller.js",
+                  "scripts/controllers/app/teacher/TeacherTask.controller.js",
                 ])
               }],
             },
@@ -309,8 +309,8 @@ angular.module('nevermore')
                   'ngDialog',
                   'NmDatepicker',
                   "scripts/factories/InputValidator.factory.js",
-                  "scripts/controllers/app/modal/experiment-detail.controller.js",
-                  "scripts/controllers/app/teacher/task-detail.controller.js",
+                  "scripts/controllers/app/modal/ExperimentDetail.controller.js",
+                  "scripts/controllers/app/teacher/TeacherTaskDetail.controller.js",
                 ])
               }],
             },
@@ -326,7 +326,7 @@ angular.module('nevermore')
                   'ngDialog',
                   'NmDatepicker',
                   "scripts/factories/InputValidator.factory.js",
-                  "scripts/controllers/app/teacher/task-report.controller.js",
+                  "scripts/controllers/app/teacher/TeacherTaskReport.controller.js",
                 ])
               }],
             },
@@ -334,11 +334,11 @@ angular.module('nevermore')
           .state("app.teacher.class.report-result", {
             url: "/report/result/:expId/:classId/:stuId",
             templateUrl: "tpl/app/report-result.html",
-            controller: "ReportResultCtrl",
+            controller: "ReportResultController",
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/report-result.js',
+                  'scripts/controllers/app/ReportResult.controller.js',
                   'scripts/directives/app/graphic-table.js',
                   'scripts/directives/app/lashen-report.js',
                   'scripts/directives/app/yasuo-report.js',
@@ -346,7 +346,7 @@ angular.module('nevermore')
                   'scripts/directives/app/yasuo-experiment.js',
                   'NmDatepicker',
                   'ngDialog',
-                  'scripts/controllers/app/modal/choose-chart.js',
+                  'scripts/controllers/app/modal/ChooseChart.controller.js',
                   "scripts/factories/refine/Clazz.factory.js",
                 ])
               }],
@@ -363,9 +363,9 @@ angular.module('nevermore')
                   'ngDialog',
                   'NmDatepicker',
                   "scripts/factories/InputValidator.factory.js",
-                  "scripts/controllers/app/teacher/student.controller.js",
-                  "scripts/controllers/app/teacher/modal/student.add.controller.js",
-                  "scripts/controllers/app/teacher/modal/student.upload.controller.js"
+                  "scripts/controllers/app/teacher/TeacherStudent.controller.js",
+                  "scripts/controllers/app/teacher/modal/TeacherAddStudent.controller.js",
+                  "scripts/controllers/app/teacher/modal/UploadStudent.controller.js"
                 ])
               }],
             },
@@ -381,7 +381,7 @@ angular.module('nevermore')
                   'ngDialog',
                   'NmDatepicker',
                   "scripts/factories/InputValidator.factory.js",
-                  "scripts/controllers/app/student/index.controller.js",
+                  "scripts/controllers/app/student/StudentIndex.controller.js",
                 ])
               }],
             },
@@ -405,7 +405,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/student/class-selection.controller.js",
+                  "scripts/controllers/app/student/StudentClassSelection.controller.js",
                 ])
               }],
             },
@@ -417,7 +417,7 @@ angular.module('nevermore')
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/student/all-class.controller.js",
+                  "scripts/controllers/app/student/StudentAllClass.controller.js",
                 ])
               }]
             }
@@ -429,7 +429,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/student/class.controller.js",
+                  "scripts/controllers/app/student/StudentClass.controller.js",
                 ])
               }],
               clazz: function($resource, $stateParams, $localStorage){
@@ -463,7 +463,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/student/main-page.controller.js",
+                  "scripts/controllers/app/student/StudentMainPage.controller.js",
                   "scripts/services/app/admin/management-service.js",
                 ])
               }],
@@ -476,9 +476,9 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/student/task.controller.js",
+                  "scripts/controllers/app/student/StudentTask.controller.js",
                   "scripts/factories/refine/Clazz.factory.js",
-                  "scripts/controllers/app/modal/experiment-detail.controller.js",
+                  "scripts/controllers/app/modal/ExperimentDetail.controller.js",
                   "ngDialog",
                 ])
               }],
@@ -491,7 +491,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/student/file.controller.js",
+                  "scripts/controllers/app/student/StudentFile.controller.js",
                   "ngFileUpload",
                 ])
               }],
@@ -500,7 +500,7 @@ angular.module('nevermore')
           .state("app.student.class.report", {
             url: "/report/:expId/:classId",
             templateUrl: "tpl/app/report.html",
-            controller: "ReportCtrl",
+            controller: "ReportController",
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
@@ -513,7 +513,7 @@ angular.module('nevermore')
                   'scripts/directives/app/yasuo-experiment.js',
                   'NmDatepicker',
                   'ngDialog',
-                  'scripts/controllers/app/modal/choose-chart.js'
+                  'scripts/controllers/app/modal/ChooseChart.controller.js'
                 ])
               }],
             },
@@ -521,11 +521,11 @@ angular.module('nevermore')
           .state("app.student.class.report-result", {
             url: "/report/result/:expId/:classId/:stuId",
             templateUrl: "tpl/app/report-result.html",
-            controller: "ReportResultCtrl",
+            controller: "ReportResultController",
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/report-result.js',
+                  'scripts/controllers/app/ReportResult.controller.js',
                   'scripts/directives/app/graphic-table.js',
                   'scripts/directives/app/lashen-report.js',
                   'scripts/directives/app/yasuo-report.js',
@@ -533,7 +533,7 @@ angular.module('nevermore')
                   'scripts/directives/app/yasuo-experiment.js',
                   'NmDatepicker',
                   'ngDialog',
-                  'scripts/controllers/app/modal/choose-chart.js',
+                  'scripts/controllers/app/modal/ChooseChart.controller.js',
                   "scripts/factories/refine/Clazz.factory.js",
                 ])
               }],
@@ -551,8 +551,8 @@ angular.module('nevermore')
                   "scripts/factories/StateChain.factory.js",
                   'ngDialog',
                   'NmDatepicker',
-                  'scripts/controllers/app/modal/teacher-reservation-modal.js',
-                  'scripts/controllers/app/modal/reservation-detail-modal.js',
+                  'scripts/controllers/app/modal/TeacherReservationModal.controller.js',
+                  'scripts/controllers/app/modal/ReservationDetailModal.controller.js',
                   "scripts/factories/InputValidator.factory.js",
                 ]);
               }]
@@ -568,7 +568,7 @@ angular.module('nevermore')
                   'scripts/controllers/app/student-reservation.js',
                   'scripts/directives/app/pager.js',
                   'ngDialog',
-                  'scripts/controllers/app/modal/reservation-detail-modal.js'
+                  'scripts/controllers/app/modal/ReservationDetailModal.controller.js'
                 ]);
               }]
             }
@@ -607,7 +607,7 @@ angular.module('nevermore')
                   'scripts/controllers/app/teacher-class.js',
                   'scripts/directives/app/pager.js',
                   'scripts/directives/app/nm-file-upload.js',
-                  'scripts/controllers/app/modal/file-upload.js',
+                  'scripts/controllers/app/modal/FileUpload.controller.js',
                   'ngDialog'
                 ]);
               }]
@@ -616,7 +616,7 @@ angular.module('nevermore')
           .state('app.course.report', {
             url: '^/app/course/report/:expId/:classId',
             templateUrl: 'tpl/app/report.html',
-            controller: 'ReportCtrl',
+            controller: 'ReportController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
@@ -628,7 +628,7 @@ angular.module('nevermore')
                   'scripts/directives/app/yasuo-experiment.js',
                   'NmDatepicker',
                   'ngDialog',
-                  'scripts/controllers/app/modal/choose-chart.js'
+                  'scripts/controllers/app/modal/ChooseChart.controller.js'
                 ]);
               }]
             }
@@ -636,11 +636,11 @@ angular.module('nevermore')
           .state('app.course.report-result', {
             url: '^/app/course/report/result/:expId/:classId/:stuId',
             templateUrl: 'tpl/app/report-result.html',
-            controller: 'ReportResultCtrl',
+            controller: 'ReportResultController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/report-result.js',
+                  'scripts/controllers/app/ReportResult.controller.js',
                   'scripts/directives/app/graphic-table.js',
                   'scripts/directives/app/lashen-report.js',
                   'scripts/directives/app/yasuo-report.js',
@@ -648,7 +648,7 @@ angular.module('nevermore')
                   'scripts/directives/app/yasuo-experiment.js',
                   'NmDatepicker',
                   'ngDialog',
-                  'scripts/controllers/app/modal/choose-chart.js'
+                  'scripts/controllers/app/modal/ChooseChart.controller.js'
                 ]);
               }]
             }
@@ -663,14 +663,14 @@ angular.module('nevermore')
           .state('app.profile.person', {
             url: '^/app/profile/person',
             templateUrl: 'tpl/app/profile-person.html',
-            controller: 'ProfilePersonCtrl',
+            controller: 'ProfilePersonController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'ngDialog',
                   'ngImgCrop',
-                  'scripts/controllers/app/profile-person.js',
-                  'scripts/controllers/app/modal/profile-icon.js',
+                  'scripts/controllers/app/ProfilePerson.controller.js',
+                  'scripts/controllers/app/modal/ProfileIcon.controller.js',
                   'scripts/factories/FileUpload.factory.js'
                 ]);
               }]
@@ -679,11 +679,11 @@ angular.module('nevermore')
           .state('app.profile.password', {
             url: '^/app/profile/password',
             templateUrl: 'tpl/app/profile-password.html',
-            controller: 'ProfilePasswordCtrl',
+            controller: 'ProfilePasswordController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/profile-password.js'
+                  'scripts/controllers/app/ProfilePassword.controller.js'
                 ]);
               }]
             }
@@ -701,7 +701,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/message.list.js'
+                  'scripts/controllers/app/MessageList.controller.js'
                 ]);
               }]
             }
@@ -721,8 +721,8 @@ angular.module('nevermore')
                   'ui.calendar',
                   'ngDialog',
                   'NmDatepicker',
-                  'scripts/controllers/portal/calendar.js',
-                  'scripts/controllers/app/modal/teacher-reservation-modal.js',
+                  'scripts/controllers/portal/Calendar.controller.js',
+                  'scripts/controllers/app/modal/TeacherReservationModal.controller.js',
                 ]);
               }]
             }

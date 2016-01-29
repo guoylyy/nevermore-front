@@ -1,6 +1,6 @@
 'use strict';
 //
-app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', 'ExperimentFactory', 'ReportFactory', 'ToasterTool', 'ClazzFactory', function($scope, $state, AlertTool, $stateParams, ExperimentFactory, ReportFactory, ToasterTool, ClazzFactory) {
+app.controller('ReportController', ['$scope', '$state', 'AlertTool', '$stateParams', 'ExperimentFactory', 'ReportFactory', 'ToasterTool', 'ClazzFactory', function($scope, $state, AlertTool, $stateParams, ExperimentFactory, ReportFactory, ToasterTool, ClazzFactory) {
 
   $scope.report_step = 1;
 

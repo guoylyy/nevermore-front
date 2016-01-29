@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ProfilePersonCtrl', ['$scope', '$rootScope','AccountFactory', 'sessionService', 'ToasterTool', 'ngDialog', 'FileUploadFactory',
+app.controller('ProfilePersonController', ['$scope', '$rootScope','AccountFactory', 'sessionService', 'ToasterTool', 'ngDialog', 'FileUploadFactory',
 function($scope, $rootScope, AccountFactory, sessionService, ToasterTool, ngDialog, FileUploadFactory) {
   $scope.personData = {
     currentUser: null,
@@ -71,7 +71,7 @@ function($scope, $rootScope, AccountFactory, sessionService, ToasterTool, ngDial
   $scope.updateProfileIcon = function () {
     var dialog = ngDialog.open({
       template: 'tpl/app/modal/profile-icon.html',
-      controller: 'ProfileIconCtrl',
+      controller: 'ProfileIconController',
       className: 'nevermore-dialog nevermore-dialog-md',
       closeByDocument: true,
       closeByEscape: true
