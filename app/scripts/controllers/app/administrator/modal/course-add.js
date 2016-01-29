@@ -1,5 +1,5 @@
-app.controller("AddCourseCtrl", ["$scope", "CourseManage", "ManagementService",
-    function($scope, CourseManage, ManagementService) {
+app.controller("AddCourseCtrl", ["$scope", "CourseManageFactory", "ManagementService",
+    function($scope, CourseManageFactory, ManagementService) {
         $scope.activeList = [{
             "value": "开放",
             "code": true,
@@ -35,7 +35,7 @@ app.controller("AddCourseCtrl", ["$scope", "CourseManage", "ManagementService",
         function commitCourse() {
             $scope.adding = true
             var postResource = angular.copy($scope.resource)
-            return CourseManage.create().post(postResource)
+            return CourseManageFactory.create().post(postResource)
         }
 
         function removeErrorTip(data) {

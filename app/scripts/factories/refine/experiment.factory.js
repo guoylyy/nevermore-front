@@ -1,6 +1,6 @@
 ;void function(){
   angular.module("nevermore")
-          .factory("experiment", experiment)
+          .factory("ExperimentFactory", experiment)
 
   experiment.$inject = ["$resource", "sessionService", "$rootScope"]
 

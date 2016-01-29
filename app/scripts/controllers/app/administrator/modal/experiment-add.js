@@ -1,5 +1,5 @@
-app.controller("AddExperimentCtrl", ["$scope", "ExperimentManage", "ManagementService",
-    function($scope, ExperimentManage, ManagementService) {
+app.controller("AddExperimentCtrl", ["$scope", "ExperimentManageFactory", "ManagementService",
+    function($scope, ExperimentManageFactory, ManagementService) {
         $scope.activeList = [{
             "value": "开放",
             "code": true,
@@ -35,7 +35,7 @@ app.controller("AddExperimentCtrl", ["$scope", "ExperimentManage", "ManagementSe
         function commitExperiment() {
             $scope.adding = true
             var postResource = angular.copy($scope.resource)
-            return ExperimentManage.create().post(postResource)
+            return ExperimentManageFactory.create().post(postResource)
         }
 
         function removeErrorTip(data) {

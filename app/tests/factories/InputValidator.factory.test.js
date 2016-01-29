@@ -1,7 +1,7 @@
 chai.should()
 var expect = chai.expect
 
-var InputValidator = undefined
+var InputValidatorFactory = undefined
 var StateChainFactory = undefined
 ,	$scope = {}
 
@@ -10,9 +10,9 @@ var StateChainFactory = undefined
 describe("Input Validator", function(){
 
 	beforeEach(module("nevermore"))
-	beforeEach(inject(function(_InputValidator_){
-		InputValidator = _InputValidator_
-		InputValidator.injectToScope($scope)
+	beforeEach(inject(function(_InputValidatorFactory_){
+		InputValidatorFactory = _InputValidatorFactory_
+		InputValidatorFactory.injectToScope($scope)
 	}))
 
 	describe("validatePhoneNumber", function(){

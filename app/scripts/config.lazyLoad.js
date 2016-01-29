@@ -64,7 +64,7 @@ angular.module('nevermore')
         {
           name: 'NMMsgNumber',
           files: [
-            '../scripts/factories/refine/message.factory.js',
+            '../scripts/factories/refine/Message.factory.js',
             '../scripts/directives/app/nm-msg-number.js'
           ]
         }

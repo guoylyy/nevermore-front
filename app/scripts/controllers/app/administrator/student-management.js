@@ -1,6 +1,6 @@
-app.controller("StudentAccountCtrl", ["$scope", "AccountManage", "generalService",
+app.controller("StudentAccountCtrl", ["$scope", "AccountManageFactory", "generalService",
 	"ToasterTool", "ManagementService", "AlertTool",
-function($scope, AccountManage, generalService, ToasterTool,
+function($scope, AccountManageFactory, generalService, ToasterTool,
 	 ManagementService, AlertTool){
 
 	$scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
@@ -30,7 +30,7 @@ function($scope, AccountManage, generalService, ToasterTool,
 	}
 
 	function commitSearch(searchWord) {
-			return AccountManage.search().get({
+			return AccountManageFactory.search().get({
 					"keyword": searchWord,
 					"role": "STUDENT"
 			})
@@ -46,7 +46,7 @@ function($scope, AccountManage, generalService, ToasterTool,
 
 	// ~ 列表
 	function loadResources(){
-		ManagementService.loadResources(AccountManage, {
+		ManagementService.loadResources(AccountManageFactory, {
 			role:"students",
 			pageSize: generalService.pageSize(),
 			pageNum: $scope.resources.paginator.page

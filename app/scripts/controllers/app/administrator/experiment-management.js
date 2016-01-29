@@ -1,6 +1,6 @@
-app.controller("ExperimentManageCtrl", ["$scope", "ExperimentManage", "generalService",
+app.controller("ExperimentManageCtrl", ["$scope", "ExperimentManageFactory", "generalService",
     "ToasterTool", "ManagementService", "AlertTool",
-    function($scope, ExperimentManage, generalService, ToasterTool, ManagementService, AlertTool) {
+    function($scope, ExperimentManageFactory, generalService, ToasterTool, ManagementService, AlertTool) {
 
         $scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
         $scope.pageChanged = loadResources
@@ -29,7 +29,7 @@ app.controller("ExperimentManageCtrl", ["$scope", "ExperimentManage", "generalSe
       	}
 
       	function commitSearch(searchWord) {
-      			return ExperimentManage.search().get({
+      			return ExperimentManageFactory.search().get({
       					"keyword": searchWord
       			})
       	}
@@ -44,7 +44,7 @@ app.controller("ExperimentManageCtrl", ["$scope", "ExperimentManage", "generalSe
 
         // ~ 列表
         function loadResources() {
-            ManagementService.loadResources(ExperimentManage, {
+            ManagementService.loadResources(ExperimentManageFactory, {
                 pageSize: generalService.pageSize(),
                 pageNum: $scope.resources.paginator.page
             }).then(loadSuccess, loadFail)

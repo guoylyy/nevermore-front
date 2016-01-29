@@ -2,13 +2,13 @@
 	angular.module("nevermore")
 			.controller("TeacherMainPageController", TeacherMainPageController)
 
-	TeacherMainPageController.$inject = ["$scope", "ClazzFactory", "httpResponseFactory", 
-		"ToasterTool", "ManagementService", "errorHandlerFactory"]
+	TeacherMainPageController.$inject = ["$scope", "ClazzFactory", "HttpResponseFactory", 
+		"ToasterTool", "ManagementService", "ErrorHandlerFactory"]
 
-	function TeacherMainPageController($scope, ClazzFactory, httpResponseFactory,
-		ToasterTool, ManagementService, errorHandlerFactory){
+	function TeacherMainPageController($scope, ClazzFactory, HttpResponseFactory,
+		ToasterTool, ManagementService, ErrorHandlerFactory){
 
-		var errorHandler = errorHandlerFactory.handle
+		var errorHandler = ErrorHandlerFactory.handle
 
 		$scope.mainPage = {}
 
@@ -22,8 +22,8 @@
 			})
 			.$promise
 			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
-					var data = httpResponseFactory.getResponseData(response)
+				if(HttpResponseFactory.isResponseSuccess(response)){
+					var data = HttpResponseFactory.getResponseData(response)
 					angular.copy(data, $scope.mainPage)
 				}else{
 					errorHandler(response)

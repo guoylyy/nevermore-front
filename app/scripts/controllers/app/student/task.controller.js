@@ -2,13 +2,13 @@
 	angular.module("nevermore")
 			.controller("StudentTaskController", StudentTaskController)
 
-	StudentTaskController.$inject = ["$scope", "ClazzFactory", "httpResponseFactory",
-		"errorHandlerFactory", "ngDialog"]
+	StudentTaskController.$inject = ["$scope", "ClazzFactory", "HttpResponseFactory",
+		"ErrorHandlerFactory", "ngDialog"]
 
-	function StudentTaskController($scope, ClazzFactory, httpResponseFactory,
-		errorHandlerFactory, ngDialog){
+	function StudentTaskController($scope, ClazzFactory, HttpResponseFactory,
+		ErrorHandlerFactory, ngDialog){
 
-		var errorHandler = errorHandlerFactory.handle
+		var errorHandler = ErrorHandlerFactory.handle
 
 		$scope.experimentList = []
 		$scope.viewRecordDetails = viewRecordDetails
@@ -23,8 +23,8 @@
 		 	})
 		 	.$promise
 			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
-					var data = httpResponseFactory.getResponseData(response)
+				if(HttpResponseFactory.isResponseSuccess(response)){
+					var data = HttpResponseFactory.getResponseData(response)
 					angular.copy(data, $scope.experimentList)
 				}else{
 					errorHandler(response)

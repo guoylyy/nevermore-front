@@ -3,14 +3,14 @@
 			.controller("TeacherAppointmentController", TeacherAppointmentController)
 
 	TeacherAppointmentController.$inject = ["$scope", "ToasterTool", "ngDialog",
-		"ClazzFactory", "errorHandlerFactory", "httpResponseFactory", "reservationFactory",
+		"ClazzFactory", "ErrorHandlerFactory", "HttpResponseFactory", "ReservationFactory",
 		"AlertTool"]
 
 	function TeacherAppointmentController($scope, ToasterTool, ngDialog,
-		ClazzFactory, errorHandlerFactory, httpResponseFactory, reservationFactory,
+		ClazzFactory, ErrorHandlerFactory, HttpResponseFactory, ReservationFactory,
 		AlertTool){
 
-		var errorHandler = errorHandlerFactory.handle
+		var errorHandler = ErrorHandlerFactory.handle
 
 		$scope.experimentList = []
 		$scope.getTotalReservationPersonCount = getTotalReservationPersonCount
@@ -31,8 +31,8 @@
 		 	})
 		 	.$promise
 		   	.then(function(response){
-		   		if(httpResponseFactory.isResponseSuccess(response)){
-		   			var data = httpResponseFactory.getResponseData(response)
+		   		if(HttpResponseFactory.isResponseSuccess(response)){
+		   			var data = HttpResponseFactory.getResponseData(response)
 		   			angular.copy(data, $scope.experimentList)
 		   		}else{
 		   			errorHandler(response)
@@ -92,7 +92,7 @@
 				"closeByEscape": true,
 				"resolve": {
 					data: function(){
-						return reservationFactory.reservation().get({
+						return ReservationFactory.reservation().get({
 							id: reservation.id
 						}).$promise;
 					}
@@ -103,7 +103,7 @@
 		function cancelReservation(reservation){
 			AlertTool.confirm({title:'您确定要取消这个预约?'}).then(function(isConfirm) {
 			  if(isConfirm) {
-					reservationFactory.reservation().
+					ReservationFactory.reservation().
 						delete({id:reservation.id})
 						.$promise
 						.then(function(response){

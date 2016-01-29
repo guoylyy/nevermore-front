@@ -1,5 +1,5 @@
-app.controller("AddTeacherAccountCtrl", ["$scope", "AccountManage", "ManagementService",
-    function($scope, AccountManage, ManagementService) {
+app.controller("AddTeacherAccountCtrl", ["$scope", "AccountManageFactory", "ManagementService",
+    function($scope, AccountManageFactory, ManagementService) {
         $scope.genderList = [{
             "value": "男",
             "code": "MALE",
@@ -36,7 +36,7 @@ app.controller("AddTeacherAccountCtrl", ["$scope", "AccountManage", "ManagementS
             var postResource = angular.copy($scope.resource)
             postResource.role = "TEACHER"
             postResource.password = md5(postResource.password)
-            return AccountManage.create().post(postResource)
+            return AccountManageFactory.create().post(postResource)
         }
 
         function removeErrorTip(data) {

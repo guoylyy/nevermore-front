@@ -2,13 +2,13 @@
 	angular.module("nevermore")
 			.controller("StudentFileController", StudentFileController)
 
-	StudentFileController.$inject = ["$scope", "ClazzFactory", "httpResponseFactory",
-		"ToasterTool", "Upload", "sessionService", "errorHandlerFactory"]
+	StudentFileController.$inject = ["$scope", "ClazzFactory", "HttpResponseFactory",
+		"ToasterTool", "Upload", "sessionService", "ErrorHandlerFactory"]
 
-	function StudentFileController($scope, ClazzFactory, httpResponseFactory,
-		ToasterTool, Upload, sessionService, errorHandlerFactory){
+	function StudentFileController($scope, ClazzFactory, HttpResponseFactory,
+		ToasterTool, Upload, sessionService, ErrorHandlerFactory){
 		
-		var errorHandler = errorHandlerFactory.handle
+		var errorHandler = ErrorHandlerFactory.handle
 
 		$scope.publicFileList = []
 		$scope.privateFileList = []
@@ -86,8 +86,8 @@
 
 			getFiles(fileType)
 			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
-					var data = httpResponseFactory.getResponseData(response)
+				if(HttpResponseFactory.isResponseSuccess(response)){
+					var data = HttpResponseFactory.getResponseData(response)
 					angular.copy(data, $scope.publicFileList)
 				}else{
 					throw new Error(response)
@@ -101,8 +101,8 @@
 			var fileType = "CLAZZ_PRIVATE"
 			getFiles(fileType)
 			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
-					var data = httpResponseFactory.getResponseData(response)
+				if(HttpResponseFactory.isResponseSuccess(response)){
+					var data = HttpResponseFactory.getResponseData(response)
 					angular.copy(data, $scope.privateFileList)
 				}else{
 					throw new Error(response)

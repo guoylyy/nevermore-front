@@ -8,7 +8,7 @@
  * Factory in the labcloud.
  */
 angular.module('nevermore')
-  .factory('FileUpload', function ($resource, sessionService, $rootScope) {
+  .factory('FileUploadFactory', function ($resource, sessionService, $rootScope) {
     var baseUrl = base_Url+'/file/';
 
     return {
