@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ReportResultCtrl', ['$scope', '$stateParams', 'ClazzFactory',
+app.controller('ReportResultController', ['$scope', '$stateParams', 'ClazzFactory',
   'ExperimentManageFactory', 'ReportFactory', 'AccountManageFactory', 'sessionService',
   'ToasterTool', 
    function($scope, $stateParams, ClazzFactory, ExperimentManageFactory, ReportFactory,

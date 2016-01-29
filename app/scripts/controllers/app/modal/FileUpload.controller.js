@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('FileUploadCtrl', ['$scope', 'Upload', 'ResTool', 'ToasterTool', 'AlertTool','sessionService', 'classId',
+app.controller('FileUploadController', ['$scope', 'Upload', 'ResTool', 'ToasterTool', 'AlertTool','sessionService', 'classId',
   function ($scope, Upload, ResTool, ToasterTool, AlertTool, sessionService, classId) {
     var URLS = [
       'http://up.qiniu.com',

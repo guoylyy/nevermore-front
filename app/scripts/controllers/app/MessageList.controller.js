@@ -9,6 +9,7 @@ function($scope, $stateParams, $sce, MessageFactory, nmMsgNumberService, Toaster
       name: "消息详情",
       code: "detail"
     }];
+    
   $scope.pageData = {
     models: areas,
     currentModel: areas[0],
