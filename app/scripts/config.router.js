@@ -229,7 +229,6 @@ angular.module('nevermore')
                   "scripts/factories/refine/Clazz.factory.js",
                   "scripts/controllers/app/teacher/main-page.controller.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
-                  "scripts/services/app/admin/management-service.js",
                   "scripts/controllers/app/teacher/modal/modify-main-page.controller.js",
                 ])
               }]
@@ -451,7 +450,6 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/student/main-page.controller.js",
-                  "scripts/services/app/admin/management-service.js",
                 ])
               }],
             },
@@ -729,7 +727,6 @@ angular.module('nevermore')
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
                   "scripts/directives/app/search-action-bar.js",
-                  "scripts/services/app/admin/management-service.js",
                   "ngDialog",
                 ])
               }]
@@ -775,7 +772,6 @@ angular.module('nevermore')
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/services/app/admin/management-service.js",
                   "ngDialog",
                 ])
               }]
@@ -846,7 +842,6 @@ angular.module('nevermore')
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
                   "scripts/directives/app/nm-datepicker.js",
-                  "scripts/services/app/admin/management-service.js",
                   "ngDialog",
                 ])
               }]
@@ -889,7 +884,6 @@ angular.module('nevermore')
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/services/app/admin/management-service.js",
                   "ngDialog",
                 ])
               }]
