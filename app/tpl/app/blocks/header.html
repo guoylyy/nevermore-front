@@ -31,7 +31,7 @@
         <!-- / buttons -->
         <ul class="nav navbar-nav hidden-sm">
           <li ui-sref-active="active">
-            <a ui-sref="app.calendar"  data-ui-sref-opts="{reload: true}"  class="dropdown-toggle" dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
+            <a ui-sref="app.calendar"  data-ui-sref-opts="{reload: true}"  class="dropdown-toggle" uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
               <span translate="header.navbar.new.NEW" class="ng-scope">实验日历</span>
             </a>
@@ -50,8 +50,8 @@
             </a>
           </li>
 
-          <li class="dropdown" dropdown>
-            <a href class="dropdown-toggle clear" dropdown-toggle>
+          <li class="dropdown" uib-dropdown>
+            <a href class="dropdown-toggle clear" uib-dropdown-toggle>
               <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
                 <img ng-src="{{currentUser.icon.url}}"alt="...">
                 <i class="on md b-white bottom"></i>
