@@ -1,11 +1,11 @@
 ;void function(){
 
 	angular.module("nevermore")
-			.factory("reservationFactory", reservationFactory)
+			.factory("ReservationFactory", ReservationFactory)
 
-	reservationFactory.$inject = ["$resource", "sessionService", "$rootScope"]
+	ReservationFactory.$inject = ["$resource", "sessionService", "$rootScope"]
 
-	function reservationFactory($resource, sessionService, $rootScope){
+	function ReservationFactory($resource, sessionService, $rootScope){
 		var apiUrl = base_Url + "/reservation"
 		,	headers = sessionService.headers()
 

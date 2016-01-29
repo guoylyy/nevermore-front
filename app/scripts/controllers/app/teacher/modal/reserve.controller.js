@@ -3,12 +3,12 @@
 			.controller("TeacherReserveController", TeacherReserveController)
 
 	TeacherReserveController.$inject = ["$scope", "experimentID", "experimentName",
-	"classID", "experiment", "InputValidator", "lab", "StateChainFactory",
-	"reservationFactory", "httpResponseFactory", "ToasterTool"]
+	"classID", "ExperimentFactory", "InputValidatorFactory", "LabFactory", "StateChainFactory",
+	"ReservationFactory", "HttpResponseFactory", "ToasterTool"]
 
 	function TeacherReserveController($scope, experimentID, experimentName,
-		classID, experiment, InputValidator, lab, StateChainFactory,
-		reservationFactory, httpResponseFactory, ToasterTool){
+		classID, ExperimentFactory, InputValidatorFactory, LabFactory, StateChainFactory,
+		ReservationFactory, HttpResponseFactory, ToasterTool){
 		$scope.date = new Date()
 
 		var stateChain = StateChainFactory.getStateChain()
@@ -48,7 +48,7 @@
 		$scope.next = next
 		$scope.prev = prev
 
-		InputValidator.injectToScope($scope)
+		InputValidatorFactory.injectToScope($scope)
 
 		function getStartTimeOfToday(){
 			var today = new Date()
@@ -83,13 +83,13 @@
 		}
 
 		function getLabs(){
-			return experiment.labs().get({
+			return ExperimentFactory.labs().get({
 				id: experimentID
 			})
 			.$promise
 			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
-					var data = httpResponseFactory.getResponseData(response)
+				if(HttpResponseFactory.isResponseSuccess(response)){
+					var data = HttpResponseFactory.getResponseData(response)
 					angular.copy(data, $scope.labList)
 				}else{
 					errorHandler(response)
@@ -103,14 +103,14 @@
 		}
 
 		function getSlots(labID){
-			return lab.slots().get({
+			return LabFactory.slots().get({
 				id: labID,
 				date: formatDate($scope.date)
 			})
 			.$promise
 			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
-					var data = httpResponseFactory.getResponseData(response)
+				if(HttpResponseFactory.isResponseSuccess(response)){
+					var data = HttpResponseFactory.getResponseData(response)
 					angular.copy(data, $scope.slotList)
 				}else{
 					errorHandler(response)
@@ -139,7 +139,7 @@
 		}
 
 		function reserve(){
-			reservationFactory.reservation().post({
+			ReservationFactory.reservation().post({
 				personCount: $scope.personCount,
 				experimentId: experimentID,
 				labId: $scope.lab.id,
@@ -150,7 +150,7 @@
 			})
 			.$promise
 			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
+				if(HttpResponseFactory.isResponseSuccess(response)){
 					ToasterTool.success("预约成功")
 					$scope.closeThisDialog('success')
 				}else{
@@ -161,8 +161,8 @@
 		}
 
 		function errorHandler(error){
-			if(httpResponseFactory.isServerResponse(error)){
-				var message = httpResponseFactory.getResponseMessage(error)
+			if(HttpResponseFactory.isServerResponse(error)){
+				var message = HttpResponseFactory.getResponseMessage(error)
 				ToasterTool.error(message)
 			}else{
 				ToasterTool.error("网络连接错误，请重试")

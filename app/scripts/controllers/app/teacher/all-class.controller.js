@@ -3,12 +3,12 @@
 	app.controller("TeacherAllClassController", TeacherAllClassController)
 
 	TeacherAllClassController.$inject = ["$scope", "$rootScope", "ClazzFactory", "ToasterTool",
-	"httpResponseFactory", "errorHandlerFactory", "$state"]
+	"HttpResponseFactory", "ErrorHandlerFactory", "$state"]
 
 	function TeacherAllClassController($scope, $rootScope, ClazzFactory, ToasterTool,
-		httpResponseFactory, errorHandlerFactory, $state){
+		HttpResponseFactory, ErrorHandlerFactory, $state){
 
-		var errorHandler = errorHandlerFactory.handle
+		var errorHandler = ErrorHandlerFactory.handle
 
 		$scope.classList = []
 
@@ -20,8 +20,8 @@
 			})
 			.$promise
 			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
-					var data = httpResponseFactory.getResponseData(response)
+				if(HttpResponseFactory.isResponseSuccess(response)){
+					var data = HttpResponseFactory.getResponseData(response)
 					angular.copy(data, $scope.classList)
 				}else{
 					errorHandler(response)
@@ -31,7 +31,7 @@
 		}
 
 		function errorHandler(error){
-			var message = httpResponseFactory.getResponseMessage(error)
+			var message = HttpResponseFactory.getResponseMessage(error)
 			if(!!message){
 				ToasterTool.error(message)
 			}else{

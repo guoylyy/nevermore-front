@@ -8,7 +8,7 @@
  * Factory in the labcloud.
  */
 angular.module('nevermore')
-  .factory('ManageSms', function ($resource, sessionService, $rootScope) {
+  .factory('ManageSmsFactory', function ($resource, sessionService, $rootScope) {
     var baseUrl = base_Url+'/manage/';
     var headers = sessionService.headers();
     //var headers = {'x-auth-token': $rootScope.token};

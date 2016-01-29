@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('MessageListController', ['$scope', '$stateParams', '$sce', 'messageFactory', 'nmMsgNumberService', 'ToasterTool',
-function($scope, $stateParams, $sce, messageFactory, nmMsgNumberService, ToasterTool) {
+app.controller('MessageListController', ['$scope', '$stateParams', '$sce', 'MessageFactory', 'nmMsgNumberService', 'ToasterTool',
+function($scope, $stateParams, $sce, MessageFactory, nmMsgNumberService, ToasterTool) {
   var areas = [{
       name: "消息列表",
       code: "list"
@@ -101,7 +101,7 @@ function($scope, $stateParams, $sce, messageFactory, nmMsgNumberService, Toaster
 
   // 获取消息列表
   function getList(queryObject) {
-    messageFactory.messages().get(queryObject).$promise
+    MessageFactory.messages().get(queryObject).$promise
     .then(function(data) {
       if (data.success) {
         pageData.list = data.data;
@@ -122,7 +122,7 @@ function($scope, $stateParams, $sce, messageFactory, nmMsgNumberService, Toaster
     if (message.isRead) {
       return;
     }
-    messageFactory.message().put({
+    MessageFactory.message().put({
         id: message.id
       }, {
         isRead: true

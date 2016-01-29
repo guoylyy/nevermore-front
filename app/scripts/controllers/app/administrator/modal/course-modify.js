@@ -1,6 +1,6 @@
-app.controller("ModifyCourseCtrl", ["$scope", "data", "CourseManage", "ManagementService", "AlertTool",
+app.controller("ModifyCourseCtrl", ["$scope", "data", "CourseManageFactory", "ManagementService", "AlertTool",
     "ToasterTool",
-    function($scope, data, CourseManage, ManagementService, AlertTool,ToasterTool) {
+    function($scope, data, CourseManageFactory, ManagementService, AlertTool,ToasterTool) {
         $scope.activeList = [{
             "value": "开放",
             "code": true,
@@ -40,7 +40,7 @@ app.controller("ModifyCourseCtrl", ["$scope", "data", "CourseManage", "Managemen
         function commitModify() {
             $scope.pending = true
             var submitResource = angular.copy(copiedResource);
-            return CourseManage.course().put({
+            return CourseManageFactory.course().put({
                 "id": copiedResource.id,
             }, submitResource)
         }
@@ -70,7 +70,7 @@ app.controller("ModifyCourseCtrl", ["$scope", "data", "CourseManage", "Managemen
         }
 
         function commitDelete(resource) {
-            return CourseManage.course().delete({
+            return CourseManageFactory.course().delete({
                 id: copiedResource.id
             }).$promise
         }

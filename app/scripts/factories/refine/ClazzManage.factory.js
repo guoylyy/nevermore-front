@@ -4,7 +4,7 @@
  * 班级相关 api
  */
 angular.module('nevermore')
-  .factory('ClazzManage', function($resource, sessionService, $rootScope) {
+  .factory('ClazzManageFactory', function($resource, sessionService, $rootScope) {
     var baseUrl = base_Url+ '/manage/clazz';
     return {
       create: function(){

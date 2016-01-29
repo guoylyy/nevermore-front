@@ -1,10 +1,10 @@
 'use strict';
 
 app.controller('ReportResultCtrl', ['$scope', '$stateParams', 'ClazzFactory',
-  'ExperimentManage', 'ReportFactory', 'AccountManage', 'sessionService',
+  'ExperimentManageFactory', 'ReportFactory', 'AccountManageFactory', 'sessionService',
   'ToasterTool', 
-   function($scope, $stateParams, ClazzFactory, ExperimentManage, ReportFactory,
-      AccountManage, sessionService, ToasterTool) {
+   function($scope, $stateParams, ClazzFactory, ExperimentManageFactory, ReportFactory,
+      AccountManageFactory, sessionService, ToasterTool) {
 
   $scope.exp_id = $stateParams.expId;
 
@@ -37,7 +37,7 @@ app.controller('ReportResultCtrl', ['$scope', '$stateParams', 'ClazzFactory',
     }
   });
 
-  ExperimentManage.experiment().get({
+  ExperimentManageFactory.experiment().get({
     id: $scope.exp_id
   }).$promise.then(function(response){
     if (response.code == "200") {
@@ -45,7 +45,7 @@ app.controller('ReportResultCtrl', ['$scope', '$stateParams', 'ClazzFactory',
     }
   });
 
-  AccountManage.account().get({
+  AccountManageFactory.account().get({
     id: $scope.student_id
   }).$promise.then(function(response){
     if (response.code == "200") {

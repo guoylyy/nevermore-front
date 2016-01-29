@@ -1,11 +1,11 @@
 ;void function(){
 
 	angular.module("nevermore")
-		.factory("errorHandlerFactory", errorHandlerFactory)
+		.factory("ErrorHandlerFactory", ErrorHandlerFactory)
 
-	errorHandlerFactory.$inject = ["ToasterTool", "httpResponseFactory"]
+	ErrorHandlerFactory.$inject = ["ToasterTool", "HttpResponseFactory"]
 
-	function errorHandlerFactory(ToasterTool, httpResponseFactory){
+	function ErrorHandlerFactory(ToasterTool, HttpResponseFactory){
 		var COMMON_ERROR_MESSAGE = "网络连接错误，请重试"
 		
 		return {
@@ -13,7 +13,7 @@
 		}
 
 		function handle(error){
-			if(httpResponseFactory.isServerResponse(error)){
+			if(HttpResponseFactory.isServerResponse(error)){
 				var message = getErrorMessage(error)
 				showErrorTip(message)
 			}else{
@@ -22,11 +22,11 @@
 		}
 
 		function isServerError(error){
-			return httpResponseFactory.isServerResponse(error)
+			return HttpResponseFactory.isServerResponse(error)
 		}
 
 		function getErrorMessage(error){
-			return httpResponseFactory.getResponseMessage(error)
+			return HttpResponseFactory.getResponseMessage(error)
 		}
 
 		function showErrorTip(errorTip){

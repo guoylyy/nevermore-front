@@ -8,7 +8,7 @@
  * Factory in the labcloud.
  */
 angular.module('nevermore')
-  .factory('Account', function($resource, sessionService, $rootScope) {
+  .factory('AccountFactory', function($resource, sessionService, $rootScope) {
     var baseUrl = base_Url+'/account';
     var headers = sessionService.headers();
     return {

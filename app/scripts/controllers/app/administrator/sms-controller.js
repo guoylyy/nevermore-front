@@ -1,6 +1,6 @@
 void function() {
-  app.controller("ManageSmsCtrl", ['$scope', '$filter', '$timeout', 'ManageSms', 'ToasterTool', 'ngDialog', 'AlertTool',
-  function($scope, $filter, $timeout, ManageSms, ToasterTool, ngDialog, AlertTool){
+  app.controller("ManageSmsCtrl", ['$scope', '$filter', '$timeout', 'ManageSmsFactoryFactory', 'ToasterTool', 'ngDialog', 'AlertTool',
+  function($scope, $filter, $timeout, ManageSmsFactoryFactory, ToasterTool, ngDialog, AlertTool){
     // 页面数据结构
     $scope.smsCtrl = {
       smsSchedulerList: null,
@@ -29,7 +29,7 @@ void function() {
         title: '确定要删除短信发送配置?'
       }).then(function(isConfirm) {
         if(isConfirm) {
-          ManageSms.smsSchedulerId().delete({id: config.id}).$promise
+          ManageSmsFactoryFactory.smsSchedulerId().delete({id: config.id}).$promise
           .then(
             function(data) {
               if (data.success) {
@@ -49,7 +49,7 @@ void function() {
 
     // 变更是否生效 —— 短信发送配置
     $scope.switchIsActive = function(config) {
-      ManageSms.smsSchedulerId().put({id: config.id}, config).$promise
+      ManageSmsFactoryFactory.smsSchedulerId().put({id: config.id}, config).$promise
       .then(
         function(data) {
           if (data.success) {
@@ -116,7 +116,7 @@ void function() {
 
     // 获取短信发送配置
     function initSmsSettingPage() {
-      ManageSms.smsSchedulers().get().$promise
+      ManageSmsFactoryFactory.smsSchedulers().get().$promise
       .then(
         function(data) {
           if (data.success) {
@@ -163,7 +163,7 @@ void function() {
       tempQuery.beginDate = tempQuery.beginDate ? $filter('date')(tempQuery.beginDate, 'yyyy-MM-dd') : null;
       tempQuery.endDate = tempQuery.endDate ? $filter('date')(tempQuery.endDate, 'yyyy-MM-dd') : null;
 
-      ManageSms.smses().get(tempQuery).$promise
+      ManageSmsFactoryFactory.smses().get(tempQuery).$promise
       .then(
         function(data) {
           if (data.success) {

@@ -2,7 +2,7 @@
 
 app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs,
  semester, slots, qService, ToasterTool, Course, Exp, Reservation,
-  StateChainFactory, InputValidator) {
+  StateChainFactory, InputValidatorFactory) {
     var stateChain = StateChainFactory.getStateChain()
     initStateChain()
 
@@ -30,7 +30,7 @@ app.controller('TeacherReservationModalCtrl', function($scope, data, clazzs,
     $scope.labs = [];
     $scope.currentDate = new Date()
 
-    InputValidator.injectToScope($scope)
+    InputValidatorFactory.injectToScope($scope)
 
 
     $scope.clazzChanged = function() {

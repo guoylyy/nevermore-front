@@ -4,7 +4,7 @@
  * 用户相关 api
  */
 angular.module('nevermore')
-  .factory('AccountManage', function($resource, sessionService, $rootScope) {
+  .factory('AccountManageFactory', function($resource, sessionService, $rootScope) {
     var apiUrl = base_Url + "/manage/account"
     return {
       create: function(){

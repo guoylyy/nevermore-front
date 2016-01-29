@@ -1,18 +1,19 @@
+
 ;(function(){
   'use strict';
 
   app.controller('LoginController', LoginController);
 
   LoginController.$inject = ["$scope", "$rootScope", "$state", "sessionService",
-  "tokenFactory", "Semester", "ToasterTool", "$localStorage", "InputValidator",
-  "RoleFactory", "errorHandlerFactory", "httpResponseFactory"]
+  "TokenFactory", "SemesterFactory", "ToasterTool", "$localStorage", "InputValidatorFactory",
+  "RoleFactory", "ErrorHandlerFactory", "HttpResponseFactory"]
 
   function LoginController($scope, $rootScope, $state, sessionService,
-    tokenFactory, Semester, ToasterTool, $localStorage, InputValidator,
-    RoleFactory, errorHandlerFactory, httpResponseFactory){
+    TokenFactory, SemesterFactory, ToasterTool, $localStorage, InputValidatorFactory,
+    RoleFactory, ErrorHandlerFactory, HttpResponseFactory){
     var currentUser = sessionService.getCurrentUser()
     var token = $localStorage.token
-    var errorHandler = errorHandlerFactory.handle
+    var errorHandler = ErrorHandlerFactory.handle
     initEnvironment()
 
     function initEnvironment(){
@@ -22,7 +23,7 @@
             .catch(autoLoginFail)
         }
 
-        InputValidator.injectToScope($scope)
+        InputValidatorFactory.injectToScope($scope)
 
         $scope.loginName = ""
         $scope.loginPassword = ""
@@ -36,7 +37,7 @@
     }
 
     function confirmToken(userName, token){
-        return tokenFactory.isValid(userName, token).get().$promise
+        return TokenFactory.isValid(userName, token).get().$promise
         .then(function(data){
             if(data.success){
                 return true
@@ -70,7 +71,7 @@
         var name = $scope.loginName
         var password = $scope.loginPassword
 
-        tokenFactory.login({
+        TokenFactory.login({
             'X-Username': name,
             'X-Password': encryptPassword(password, name)
         }).post({}, loginSuccess, loginError);
@@ -102,11 +103,11 @@
     }
 
     function getSemester(){
-        Semester.current().get()
+        SemesterFactory.current().get()
         .$promise
         .then(function(response){
-            if(httpResponseFactory.isResponseSuccess(response)){
-                var data = httpResponseFactory.getResponseData(response)
+            if(HttpResponseFactory.isResponseSuccess(response)){
+                var data = HttpResponseFactory.getResponseData(response)
                 sessionService.saveCurrentSemester(data)
             }else{
                 errorHandler(response)

@@ -1,9 +1,9 @@
 ;void function(){
 
 	angular.module("nevermore")
-		.factory("InputValidator", InputValidator)
+		.factory("InputValidatorFactory", InputValidatorFactory)
 
-	function InputValidator(){
+	function InputValidatorFactory(){
 		return {
 			injectToScope: injectToScope,
 		}

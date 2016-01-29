@@ -2,13 +2,13 @@
 	angular.module("nevermore")
 			.controller("ReservationController", ReservationController)
 
-	ReservationController.$inject = ["$scope", "reservationFactory", "ngDialog",
-		"httpResponseFactory", "ToasterTool", "generalService", "errorHandlerFactory"]
+	ReservationController.$inject = ["$scope", "ReservationFactory", "ngDialog",
+		"HttpResponseFactory", "ToasterTool", "generalService", "ErrorHandlerFactory"]
 
-	function ReservationController($scope, reservationFactory, ngDialog,
-		httpResponseFactory, ToasterTool, generalService, errorHandlerFactory){
+	function ReservationController($scope, ReservationFactory, ngDialog,
+		HttpResponseFactory, ToasterTool, generalService, ErrorHandlerFactory){
 
-		var errorHandler = errorHandlerFactory.handle
+		var errorHandler = ErrorHandlerFactory.handle
 
 		$scope.reservationInWeekList = []
 		$scope.reservationOutWeekList = []
@@ -26,11 +26,11 @@
 		getReservationOutWeek()
 
 		function getReservationsInWeek(){
-			reservationFactory.myReservationsInWeek().get()
+			ReservationFactory.myReservationsInWeek().get()
 			.$promise
 			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
-					var data = httpResponseFactory.getResponseData(response)
+				if(HttpResponseFactory.isResponseSuccess(response)){
+					var data = HttpResponseFactory.getResponseData(response)
 					angular.copy(data, $scope.reservationInWeekList)
 				}else{
 					errorHandler(response)
@@ -40,16 +40,16 @@
 		}
 
 		function getReservationOutWeek(){
-			reservationFactory.myReservationsOutWeek().get({
+			ReservationFactory.myReservationsOutWeek().get({
 				pageNum: $scope.paginator.page,
 				pageSize: $scope.paginator.itemsPerPage,
 			})
 			.$promise
 			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
-					var data = httpResponseFactory.getResponseData(response)
+				if(HttpResponseFactory.isResponseSuccess(response)){
+					var data = HttpResponseFactory.getResponseData(response)
 					angular.copy(data, $scope.reservationOutWeekList)
-					var paginator = httpResponseFactory.getResponsePaginator(response)
+					var paginator = HttpResponseFactory.getResponsePaginator(response)
 					angular.copy(paginator, $scope.paginator)
 				}else{
 					errorHandler(response)
@@ -59,12 +59,12 @@
 		}
 
 		function cancelReservation(reservationID){
-			reservationFactory.reservation().delete({
+			ReservationFactory.reservation().delete({
 				id: reservationID,
 			})
 			.$promise
 			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
+				if(HttpResponseFactory.isResponseSuccess(response)){
 					ToasterTool.success("取消预约成功")
 					getReservationsInWeek()
 					getReservationOutWeek()
@@ -83,7 +83,7 @@
 				"closeByEscape": true,
 				"resolve": {
 					data: function(){
-						return reservationFactory.reservation().get({
+						return ReservationFactory.reservation().get({
 							id: reservation.id
 						}).$promise;
 					}
