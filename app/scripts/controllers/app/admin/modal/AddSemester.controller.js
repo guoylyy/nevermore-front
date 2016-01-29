@@ -1,4 +1,4 @@
-app.controller("AddSemesterCtrl", ["$scope", "SemesterFactory", "DateTool",
+app.controller("AddSemesterController", ["$scope", "SemesterFactory", "DateTool",
 function($scope, SemesterFactory, DateTool){
 	var DEFAULT_ACCOUNT = {
 		title: "",

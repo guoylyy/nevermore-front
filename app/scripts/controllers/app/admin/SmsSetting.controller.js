@@ -1,5 +1,5 @@
 void function() {
-  app.controller("ManageSmsCtrl", ['$scope', '$filter', '$timeout', 'ManageSmsFactoryFactory', 'ToasterTool', 'ngDialog', 'AlertTool',
+  app.controller("SmsSettingController", ['$scope', '$filter', '$timeout', 'ManageSmsFactoryFactory', 'ToasterTool', 'ngDialog', 'AlertTool',
   function($scope, $filter, $timeout, ManageSmsFactoryFactory, ToasterTool, ngDialog, AlertTool){
     // 页面数据结构
     $scope.smsCtrl = {
@@ -80,7 +80,7 @@ void function() {
     $scope.createSmsConfig = function() {
       var dialog = ngDialog.open({
         template: 'tpl/app/admin/modal/edit-sms-config.html',
-        controller: 'SmsConfigEditCtrl',
+        controller: 'ConfigSmsSettingController',
         className: 'nevermore-dialog nevermore-dialog-md',
         closeByDocument: true,
         closeByEscape: true,
@@ -99,7 +99,7 @@ void function() {
     $scope.editSmsScheduler = function(config) {
       var dialog = ngDialog.open({
         template: 'tpl/app/admin/modal/edit-sms-config.html',
-        controller: 'SmsConfigEditCtrl',
+        controller: 'ConfigSmsSettingController',
         className: 'nevermore-dialog nevermore-dialog-md',
         closeByDocument: true,
         closeByEscape: true,

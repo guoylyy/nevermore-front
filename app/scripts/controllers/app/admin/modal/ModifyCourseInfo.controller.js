@@ -1,4 +1,4 @@
-app.controller("RichModifyCourseCtrl", ["$scope", "data", "CourseManageFactory", "ManagementService", "AlertTool",
+app.controller("ModifyCourseInfoController", ["$scope", "data", "CourseManageFactory", "ManagementService", "AlertTool",
 	function($scope, data, CourseManageFactory, ManagementService, AlertTool) {
 
 		var originResource = data,

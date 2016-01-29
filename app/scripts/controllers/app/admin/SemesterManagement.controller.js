@@ -1,4 +1,4 @@
-app.controller("SemesterManagementCtrl", ["$scope", "SemesterFactory", "generalService",
+app.controller("SemesterManagementController", ["$scope", "SemesterFactory", "generalService",
 	"ToasterTool", "ManagementService", "AlertTool",
 function($scope, SemesterFactory, generalService, ToasterTool, ManagementService, AlertTool){
 	$scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
@@ -9,7 +9,7 @@ function($scope, SemesterFactory, generalService, ToasterTool, ManagementService
 	loadResources()
 
 	function loadResources(){
-		ManagementService.loadResources(Semester, {
+		ManagementService.loadResources(SemesterFactory, {
 			pageSize: generalService.pageSize(),
 			pageNum: $scope.resources.paginator.page
 		}).then(loadSuccess, loadFail)
@@ -77,7 +77,7 @@ function($scope, SemesterFactory, generalService, ToasterTool, ManagementService
 
 	function addResource(){
 		var templateUrl = "tpl/app/admin/modal/add-semester.html"
-		var controller = "AddSemesterCtrl"
+		var controller = "AddSemesterController"
 		var addDialog = new ManagementService.AddDialog()
 		addDialog.setCloseListener(onAdd)
 		addDialog.open(templateUrl, controller)

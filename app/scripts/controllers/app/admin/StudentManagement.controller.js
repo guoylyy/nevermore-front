@@ -1,4 +1,4 @@
-app.controller("StudentAccountCtrl", ["$scope", "AccountManageFactory", "generalService",
+app.controller("StudentManagementController", ["$scope", "AccountManageFactory", "generalService",
 	"ToasterTool", "ManagementService", "AlertTool",
 function($scope, AccountManageFactory, generalService, ToasterTool,
 	 ManagementService, AlertTool){
@@ -62,7 +62,7 @@ function($scope, AccountManageFactory, generalService, ToasterTool,
 	// ~ 添加
 	function addResource(){
 		var templateUrl = "tpl/app/admin/modal/add-student-account.html"
-		var controller = "AddStudentAccountCtrl"
+		var controller = "AddStudentController"
 		var addDialog = new ManagementService.AddDialog()
 		addDialog.setCloseListener(onAdd)
 		addDialog.open(templateUrl, controller)
@@ -75,7 +75,7 @@ function($scope, AccountManageFactory, generalService, ToasterTool,
 	// ~ 修改信息
 	function modifyResource(resource){
 		var templateUrl = "tpl/app/admin/modal/modify-student-account.html"
-		var controller = "ModifyStudentAccountCtrl"
+		var controller = "ModifyStudentController"
 		var modifyDialog = new ManagementService.ModifyDialog()
 		modifyDialog.setCloseListener(onModify, onDelete)
 		modifyDialog.open(resource, templateUrl, controller, {})
@@ -92,7 +92,7 @@ function($scope, AccountManageFactory, generalService, ToasterTool,
 	// ~ 修改密码
 	function modifyPassword(resource){
 		var templateUrl = "tpl/app/admin/modal/modify-student-password.html"
-		var controller = "ModifyStudentAccountCtrl"
+		var controller = "ModifyStudentController"
 		var modifyDialog = new ManagementService.ModifyDialog()
 		modifyDialog.setCloseListener(onModifyPassword)
 		modifyDialog.open(resource, templateUrl, controller, {})

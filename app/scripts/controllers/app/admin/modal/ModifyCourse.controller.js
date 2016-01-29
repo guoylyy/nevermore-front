@@ -1,6 +1,6 @@
-app.controller("ModifyLabCtrl", ["$scope", "data", "LabManageFactory", "ManagementService",
-  "AlertTool", "ToasterTool",
-    function($scope, data, LabManageFactory, ManagementService, AlertTool, ToasterTool) {
+app.controller("ModifyCourseController", ["$scope", "data", "CourseManageFactory", "ManagementService", "AlertTool",
+    "ToasterTool",
+    function($scope, data, CourseManageFactory, ManagementService, AlertTool,ToasterTool) {
         $scope.activeList = [{
             "value": "开放",
             "code": true,
@@ -14,12 +14,12 @@ app.controller("ModifyLabCtrl", ["$scope", "data", "LabManageFactory", "Manageme
 
         $scope.resource = copiedResource
         $scope.pending = false
-        $scope.modifyLab = modifyLab
-        $scope.deleteLab = deleteLab
+        $scope.modifyCourse = modifyCourse
+        $scope.deleteCourse = deleteCourse
         $scope.errorTip = ""
 
         // ~ 修改
-        function modifyLab() {
+        function modifyCourse() {
             if (resourceComplete()) {
                 commitModify().$promise
                     .then(removeErrorTip)
@@ -40,7 +40,7 @@ app.controller("ModifyLabCtrl", ["$scope", "data", "LabManageFactory", "Manageme
         function commitModify() {
             $scope.pending = true
             var submitResource = angular.copy(copiedResource);
-            return LabManageFactory.lab().put({
+            return CourseManageFactory.course().put({
                 "id": copiedResource.id,
             }, submitResource)
         }
@@ -50,7 +50,7 @@ app.controller("ModifyLabCtrl", ["$scope", "data", "LabManageFactory", "Manageme
         }
 
         // ~ 删除
-        function deleteLab(resource) {
+        function deleteCourse(resource) {
             AlertTool.deleteConfirm({
                 title: "是否确认删除?"
             }).then(function(isConfirm) {
@@ -58,11 +58,11 @@ app.controller("ModifyLabCtrl", ["$scope", "data", "LabManageFactory", "Manageme
                     AlertTool.close();
                     commitDelete(resource)
                         .then(function(data) {
-                          if(data.success){
-                            $scope.closeThisDialog("delete")
-                          }else{
-                            ToasterTool.error(data.message);
-                          }
+                            if(data.success){
+                              $scope.closeThisDialog("delete")
+                            }else{
+                              ToasterTool.error(data.message);
+                            }
                         })
                         .catch($scope.errorHandler)
                 }
@@ -70,7 +70,7 @@ app.controller("ModifyLabCtrl", ["$scope", "data", "LabManageFactory", "Manageme
         }
 
         function commitDelete(resource) {
-            return LabManageFactory.lab().delete({
+            return CourseManageFactory.course().delete({
                 id: copiedResource.id
             }).$promise
         }

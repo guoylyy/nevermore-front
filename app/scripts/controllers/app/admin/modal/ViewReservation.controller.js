@@ -1,4 +1,4 @@
-app.controller("ViewExperimentAppointmentCtrl", ["$scope", "data",
+app.controller("ViewReservationController", ["$scope", "data",
 function($scope, data){
 	$scope.resource = data.data
 

@@ -9,7 +9,7 @@
  * @param  {[type]} function($scope,       Account,      data, Reservation [description]
  * @return {[type]}                        [description]
  */
-app.controller("RservationVerifyCtrl", ["$scope", "AccountManageFactory", "data", "ReservationManageFactory", "AlertTool",
+app.controller("VerifyReservationController", ["$scope", "AccountManageFactory", "data", "ReservationManageFactory", "AlertTool",
 function($scope, AccountManageFactory, data, ReservationManageFactory, AlertTool){
 	var originResource = data
 	,	copiedResource = angular.copy(originResource)
