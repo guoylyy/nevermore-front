@@ -1,5 +1,10 @@
 'use strict';
-
+/**
+ * loading 动画加载
+ * 	~ 暂时没有启用
+ * @param  {[type]} 'nevermore' [description]
+ * @return {[type]}             [description]
+ */
 angular.module('nevermore')
   .factory('loadingInterceptor', function loadingHttpInterceptor($q, $timeout) {
     return {
