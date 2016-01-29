@@ -6,14 +6,10 @@ app.controller('AppIndexController', ['$scope', '$state', '$rootScope', 'RoleFac
   transitStateByRole($scope.currentUser.roles);
 
   function transitStateByRole(role){
-    if(RoleFactory.isAdmin(role)){
-        $state.go('app.admin-account');
-    }else if(RoleFactory.isTeacher(role)){
-        $state.go('app.reservation');
-    }else if(RoleFactory.isStudent(role)){
-        $state.go('app.reservation');
+    if($scope.currentUser == null || $scope.currentUser == undefined){
+      $state.go('portal.login');
     }else{
-        $state.go('portal.login');
+      $state.go('app.calendar');
     }
   }
 
