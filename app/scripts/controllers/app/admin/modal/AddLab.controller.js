@@ -35,6 +35,7 @@
         function commitLab() {
             $scope.adding = true
             var postResource = angular.copy($scope.resource)
+            postResource.active = true;
             return LabManageFactory.create().post(postResource)
         }
 

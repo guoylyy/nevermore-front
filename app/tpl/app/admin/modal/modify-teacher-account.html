@@ -20,18 +20,37 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="mobilePhone" class="col-sm-3 control-label">手机号码</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="mobilePhone" ng-model = "resource.mobile">
-      </div>
-    </div>
-    <div class="form-group">
       <label for="gender" class="col-sm-3 control-label">性别*</label>
       <div class="col-sm-9">
         <select class="form-control" id = "gender" ng-model="resource.gender.code" ng-options="gender.code as gender.value for gender in genderList" required></select>
       </div>
     </div>
-    
+    <div class="form-group">
+      <label for="mobilePhone" class="col-sm-3 control-label">手机号码</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="mobilePhone" ng-model = "resource.mobile">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mobilePhone" class="col-sm-3 control-label">部门</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="mobilePhone" ng-model = "resource.department" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="mobilePhone" class="col-sm-3 control-label">职位</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="mobilePhone" ng-model = "resource.title" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="mobilePhone" class="col-sm-3 control-label">备注</label>
+      <div class="col-sm-9">
+        <textarea type="text" class="form-control" id="mobilePhone" ng-model = "resource.remark" />
+      </div>
+    </div>
+
 	<div class = "nm-dialog-line"></div>
 	<div class = "clearfix m-t">
       <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
