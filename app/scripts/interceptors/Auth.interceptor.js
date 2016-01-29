@@ -1,5 +1,10 @@
 'use strict';
-
+/**
+ * 登录的检测，修改完毕后可以使用
+ * 	~ 目前是还没有启用的
+ * @param  {[type]} 'nevermore' [description]
+ * @return {[type]}             [description]
+ */
 angular.module('nevermore')
   .factory('authInterceptor', function loadingHttpInterceptor($q, $timeout,
     $rootScope, $sessionStorage, $localStorage, $location) {

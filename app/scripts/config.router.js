@@ -27,8 +27,9 @@ angular.module('nevermore')
                   'styles/portal.css',
                   'scripts/controllers/portal/portal.js',
                   "scripts/factories/Token.factory.js",
+                  'scripts/directives/portal/nmPortalHeader.directive.js',
+                  'scripts/directives/portal/nmPortalFooter.directive.js',
                   "scripts/factories/InputValidator.factory.js",
-                  "scripts/services/toaster-tool.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
                   "scripts/factories/ErrorHandler.factory.js",
                   "scripts/factories/Role.factory.js",
@@ -44,8 +45,6 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/portal/index.controller.js',
-                  'scripts/directives/portal/portal-header.js',
-                  'scripts/directives/portal/portal-footer.js'
                 ]);
               }]
             }
@@ -58,9 +57,6 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/portal/login.controller.js',
-                  'scripts/directives/portal/portal-footer.js',
-                  'scripts/directives/portal/portal-header.js',
-                  "scripts/services/session-service.js",
                   "scripts/factories/refine/Semester.factory.js",
                   "scripts/factories/Role.factory.js",
                 ]);
@@ -75,15 +71,12 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/portal/calendar.js',
-                  'scripts/directives/portal/portal-footer.js',
-                  'scripts/directives/portal/portal-header.js',
                   'lib/jquery/fullcalendar/fullcalendar.css',
                   'lib/jquery/fullcalendar/theme.css',
                   'lib/jquery/jquery-ui-1.10.3.custom.min.js',
                   'lib/libs/moment.min.js',
                   'lib/jquery/fullcalendar/fullcalendar.min.js',
-                  'ui.calendar',
-                  'scripts/controllers/app/app-calendar.js'
+                  'ui.calendar'
                 ]);
               }]
             }
@@ -99,11 +92,10 @@ angular.module('nevermore')
                 // $httpProvider.interceptors.push('loadingInterceptor');
                 return $ocLazyLoad.load([
                   'scripts/controllers/app.js',
-                  'scripts/directives/app/app-header.js',
+                  'scripts/directives/app/nmAppHeader.directive.js',
                   'styles/app.css',
                   'scripts/directives/app/nevermore-empty-panel.js',
                   "scripts/factories/Role.factory.js",
-                  "scripts/services/toaster-tool.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
                   "scripts/factories/ErrorHandler.factory.js",
                   "scripts/controllers/app/modal/view-picture.js",
@@ -146,8 +138,6 @@ angular.module('nevermore')
                   'scripts/controllers/app/admin/modal/reservation-view.js',
                   "scripts/factories/refine/Reservation.factory.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
-                  "scripts/services/toaster-tool.js",
-                  "scripts/services/general-service.js",
                   "ngDialog",
                 ]);
               }]
@@ -183,7 +173,6 @@ angular.module('nevermore')
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/teacher/all-class.controller.js",
                   "scripts/factories/refine/Clazz.factory.js",
-                  "scripts/services/toaster-tool.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
                 ])
               }]
@@ -204,7 +193,6 @@ angular.module('nevermore')
                   "scripts/factories/ErrorHandler.factory.js",
                   "scripts/factories/refine/Clazz.factory.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
-                  "scripts/services/toaster-tool.js",
                 ])
               }],
               clazz: function($resource, $stateParams, $localStorage){
@@ -241,7 +229,6 @@ angular.module('nevermore')
                   "scripts/factories/refine/Clazz.factory.js",
                   "scripts/controllers/app/teacher/main-page.controller.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
-                  "scripts/services/toaster-tool.js",
                   "scripts/services/app/admin/management-service.js",
                   "scripts/controllers/app/teacher/modal/modify-main-page.controller.js",
                 ])
@@ -741,8 +728,6 @@ angular.module('nevermore')
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/services/general-service.js",
-                  "scripts/services/toaster-tool.js",
                   "scripts/directives/app/search-action-bar.js",
                   "scripts/services/app/admin/management-service.js",
                   "ngDialog",
@@ -790,8 +775,6 @@ angular.module('nevermore')
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/services/general-service.js",
-                  "scripts/services/toaster-tool.js",
                   "scripts/services/app/admin/management-service.js",
                   "ngDialog",
                 ])
@@ -862,9 +845,6 @@ angular.module('nevermore')
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/services/general-service.js",
-                  "scripts/services/toaster-tool.js",
-                  "scripts/services/session-service.js",
                   "scripts/directives/app/nm-datepicker.js",
                   "scripts/services/app/admin/management-service.js",
                   "ngDialog",
@@ -909,9 +889,6 @@ angular.module('nevermore')
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/services/general-service.js",
-                  "scripts/services/toaster-tool.js",
-                  "scripts/services/session-service.js",
                   "scripts/services/app/admin/management-service.js",
                   "ngDialog",
                 ])
@@ -941,9 +918,6 @@ angular.module('nevermore')
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/services/general-service.js",
-                  "scripts/services/toaster-tool.js",
-                  "scripts/services/session-service.js",
                   "ngDialog",
                 ])
               }]
@@ -957,7 +931,6 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/admin/SmsSetting.controller.js",
-                  'scripts/factories/ManageSms.factory.js',
                   'scripts/controllers/app/admin/modal/ConfigSmsSetting.controller.js',
                   'ngDialog',
                   'nmDatepickerRange'

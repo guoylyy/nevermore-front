@@ -7,12 +7,12 @@
  * # labHeader
  */
 angular.module('nevermore')
-  .directive('portalFooter', function () {
+  .directive('nmPortalFooter', function () {
     return {
       templateUrl: 'tpl/portal/block/footer.html',
       restrict: 'E',
       controller: function ($scope, $location) {
-        
+
       }
     };
   });
