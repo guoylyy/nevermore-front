@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('CalendarController', ['$scope', 'ResTool',  'ToasterTool','AlertTool',
+app.controller('PortalCalendarController', ['$scope', 'ResTool',  'ToasterTool','AlertTool',
   'sessionService', 'generalService', 'ReservationFactory', 'uiCalendarConfig', 'DateTool',
   function($scope, ResTool,  ToasterTool, AlertTool, sessionService, generalService,
      ReservationFactory, uiCalendarConfig, DateTool) {
