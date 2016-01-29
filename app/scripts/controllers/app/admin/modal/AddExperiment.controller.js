@@ -1,19 +1,20 @@
-app.controller("AddStudentAccountCtrl", ["$scope", "AccountManageFactory", "ManagementService",
-    function($scope, AccountManageFactory, ManagementService) {
-        $scope.genderList = [{
-            "value": "男",
-            "code": "MALE",
+app.controller("AddExperimentController", ["$scope", "ExperimentManageFactory", "ManagementService",
+    function($scope, ExperimentManageFactory, ManagementService) {
+        $scope.activeList = [{
+            "value": "开放",
+            "code": true,
         }, {
-            "value": "女",
-            "code": "FEMALE",
+            "value": "关闭",
+            "code": false,
         }, ];
 
-        $scope.addStudent = addStudent
+        $scope.addExperiment = addExperiment
+
         $scope.adding = false
 
-        function addStudent() {
-            if (accountComplete()) {
-                commitAccount().$promise
+        function addExperiment() {
+            if (resourceComplete()) {
+                commitExperiment().$promise
                     .then(removeErrorTip)
                     .then(resourceValid)
                     .then(function(data) {
@@ -27,16 +28,14 @@ app.controller("AddStudentAccountCtrl", ["$scope", "AccountManageFactory", "Mana
             }
         }
 
-        function accountComplete() {
+        function resourceComplete() {
             return true;
         }
 
-        function commitAccount() {
+        function commitExperiment() {
             $scope.adding = true
             var postResource = angular.copy($scope.resource)
-            postResource.role = "STUDENT"
-            postResource.password = md5(postResource.password)
-            return AccountManageFactory.create().post(postResource)
+            return ExperimentManageFactory.create().post(postResource)
         }
 
         function removeErrorTip(data) {
@@ -48,7 +47,7 @@ app.controller("AddStudentAccountCtrl", ["$scope", "AccountManageFactory", "Mana
             if (data.success) {
                 return data
             } else {
-                throw data
+                throw new Error(data)
             }
         }
 
@@ -60,9 +59,10 @@ app.controller("AddStudentAccountCtrl", ["$scope", "AccountManageFactory", "Mana
 
         function getErrorMessage(error) {
             if (typeof error === "object") {
-                return error.message;
+                return error.errorCode || error.toString()
+            } else {
+                return error.toString()
             }
-            return error;
         }
 
         function showErrorTip(error) {

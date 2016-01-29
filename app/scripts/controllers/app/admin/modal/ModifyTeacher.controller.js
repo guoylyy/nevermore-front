@@ -1,4 +1,4 @@
-app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManageFactory",
+app.controller("ModifyTeacherController", ["$scope", "data", "AccountManageFactory",
     "ManagementService", "AlertTool", "ToasterTool",
     function($scope, data, AccountManageFactory, ManagementService, AlertTool, ToasterTool) {
         $scope.genderList = [{
@@ -14,19 +14,19 @@ app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManageFact
 
         $scope.resource = copiedResource
         $scope.pending = false
-        $scope.modifyStudent = modifyStudent
-        $scope.deleteStudent = deleteStudent
-        $scope.modifyStudentPassword = modifyStudentPassword
+        $scope.modifyTeacher = modifyTeacher
+        $scope.deleteTeacher = deleteTeacher
+        $scope.modifyTeacherPassword = modifyTeacherPassword
         $scope.errorTip = ""
 
         // ~ 修改
-        function modifyStudent() {
+        function modifyTeacher() {
             if (resourceComplete()) {
                 commitModify().$promise
                     .then(removeErrorTip)
                     .then(updateLocalResource)
                     .then(function() {
-                          $scope.closeThisDialog("modify")
+                        $scope.closeThisDialog("modify")
                     })
                     .catch(errorHandler)
             } else {
@@ -49,7 +49,7 @@ app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManageFact
         }
 
         // ~ 删除
-        function deleteStudent(resource) {
+        function deleteTeacher(resource) {
             AlertTool.deleteConfirm({
                 title: "是否确认删除?"
             }).then(function(isConfirm) {
@@ -74,17 +74,13 @@ app.controller("ModifyStudentAccountCtrl", ["$scope", "data", "AccountManageFact
         }
 
         // ~ 修改密码
-        function modifyStudentPassword(resource) {
+        function modifyTeacherPassword(resource) {
             if (resourceComplete()) {
                 commitModifyPassword().$promise
                     .then(removeErrorTip)
                     .then(updateLocalResource)
-                    .then(function(data) {
-                        if(data.success){
-                          $scope.closeThisDialog("modify")
-                        }else{
-                          ToasterTool.error(data.message)
-                        }
+                    .then(function() {
+                        $scope.closeThisDialog("modify")
                     })
                     .catch(errorHandler)
             } else {

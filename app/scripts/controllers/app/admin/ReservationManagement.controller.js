@@ -1,4 +1,4 @@
-app.controller("RservationAppointmentCtrl", ["$scope", "$stateParams", "ReservationManageFactory",
+app.controller("ReservationManagementController", ["$scope", "$stateParams", "ReservationManageFactory",
 	"sessionService", "generalService", "ToasterTool", "ngDialog", "ManagementService", "AlertTool",
 function($scope, $stateParams, ReservationManageFactory, sessionService, generalService,
 	ToasterTool, ngDialog, ManagementService, AlertTool){
@@ -66,7 +66,7 @@ function($scope, $stateParams, ReservationManageFactory, sessionService, general
 	function verifyResource(resource){
 		var dialog = ngDialog.open({
 			"template": "tpl/app/admin/modal/verify-experiment-appointment.html",
-			"controller": "RservationVerifyCtrl",
+			"controller": "VerifyReservationController",
 			"closeByDocument": true,
 			"closeByEscape": true,
 			"resolve": {
@@ -90,7 +90,7 @@ function($scope, $stateParams, ReservationManageFactory, sessionService, general
 	function viewResource(resource){
 		var dialog = ngDialog.open({
 			"template": "tpl/app/admin/modal/view-experiment-appointment.html",
-			"controller": "ViewExperimentAppointmentCtrl",
+			"controller": "ViewReservationController",
 			"closeByDocument": true,
 			"closeByEscape": true,
 			"resolve": {

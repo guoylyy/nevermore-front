@@ -1,20 +1,19 @@
-app.controller("AddCourseCtrl", ["$scope", "CourseManageFactory", "ManagementService",
-    function($scope, CourseManageFactory, ManagementService) {
-        $scope.activeList = [{
-            "value": "开放",
-            "code": true,
+app.controller("AddStudentController", ["$scope", "AccountManageFactory", "ManagementService",
+    function($scope, AccountManageFactory, ManagementService) {
+        $scope.genderList = [{
+            "value": "男",
+            "code": "MALE",
         }, {
-            "value": "关闭",
-            "code": false,
+            "value": "女",
+            "code": "FEMALE",
         }, ];
 
-        $scope.addCourse = addCourse
-
+        $scope.addStudent = addStudent
         $scope.adding = false
 
-        function addCourse() {
-            if (resourceComplete()) {
-                commitCourse().$promise
+        function addStudent() {
+            if (accountComplete()) {
+                commitAccount().$promise
                     .then(removeErrorTip)
                     .then(resourceValid)
                     .then(function(data) {
@@ -28,14 +27,16 @@ app.controller("AddCourseCtrl", ["$scope", "CourseManageFactory", "ManagementSer
             }
         }
 
-        function resourceComplete() {
+        function accountComplete() {
             return true;
         }
 
-        function commitCourse() {
+        function commitAccount() {
             $scope.adding = true
             var postResource = angular.copy($scope.resource)
-            return CourseManageFactory.create().post(postResource)
+            postResource.role = "STUDENT"
+            postResource.password = md5(postResource.password)
+            return AccountManageFactory.create().post(postResource)
         }
 
         function removeErrorTip(data) {
@@ -47,7 +48,7 @@ app.controller("AddCourseCtrl", ["$scope", "CourseManageFactory", "ManagementSer
             if (data.success) {
                 return data
             } else {
-                throw new Error(data)
+                throw data
             }
         }
 
@@ -59,10 +60,9 @@ app.controller("AddCourseCtrl", ["$scope", "CourseManageFactory", "ManagementSer
 
         function getErrorMessage(error) {
             if (typeof error === "object") {
-                return error.errorCode || error.toString()
-            } else {
-                return error.toString()
+                return error.message;
             }
+            return error;
         }
 
         function showErrorTip(error) {

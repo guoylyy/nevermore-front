@@ -1,4 +1,4 @@
-app.controller("AddClassCtrl", ["$scope", "ClazzManageFactory", "semester", "teacherResource", "courseResource",
+app.controller("AddClassController", ["$scope", "ClazzManageFactory", "semester", "teacherResource", "courseResource",
 function($scope, ClazzManageFactory, semester, teacherResource, courseResource){
 	var DEFAULT_RESOURCE = {
 		number: "",

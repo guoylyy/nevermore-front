@@ -9,7 +9,7 @@ angular.module('nevermore')
     return {
       create: function(){
         return $resource(apiUrl, {}, {
-          'post': {w
+          'post': {
             method: 'POST',
             headers: sessionService.headers()
           }

@@ -128,6 +128,7 @@ angular.module('nevermore')
           "controller": controller,
           "closeByDocument": true,
           "closeByEscape": true,
+          "className": 'nm-dialog',
           "resolve": {
             "data": function(){
               return resource
@@ -144,6 +145,7 @@ angular.module('nevermore')
           "controller": controller,
           "closeByDocument": true,
           "closeByEscape": true,
+          "className": 'nm-dialog',
           "resolve": {},
         }
         angular.extend(config.resolve, other)

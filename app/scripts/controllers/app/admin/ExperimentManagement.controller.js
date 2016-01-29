@@ -1,4 +1,4 @@
-app.controller("ExperimentManageCtrl", ["$scope", "ExperimentManageFactory", "generalService",
+app.controller("ExperimentManagementController", ["$scope", "ExperimentManageFactory", "generalService",
     "ToasterTool", "ManagementService", "AlertTool",
     function($scope, ExperimentManageFactory, generalService, ToasterTool, ManagementService, AlertTool) {
 
@@ -61,7 +61,7 @@ app.controller("ExperimentManageCtrl", ["$scope", "ExperimentManageFactory", "ge
         // ~ 添加
         function addResource() {
             var templateUrl = "tpl/app/admin/modal/add-experiment.html"
-            var controller = "AddExperimentCtrl"
+            var controller = "AddExperimentController"
             var addDialog = new ManagementService.AddDialog()
             addDialog.setCloseListener(onAdd)
             addDialog.open(templateUrl, controller)
@@ -75,7 +75,7 @@ app.controller("ExperimentManageCtrl", ["$scope", "ExperimentManageFactory", "ge
         // ~ 修改信息
         function modifyResource(resource) {
             var templateUrl = "tpl/app/admin/modal/modify-experiment.html"
-            var controller = "ModifyExperimentCtrl"
+            var controller = "ModifyExperimentController"
             var modifyDialog = new ManagementService.ModifyDialog()
             modifyDialog.setCloseListener(onModify, onDelete)
             modifyDialog.open(resource, templateUrl, controller, {})
@@ -94,7 +94,7 @@ app.controller("ExperimentManageCtrl", ["$scope", "ExperimentManageFactory", "ge
         // ~添加实验室
         function addLab(resource){
       		var templateUrl = "tpl/app/admin/modal/add-lab-experiment.html"
-      		var controller = "ExperimentAddLabCtrl"
+      		var controller = "ConfigExperimentLabController"
       		var modifyDialog = new ManagementService.ModifyDialog()
       		modifyDialog.setCloseListener(onModify, onCancel)
       		modifyDialog.open(resource, templateUrl, controller, {})

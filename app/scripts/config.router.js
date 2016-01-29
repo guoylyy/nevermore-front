@@ -143,7 +143,7 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/reservation.controller.js',
-                  'scripts/controllers/app/administrator/modal/reservation-view.js',
+                  'scripts/controllers/app/admin/modal/reservation-view.js',
                   "scripts/factories/refine/Reservation.factory.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
                   "scripts/services/toaster-tool.js",
@@ -268,7 +268,7 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/administrator/modal/reservation-view.js",
+                  "scripts/controllers/app/admin/modal/reservation-view.js",
                   "scripts/controllers/app/teacher/appointment.controller.js",
                   "scripts/factories/exp-factory.js",
                   "scripts/factories/refine/Experiment.factory.js",
@@ -753,13 +753,13 @@ angular.module('nevermore')
           .state('app.admin-account.teacher',{ //教师列表
             url: '^/app/admin/account/teacher',
             templateUrl:'tpl/app/admin/teacher-account.html',
-            controller: "TeacherAccountCtrl",
+            controller: "TeacherManagementController",
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/administrator/teacher-management.js",
-                  "scripts/controllers/app/administrator/modal/teacher-add.js",
-                  "scripts/controllers/app/administrator/modal/teacher-modify.js",
+                  "scripts/controllers/app/admin/TeacherManagement.controller.js",
+                  "scripts/controllers/app/admin/modal/AddTeacher.controller.js",
+                  "scripts/controllers/app/admin/modal/ModifyTeacher.controller.js",
                 ])
               }]
             }
@@ -767,13 +767,13 @@ angular.module('nevermore')
           .state('app.admin-account.student',{ //学生列表
             url: '^/app/admin/account/student',
             templateUrl:'tpl/app/admin/student-account.html',
-            controller: "StudentAccountCtrl",
+            controller: "StudentManagementController",
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/administrator/student-management.js",
-                  "scripts/controllers/app/administrator/modal/student-add.js",
-                  "scripts/controllers/app/administrator/modal/student-modify.js",
+                  "scripts/controllers/app/admin/StudentManagement.controller.js",
+                  "scripts/controllers/app/admin/modal/AddStudent.controller.js",
+                  "scripts/controllers/app/admin/modal/ModifyStudent.controller.js",
                 ])
               }]
             }
@@ -801,13 +801,13 @@ angular.module('nevermore')
           .state('app.admin-resource.lab',{ //实验室
             url: '^/app/admin/resource/lab',
             templateUrl: 'tpl/app/admin/experiment-lab.html',
-            controller: "LabManageCtrl",
+            controller: "LabManagementController",
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/administrator/lab-management.js",
-                  "scripts/controllers/app/administrator/modal/lab-add.js",
-                  "scripts/controllers/app/administrator/modal/lab-modify.js",
+                  "scripts/controllers/app/admin/LabManagement.controller.js",
+                  "scripts/controllers/app/admin/modal/AddLab.controller.js",
+                  "scripts/controllers/app/admin/modal/ModifyLab.controller.js",
                   "scripts/directives/app/search-action-bar.js"
                 ])
               }]
@@ -816,14 +816,14 @@ angular.module('nevermore')
           .state('app.admin-resource.experiment',{ //实验
             url: '^/app/admin/resource/experiment',
             templateUrl: 'tpl/app/admin/experiment.html',
-            controller: "ExperimentManageCtrl",
+            controller: "ExperimentManagementController",
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/administrator/experiment-management.js",
-                  "scripts/controllers/app/administrator/modal/experiment-add.js",
-                  "scripts/controllers/app/administrator/modal/experiment-modify.js",
-                  "scripts/controllers/app/administrator/modal/experiment-lab-add.js",
+                  "scripts/controllers/app/admin/ExperimentManagement.controller.js",
+                  "scripts/controllers/app/admin/modal/AddExperiment.controller.js",
+                  "scripts/controllers/app/admin/modal/ModifyExperiment.controller.js",
+                  "scripts/controllers/app/admin/modal/ConfigExperimentLab.controller.js",
                   "angularBootstrapNavTree",
                   'scripts/directives/app/nm-configure-list.js',
                   "scripts/directives/app/search-action-bar.js"
@@ -834,17 +834,17 @@ angular.module('nevermore')
           .state('app.admin-resource.course',{ //课程
             url: '^/app/admin/resource/course',
             templateUrl: 'tpl/app/admin/experiment-course.html',
-            controller: "CourseManageCtrl",
+            controller: "CourseManagementController",
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/administrator/course-management.js",
-                  "scripts/controllers/app/administrator/modal/course-add.js",
-                  "scripts/controllers/app/administrator/modal/course-modify.js",
-                  "scripts/controllers/app/administrator/modal/course-experiment-add.js",
+                  "scripts/controllers/app/admin/CourseManagement.controller.js",
+                  "scripts/controllers/app/admin/modal/AddCourse.controller.js",
+                  "scripts/controllers/app/admin/modal/ModifyCourse.controller.js",
+                  "scripts/controllers/app/admin/modal/ConfigCourseExperiment.controller.js",
                   "angularBootstrapNavTree",
                   'scripts/directives/app/nm-configure-list.js',
-                  "scripts/controllers/app/administrator/modal/course-rich-modify.js",
+                  "scripts/controllers/app/admin/modal/ModifyCourseInfo.controller.js",
                   "scripts/directives/app/search-action-bar.js"
                 ])
               }]
@@ -862,7 +862,6 @@ angular.module('nevermore')
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/administrator/semester-class.js",
                   "scripts/services/general-service.js",
                   "scripts/services/toaster-tool.js",
                   "scripts/services/session-service.js",
@@ -876,12 +875,12 @@ angular.module('nevermore')
           .state('app.admin-semester.semester', {
             url: '^/app/admin/semester/semester',
             templateUrl: "tpl/app/admin/semester-management.html",
-            controller: "SemesterManagementCtrl",
+            controller: "SemesterManagementController",
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/administrator/semester-management.js",
-                  "scripts/controllers/app/administrator/modal/semester-add.js"
+                  "scripts/controllers/app/admin/SemesterManagement.controller.js",
+                  "scripts/controllers/app/admin/modal/AddSemester.controller.js"
                 ])
               }]
             }
@@ -889,13 +888,13 @@ angular.module('nevermore')
           .state('app.admin-semester.class', {
             url: '^/app/admin/semester/class',
             templateUrl: "tpl/app/admin/class-management.html",
-            controller: "ClassManagementCtrl",
+            controller: "ClassManagementController",
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/administrator/clazz-management.js",
-                  "scripts/controllers/app/administrator/modal/clazz-add.js",
-                  "scripts/controllers/app/administrator/modal/clazz-modify.js"
+                  "scripts/controllers/app/admin/ClassManagement.controller.js",
+                  "scripts/controllers/app/admin/modal/AddClass.controller.js",
+                  "scripts/controllers/app/admin/modal/ModifyClass.controller.js"
                 ])
               }]
             }
@@ -922,14 +921,13 @@ angular.module('nevermore')
           .state('app.admin-appointment.list',{
             url: "^/app/admin/appointment/:status",
             templateUrl: "tpl/app/admin/experiment-appointment.html",
-            controller: "RservationAppointmentCtrl",
+            controller: "ReservationManagementController",
             resolve: {
               controller: ["$ocLazyLoad", function($ocLazyLoad){
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/administrator/reservation-management.js",
-                  "scripts/controllers/app/administrator/modal/clazz-add.js",
-                  "scripts/controllers/app/administrator/modal/reservation-verify.js",
-                  "scripts/controllers/app/administrator/modal/reservation-view.js",
+                  "scripts/controllers/app/admin/ReservationManagement.controller.js",
+                  "scripts/controllers/app/admin/modal/VerifyReservation.controllers.js",
+                  "scripts/controllers/app/admin/modal/ViewReservation.controller.js",
                 ])
               }]
             }
@@ -954,13 +952,13 @@ angular.module('nevermore')
           .state('app.admin-setting.sms',{ //短信息设置
             url: '^/app/admin/setting/sms',
             templateUrl: "tpl/app/admin/sms-setting.html",
-            controller: 'ManageSmsCtrl',
+            controller: 'SmsSettingController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/administrator/sms-controller.js",
+                  "scripts/controllers/app/admin/SmsSetting.controller.js",
                   'scripts/factories/ManageSms.factory.js',
-                  'scripts/controllers/app/modal/sms-config-edit-modal.js',
+                  'scripts/controllers/app/admin/modal/ConfigSmsSetting.controller.js',
                   'ngDialog',
                   'nmDatepickerRange'
                 ]);

@@ -1,4 +1,4 @@
-;app.controller("AddLabCtrl", ["$scope", "LabManageFactory", "ManagementService",
+;app.controller("AddLabController", ["$scope", "LabManageFactory", "ManagementService",
     function($scope, LabManageFactory, ManagementService) {
         $scope.activeList = [{
             "value": "开放",

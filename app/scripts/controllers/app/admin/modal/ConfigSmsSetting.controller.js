@@ -4,7 +4,7 @@
  * 短信设置模态框
  */
 void function() {
-  app.controller('SmsConfigEditCtrl', ['$scope', 'ngDialog', 'AlertTool', 'ToasterTool', 'ManageSmsFactory',
+  app.controller('ConfigSmsSettingController', ['$scope', 'ngDialog', 'AlertTool', 'ToasterTool', 'ManageSmsFactory',
       function($scope, ngDialog, AlertTool, ToasterTool, ManageSmsFactory) {
         $scope.sms = {
           smsConfig: null,

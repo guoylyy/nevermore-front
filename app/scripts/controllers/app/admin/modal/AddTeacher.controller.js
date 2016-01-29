@@ -1,4 +1,4 @@
-app.controller("AddTeacherAccountCtrl", ["$scope", "AccountManageFactory", "ManagementService",
+app.controller("AddTeacherController", ["$scope", "AccountManageFactory", "ManagementService",
     function($scope, AccountManageFactory, ManagementService) {
         $scope.genderList = [{
             "value": "男",

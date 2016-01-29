@@ -1,4 +1,4 @@
-app.controller("ModifyClassCtrl", ["$scope", "ClazzManageFactory", "data", "semester", "teacherResource", "courseResource",
+app.controller("ModifyClassController", ["$scope", "ClazzManageFactory", "data", "semester", "teacherResource", "courseResource",
 function($scope, ClazzManageFactory, data, semester, teacherResource, courseResource){
 	var teacherList = []
 	,	courseList = []

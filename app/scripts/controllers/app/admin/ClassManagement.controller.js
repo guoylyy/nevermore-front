@@ -1,4 +1,4 @@
-app.controller("ClassManagementCtrl", ["$scope", "ClazzManageFactory", "generalService", "AccountManageFactory",
+app.controller("ClassManagementController", ["$scope", "ClazzManageFactory", "generalService", "AccountManageFactory",
 	"CourseManageFactory", "sessionService", "ToasterTool", "ManagementService", "AlertTool",
 function($scope, ClazzManageFactory, generalService, AccountManageFactory, CourseManageFactory, sessionService,
 	 ToasterTool, ManagementService, AlertTool){
@@ -27,7 +27,7 @@ function($scope, ClazzManageFactory, generalService, AccountManageFactory, Cours
 
 	function modifyResource(resource){
 		var templateUrl = "tpl/app/admin/modal/modify-class.html"
-		var controller = "ModifyClassCtrl"
+		var controller = "ModifyClassController"
 		var modifyDialog = new ManagementService.ModifyDialog()
 		modifyDialog.setCloseListener(onModify, onDelete)
 		modifyDialog.open(resource, templateUrl, controller, {
@@ -78,7 +78,7 @@ function($scope, ClazzManageFactory, generalService, AccountManageFactory, Cours
 
 	function addResource(){
 		var templateUrl = "tpl/app/admin/modal/add-class.html"
-		var controller = "AddClassCtrl"
+		var controller = "AddClassController"
 		var addDialog = new ManagementService.AddDialog()
 		addDialog.setCloseListener(onAdd)
 		addDialog.open(templateUrl, controller, {
