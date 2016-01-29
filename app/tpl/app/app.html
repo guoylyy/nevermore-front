@@ -1,6 +1,6 @@
 
   <div class="app-header navbar">
-    <app-header></app-header>
+    <nm-app-header></nm-app-header>
   </div>
   <!-- menu -->
   <div data-ng-include=" 'tpl/app/blocks/aside.html' " class="app-aside hidden-xs bg-black {{app.settings.asideColor}}">
@@ -15,10 +15,3 @@
     <div class="app-content-body app-content-full fade-in-up ng-scope h-full" ui-view></div>
   </div>
   <!-- /content -->
-
-  <!-- footer -->
-  <!-- <div class="app-footer wrapper b-t bg-app">
-    <span class="pull-right">{{app.version}} <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
-    &copy; 2014 Copyright.
-  </div> -->
-  <!-- / footer -->

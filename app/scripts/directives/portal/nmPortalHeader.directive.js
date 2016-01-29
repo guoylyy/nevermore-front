@@ -7,7 +7,7 @@
  * # labHeader
  */
 angular.module('nevermore')
-  .directive('portalHeader', function () {
+  .directive('nmPortalHeader', function () {
     return {
       templateUrl: 'tpl/portal/block/header.html',
       restrict: 'E',
@@ -15,7 +15,7 @@ angular.module('nevermore')
         $scope.currentUser = sessionService.getCurrentUser();
         $scope.isAutoLogin = $localStorage.isAutoLogin
         $scope.showLoginButton = showLoginButton
-      	
+
         $scope.head_click = function(){
           if ($localStorage.token!=null) {
             if ($localStorage.currentUser.show_role == 'STUDENT') {

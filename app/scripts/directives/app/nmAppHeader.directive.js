@@ -7,7 +7,7 @@
  * # labHeader
  */
 angular.module('nevermore')
-  .directive('appHeader', function () {
+  .directive('nmAppHeader', function () {
     return {
       templateUrl: 'tpl/app/blocks/header.html',
       restrict: 'E',

@@ -57,11 +57,11 @@
 
     function transitStateByRole(role){
         if(RoleFactory.isAdmin(role)){
-            $state.go('app.admin-account');
+            $state.go('app.calendar');
         }else if(RoleFactory.isTeacher(role)){
-            $state.go('app.reservation');
+            $state.go('app.calendar');
         }else if(RoleFactory.isStudent(role)){
-            $state.go('app.reservation');
+            $state.go('app.calendar');
         }else{
             ToasterTool.error('未知错误发生!');
         }
