@@ -1,6 +1,6 @@
-app.controller("ModifyExperimentCtrl", ["$scope", "data", "ExperimentManage",
+app.controller("ModifyExperimentCtrl", ["$scope", "data", "ExperimentManageFactory",
     "ManagementService", "AlertTool","ToasterTool",
-    function($scope, data, ExperimentManage, ManagementService, AlertTool, ToasterTool) {
+    function($scope, data, ExperimentManageFactory, ManagementService, AlertTool, ToasterTool) {
         $scope.activeList = [{
             "value": "开放",
             "code": true,
@@ -40,7 +40,7 @@ app.controller("ModifyExperimentCtrl", ["$scope", "data", "ExperimentManage",
         function commitModify() {
             $scope.pending = true
             var submitResource = angular.copy(copiedResource);
-            return ExperimentManage.experiment().put({
+            return ExperimentManageFactory.experiment().put({
                 "id": copiedResource.id,
             }, submitResource)
         }
@@ -70,7 +70,7 @@ app.controller("ModifyExperimentCtrl", ["$scope", "data", "ExperimentManage",
         }
 
         function commitDelete(resource) {
-            return ExperimentManage.experiment().delete({
+            return ExperimentManageFactory.experiment().delete({
                 id: copiedResource.id
             }).$promise
         }

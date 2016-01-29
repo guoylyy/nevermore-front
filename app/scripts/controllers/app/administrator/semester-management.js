@@ -1,6 +1,6 @@
-app.controller("SemesterManagementCtrl", ["$scope", "Semester", "generalService",
+app.controller("SemesterManagementCtrl", ["$scope", "SemesterFactory", "generalService",
 	"ToasterTool", "ManagementService", "AlertTool",
-function($scope, Semester, generalService, ToasterTool, ManagementService, AlertTool){
+function($scope, SemesterFactory, generalService, ToasterTool, ManagementService, AlertTool){
 	$scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
 	$scope.deleteResource = deleteResource
 	$scope.addResource = addResource
@@ -46,13 +46,13 @@ function($scope, Semester, generalService, ToasterTool, ManagementService, Alert
 	}
 
 	function commitSetCurrent(resource){
-		return Semester.semester().put({
+		return SemesterFactory.semester().put({
 			id:resource.id
 		}).$promise
 	}
 
 	function commitDelete(resource){
-		return Semester.semester().delete({
+		return SemesterFactory.semester().delete({
 			id: resource.id
 		}).$promise
 	}

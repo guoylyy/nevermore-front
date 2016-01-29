@@ -1,7 +1,7 @@
-app.controller("TeacherAccountCtrl", ["$scope", "AccountManage", "generalService",
-    "ToasterTool", "ManagementService", "AlertTool", "AccountManage",
-    function($scope, AccountManage, generalService, ToasterTool,
-      ManagementService, AlertTool, AccountManage) {
+app.controller("TeacherAccountCtrl", ["$scope", "AccountManageFactory", "generalService",
+    "ToasterTool", "ManagementService", "AlertTool",
+    function($scope, AccountManageFactory, generalService, ToasterTool,
+      ManagementService, AlertTool) {
 
         $scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
         $scope.pageChanged = loadResources
@@ -30,7 +30,7 @@ app.controller("TeacherAccountCtrl", ["$scope", "AccountManage", "generalService
         }
 
         function commitSearch(searchWord) {
-            return AccountManage.search().get({
+            return AccountManageFactory.search().get({
                 "keyword": searchWord,
                 "role": "TEACHER"
             })
@@ -46,7 +46,7 @@ app.controller("TeacherAccountCtrl", ["$scope", "AccountManage", "generalService
 
         // ~ 列表
         function loadResources() {
-            ManagementService.loadResources(AccountManage, {
+            ManagementService.loadResources(AccountManageFactory, {
                 role: "teachers",
                 pageSize: generalService.pageSize(),
                 pageNum: $scope.resources.paginator.page

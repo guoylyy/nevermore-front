@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('ProfilePersonCtrl', ['$scope', '$rootScope','Account', 'sessionService', 'ToasterTool', 'ngDialog', 'FileUpload',
-function($scope, $rootScope, Account, sessionService, ToasterTool, ngDialog, FileUpload) {
+app.controller('ProfilePersonCtrl', ['$scope', '$rootScope','AccountFactory', 'sessionService', 'ToasterTool', 'ngDialog', 'FileUploadFactory',
+function($scope, $rootScope, AccountFactory, sessionService, ToasterTool, ngDialog, FileUploadFactory) {
   $scope.personData = {
     currentUser: null,
     editUser: null,
@@ -28,7 +28,7 @@ function($scope, $rootScope, Account, sessionService, ToasterTool, ngDialog, Fil
 
   // 获取个人信息
   function getProfileDate() {
-    Account.profile().get(null).$promise
+    AccountFactory.profile().get(null).$promise
     .then(function success(data) {
       personData.currentUser = data.data;
       personData.editUser = angular.copy(data.data);
@@ -57,7 +57,7 @@ function($scope, $rootScope, Account, sessionService, ToasterTool, ngDialog, Fil
     tempUser.name = personData.editUser.name;
     tempUser.mobile = personData.editUser.mobile;
 
-    Account.profile().put(tempUser).$promise
+    AccountFactory.profile().put(tempUser).$promise
     .then(function success(data) {
       ToasterTool.success("个人信息更新成功");
       getProfileDate();

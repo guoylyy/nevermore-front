@@ -9,8 +9,8 @@
  * @param  {[type]} function($scope,       Account,      data, Reservation [description]
  * @return {[type]}                        [description]
  */
-app.controller("RservationVerifyCtrl", ["$scope", "AccountManage", "data", "ReservationManage", "AlertTool",
-function($scope, AccountManage, data, ReservationManage, AlertTool){
+app.controller("RservationVerifyCtrl", ["$scope", "AccountManageFactory", "data", "ReservationManageFactory", "AlertTool",
+function($scope, AccountManageFactory, data, ReservationManageFactory, AlertTool){
 	var originResource = data
 	,	copiedResource = angular.copy(originResource)
 
@@ -35,7 +35,7 @@ function($scope, AccountManage, data, ReservationManage, AlertTool){
 			$scope.errorTip = "必须选取实验教师"
 			return
 		}
-		ReservationManage.verify().post({
+		ReservationManageFactory.verify().post({
 			id: copiedResource.id,
 			status: "APPROVED",
 			teacherIds: assignedTeacherList,
@@ -53,7 +53,7 @@ function($scope, AccountManage, data, ReservationManage, AlertTool){
 	$scope.rejectAppointment = function(){
 		AlertTool.deleteConfirm({title:'是否确定拒绝',subtitle:'拒绝后将不可恢复'}).then(function(isConfirm) {
 		  if(isConfirm) {
-				ReservationManage.verify().post({
+				ReservationManageFactory.verify().post({
 					id: copiedResource.id,
 					status: "REJECTED",
 					teacherIds: [],
@@ -72,7 +72,7 @@ function($scope, AccountManage, data, ReservationManage, AlertTool){
 
 	}
 
-	AccountManage.all().get({
+	AccountManageFactory.all().get({
 		role: "teachers",
 	}).$promise.then(function(data){
 		var teacherList = []

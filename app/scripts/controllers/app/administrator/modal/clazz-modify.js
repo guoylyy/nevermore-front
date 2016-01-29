@@ -1,5 +1,5 @@
-app.controller("ModifyClassCtrl", ["$scope", "ClazzManage", "data", "semester", "teacherResource", "courseResource",
-function($scope, ClazzManage, data, semester, teacherResource, courseResource){
+app.controller("ModifyClassCtrl", ["$scope", "ClazzManageFactory", "data", "semester", "teacherResource", "courseResource",
+function($scope, ClazzManageFactory, data, semester, teacherResource, courseResource){
 	var teacherList = []
 	,	courseList = []
 
@@ -50,7 +50,7 @@ function($scope, ClazzManage, data, semester, teacherResource, courseResource){
 		submitResource['teacherId'] = submitResource.teacher.id;
 		submitResource['courseId'] = submitResource.course.id;
 		submitResource['semesterId'] = 23;
-		return ClazzManage.clazz().put({
+		return ClazzManageFactory.clazz().put({
 			"id": copiedResource.id,
 		}, submitResource)
 	}
@@ -69,7 +69,7 @@ function($scope, ClazzManage, data, semester, teacherResource, courseResource){
 
 	function commitDelete(){
 		$scope.pending = true
-		return ClazzManage.clazz().delete({
+		return ClazzManageFactory.clazz().delete({
 			"id": copiedResource.id,
 		})
 	}

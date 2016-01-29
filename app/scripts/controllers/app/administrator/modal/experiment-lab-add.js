@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ExperimentAddLabCtrl', ['$scope','LabManage','ExperimentManage','data', function($scope, LabManage, ExperimentManage, data) {
+app.controller('ExperimentAddLabCtrl', ['$scope','LabManageFactory','ExperimentManageFactory','data', function($scope, LabManageFactory, ExperimentManageFactory, data) {
   $scope.all_exp = [
 
   ];
@@ -11,11 +11,11 @@ app.controller('ExperimentAddLabCtrl', ['$scope','LabManage','ExperimentManage',
   var expLabs = [];
 
   function getAllLab(){
-    return LabManage.all().get();
+    return LabManageFactory.all().get();
   }
 
   function getExperimentLab(){
-    ExperimentManage.experiment().get({
+    ExperimentManageFactory.experiment().get({
       "id": data.id
     }).$promise.then(function(data){
       if (data.code == "200") {
@@ -69,7 +69,7 @@ app.controller('ExperimentAddLabCtrl', ['$scope','LabManage','ExperimentManage',
     var params = {
       "labs":labList
     };
-    ExperimentManage.labs().put({
+    ExperimentManageFactory.labs().put({
       "id":data.id
     }, params).$promise.then(function(data){
       if (data.code == "200") {

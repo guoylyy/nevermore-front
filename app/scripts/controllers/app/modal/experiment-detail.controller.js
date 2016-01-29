@@ -3,10 +3,10 @@
 	angular.module("nevermore")
 			.controller("ExperimentDetailController", ExperimentDetailController)
 
-	ExperimentDetailController.$inject = ["$scope", "record", "experiment", "ToasterTool",
+	ExperimentDetailController.$inject = ["$scope", "record", "ExperimentFactory", "ToasterTool",
 									"ngDialog"]
 
-	function ExperimentDetailController($scope, record, experiment, ToasterTool,
+	function ExperimentDetailController($scope, record, ExperimentFactory, ToasterTool,
 								ngDialog){
 
 			$scope.record = record.data;
@@ -22,7 +22,7 @@
 			//根据附件获取附件相关
 			function viewScriptPicture(attach){
 				var attachId = attach.id;
-				experiment.extractPicture().get({
+				ExperimentFactory.extractPicture().get({
 					attachId: attachId
 				}).$promise
 				.then(function(data){

@@ -4,12 +4,12 @@
 			.controller("ModifyMainPageController", ModifyMainPageController)
 
 	ModifyMainPageController.$inject = ["$scope", "data", "ClazzFactory", 
-		"httpResponseFactory", "errorHandlerFactory"]
+		"HttpResponseFactory", "ErrorHandlerFactory"]
 
 	function ModifyMainPageController($scope, data, ClazzFactory, 
-		httpResponseFactory, errorHandlerFactory){
+		HttpResponseFactory, ErrorHandlerFactory){
 
-		var errorHandler = errorHandlerFactory.handle
+		var errorHandler = ErrorHandlerFactory.handle
 		var classID = data.classID
 
 		$scope.content = data.content
@@ -19,7 +19,7 @@
 			//提交
 			updateContent()
 			.then(function(response){
-				if(httpResponseFactory.isResponseSuccess(response)){
+				if(HttpResponseFactory.isResponseSuccess(response)){
 					$scope.closeThisDialog("modify")
 				}else{
 					errorHandler(response)

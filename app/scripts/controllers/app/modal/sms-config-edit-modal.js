@@ -4,8 +4,8 @@
  * 短信设置模态框
  */
 void function() {
-  app.controller('SmsConfigEditCtrl', ['$scope', 'ngDialog', 'AlertTool', 'ToasterTool', 'ManageSms',
-      function($scope, ngDialog, AlertTool, ToasterTool, ManageSms) {
+  app.controller('SmsConfigEditCtrl', ['$scope', 'ngDialog', 'AlertTool', 'ToasterTool', 'ManageSmsFactory',
+      function($scope, ngDialog, AlertTool, ToasterTool, ManageSmsFactory) {
         $scope.sms = {
           smsConfig: null,
           action: null,
@@ -31,7 +31,7 @@ void function() {
 
         // 新建短信设置
         $scope.createSmsConfig = function() {
-          ManageSms.smsScheduler().post(sms.smsConfig).$promise
+          ManageSmsFactory.smsScheduler().post(sms.smsConfig).$promise
           .then (function(data) {
             if (data.success) {
               ToasterTool.success('新建短信发送配置成功。');
@@ -48,7 +48,7 @@ void function() {
 
         // 更新短信设置
         $scope.updateSmsConfig = function() {
-          ManageSms.smsSchedulerId().put({id: sms.smsConfig.id}, sms.smsConfig).$promise
+          ManageSmsFactory.smsSchedulerId().put({id: sms.smsConfig.id}, sms.smsConfig).$promise
           .then (function(data) {
             if (data.success) {
               ToasterTool.success('更新短信发送配置成功。');
