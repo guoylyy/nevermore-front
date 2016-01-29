@@ -35,6 +35,7 @@ app.controller("AddCourseController", ["$scope", "CourseManageFactory", "Managem
         function commitCourse() {
             $scope.adding = true
             var postResource = angular.copy($scope.resource)
+            postResource.active = true;
             return CourseManageFactory.create().post(postResource)
         }
 

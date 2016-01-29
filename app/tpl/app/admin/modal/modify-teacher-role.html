@@ -1,0 +1,29 @@
+<div class="nm-dialog">
+  <div class="nm-dialog-header">
+    <h1 class="header-title" style="margin-top: 5px;">
+      <span>配置教师角色</span>
+    </h1>
+  </div>
+	<div class = "nm-dialog-line"></div>
+
+  <form class="form-horizontal" name="form" novalidate>
+    <div class="form-group">
+      <label for="password" class="col-sm-3 control-label">实验教师</label>
+      <div class="col-sm-9">
+        <input type="checkbox" class="form-control" id="password" ng-model = "resource.newPassword" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="passwordConfirm" class="col-sm-3 control-label">课程教师</label>
+      <div class="col-sm-9">
+        <input type="checkbox" class="form-control" id="passwordConfirm" ng-model = "resource.confirmPassword" >
+      </div>
+    </div>
+	<div class = "nm-dialog-line"></div>
+	<div class = "clearfix m-t">
+      <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
+      <button class = "btn btn-primary pull-right" ng-click = "updateRole()" ng-disabled = "pending || !form.$valid ">确认</button>
+      <button class="btn btn-default pull-right m-r-xs" ng-click ="closeThisDialog()">取消</button>
+    </div>
+  </form>
+</div>

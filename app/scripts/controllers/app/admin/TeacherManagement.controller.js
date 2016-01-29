@@ -1,13 +1,14 @@
 app.controller("TeacherManagementController", ["$scope", "AccountManageFactory", "generalService",
-    "ToasterTool", "ManagementService", "AlertTool",
+    "ToasterTool", "ManagementService", "AlertTool", "ngDialog",
     function($scope, AccountManageFactory, generalService, ToasterTool,
-      ManagementService, AlertTool) {
+      ManagementService, AlertTool, ngDialog) {
 
         $scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
         $scope.pageChanged = loadResources
         $scope.addResource = addResource
         $scope.modifyResource = modifyResource
         $scope.modifyPassword = modifyPassword
+        $scope.configRole = configRole
 
         loadResources();
 
@@ -82,6 +83,13 @@ app.controller("TeacherManagementController", ["$scope", "AccountManageFactory",
             var modifyDialog = new ManagementService.ModifyDialog()
             modifyDialog.setCloseListener(onModify, onDelete)
             modifyDialog.open(resource, templateUrl, controller, {})
+        }
+
+        function configRole(resource){
+            var dialog = ngDialog.open({
+              templateUrl :"tpl/app/admin/modal/modify-teacher-role.html",
+
+            })
         }
 
         function onModify() {

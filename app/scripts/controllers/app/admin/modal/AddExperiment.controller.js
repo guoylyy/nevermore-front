@@ -35,6 +35,7 @@ app.controller("AddExperimentController", ["$scope", "ExperimentManageFactory", 
         function commitExperiment() {
             $scope.adding = true
             var postResource = angular.copy($scope.resource)
+            postResource.active = true;
             return ExperimentManageFactory.create().post(postResource)
         }
 

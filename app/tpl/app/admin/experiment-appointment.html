@@ -7,23 +7,27 @@
             <table class = "table table-striped b-t b-light">
                 <thead>
                     <tr>
-                        <th style="width: 10%; min-width: 100px;">日期</th>
-                        <th style="width: 10%; min-width: 123px;">实验时间段</th>
+                        <th style="width: 10%; min-width: 140px;">预约时间</th>
+                        <th style="width: 10%; min-width: 70px;">班级编号</th>
+                        <th style="width: 5%; min-width: 70px;">人数</th>
                         <th style="width: 10%; min-width: 82px;">任课教师</th>
-                        <th style="width: 15%; min-width: 123px;">实验室</th>
-                        <th style="width: 20%; min-width: 82px;">实验任务</th>
-                        <th style="width: 20%; min-width: 82px;">操作</th>
+                        <th style="width: 15%; min-width: 100px;">实验室</th>
+                        <th style="width: 15%; min-width: 82px;">实验任务</th>
+                        <th style="width: 15%; min-width: 82px;">操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="resource in resources.data">
                         <td>
-                            <span>{{resource.applyDate | date:'yyyy-MM-dd'}}</span>
+                            <span>{{resource.applyDate | date:'yyyy-MM-dd'}}  &nbsp;
+                            ({{resource.slot.title}})</span>
                         </td>
                         <td>
-                            <span>{{resource.slot.title}}</span>
+                            <span>{{resource.clazz.number}}</span>
                         </td>
-
+                        <td>
+                            <span>{{resource.personCount}}</span>
+                        </td>
                         <td>
                             <span>{{resource.account.name}}</span>
                         </td>
