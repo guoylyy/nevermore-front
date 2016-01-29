@@ -11,17 +11,16 @@ angular.module('nevermore')
   .service('generalService', function ($rootScope, $location, $sessionStorage, $localStorage) {
 
     this.getReservationColor = function(res){
-      var color = '#006699';
-      if(res.clazz == undefined){
-        return color;
-      }
-      var status = res.status;
+      var color = '';
+      var status = res.status.code;
       if(status=='REJECTED'){
-        color = '#555';
+        color = '#777';
       }else if(status == 'APPROVED'){
         color = '#5cb85c';
-      }else if(status == 'PENDING'){
-        color = '#990000';
+      }else if(status == 'APPLY'){
+        color = '#f0ad4e';
+      }else{
+        color = '#777';
       }
       return color;
     };

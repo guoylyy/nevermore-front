@@ -52,22 +52,24 @@ app.controller('PortalCalendarController', ['$scope', 'ResTool',  'ToasterTool',
             var res = reservations[i]
             var start = DateTool.format(new Date(res.applyDate)) + ' ' + res.slot.startTime
             var end = DateTool.format(new Date(res.applyDate)) + ' ' + res.slot.endTime
+            var teachers = "";
+            angular.forEach(res.teachers, function(data){
+              teachers = teachers + ' ' + data.name;
+            });
             var map = {
               'id': res.id,
-              'title': res.experiment.name,
+              'title': res.experiment.name + '-(' +  res.clazz.number+ ')',
               'start': start,
               'end': end,
               'color': generalService.getReservationColor(res),
-              'status': res.status,
-              'data': res,
+              'status': res.status.value,
               'location': res.lab.name,
-              'courseName': res.clazz.course.name,
+              'courseName': res.clazz.course.name + ' - ' + res.clazz.number,
               'slot': res.slot,
-              'teacherName': res.clazz.teacher.name
+              'teacherName': res.clazz.teacher.name,
+              'labTeachers': teachers
             };
-            if(res.status.code === 'APPROVED'){
-              rcList.push(map);
-            }
+            rcList.push(map);
           };
           return rcList;
         };

@@ -135,7 +135,7 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/Reservation.controller.js',
-                  'scripts/controllers/app/admin/modal/reservation-view.js',
+                  'scripts/controllers/app/admin/modal/ViewReservation.controller.js',
                   "scripts/factories/refine/Reservation.factory.js",
                   "scripts/factories/refine/HttpResponse.factory.js",
                   "ngDialog",
@@ -254,9 +254,8 @@ angular.module('nevermore')
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  "scripts/controllers/app/admin/modal/reservation-view.js",
+                  "scripts/controllers/app/admin/modal/ViewReservation.controller.js",
                   "scripts/controllers/app/teacher/appointment.controller.js",
-                  "scripts/factories/exp-factory.js",
                   "scripts/factories/refine/Experiment.factory.js",
                   "scripts/factories/refine/Lab.factory.js",
                   "ngDialog",
