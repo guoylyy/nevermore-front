@@ -40,6 +40,7 @@ app.controller("ModifyStudentController", ["$scope", "data", "AccountManageFacto
             $scope.pending = true
             var submitResource = angular.copy(copiedResource);
             submitResource.gender = copiedResource.gender.code
+            submitResource.roles = ['STUDENT'];
             return AccountManageFactory.account().put({
                 "id": copiedResource.id,
             }, submitResource)
