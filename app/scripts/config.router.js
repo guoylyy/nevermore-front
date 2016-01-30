@@ -255,7 +255,7 @@ angular.module('nevermore')
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                   "scripts/controllers/app/admin/modal/ViewReservation.controller.js",
-                  "scripts/controllers/app/teacher/appointment.controller.js",
+                  "scripts/controllers/app/teacher/TeacherAppointment.controller.js",
                   "scripts/factories/refine/Experiment.factory.js",
                   "scripts/factories/refine/Lab.factory.js",
                   "ngDialog",

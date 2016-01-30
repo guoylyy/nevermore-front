@@ -26,7 +26,6 @@ app.controller("ModifyTeacherController", ["$scope", "data", "AccountManageFacto
         var originResource = data,
             copiedResource = angular.copy(originResource)
         $scope.resource = copiedResource
-        console.log($scope.resource)  
         markRole()
         $scope.pending = false
         $scope.modifyTeacher = modifyTeacher
