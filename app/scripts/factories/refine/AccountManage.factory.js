@@ -53,6 +53,15 @@ angular.module('nevermore')
           }
         });
       },
+      freeLabTeachers: function(){
+        return $resource(apiUrl + '/freeLabTeachers?scope=all', {
+        }, {
+          'get': {
+            method: 'GET',
+            headers: sessionService.headers()
+          }
+        });
+      },
       search: function(){//搜索用户 ~ students | teachers
         return $resource(apiUrl + '/search', {
           keyword:"@keyword",

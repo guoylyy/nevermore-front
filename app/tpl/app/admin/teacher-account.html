@@ -7,10 +7,13 @@
             <table class = "table table-striped b-t b-light">
                 <thead>
                     <tr>
-                        <th style="width: 20%; min-width: 205px;">工号</th>
-                        <th style="width: 20%; min-width: 205px;">名字</th>
-                        <th style="width: 20%; min-width: 205px;">性别</th>
-                        <th style="width: 40%; min-width: 205px;">操作</th>
+                        <th style="width: 15%; min-width: 100px;">工号</th>
+                        <th style="width: 15%; min-width: 100px;">名字</th>
+                        <th style="width: 15%; min-width: 50px;">性别</th>
+                        <th style="width: 15%; min-width: 100px;">手机</th>
+                        <th style="width: 15%; min-width: 80px;">部门</th>
+                        <th style="width: 15%; min-width: 80px;">职位</th>
+                        <th style="width: 20%; min-width: 150px;">操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,8 +28,37 @@
                             <span>{{resource.gender.value}}</span>
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-primary" ng-click="modifyResource(resource)">编辑</button>
-                            <button class="btn btn-sm btn-primary" ng-click="modifyPassword(resource)">修改密码</button>
+                            <span>{{resource.mobile}}</span>
+                        </td>
+                        <td>
+                            <span>{{resource.department}}</span>
+                        </td>
+                        <td>
+                            <span>{{resource.title}}</span>
+                        </td>
+                        <td>
+                          <div class="btn-group">
+                              <a class="dropdown-toggle" data-toggle = "dropdown" aria-haspopup = "true" aria-expanded = "false">
+                                  操作<span class = "caret"></span>
+                              </a>
+                              <ul class="dropdown-menu db-dropdown-menu-lt">
+                                  <li>
+                                      <a ng-click="modifyResource(resource)">
+                                          编辑
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a ng-click="modifyPassword(resource)">
+                                          修改密码
+                                      </a>
+                                  </li>
+                                  <!-- <li>
+                                      <a ng-click="configRole(resource)">
+                                          配置角色
+                                      </a>
+                                  </li> -->
+                              </ul>
+                          </div>
                         </td>
                     </tr>
                 </tbody>

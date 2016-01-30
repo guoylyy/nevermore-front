@@ -13,7 +13,7 @@ angular.module('nevermore')
     this.getReservationColor = function(res){
       var color = '';
       var status = res.status.code;
-      if(status=='REJECTED'){
+      if(status=='REJECTED' || res.isExpired){
         color = '#777';
       }else if(status == 'APPROVED'){
         color = '#5cb85c';

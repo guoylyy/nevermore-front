@@ -36,13 +36,13 @@
         <input type="text" class="form-control" id="virtualExpLink" ng-model = "resource.virtualExpLink">
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display:none;">
       <label for="active" class="col-sm-3 control-label">是否开放*</label>
       <div class="col-sm-9">
-        <select class="form-control" id = "active" ng-model="resource.active" ng-options="active.code as active.value for active in activeList" required></select>
+        <select class="form-control" id = "active" ng-model="resource.active" ng-options="active.code as active.value for active in activeList" ></select>
       </div>
     </div>
-    
+
 	<div class = "nm-dialog-line"></div>
 	<div class = "clearfix m-t">
       <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>

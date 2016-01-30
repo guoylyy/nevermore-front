@@ -34,7 +34,7 @@ app.controller("AddStudentController", ["$scope", "AccountManageFactory", "Manag
         function commitAccount() {
             $scope.adding = true
             var postResource = angular.copy($scope.resource)
-            postResource.role = "STUDENT"
+            postResource.roles = ["STUDENT"]
             postResource.password = md5(postResource.password)
             return AccountManageFactory.create().post(postResource)
         }

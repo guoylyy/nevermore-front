@@ -9,8 +9,10 @@
  * @param  {[type]} function($scope,       Account,      data, Reservation [description]
  * @return {[type]}                        [description]
  */
-app.controller("VerifyReservationController", ["$scope", "AccountManageFactory", "data", "ReservationManageFactory", "AlertTool",
-function($scope, AccountManageFactory, data, ReservationManageFactory, AlertTool){
+app.controller("VerifyReservationController", ["$scope", "AccountManageFactory",
+"data", "ReservationManageFactory", "AlertTool", "DateTool",
+function($scope, AccountManageFactory, data, ReservationManageFactory, AlertTool,
+				DateTool){
 	var originResource = data
 	,	copiedResource = angular.copy(originResource)
 
@@ -72,8 +74,9 @@ function($scope, AccountManageFactory, data, ReservationManageFactory, AlertTool
 
 	}
 
-	AccountManageFactory.all().get({
-		role: "teachers",
+	AccountManageFactory.freeLabTeachers().get({
+		slotId:originResource.slot.id,
+		date: DateTool.format(new Date(originResource.applyDate))
 	}).$promise.then(function(data){
 		var teacherList = []
 		for(var i = 0 ; i < data.data.length ; i++){

@@ -11,7 +11,7 @@
                     <tr>
                         <th style="width: 25%; min-width: 205px;">编号</th>
                         <th style="width: 25%; min-width: 205px;">名字</th>
-                        <th style="width: 25%; min-width: 205px;">是否开放</th>
+                        <!-- <th style="width: 25%; min-width: 205px;">是否开放</th> -->
                         <th style="width: 25%; min-width: 205px;">操作</th>
                     </tr>
                 </thead>
@@ -23,9 +23,9 @@
                         <td>
                             <span>{{resource.name}}</span>
                         </td>
-                        <td>
+                        <!-- <td>
                             <span class = "badge" ng-class = "{'bg-danger':!resource.active,'bg-success':resource.active}">{{resource.active|activeFilter}}</span>
-                        </td>
+                        </td> -->
                         <td>
                             <button class="btn btn-sm btn-primary" ng-click="modifyResource(resource)">
                                 编辑
