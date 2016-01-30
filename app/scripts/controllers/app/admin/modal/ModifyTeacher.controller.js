@@ -8,11 +8,26 @@ app.controller("ModifyTeacherController", ["$scope", "data", "AccountManageFacto
             "value": "女",
             "code": "FEMALE",
         }, ];
+        $scope.roleList= [
+          {
+            "value":"课程教师",
+            "code": 'TEACHER',
+            "check": true
+          },
+          {
+            "value":"实验教师",
+            "code": "TEACHER_LAB",
+            "check": false
+          }
+        ];
+
+        //根据用户角色做标记
 
         var originResource = data,
             copiedResource = angular.copy(originResource)
-
         $scope.resource = copiedResource
+        console.log($scope.resource)  
+        markRole()
         $scope.pending = false
         $scope.modifyTeacher = modifyTeacher
         $scope.deleteTeacher = deleteTeacher
@@ -38,8 +53,13 @@ app.controller("ModifyTeacherController", ["$scope", "data", "AccountManageFacto
         }
         function commitModify() {
             $scope.pending = true
+            if(getSelectedRoles().length == 0){
+              errorHandler("必须选择一个角色");
+              return;
+            }
             var submitResource = angular.copy(copiedResource);
             submitResource.gender = copiedResource.gender.code
+            submitResource.roles = getSelectedRoles()
             return AccountManageFactory.account().put({
                 "id": copiedResource.id,
             }, submitResource)
@@ -121,6 +141,24 @@ app.controller("ModifyTeacherController", ["$scope", "data", "AccountManageFacto
         }
         function showErrorTip(error) {
             $scope.errorTip = error
+        }
+        function markRole(){
+          angular.forEach($scope.resource.roles, function(data){
+            for(var i=0; i<$scope.roleList.length; i++){
+              if(data.name.code === $scope.roleList[i].code){
+                $scope.roleList[i].check = true;
+              }
+            }
+          });
+        }
+        function getSelectedRoles(){
+          var list = [];
+          angular.forEach($scope.roleList, function(role){
+            if(role.check){
+              list.push(role.code);
+            }
+          });
+          return list;
         }
 
     }

@@ -55,9 +55,14 @@
         <textarea type="text" class="form-control" id="mobilePhone" ng-model = "resource.remark" />
       </div>
     </div>
-
-
-
+    <div class="form-group">
+      <label for="mobilePhone" class="col-sm-3 control-label">角色</label>
+      <div class="col-sm-9 m-t-xs">
+        <span ng-repeat="role in roleList">
+          <input type="checkbox" ng-model="role.check"> &nbsp;<label class="m-r">{{role.value}}</label>
+        </span>
+      </div>
+    </div>
 	<div class = "nm-dialog-line"></div>
 	<div class = "clearfix m-t">
       <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>
