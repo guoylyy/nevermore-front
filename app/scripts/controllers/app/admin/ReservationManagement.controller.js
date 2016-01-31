@@ -111,10 +111,11 @@ function($scope, $stateParams, ReservationManageFactory, sessionService, general
 
 	function viewResource(resource){
 		var dialog = ngDialog.open({
-			"template": "tpl/app/admin/modal/view-experiment-appointment.html",
-			"controller": "ViewReservationController",
+			"template": "tpl/app/admin/modal/view-edit-experiment-appointment.html",
+			"controller": "ViewAndEditReservationController",
 			"closeByDocument": true,
 			"closeByEscape": true,
+			"className" : 'nm-dialog nm-dialog-md',
 			"resolve": {
 				data: function(){
 					return ReservationManageFactory.reservation().get({

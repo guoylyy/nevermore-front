@@ -899,6 +899,9 @@ angular.module('nevermore')
                   "scripts/controllers/app/admin/ReservationManagement.controller.js",
                   "scripts/controllers/app/admin/modal/VerifyReservation.controllers.js",
                   "scripts/controllers/app/admin/modal/ViewReservation.controller.js",
+                  "scripts/controllers/app/admin/modal/ViewAndEditReservation.controller.js",
+                  'scripts/directives/app/nm-configure-list.js',
+                  "angularBootstrapNavTree",
                 ])
               }]
             }

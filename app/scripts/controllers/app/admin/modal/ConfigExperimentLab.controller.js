@@ -50,7 +50,6 @@ function($scope, LabManageFactory, ExperimentManageFactory, data) {
           }else {
             select_exp.push(lab);
           }
-
         }
         angular.copy(all_exp, $scope.all_exp);
         angular.copy(select_exp, $scope.select_exp);
