@@ -3,6 +3,15 @@
         <span>实验预约列表</span>
     </div>
     <div class = "wrapper-md">
+        <div class="p-b-md">
+          <uib-tabset class="nm-tab-btn-group">
+           <uib-tab ng-repeat="status in verifyStatusList" active="status.active" ng-click="filterConditionChange(status)">
+             <uib-tab-heading>
+               {{status.value}}
+             </uib-tab-heading>
+           </uib-tab>
+          </uib-tabset>
+        </div>
         <div class="panel panel-default">
             <table class = "table table-striped b-t b-light">
                 <thead>

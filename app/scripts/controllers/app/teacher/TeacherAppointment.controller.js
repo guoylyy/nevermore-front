@@ -87,8 +87,9 @@
 		function viewReservation(reservation){
 			var dialog = ngDialog.open({
 				"template": "tpl/app/admin/modal/view-experiment-appointment.html",
-				"controller": "ViewExperimentAppointmentCtrl",
+				"controller": "ViewReservationController",
 				"closeByDocument": true,
+				"className" : 'nm-dialog nm-dialog-md',
 				"closeByEscape": true,
 				"resolve": {
 					data: function(){

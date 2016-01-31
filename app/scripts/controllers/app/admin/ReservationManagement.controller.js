@@ -9,10 +9,26 @@ function($scope, $stateParams, ReservationManageFactory, sessionService, general
 		status = 'APPLY';
 	}
 
+	$scope.verifyStatusList = [
+		{
+		code: false,
+		isActive: true,
+		value: "未过期的"
+		},
+		{
+		code: true,
+		isActive: false,
+		value: "已过期的"
+		}
+	]
+	$scope.selectCondition = $scope.verifyStatusList[0];
+
+
 	$scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
 	$scope.verifyResource = verifyResource
 	$scope.viewResource = viewResource
 	$scope.pageChanged = loadResources
+	$scope.filterConditionChange = filterConditionChange
 
 	loadResources()
 
@@ -26,7 +42,8 @@ function($scope, $stateParams, ReservationManageFactory, sessionService, general
 		return resourceFactory.page().get({
 			pageSize: $scope.resources.paginator.itemsPerPage,
 			pageNum: $scope.resources.paginator.page,
-			status: status
+			status: status,
+			isExpired: $scope.selectCondition.code
 		}).$promise
 	}
 
@@ -61,6 +78,11 @@ function($scope, $stateParams, ReservationManageFactory, sessionService, general
 		    AlertTool.close()
 		  }
 		})
+	}
+
+	function filterConditionChange(condition){
+		$scope.selectCondition = condition
+		loadResources()
 	}
 
 	function verifyResource(resource){

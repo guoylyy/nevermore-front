@@ -26,7 +26,11 @@
 		getReservationOutWeek()
 
 		function getReservationsInWeek(){
-			ReservationFactory.myReservationsInWeek().get()
+			ReservationFactory.myReservationsInWeek().get(
+				{
+					// isExpired: false //不过期的
+				}
+			)
 			.$promise
 			.then(function(response){
 				if(HttpResponseFactory.isResponseSuccess(response)){
@@ -43,6 +47,7 @@
 			ReservationFactory.myReservationsOutWeek().get({
 				pageNum: $scope.paginator.page,
 				pageSize: $scope.paginator.itemsPerPage,
+				// isExpired: false
 			})
 			.$promise
 			.then(function(response){
@@ -78,9 +83,10 @@
 		function viewReservation(reservation){
 			var dialog = ngDialog.open({
 				"template": "tpl/app/admin/modal/view-experiment-appointment.html",
-				"controller": "ViewExperimentAppointmentCtrl",
+				"controller": "ViewReservationController",
 				"closeByDocument": true,
 				"closeByEscape": true,
+				"className" : 'nm-dialog nm-dialog-md',
 				"resolve": {
 					data: function(){
 						return ReservationFactory.reservation().get({
