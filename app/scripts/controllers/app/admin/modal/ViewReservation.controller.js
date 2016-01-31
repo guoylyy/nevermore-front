@@ -1,6 +1,11 @@
-app.controller("ViewReservationController", ["$scope", "data",
-function($scope, data){
+app.controller("ViewReservationController",["$scope", "AccountManageFactory",
+"data", "ReservationManageFactory", "AlertTool", "DateTool",
+function($scope, AccountManageFactory, data, ReservationManageFactory, AlertTool,
+				DateTool){
 	$scope.resource = data.data
+	var originResource = data.data
+
+	$scope.teacherList = []
 
 	$scope.step = 1
 	$scope.viewTeacher = function(){
@@ -9,4 +14,5 @@ function($scope, data){
 	$scope.viewExperiment = function(){
 		$scope.step = 1
 	}
+
 }])

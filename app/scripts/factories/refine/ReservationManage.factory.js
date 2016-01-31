@@ -28,7 +28,12 @@ angular.module('nevermore')
           'post': {
             method: 'POST',
             headers: sessionService.headers()
+          },
+          'put': {
+            method: 'put',
+            headers: sessionService.headers()
           }
+
         });
       },
       page: function() {//分页获取预约
