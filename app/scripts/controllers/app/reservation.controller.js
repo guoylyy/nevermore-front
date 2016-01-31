@@ -26,7 +26,11 @@
 		getReservationOutWeek()
 
 		function getReservationsInWeek(){
-			ReservationFactory.myReservationsInWeek().get()
+			ReservationFactory.myReservationsInWeek().get(
+				{
+					// isExpired: false //不过期的
+				}
+			)
 			.$promise
 			.then(function(response){
 				if(HttpResponseFactory.isResponseSuccess(response)){
@@ -43,6 +47,7 @@
 			ReservationFactory.myReservationsOutWeek().get({
 				pageNum: $scope.paginator.page,
 				pageSize: $scope.paginator.itemsPerPage,
+				// isExpired: false
 			})
 			.$promise
 			.then(function(response){
