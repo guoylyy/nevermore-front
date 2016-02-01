@@ -2,78 +2,160 @@
 	<div class="hbox hbox-auto-xs hbox-auto-sm ng-scope">
 		<div class = "wrapper lter no_border" style = "overflow: hidden;">
 	        <span class = "subview3_title db-title">我的预约</span>
-	        <!-- <a href="#" class = "pull-right db-title-anchor db-m-r-10">预约日历</a> -->
 	    </div>
 	    <div class="db-line"></div>
 	    <div class = "wrapper-md">
-	    	<div>
-	    		<span class="db-title">本周预约</span>
-	    	</div>
-	    	<div class="db-p-l-40">
-				<table class = "table db-appointment-table db-table-row-b db-m-b-0">
-					<tr class="cursor-pointer" ng-repeat = "reservation in reservationInWeekList">
-						<td style = "width: 15%; text-align: left;">
-							<span class = "db-exp-time" ng-click="viewReservation(reservation)">{{reservation.applyDate | date: 'yyyy-MM-dd (EEE)'}}</span>
-						</td>
-						<td style = "width: 20%; text-align: left;">
-							<span class="db-exp-time" ng-click="viewReservation(reservation)">{{reservation.lab.name}}</span>
-						</td>
-						<td style = "width: 15%; text-align: right;">
-							{{reservation.slot.title}}
-						</td>
-						<td style = "width: 14%;">
-							{{reservation.personCount}}
-						</td>
-						<td style = "width: 11%;">
-							{{reservation.status.value}}
-						</td>
-						<td style = "width: 25%;">
-							<button ng-if = "reservation.clazz.teacher.id === currentUser.id" class="btn btn-danger db-btn-danger pull-right m-t-sm" ng-click = "cancelReservation(reservation.id)">
-								取消预约
-							</button>
-						</td>
-					</tr>
-				</table>
-				<nevermore-empty-panel ng-if="reservationInWeekList.length == 0" text="本周没有任何预约"></nevermore-empty-panel>
-	    	</div>
-	    	<div class = "db-m-t-40">
-	    		<span class="db-title">其他预约</span>
-	    	</div>
-	    	<div class="db-p-l-40">
-				<table class = "table db-appointment-table db-table-row-b db-m-b-0">
-					<tr class="cursor-pointer" ng-repeat = "reservation in reservationOutWeekList">
-						<td style = "width: 15%; text-align: left;">
-							<span class = "db-exp-time" ng-click="viewReservation(reservation)">{{reservation.applyDate | date: 'yyyy-MM-dd (EEE)'}}</span>
-						</td>
-						<td style = "width: 20%; text-align: left;">
-							<span class="db-exp-time" ng-click="viewReservation(reservation)">{{reservation.lab.name}}</span>
-						</td>
-						<td style = "width: 15%; text-align: right;">
-							{{reservation.slot.title}}
-						</td>
-						<td style = "width: 14%;">
-							{{reservation.personCount}}
-						</td>
-						<td style = "width: 11%;">
-							{{reservation.status.value}}
-						</td>
-						<td style = "width: 25%;">
-							<button ng-if = "reservation.clazz.teacher.id === currentUser.id" class="btn btn-danger db-btn-danger pull-right m-t-sm" ng-click = "cancelReservation(reservation.id)">
-								取消预约
-							</button>
-						</td>
-					</tr>
-				</table>
-				<nevermore-empty-panel ng-if="reservationOutWeekList.length == 0" text="没有任何预约"></nevermore-empty-panel>
-				<div class="row clearfix db-m-t-30" style="width: 100%;" >
-	            	<div class="pull-left col-sm-4">
-	              		<span class="db-title">共&nbsp;{{paginator.items}}&nbsp;个非本周预约</span>
-	            	</div>
-	              	<div class="pull-right">
-	            		<uib-pagination max-size="7" previous-text="上一页" next-text="下一页" ng-model="paginator.page" total-items="paginator.items" ng-change="pageChanged()"></uib-pagination>
-	            	</div>
-	          	</div>
-	    	</div>
+	    	<div style = "overflow: hidden">
+				<ul class="db-tab db-m-0 pull-left" style = "padding: 0px;">
+					<li class="active">
+						<a data-target = "#unexpiredReservations" role = "tab" data-toggle = "tab" aria-expanded = "true" class = "db-underline">
+							<span class = "db-title">可用预约</span>
+						</a>
+					</li>
+					<li>
+						<a data-target = "#expiredReservations" role = "tab" data-toggle = "tab" aria-expanded = "false" class = "db-underline">
+							<span class = "db-title">过期预约</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="db-line db-m-0 db-m-b-20"></div>
+			<div class="tab-content">
+				<div class="tab-pane active" id = "unexpiredReservations">
+					<div>
+			    		<span class="db-title">本周预约</span>
+			    	</div>
+			    	<div class="db-p-l-40" ng-if="reservations.unexpiredReservationInWeekList.length > 0">
+						<table class = "table db-appointment-table db-table-row-b db-m-b-0">
+							<tr class="cursor-pointer" ng-repeat = "reservation in reservations.unexpiredReservationInWeekList">
+								<td style = "width: 15%; text-align: left;">
+									<span class = "db-exp-time" ng-click="reservations.viewReservation(reservation)">{{reservation.applyDate | date: 'yyyy-MM-dd (EEE)'}}</span>
+								</td>
+								<td style = "width: 20%; text-align: left;">
+									<span class="db-exp-time" ng-click="reservations.viewReservation(reservation)">{{reservation.lab.name}}</span>
+								</td>
+								<td style = "width: 15%; text-align: right;">
+									{{reservation.slot.title}}
+								</td>
+								<td style = "width: 14%;">
+									{{reservation.personCount}}
+								</td>
+								<td style = "width: 11%;">
+									{{reservation.status.value}}
+								</td>
+								<td style = "width: 25%;">
+									<button ng-if = "reservation.clazz.teacher.id === currentUser.id" class="btn btn-danger db-btn-danger pull-right m-t-sm" ng-click = "reservations.cancelReservation(reservation.id)">
+										取消预约
+									</button>
+								</td>
+							</tr>
+						</table>
+						<nevermore-empty-panel ng-if="reservations.unexpiredReservationInWeekList.length === 0" text="本周没有任何预约"></nevermore-empty-panel>
+			    	</div>
+			    	<div class = "db-m-t-40">
+			    		<span class="db-title">其他预约</span>
+			    	</div>
+			    	<div class="db-p-l-40">
+						<table class = "table db-appointment-table db-table-row-b db-m-b-0" ng-if="reservations.unexpiredReservationOutWeekList.length > 0">
+							<tr class="cursor-pointer" ng-repeat = "reservation in reservations.unexpiredReservationOutWeekList">
+								<td style = "width: 15%; text-align: left;">
+									<span class = "db-exp-time" ng-click="reservations.viewReservation(reservation)">{{reservation.applyDate | date: 'yyyy-MM-dd (EEE)'}}</span>
+								</td>
+								<td style = "width: 20%; text-align: left;">
+									<span class="db-exp-time" ng-click="viewReservation(reservation)">{{reservation.lab.name}}</span>
+								</td>
+								<td style = "width: 15%; text-align: right;">
+									{{reservation.slot.title}}
+								</td>
+								<td style = "width: 14%;">
+									{{reservation.personCount}}
+								</td>
+								<td style = "width: 11%;">
+									{{reservation.status.value}}
+								</td>
+								<td style = "width: 25%;">
+									<button ng-if = "reservation.clazz.teacher.id === currentUser.id" class="btn btn-danger db-btn-danger pull-right m-t-sm" ng-click = "reservations.cancelReservation(reservation.id)">
+										取消预约
+									</button>
+								</td>
+							</tr>
+						</table>
+						<nevermore-empty-panel ng-if="reservations.unexpiredReservationOutWeekList.length === 0" text="没有任何预约"></nevermore-empty-panel>
+						<div class="row clearfix db-m-t-30" style="width: 100%;" >
+			            	<div class="pull-left col-sm-4">
+			              		<span class="db-title">共&nbsp;{{reservations.unexpiredPaginator.items}}&nbsp;个非本周预约</span>
+			            	</div>
+			              	<div class="pull-right">
+			            		<uib-pagination max-size="7" previous-text="上一页" next-text="下一页" ng-model="reservations.unexpiredPaginator.page" total-items="reservations.unexpiredPaginator.items" ng-change="reservations.unexpiredPageChanged()"></uib-pagination>
+			            	</div>
+			          	</div>
+			    	</div>
+				</div>
+				<div class="tab-pane" id = "expiredReservations">
+					<div>
+			    		<span class="db-title">本周预约</span>
+			    	</div>
+			    	<div class="db-p-l-40" ng-if="reservations.expiredReservationInWeekList.length > 0">
+						<table class = "table db-appointment-table db-table-row-b db-m-b-0">
+							<tr class="cursor-pointer" ng-repeat = "reservation in reservations.expiredReservationInWeekList">
+								<td style = "width: 15%; text-align: left;">
+									<span class = "db-exp-time" ng-click="reservations.viewReservation(reservation)">{{reservation.applyDate | date: 'yyyy-MM-dd (EEE)'}}</span>
+								</td>
+								<td style = "width: 20%; text-align: left;">
+									<span class="db-exp-time" ng-click="reservations.viewReservation(reservation)">{{reservation.lab.name}}</span>
+								</td>
+								<td style = "width: 15%; text-align: right;">
+									{{reservation.slot.title}}
+								</td>
+								<td style = "width: 14%;">
+									{{reservation.personCount}}
+								</td>
+								<td style = "width: 11%;">
+									{{reservation.status.value}}
+								</td>
+								<td style = "width: 25%;">
+								</td>
+							</tr>
+						</table>
+						<nevermore-empty-panel ng-if="reservations.expiredReservationInWeekList.length === 0" text="本周没有任何预约"></nevermore-empty-panel>
+			    	</div>
+			    	<div class = "db-m-t-40">
+			    		<span class="db-title">其他预约</span>
+			    	</div>
+			    	<div class="db-p-l-40">
+						<table class = "table db-appointment-table db-table-row-b db-m-b-0" ng-if="reservations.expiredReservationOutWeekList.length > 0">
+							<tr class="cursor-pointer" ng-repeat = "reservation in reservations.expiredReservationOutWeekList">
+								<td style = "width: 15%; text-align: left;">
+									<span class = "db-exp-time" ng-click="reservations.viewReservation(reservation)">{{reservation.applyDate | date: 'yyyy-MM-dd (EEE)'}}</span>
+								</td>
+								<td style = "width: 20%; text-align: left;">
+									<span class="db-exp-time" ng-click="viewReservation(reservation)">{{reservation.lab.name}}</span>
+								</td>
+								<td style = "width: 15%; text-align: right;">
+									{{reservation.slot.title}}
+								</td>
+								<td style = "width: 14%;">
+									{{reservation.personCount}}
+								</td>
+								<td style = "width: 11%;">
+									{{reservation.status.value}}
+								</td>
+								<td style = "width: 25%;">
+								</td>
+							</tr>
+						</table>
+						<nevermore-empty-panel ng-if="reservations.expiredReservationOutWeekList.length === 0" text="没有任何预约"></nevermore-empty-panel>
+						<div class="row clearfix db-m-t-30" style="width: 100%;" >
+			            	<div class="pull-left col-sm-4">
+			              		<span class="db-title">共&nbsp;{{reservations.expiredPaginator.items}}&nbsp;个过期非本周预约</span>
+			            	</div>
+			              	<div class="pull-right">
+			            		<uib-pagination max-size="7" previous-text="上一页" next-text="下一页" ng-model="reservations.expiredPaginator.page" total-items="reservations.expiredPaginator.items" ng-change="reservations.expiredPageChanged()"></uib-pagination>
+			            	</div>
+			          	</div>
+			    	</div>
+				</div>
+			</div>
 	    </div>
 	</div>
 </div>
