@@ -131,6 +131,7 @@ angular.module('nevermore')
             url: "^/app/reservation",
             templateUrl: "tpl/app/reservation.html",
             controller: "ReservationController",
+            controllerAs: "reservations",
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
