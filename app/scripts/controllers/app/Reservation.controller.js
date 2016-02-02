@@ -1,105 +1,160 @@
-;void function(){
-	angular.module("nevermore")
-			.controller("ReservationController", ReservationController)
+;
+void
 
-	ReservationController.$inject = ["$scope", "ReservationFactory", "ngDialog",
-		"HttpResponseFactory", "ToasterTool", "generalService", "ErrorHandlerFactory"]
+function() {
+    angular.module("nevermore")
+        .controller("ReservationController", ReservationController);
 
-	function ReservationController($scope, ReservationFactory, ngDialog,
-		HttpResponseFactory, ToasterTool, generalService, ErrorHandlerFactory){
+    ReservationController.$inject = ["ReservationFactory", "ngDialog",
+        "HttpResponseFactory", "ToasterTool", "generalService", "ErrorHandlerFactory"
+    ];
 
-		var errorHandler = ErrorHandlerFactory.handle
+    function ReservationController(ReservationFactory, ngDialog,
+        HttpResponseFactory, ToasterTool, generalService, ErrorHandlerFactory) {
 
-		$scope.reservationInWeekList = []
-		$scope.reservationOutWeekList = []
-		$scope.paginator = {
-			page: 1,
-			items: undefined,
-			itemsPerPage: generalService.pageSize(),
-		}
+        var errorHandler = ErrorHandlerFactory.handle;
+        var vm = this;
 
-		$scope.pageChanged = pageChanged
-		$scope.cancelReservation = cancelReservation
-		$scope.viewReservation = viewReservation
+        vm.unexpiredReservationInWeekList = [];
+        vm.unexpiredReservationOutWeekList = [];
+        vm.expiredReservationInWeekList = [];
+        vm.expiredReservationOutWeekList = [];
 
-		getReservationsInWeek()
-		getReservationOutWeek()
+        vm.unexpiredPaginator = {
+            page: 1,
+            items: undefined,
+            itemsPerPage: generalService.pageSize(),
+        };
 
-		function getReservationsInWeek(){
-			ReservationFactory.myReservationsInWeek().get(
-				{
-					// isExpired: false //不过期的
-				}
-			)
-			.$promise
-			.then(function(response){
-				if(HttpResponseFactory.isResponseSuccess(response)){
-					var data = HttpResponseFactory.getResponseData(response)
-					angular.copy(data, $scope.reservationInWeekList)
-				}else{
-					errorHandler(response)
-				}
-			})
-			.catch(errorHandler)
-		}
+        vm.expiredPaginator = {
+            page: 1,
+            items: undefined,
+            itemsPerPage: generalService.pageSize(),
+        };
 
-		function getReservationOutWeek(){
-			ReservationFactory.myReservationsOutWeek().get({
-				pageNum: $scope.paginator.page,
-				pageSize: $scope.paginator.itemsPerPage,
-				// isExpired: false
-			})
-			.$promise
-			.then(function(response){
-				if(HttpResponseFactory.isResponseSuccess(response)){
-					var data = HttpResponseFactory.getResponseData(response)
-					angular.copy(data, $scope.reservationOutWeekList)
-					var paginator = HttpResponseFactory.getResponsePaginator(response)
-					angular.copy(paginator, $scope.paginator)
-				}else{
-					errorHandler(response)
-				}
-			})
-			.catch(errorHandler)
-		}
+        vm.unexpiredPageChanged = unexpiredPageChanged;
+        vm.expiredPageChanged = expiredPageChanged;
+        vm.cancelReservation = cancelReservation;
+        vm.viewReservation = viewReservation;
 
-		function cancelReservation(reservationID){
-			ReservationFactory.reservation().delete({
-				id: reservationID,
-			})
-			.$promise
-			.then(function(response){
-				if(HttpResponseFactory.isResponseSuccess(response)){
-					ToasterTool.success("取消预约成功")
-					getReservationsInWeek()
-					getReservationOutWeek()
-				}else{
-					errorHandler(response)
-				}
-			})
-			.catch(errorHandler)
-		}
+        getUnexpiredReservationsInWeek();
+        getUnexpiredReservationsOutWeek();
+        getExpiredReservationsInWeek();
+        getExpiredReservationsOutWeek();
 
-		function viewReservation(reservation){
-			var dialog = ngDialog.open({
-				"template": "tpl/app/admin/modal/view-experiment-appointment.html",
-				"controller": "ViewReservationController",
-				"closeByDocument": true,
-				"closeByEscape": true,
-				"className" : 'nm-dialog nm-dialog-md',
-				"resolve": {
-					data: function(){
-						return ReservationFactory.reservation().get({
-							id: reservation.id
-						}).$promise;
-					}
-				},
-			})
-		}
+        function getUnexpiredReservationsInWeek() {
+            ReservationFactory.myReservationsInWeek().get({
+                    isExpired: false,
+                })
+                .$promise
+                .then(function(response) {
+                    if (HttpResponseFactory.isResponseSuccess(response)) {
+                        var data = HttpResponseFactory.getResponseData(response);
+                        angular.copy(data, vm.unexpiredReservationInWeekList);
+                    } else {
+                        errorHandler(response);
+                    }
+                })
+                .catch(errorHandler);
+        }
 
-		function pageChanged(){
-			getReservationOutWeek()
-		}
-	}
+        function getUnexpiredReservationsOutWeek() {
+            ReservationFactory.myReservationsOutWeek().get({
+                    pageNum: vm.unexpiredPaginator.page,
+                    pageSize: vm.unexpiredPaginator.itemsPerPage,
+                    isExpired: false,
+                })
+                .$promise
+                .then(function(response) {
+                    if (HttpResponseFactory.isResponseSuccess(response)) {
+                        var data = HttpResponseFactory.getResponseData(response);
+                        angular.copy(data, vm.unexpiredReservationOutWeekList);
+                        var paginator = HttpResponseFactory.getResponsePaginator(response);
+                        angular.copy(paginator, vm.unexpiredPaginator);
+                    } else {
+                        errorHandler(response);
+                    }
+                })
+                .catch(errorHandler);
+        }
 
-}()
+        function getExpiredReservationsInWeek() {
+            ReservationFactory.myReservationsInWeek().get({
+                    isExpired: true,
+                })
+                .$promise
+                .then(function(response) {
+                    if (HttpResponseFactory.isResponseSuccess(response)) {
+                        var data = HttpResponseFactory.getResponseData(response);
+                        angular.copy(data, vm.expiredReservationInWeekList);
+                    } else {
+                        errorHandler(response);
+                    }
+                })
+                .catch(errorHandler);
+        }
+
+        function getExpiredReservationsOutWeek() {
+            ReservationFactory.myReservationsOutWeek().get({
+                    pageNum: vm.expiredPaginator.page,
+                    pageSize: vm.expiredPaginator.itemsPerPage,
+                    isExpired: true,
+                })
+                .$promise
+                .then(function(response) {
+                    if (HttpResponseFactory.isResponseSuccess(response)) {
+                        var data = HttpResponseFactory.getResponseData(response);
+                        angular.copy(data, vm.expiredReservationOutWeekList);
+                        var paginator = HttpResponseFactory.getResponsePaginator(response);
+                        angular.copy(paginator, vm.expiredPaginator);
+                    } else {
+                        errorHandler(response);
+                    }
+                })
+                .catch(errorHandler);
+        }
+
+        function cancelReservation(reservationID) {
+            ReservationFactory.reservation().delete({
+                    id: reservationID,
+                })
+                .$promise
+                .then(function(response) {
+                    if (HttpResponseFactory.isResponseSuccess(response)) {
+                        ToasterTool.success("取消预约成功");
+                        getUnexpiredReservationsInWeek();
+                        getUnexpiredReservationsOutWeek();
+                    } else {
+                        errorHandler(response);
+                    }
+                })
+                .catch(errorHandler);
+        }
+
+        function viewReservation(reservation) {
+            var dialog = ngDialog.open({
+                "template": "tpl/app/admin/modal/view-experiment-appointment.html",
+                "controller": "ViewReservationController",
+                "closeByDocument": true,
+                "closeByEscape": true,
+                "className": "nm-dialog nm-dialog-md",
+                "resolve": {
+                    data: function() {
+                        return ReservationFactory.reservation().get({
+                            id: reservation.id
+                        }).$promise;
+                    }
+                },
+            });
+        }
+
+        function unexpiredPageChanged() {
+            getUnexpiredReservationOutWeek();
+        }
+
+        function expiredPageChanged() {
+            getExpiredReservationsOutWeek();
+        }
+    }
+
+}();

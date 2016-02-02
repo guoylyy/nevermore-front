@@ -1,15 +1,30 @@
-'use strict';
+;
+void
+function() {
+	"use strict";
 
-angular.module('nevermore')
-	.factory('TokenFactory', function($resource) {
+	angular.module("nevermore")
+		.factory("TokenFactory", TokenFactory);
 
-		var apiUrl = base_Url + "/account"
+	TokenFactory.$inject = ["$resource", "$localStorage"]
+
+	function TokenFactory($resource, $localStorage) {
+
+		var apiUrl = base_Url + "/account";
+		var token = $localStorage.token;
 
 		return {
+			getTokenHeader: getTokenHeader,
 			login: login,
 			isLogin: isLogin,
 			isValid: isValid,
 		};
+
+		function getTokenHeader() {
+			return {
+				'x-auth-token': token
+			};
+		}
 
 		function login(headers) {
 			return $resource(apiUrl + "/authentication", null, {
@@ -42,4 +57,5 @@ angular.module('nevermore')
 				}
 			})
 		}
-	});
+	}
+}();

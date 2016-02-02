@@ -36,10 +36,15 @@
 							{{reservation.personCount}} 人
 						</td>
 						<td style = "width: 10%;">
-							{{reservation.status.value}}
+							<span ng-if = "!reservation.isExpired">
+								{{reservation.status.value}}
+							</span>
+							<span ng-if = "reservation.isExpired">
+								{{reservation.status | nmAppointmentStatus}}
+							</span>
 						</td>
 						<td style = "width: 20%;">
-							<button class="btn btn-danger db-btn-danger pull-right" ng-click="cancelReservation(reservation)">
+							<button ng-if = "!reservation.isExpired" class="btn btn-danger db-btn-danger pull-right" ng-click="cancelReservation(reservation)">
 								取消预约
 							</button>
 						</td>
