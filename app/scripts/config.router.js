@@ -825,7 +825,8 @@ angular.module('nevermore')
                                 "angularBootstrapNavTree",
                                 'scripts/directives/app/nm-configure-list.js',
                                 "scripts/controllers/app/admin/modal/ModifyCourseInfo.controller.js",
-                                "scripts/directives/app/search-action-bar.js"
+                                "scripts/directives/app/search-action-bar.js",
+                                "ngFileUpload"
                             ])
                         }]
                     }

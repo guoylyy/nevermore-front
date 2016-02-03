@@ -1,6 +1,7 @@
 app.controller("CourseManagementController", ["$scope", "CourseManageFactory", "generalService",
-	"ToasterTool", "ManagementService", "AlertTool",
-function($scope, CourseManageFactory, generalService, ToasterTool, ManagementService, AlertTool){
+	"ToasterTool", "ManagementService", "AlertTool","Upload",
+function($scope, CourseManageFactory, generalService, ToasterTool,
+	 ManagementService, AlertTool, Upload){
 
 	$scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
 	$scope.pageChanged = loadResources
@@ -76,7 +77,8 @@ function($scope, CourseManageFactory, generalService, ToasterTool, ManagementSer
 		var controller = "ModifyCourseController"
 		var modifyDialog = new ManagementService.ModifyDialog()
 		modifyDialog.setCloseListener(onModify, onDelete)
-		modifyDialog.open(resource, templateUrl, controller, {})
+		modifyDialog.open(CourseManageFactory.course().get({id:resource.id}).$promise,
+			templateUrl, controller, {})
 	}
 	// ~ 修改主页信息
 	function richModifyResource(resource){

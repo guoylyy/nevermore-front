@@ -1,6 +1,6 @@
-app.controller("ModifyCourseController", ["$scope", "data", "CourseManageFactory", "ManagementService", "AlertTool",
-    "ToasterTool",
-    function($scope, data, CourseManageFactory, ManagementService, AlertTool,ToasterTool) {
+app.controller("ModifyCourseController", ["$scope","sessionService","data", "CourseManageFactory", "ManagementService", "AlertTool",
+    "ToasterTool","Upload",
+    function($scope,sessionService, data, CourseManageFactory, ManagementService, AlertTool,ToasterTool,Upload) {
         $scope.activeList = [{
             "value": "开放",
             "code": true,
@@ -9,14 +9,35 @@ app.controller("ModifyCourseController", ["$scope", "data", "CourseManageFactory
             "code": false,
         }, ];
 
-        var originResource = data,
+        var originResource = data.data,
             copiedResource = angular.copy(originResource)
-
         $scope.resource = copiedResource
         $scope.pending = false
         $scope.modifyCourse = modifyCourse
         $scope.deleteCourse = deleteCourse
         $scope.errorTip = ""
+
+        $scope.$watch('file', function () {
+          $scope.uploadFile($scope.file);
+        });
+        $scope.uploadFile = function (file) {
+    			if(file) {
+    				Upload.upload({
+    					url: base_Url+'/manage/course/'+ originResource.id +'/icon',
+    					method: 'POST',
+    					headers: sessionService.headers(),
+    					data: {},
+    					file: file
+    				}).then (function (response) {
+    					if (response.data.success){
+                $scope.resource.icon = response.data.data;
+    						ToasterTool.success("更新成功!")
+    					}
+    				}, function (response) {
+    					ToasterTool.warning("文件上传失败!");
+    				});
+    			}
+    		};
 
         // ~ 修改
         function modifyCourse() {
