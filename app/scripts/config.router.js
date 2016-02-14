@@ -501,7 +501,7 @@ angular.module('nevermore')
           })
           .state("app.student.class.report", {
             url: "/report/:expId/:classId",
-            templateUrl: "tpl/app/report.html",
+            templateUrl: "tpl/app/new-report.html",
             controller: "ReportCtrl",
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -513,6 +513,7 @@ angular.module('nevermore')
                   'scripts/directives/app/yasuo-report.js',
                   'scripts/directives/app/lashen-experiment.js',
                   'scripts/directives/app/yasuo-experiment.js',
+                  'scripts/directives/app/nm-report-table.js',
                   'NmDatepicker',
                   'ngDialog',
                   'scripts/controllers/app/modal/choose-chart.js'

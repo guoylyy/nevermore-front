@@ -1,6 +1,6 @@
 'use strict';
 //
-app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', 'experiment', 'ReportFactory', 'ToasterTool', 'ClazzFactory', function($scope, $state, AlertTool, $stateParams, experiment, ReportFactory, ToasterTool, ClazzFactory) {
+app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', 'experiment', 'ReportFactory', 'ToasterTool', 'ClazzFactory', '$http', function($scope, $state, AlertTool, $stateParams, experiment, ReportFactory, ToasterTool, ClazzFactory, $http) {
 
   $scope.report_step = 1;
 
@@ -127,5 +127,10 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
       });
     });
   }
+
+  $http.get("tpl/app/report/test.json")
+     .success(function(data){
+      $scope.new_data = data;
+     });
 
 }]);
