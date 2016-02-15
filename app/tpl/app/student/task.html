@@ -85,14 +85,14 @@
 						<span class="db-text-gray db-m-r-25">
 							训练次数
 						</span>
-						<span class="db-text-primary db-title db-m-r-60 db-c-p" ng-click = "viewVirtualExperimentDetail(experiment)">
-							5
+						<span class="db-text-primary db-title db-m-r-60 db-c-p" ng-click = "viewVirtualExperimentDetail(experiment.trainRecords)">
+							{{experiment.trainRecords.length}}
 						</span>
 						<span class="db-text-gray db-m-r-25">
 							总训练时长
 						</span>
-						<span class="db-title db-text-primary db-c-p" ng-click = "viewVirtualExperimentDetail(experiment)">
-							2小时20分
+						<span class="db-title db-text-primary db-c-p" ng-click = "viewVirtualExperimentDetail(experiment.trainRecords)">
+							{{experiment.trainRecords | trainTimeSpan}}
 						</span>
 					</div>
 				</div>

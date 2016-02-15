@@ -2,9 +2,9 @@
 	angular.module("nevermore")
 		.controller("StudentVirtualExperimentDetailController", StudentVirtualExperimentDetailController);
 
-	StudentVirtualExperimentDetailController.$inject = ["experiment"];
+	StudentVirtualExperimentDetailController.$inject = ["$scope", "trainRecords"];
 
-	function StudentVirtualExperimentDetailController(experiment){
-		
+	function StudentVirtualExperimentDetailController($scope,trainRecords){
+		$scope.trainRecords = trainRecords;
 	}
 }();

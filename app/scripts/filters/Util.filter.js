@@ -24,3 +24,17 @@ angular.module('nevermore')
   		return (bytes / Math.pow(1024, Math.floor(number))).toFixed(precision) +  ' ' + units[number];
   	}
   });
+
+  angular.module('nevermore')
+  .filter('trainTimeSpan', function() {
+    return function(trainRecords) {
+      var seconds = 0;
+      angular.forEach(trainRecords, function(data){
+        seconds = seconds + data.estimatedTime;
+      });
+      var minute = seconds / 60;
+      var hour = minute / 60;
+      minute = minute % 60;
+      return hour + '小时' + minute +'分钟';
+    }
+  });

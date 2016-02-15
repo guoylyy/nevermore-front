@@ -10,46 +10,37 @@
             训练次数
         </span>
         <span class="db-text-primary db-title db-m-r-60">
-            5
+            {{trainRecords.length}}
         </span>
         <span class="db-text-gray db-m-r-25">
             总训练时长
         </span>
         <span class="db-title db-text-primary">
-            2小时20分
+            {{trainRecords | trainTimeSpan}}
         </span>
     </div>
     <table class="table table-bordered db-virtual-experiment-table">
             <thead>
                 <tr>
-                    <th style = "width: 20%">时间</th>
+                    <th style = "width: 20%">开始时间</th>
+                    <th style = "width: 20%">结束时间</th>
                     <th style = "width: 30%">训练时长</th>
-                    <th style = "width: 50%">虚拟实验内容</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr ng-repeat="record in trainRecords">
                     <td>
-                        2015-10-10
+                        {{record.startTime | date:'yyyy-MM-dd hh:mm:ss'}}
                     </td>
                     <td>
-                        5
+                        {{record.endTime | date:'yyyy-MM-dd hh:mm:ss'}}
                     </td>
                     <td>
-                        虚拟实验内容
+                        {{[record] | trainTimeSpan}}
                     </td>
+
                 </tr>
-                <tr>
-                    <td>
-                        2015-10-10
-                    </td>
-                    <td>
-                        5
-                    </td>
-                    <td>
-                        虚拟实验内容
-                    </td>
-                </tr>
+
             </tbody>
         </table>
     <div class = "nm-dialog-line"></div>
