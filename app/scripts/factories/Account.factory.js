@@ -7,13 +7,12 @@ function() {
     angular.module('nevermore')
         .factory('AccountFactory', AccountFactory);
 
-    AccountFactory.$inject = ["$resource", "sessionService", "$rootScope", "MiddlewareFactory"];
+    AccountFactory.$inject = ["$resource", "sessionService", "$rootScope"];
 
-    function AccountFactory($resource, sessionService, $rootScope, MiddlewareFactory) {
+    function AccountFactory($resource, sessionService, $rootScope) {
 
         var baseUrl = base_Url + '/account';
         var headers = sessionService.headers();
-        var middlewareList = MiddlewareFactory.getMiddlewareList()
 
         return {
             removeClazzStudent: removeClazzStudent,
@@ -179,10 +178,6 @@ function() {
             return loginResource.post({})
                 .$promise
                 .then(function(response) {
-                    for (var i = 0; i < middlewareList.length; i++) {
-                        var middleware = middlewareList[i]
-                        response = middleware(response)
-                    }
                     return response
                 })
         }

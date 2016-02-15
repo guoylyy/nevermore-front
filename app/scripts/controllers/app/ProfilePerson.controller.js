@@ -85,7 +85,7 @@ function($scope, $rootScope, AccountFactory, sessionService, ToasterTool, ngDial
           if(data.value === 'success') {
             getProfileDate();
           } else {
-            // ToasterTool.error("头像更新失败");
+            ToasterTool.error("头像更新失败");
           }
         }
       });
