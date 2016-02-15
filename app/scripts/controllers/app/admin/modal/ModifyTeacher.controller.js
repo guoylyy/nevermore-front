@@ -12,7 +12,7 @@ app.controller("ModifyTeacherController", ["$scope", "data", "AccountManageFacto
           {
             "value":"课程教师",
             "code": 'TEACHER',
-            "check": true
+            "check": false
           },
           {
             "value":"实验教师",

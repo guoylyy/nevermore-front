@@ -57,7 +57,7 @@ function() {
 			});
 		}
 
-		function viewVirtualExperimentDetail(experiment){
+		function viewVirtualExperimentDetail(trainRecords){
 			var dialog = ngDialog.open({
 				template: "tpl/app/modal/StudentVirtualExperimentDetail.html",
 				controller: "StudentVirtualExperimentDetailController",
@@ -65,8 +65,8 @@ function() {
 				closeByDocument: false,
 				closeByEscape: true,
 				resolve: {
-					experiment: function(){
-						return experiment;
+					trainRecords: function(){
+						return trainRecords;
 					}
 				}
 			});
