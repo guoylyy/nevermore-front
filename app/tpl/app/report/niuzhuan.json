@@ -1,0 +1,695 @@
+{
+    "type": "title",
+    "text": "扭转破坏实验报告",
+    "content": [{
+        "type": "date",
+        "text": "实验日期",
+        "content": "2015-12-12"
+    }, {
+        "type": "section",
+        "text": "实验设备",
+        "content": [{
+            "type": "blank",
+            "text": "试验机名称",
+            "content": "微控扭转试验机"
+        }, {
+            "type": "blank",
+            "text": "量具名称",
+            "content": "电子数显尺"
+        }, {
+            "type": "blank",
+            "text": "最小分度值(mm)",
+            "content": "0.01"
+        }]
+    }, {
+        "type": "section",
+        "text": "试样尺寸记录",
+        "content": [{
+            "type": "table",
+            "text": "",
+            "content": [{
+                "tr": [{
+                    "type": "text",
+                    "content": "材料"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "content": "直径",
+                            "type": "text"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "table",
+                                    "content": [{
+                                        "tr": [{
+                                            "content": "截面1",
+                                            "type": "text"
+                                        }]
+                                    }, {
+                                        "tr": [{
+                                            "content": "（1）",
+                                            "type": "text"
+                                        }, {
+                                            "content": "（2）",
+                                            "type": "text"
+                                        }, {
+                                            "content": "平均",
+                                            "type": "text"
+                                        }]
+                                    }]
+                                }, {
+                                    "type": "table",
+                                    "content": [{
+                                        "tr": [{
+                                            "content": "截面2",
+                                            "type": "text"
+                                        }]
+                                    }, {
+                                        "tr": [{
+                                            "content": "（1）",
+                                            "type": "text"
+                                        }, {
+                                            "content": "（2）",
+                                            "type": "text"
+                                        }, {
+                                            "content": "平均",
+                                            "type": "text"
+                                        }]
+                                    }]
+                                }, {
+                                    "type": "table",
+                                    "content": [{
+                                        "tr": [{
+                                            "content": "截面3",
+                                            "type": "text"
+                                        }]
+                                    }, {
+                                        "tr": [{
+                                            "content": "（1）",
+                                            "type": "text"
+                                        }, {
+                                            "content": "（2）",
+                                            "type": "text"
+                                        }, {
+                                            "content": "平均",
+                                            "type": "text"
+                                        }]
+                                    }]
+                                }]
+                            }]
+                        }]
+                    }]
+                }, {
+                    "type": "text",
+                    "content": "抗扭截面系数"
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "低碳钢"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 10.00
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 9.99
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 9.995
+                                }]
+                            }]
+                        }, {
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 9.99
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 10.01
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 10.00
+                                }]
+                            }]
+                        }, {
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 9.99
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 9.99
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 9.99
+                                }]
+                            }]
+                        }]
+                    }]
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 195.76
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "铸铁"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 10.03
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                     "answer": 10.01
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 10.02
+                                }]
+                            }]
+                        }, {
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 10.04
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 10.02
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 10.03
+                                }]
+                            }]
+                        }, {
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 10.15
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 10.14
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 10.145
+                                }]
+                            }]
+                        }]
+                    }]
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 197.53
+                }]
+            }]
+        }]
+    }, {
+        "type": "section",
+        "text": "实验数据记录",
+        "content": [{
+            "type": "table",
+            "text": "",
+            "content": [{
+                "tr": [{
+                    "type": "text",
+                    "content": "项目"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "材料"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "低碳钢"
+                        }, {
+                            "type": "text",
+                            "content": "铸铁"
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "参加扭转长度"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 114.37
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 142.41
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "屈服扭矩"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 37.95
+                        }, {
+                            "type": "empty"
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "破坏扭矩"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 95.37
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 58.43
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "破坏时扭矩角"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 1777.00
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 68
+                        }]
+                    }]
+                }]
+            }]
+        }]
+    }, {
+        "type": "section",
+        "text": "材料扭转力性能计算",
+        "content": [{
+            "type": "table",
+            "content": [{
+                "tr": [{
+                    "type": "text",
+                    "content": "项目"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "低碳钢"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "计算公式"
+                        }, {
+                            "type": "text",
+                            "content": "计算结果"
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "铸铁"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "计算公式"
+                        }, {
+                            "type": "text",
+                            "content": "计算结果"
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "剪切屈服极限"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "choice",
+                            "options": [{
+                                "label": "A",
+                                "content": "图1"
+                            }, {
+                                "label": "B",
+                                "content": "图2"
+                            }, {
+                                "label": "C",
+                                "content": "图3"
+                            }, {
+                                "label": "D",
+                                "content": "图4"
+                            }],
+                            "answer": "A"
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 193.86
+                        }]
+                    }]
+                }, {
+                    "type": "empty"
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "剪切强度极限"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "choice",
+                            "options": [{
+                                "label": "A",
+                                "content": "图1"
+                            }, {
+                                "label": "B",
+                                "content": "图2"
+                            }, {
+                                "label": "C",
+                                "content": "图3"
+                            }, {
+                                "label": "D",
+                                "content": "图4"
+                            }],
+                            "answer": "A"
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 487.20
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "choice",
+                            "options": [{
+                                "label": "A",
+                                "content": "图1"
+                            }, {
+                                "label": "B",
+                                "content": "图2"
+                            }, {
+                                "label": "C",
+                                "content": "图3"
+                            }, {
+                                "label": "D",
+                                "content": "图4"
+                            }],
+                            "answer": "A"
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 295.79
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "真实剪切屈服极限"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "choice",
+                            "options": [{
+                                "label": "A",
+                                "content": "图1"
+                            }, {
+                                "label": "B",
+                                "content": "图2"
+                            }, {
+                                "label": "C",
+                                "content": "图3"
+                            }, {
+                                "label": "D",
+                                "content": "图4"
+                            }],
+                            "answer": "A"
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 145.40
+                        }]
+                    }]
+                }, {
+                    "type": "empty"
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "破坏时单位扭角"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "choice",
+                            "options": [{
+                                "label": "A",
+                                "content": "图1"
+                            }, {
+                                "label": "B",
+                                "content": "图2"
+                            }, {
+                                "label": "C",
+                                "content": "图3"
+                            }, {
+                                "label": "D",
+                                "content": "图4"
+                            }],
+                            "answer": "A"
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 15.53
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "choice",
+                            "options": [{
+                                "label": "A",
+                                "content": "图1"
+                            }, {
+                                "label": "B",
+                                "content": "图2"
+                            }, {
+                                "label": "C",
+                                "content": "图3"
+                            }, {
+                                "label": "D",
+                                "content": "图4"
+                            }],
+                            "answer": "A"
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0.48
+                        }]
+                    }]
+                }]
+            }]
+        }]
+    }, {
+        "type": "section",
+        "text": "作图",
+        "content": [{
+            "type": "table",
+            "text": "",
+            "content": [{
+                "tr": [{
+                    "type": "text",
+                    "content": "材料"
+                }, {
+                    "type": "text",
+                    "content": "T-Φ曲线"
+                }, {
+                    "type": "text",
+                    "content": "断口形状和特征"
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "低碳钢"
+                }, {
+                    "type": "graphic",
+                    "options": [{
+                        "label": "A",
+                        "content": "图1"
+                    }, {
+                        "label": "B",
+                        "content": "图2"
+                    }, {
+                        "label": "C",
+                        "content": "图3"
+                    }, {
+                        "label": "D",
+                        "content": "图4"
+                    }],
+                    "answer": "A"
+                }, {
+                    "type": "choice",
+                    "options": [{
+                        "label": "A",
+                        "content": "断口呈杯口状"
+                    }, {
+                        "label": "B",
+                        "content": "断口呈平口状"
+                    }, {
+                        "label": "C",
+                        "content": "断口呈鼓形状"
+                    }, {
+                        "label": "D",
+                        "content": "断口呈45°螺旋状"
+                    }],
+                    "answer": "B"
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "铸铁"
+                }, {
+                    "type": "graphic",
+                    "options": [{
+                        "label": "A",
+                        "content": "图1"
+                    }, {
+                        "label": "B",
+                        "content": "图2"
+                    }, {
+                        "label": "C",
+                        "content": "图3"
+                    }, {
+                        "label": "D",
+                        "content": "图4"
+                    }],
+                    "answer": "A"
+                }, {
+                    "type": "choice",
+                    "options": [{
+                        "label": "A",
+                        "content": "断口呈杯口状"
+                    }, {
+                        "label": "B",
+                        "content": "断口呈平口状"
+                    }, {
+                        "label": "C",
+                        "content": "断口呈鼓形状"
+                    }, {
+                        "label": "D",
+                        "content": "断口呈45°螺旋状"
+                    }],
+                    "answer": "D"
+                }]
+            }]
+        }]
+    }, {
+        "type": "section",
+        "text": "问题讨论",
+        "description": "根据实验结果，选择下列括号中的正确答案",
+        "content": [{
+            "type": "choice",
+            "text": "低碳钢受扭时，受（拉、剪、压）应力破坏:",
+            "options": [{
+                "label": "A",
+                "content": "拉"
+            }, {
+                "label": "B",
+                "content": "剪"
+            }, {
+                "label": "B",
+                "content": "压"
+            }],
+            "answer": "B"
+        }, {
+            "type": "choice",
+            "text": "铸铁受扭时，受（拉、剪、压）应力破坏:",
+            "options": [{
+                "label": "A",
+                "content": "剪"
+            }, {
+                "label": "B",
+                "content": "压"
+            }, {
+                "label": "B",
+                "content": "压"
+            }],
+            "answer": "A"
+        }, {
+            "type": "choice",
+            "text": "低碳钢抗拉能力（大于、小于、等于）抗剪能力:",
+            "options": [{
+                "label": "A",
+                "content": "大于"
+            }, {
+                "label": "B",
+                "content": "小于"
+            }, {
+                "label": "B",
+                "content": "等于"
+            }],
+            "answer": "A"
+        }, {
+            "type": "choice",
+            "text": "铸铁抗拉能力（大于、小于、等于）抗剪能力:",
+            "options": [{
+                "label": "A",
+                "content": "大于"
+            }, {
+                "label": "B",
+                "content": "小于"
+            }, {
+                "label": "B",
+                "content": "等于"
+            }],
+            "answer": "B"
+        }, {
+            "type": "choice",
+            "text": "低碳钢的塑性（大于、小于、等于）铸铁的塑性:",
+            "options": [{
+                "label": "A",
+                "content": "大于"
+            }, {
+                "label": "B",
+                "content": "小于"
+            }, {
+                "label": "B",
+                "content": "等于"
+            }],
+            "answer": "A"
+        }]
+    }]
+}

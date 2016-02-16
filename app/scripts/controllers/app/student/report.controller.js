@@ -128,7 +128,7 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
     });
   }
 
-  $http.get("tpl/app/report/test.json")
+  $http.get("tpl/app/report/yagan.json")
      .success(function(data){
       $scope.new_data = data;
      });

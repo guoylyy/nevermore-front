@@ -1,0 +1,743 @@
+{
+    "type": "title",
+    "text": "梁弯曲正应力实验报告",
+    "content": [{
+        "type": "date",
+        "text": "实验日期",
+        "content": "2015-12-12"
+    }, {
+        "type": "section",
+        "text": "实验设备与系数",
+        "content": [{
+            "type": "blank",
+            "text": "实验仪器名称型号",
+            "content": "DH3818-2静态电阻应变仪、WQ-5弯曲梁实验装置"
+        }, {
+            "type": "blank",
+            "text": "灵敏系数k",
+            "content": "2.07"
+        }]
+    }, {
+        "type": "section",
+        "text": "记录表格",
+        "content": [{
+            "type": "table",
+            "text": "1.试件梁的数据及测点位置",
+            "content": [{
+                "tr": [{
+                    "type": "text",
+                    "content": "物理量"
+                }, {
+                    "type": "text",
+                    "content": "几何量"
+                }, {
+                    "type": "text",
+                    "content": "测点位置"
+                }]
+            }, {
+                "tr": [{
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "钢梁的弹性模量（*10^5 MPa）"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 2
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "梁宽b（mm）"
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 20
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "梁高h（mm）"
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 40
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "距离a（mm）"
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 150
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "跨度L（mm）"
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 620
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "惯距Iz（*10^5 mm^4）"
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 1.07
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "布片图"
+                        }, {
+                            "type": "text",
+                            "content": "测点号"
+                        }, {
+                            "type": "text",
+                            "content": "坐标/mm"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "picture",
+                            "content": "url"
+                        }, {
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "1"
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "2"
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "3"
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "4"
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "5"
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "6"
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "7"
+                                }]
+                            }]
+                        }, {
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": -20
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": -15
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": -10
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 10
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 15
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 20
+                                }]
+                            }]
+                        }]
+                    }]
+                }]
+            }]
+        }, {
+            "type": "table",
+            "text": "2.应变实测记录（测点应变值*10^-5）",
+            "content": [{
+                "tr": [{
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "次"
+                        }, {
+                            "type": "text",
+                            "content": "载荷/kN"
+                        }]
+                    }]
+
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "测点号"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "1"
+                        }, {
+                            "type": "text",
+                            "content": "2"
+                        }, {
+                            "type": "text",
+                            "content": "3"
+                        }, {
+                            "type": "text",
+                            "content": "4"
+                        }, {
+                            "type": "text",
+                            "content": "5"
+                        }, {
+                            "type": "text",
+                            "content": "6"
+                        }, {
+                            "type": "text",
+                            "content": "7"
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "I"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "0"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "1.5"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "3.0"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "4.5"
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": -104
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -79
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -51
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 53
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 79
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 107
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": -290
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -158
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -104
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 105
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 157
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 213
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": -313
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -234
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -156
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 155
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 234
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 317
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "II"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "0"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "4.5"
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": -314
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -239
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -159
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 152
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 232
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 315
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "II"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "0"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "4.5"
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": -312
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -233
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -157
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 155
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 233
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 316
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "三次（4.5kN）应变平均值ε"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": -313
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -235
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -157
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 154
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 233
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 316
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "σ实 = Eε实(MPa)"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": -62.6
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -47.0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -31.4
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 0
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 30.8
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 46.6
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 316
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "泊松比"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 0.272
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "最大载荷Pmax(kN)"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 4.5
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "最大弯矩Mmax = 1/2 Pmax a(N·m)"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 337.5
+                }]
+            }]
+        }]
+    }, {
+        "type": "section",
+        "text": "实验结果的处理",
+        "content": [{
+            "type": "choice",
+            "text": "1. 描绘应变分布图",
+            "description": "根据应变实测记录表中第一次试验的记录数据，将1.5kN，3.0kN和4.5kN载荷下测得的各点应变值绘于图中并作直线，以下正确的是",
+            "options": [{
+                "label": "A",
+                "content": "图1"
+            }, {
+                "label": "B",
+                "content": "图2"
+            }, {
+                "label": "C",
+                "content": "图3"
+            }, {
+                "label": "D",
+                "content": "图4"
+            }],
+            "answer": "A"
+        }, {
+            "type": "choice",
+            "text": "2. 实测应力分布曲线与理论应力分布曲线的比较",
+            "description": "根据应变实测记录表中各点的实测应力值，描绘实测点于图中并作直线，以下正确的是",
+            "options": [{
+                "label": "A",
+                "content": "图1"
+            }, {
+                "label": "B",
+                "content": "图2"
+            }, {
+                "label": "C",
+                "content": "图3"
+            }, {
+                "label": "D",
+                "content": "图4"
+            }],
+            "answer": "A"
+        }, {
+            "type": "table",
+            "text": "3. 实验值与理论值的误差",
+            "content": [{
+                "tr": [{
+                    "type": "text",
+                    "content": "测点号"
+                }, {
+                    "type": "text",
+                    "content": "实验应力值 σ实/MPa"
+                }, {
+                    "type": "text",
+                    "content": "理论值 σ理 = Myi/Iz MPa"
+                }, {
+                    "type": "text",
+                    "content": "误差 |(σ实 - σ理)/σ理|*100%"
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "1"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": -62.6
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": -63.1
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 0.79
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "2"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": -47.0
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": -47.3
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 0.63
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "3"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": -31.4
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": -31.5
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 0.32
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "4"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 0
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 0
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 0
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "5"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 30.8
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 31.5
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 2.2
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "6"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 46.6
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 47.3
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 1.5
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "7"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 63.2
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 63.1
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 0.16
+                }]
+            }]
+        }]
+    }]
+}

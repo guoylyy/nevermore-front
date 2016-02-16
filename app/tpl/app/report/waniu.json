@@ -1,0 +1,864 @@
+{
+    "type": "title",
+    "text": "弯曲与扭转组合变形实验报告",
+    "content": [{
+        "type": "date",
+        "text": "实验日期",
+        "content": "2015-12-12"
+    },
+    {
+        "type": "section",
+        "text": "实验设备",
+        "content": [{
+            "type": "blank",
+            "text": "试验机名称",
+            "content": "WN-05弯扭组合试验装置"
+        }]
+    },
+    {
+        "type": "section",
+        "text": "试样尺寸记录",
+        "content": [{
+            "type": "table",
+            "content": [{
+                "tr": [{
+                    "type": "text",
+                    "content": "试件计算长度 l/mm"
+                }, {
+                    "type": "text",
+                    "content": "300"
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "加长杆长度 a/mm"
+                }, {
+                    "type": "text",
+                    "content": "200"
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "试件外径 D/mm"
+                }, {
+                    "type": "text",
+                    "content": "40"
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "试件内径 d/mm"
+                }, {
+                    "type": "text",
+                    "content": "34"
+                }]
+            }]
+        }]
+    },
+    {
+        "type": "section",
+        "text": "试件材料常数：弹性模量 E = 7*10^4 MPa, 泊松比 με * 10^-6 = 0.33"
+    },
+    {
+        "type": "section",
+        "text": "电阻应变片灵敏系数",
+        "content": [{
+            "type": "blank",
+            "text": "k=",
+            "content": "2.12"
+        }]
+    },
+    {
+        "type": "section",
+        "text": "弯曲与扭转组合变形实验数据记录表",
+        "description": "注：差数为各载荷级别的应变读数（με）与零载荷时的应变读数（με）之差。",
+        "content": [{
+            "type": "table",
+            "text": "弯曲与扭转组合变形实验数据记录表",
+            "content": [{
+                "tr": [{
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "次序"
+                        }, {
+                            "type": "text",
+                            "content": "载荷值/N"
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "应变值 /μ"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "table",
+                                    "content": [{
+                                        "tr": [{
+                                            "content": "测点B",
+                                            "type": "text"
+                                        }]
+                                    }, {
+                                        "tr": [{
+                                            "type": "text",
+                                            "content": "ε（-45°）（1）"
+                                        }, {
+                                            "type": "text",
+                                            "content": "ε（0°）（2）"
+                                        }, {
+                                            "type": "text",
+                                            "content": "ε（45°）（3）"
+                                        }]
+                                    }]
+                                }, {
+                                    "type": "table",
+                                    "content": [{
+                                        "tr": [{
+                                            "content": "测点B",
+                                            "type": "text"
+                                        }]
+                                    }, {
+                                        "tr": [{
+                                            "type": "text",
+                                            "content": "ε（-45°）（1）"
+                                        }, {
+                                            "type": "text",
+                                            "content": "ε（0°）（2）"
+                                        }, {
+                                            "type": "text",
+                                            "content": "ε（45°）（3）"
+                                        }]
+                                    }]
+                                }]
+                            }]
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "I"
+                        }, {
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "0"
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "150"
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "300"
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "450"
+                                }]
+                            }]
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }]
+                            }]
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 159
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 205
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -24
+                                }]
+                            }]
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 316
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 412
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -49
+                                }]
+                            }]
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 474
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 616
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -75
+                                }]
+                            }]
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }]
+                            }]
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 24
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -210
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -160
+                                }]
+                            }]
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 49
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -415
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -318
+                                }]
+                            }]
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 73
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -621
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -480
+                                }]
+                            }]
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "II"
+                        }, {
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "0"
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "450"
+                                }]
+                            }]
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }]
+                            }]
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 474
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 617
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -74
+                                }]
+                            }]
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }]
+                            }]
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 72
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -622
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -481
+                                }]
+                            }]
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "III"
+                        }, {
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "0"
+                                }]
+                            }, {
+                                "tr": [{
+                                    "type": "text",
+                                    "content": "450"
+                                }]
+                            }]
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }]
+                            }]
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 473
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 616
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -75
+                                }]
+                            }]
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": 0
+                                }]
+                            }]
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "table",
+                            "content": [{
+                                "tr": [{
+                                    "type": "fill-in-the-blank",
+                                    "answer": 73
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -621
+                                }, {
+                                    "type": "fill-in-the-blank",
+                                    "answer": -482
+                                }]
+                            }]
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "三次载荷(0~450N)的应变平均值"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 473.7
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": 616.3
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -74.7
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 72.7
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -621.3
+                        }, {
+                            "type": "fill-in-the-blank",
+                            "answer": -481
+                        }]
+                    }]
+                }]
+            }]
+        }]
+    }, {
+        "type": "section",
+        "text": "计算",
+        "content": [{
+            "type": "table",
+            "text": "1.写出计算公式",
+            "content": [{
+                "tr": [{
+                    "type": "text",
+                    "content": "理论计算"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "应力分量"
+                        }, {
+                            "type": "choice",
+                            "options": [{
+                                "label": "A",
+                                "content": "图1"
+                            }, {
+                                "label": "B",
+                                "content": "图2"
+                            }, {
+                                "label": "C",
+                                "content": "图3"
+                            }, {
+                                "label": "D",
+                                "content": "图4"
+                            }],
+                            "answer": "A"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "主应力"
+                        }, {
+                            "type": "choice",
+                            "options": [{
+                                "label": "A",
+                                "content": "图1"
+                            }, {
+                                "label": "B",
+                                "content": "图2"
+                            }, {
+                                "label": "C",
+                                "content": "图3"
+                            }, {
+                                "label": "D",
+                                "content": "图4"
+                            }],
+                            "answer": "A"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "主方向"
+                        }, {
+                            "type": "choice",
+                            "options": [{
+                                "label": "A",
+                                "content": "图1"
+                            }, {
+                                "label": "B",
+                                "content": "图2"
+                            }, {
+                                "label": "C",
+                                "content": "图3"
+                            }, {
+                                "label": "D",
+                                "content": "图4"
+                            }],
+                            "answer": "A"
+                        }]
+                    }]
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "实测计算"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "主应变"
+                        }, {
+                            "type": "choice",
+                            "options": [{
+                                "label": "A",
+                                "content": "图1"
+                            }, {
+                                "label": "B",
+                                "content": "图2"
+                            }, {
+                                "label": "C",
+                                "content": "图3"
+                            }, {
+                                "label": "D",
+                                "content": "图4"
+                            }],
+                            "answer": "A"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "主应力"
+                        }, {
+                            "type": "choice",
+                            "options": [{
+                                "label": "A",
+                                "content": "图1"
+                            }, {
+                                "label": "B",
+                                "content": "图2"
+                            }, {
+                                "label": "C",
+                                "content": "图3"
+                            }, {
+                                "label": "D",
+                                "content": "图4"
+                            }],
+                            "answer": "A"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "主方向"
+                        }, {
+                            "type": "choice",
+                            "options": [{
+                                "label": "A",
+                                "content": "图1"
+                            }, {
+                                "label": "B",
+                                "content": "图2"
+                            }, {
+                                "label": "C",
+                                "content": "图3"
+                            }, {
+                                "label": "D",
+                                "content": "图4"
+                            }],
+                            "answer": "A"
+                        }]
+                    }]
+                }]
+            }]
+        }, {
+            "type": "table",
+            "text": "2.计算结果比较",
+            "content": [{
+                "tr": [{
+                    "type": "text",
+                    "content": "内容"
+                }, {
+                    "type": "text",
+                    "content": "测点"
+                }, {
+                    "type": "text",
+                    "content": "理论值"
+                }, {
+                    "type": "text",
+                    "content": "实测值"
+                }, {
+                    "type": "text",
+                    "content": "测点"
+                }, {
+                    "type": "text",
+                    "content": "理论值"
+                }, {
+                    "type": "text",
+                    "content": "实测值"
+                }]
+            }, {
+                "tr": [{
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "text",
+                            "content": "主应力 σ1/MPa"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "主应力 σ3/MPa"
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "text",
+                            "content": "主方向 α0/°"
+                        }]
+                    }]
+                }, {
+                    "type": "text",
+                    "content": "B"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 49.54
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": -4.54
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": -16.85
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 47.10
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": -5.41
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": -16.67
+                        }]
+                    }]
+                }, {
+                    "type": "text",
+                    "content": "D"
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 4.54
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": -49.54
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 16.85
+                        }]
+                    }]
+                }, {
+                    "type": "table",
+                    "content": [{
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 5.02
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": -47.68
+                        }]
+                    }, {
+                        "tr": [{
+                            "type": "fill-in-the-blank",
+                            "answer": 16.79
+                        }]
+                    }]
+                }]
+            }]
+        }]
+    }, {
+        "type": "section",
+        "text": "作图",
+        "description": "根据实测结果在原始单元题图上画主单元体，并注明主应力的大小和方向。",
+        "content": [{
+            "type": "table",
+            "content": [{
+                "tr": [{
+                    "type": "text",
+                    "content": "测点"
+                }, {
+                    "type": "text",
+                    "content": "B（俯视）"
+                }, {
+                    "type": "text",
+                    "content": "D（仰视）"
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "单元体图"
+                }, {
+                    "type": "choice",
+                    "options": [{
+                        "label": "A",
+                        "content": "图1"
+                    }, {
+                        "label": "B",
+                        "content": "图2"
+                    }, {
+                        "label": "C",
+                        "content": "图3"
+                    }, {
+                        "label": "D",
+                        "content": "图4"
+                    }],
+                    "answer": "A"
+                }, {
+                    "type": "choice",
+                    "options": [{
+                        "label": "A",
+                        "content": "图1"
+                    }, {
+                        "label": "B",
+                        "content": "图2"
+                    }, {
+                        "label": "C",
+                        "content": "图3"
+                    }, {
+                        "label": "D",
+                        "content": "图4"
+                    }],
+                    "answer": "A"
+                }]
+            }]
+        }]
+    }]
+}
