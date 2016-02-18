@@ -31,7 +31,11 @@
 				delete: {
 					method: "DELETE",
 					headers:  sessionService.headers(),
-				}
+				},
+				put: {
+					method: "PUT",
+					headers: sessionService.headers(),
+				},
 			})
 		}
 

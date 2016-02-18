@@ -164,13 +164,19 @@ app.controller("ReservationManagementController", ["$scope", "$stateParams", "Re
 				resolve: {
 					"labID": function(){
 						return resource.lab.id;
+					},
+					"reservationID": function(){
+						return resource.id;
 					}
 				}
 			})
 
 			reserveDialog.closePromise.then(function(data) {
 				if (data.value === 'success') {
-					loadExperimentReservations()
+					loadResources()
+					ToasterTool.success("更改成功")
+				}else{
+					ToasterTool.error("更新失败")
 				}
 			})
 		}
