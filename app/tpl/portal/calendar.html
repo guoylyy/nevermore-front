@@ -1,57 +1,52 @@
-
 <div class="calendar-page" >
-  <div class="calendar-content">
-    <div class="calendar-panel">
-        <div class="hbox hbox-auto-xs hbox-auto-sm m-t-md">
-          <div class="col p-r-md">
-            <div class="clearfix m-b">
-              <div class="pull-left m-t-xs">
-                <span>
-                  <label for="" class="label label-success">&nbsp;&nbsp;</label>
-                  <span class="p-t-xs m-r m-l-xs">已通过</span>
-                </span>
-                <span>
-                  <label for="" class="label label-warning">&nbsp;&nbsp;</label>
-                  <span class="p-t-xs m-r m-l-xs">审核中</span>
-                </span>
-                <span>
-                  <label for="" class="label label-default">&nbsp;&nbsp;</label>
-                  <span class="p-t-xs m-r m-l-xs">已失效</span>
-                </span>
-
-              </div>
-              <div class="pull-right">
-                <button type="button" class="btn btn-sm btn-default" ng-click="today()">今天</button>
-                <div class="btn-group m-l-xs">
-                  <button class="btn btn-sm btn-default" ng-click="changeView('agendaDay')">日报</button>
-                  <button class="btn btn-sm btn-default" ng-click="changeView('agendaWeek')">周报</button>
-                  <button class="btn btn-sm btn-default" ng-click="changeView('month')">月报</button>
+    <div class="calendar-content">
+        <div class="calendar-panel">
+            <div class="hbox hbox-auto-xs hbox-auto-sm m-t-md">
+                <div class="col p-r-md">
+                    <div class="clearfix m-b">
+                        <div class="pull-left m-t-xs">
+                            <span>
+                                <label for="" class="label label-success">&nbsp;&nbsp;</label>
+                                <span class="p-t-xs m-r m-l-xs">已通过</span>
+                            </span>
+                            <span>
+                                <label for="" class="label label-warning">&nbsp;&nbsp;</label>
+                                <span class="p-t-xs m-r m-l-xs">审核中</span>
+                            </span>
+                            <span>
+                                <label for="" class="label label-default">&nbsp;&nbsp;</label>
+                                <span class="p-t-xs m-r m-l-xs">已失效</span>
+                            </span>
+                        </div>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-sm btn-default" ng-click="today()">今天</button>
+                            <div class="btn-group m-l-xs">
+                                <button class="btn btn-sm btn-default" ng-click="changeView('agendaDay')">日报</button>
+                                <button class="btn btn-sm btn-default" ng-click="changeView('agendaWeek')">周报</button>
+                                <button class="btn btn-sm btn-default" ng-click="changeView('month')">月报</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pos-rlt">
+                        <div class="fc-overlay">
+                            <div class="panel bg-white b-a pos-rlt">
+                                <span class="arrow"></span>
+                                <div class="h4 font-thin m-b-sm">{{event.title}}</div>
+                                <div class="line b-b b-light"></div>
+                                <div class="ng-hide" ng-show='event.location'><i class="icon-pointer text-muted m-r-xs"></i> {{event.location}}
+                                    <span style="color:{{event.color}}">({{event.status}})</span></div>
+                                    <div><i class="icon-clock text-muted m-r-xs"></i> {{event.slot.title }} ({{event.slot.startTime }} ~ {{event.slot.endTime}})</div>
+                                    <div class="ng-hide" ng-show='event.courseName'><i class="icon-book-open text-muted m-r-xs"></i> {{event.courseName}}</div>
+                                    <div class="ng-hide" ng-show='event.teacherName'><i class="icon-user-female text-muted m-r-xs"></i> {{event.teacherName}}</div>
+                                    <div class="ng-hide" ng-show='event.labTeachers'><i class="icon-users text-muted m-r-xs"></i> {{event.labTeachers}} </div>
+                                </div>
+                            </div>
+                            <div class="calendar" ng-model="eventSources" config="uiConfig.calendar" ui-calendar="uiConfig.calendar"></div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="pos-rlt">
-              <div class="fc-overlay">
-                <div class="panel bg-white b-a pos-rlt">
-                <span class="arrow"></span>
-                <div class="h4 font-thin m-b-sm">{{event.title}}</div>
-                <div class="line b-b b-light"></div>
-                <div class="ng-hide" ng-show='event.location'><i class="icon-pointer text-muted m-r-xs"></i> {{event.location}}
-              <span style="color:{{event.color}}">({{event.status}})</span></div>
-            <div><i class="icon-clock text-muted m-r-xs"></i> {{event.slot.title }} ({{event.slot.startTime }} ~ {{event.slot.endTime}})</div>
-            <div class="ng-hide" ng-show='event.courseName'><i class="icon-book-open text-muted m-r-xs"></i> {{event.courseName}}</div>
-            <div class="ng-hide" ng-show='event.teacherName'><i class="icon-user-female text-muted m-r-xs"></i> {{event.teacherName}}</div>
-            <div class="ng-hide" ng-show='event.labTeachers'><i class="icon-users text-muted m-r-xs"></i> {{event.labTeachers}} </div>
-              </div>
-              </div>
-              <div class="calendar" ng-model="eventSources" config="uiConfig.calendar" ui-calendar="uiConfig.calendar"></div>
-            </div>
-          </div>
-
         </div>
-
     </div>
-  </div>
+    <nm-portal-footer></nm-portal-footer>
 </div>
-
-
-<div data-ng-include="'tpl/portal/block/simple-footer.html'"></div>

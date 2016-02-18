@@ -38,46 +38,58 @@ angular.module('nevermore')
                 })
                 .state('portal.index', {
                     url: '^/index',
-                    templateUrl: 'tpl/portal/index.html',
-                    controller: 'IndexController',
-                    resolve: {
-                        controller: ['$ocLazyLoad', function($ocLazyLoad) {
-                            return $ocLazyLoad.load([
-                                'scripts/controllers/portal/Index.controller.js',
-                            ]);
-                        }]
+                    views: {
+                        "index": {
+                            url: "",
+                            templateUrl: 'tpl/portal/index.html',
+                            controller: 'IndexController',
+                            resolve: {
+                                controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                                    return $ocLazyLoad.load([
+                                        'scripts/controllers/portal/Index.controller.js',
+                                    ]);
+                                }]
+                            }
+                        },
+                        "calendar": {
+                            url: "",
+                            templateUrl: 'tpl/portal/calendar.html',
+                            controller: 'PortalCalendarController',
+                            resolve: {
+                                controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                                    return $ocLazyLoad.load([
+                                        'scripts/controllers/portal/PortalCalendar.controller.js',
+                                        'lib/jquery/fullcalendar/fullcalendar.css',
+                                        'lib/jquery/fullcalendar/theme.css',
+                                        'lib/jquery/jquery-ui-1.10.3.custom.min.js',
+                                        'lib/libs/moment.min.js',
+                                        'lib/jquery/fullcalendar/fullcalendar.min.js',
+                                        'scripts/directives/portal/nmPortalFooter.directive.js',
+                                        'ui.calendar'
+                                    ]);
+                                }]
+                            }
+                        }
                     }
+                    
                 })
                 .state('portal.login', {
                     url: '^/signin',
-                    templateUrl: 'tpl/portal/login.html',
-                    controller: 'LoginController',
-                    resolve: {
-                        controller: ['$ocLazyLoad', function($ocLazyLoad) {
-                            return $ocLazyLoad.load([
-                                'scripts/controllers/portal/Login.controller.js',
-                                "scripts/factories/refine/Semester.factory.js",
-                                "scripts/factories/Role.factory.js",
-                            ]);
-                        }]
-                    }
-                })
-                .state('portal.calendar', {
-                    url: '^/calendar',
-                    templateUrl: 'tpl/portal/calendar.html',
-                    controller: 'PortalCalendarController',
-                    resolve: {
-                        controller: ['$ocLazyLoad', function($ocLazyLoad) {
-                            return $ocLazyLoad.load([
-                                'scripts/controllers/portal/PortalCalendar.controller.js',
-                                'lib/jquery/fullcalendar/fullcalendar.css',
-                                'lib/jquery/fullcalendar/theme.css',
-                                'lib/jquery/jquery-ui-1.10.3.custom.min.js',
-                                'lib/libs/moment.min.js',
-                                'lib/jquery/fullcalendar/fullcalendar.min.js',
-                                'ui.calendar'
-                            ]);
-                        }]
+                    views: {
+                        "index": {
+                            url: "",
+                            templateUrl: 'tpl/portal/login.html',
+                            controller: 'LoginController',
+                            resolve: {
+                                controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                                    return $ocLazyLoad.load([
+                                        'scripts/controllers/portal/Login.controller.js',
+                                        "scripts/factories/refine/Semester.factory.js",
+                                        "scripts/factories/Role.factory.js",
+                                    ]);
+                                }]
+                            }
+                        }
                     }
                 })
                 //app
@@ -97,6 +109,7 @@ angular.module('nevermore')
                                 "scripts/factories/Role.factory.js",
                                 "scripts/factories/refine/HttpResponse.factory.js",
                                 "scripts/factories/ErrorHandler.factory.js",
+                                "scripts/factories/InputValidator.factory.js",
                                 "scripts/controllers/app/modal/ViewPicture.controller.js",
                                 'NMMsgNumber'
                             ]);
@@ -905,6 +918,12 @@ angular.module('nevermore')
                                 "scripts/controllers/app/admin/modal/ViewAndEditReservation.controller.js",
                                 'scripts/directives/app/nm-configure-list.js',
                                 "angularBootstrapNavTree",
+                                "scripts/controllers/app/admin/modal/ModifyAppointmentDate.controller.js",
+                                "scripts/factories/StateChain.factory.js",
+                                "scripts/directives/app/stage-view.directive.js",
+                                'NmDatepicker',
+                                "scripts/factories/refine/Lab.factory.js",
+                                
                             ])
                         }]
                     }
