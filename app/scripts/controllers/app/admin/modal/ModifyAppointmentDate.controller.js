@@ -4,12 +4,12 @@ function() {
 	angular.module("nevermore")
 		.controller("ModifyAppointmentDateController", ModifyAppointmentDateController)
 
-	ModifyAppointmentDateController.$inject = ["$scope", "labID", "LabFactory"
-	, "InputValidatorFactory", "StateChainFactory", "ReservationFactory"
+	ModifyAppointmentDateController.$inject = ["$scope", "reservationID", "labID"
+	, "LabFactory", "InputValidatorFactory", "StateChainFactory", "ReservationFactory"
 	, "HttpResponseFactory", "ToasterTool", "AccountManageFactory", "DateTool"]
 
-	function ModifyAppointmentDateController($scope, labID, LabFactory
-		, InputValidatorFactory, StateChainFactory, ReservationFactory
+	function ModifyAppointmentDateController($scope, reservationID, labID
+		, LabFactory, InputValidatorFactory, StateChainFactory, ReservationFactory
 		, HttpResponseFactory, ToasterTool, AccountManageFactory, DateTool){
 		$scope.date = new Date()
 
@@ -126,7 +126,25 @@ function() {
 		}
 
 		function modifyAppointmentDate(){
-
+			ReservationFactory.reservation().put({
+				id: reservationID,
+			}, {
+				slotId: $scope.slot.id,
+				applyDate: formatDate($scope.date),
+				teachers: $scope.selectedTeachers.map(function(teacher){
+					return {
+						id: teacher.id,
+					}
+				}),
+			})
+			.$promise
+			.then(function(response){
+				if(response.success){
+					$scope.closeThisDialog("success")
+				}else{
+					$scope.closeThisDialog("failed")
+				}
+			})
 		}
 
 		function formatDate(date){
