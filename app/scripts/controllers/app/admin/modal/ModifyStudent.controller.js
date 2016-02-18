@@ -85,7 +85,7 @@ app.controller("ModifyStudentController", ["$scope", "data", "AccountManageFacto
                     })
                     .catch(errorHandler)
             } else {
-                errorHandler("请完整填写信息")
+                errorHandler("密码不一致！")
             }
         }
         function resourceComplete() {
@@ -96,6 +96,7 @@ app.controller("ModifyStudentController", ["$scope", "data", "AccountManageFacto
         function commitModifyPassword() {
             $scope.pending = true
             var submitResource = angular.copy(copiedResource);
+            submitResource.roles = ['STUDENT'];
             submitResource.gender = copiedResource.gender.code
             submitResource.password = md5($scope.resource.newPassword)
             return AccountManageFactory.account().put({
