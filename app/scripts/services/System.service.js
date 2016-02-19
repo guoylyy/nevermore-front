@@ -1,6 +1,6 @@
 angular.module('nevermore')
-  .service('SystemService', ['$localStorage', 'ResTool', '$sessionStorage', '$location',  function (
-     $localStorage, ResTool, $sessionStorage, $location) {
+  .service('SystemService', ['$rootScope', '$localStorage', 'ResTool', '$sessionStorage', '$location',  function (
+     $rootScope, $localStorage, ResTool, $sessionStorage, $location) {
       var TOKEN_KEY = 'X-Auth-Token',
         TOKEN_HEADER = 'x-auth-token',
         LOGIN_USER = 'Login-User',
@@ -27,8 +27,6 @@ angular.module('nevermore')
       this.login = function(user, token){
         $localStorage[TOKEN_KEY] = $sessionStorage[TOKEN_KEY] = token;
         $localStorage[LOGIN_USER] = $sessionStorage[LOGIN_USER] = user;
-        //console.log($localStorage[TOKEN_KEY]);
-        //console.log($sessionStorage[TOKEN_KEY]);
       }
 
       //登出
@@ -39,6 +37,8 @@ angular.module('nevermore')
         delete $sessionStorage[LOGIN_USER];
         delete $localStorage[USERNAME];
         delete $localStorage[PASSWORD];
+        $localStorage.currentUser = null;
+        $rootScope.currentUser = null;
       };
 
       this.getLoginUser = function(){

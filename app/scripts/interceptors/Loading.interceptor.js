@@ -6,28 +6,24 @@
  * @return {[type]}             [description]
  */
 angular.module('nevermore')
-  .factory('loadingInterceptor', function loadingHttpInterceptor($q, $timeout) {
+  .factory('loadingInterceptor', function loadingHttpInterceptor($q, $timeout, SystemService
+    ,$location, ToasterTool) {
     return {
       request: function (config) {
-        $.isLoading();
         return config || $q.when(config);
       },
       requestError: function (config) {
-        $timeout(function () {
-          $.isLoading('hide');
-        }, 300);
         return $q.reject(rejection);
       },
       response: function (response) {
-        $timeout(function () {
-          $.isLoading('hide');
-        }, 300);
+        if(response.data.code != undefined && response.data.code == '502'){
+          SystemService.logout();
+          $location.path('/signin');
+          ToasterTool.info("会话失效","请重新登录");
+        }
         return response || $q.when(response);
       },
       responseError: function (rejection) {
-        $timeout(function () {
-          $.isLoading('hide');
-        }, 300);
         return $q.reject(rejection);
       }
     };
