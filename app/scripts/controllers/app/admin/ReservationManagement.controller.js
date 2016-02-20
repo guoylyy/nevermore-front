@@ -175,8 +175,8 @@ app.controller("ReservationManagementController", ["$scope", "$stateParams", "Re
 				if (data.value === 'success') {
 					loadResources()
 					ToasterTool.success("更改成功")
-				}else{
-					ToasterTool.error("更新失败")
+				}else if(data.value === "failed"){
+					ToasterTool.error("更改失败")
 				}
 			})
 		}
