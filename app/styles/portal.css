@@ -2350,10 +2350,10 @@ fieldset[disabled] .btn-black.active {
   float: right;
 }
 .index-page .content-section .solution-content .icon-tile .icon-image {
-  height: 160px;
+  height: 120px;
 }
 .index-page .content-section .solution-content .icon-tile .icon-image img {
-  width: 150px;
+  width: 110px;
 }
 .index-page .content-section .solution-content .icon-tile .icon-title {
   margin-bottom: 20px;

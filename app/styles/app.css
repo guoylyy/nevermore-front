@@ -2467,7 +2467,11 @@ li.disabled > a:focus {
   color: #4A4A4A !important;
 }
 .db-text-success {
-  color: #32BE77;
+  color: #32BE77 !important;
+  font-weight: bold;
+}
+.db-text-primary {
+  color: #337AB7 !important;
   font-weight: bold;
 }
 .db-font-sm {
@@ -2659,6 +2663,33 @@ li.disabled > a:focus {
   box-sizing: content-box;
   border: solid 1px #CFCFCF;
   padding: 15px 0px;
+  height: 20px;
+  line-height: 20px;
+}
+.db-virtual-experiment-table {
+  text-align: center;
+  background-color: white;
+  border: solid 1px #CFCFCF;
+  color: #4A4A4A;
+  font-size: 14px;
+  font-weight: bold;
+}
+.db-virtual-experiment-table > thead > tr,
+.db-virtual-experiment-table > tbody > tr {
+  height: 40px;
+}
+.db-virtual-experiment-table > thead > tr > th {
+  box-sizing: content-box;
+  text-align: center;
+  border: solid 1px #CFCFCF;
+  padding: 10px 0px;
+  height: 20px;
+  line-height: 20px;
+}
+.db-virtual-experiment-table > tbody > tr > td {
+  box-sizing: content-box;
+  border: solid 1px #CFCFCF;
+  padding: 10px 0px;
   height: 20px;
   line-height: 20px;
 }

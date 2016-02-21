@@ -11,27 +11,27 @@
         实验名：
       </td>
       <td style = "width: 35%">
-        <span class="db-exp-detail-info">{{experiment.name}}</span>
+        <span class="db-exp-detail-info">{{record.experiment.name}}</span>
       </td>
-      <td style = "width: 15%">
+      <!-- <td style = "width: 15%">
         课程名：
       </td>
       <td style = "width: 35%">
         <span class="db-exp-detail-info">{{clazz.course.name}}</span>
-      </td>
+      </td> -->
     </tr>
     <tr>
       <td style = "width: 15%">
         学号名：
       </td>
       <td style = "width: 35%">
-        <span class="db-exp-detail-info">{{currentUser.account}}</span>
+        <span class="db-exp-detail-info">{{record.student.account}}</span>
       </td>
       <td style = "width: 15%">
         姓名：
       </td>
       <td style = "width: 35%">
-        <span class="db-exp-detail-info">{{currentUser.name}}</span>
+        <span class="db-exp-detail-info">{{record.student.name}}</span>
       </td>
     </tr>
   </table>
@@ -42,33 +42,31 @@
     </h1>
   </div>
   <table class = "table db-file-table">
-    <tr>
+    <tr ng-repeat="file in record.recordFiles">
       <td style = "width: 6%;">
         <div class="file-icon">
           {{file.name | limitTo: 2}}
         </div>
       </td>
-      <td class = "file-name" style = "width: 50%;">
+      <td class = "file-name" style = "width: 40%;">
         {{file.name}}
       </td>
-      <td style = "width: 10%;">
-        {{file.size}}kb
+      <td style = "width: 20%;">
+        {{file.size | bytes}}
       </td>
-      <td style = "width: 35%;">
-        2015-10-14
-      </td>
-      <td style = "width: 10%; text-align: right;">
-        <a href="{{file.url}}" target="_blank"><img class = "db-icon db-m-r-20" style = "height: auto;" src="images/app/download.png" alt="下载"/></a>
+      <td style = "width: 20%; text-align: right;">
+        <a ng-click="viewScriptPicture(file)" bs-tooltip data-trigger="hover"  data-title="查看图表"><i class="fa fa-bar-chart-o m-r-xs"></i></a>
+        <a href="{{file.url}}" target="_blank"  bs-tooltip data-trigger="hover"  data-title="下载"><i class="fa fa-download"></i></a>
       </td>
     </tr>
   </table>
-  <div class="nm-dialog-header">
+  <div class="nm-dialog-header m-t-lg">
     <h1 class="header-title" style="margin-top: 5px;">
       <span >实验现场</span>
     </h1>
   </div>
   <div class = "nm-dialog-line"></div>
-  <ng-gallery images="experimentImageList" thumbs-num="experimentImageList.length"></ng-gallery>
+    <ng-gallery images="images" thumbs-num="images.length"></ng-gallery>
   <div class = "nm-dialog-line"></div>
 
   <div class="clearfix m-t">

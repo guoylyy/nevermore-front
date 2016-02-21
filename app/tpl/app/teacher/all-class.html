@@ -1,20 +1,22 @@
 <div class = "vbox">
 	<div class="hbox hbox-auto-xs hbox-auto-sm ng-scope">
 		<div class = "wrapper lter no_border" style = "overflow: hidden;">
-	        <span class = "subview3_title db-title">所有课程</span>
+	        <span class = "subview3_title db-title">所有班级</span>
 	    </div>
 	    <div class="db-line"></div>
 	    <div class="wrapper-md">
 			<ul class = "db-list course-list" ng-if = "classList.length > 0">
 		    	<li ng-repeat = "class in classList">
 		    		<div ui-sref = "app.teacher.class.main-page({classID: '{{class.id}}'})">
-		    			<img src="images/app/course{{class.id % 5 + 1}}.jpg" class = "course-img">
+		    			<img ng-src="images/app/course{{class.id % 5 + 1}}.jpg" class = "course-img" ng-if="class.course.icon==null">
+							<img ng-src="{{class.course.icon.url}}" class = "course-img" ng-if="class.course.icon!=null">
 		    			<a class="text-link text-md">{{class.course.name}}</a>
 							<br>
 							<a class="text-md text-muted">{{class.number}}</a>
 		    		</div>
 		    	</li>
 		    </ul>
-	    </div>
+		  </div>
+			<nevermore-empty-panel ng-if="classList.length == 0" text="本学期还没有任何课程"></nevermore-empty-panel>
 	</div>
 </div>

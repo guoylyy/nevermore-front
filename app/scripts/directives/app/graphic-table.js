@@ -28,7 +28,7 @@ angular.module('nevermore')
         $scope.chooseChart = function (type,material) {
           var dialog = ngDialog.open({
             template: 'tpl/app/modal/choose-chart.html',
-            controller:'ChooseChartModalCtrl',
+            controller:'ChooseChartController',
             className: 'nm-dialog nm-dialog-md',
             closeByDocument: true,
             closeByEscape: true,

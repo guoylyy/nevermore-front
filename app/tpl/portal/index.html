@@ -5,52 +5,10 @@
             <h1 class="text-l" style="padding-top: 70px;">同济大学力学实验云平台</h1>
             <h3 class="text-l" style="padding-top: 30px;">简单方便，服务师生</h3>
             <div class="text-l" style="padding-top: 30px;">
-              <a ui-sref="portal.login" ng-if="!autoLogin" class="btn btn-primary w-xs m-r">现在登录</a>
+              <a ui-sref="portal.login"  ng-if="currentUser==null" class="btn btn-primary w-xs m-r">现在登录</a>
+              <a ng-if="currentUser!=null" ui-sref="app.index" class="btn btn-primary w-xs m-r" >马上进入</a>
             </div>
-        </div>
-    </div>
-    <div class="content-section m-t-lg">
-        <div class="tiger-container clearfix solution-content">
-            <div class="icon-tile">
-                <div class="icon-image">
-                    <img src="images/portal/index/calendar-icon.png" alt="..."/>
-                </div>
-                <h3 class="icon-title">
-                    实验室预约
-                </h3>
-                <p class="icon-content">
-                    规范实验室管理 课程预约一并掌握
-                </p>
-            </div>
-
-            <div class="icon-tile">
-                <div class="icon-image">
-                    <img src="images/portal/index/group-icon.png" alt="..."/>
-                </div>
-                <h3 class="icon-title">
-                    实验协同合作
-                </h3>
-                <p class="icon-content">
-                    实验分组 协同合作平台 &nbsp;记录实验数据
-                </p>
-            </div>
-
-            <div class="icon-tile">
-                <div class="icon-image">
-                    <img src="images/portal/index/cloud-icon.png" alt="..."/>
-                </div>
-                <h3 class="icon-title">
-                    数据云同步
-                </h3>
-                <p class="icon-content">
-                    数据随时同步上云 随时获取和查看
-                </p>
-            </div>
-        </div>
-        <div class="text-c m-t-lg m-b-lg">
-            <img src="images/portal/index/line.png" alt="..."/>
         </div>
     </div>
 </div>
 
-<portal-footer></portal-footer>

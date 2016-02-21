@@ -25,7 +25,7 @@
                             <span class="date">{{account.title}}</span>
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-primary" ng-click="modifyAccount(account)"> 
+                            <button class="btn btn-sm btn-primary" ng-click="modifyAccount(account)">
                                 编辑
                             </button>
                             <button class="btn btn-sm btn-primary" ng-click="modifyPassword(account)">
@@ -37,7 +37,8 @@
                         </td>
                     </tr>
                 </tbody>
-            </table> 
+            </table>
+            <nevermore-empty-panel ng-if="accounts.totalItemNum == 0" text="还没有管理员用户"></nevermore-empty-panel>
         </div>
         <footer class="panel-footer">
           <div class="row clearfix" style="width: 100%;" >
@@ -49,7 +50,7 @@
               ng-model="accounts.curPageNum" ng-change="pageChanged()"></uib-pagination>
             </div>
           </div>
-      </footer>       
+      </footer>
     </div>
 </div>
 

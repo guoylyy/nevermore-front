@@ -16,7 +16,7 @@
     <div class="form-group">
       <label for="notificationTime" class="col-sm-3 control-label">实验通知时间*</label>
       <div class="col-sm-9">
-        <timepicker id="notificationTime" ng-model="sms.smsConfig.notificationTime" hour-step="1" minute-step="1" show-meridian="false"></timepicker>
+        <uib-timepicker id="notificationTime" ng-model="sms.smsConfig.notificationTime" hour-step="1" minute-step="1" show-meridian="false"></uib-timepicker>
       </div>
     </div>
     <div class="form-group">
@@ -28,7 +28,7 @@
         <!-- <input type="text" class="form-control" id="isActive" ng-model = "smsConfig.isActive"> -->
       </div>
     </div>
-    
+
 	<div class = "nm-dialog-line"></div>
 	<div class = "clearfix m-t">
       <p ng-bind = "errorTip" ng-show = "!!errorTip" class = "alert alert-danger"></p>

@@ -1,8 +1,71 @@
 <!DOCTYPE html>
-<html data-ng-app="nevermore">
+<!--[if lte IE 8]>
+    <html>
 <head>
     <meta charset="utf-8">
-    <title>同济大学航力云平台 - 简单方便，服务师生</title>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../lib/css/UpdateBrowser.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="logoWrapper">
+            <img src="../images/portal/s-logo.png" class = "logo">
+        </div>
+        <div class="tipWrapper">
+            <p class="mainTip">
+                您的浏览器版本过低
+            </p>
+            <p class="secondTip">
+                请下载安装最新版本的谷歌浏览器，才能够正常使用平台功能
+            </p>
+            <a href="http://browsehappy.com/?locale=zh"><button class="downloadButton">现在下载</button></a>
+            <p class="thirdTip">
+                您使用的浏览器是微软公司提供的低版本浏览器，该浏览器微软公司已经于 2015 年宣布不在更新和支持使用该浏览器，不仅数据安全性难以保证，体验也较差，请尽快升级您的浏览器，获得更好的网络体验。
+            </p>
+        </div>
+        <p class="labName">
+            LABCOM
+        </p>
+        <p class="labTitle">
+            智能化实验室管理专家
+        </p>
+        <div>
+            <img class="labPic" src = "../images/portal/labpic1.png">
+            <img src="../images/portal/labpic2.png" class = "labPic">
+        </div>
+    </div>
+    <div class="footer">
+        <ul class="aboutList">
+            <li>
+                <a href="#">关于我们</a>
+            </li>
+            <li>
+                <a href="#">法律声明</a>
+            </li>
+            <li>
+                <a href="#">政策法规</a>
+            </li>
+            <li>
+                <a href="#">服务公告</a>
+            </li>
+            <li>
+                <a href="#">友情链接</a>
+            </li>
+        </ul>
+        <p class="info">
+            © 2009-2015 Aliyun.com 版权所有 ICP证：浙B2-20080101
+        </p>
+    </div>
+</body>
+</html>
+<![endif]-->
+
+
+<!--[if !IE]> -->
+    <html data-ng-app="nevermore">
+<head>
+    <meta charset="utf-8">
+    <title>同济大学力学实验平台 - 简单方便，服务师生</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.min.css" type="text/css"/>
@@ -16,14 +79,11 @@
 
 <div class="app app-aside-fixed" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
 
-<toaster-container></toaster-container>
+<toaster-container toaster-options="{'position-class': 'toast-top-center'}"></toaster-container>
 
-<!-- jQuery -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
-<!-- underscore -->
 <script src="bower_components/underscore/underscore-min.js"></script>
 
-<!-- Angular -->
 <script src="bower_components/angular/angular.js"></script>
 
 <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -62,6 +122,7 @@
 <script src="bower_components/blueimp-md5/js/md5.min.js"></script>
 <script src="lib/libs/moment.min.js"></script>
 
+
 <script src="scripts/app.js"></script>
 <script src="scripts/config.js"></script>
 <script src="scripts/config.lazyLoad.js"></script>
@@ -69,45 +130,148 @@
 <script src="scripts/config.setup.js"></script>
 <script src="scripts/nm.run.config.js"></script>
 
-<script src="scripts/interceptors/loading-interceptor.js"></script>
-<script src="scripts/interceptors/auth-interceptor.js"></script>
+<script src="scripts/interceptors/Loading.interceptor.js"></script>
+<script src="scripts/interceptors/Auth.interceptor.js"></script>
 
-<script src="scripts/services/res-tool.js"></script>
-<script src="scripts/services/alert-tool.js"></script>
-<script src="scripts/services/toaster-tool.js"></script>
-<script src="scripts/services/date-tool.js"></script>
-<script src="scripts/services/system-service.js"></script>
-<script src="scripts/services/session-service.js"></script>
-<script src="scripts/services/q-service.js"></script>
-<script src="scripts/services/general-service.js"></script>
+<script src="scripts/services/ResTool.service.js"></script>
+<script src="scripts/services/AlertTool.service.js"></script>
+<script src="scripts/services/ToasterTool.service.js"></script>
+<script src="scripts/services/DateTool.service.js"></script>
+<script src="scripts/services/System.service.js"></script>
+<script src="scripts/services/Session.service.js"></script>
+<script src="scripts/services/General.service.js"></script>
+<script src="scripts/services/Management.service.js"></script>
 
-<!-- <script src="scripts/factories/semester-factory.js"></script> -->
-<script src="scripts/factories/token-factory.js"></script>
-<script src="scripts/factories/account-factory.js"></script>
-<script src="scripts/factories/refine/clazz.factory.js"></script>
-<script src="scripts/factories/course-factory.js"></script>
-<script src="scripts/factories/exp-factory.js"></script>
-<script src="scripts/factories/lab-factory.js"></script>
-<script src="scripts/factories/reservation-factory.js"></script>
-<script src="scripts/factories/studentrecord-factory.js"></script>
+<script src="scripts/factories/Account.factory.js"></script>
+<script src="scripts/factories/Token.factory.js"></script>
 
-<script src="scripts/factories/refine/report.factory.js"></script>
-<script src="scripts/factories/refine/semester-factory.js"></script>
-<script src="scripts/factories/refine/account-manage-factory.js"></script>
-<script src="scripts/factories/refine/clazz-manage-factory.js"></script>
-<script src="scripts/factories/refine/course-manage-factory.js"></script>
-<script src="scripts/factories/refine/lab-manage-factory.js"></script>
-<script src="scripts/factories/refine/experiment-manage-factory.js"></script>
-<script src="scripts/factories/refine/experiment.factory.js"></script>
-<script src="scripts/factories/refine/reservation.manage.factory.js"></script>
+<script src="scripts/factories/refine/Clazz.factory.js"></script>
+<script src="scripts/factories/refine/Report.factory.js"></script>
+<script src="scripts/factories/refine/Semester.factory.js"></script>
+<script src="scripts/factories/refine/AccountManage.factory.js"></script>
+<script src="scripts/factories/refine/ClazzManage.factory.js"></script>
+<script src="scripts/factories/refine/CourseManage.factory.js"></script>
+<script src="scripts/factories/refine/LabManage.factory.js"></script>
+<script src="scripts/factories/refine/ExperimentManage.factory.js"></script>
+<script src="scripts/factories/refine/Experiment.factory.js"></script>
+<script src="scripts/factories/refine/ReservationManage.factory.js"></script>
+<script src="scripts/factories/refine/Reservation.factory.js"></script>
+<script src="scripts/factories/refine/SmsSetting.factory.js"></script>
 
-<script src="scripts/filters/account-filter.js"></script>
-<script src="scripts/filters/experiment-filter.js"></script>
-<script src="scripts/filters/common-filter.js"></script>
-<script src="scripts/filters/reservation-filter.js"></script>
-<script src="scripts/filters/report-filter.js"></script>
-<script src="scripts/filters/util-filter.js"></script>
+<script src="scripts/filters/Experiment.filter.js"></script>
+<script src="scripts/filters/Common.filter.js"></script>
+<script src="scripts/filters/Report.filter.js"></script>
+<script src="scripts/filters/Util.filter.js"></script>
 
 
 </body>
 </html>
+<!-- <![endif]-->
+
+<!--[if gt IE 8]>
+According to the conditional comment this is IE 8 or higher<br />
+<html data-ng-app="nevermore">
+<head>
+    <meta charset="utf-8">
+    <title>同济大学力学实验平台 - 简单方便，服务师生</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.min.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/textAngular/dist/textAngular.css" type="text/css"/>
+    <link rel="stylesheet" href="lib/css/app.min.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="bower_components/ngGallery/src/css/ngGallery.css">
+</head>
+<body>
+
+<div class="app app-aside-fixed" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
+
+<toaster-container></toaster-container>
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/underscore/underscore-min.js"></script>
+
+<script src="bower_components/angular/angular.js"></script>
+
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/ui-router-extras/release/ct-ui-router-extras.min.js"></script>
+<script src="bower_components/angular-ui-validate/dist/validate.js"></script>
+
+<script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+
+<script src="bower_components/ngstorage/ngStorage.js"></script>
+<script src="bower_components/ngLocale/angular-locale_zh.js"></script>
+<script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+<script src="bower_components/jsog/lib/JSOG.js"></script>
+
+<script src="bower_components/ngSweetAlert/SweetAlert.js"></script>
+<script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="bower_components/AngularJS-Toaster/toaster.min.js"></script>
+<script src="bower_components/angular-tooltips/dist/angular-tooltips.min.js"></script>
+<script src="bower_components/is-loading/jquery.isloading.min.js"></script>
+
+<script src="bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
+<script src="bower_components/textAngular/dist/textAngular.js"></script>
+<script src="bower_components/textAngular/dist/textAngular-rangy.min.js"></script>
+
+<script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload-shim.js"></script>
+<script src = "bower_components/ngGallery/src/js/ngGallery.js"></script>
+
+<script src = "bower_components/blueimp-md5/js/md5.min.js"></script>
+
+<script src="bower_components/blueimp-md5/js/md5.min.js"></script>
+<script src="lib/libs/moment.min.js"></script>
+
+
+<script src="scripts/app.js"></script>
+<script src="scripts/config.js"></script>
+<script src="scripts/config.lazyLoad.js"></script>
+<script src="scripts/config.router.js"></script>
+<script src="scripts/config.setup.js"></script>
+<script src="scripts/nm.run.config.js"></script>
+
+<script src="scripts/interceptors/Loading.interceptor.js"></script>
+<script src="scripts/interceptors/Auth.interceptor.js"></script>
+
+<script src="scripts/services/ResTool.service.js"></script>
+<script src="scripts/services/AlertTool.service.js"></script>
+<script src="scripts/services/ToasterTool.service.js"></script>
+<script src="scripts/services/DateTool.service.js"></script>
+<script src="scripts/services/System.service.js"></script>
+<script src="scripts/services/Session.service.js"></script>
+<script src="scripts/services/General.service.js"></script>
+<script src="scripts/services/Management.service.js"></script>
+
+<script src="scripts/factories/Account.factory.js"></script>
+<script src="scripts/factories/Token.factory.js"></script>
+
+<script src="scripts/factories/refine/Clazz.factory.js"></script>
+<script src="scripts/factories/refine/Report.factory.js"></script>
+<script src="scripts/factories/refine/Semester.factory.js"></script>
+<script src="scripts/factories/refine/AccountManage.factory.js"></script>
+<script src="scripts/factories/refine/ClazzManage.factory.js"></script>
+<script src="scripts/factories/refine/CourseManage.factory.js"></script>
+<script src="scripts/factories/refine/LabManage.factory.js"></script>
+<script src="scripts/factories/refine/ExperimentManage.factory.js"></script>
+<script src="scripts/factories/refine/Experiment.factory.js"></script>
+<script src="scripts/factories/refine/ReservationManage.factory.js"></script>
+<script src="scripts/factories/refine/Reservation.factory.js"></script>
+<script src="scripts/factories/refine/SmsSetting.factory.js"></script>
+
+<script src="scripts/filters/Experiment.filter.js"></script>
+<script src="scripts/filters/Common.filter.js"></script>
+<script src="scripts/filters/Report.filter.js"></script>
+<script src="scripts/filters/Util.filter.js"></script>
+
+
+</body>
+</html>
+<![endif]-->

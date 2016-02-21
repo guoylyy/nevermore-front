@@ -1,6 +1,6 @@
 ;void function() {
   angular.module('nevermore')
-  .directive('nmMsgNumber', ['$rootScope', '$interval', 'messageFactory', function ($rootScope, $interval, messageFactory) {
+  .directive('nmMsgNumber', ['$rootScope', '$interval', 'MessageFactory', function ($rootScope, $interval, MessageFactory) {
       return {
         restrict: 'EA',
         template:'<b class="badge badge-sm up pull-right-xs bg-danger">{{msgNumber}}</b>',
@@ -8,7 +8,7 @@
           $rootScope.msgNumber = 0;
 
           function updateMsgNumber() {
-            messageFactory.messages().get({
+            MessageFactory.messages().get({
               operation: "count",
               isRead: false,
             }).$promise
@@ -42,9 +42,9 @@
       }
     }
   ])
-  .service('nmMsgNumberService', ['$rootScope', '$interval', 'messageFactory', function ($rootScope, $interval, messageFactory) {
+  .service('nmMsgNumberService', ['$rootScope', '$interval', 'MessageFactory', function ($rootScope, $interval, MessageFactory) {
     this.updateMsgNumber = function () {
-      messageFactory.messages().get({
+      MessageFactory.messages().get({
         operation: "count",
         isRead: false,
       }).$promise

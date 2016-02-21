@@ -1,9 +1,9 @@
 <div class="vbox db-bg">
-    <div class = "wrapper db-p-b-20 db-p-t-20 lter no_border" style = "overflow: hidden;">
-        <span class = "subview3_title db-title">实验任务</span>
-    </div>
-    <div class="db-line"></div>
-    <div class = "wrapper-md">
+	<div class = "wrapper db-p-b-20 db-p-t-20 lter no_border" style = "overflow: hidden;">
+		<span class = "subview3_title db-title">实验任务</span>
+	</div>
+	<div class="db-line"></div>
+	<div class = "wrapper-md">
 		<ul class = "db-list">
 			<li ng-repeat = "experiment in experimentList" class = "wrapper-md" style = "margin-top: -10px;">
 				<div>
@@ -13,17 +13,15 @@
 					<span class="db-text-success" ng-if="experiment.status.code=='FINISH'">
 						{{experiment.status.value}}实验
 					</span>
-
-          <span class="db-text-danger" ng-if="experiment.status.code=='UNFINISH'">
+					<span class="db-text-danger" ng-if="experiment.status.code=='UNFINISH'">
 						{{experiment.status.value}}实验
 					</span>
-
 					<a class="btn btn-primary db-btn-primary pull-right" href="{{experiment.experiment.virtualExpLink}}" target="_blank"
-           ng-if="experiment.experiment.virtualExpLink!=''">
+						ng-if="experiment.experiment.virtualExpLink!=''">
 						虚拟实验
 					</a>
 					<button class="btn btn-danger db-btn-danger pull-right db-m-r-20" ui-sref="app.student.class.report({expId:experiment.experiment.id,classId:class.id})" ng-if="experiment.reports.length == 0">
-						填写实验报告
+					填写实验报告
 					</button>
 				</div>
 				<div class="db-line db-m-0 db-m-t-10"></div>
@@ -35,7 +33,7 @@
 						<span class="db-text-success db-font-sm" ng-if="experiment.reservations.length > 0">
 							已预约{{experiment.reservations.length}}个时间段
 						</span>
-            <span class="db-text-danger db-font-sm" ng-if="experiment.reservations.length == 0">
+						<span class="db-text-danger db-font-sm" ng-if="experiment.reservations.length == 0">
 							还没有任何预约
 						</span>
 					</div>
@@ -65,29 +63,43 @@
 								<img src="images/app/unfinish.png" style = "width: 100%;">
 								<span class = "db-text-gray" style = "font-size: 12px;">实验报告</span>
 							</li>
-              <li style = "width: 50px;" class = "db-c-p m-r-lg pull-left" ng-if="experiment.reports.length > 0"
-                ng-repeat="report in experiment.reports">
+							<li style = "width: 50px;" class = "db-c-p m-r-lg pull-left" ng-if="experiment.reports.length > 0" ng-repeat="report in experiment.reports">
 								<img src="images/app/finish.png" style = "width: 100%;" ui-sref="app.student.class.report-result({expId:experiment.experiment.id,classId:class.id,stuId:currentUser.id})">
 								<span class = "db-text-gray" style = "font-size: 12px;">实验报告</span>
 							</li>
-							<li style = "width: 50px;" class = "db-c-p m-r-lg pull-left" ng-if="experiment.records.length== 0"
-              ng-click = "openExperimentDetailDialog(experiment)">
+							<li style = "width: 50px;" class = "db-c-p m-r-lg pull-left" ng-if="experiment.records.length== 0">
 								<img src="images/app/unfinish.png" style = "width: 100%;">
 								<span class = "db-text-gray" style = "font-size: 12px;">实验情况</span>
 							</li>
-              <li style = "width: 50px;" class = "db-c-p m-r-lg pull-left" ng-if="experiment.records.length > 0"
-                ng-repeat="record in experiment.records">
+							<li style = "width: 50px;" class = "db-c-p m-r-lg pull-left" ng-if="experiment.records.length > 0" ng-repeat="record in experiment.records" ng-click = "viewRecordDetails(record, experiment.experiment)">
 								<img src="images/app/finish.png" style = "width: 100%;">
 								<span class = "db-text-gray" style = "font-size: 12px;">实验情况</span>
 							</li>
 						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<div class="db-title db-text-gray">
+						虚拟实验情况
+					</div>
+					<div class="wrapper-md db-p-t-25">
+						<span class="db-text-gray db-m-r-25">
+							训练次数
+						</span>
+						<span class="db-text-primary db-title db-m-r-60 db-c-p" ng-click = "viewVirtualExperimentDetail(experiment.trainRecords)">
+							{{experiment.trainRecords.length}}
+						</span>
+						<span class="db-text-gray db-m-r-25">
+							总训练时长
+						</span>
+						<span class="db-title db-text-primary db-c-p" ng-click = "viewVirtualExperimentDetail(experiment.trainRecords)">
+							{{experiment.trainRecords | trainTimeSpan}}
+						</span>
 					</div>
 				</div>
-        <div class="clearfix"></div>
+				<div class="clearfix"></div>
 				<div class="db-line db-m-0 db-m-t-20"></div>
 			</li>
 		</ul>
-    </div>
+	</div>
 </div>
-
 <lab-footer></lab-footer>
