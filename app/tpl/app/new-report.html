@@ -14,8 +14,8 @@
       </div>
 
         <div ng-repeat="section in new_data.content" style="float:left; margin-left:20px; margin-top:5px;">
-          <div class="" ng-if="section.type=='section'&&$index>=2">
-              <a class="btn btn-sm btn-bg btn-rounded btn-icon" ng-class="{'btn_step_undo':report_step<$index,'btn_step_doing':report_step==$index,'btn_step_done':report_step>$index}"><i class="fa">{{$index}}</i></a>
+          <div class="" ng-if="section.type=='section'&&$index>=1">
+              <a class="btn btn-sm btn-bg btn-rounded btn-icon" ng-class="{'btn_step_undo':report_step<$index+1,'btn_step_doing':report_step==$index+1,'btn_step_done':report_step>$index+1}"><i class="fa">{{$index+1}}</i></a>
               <label class="text-muted" style="margin-left:5px;">{{section.text}}</label>
           </div>
         </div>
@@ -34,50 +34,21 @@
           <div class="form-group pull-in clearfix" style="padding-left:20px">
             <div class="col-sm-4">
               <label class="text-muted">姓名</label>
-              <input type="text" class="form-control ng-touched" ng-model="new_data.student.name">
+              <input type="text" class="form-control ng-touched" ng-model="name">
             </div>
             <div class="col-sm-1"></div>
             <div class="col-sm-4">
               <label class="text-muted">班级</label>
-              <input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-validator" ng-model="new_data.student.class">
+              <input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-validator" ng-model="clazz">
             </div>
             <div class="col-sm-3"></div>
             <div class="line line-dashed line-lg pull-in"></div>
             <div class="col-sm-4">
               <label class="text-muted">实验日期</label>
-              <nm-datepicker class="w-md" ng-model="data['1date']"></nm-datepicker>
+              <nm-datepicker class="w-md" ng-model="new_data.content[0].content"></nm-datepicker>
             </div>
           </div>
         </div>
-        <div class="line line-dashed line-lg pull-in"></div>
-        <div class="col-sm-1"></div>
-        <div class="col-sm-11">
-        <p class="">设备信息</p>
-          <div class="form-group pull-in clearfix"  style="padding-left:20px">
-            <div class="col-sm-4">
-              <label class="text-muted">试验机名称</label>
-              <input type="text" class="form-control ng-touched ng-dirty ng-valid-parse ng-invalid ng-invalid-required"  ng-model="data['2equipment'].equipment_name">
-            </div>
-            <div class="col-sm-6"></div>
-            <div class="line line-dashed line-lg pull-in"></div>
-            <div class="col-sm-4">
-              <label class="text-muted">量具名称</label>
-              <input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-validator" ng-model="data['2equipment'].measure_name">
-            </div>
-            <div class="line line-dashed line-lg pull-in"></div>
-            <div class="col-sm-4">
-              <label class="text-muted">最小分度值</label>
-              <input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-validator" ng-model="data['2equipment'].min_measure">
-            </div>
-            <div class="col-sm-1">
-              <div class="line line-dashed line-lg pull-in"></div>
-              <label class="text-muted">mm</label>
-            </div>
-
-          </div>
-        </div>
-          <!-- <input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" placeholder="maxlength = 5" ng-model="f.e" ng-maxlength="5" required="" aria-required="true" aria-invalid="true"> -->
-
         <div class="line line-dashed line-lg pull-in"></div>
 
 
@@ -92,8 +63,8 @@
       </div>
 
       <div ng-repeat="section in new_data.content">
-        <div ng-if="section.type=='section'&&$index>=2&&section.text!='问题讨论'">
-        <div ng-if="report_step==$index">
+        <div ng-if="section.type=='section'&&$index>=1&&section.text!='问题讨论'">
+        <div ng-if="report_step==$index+1">
         <div ng-repeat="table in section.content">
           <div class="col-sm-1"></div>
           <div class="col-sm-10">
@@ -120,8 +91,8 @@
         <div class="line line-dashed line-lg pull-in"></div>
         </div>
       </div>
-      <div ng-if="section.type=='section'&&$index>=2&&section.text=='问题讨论'">
-        <div class="form-group" ng-if="report_step==$index">
+      <div ng-if="section.type=='section'&&$index>=1&&section.text=='问题讨论'">
+        <div class="form-group" ng-if="report_step==$index+1">
           <div class="col-sm-1"></div>
           <div class="col-sm-10">
             <label class="">实验相关问答</label>

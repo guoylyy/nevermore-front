@@ -10,42 +10,44 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
 
   $scope.completed_question = 0;
 
-  // ReportFactory.report().get({
-  //   stuId: $scope.currentUser.id+"",
-  //   classId: $scope.class_id,
-  //   expId: "1",//$scope.exp_id
-  // }).$promise.then(function(response) {
-  //   if (response.code == "200") {
-  //     $scope.new_data = response.data.report;
-  //     $scope.status = response.data.status;
-  //     // $scope.new_data.student.name = $scope.currentUser.name;
-  //     ClazzFactory.clazz().get({
-  //       id: $scope.class_id
-  //     }).$promise.then(function(response){
-  //       if (response.code == "200") {
-  //         // $scope.data.student.class = response.data.course.name+" "+response.data.course.number;
-  //       }
-  //     });
-  //     // $scope.data['1date'] = new Date();
-  //     $scope.question_change();
-  //   }
-  //   else {
-  //     ReportFactory.template().get({
-  //       expId: "1"
-  //     }).$promise.then(function(response){
-  //       $scope.new_data = response.data;
-  //       $scope.status = response.data.status;
-  //       // $scope.data.student.name = $scope.currentUser.name;
-  //       ClazzFactory.clazz().get({
-  //         id: $scope.class_id
-  //       }).$promise.then(function(response){
-  //         // $scope.data.student.class = response.data.course.name+" "+response.data.course.number;
-  //       });
-  //       // $scope.data['1date'] = new Date();
-  //       $scope.question_change();
-  //     });
-  //   }
-  // });
+  ReportFactory.report().get({
+    stuId: $scope.currentUser.id+"",
+    classId: $scope.class_id,
+    expId: "1",//$scope.exp_id
+  }).$promise.then(function(response) {
+    if (response.code == "200") {
+      $scope.new_data = response.data.report;
+      $scope.status = response.data.status;
+      // $scope.new_data.student.name = $scope.currentUser.name;
+      ClazzFactory.clazz().get({
+        id: $scope.class_id
+      }).$promise.then(function(response){
+        if (response.code == "200") {
+          $scope.clazz = response.data.course.name+" "+response.data.course.number;
+        }
+      });
+      $scope.new_data.content[0].content = new Date();
+      $scope.question_change();
+    }
+    else {
+      ReportFactory.template().get({
+        expId: "1"
+      }).$promise.then(function(response){
+        $scope.new_data = response.data;
+        $scope.status = response.data.status;
+        // $scope.data.student.name = $scope.currentUser.name;
+        ClazzFactory.clazz().get({
+          id: $scope.class_id
+        }).$promise.then(function(response){
+          $scope.clazz = response.data.course.name+" "+response.data.course.number;
+        });
+        $scope.new_data.content[0].content = new Date();
+        $scope.question_change();
+      });
+    }
+  });
+
+  $scope.name = $scope.currentUser.name;
 
   $scope.next = function() {
     $scope.report_step++;
@@ -57,14 +59,14 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
 
   $scope.question_change = function(){
     $scope.completed_question = 0;
-    if ($scope.data) {
-      $scope.data['7questions'].choice.forEach(function(data) {
-        if (data['choice']['answer']!=null&&data['choice']['answer']!=""&&data['choice']['answer']!=undefined) {
-          $scope.completed_question++;
-        }
-      });
-      $scope.data['7questions'].text.forEach(function(data) {
-        if (data['solution']['answer']!=null&&data['solution']['answer']!=""&&data['solution']['answer']!=undefined) {
+    for (var i = 0; i < $scope.new_data.content.length; i++) {
+      if ($scope.new_data.content[i].text == "问题讨论") {
+        $scope.questions = $scope.new_data.content[i].content;
+      }
+    }
+    if ($scope.questions) {
+      $scope.questions.forEach(function(data) {
+        if (data['answer']!=null&&data['answer']!=""&&data['answer']!=undefined) {
           $scope.completed_question++;
         }
       });
@@ -128,9 +130,10 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
     });
   }
 
-  $http.get("tpl/app/report/wanqu.json")
-     .success(function(data){
-      $scope.new_data = data;
-     });
+  // $http.get("tpl/app/report/lashen.json")
+  //    .success(function(data){
+  //     $scope.new_data = data;
+  //     $scope.question_change();
+  //    });
 
 }]);
