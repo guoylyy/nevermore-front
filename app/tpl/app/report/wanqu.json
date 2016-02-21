@@ -117,7 +117,7 @@
                                     "tr":[
                                       {
                                         "type": "picture",
-                                        "content": "url"
+                                        "content": "images/chart-test/test1.png"
                                       }
                                     ]
                                   }
@@ -774,39 +774,39 @@
         "type": "section",
         "text": "实验结果的处理",
         "content": [{
-            "type": "choice",
+            "type": "graphic",
             "text": "1. 描绘应变分布图",
             "description": "根据应变实测记录表中第一次试验的记录数据，将1.5kN，3.0kN和4.5kN载荷下测得的各点应变值绘于图中并作直线，以下正确的是",
             "options": [{
                 "label": "A",
-                "content": "图1"
+                "content": "images/chart-test/test1.png"
             }, {
                 "label": "B",
-                "content": "图2"
+                "content": "images/chart-test/test1.png"
             }, {
                 "label": "C",
-                "content": "图3"
+                "content": "images/chart-test/test1.png"
             }, {
                 "label": "D",
-                "content": "图4"
+                "content": "images/chart-test/test1.png"
             }],
             "answer": "A"
         }, {
-            "type": "choice",
+            "type": "graphic",
             "text": "2. 实测应力分布曲线与理论应力分布曲线的比较",
             "description": "根据应变实测记录表中各点的实测应力值，描绘实测点于图中并作直线，以下正确的是",
             "options": [{
                 "label": "A",
-                "content": "图1"
+                "content": "images/chart-test/test1.png"
             }, {
                 "label": "B",
-                "content": "图2"
+                "content": "images/chart-test/test1.png"
             }, {
                 "label": "C",
-                "content": "图3"
+                "content": "images/chart-test/test1.png"
             }, {
                 "label": "D",
-                "content": "图4"
+                "content": "images/chart-test/test1.png"
             }],
             "answer": "A"
         }, {

@@ -499,16 +499,16 @@
                             "type": "graphic",
                             "options": [{
                                 "label": "A",
-                                "content": "图1"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "B",
-                                "content": "图2"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "C",
-                                "content": "图3"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "D",
-                                "content": "图4"
+                                "content": "images/chart-test/test1.png"
                             }],
                             "answer": "A"
                         }]
@@ -517,16 +517,16 @@
                             "type": "graphic",
                             "options": [{
                                 "label": "A",
-                                "content": "图1"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "B",
-                                "content": "图2"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "C",
-                                "content": "图3"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "D",
-                                "content": "图4"
+                                "content": "images/chart-test/test1.png"
                             }],
                             "answer": "A"
                         }]
@@ -595,16 +595,16 @@
                             "type": "graphic",
                             "options": [{
                                 "label": "A",
-                                "content": "图1"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "B",
-                                "content": "图2"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "C",
-                                "content": "图3"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "D",
-                                "content": "图4"
+                                "content": "images/chart-test/test1.png"
                             }],
                             "answer": "A"
                         }]
@@ -613,16 +613,16 @@
                             "type": "graphic",
                             "options": [{
                                 "label": "A",
-                                "content": "图1"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "B",
-                                "content": "图2"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "C",
-                                "content": "图3"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "D",
-                                "content": "图4"
+                                "content": "images/chart-test/test1.png"
                             }],
                             "answer": "A"
                         }]
@@ -720,19 +720,19 @@
                     "type": "table",
                     "content": [{
                         "tr": [{
-                            "type": "choice",
+                            "type": "graphic",
                             "options": [{
                                 "label": "A",
-                                "content": "图1"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "B",
-                                "content": "图2"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "C",
-                                "content": "图3"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "D",
-                                "content": "图4"
+                                "content": "images/chart-test/test1.png"
                             }],
                             "answer": "A"
                         }, {
@@ -741,14 +741,7 @@
                         }]
                     }]
                 }, {
-                    "type": "table",
-                    "content": [{
-                        "tr": [{
-                            "type": "empty"
-                        }, {
-                            "type": "empty"
-                        }]
-                    }]
+                    "type": "empty"
                 }]
             }, {
                 "tr": [{
@@ -758,19 +751,19 @@
                     "type": "table",
                     "content": [{
                         "tr": [{
-                            "type": "choice",
+                            "type": "graphic",
                             "options": [{
                                 "label": "A",
-                                "content": "图1"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "B",
-                                "content": "图2"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "C",
-                                "content": "图3"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "D",
-                                "content": "图4"
+                                "content": "images/chart-test/test1.png"
                             }],
                             "answer": "A"
                         }, {
@@ -782,19 +775,19 @@
                     "type": "table",
                     "content": [{
                         "tr": [{
-                            "type": "choice",
+                            "type": "graphic",
                             "options": [{
                                 "label": "A",
-                                "content": "图1"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "B",
-                                "content": "图2"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "C",
-                                "content": "图3"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "D",
-                                "content": "图4"
+                                "content": "images/chart-test/test1.png"
                             }],
                             "answer": "A"
                         }, {
@@ -811,19 +804,19 @@
                     "type": "table",
                     "content": [{
                         "tr": [{
-                            "type": "choice",
+                            "type": "graphic",
                             "options": [{
                                 "label": "A",
-                                "content": "图1"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "B",
-                                "content": "图2"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "C",
-                                "content": "图3"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "D",
-                                "content": "图4"
+                                "content": "images/chart-test/test1.png"
                             }],
                             "answer": "A"
                         }, {
@@ -835,19 +828,19 @@
                     "type": "table",
                     "content": [{
                         "tr": [{
-                            "type": "choice",
+                            "type": "graphic",
                             "options": [{
                                 "label": "A",
-                                "content": "图1"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "B",
-                                "content": "图2"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "C",
-                                "content": "图3"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "D",
-                                "content": "图4"
+                                "content": "images/chart-test/test1.png"
                             }],
                             "answer": "A"
                         }, {
@@ -864,19 +857,19 @@
                     "type": "table",
                     "content": [{
                         "tr": [{
-                            "type": "choice",
+                            "type": "graphic",
                             "options": [{
                                 "label": "A",
-                                "content": "图1"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "B",
-                                "content": "图2"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "C",
-                                "content": "图3"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "D",
-                                "content": "图4"
+                                "content": "images/chart-test/test1.png"
                             }],
                             "answer": "A"
                         }, {
@@ -885,14 +878,7 @@
                         }]
                     }]
                 }, {
-                    "type": "table",
-                    "content": [{
-                        "tr": [{
-                            "type": "empty"
-                        }, {
-                            "type": "empty"
-                        }]
-                    }]
+                    "type": "empty"
                 }]
             }, {
                 "tr": [{
@@ -902,19 +888,19 @@
                     "type": "table",
                     "content": [{
                         "tr": [{
-                            "type": "choice",
+                            "type": "graphic",
                             "options": [{
                                 "label": "A",
-                                "content": "图1"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "B",
-                                "content": "图2"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "C",
-                                "content": "图3"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "D",
-                                "content": "图4"
+                                "content": "images/chart-test/test1.png"
                             }],
                             "answer": "A"
                         }, {
@@ -923,45 +909,31 @@
                         }]
                     }]
                 }, {
-                    "type": "table",
-                    "content": [{
-                        "tr": [{
-                            "type": "empty"
-                        }, {
-                            "type": "empty"
-                        }]
-                    }]
+                    "type": "empty"
                 }]
             }, {
                 "tr": [{
                     "type": "text",
                     "content": "抗压强度"
                 }, {
-                    "type": "table",
-                    "content": [{
-                        "tr": [{
-                            "type": "empty"
-                        }, {
-                            "type": "empty"
-                        }]
-                    }]
+                    "type": "empty"
                 }, {
                     "type": "table",
                     "content": [{
                         "tr": [{
-                            "type": "choice",
+                            "type": "graphic",
                             "options": [{
                                 "label": "A",
-                                "content": "图1"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "B",
-                                "content": "图2"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "C",
-                                "content": "图3"
+                                "content": "images/chart-test/test1.png"
                             }, {
                                 "label": "D",
-                                "content": "图4"
+                                "content": "images/chart-test/test1.png"
                             }],
                             "answer": "A"
                         }, {
@@ -1009,7 +981,7 @@
                 "label": "B",
                 "content": "小于"
             }, {
-                "label": "B",
+                "label": "C",
                 "content": "等于"
             }],
             "answer": "B"
@@ -1023,7 +995,7 @@
                 "label": "B",
                 "content": "小于"
             }, {
-                "label": "B",
+                "label": "C",
                 "content": "等于"
             }],
             "answer": "B"
@@ -1037,7 +1009,7 @@
                 "label": "B",
                 "content": "小于"
             }, {
-                "label": "B",
+                "label": "C",
                 "content": "等于"
             }],
             "answer": "A"

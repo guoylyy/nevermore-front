@@ -10,42 +10,42 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
 
   $scope.completed_question = 0;
 
-  ReportFactory.report().get({
-    stuId: $scope.currentUser.id+"",
-    classId: $scope.class_id,
-    expId: "1",//$scope.exp_id
-  }).$promise.then(function(response) {
-    if (response.code == "200") {
-      $scope.new_data = response.data.report;
-      $scope.status = response.data.status;
-      // $scope.new_data.student.name = $scope.currentUser.name;
-      ClazzFactory.clazz().get({
-        id: $scope.class_id
-      }).$promise.then(function(response){
-        if (response.code == "200") {
-          // $scope.data.student.class = response.data.course.name+" "+response.data.course.number;
-        }
-      });
-      // $scope.data['1date'] = new Date();
-      $scope.question_change();
-    }
-    else {
-      ReportFactory.template().get({
-        expId: "1"
-      }).$promise.then(function(response){
-        $scope.new_data = response.data;
-        $scope.status = response.data.status;
-        // $scope.data.student.name = $scope.currentUser.name;
-        ClazzFactory.clazz().get({
-          id: $scope.class_id
-        }).$promise.then(function(response){
-          // $scope.data.student.class = response.data.course.name+" "+response.data.course.number;
-        });
-        // $scope.data['1date'] = new Date();
-        $scope.question_change();
-      });
-    }
-  });
+  // ReportFactory.report().get({
+  //   stuId: $scope.currentUser.id+"",
+  //   classId: $scope.class_id,
+  //   expId: "1",//$scope.exp_id
+  // }).$promise.then(function(response) {
+  //   if (response.code == "200") {
+  //     $scope.new_data = response.data.report;
+  //     $scope.status = response.data.status;
+  //     // $scope.new_data.student.name = $scope.currentUser.name;
+  //     ClazzFactory.clazz().get({
+  //       id: $scope.class_id
+  //     }).$promise.then(function(response){
+  //       if (response.code == "200") {
+  //         // $scope.data.student.class = response.data.course.name+" "+response.data.course.number;
+  //       }
+  //     });
+  //     // $scope.data['1date'] = new Date();
+  //     $scope.question_change();
+  //   }
+  //   else {
+  //     ReportFactory.template().get({
+  //       expId: "1"
+  //     }).$promise.then(function(response){
+  //       $scope.new_data = response.data;
+  //       $scope.status = response.data.status;
+  //       // $scope.data.student.name = $scope.currentUser.name;
+  //       ClazzFactory.clazz().get({
+  //         id: $scope.class_id
+  //       }).$promise.then(function(response){
+  //         // $scope.data.student.class = response.data.course.name+" "+response.data.course.number;
+  //       });
+  //       // $scope.data['1date'] = new Date();
+  //       $scope.question_change();
+  //     });
+  //   }
+  // });
 
   $scope.next = function() {
     $scope.report_step++;
@@ -128,9 +128,9 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
     });
   }
 
-  // $http.get("tpl/app/report/niuzhuan.json")
-  //    .success(function(data){
-  //     $scope.new_data = data;
-  //    });
+  $http.get("tpl/app/report/wanqu.json")
+     .success(function(data){
+      $scope.new_data = data;
+     });
 
 }]);

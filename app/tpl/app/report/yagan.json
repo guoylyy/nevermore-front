@@ -182,20 +182,20 @@
                 }]
             }]
         }, {
-            "type": "choice",
+            "type": "graphic",
             "text": "P-εds",
             "options": [{
                 "label": "A",
-                "content": "图1"
+                "content": "images/chart-test/test1.png"
             }, {
                 "label": "B",
-                "content": "图2"
+                "content": "images/chart-test/test1.png"
             }, {
                 "label": "C",
-                "content": "图3"
+                "content": "images/chart-test/test1.png"
             }, {
                 "label": "D",
-                "content": "图4"
+                "content": "images/chart-test/test1.png"
             }],
             "answer": "A"
         }]

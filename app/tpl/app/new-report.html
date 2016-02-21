@@ -6,21 +6,21 @@
     </div>
     <div class="wrapper bg-white">
       <!-- <div class="form-group"> -->
-        <div class="col-sm-1"></div>
-        <div>
-        <div class="" style="float:left; margin-left:20px;">
+        <!-- <div class="col-sm-1"></div> -->
+        <div class="m-l-xxl">
+        <div class="" style="float:left; margin-left:20px; margin-top:5px;">
         <a class="btn btn-sm btn-bg btn-rounded btn-icon" ng-class="{'btn_step_doing':report_step==1,'btn_step_done':report_step>1}"><i class="fa">1</i></a>
         <label class="text-muted" style="margin-left:5px;">基本信息</label>
       </div>
 
-        <div ng-repeat="section in new_data.content" style="float:left; margin-left:20px;">
+        <div ng-repeat="section in new_data.content" style="float:left; margin-left:20px; margin-top:5px;">
           <div class="" ng-if="section.type=='section'&&$index>=2">
               <a class="btn btn-sm btn-bg btn-rounded btn-icon" ng-class="{'btn_step_undo':report_step<$index,'btn_step_doing':report_step==$index,'btn_step_done':report_step>$index}"><i class="fa">{{$index}}</i></a>
               <label class="text-muted" style="margin-left:5px;">{{section.text}}</label>
           </div>
         </div>
         </div>
-        <div class="col-sm-1"></div>
+        <!-- <div class="col-sm-1"></div> -->
         <div class="line line-dashed line-lg pull-in"></div>
       <!-- </div> -->
       <div class="line line-dashed line-lg pull-in b-b"></div>
