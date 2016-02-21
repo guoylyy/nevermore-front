@@ -13,7 +13,7 @@ app.controller('ReportController', ['$scope', '$state', 'AlertTool', '$statePara
   ReportFactory.report().get({
     stuId: $scope.currentUser.id+"",
     classId: $scope.class_id,
-    expId: "1",//$scope.exp_id
+    expId: $scope.exp_id
   }).$promise.then(function(response) {
     if (response.code == "200") {
       $scope.new_data = response.data.report;
@@ -31,7 +31,7 @@ app.controller('ReportController', ['$scope', '$state', 'AlertTool', '$statePara
     }
     else {
       ReportFactory.template().get({
-        expId: "1"
+        expId: $scope.exp_id
       }).$promise.then(function(response){
         $scope.new_data = response.data;
         $scope.status = response.data.status;
@@ -98,7 +98,7 @@ app.controller('ReportController', ['$scope', '$state', 'AlertTool', '$statePara
       ReportFactory.report().post({
           stuId: $scope.currentUser.id+"",
           classId: $scope.class_id,
-          expId: "1"//$scope.exp_id
+          expId: $scope.exp_id
       }).$promise.then(function(response){
         if (response.code == "200") {
             $scope.status = 'committed';
@@ -107,7 +107,7 @@ app.controller('ReportController', ['$scope', '$state', 'AlertTool', '$statePara
               "experimentRecord": response.data.report.final_score,
               "experimentComment": "",
               "clazzId": $scope.class_id,
-              "experimentId": "1",//$scope.exp_id,
+              "experimentId": $scope.exp_id,
               "studentId": $scope.currentUser.id,
               "occurDate": new Date()
             };
