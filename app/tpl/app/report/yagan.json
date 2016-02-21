@@ -1,0 +1,203 @@
+{
+    "type": "title",
+    "text": "压杆稳定实验报告",
+    "content": [{
+        "type": "date",
+        "text": "实验日期",
+        "content": "2015-12-12"
+    }, {
+        "type": "section",
+        "text": "试件尺寸记录",
+        "content": [{
+            "type": "table",
+            "content": [{
+                "tr": [{
+                    "type": "text",
+                    "content": "厚度t(mm)"
+                }, {
+                    "type": "text",
+                    "content": "宽度b(mm)"
+                }, {
+                    "type": "text",
+                    "content": "长度L(mm)"
+                }, {
+                    "type": "text",
+                    "content": "E(*10^5 MPa)"
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "3.50"
+                }, {
+                    "type": "text",
+                    "content": "20.00"
+                }, {
+                    "type": "text",
+                    "content": "345"
+                }, {
+                    "type": "text",
+                    "content": "2.10"
+                }]
+            }]
+        }]
+    }, {
+        "type": "section",
+        "text": "实验数据记录",
+        "content": [{
+            "type": "table",
+            "content": [{
+                "tr": [{
+                    "type": "text",
+                    "content": "荷载值 P/N"
+                }, {
+                    "type": "text",
+                    "content": "应变仪读数 /με"
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "0"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 0
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "300"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 4
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "600"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 9
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "900"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 22
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "1000"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 33
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "1050"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 40
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "1100"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 53
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "1150"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 71
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "1200"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 106
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "1250"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 211
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "1280"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 691
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "1290"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 1162
+                }]
+            }]
+        }]
+    }, {
+        "type": "section",
+        "text": "实验结果处理",
+        "content": [{
+            "type": "table",
+            "content": [{
+                "tr": [{
+                    "type": "text",
+                    "content": "实验测得的临界力 Pcr实"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 1290
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "理论算得的临界力 Pcr理 = （π^2EImin）/L^2 (N)"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 1244
+                }]
+            }, {
+                "tr": [{
+                    "type": "text",
+                    "content": "实验值与理论值比较的误差百分率 (Pcr理 - Pcr实)/Pcr理 * 100% （%）"
+                }, {
+                    "type": "fill-in-the-blank",
+                    "answer": 3.7
+                }]
+            }]
+        }, {
+            "type": "graphic",
+            "text": "P-εds",
+            "options": [{
+                "label": "A",
+                "content": "images/chart-test/test1.png"
+            }, {
+                "label": "B",
+                "content": "images/chart-test/test1.png"
+            }, {
+                "label": "C",
+                "content": "images/chart-test/test1.png"
+            }, {
+                "label": "D",
+                "content": "images/chart-test/test1.png"
+            }],
+            "answer": "A"
+        }]
+    }]
+}

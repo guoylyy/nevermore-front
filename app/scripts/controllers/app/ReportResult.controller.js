@@ -23,11 +23,7 @@ app.controller('ReportResultController', ['$scope', '$stateParams', 'ClazzFactor
     return false;
   }
 
-  $scope.correct_answer_view = {
-    'init_data':false,
-    'graphic':false,
-    'experiment_data':false
-  }
+  $scope.correct_answer_view = [];
 
   ClazzFactory.clazz().get({
     id: $scope.class_id
@@ -59,8 +55,10 @@ app.controller('ReportResultController', ['$scope', '$stateParams', 'ClazzFactor
     expId: $scope.exp_id
   }).$promise.then(function(response){
     if (response.code == 200) {
-      $scope.data = response.data.report;
-
+      $scope.new_data = response.data.report;
+      for (var i = 0; i < $scope.new_data.content.length; i++) {
+        $scope.correct_answer_view.push(false);
+      }
       ReportFactory.answer({
         'token': response.data.token
       }).get({
@@ -78,12 +76,12 @@ app.controller('ReportResultController', ['$scope', '$stateParams', 'ClazzFactor
     }
   });
 
-  $scope.show = function (view){
-    $scope.correct_answer_view[view]=true;
+  $scope.show = function (index){
+    $scope.correct_answer_view[index]=true;
   }
 
-  $scope.hide = function (view){
-    $scope.correct_answer_view[view]=false;
+  $scope.hide = function (index){
+    $scope.correct_answer_view[index]=false;
   }
 
 }]);

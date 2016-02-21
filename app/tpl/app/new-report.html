@@ -1,0 +1,137 @@
+
+<div class="vbox">
+    <div class="wrapper lter b-b bg-white">
+      <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ui-sref="app.student.class.task">返回实验</a>
+      <div class="subview3_title">{{new_data.text}}</div>
+    </div>
+    <div class="wrapper bg-white">
+      <!-- <div class="form-group"> -->
+        <!-- <div class="col-sm-1"></div> -->
+        <div class="m-l-xxl">
+        <div class="" style="float:left; margin-left:20px; margin-top:5px;">
+        <a class="btn btn-sm btn-bg btn-rounded btn-icon" ng-class="{'btn_step_doing':report_step==1,'btn_step_done':report_step>1}"><i class="fa">1</i></a>
+        <label class="text-muted" style="margin-left:5px;">基本信息</label>
+      </div>
+
+        <div ng-repeat="section in new_data.content" style="float:left; margin-left:20px; margin-top:5px;">
+          <div class="" ng-if="section.type=='section'&&$index>=1">
+              <a class="btn btn-sm btn-bg btn-rounded btn-icon" ng-class="{'btn_step_undo':report_step<$index+1,'btn_step_doing':report_step==$index+1,'btn_step_done':report_step>$index+1}"><i class="fa">{{$index+1}}</i></a>
+              <label class="text-muted" style="margin-left:5px;">{{section.text}}</label>
+          </div>
+        </div>
+        </div>
+        <!-- <div class="col-sm-1"></div> -->
+        <div class="line line-dashed line-lg pull-in"></div>
+      <!-- </div> -->
+      <div class="line line-dashed line-lg pull-in b-b"></div>
+      <!-- <div ui-view></div> -->
+
+      <!--基本信息-->
+      <div class="form-group p-b-lg" ng-if="report_step==1">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11">
+          <p class="">基本信息</p>
+          <div class="form-group pull-in clearfix" style="padding-left:20px">
+            <div class="col-sm-4">
+              <label class="text-muted">姓名</label>
+              <input type="text" class="form-control ng-touched" ng-model="name">
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4">
+              <label class="text-muted">班级</label>
+              <input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-validator" ng-model="clazz">
+            </div>
+            <div class="col-sm-3"></div>
+            <div class="line line-dashed line-lg pull-in"></div>
+            <div class="col-sm-4">
+              <label class="text-muted">实验日期</label>
+              <nm-datepicker class="w-md" ng-model="new_data.content[0].content"></nm-datepicker>
+            </div>
+          </div>
+        </div>
+        <div class="line line-dashed line-lg pull-in"></div>
+
+
+
+        <footer class="panel-footer text-right bg-light lter">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10">
+          <button type="submit" class="btn btn-info" ng-click="next()">下一步</button>
+          </div>
+          <div class="col-sm-1"></div>
+        </footer>
+      </div>
+
+      <div ng-repeat="section in new_data.content">
+        <div ng-if="section.type=='section'&&$index>=1&&section.text!='问题讨论'">
+        <div ng-if="report_step==$index+1">
+        <div ng-repeat="table in section.content">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10">
+            <nmreporttable editable="true" ng-model="table" experiment="exp_id"/>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="line line-dashed line-lg pull-in"></div>
+        </div>
+
+
+        <footer class="panel-footer text-right bg-light lter">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10" ng-if="!$last">
+          <button type="submit" class="btn btn-default" ng-click="last()">上一步</button>
+          <button type="submit" class="btn btn-info" ng-click="next()">下一步</button>
+          </div>
+          <div class="col-sm-10" ng-if="$last">
+            <button type="submit" class="btn btn-default" ng-click="last()">上一步</button>
+            <button type="submit" class="btn btn-warning" ng-click="save()" ng-disabled="status=='committed'">保存草稿</button>
+            <button type="submit" class="btn btn-info" ng-click="submit()" ng-disabled="(status==null)||(status=='committed')" ng-show="status=='uncommitted'">提交报告</button>
+          </div>
+          <div class="col-sm-1"></div>
+        </footer>
+        <div class="line line-dashed line-lg pull-in"></div>
+        </div>
+      </div>
+      <div ng-if="section.type=='section'&&$index>=1&&section.text=='问题讨论'">
+        <div class="form-group" ng-if="report_step==$index+1">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10">
+            <label class="">实验相关问答</label>
+            <label class="pull-right">共{{section.content.length}}题，已完成{{completed_question}}题</label>
+            <div class="line line-dashed line-lg pull-in"></div>
+            <div class="form-group pull-in clearfix" style="padding-left:20px">
+              <div ng-repeat = "question in section.content">
+                <label class="text-muted">{{question.text}}</label>
+                <div class="l_space" ng-if="question.type=='choice'">
+                  <div class="radio" ng-repeat="option in question.options">
+                    <label>
+                      <input type="radio" value="{{option.label}}" ng-model="question.answer" ng-change="question_change()">
+                      {{option.label}}. {{option.content}}
+                    </label>
+                  </div>
+                </div>
+                <textarea class="form-control ng-pristine ng-valid ng-touched" ng-change="question_change()" placeholder="" rows="5" ng-model="question.answer" aria-multiline="true" aria-invalid="false" ng-if="question.type=='text'"></textarea>
+                <div class="line line-dashed line-lg pull-in"></div>
+              </div>
+
+            </div>
+          </div>
+          <div class="line line-dashed line-lg pull-in"></div>
+          <footer class="panel-footer text-right bg-light lter">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10" ng-if="!$last">
+            <button type="submit" class="btn btn-default" ng-click="last()">上一步</button>
+            <button type="submit" class="btn btn-info" ng-click="next()">下一步</button>
+            </div>
+            <div class="col-sm-10" ng-if="$last">
+              <button type="submit" class="btn btn-default" ng-click="last()">上一步</button>
+              <button type="submit" class="btn btn-warning" ng-click="save()" ng-disabled="status=='committed'">保存草稿</button>
+              <button type="submit" class="btn btn-info" ng-click="submit()" ng-disabled="(status==null)||(status=='committed')" ng-show="status=='uncommitted'">提交报告</button>
+            </div>
+            <div class="col-sm-1"></div>
+          </footer>
+          <div class="line line-dashed line-lg pull-in"></div>
+        </div>
+      </div>
+      </div>
+
+</div>

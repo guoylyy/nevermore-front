@@ -71,7 +71,7 @@ angular.module('nevermore')
                             }
                         }
                     }
-                    
+
                 })
                 .state('portal.login', {
                     url: '^/signin',
@@ -332,7 +332,7 @@ angular.module('nevermore')
                 })
                 .state("app.teacher.class.report-result", {
                     url: "/report/result/:expId/:classId/:stuId",
-                    templateUrl: "tpl/app/report-result.html",
+                    templateUrl: "tpl/app/new-report-result.html",
                     controller: "ReportResultController",
                     resolve: {
                         controller: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -343,6 +343,7 @@ angular.module('nevermore')
                                 'scripts/directives/app/yasuo-report.js',
                                 'scripts/directives/app/lashen-experiment.js',
                                 'scripts/directives/app/yasuo-experiment.js',
+                                'scripts/directives/app/nm-report-table.js',
                                 'NmDatepicker',
                                 'ngDialog',
                                 'scripts/controllers/app/modal/ChooseChart.controller.js',
@@ -499,18 +500,19 @@ angular.module('nevermore')
                 })
                 .state("app.student.class.report", {
                     url: "/report/:expId/:classId",
-                    templateUrl: "tpl/app/report.html",
+                    templateUrl: "tpl/app/new-report.html",
                     controller: "ReportController",
                     resolve: {
                         controller: ['$ocLazyLoad', function($ocLazyLoad) {
                             return $ocLazyLoad.load([
-                                "scripts/controllers/app/student/report.controller.js",
+                                "scripts/controllers/app/student/Report.controller.js",
                                 "scripts/factories/refine/Clazz.factory.js",
                                 'scripts/directives/app/graphic-table.js',
                                 'scripts/directives/app/lashen-report.js',
                                 'scripts/directives/app/yasuo-report.js',
                                 'scripts/directives/app/lashen-experiment.js',
                                 'scripts/directives/app/yasuo-experiment.js',
+                                'scripts/directives/app/nm-report-table.js',
                                 'NmDatepicker',
                                 'ngDialog',
                                 'scripts/controllers/app/modal/ChooseChart.controller.js'
@@ -520,7 +522,7 @@ angular.module('nevermore')
                 })
                 .state("app.student.class.report-result", {
                     url: "/report/result/:expId/:classId/:stuId",
-                    templateUrl: "tpl/app/report-result.html",
+                    templateUrl: "tpl/app/new-report-result.html",
                     controller: "ReportResultController",
                     resolve: {
                         controller: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -531,6 +533,7 @@ angular.module('nevermore')
                                 'scripts/directives/app/yasuo-report.js',
                                 'scripts/directives/app/lashen-experiment.js',
                                 'scripts/directives/app/yasuo-experiment.js',
+                                'scripts/directives/app/nm-report-table.js',
                                 'NmDatepicker',
                                 'ngDialog',
                                 'scripts/controllers/app/modal/ChooseChart.controller.js',
@@ -615,7 +618,7 @@ angular.module('nevermore')
                 })
                 .state('app.course.report', {
                     url: '^/app/course/report/:expId/:classId',
-                    templateUrl: 'tpl/app/report.html',
+                    templateUrl: 'tpl/app/new-report.html',
                     controller: 'ReportController',
                     resolve: {
                         controller: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -626,6 +629,7 @@ angular.module('nevermore')
                                 'scripts/directives/app/yasuo-report.js',
                                 'scripts/directives/app/lashen-experiment.js',
                                 'scripts/directives/app/yasuo-experiment.js',
+                                'scripts/directives/app/nm-report-table.js',
                                 'NmDatepicker',
                                 'ngDialog',
                                 'scripts/controllers/app/modal/ChooseChart.controller.js'
@@ -635,7 +639,7 @@ angular.module('nevermore')
                 })
                 .state('app.course.report-result', {
                     url: '^/app/course/report/result/:expId/:classId/:stuId',
-                    templateUrl: 'tpl/app/report-result.html',
+                    templateUrl: 'tpl/app/new-report-result.html',
                     controller: 'ReportResultController',
                     resolve: {
                         controller: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -646,6 +650,7 @@ angular.module('nevermore')
                                 'scripts/directives/app/yasuo-report.js',
                                 'scripts/directives/app/lashen-experiment.js',
                                 'scripts/directives/app/yasuo-experiment.js',
+                                'scripts/directives/app/nm-report-table.js',
                                 'NmDatepicker',
                                 'ngDialog',
                                 'scripts/controllers/app/modal/ChooseChart.controller.js'
@@ -923,7 +928,7 @@ angular.module('nevermore')
                                 "scripts/directives/app/stage-view.directive.js",
                                 'NmDatepicker',
                                 "scripts/factories/refine/Lab.factory.js",
-                                
+
                             ])
                         }]
                     }

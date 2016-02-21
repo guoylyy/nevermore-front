@@ -1,0 +1,139 @@
+<div class="form-group">
+  <div class="col-sm-12">
+    <div ng-if="table.type=='blank'">
+      <div class="">
+        <label class="text-muted">{{table.text}}</label>
+        <input type="text" class="ng-touched ng-dirty ng-valid-parse ng-invalid ng-invalid-required" ng-model="table.content">
+      </div>
+    </div>
+    <div ng-if="table.type=='text'">
+      <div class="form-group pull-in clearfix"  style="padding-left:20px">
+        <div class="col-sm-12">
+          <label class="text-muted">{{table.content}}</label>
+          </div>
+      </div>
+    </div>
+    <div class="panel panel-default" ng-if="table.type=='table'">
+      <div class="panel-heading">{{table.text}}</div>
+      <table st-table="rowCollectionBasic" class="table table-bordered table-striped table_center">
+        <thead>
+          <tr ng-repeat="tr in table.content">
+            <th ng-repeat="th in tr.tr" style="padding:0px">
+                <table st-table="rowCollectionBasic" class="table table-bordered" style="margin-bottom:0px" ng-if="th.type=='table'">
+                  <tr ng-repeat="sub_tr in th.content">
+                    <th ng-repeat="sub_th in sub_tr.tr" style="padding:0px">
+                      <table st-table="rowCollectionBasic" class="table table-bordered" style="margin-bottom:0px; border:0px none;" ng-if="sub_th.type=='table'">
+                        <tr ng-repeat="sub_tr2 in sub_th.content">
+                          <th ng-repeat="sub_th2 in sub_tr2.tr" style="border-top:0px none; border-bottom:0px none;border:0px none; padding:0px">
+                            <table st-table="rowCollectionBasic" class="table table-bordered" style="margin-bottom:0px; border:0px none;" ng-if="sub_th2.type=='table'">
+                              <tr ng-repeat="sub_tr3 in sub_th2.content">
+                                <th ng-repeat="sub_th3 in sub_tr3.tr" style="padding:0px">
+                                  <label ng-if="sub_th3.type=='text'">
+                                  {{sub_th3.content}}
+                                  </label>
+                                  <div ng-if="sub_th3.type=='fill-in-the-blank'">
+                                    <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="number" ng-model="sub_th3.answer">
+                                    <label ng-show="!editable">{{sub_th3|reportFilter}}</label>
+                                  </div>
+                                  <div ng-if="sub_th3.type=='graphic'">
+                                    <button type="submit" class="btn btn-info" ng-click="chooseChart(sub_th3)" ng-show="editable">点击选择图表</button>
+                                    <label ng-show="!editable">{{sub_th3.answer}}</label>
+                                  </div>
+                                  <div ng-if="sub_th3.type=='choice'">
+                                    <div class="radio" ng-repeat="option in sub_th3.options" ng-show="editable">
+                                      <label>
+                                        <input type="radio" value="{{option.label}}" ng-model="sub_th3.answer">
+                                        {{option.label}}. {{option.content}}
+                                      </label>
+                                    </div>
+                                    <label ng-show="!editable">{{sub_th3.answer}}</label>
+                                  </div>
+                                  <div ng-if="sub_th3.type=='picture'">
+                                    <img ng-src="{{sub_th3.content}}" alt="..." class="col-sm-12"/>
+                                  </div>
+                                </th>
+                              </tr>
+                            </table>
+                            <label ng-if="sub_th2.type=='text'">
+                            {{sub_th2.content}}
+                            </label>
+                            <div ng-if="sub_th2.type=='fill-in-the-blank'">
+                              <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="number" ng-model="sub_th2.answer">
+                              <label ng-show="!editable">{{sub_th2|reportFilter}}</label>
+                            </div>
+                            <div ng-if="sub_th2.type=='graphic'">
+                              <button type="submit" class="btn btn-info" ng-click="chooseChart(sub_th2)" ng-show="editable">点击选择图表</button>
+                              <label ng-show="!editable">{{sub_th2.answer}}</label>
+                            </div>
+                            <div ng-if="sub_th2.type=='choice'">
+                              <div class="radio" ng-repeat="option in sub_th2.options" ng-show="editable">
+                                <label>
+                                  <input type="radio" value="{{option.label}}" ng-model="sub_th2.answer">
+                                  {{option.label}}. {{option.content}}
+                                </label>
+                              </div>
+                              <label ng-show="!editable">{{sub_th2.answer}}</label>
+                            </div>
+                            <div ng-if="sub_th2.type=='picture'">
+                              <img ng-src="{{sub_th2.content}}" alt="..." class="col-sm-12"/>
+                            </div>
+                          </th>
+                        </tr>
+                      </table>
+                      <label ng-if="sub_th.type=='text'">
+                      {{sub_th.content}}
+                      </label>
+                      <div ng-if="sub_th.type=='fill-in-the-blank'">
+                        <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="number" ng-model="sub_th.answer">
+                        <label ng-show="!editable">{{sub_th|reportFilter}}</label>
+                      </div>
+                      <div ng-if="sub_th.type=='graphic'">
+                        <button type="submit" class="btn btn-info" ng-click="chooseChart(sub_th)" ng-show="editable">点击选择图表</button>
+                        <label ng-show="!editable">{{sub_th.answer}}</label>
+                      </div>
+                      <div ng-if="sub_th.type=='choice'">
+                        <div class="radio" ng-repeat="option in sub_th.options" ng-show="editable">
+                          <label>
+                            <input type="radio" value="{{option.label}}" ng-model="sub_th.answer">
+                            {{option.label}}. {{option.content}}
+                          </label>
+                        </div>
+                        <label ng-show="!editable">{{sub_th.answer}}</label>
+                      </div>
+                      <div ng-if="sub_th.type=='picture'">
+                        <img ng-src="{{sub_th.content}}" alt="..." class="col-sm-12"/>
+                      </div>
+                    </th>
+                  </tr>
+                </table>
+
+                <label ng-if="th.type=='text'">
+                {{th.content}}
+                </label>
+                <div ng-if="th.type=='fill-in-the-blank'">
+                  <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="number" ng-model="th.answer">
+                  <label ng-show="!editable">{{th|reportFilter}}</label>
+                </div>
+                <div ng-if="th.type=='graphic'">
+                  <button type="submit" class="btn btn-info" ng-click="chooseChart(th)" ng-show="editable">点击选择图表</button>
+                  <label ng-show="!editable">{{th.answer}}</label>
+                </div>
+                <div ng-if="th.type=='choice'">
+                  <div class="radio" ng-repeat="option in th.options" ng-show="editable">
+                    <label>
+                      <input type="radio" value="{{option.label}}" ng-model="th.answer">
+                      {{option.label}}. {{option.content}}
+                    </label>
+                  </div>
+                  <label ng-show="!editable">{{th.answer}}</label>
+                </div>
+                <div ng-if="th.type=='picture'">
+                  <img ng-src="{{th.content}}" alt="..." class="col-sm-12"/>
+                </div>
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
