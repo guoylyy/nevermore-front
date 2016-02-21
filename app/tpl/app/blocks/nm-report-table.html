@@ -28,11 +28,11 @@
                                   </label>
                                   <div ng-if="sub_th3.type=='fill-in-the-blank'">
                                     <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="number" ng-model="sub_th3.answer">
-                                    <label ng-show="!editable">{{sub_th3.answer}}</label>
+                                    <label ng-show="!editable">{{sub_th3|reportFilter}}</label>
                                   </div>
                                   <div ng-if="sub_th3.type=='graphic'">
-                                    <button type="submit" class="btn btn-info" ng-click="chooseChart('5-1stretch','ditangang',experiment)" ng-show="editable">点击选择图表</button>
-                                    <label ng-show="!editable">{{table['5-1stretch'][0]['P-deltaL'].answer}}</label>
+                                    <button type="submit" class="btn btn-info" ng-click="chooseChart(sub_th3)" ng-show="editable">点击选择图表</button>
+                                    <label ng-show="!editable">{{sub_th3.answer}}</label>
                                   </div>
                                   <div ng-if="sub_th3.type=='choice'">
                                     <div class="radio" ng-repeat="option in sub_th3.options" ng-show="editable">
@@ -41,7 +41,7 @@
                                         {{option.label}}. {{option.content}}
                                       </label>
                                     </div>
-                                    <label ng-show="!editable">sub_th3.answer}}</label>
+                                    <label ng-show="!editable">{{sub_th3.answer}}</label>
                                   </div>
                                 </th>
                               </tr>
@@ -51,11 +51,11 @@
                             </label>
                             <div ng-if="sub_th2.type=='fill-in-the-blank'">
                               <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="number" ng-model="sub_th2.answer">
-                              <label ng-show="!editable">{{sub_th2.answer}}</label>
+                              <label ng-show="!editable">{{sub_th2|reportFilter}}</label>
                             </div>
                             <div ng-if="sub_th2.type=='graphic'">
-                              <button type="submit" class="btn btn-info" ng-click="chooseChart('5-1stretch','ditangang',experiment)" ng-show="editable">点击选择图表</button>
-                              <label ng-show="!editable">{{table['5-1stretch'][0]['P-deltaL'].answer}}</label>
+                              <button type="submit" class="btn btn-info" ng-click="chooseChart(sub_th2)" ng-show="editable">点击选择图表</button>
+                              <label ng-show="!editable">{{sub_th2.answer}}</label>
                             </div>
                             <div ng-if="sub_th2.type=='choice'">
                               <div class="radio" ng-repeat="option in sub_th2.options" ng-show="editable">
@@ -64,7 +64,7 @@
                                   {{option.label}}. {{option.content}}
                                 </label>
                               </div>
-                              <label ng-show="!editable">sub_th2.answer}}</label>
+                              <label ng-show="!editable">{{sub_th2.answer}}</label>
                             </div>
                           </th>
                         </tr>
@@ -74,11 +74,11 @@
                       </label>
                       <div ng-if="sub_th.type=='fill-in-the-blank'">
                         <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="number" ng-model="sub_th.answer">
-                        <label ng-show="!editable">{{sub_th.answer}}</label>
+                        <label ng-show="!editable">{{sub_th|reportFilter}}</label>
                       </div>
                       <div ng-if="sub_th.type=='graphic'">
-                        <button type="submit" class="btn btn-info" ng-click="chooseChart('5-1stretch','ditangang',experiment)" ng-show="editable">点击选择图表</button>
-                        <label ng-show="!editable">{{table['5-1stretch'][0]['P-deltaL'].answer}}</label>
+                        <button type="submit" class="btn btn-info" ng-click="chooseChart(sub_th)" ng-show="editable">点击选择图表</button>
+                        <label ng-show="!editable">{{sub_th.answer}}</label>
                       </div>
                       <div ng-if="sub_th.type=='choice'">
                         <div class="radio" ng-repeat="option in sub_th.options" ng-show="editable">
@@ -87,7 +87,7 @@
                             {{option.label}}. {{option.content}}
                           </label>
                         </div>
-                        <label ng-show="!editable">sub_th.answer}}</label>
+                        <label ng-show="!editable">{{sub_th.answer}}</label>
                       </div>
                     </th>
                   </tr>
@@ -98,11 +98,11 @@
                 </label>
                 <div ng-if="th.type=='fill-in-the-blank'">
                   <input placeholder="" class="input-sm form-control ng-isolate-scope" ng-show="editable" type="number" ng-model="th.answer">
-                  <label ng-show="!editable">{{th.answer}}</label>
+                  <label ng-show="!editable">{{th|reportFilter}}</label>
                 </div>
                 <div ng-if="th.type=='graphic'">
-                  <button type="submit" class="btn btn-info" ng-click="chooseChart('5-1stretch','ditangang',experiment)" ng-show="editable">点击选择图表</button>
-                  <label ng-show="!editable">{{table['5-1stretch'][0]['P-deltaL'].answer}}</label>
+                  <button type="submit" class="btn btn-info" ng-click="chooseChart(th)" ng-show="editable">点击选择图表</button>
+                  <label ng-show="!editable">{{th.answer}}</label>
                 </div>
                 <div ng-if="th.type=='choice'">
                   <div class="radio" ng-repeat="option in th.options" ng-show="editable">
@@ -111,7 +111,7 @@
                       {{option.label}}. {{option.content}}
                     </label>
                   </div>
-                  <label ng-show="!editable">th.answer}}</label>
+                  <label ng-show="!editable">{{th.answer}}</label>
                 </div>
             </th>
           </tr>

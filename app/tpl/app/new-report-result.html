@@ -1,0 +1,122 @@
+<div class="vbox">
+    <div class="wrapper lter b-b bg-white">
+      <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ui-sref="app.teacher.class.task-report({expId:exp_id})" ng-show="isRole('TEACHER')">返回</a>
+      <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ui-sref="app.student.class.task" ng-show="isRole('STUDENT')">返回</a>
+      <div class="subview3_title">{{new_data.text}}详情和评分结果</div>
+    </div>
+    <div class="wrapper bg-white padder-lg report">
+      <div class="h4 text-black pull-right" style="margin-top:15px;margin-right:20px">得分</div>
+      <div class="h1 text-danger h1 pull-right" style="font-weight:500;margin-right:10px">{{new_data.final_score}}/{{new_data.total_score}}</div>
+      <div class="line line-dashed line-lg pull-in"></div>
+
+      <div class="col-sm-4">
+      <label class="text-black" style="">实验名称：{{exp.name}}</label>
+      </div>
+
+      <div class="col-sm-4">
+      <label class="text-black" style="">任课教师：{{clazz.teacher.name}}</label>
+      </div>
+
+      <div class="col-sm-4">
+      <label class="text-black" style="">实验学期：{{semester.title}}</label>
+      </div>
+
+      <div class="col-sm-4">
+        <label class="text-black">姓名:</label> <label class="text-black m-l-sm text-u-l">{{student.name}}</label>
+      </div>
+
+      <div class="col-sm-4">
+        <label class="text-black">学号:</label> <label class="text-black m-l-sm text-u-l">{{student.account}}</label>
+      </div>
+
+      <div class="col-sm-4">
+        <label class="text-black">班级:</label> <label class="text-black m-l-sm text-u-l">{{clazz.course.name}} {{clazz.course.number}}</label>
+      </div>
+
+      <div class="line line-lg pull-in b-b" style="padding-top:15px"></div>
+
+      <div ng-repeat="section in new_data.content">
+        <div ng-if="section.type=='section'&&$index>=2&&section.text!='问题讨论'">
+        <div class="text-danger h4 pull-right" style="font-weight:500;margin-right:20px">{{new_data.section_scores[$index-1]}}/{{new_data.section_total_scores[$index-1]}}</div>
+
+        <div class="line line-dashed line-lg pull-in"></div>
+
+        <div ng-repeat="table in section.content">
+          <!-- <div class="col-sm-1"></div> -->
+          <div class="col-sm-12">
+            <nmreporttable editable="false" ng-model="table" experiment="exp_id"/>
+          </div>
+          <!-- <div class="col-sm-1"></div> -->
+          <div class="line line-dashed line-lg pull-in"></div>
+        </div>
+
+        <a class="text-info pull-right" style="margin-right:20px;color:#23b7e5;" ng-click="show($index)" ng-show="!correct_answer_view[$index]">查看正确答案</a>
+
+        <a class="text-danger pull-right" style="margin-right:20px;color:#f05050;" ng-click="hide($index)" ng-show="correct_answer_view[$index]">收起正确答案</a>
+
+        <div class="vbox col-sm-10 b-a" ng-show="correct_answer_view[$index]">
+          <div ng-repeat="table in answer.content[$index].content">
+            <!-- <div class="col-sm-1"></div> -->
+            <div class="col-sm-12">
+              <nmreporttable editable="false" ng-model="table" experiment="exp_id"/>
+            </div>
+            <!-- <div class="col-sm-1"></div> -->
+            <div class="line line-dashed line-lg pull-in"></div>
+          </div>
+        </div>
+
+        <div class="line line-lg pull-in b-b" style="padding-top:15px"></div>
+        </div>
+
+        <div ng-if="section.type=='section'&&$index>=2&&section.text=='问题讨论'">
+          <div class="col-sm-12">
+          <label class="h4" style="font-weight:800;">实验相关问答</label>
+          <div class="text-danger h4 pull-right" style="font-weight:500">{{new_data.section_scores[$index-1]}}/{{new_data.section_total_scores[$index-1]}}</div>
+          <label class="pull-right" style="margin-right:20px">共{{new_data.section_counts[$index-1]}}题，答对{{new_data.section_correct_counts[$index-1]}}题</label>
+          </div>
+
+          <div class="line line-dashed line-lg pull-in"></div>
+
+          <div ng-repeat = "question in section.content">
+          <div class="col-sm-1"><b class="badge pull-right" ng-class="{'bg-success':question.score!=0,'bg-danger':question.score==0}"><i class="fa" ng-class="{'fa-check':question.score!=0,'fa-times':question.score==0}"></i></b></div>
+          <div class="col-sm-10">
+
+            <label class="text-black">{{question.text}}</label>
+            <div ng-if="question.type=='choice'">
+            <div class="l_space">
+                <div class="radio" ng-repeat="option in question.options">
+                  <label class="i-checks">
+                    <input type="radio" checked="question.answer==option.label" disabled="" value="{{option.label}}" ng-model="question.answer">
+                    <i></i>
+                    {{option.label}}. {{option.content}}
+                  </label>
+                </div>
+            </div>
+
+            <div class="panel-body b-a m-l-md" ng-show="question.score==0">
+              <p>正确答案：{{answer.content[$parent.$parent.$index].content[$index].answer}}</p>
+              <p>答案解析：<span class="text-muted">{{answer.content[$parent.$parent.$index].content[$index].explaination}}</span></p>
+            </div>
+            </div>
+
+            <div ng-if="question.type=='text'">
+            <textarea class="form-control ng-pristine ng-valid ng-touched" ng-change="question_change()" placeholder="" rows="5" ng-model="question.answer" disabled="false"></textarea>
+            <div class="line line-dashed line-lg pull-in"></div>
+            <div class="panel-body b-a">
+              <p>正确答案：{{answer.content[$parent.$parent.$index].content[$index].answer}}</p>
+              <p>答案解析：<span class="text-muted">{{answer.content[$parent.$parent.$index].content[$index].explaination}}</span></p>
+            </div>
+            </div>
+
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="line line-dashed line-lg pull-in"></div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+</div>
+</div>

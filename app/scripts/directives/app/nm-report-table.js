@@ -13,7 +13,8 @@ angular.module('nevermore')
       restrict: 'EA',
       require: 'ngModel',
       scope: {
-        editable: '='
+        editable: '=',
+        experiment: '='
       },
       link:function(scope, element, attrs, ngModelCtrl) {
         scope.title = attrs.title;
@@ -24,7 +25,24 @@ angular.module('nevermore')
           ngModelCtrl.$setViewValue(scope.table);
         });
       },
-      controller: function ($scope, $localStorage) {
+      controller: function ($scope, ngDialog) {
+        $scope.chooseChart = function (data) {
+          var dialog = ngDialog.open({
+            template: 'tpl/app/modal/choose-chart.html',
+            controller:'ChooseChartModalCtrl',
+            className: 'nm-dialog nm-dialog-md',
+            closeByDocument: true,
+            closeByEscape: true,
+            resolve: {
+              data : function() {
+                return data;
+              },
+              expId: function () {
+                return $scope.experiment;
+              }
+            }
+          });
+        }
       }
     };
   });

@@ -13,35 +13,35 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
   ReportFactory.report().get({
     stuId: $scope.currentUser.id+"",
     classId: $scope.class_id,
-    expId: $scope.exp_id
+    expId: "1",//$scope.exp_id
   }).$promise.then(function(response) {
     if (response.code == "200") {
-      $scope.data = response.data.report;
+      $scope.new_data = response.data.report;
       $scope.status = response.data.status;
-      $scope.data.student.name = $scope.currentUser.name;
+      // $scope.new_data.student.name = $scope.currentUser.name;
       ClazzFactory.clazz().get({
         id: $scope.class_id
       }).$promise.then(function(response){
         if (response.code == "200") {
-          $scope.data.student.class = response.data.course.name+" "+response.data.course.number;
+          // $scope.data.student.class = response.data.course.name+" "+response.data.course.number;
         }
       });
-      $scope.data['1date'] = new Date();
+      // $scope.data['1date'] = new Date();
       $scope.question_change();
     }
     else {
       ReportFactory.template().get({
         expId: "1"
       }).$promise.then(function(response){
-        $scope.data = response.data;
+        $scope.new_data = response.data;
         $scope.status = response.data.status;
-        $scope.data.student.name = $scope.currentUser.name;
+        // $scope.data.student.name = $scope.currentUser.name;
         ClazzFactory.clazz().get({
           id: $scope.class_id
         }).$promise.then(function(response){
-          $scope.data.student.class = response.data.course.name+" "+response.data.course.number;
+          // $scope.data.student.class = response.data.course.name+" "+response.data.course.number;
         });
-        $scope.data['1date'] = new Date();
+        // $scope.data['1date'] = new Date();
         $scope.question_change();
       });
     }
@@ -72,12 +72,12 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
   };
 
   $scope.save = function () {
-    $scope.data['1date'] = moment($scope.data['1date']).format('YYYY-MM-DD');
+    // $scope.data['1date'] = moment($scope.data['1date']).format('YYYY-MM-DD');
     var data = {
       'student_id':$scope.currentUser.id+"",
       'class_id':$scope.class_id,
-      'experiment_id':$scope.exp_id,
-      'report':$scope.data
+      'experiment_id':"1",//$scope.exp_id,
+      'report':$scope.new_data
     }
     ReportFactory.save().post({}, data).$promise.then(function(response){
       if (response.code == "200") {
@@ -96,7 +96,7 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
       ReportFactory.report().post({
           stuId: $scope.currentUser.id+"",
           classId: $scope.class_id,
-          expId: $scope.exp_id
+          expId: "1"//$scope.exp_id
       }).$promise.then(function(response){
         if (response.code == "200") {
             $scope.status = 'committed';
@@ -105,7 +105,7 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
               "experimentRecord": response.data.report.final_score,
               "experimentComment": "",
               "clazzId": $scope.class_id,
-              "experimentId": $scope.exp_id,
+              "experimentId": "1",//$scope.exp_id,
               "studentId": $scope.currentUser.id,
               "occurDate": new Date()
             };
@@ -128,9 +128,9 @@ app.controller('ReportCtrl', ['$scope', '$state', 'AlertTool', '$stateParams', '
     });
   }
 
-  $http.get("tpl/app/report/yagan.json")
-     .success(function(data){
-      $scope.new_data = data;
-     });
+  // $http.get("tpl/app/report/niuzhuan.json")
+  //    .success(function(data){
+  //     $scope.new_data = data;
+  //    });
 
 }]);
