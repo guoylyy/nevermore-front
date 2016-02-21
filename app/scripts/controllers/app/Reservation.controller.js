@@ -5,11 +5,11 @@ function() {
     angular.module("nevermore")
         .controller("ReservationController", ReservationController);
 
-    ReservationController.$inject = ["ReservationFactory", "ngDialog",
+    ReservationController.$inject = ["$scope", "ReservationFactory", "ngDialog",
         "HttpResponseFactory", "ToasterTool", "generalService", "ErrorHandlerFactory"
     ];
 
-    function ReservationController(ReservationFactory, ngDialog,
+    function ReservationController($scope, ReservationFactory, ngDialog,
         HttpResponseFactory, ToasterTool, generalService, ErrorHandlerFactory) {
 
         var errorHandler = ErrorHandlerFactory.handle;
@@ -37,10 +37,24 @@ function() {
         vm.cancelReservation = cancelReservation;
         vm.viewReservation = viewReservation;
 
-        getUnexpiredReservationsInWeek();
-        getUnexpiredReservationsOutWeek();
-        getExpiredReservationsInWeek();
-        getExpiredReservationsOutWeek();
+        $scope.getUnexpiredReservations = getUnexpiredReservations;
+        $scope.getExpiredReservations = getExpiredReservations;
+
+        getUnexpiredReservations();
+
+        function getUnexpiredReservations(){
+          if(vm.unexpiredPaginator.items == undefined){
+            getUnexpiredReservationsInWeek();
+            getUnexpiredReservationsOutWeek();
+          }
+        }
+
+        function getExpiredReservations(){
+          if(vm.expiredPaginator.items == undefined){
+            getExpiredReservationsInWeek();
+            getExpiredReservationsOutWeek();
+          }
+        }
 
         function getUnexpiredReservationsInWeek() {
             ReservationFactory.myReservationsInWeek().get({

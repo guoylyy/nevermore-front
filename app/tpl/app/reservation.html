@@ -7,12 +7,12 @@
 	    <div class = "wrapper-md">
 	    	<div style = "overflow: hidden">
 				<ul class="db-tab db-m-0 pull-left" style = "padding: 0px;">
-					<li class="active">
+					<li class="active" ng-click="getUnexpiredReservations()">
 						<a data-target = "#unexpiredReservations" role = "tab" data-toggle = "tab" aria-expanded = "true" class = "db-underline">
 							<span class = "db-title">可用预约</span>
 						</a>
 					</li>
-					<li>
+					<li ng-click="getExpiredReservations()">
 						<a data-target = "#expiredReservations" role = "tab" data-toggle = "tab" aria-expanded = "false" class = "db-underline">
 							<span class = "db-title">过期预约</span>
 						</a>
@@ -62,7 +62,7 @@
 									<span class = "db-exp-time" ng-click="reservations.viewReservation(reservation)">{{reservation.applyDate | date: 'yyyy-MM-dd (EEE)'}}</span>
 								</td>
 								<td style = "width: 20%; text-align: left;">
-									<span class="db-exp-time" ng-click="viewReservation(reservation)">{{reservation.lab.name}}</span>
+									<span class="db-exp-time" ng-click="reservations.viewReservation(reservation)">{{reservation.lab.name}}</span>
 								</td>
 								<td style = "width: 15%; text-align: right;">
 									{{reservation.slot.title}}
@@ -129,7 +129,7 @@
 									<span class = "db-exp-time" ng-click="reservations.viewReservation(reservation)">{{reservation.applyDate | date: 'yyyy-MM-dd (EEE)'}}</span>
 								</td>
 								<td style = "width: 20%; text-align: left;">
-									<span class="db-exp-time" ng-click="viewReservation(reservation)">{{reservation.lab.name}}</span>
+									<span class="db-exp-time" ng-click="reservations.viewReservation(reservation)">{{reservation.lab.name}}</span>
 								</td>
 								<td style = "width: 15%; text-align: right;">
 									{{reservation.slot.title}}
