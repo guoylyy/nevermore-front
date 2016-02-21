@@ -78,7 +78,7 @@ app.controller('ReportController', ['$scope', '$state', 'AlertTool', '$statePara
     var data = {
       'student_id':$scope.currentUser.id+"",
       'class_id':$scope.class_id,
-      'experiment_id':"1",//$scope.exp_id,
+      'experiment_id':$scope.exp_id,
       'report':$scope.new_data
     }
     ReportFactory.save().post({}, data).$promise.then(function(response){
