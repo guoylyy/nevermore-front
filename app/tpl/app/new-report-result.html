@@ -36,8 +36,8 @@
       <div class="line line-lg pull-in b-b" style="padding-top:15px"></div>
 
       <div ng-repeat="section in new_data.content">
-        <div ng-if="section.type=='section'&&$index>=2&&section.text!='问题讨论'">
-        <div class="text-danger h4 pull-right" style="font-weight:500;margin-right:20px">{{new_data.section_scores[$index-1]}}/{{new_data.section_total_scores[$index-1]}}</div>
+        <div ng-if="section.type=='section'&&$index>=1&&section.text!='问题讨论'">
+        <div class="text-danger h4 pull-right" style="font-weight:500;margin-right:20px">{{new_data.section_scores[$index]}}/{{new_data.section_total_scores[$index]}}</div>
 
         <div class="line line-dashed line-lg pull-in"></div>
 
@@ -68,11 +68,11 @@
         <div class="line line-lg pull-in b-b" style="padding-top:15px"></div>
         </div>
 
-        <div ng-if="section.type=='section'&&$index>=2&&section.text=='问题讨论'">
+        <div ng-if="section.type=='section'&&$index>=1&&section.text=='问题讨论'">
           <div class="col-sm-12">
           <label class="h4" style="font-weight:800;">实验相关问答</label>
-          <div class="text-danger h4 pull-right" style="font-weight:500">{{new_data.section_scores[$index-1]}}/{{new_data.section_total_scores[$index-1]}}</div>
-          <label class="pull-right" style="margin-right:20px">共{{new_data.section_counts[$index-1]}}题，答对{{new_data.section_correct_counts[$index-1]}}题</label>
+          <div class="text-danger h4 pull-right" style="font-weight:500">{{new_data.section_scores[$index]}}/{{new_data.section_total_scores[$index]}}</div>
+          <label class="pull-right" style="margin-right:20px">共{{new_data.section_counts[$index]}}题，答对{{new_data.section_correct_counts[$index]}}题</label>
           </div>
 
           <div class="line line-dashed line-lg pull-in"></div>
