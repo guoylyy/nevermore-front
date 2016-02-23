@@ -21,7 +21,7 @@
             <label for="date" class="col-sm-3 control-label">预约日期<span class="text-danger">*</span>：</label>
             <div class="col-sm-9">
                 <nm-datepicker name = "date" ng-change =
-                "dateChanged()" ng-model="date" ui-validate = "'$value >= currentDate'"></nm-datepicker>
+                "dateChanged()" ng-model="date" min-date = "currentDate"></nm-datepicker>
             </div>
         </div>
         <div class = "ng-hide pull-right error-message db-m-b-10" ng-show = "ReservationForm1.date.$invalid">

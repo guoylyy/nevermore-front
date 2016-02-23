@@ -38,10 +38,11 @@ function($scope, AccountManageFactory, data, ReservationManageFactory, AlertTool
 			return
 		}
 		ReservationManageFactory.verify().post({
-			id: copiedResource.id,
+			id: copiedResource.id
+		}, {
 			status: "APPROVED",
-			teacherIds: assignedTeacherList,
-		}, {}).$promise
+			teacherIds: assignedTeacherList
+		}).$promise
 		.then(function(data){
 			if(data.success){
 				$scope.closeThisDialog("verify")
@@ -56,10 +57,11 @@ function($scope, AccountManageFactory, data, ReservationManageFactory, AlertTool
 		AlertTool.deleteConfirm({title:'是否确定拒绝',subtitle:'拒绝后将不可恢复'}).then(function(isConfirm) {
 		  if(isConfirm) {
 				ReservationManageFactory.verify().post({
-					id: copiedResource.id,
+					id: copiedResource.id
+				}, {
 					status: "REJECTED",
-					teacherIds: [],
-				}, {}).$promise
+					teacherIds: []
+				}).$promise
 				.then(function(data){
 					if(data.success){
 						$scope.closeThisDialog("reject")

@@ -25,12 +25,12 @@
     <div class = "ng-hide pull-right error-message" ng-show = "!!ReservationForm.applyDate.$error.validator">
       预约日期不能是今天之前的日期
     </div>
-    
+
 	<div class = "clearfix"></div>
     <div class="form-group">
       <label for="applyDate" class="col-sm-3 control-label">预约日期<span class="text-danger">*</span>：</label>
       <div class="col-sm-9">
-        <nm-datepicker name = "applyDate" class="form-control" ng-model="data.applyDate" ui-validate = "'$value > currentDate'"></nm-datepicker>
+        <nm-datepicker name = "applyDate" class="form-control" ng-model="data.applyDate" min-date = "currentDate"></nm-datepicker>
       </div>
     </div>
     <div class="form-group">
@@ -89,7 +89,7 @@
         <textarea name = "remark" class="form-control" ng-model="data.remark" placeholder="" rows="2" aria-multiline="true" aria-invalid="false"></textarea>
       </div>
     </div>
-    
+
 	<div class = "nm-dialog-line"></div>
 	<div class = "clearfix m-t">
       <div class="pull-right">

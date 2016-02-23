@@ -21,7 +21,7 @@ angular.module('nevermore')
       controller: function ($scope) {
         $scope.name = $scope.name || '';
         $scope.ngRequired = $scope.ngRequired != undefined;
-
+        
         $scope.minDate = $scope.minDate || null;
         $scope.maxDate = $scope.maxDate || null;
 
