@@ -11,7 +11,8 @@
     return {
       labs: labs,
       userReport: userReport,
-      extractPicture: extractPicture
+      extractPicture: extractPicture,
+      experimentTrain: experimentTrain
     };
 
     function labs(){
@@ -40,6 +41,15 @@
         post: {
           method: "POST",
           headers : sessionService.headers()
+        }
+      })
+    }
+
+    //虚拟实验
+    function experimentTrain(){
+      return $resource(apiUrl + "/train", null, {
+        post:{
+          method: "POST"
         }
       })
     }
