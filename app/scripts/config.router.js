@@ -933,6 +933,30 @@ angular.module('nevermore')
                         }]
                     }
                 })
+                .state('app.admin-appointment.student', {
+                    url: "^/app/admin/student/appointment",
+                    templateUrl: "tpl/app/admin/experiment-student-appointment.html",
+                    controller: "ReservationStudentManagementController",
+                    resolve: {
+                        controller: ["$ocLazyLoad", function($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                "scripts/controllers/app/admin/ReservationStudentManagement.controller.js",
+                                "scripts/controllers/app/admin/modal/VerifyReservation.controllers.js",
+                                "scripts/controllers/app/admin/modal/ViewReservation.controller.js",
+                                "scripts/controllers/app/admin/modal/ViewAndEditReservation.controller.js",
+                                "scripts/controllers/app/admin/modal/AddStudentReservation.controller.js",
+                                "scripts/directives/app/nm-configure-list.js",
+                                "angularBootstrapNavTree",
+                                "scripts/controllers/app/admin/modal/ModifyAppointmentDate.controller.js",
+                                "scripts/factories/StateChain.factory.js",
+                                "scripts/directives/app/stage-view.directive.js",
+                                'NmDatepicker',
+                                "scripts/directives/app/stage-view.directive.js",
+                                "scripts/factories/refine/Lab.factory.js",
+                            ])
+                        }]
+                    }
+                })
                 .state('app.admin-setting', { //系统设置
                     url: '^/app/admin/setting',
                     templateUrl: "tpl/app/admin/system-setting.html",

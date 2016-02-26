@@ -1,17 +1,22 @@
 <div class="nm-dialog">
   <div class="nm-dialog-header">
     <h1 class="header-title" style="margin-top: 5px;">
-      <span >添加预约</span>
+      <span >添加学生个人预约</span>
     </h1>
   </div>
 	<div class = "nm-dialog-line"></div>
+
+  <div class="alert alert-warning">
+    友情提示: 开放学生预约，学生可以自行选择开放的时间做实验。
+  </div>
+
   <stage-view-directive nm-total-stage = "3" nm-init-stage = "1" style = "margin-bottom: 10px;">
-    <div class="p-t-md p-b-xs m-b-md">
+    <div class="p-t-xs p-b-xs m-b-md">
       <div class="pull-left text-link">
         第一步:选择预约日期
       </div>
       <div class="text-center inline p-l-xxl m-l-xxl text-muted">
-        第二步:选择实验室
+        第二步:选择实验和实验室
       </div>
       <div class="pull-right text-muted">
         第三步:选择时间段
@@ -22,7 +27,7 @@
         第一步:选择预约日期
       </div>
       <div class="text-center inline p-l-xxl m-l-xxl  text-link">
-        第二步:选择实验室
+        第二步:选择实验和实验室
       </div>
       <div class="pull-right text-muted">
         第三步:选择时间段
@@ -33,7 +38,7 @@
         第一步:选择预约日期
       </div>
       <div class="text-center inline p-l-xxl m-l-xxl text-muted">
-        第二步:选择实验室
+        第二步:选择实验和实验室
       </div>
       <div class="pull-right  text-link ">
         第三步:选择时间段
@@ -62,6 +67,15 @@
   </form>
 
   <form class="form-horizontal" name = "ReservationForm2" ng-show = "stage === 2" novalidate>
+    <div class="form-group" ng-show = "expList.length > 0">
+      <label for="exp" class="col-sm-3 control-label">实验<span class="text-danger">*</span>：</label>
+      <div class="col-sm-9">
+        <select name = "exp" class="form-control" ng-change="expChange()" ng-model="exp"  ng-options="item.name for item in expList" aria-invalid="false">
+            <option value="">--请选择实验--</option>
+          </select>
+      </div>
+    </div>
+
     <div class="form-group" ng-show = "labList.length > 0">
       <label for="lab" class="col-sm-3 control-label">实验室<span class="text-danger">*</span>：</label>
       <div class="col-sm-9">
@@ -70,14 +84,14 @@
           </select>
       </div>
     </div>
-    <div class="alert alert-danger" ng-show = "labList.length === 0">
+    <!-- <div class="alert alert-danger" ng-show = "labList.length === 0">
       您选择的日期不存在可预约的实验室。
-    </div>
+    </div> -->
     <div class = "nm-dialog-line"></div>
     <div class="clearfix m-t">
       <div class="pull-right">
         <button class="btn btn-primary" ng-click="prev()">上一步</button>
-        <button class="btn btn-primary" ng-disabled = "ReservationForm2.$invalid || labList.length === 0" ng-click="next()">下一步</button>
+        <button class="btn btn-primary" ng-disabled = "ReservationForm2.$invalid || expList.length === 0" ng-click="next()">下一步</button>
       </div>
     </div>
   </form>
@@ -87,7 +101,7 @@
     <div class="form-group">
       <label for="time" class="col-sm-3 control-label">实验: </label>
       <div class="col-sm-9">
-         <span class="form-control">{{experimentName}}</span>
+         <span class="form-control">{{exp.name}}</span>
       </div>
     </div>
 

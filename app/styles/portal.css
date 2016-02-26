@@ -184,6 +184,9 @@
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
+.text-muted {
+  color: #98a6ad;
+}
 .text-link {
   color: #00A2CA;
 }

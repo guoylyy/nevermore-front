@@ -1,12 +1,14 @@
-app.controller("ReservationManagementController", ["$scope", "$stateParams", "ReservationManageFactory",
+app.controller("ReservationManagementController", ["$scope", "$state", "$stateParams", "ReservationManageFactory",
 	"sessionService", "generalService", "ToasterTool", "ngDialog", "ManagementService", "AlertTool",
-	function($scope, $stateParams, ReservationManageFactory, sessionService, generalService,
+	function($scope, $state, $stateParams, ReservationManageFactory, sessionService, generalService,
 		ToasterTool, ngDialog, ManagementService, AlertTool) {
 		var status = $stateParams.status;
 		if (status === 'verified') {
 			status = 'APPROVED';
 		} else if (status === 'unverified') {
 			status = 'APPLY';
+		} else if (status === 'student-verify'){
+			$state.go('app.admin-appointment.student');
 		}
 
 		$scope.verifyStatusList = [{
@@ -28,7 +30,9 @@ app.controller("ReservationManagementController", ["$scope", "$stateParams", "Re
 		$scope.filterConditionChange = filterConditionChange
 		$scope.modifyAppointmentDate = modifyAppointmentDate
 
-		loadResources()
+		if(status === 'verified' || status === 'unverified'){
+				loadResources();
+		}
 
 		function loadResources() {
 			commitLoad(ReservationManageFactory)
