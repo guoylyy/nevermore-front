@@ -184,6 +184,9 @@
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
+.text-muted {
+  color: #98a6ad;
+}
 .text-link {
   color: #00A2CA;
 }
@@ -1547,6 +1550,9 @@ fieldset[disabled] .btn-black.active {
 }
 .ngdialog.nm-dialog.nm-dialog-lg .ngdialog-content {
   width: 800px;
+}
+.ngdialog.nm-dialog.nm-dialog-xl .ngdialog-content {
+  width: 950px;
 }
 .ngdialog.nm-dialog .ngdialog-close {
   border-radius: 5px;

@@ -8,10 +8,13 @@
         <div class="cell scrollable hover">
           <ul class="list-group">
             <li ui-sref-active="active" ui-sref="app.admin-appointment.list({status:'unverified'})" class="list-group-item second_nav_body cusor-pointer">
-              <a>待审核实验预约</a>
+              <a>待审核班级实验预约</a>
             </li>
             <li ui-sref-active="active" ui-sref="app.admin-appointment.list({status:'verified'})" class="list-group-item second_nav_body cusor-pointer">
-              <a>通过审核实验预约</a>
+              <a>通过审核班级实验预约</a>
+            </li>
+            <li ui-sref-active="active" ui-sref="app.admin-appointment.list({status:'student-verify'})" class="list-group-item second_nav_body cusor-pointer">
+              <a>开放的个人实验预约</a>
             </li>
           </ul>
         </div>

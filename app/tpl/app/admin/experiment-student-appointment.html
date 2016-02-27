@@ -1,0 +1,104 @@
+<div>
+    <div class = "wrapper lter b-b" style = "overflow: hidden;">
+        <span>学生个人预约开放列表</span>
+    </div>
+    <div class = "wrapper-md">
+      <div class="p-b-md">
+          <uib-tabset class="nm-tab-btn-group">
+          <uib-tab ng-repeat="status in verifyStatusList" active="status.active" ng-click="filterConditionChange(status)">
+          <uib-tab-heading>
+          {{status.value}}
+          </uib-tab-heading>
+          </uib-tab>
+          </uib-tabset>
+      </div>
+        <div class="p-b-md">
+          <button class="btn btn-primary" ng-click="addStudentReservation()">添加个人预约</button>
+        </div>
+        <div class="panel panel-default">
+            <table class = "table table-striped b-t b-light">
+                <thead>
+                    <tr>
+                        <th style="width: 10%; min-width: 140px;">预约时间</th>
+                        <th style="width: 10%; min-width: 50px;">开放人数</th>
+                        <th style="width: 10%; min-width: 50px;">已预约人数</th>
+                        <th style="width: 10%; min-width: 70px;">实验状态</th>
+                        <th style="width: 15%; min-width: 100px;">实验室</th>
+                        <th style="width: 15%; min-width: 82px;">实验任务</th>
+                        <th style="width: 10%; min-width: 82px;">操作 </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="resource in resources.data">
+                        <td>
+                            <span>{{resource.applyDate | date:'yyyy-MM-dd'}}  &nbsp;
+                            ({{resource.slot.title}})</span>
+                        </td>
+                        <td>
+                            <span>{{resource.personCount}}</span>
+                        </td>
+                        <td ng-click="viewReservationCondition(resource)" class="cursor-pointer text-link">
+                            <span>{{resource.currPersonCount}}</span>
+                        </td>
+                        <td>
+                            <span>{{resource.status.value}}</span>
+                        </td>
+                        <td>
+                            <span>{{resource.lab.name}}</span>
+                        </td>
+                        <td>
+                            <span>{{resource.experiment.name}}</span>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <a class="dropdown-toggle" data-toggle = "dropdown" aria-haspopup = "true" aria-expanded = "false">
+                                    操作<span class = "caret"></span>
+                                </a>
+                                <ul class="dropdown-menu db-dropdown-menu-lt">
+                                    <li>
+                                        <a ng-click="verifyResource(resource)" ng-if="resource.status.code=='APPLY'">
+                                            审核预约
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="viewResource(resource)" ng-if="resource.status.code!='APPLY'">
+                                            编辑
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="viewReservationCondition(resource)" ng-if="resource.status.code!='APPLY'">
+                                            预约情况
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-click = "modifyAppointmentDate(resource)" ng-if="resource.status.code=='APPROVED'">
+                                            修改预约时间
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-click = "cancelAppointment(resource)" ng-if="resource.status.code!='APPLY'">
+                                            取消预约
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <nevermore-empty-panel ng-if="resources.paginator.items == 0" text="没有可操作的预约"></nevermore-empty-panel>
+        </div>
+        <footer class="panel-footer">
+            <div class="row clearfix" style="width: 100%;" >
+                <div class="pull-left col-sm-4 m-t-sm">
+                    <span class="text-muted inline m-t-sm">{{resources.paginator.page}}/{{resources.paginator.page}}&nbsp;&nbsp;&nbsp;共&nbsp;{{resources.paginator.items}}&nbsp;个预约</span>
+                </div>
+                <div class="pull-right">
+                    <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="resources.paginator.items"
+                    ng-model="resources.paginator.page" ng-change="pageChanged()"></uib-pagination>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<lab-footer></lab-footer>

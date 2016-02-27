@@ -21,6 +21,7 @@
     $scope.isStudent = isStudent
     $scope.isTeacher = isTeacher
     $scope.isAdmin = isAdmin
+    $scope.isLabTeacher = isLabTeacher
 
     function isStudent(){
       return RoleFactory.isStudent(currentUser.roles)
@@ -32,6 +33,10 @@
 
     function isAdmin(){
       return RoleFactory.isAdmin(currentUser.roles)
+    }
+
+    function isLabTeacher(){
+      return RoleFactory.isLabTeacher(currentUser.roles)
     }
 
     // config

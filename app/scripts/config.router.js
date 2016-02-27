@@ -141,6 +141,26 @@ angular.module('nevermore')
                 })
                 .state("app.reservation", {
                     url: "^/app/reservation",
+                    templateUrl: "tpl/app/reservation-selection.html",
+                    controller: ['$state', function($state) {
+                        var currState = $state.current.name;
+                        if (currState === "app.reservation") {
+                            $state.go('app.reservation.class');
+                        }
+                    }],
+                    resolve: {
+                        controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                'scripts/controllers/app/admin/modal/ViewReservation.controller.js',
+                                "scripts/factories/refine/Reservation.factory.js",
+                                "scripts/factories/refine/HttpResponse.factory.js",
+                                "ngDialog",
+                            ]);
+                        }]
+                    },
+                })
+                .state("app.reservation.class", {
+                    url: "^/app/reservation/class",
                     templateUrl: "tpl/app/reservation.html",
                     controller: "ReservationController",
                     controllerAs: "reservations",
@@ -148,10 +168,33 @@ angular.module('nevermore')
                         controller: ['$ocLazyLoad', function($ocLazyLoad) {
                             return $ocLazyLoad.load([
                                 'scripts/controllers/app/Reservation.controller.js',
-                                'scripts/controllers/app/admin/modal/ViewReservation.controller.js',
-                                "scripts/factories/refine/Reservation.factory.js",
-                                "scripts/factories/refine/HttpResponse.factory.js",
-                                "ngDialog",
+                            ]);
+                        }]
+                    },
+                })
+                .state("app.reservation.student", {
+                    url: "^/app/reservation/student",
+                    templateUrl: "tpl/app/reservation-student.html",
+                    controller: "ReservationStudentController",
+                    controllerAs: "reservations",
+                    resolve: {
+                        controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                'scripts/controllers/app/ReservationStudent.controller.js',
+                                'scripts/controllers/app/student/modal/GrapStudentReservation.controller.js',
+                            ]);
+                        }]
+                    },
+                })
+                .state("app.reservation.lab-task", {
+                    url: "^/app/reservation/lab-task",
+                    templateUrl: "tpl/app/reservation-lab-task.html",
+                    controller: "ReservationLabTaskController",
+                    controllerAs: "reservations",
+                    resolve: {
+                        controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                'scripts/controllers/app/ReservationLabTask.controller.js',
                             ]);
                         }]
                     },
@@ -921,6 +964,7 @@ angular.module('nevermore')
                                 "scripts/controllers/app/admin/modal/VerifyReservation.controllers.js",
                                 "scripts/controllers/app/admin/modal/ViewReservation.controller.js",
                                 "scripts/controllers/app/admin/modal/ViewAndEditReservation.controller.js",
+                                "scripts/controllers/app/admin/modal/AddStudentReservation.controller.js",
                                 'scripts/directives/app/nm-configure-list.js',
                                 "angularBootstrapNavTree",
                                 "scripts/controllers/app/admin/modal/ModifyAppointmentDate.controller.js",
@@ -929,6 +973,31 @@ angular.module('nevermore')
                                 'NmDatepicker',
                                 "scripts/factories/refine/Lab.factory.js",
 
+                            ])
+                        }]
+                    }
+                })
+                .state('app.admin-appointment.student', {
+                    url: "^/app/admin/student/appointment",
+                    templateUrl: "tpl/app/admin/experiment-student-appointment.html",
+                    controller: "ReservationManagementController",
+                    resolve: {
+                        controller: ["$ocLazyLoad", function($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                "scripts/controllers/app/admin/ReservationManagement.controller.js",
+                                "scripts/controllers/app/admin/ReservationStudentManagement.controller.js",
+                                "scripts/controllers/app/admin/modal/VerifyReservation.controllers.js",
+                                "scripts/controllers/app/admin/modal/ViewReservation.controller.js",
+                                "scripts/controllers/app/admin/modal/ViewAndEditReservation.controller.js",
+                                "scripts/controllers/app/admin/modal/AddStudentReservation.controller.js",
+                                "scripts/controllers/app/admin/modal/ViewStudentList.controller.js",
+                                "scripts/directives/app/nm-configure-list.js",
+                                "angularBootstrapNavTree",
+                                "scripts/controllers/app/admin/modal/ModifyAppointmentDate.controller.js",
+                                "scripts/factories/StateChain.factory.js",
+                                "scripts/directives/app/stage-view.directive.js",
+                                'NmDatepicker',
+                                "scripts/factories/refine/Lab.factory.js",
                             ])
                         }]
                     }

@@ -28,7 +28,7 @@
     </a>
   </li>
 
-  <li ui-sref-active="active" ng-if="isStudent() || isTeacher()">
+  <li ui-sref-active="active" ng-if="isStudent() || isTeacher() || isLabTeacher()">
     <a ui-sref="app.reservation"  data-ui-sref-opts="{reload: true}" class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>

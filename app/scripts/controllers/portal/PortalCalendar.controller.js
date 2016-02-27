@@ -50,25 +50,40 @@ app.controller('PortalCalendarController', ['$scope', 'ResTool',  'ToasterTool',
           var rcList = [];
           for (var i = 0; i < reservations.length; i++) {
             var res = reservations[i]
+            if(res.status.code === 'REJECTED'){
+              continue;
+            }
+
             var start = DateTool.format(new Date(res.applyDate)) + ' ' + res.slot.startTime
             var end = DateTool.format(new Date(res.applyDate)) + ' ' + res.slot.endTime
             var teachers = "";
             angular.forEach(res.teachers, function(data){
               teachers = teachers + ' ' + data.name;
             });
+
             var map = {
               'id': res.id,
-              'title': res.experiment.name + '-(' +  res.clazz.number+ ')',
+              'title': '',
               'start': start,
               'end': end,
               'color': generalService.getReservationColor(res),
               'status': res.status.value,
               'location': res.lab.name,
-              'courseName': res.clazz.course.name + ' - ' + res.clazz.number,
+              'courseName': '',
               'slot': res.slot,
-              'teacherName': res.clazz.teacher.name,
+              'teacherName': '',
               'labTeachers': teachers
             };
+
+            if(res.type.code === 'STUDENT_RESERVATION'){
+                map['title'] = res.experiment.name + '-(' + res.type.value +')';
+                map['courseName'] = '';
+            }else{
+                map['title'] = res.experiment.name + '-(' +  res.clazz.number+ ')';
+                map['courseName'] = res.clazz.course.name + ' - ' + res.clazz.number;
+                map['teacherName'] = res.clazz.teacher.name;
+            }
+
             rcList.push(map);
           };
           return rcList;

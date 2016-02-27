@@ -1,12 +1,22 @@
-app.controller("ReservationManagementController", ["$scope", "$stateParams", "ReservationManageFactory",
-	"sessionService", "generalService", "ToasterTool", "ngDialog", "ManagementService", "AlertTool",
-	function($scope, $stateParams, ReservationManageFactory, sessionService, generalService,
+app.controller("ReservationManagementController", ["$scope", "$state", "$stateParams", "ReservationManageFactory",
+	"ReservationFactory", "sessionService", "generalService", "ToasterTool", "ngDialog", "ManagementService", "AlertTool",
+	function($scope, $state, $stateParams, ReservationManageFactory, ReservationFactory,sessionService, generalService,
 		ToasterTool, ngDialog, ManagementService, AlertTool) {
 		var status = $stateParams.status;
+		var currState = $state.current.name;
+		$scope.types = ['CLASS_RESERVATION'];
+
 		if (status === 'verified') {
 			status = 'APPROVED';
 		} else if (status === 'unverified') {
 			status = 'APPLY';
+		} else if (status === 'student-verify'){
+			$state.go('app.admin-appointment.student');
+		}
+
+		if(currState === "app.admin-appointment.student"){
+			status = 'ALL';
+			$scope.types = ['STUDENT_RESERVATION'];
 		}
 
 		$scope.verifyStatusList = [{
@@ -27,8 +37,12 @@ app.controller("ReservationManagementController", ["$scope", "$stateParams", "Re
 		$scope.pageChanged = loadResources
 		$scope.filterConditionChange = filterConditionChange
 		$scope.modifyAppointmentDate = modifyAppointmentDate
+		$scope.addStudentReservation = addStudentReservation
+		$scope.viewReservationCondition = viewReservationCondition
 
-		loadResources()
+		if(status == 'APPLY' || status == 'APPROVED' || status == 'ALL'){
+				loadResources();
+		}
 
 		function loadResources() {
 			commitLoad(ReservationManageFactory)
@@ -41,7 +55,8 @@ app.controller("ReservationManagementController", ["$scope", "$stateParams", "Re
 				pageSize: $scope.resources.paginator.itemsPerPage,
 				pageNum: $scope.resources.paginator.page,
 				status: status,
-				isExpired: $scope.selectCondition.code
+				isExpired: $scope.selectCondition.code,
+				types:$scope.types
 			}).$promise
 		}
 
@@ -152,6 +167,41 @@ app.controller("ReservationManagementController", ["$scope", "$stateParams", "Re
 
 		function showErrorTip(error) {
 			ToasterTool.error(error)
+		}
+
+		function addStudentReservation(){
+			//弹出添加个人预约的模态框
+			var reserveDialog = ngDialog.open({
+				template: "/tpl/app/admin/modal/add-student-reservation.html",
+				controller: "AddStudentReservationController",
+				className: 'nm-dialog nm-dialog-md',
+				closeByDocument: true,
+				closeByEscape: true
+			});
+			reserveDialog.closePromise.then(function(data) {
+				if (data.value === 'success') {
+					loadResources()
+				}
+			})
+		}
+
+		function viewReservationCondition(resource){
+			var dialog = ngDialog.open({
+				template: "/tpl/app/admin/modal/view-student-list.html",
+				controller: "ViewStudentListController",
+				className: 'nm-dialog nm-dialog-md',
+				closeByDocument: true,
+				closeByEscape: true,
+				resolve: {
+					data: function(){
+						return ReservationFactory.studentReservationStudents().
+							get({
+								reservationId: resource.id
+							}).$promise;
+					}
+				}
+			});
+
 		}
 
 		function modifyAppointmentDate(resource) {
