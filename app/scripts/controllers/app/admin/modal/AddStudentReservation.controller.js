@@ -1,8 +1,9 @@
 app.controller("AddStudentReservationController", ["$scope", "StateChainFactory",
   "HttpResponseFactory", "ExperimentManageFactory", "ExperimentFactory", "InputValidatorFactory",
-  "LabFactory", "DateTool",
+  "LabFactory", "ReservationFactory", "DateTool", "ToasterTool",
     function($scope, StateChainFactory, HttpResponseFactory, ExperimentManageFactory
-    ,ExperimentFactory ,InputValidatorFactory, LabFactory, DateTool) {
+    ,ExperimentFactory ,InputValidatorFactory, LabFactory, ReservationFactory, DateTool,
+    ToasterTool) {
       $scope.date = new Date()
 
   		var stateChain = StateChainFactory.getStateChain();
@@ -38,6 +39,9 @@ app.controller("AddStudentReservationController", ["$scope", "StateChainFactory"
   		$scope.prev = prev
       $scope.expChange = expChange
       $scope.reserve = reserve
+
+      $scope.personCount = null
+      $scope.remark = ""
 
       InputValidatorFactory.injectToScope($scope)
 
@@ -113,7 +117,25 @@ app.controller("AddStudentReservationController", ["$scope", "StateChainFactory"
 
       //提交预约
       function reserve(){
-
+        ReservationFactory.reservation().post({
+				  personCount: $scope.personCount,
+				  experimentId: $scope.exp.id,
+				  labId: $scope.lab.id,
+				  slotId: $scope.slot.id,
+				  applyDate: DateTool.format($scope.date),
+				  remark: $scope.remark,
+          type: 'STUDENT_RESERVATION'
+			  })
+			  .$promise
+			  .then(function(response){
+			  	if(HttpResponseFactory.isResponseSuccess(response)){
+			  		ToasterTool.success("操作成功", "添加个人预约成功，赶快去审核吧!")
+			  		$scope.closeThisDialog('success')
+			  	}else{
+			  		errorHandler(response)
+			  	}
+			  })
+			  .catch(errorHandler);
       }
 
       function errorHandler(error){

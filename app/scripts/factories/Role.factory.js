@@ -7,6 +7,7 @@
 			isStudent: isStudent,
 			isTeacher: isTeacher,
 			isAdmin: isAdmin,
+			isLabTeacher: isLabTeacher,
 		}
 	}
 
@@ -18,6 +19,18 @@
 
 	function isTeacher(role){
 		var ROLE_NAME = "TEACHER"
+
+		return hasRole(role, ROLE_NAME)
+	}
+
+	function isLabTeacher(role){
+		var ROLE_NAME = "TEACHER_LAB"
+
+		return hasRole(role, ROLE_NAME)
+	}
+
+	function isSuperAdmin(role) {
+		var ROLE_NAME = "ADMIN_SUPER"
 
 		return hasRole(role, ROLE_NAME)
 	}

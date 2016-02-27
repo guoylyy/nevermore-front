@@ -1,0 +1,56 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm ng-scope">
+  <div class = "wrapper lter no_border" style = "overflow: hidden;">
+        <span class = "subview3_title db-title">我带的实验课程</span>
+    </div>
+    <div class="db-line"></div>
+    <div class="tab-content  wrapper-md">
+      <div class="tab-pane active" id = "unexpiredReservations">
+          <div class = "">
+            <span class="db-title">所有要带的实验课程</span>
+          </div>
+          <div class="p-t-md">
+            <label for="" class="pull-left">只看未过期 </label>
+            <label class="i-switch text-l m-l pull-left">
+              <input id="isActive" type="checkbox" ng-change="changeFilter()" ng-model="isActive"><i></i>
+            </label>
+          </div>
+          <div class="db-p-l-40">
+          <table class = "table db-appointment-table db-table-row-b db-m-b-0" ng-if="reservationList.length > 0">
+            <tr class="cursor-pointer" ng-repeat = "reservation in reservationList">
+              <td style = "width: 15%; text-align: left;">
+                <span class = "db-exp-time" ng-click="reservations.viewReservation(reservation)">{{reservation.applyDate | date: 'yyyy-MM-dd (EEE)'}}</span>
+              </td>
+              <td style = "width: 20%; text-align: left;">
+                <span class="db-exp-time" ng-click="reservations.viewReservation(reservation)">{{reservation.lab.name}}</span>
+              </td>
+              <td style = "width: 15%; text-align: right;">
+                {{reservation.slot.title}}
+              </td>
+              <td style = "width: 14%;">
+                {{reservation.personCount}}
+              </td>
+              <td style = "width: 11%;">
+                {{reservation.status.value}}
+              </td>
+              <td style = "width: 25%;">
+                <button ng-if = "reservation.clazz.teacher.id === currentUser.id" class="btn btn-danger db-btn-danger pull-right m-t-sm" ng-click = "reservations.cancelReservation(reservation.id)">
+                  取消预约
+                </button>
+              </td>
+            </tr>
+          </table>
+          <nevermore-empty-panel ng-if="reservationList.length === 0" text="没有任何预约"></nevermore-empty-panel>
+          <div class="row clearfix db-m-t-30" style="width: 100%;" >
+                  <div class="pull-left col-sm-4">
+                      <span class="db-title">共查询到&nbsp;{{reservationList.length}}&nbsp;个任务</span>
+                  </div>
+                    <div class="pull-right">
+                    <!-- <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" ng-model="reservations.unexpiredPaginator.page" total-items="reservations.unexpiredPaginator.items" ng-change="reservations.unexpiredPageChanged()"></uib-pagination> -->
+                  </div>
+                </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>

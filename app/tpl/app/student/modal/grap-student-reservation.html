@@ -1,0 +1,48 @@
+<div class="nm-dialog">
+  <div class="nm-dialog-header">
+    <h1 class="header-title" style="margin-top: 5px;">
+      <span >选择预约</span>
+    </h1>
+  </div>
+  <div class="alert alert-success">
+    友情提示:您可以在一下选择一个预约加入
+  </div>
+  <div class="">
+      <table class = "table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th style="width: 10%; min-width: 155px;">预约时间</th>
+            <th style="width: 10%; min-width: 55px;">开放人数</th>
+            <th style="width: 10%; min-width: 55px;">已预约人数</th>
+            <th style="width: 15%; min-width: 80px;">实验室</th>
+            <th style="width: 15%; min-width: 90px;">实验任务</th>
+            <th style="width: 15%; min-width: 50px;">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="resource in reservations">
+            <td>
+                <span>{{resource.applyDate | date:'yyyy-MM-dd'}}  &nbsp;
+                ({{resource.slot.title}})</span>
+            </td>
+            <td>
+                <span>{{resource.personCount}}</span>
+            </td>
+            <td>
+                <span>{{resource.currPersonCount}}</span>
+            </td>
+            <td>
+                <span>{{resource.lab.name}}</span>
+            </td>
+            <td>
+                <span>{{resource.experiment.name}}</span>
+            </td>
+            <td>
+              <button class="btn btn-primary" ng-click="addReservation(resource)">预约</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <nevermore-empty-panel ng-if="reservations.length == 0" text="还没有任何课预约的实验课"></nevermore-empty-panel>
+  </div>
+</div>
