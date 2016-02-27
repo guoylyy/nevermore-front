@@ -6,7 +6,8 @@
       </div>
       <div class="db-line"></div>
       <ul class="list-group db-m-t-5">
-        <li ui-sref-active="active" ui-sref="app.reservation.class" class="list-group-item db-bg no_border">
+        <li ui-sref-active="active" ui-sref="app.reservation.class" class="list-group-item db-bg no_border"
+        ng-if="isStudent() || isTeacher()">
           <a><i class="glyphicon glyphicon-th-list db-m-r-10"></i>班级相关实验预约</a>
         </li>
         <li ui-sref-active="active" ui-sref="app.reservation.student" class="list-group-item db-bg no_border"
