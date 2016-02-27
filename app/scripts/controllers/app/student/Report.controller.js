@@ -24,25 +24,35 @@ app.controller('ReportController', ['$scope', '$state', 'AlertTool', '$statePara
       }).$promise.then(function(response){
         if (response.code == "200") {
           $scope.clazz = response.data.course.name+" "+response.data.course.number;
+          $scope.new_data.content[0].content = new Date();
+          $scope.question_change();
         }
       });
-      $scope.new_data.content[0].content = new Date();
-      $scope.question_change();
+
     }
     else {
       ReportFactory.template().get({
         expId: $scope.exp_id
       }).$promise.then(function(response){
-        $scope.new_data = response.data;
-        $scope.status = response.data.status;
-        // $scope.data.student.name = $scope.currentUser.name;
-        ClazzFactory.clazz().get({
-          id: $scope.class_id
-        }).$promise.then(function(response){
-          $scope.clazz = response.data.course.name+" "+response.data.course.number;
-        });
-        $scope.new_data.content[0].content = new Date();
-        $scope.question_change();
+        if (response.code == "200") {
+          $scope.new_data = response.data;
+          $scope.status = response.data.status;
+          // $scope.data.student.name = $scope.currentUser.name;
+          ClazzFactory.clazz().get({
+            id: $scope.class_id
+          }).$promise.then(function(response){
+            $scope.clazz = response.data.course.name+" "+response.data.course.number;
+          });
+          $scope.new_data.content[0].content = new Date();
+          $scope.question_change();
+        }else if (response.code == "404") {
+          AlertTool.warning({title:'提示',text:"该实验不存在实验报告模板"}).then(function() {
+            $state.go('app.student.class.task');
+          });
+        }else{
+          AlertTool.error({title:'获取错误',text:response.data}).then(function() {
+          });
+        }
       });
     }
   });
