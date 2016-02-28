@@ -117,7 +117,7 @@
 			})
 			dialog.closePromise.then(function(data){
 				if(data.value === 'success'){
-					ToasterTool.success("添加学生成功");
+					// ToasterTool.success("添加学生成功");
 					loadClazzStudents();
 				}
 			});

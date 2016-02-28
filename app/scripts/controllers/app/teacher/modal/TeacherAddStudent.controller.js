@@ -41,6 +41,7 @@
         .$promise
         .then(function(response){
           if(response.success){
+						ToasterTool.success(response.message);
             $scope.closeThisDialog("success")
           }else{
             ToasterTool.error("添加学生失败");
