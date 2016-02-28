@@ -30,7 +30,6 @@ app.controller("ReservationManagementController", ["$scope", "$state", "$statePa
 		}]
 		$scope.selectCondition = $scope.verifyStatusList[0];
 
-
 		$scope.resources = angular.copy(ManagementService.DEFAULT_RESOURCE_TEMPLATE)
 		$scope.verifyResource = verifyResource
 		$scope.viewResource = viewResource
@@ -205,30 +204,36 @@ app.controller("ReservationManagementController", ["$scope", "$state", "$statePa
 		}
 
 		function modifyAppointmentDate(resource) {
-			var reserveDialog = ngDialog.open({
-				template: "/tpl/app/admin/modal/modify-appointment-date.html",
-				controller: "ModifyAppointmentDateController",
-				className: 'nm-dialog nm-dialog-md',
-				closeByDocument: true,
-				closeByEscape: true,
-				resolve: {
-					"labID": function(){
-						return resource.lab.id;
-					},
-					"reservationID": function(){
-						return resource.id;
+			try {
+				var reserveDialog = ngDialog.open({
+					template: "/tpl/app/admin/modal/modify-appointment-date.html",
+					controller: "ModifyAppointmentDateController",
+					className: 'nm-dialog nm-dialog-md',
+					closeByDocument: true,
+					closeByEscape: true,
+					resolve: {
+						"labID": function(){
+							return resource.lab.id;
+						},
+						"reservationID": function(){
+							return resource.id;
+						}
 					}
-				}
-			})
+				});
+				reserveDialog.closePromise.then(function(data) {
+					if (data.value === 'success') {
+						loadResources()
+						ToasterTool.success("更改成功")
+					}else if(data.value === "failed"){
+						ToasterTool.error("更改失败")
+					}
+				})
+			} catch (e) {
+				window.location.reload();
+			} finally {
+				console.log('change');
+			}
 
-			reserveDialog.closePromise.then(function(data) {
-				if (data.value === 'success') {
-					loadResources()
-					ToasterTool.success("更改成功")
-				}else if(data.value === "failed"){
-					ToasterTool.error("更改失败")
-				}
-			})
 		}
 	}
 ]);

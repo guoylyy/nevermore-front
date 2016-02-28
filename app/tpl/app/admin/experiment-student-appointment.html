@@ -3,15 +3,20 @@
         <span>学生个人预约开放列表</span>
     </div>
     <div class = "wrapper-md">
-      <div class="p-b-md">
-          <uib-tabset class="nm-tab-btn-group">
-          <uib-tab ng-repeat="status in verifyStatusList" active="status.active" ng-click="filterConditionChange(status)">
-          <uib-tab-heading>
-          {{status.value}}
-          </uib-tab-heading>
-          </uib-tab>
-          </uib-tabset>
-      </div>
+      <div style = "overflow: hidden;" class="p-b-md">
+				   <ul class="db-tab db-m-0 pull-left" style = "padding: 0px;">
+				   	<li class="active" ng-click="filterConditionChange(verifyStatusList[0])">
+				   		<a  role = "tab" data-toggle = "tab" aria-expanded = "true" class = "db-underline">
+				   			<span class = "db-title">{{verifyStatusList[0].value}}</span>
+				   		</a>
+				   	</li>
+             <li ng-click="filterConditionChange(verifyStatusList[1])">
+               <a  role = "tab" data-toggle = "tab" aria-expanded = "true" class = "db-underline">
+                 <span class = "db-title">{{verifyStatusList[1].value}}</span>
+               </a>
+             </li>
+				   </ul>
+			  </div>
         <div class="p-b-md">
           <button class="btn btn-primary" ng-click="addStudentReservation()">添加个人预约</button>
         </div>
@@ -41,7 +46,8 @@
                             <span>{{resource.currPersonCount}}</span>
                         </td>
                         <td>
-                            <span>{{resource.status.value}}</span>
+                            <span ng-if="resource.status.code=='APPROVED'">{{resource.status.value}}</span>
+                            <span ng-if="resource.status.code=='APPLY'" class="text-danger">{{resource.status.value}}</span>
                         </td>
                         <td>
                             <span>{{resource.lab.name}}</span>

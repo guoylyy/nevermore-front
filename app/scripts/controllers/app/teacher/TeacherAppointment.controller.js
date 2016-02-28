@@ -43,30 +43,37 @@
 
 		//打开预约面板
 		function openReserveDialog(experiment){
-			var reserveDialog = ngDialog.open({
-				template: "/tpl/app/teacher/modal/add-reservation.html",
-				controller: "TeacherReserveController",
-				className: 'nm-dialog nm-dialog-md',
-				closeByDocument: true,
-				closeByEscape: true,
-				resolve: {
-					experimentID: function() {
-						return experiment.id
-					},
-					experimentName: function(){
-						return experiment.name
-					},
-					classID: function(){
-						return $scope.class.id
+			try {
+				var reserveDialog = ngDialog.open({
+					template: "/tpl/app/teacher/modal/add-reservation.html",
+					controller: "TeacherReserveController",
+					className: 'nm-dialog nm-dialog-md',
+					closeByDocument: true,
+					closeByEscape: true,
+					resolve: {
+						experimentID: function() {
+							return experiment.id
+						},
+						experimentName: function(){
+							return experiment.name
+						},
+						classID: function(){
+							return $scope.class.id
+						}
 					}
-				}
-			})
+				})
 
-			reserveDialog.closePromise.then(function(data){
-				if(data.value === 'success'){
-					loadExperimentReservations()
-				}
-			})
+				reserveDialog.closePromise.then(function(data){
+					if(data.value === 'success'){
+						loadExperimentReservations()
+					}
+				})
+			} catch (e) {
+				window.location.reload();
+			} finally {
+
+			}
+
 		}
 
 		function getTotalReservationPersonCount(experiment){
