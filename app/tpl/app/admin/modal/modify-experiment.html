@@ -7,39 +7,41 @@
 	<div class = "nm-dialog-line"></div>
   <form class="form-horizontal" name="resourceForm" novalidate>
     <div class="form-group">
-      <label for="number" class="col-sm-3 control-label">编号*</label>
-      <div class="col-sm-9">
+      <label for="number" class="col-sm-4 control-label">编号*</label>
+      <div class="col-sm-8">
         <input type="text" class="form-control" id="number" ng-model = "resource.number" required>
       </div>
     </div>
     <div class="form-group">
-      <label for="name" class="col-sm-3 control-label">实验名*</label>
-      <div class="col-sm-9">
+      <label for="name" class="col-sm-4 control-label">实验名*</label>
+      <div class="col-sm-8">
         <input type="text" class="form-control" id="name" ng-model = "resource.name" required>
       </div>
     </div>
     <div class="form-group">
-      <label for="minGrpStuCnt" class="col-sm-3 control-label">实验最少人数*</label>
-      <div class="col-sm-9">
+      <label for="minGrpStuCnt" class="col-sm-4 control-label">实验最少人数*</label>
+      <div class="col-sm-8">
         <input type="number" class="form-control" id="minStuNum" ng-model = "resource.minStuNum" required>
       </div>
     </div>
     <div class="form-group">
-      <label for="maxGrpStuCnt" class="col-sm-3 control-label">实验最大人数*</label>
-      <div class="col-sm-9">
+      <label for="maxGrpStuCnt" class="col-sm-4 control-label">实验最大人数*</label>
+      <div class="col-sm-8">
         <input type="number" class="form-control" id="maxStuNum" ng-model = "resource.maxStuNum" required>
       </div>
     </div>
     <div class="form-group">
-      <label for="virtualExpLink" class="col-sm-3 control-label">虚拟实验链接</label>
-      <div class="col-sm-9">
+      <label for="virtualExpLink" class="col-sm-4 control-label">虚拟实验链接</label>
+      <div class="col-sm-8">
         <input type="text" class="form-control" id="virtualExpLink" ng-model = "resource.virtualExpLink">
       </div>
     </div>
-    <div class="form-group" style="display:none;">
-      <label for="active" class="col-sm-3 control-label">是否开放*</label>
-      <div class="col-sm-9">
-        <select class="form-control" id = "active" ng-model="resource.active" ng-options="active.code as active.value for active in activeList" ></select>
+    <div class="form-group">
+      <label for="active" class="col-sm-4 control-label">开放自动批改*</label>
+      <div class="col-sm-8">
+        <label class="i-switch text-l m-l pull-left">
+          <input id="isActive" type="checkbox" ng-model="resource.hasReport"><i></i>
+        </label>
       </div>
     </div>
 

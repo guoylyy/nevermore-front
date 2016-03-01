@@ -24,9 +24,15 @@
 						ng-if="experiment.experiment.virtualExpLink!=''" ng-click="startVirtualExperiment(experiment.experiment)">
 						开始虚拟实验
 					</a>
-					<button class="btn btn-danger db-btn-danger pull-right db-m-r-20" ui-sref="app.student.class.report({expId:experiment.experiment.id,classId:class.id})" ng-if="experiment.reports.length == 0">
-					填写实验报告
-					</button>
+					<a ng-if="experiment.experiment.hasReport"><button class="btn btn-danger db-btn-danger pull-right db-m-r-20"
+							ui-sref="app.student.class.report({expId:experiment.experiment.id,classId:class.id})"
+							ng-if="experiment.reports.length==0">
+						填写实验报告
+					</button></a>
+					<a ng-if="!experiment.experiment.hasReport"><label class="label label-default pull-right db-m-r-20 m-t-xs"
+							ng-if="experiment.reports.length==0" disable>
+						未开放实验报告
+					</label></a>
 				</div>
 				<div class="db-line db-m-0 db-m-t-10"></div>
 				<div class="wrapper db-p-l-20">

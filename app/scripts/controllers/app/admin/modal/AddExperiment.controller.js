@@ -11,6 +11,7 @@ app.controller("AddExperimentController", ["$scope", "ExperimentManageFactory", 
         $scope.addExperiment = addExperiment
 
         $scope.adding = false
+        $scope.hasReport = false
 
         function addExperiment() {
             if (resourceComplete()) {
@@ -35,7 +36,8 @@ app.controller("AddExperimentController", ["$scope", "ExperimentManageFactory", 
         function commitExperiment() {
             $scope.adding = true
             var postResource = angular.copy($scope.resource)
-            postResource.active = true;
+            postResource.hasReport = $scope.hasReport
+            postResource.active = true
             return ExperimentManageFactory.create().post(postResource)
         }
 

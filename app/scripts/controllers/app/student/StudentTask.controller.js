@@ -35,6 +35,7 @@ function() {
 				.then(function(response) {
 					if (HttpResponseFactory.isResponseSuccess(response)) {
 						var data = HttpResponseFactory.getResponseData(response)
+						
 						angular.copy(data, $scope.experimentList)
 					} else {
 						errorHandler(response)

@@ -64,6 +64,7 @@ function($scope, ClazzManageFactory, generalService, AccountManageFactory, Cours
 	}
 
 	function onModify(){
+		loadResources()
 		ToasterTool.success("编辑班级", "编辑班级成功！")
 	}
 
