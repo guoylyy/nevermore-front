@@ -16,9 +16,10 @@
 					<span ng-if = "experiment.reservations.length === 0" class="text-danger">
 						还没有预约任何时间段
 					</span>
-					<button ng-click = "openReserveDialog(experiment)" class="btn btn-default db-btn-default pull-right db-m-r-15">
+					<button ng-click = "openReserveDialog(experiment)" ng-mouseenter = "hover=true" ng-mouseleave = "hover=false" class="btn btn-default db-btn-default pull-right db-m-r-15">
 						立即预约
 					</button>
+					<span style = "font-size: 14px; padding-top: 10px; display: inline; color: red; font-weight: bolder;" class = "pull-right" ng-show = "hover">按钮点击没反应？刷新页面试试！</span>
 				</div>
 				<div class="db-line db-m-0 db-m-t-10"></div>
 				<table class = "table db-appointment-table db-m-b-0" ng-if = "experiment.reservations.length > 0">
