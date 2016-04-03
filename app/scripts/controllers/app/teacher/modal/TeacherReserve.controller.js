@@ -64,7 +64,6 @@
 		function next(){
 			var lastStage = $scope.stage
 			$scope.stage += 1
-			$scope.$broadcast("nmStageNext")
 
 			if(lastStage === 1){
 				getLabs()
@@ -75,7 +74,6 @@
 
 		function prev(){
 			$scope.stage -= 1
-			$scope.$broadcast("nmStagePrev")
 		}
 
 		function dateChanged(){
